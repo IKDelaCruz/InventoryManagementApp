@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="InventoryMangementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="InventoryMangementEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Brands" EntityType="InventoryMangementModel.Brand" />
+    <EntitySet Name="Companies" EntityType="InventoryMangementModel.Company" />
+    <EntitySet Name="Departments" EntityType="InventoryMangementModel.Department" />
+    <EntitySet Name="Items" EntityType="InventoryMangementModel.Item" />
+    <EntitySet Name="Users" EntityType="InventoryMangementModel.User" />
+    <EntitySet Name="Transactions" EntityType="InventoryMangementModel.Transaction" />
+  </EntityContainer>
+  <EntityType Name="Brand">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="company_id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="asset_tag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="item_type" Type="Int32" Nullable="false" />
+    <Property Name="item_sub_type" Type="Int32" Nullable="false" />
+    <Property Name="purchase_price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="current_value" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="purchase_date" Type="DateTime" Precision="0" />
+    <Property Name="life_span" Type="Int32" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="last_updated" Type="DateTime" Precision="3" />
+    <Property Name="last_updated_user" Type="Int32" />
+    <Property Name="brand_id" Type="Int32" />
+    <Property Name="model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="serial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="current_owner" Type="Int32" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="type" Type="Int32" Nullable="false" />
+    <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="department" Type="Int32" />
+    <Property Name="company" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Transaction">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="transaction_date" />
+      <PropertyRef Name="system_user_id" />
+      <PropertyRef Name="other_user_id" />
+      <PropertyRef Name="transaction_type_id" />
+      <PropertyRef Name="remarks" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="transaction_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="system_user_id" Type="Int32" Nullable="false" />
+    <Property Name="other_user_id" Type="Int32" Nullable="false" />
+    <Property Name="transaction_type_id" Type="Int32" Nullable="false" />
+    <Property Name="remarks" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

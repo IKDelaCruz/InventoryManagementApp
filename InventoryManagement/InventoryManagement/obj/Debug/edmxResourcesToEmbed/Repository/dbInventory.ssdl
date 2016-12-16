@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="InventoryMangementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Brand">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="company_id" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="asset_tag" Type="varchar" MaxLength="50" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="item_type" Type="int" Nullable="false" />
+    <Property Name="item_sub_type" Type="int" Nullable="false" />
+    <Property Name="purchase_price" Type="money" Nullable="false" />
+    <Property Name="current_value" Type="money" Nullable="false" />
+    <Property Name="purchase_date" Type="date" />
+    <Property Name="life_span" Type="int" />
+    <Property Name="status" Type="int" />
+    <Property Name="last_updated" Type="datetime" />
+    <Property Name="last_updated_user" Type="int" />
+    <Property Name="brand_id" Type="int" />
+    <Property Name="model" Type="varchar" MaxLength="50" />
+    <Property Name="serial" Type="varchar" MaxLength="50" />
+    <Property Name="current_owner" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'InventoryMangement.dbo.Transaction' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Transaction">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="transaction_date" />
+      <PropertyRef Name="system_user_id" />
+      <PropertyRef Name="other_user_id" />
+      <PropertyRef Name="transaction_type_id" />
+      <PropertyRef Name="remarks" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="transaction_date" Type="datetime" Nullable="false" />
+    <Property Name="system_user_id" Type="int" Nullable="false" />
+    <Property Name="other_user_id" Type="int" Nullable="false" />
+    <Property Name="transaction_type_id" Type="int" Nullable="false" />
+    <Property Name="remarks" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="type" Type="int" Nullable="false" />
+    <Property Name="first_name" Type="varchar" MaxLength="50" />
+    <Property Name="last_name" Type="varchar" MaxLength="50" />
+    <Property Name="department" Type="int" />
+    <Property Name="company" Type="int" />
+  </EntityType>
+  <EntityContainer Name="InventoryMangementModelStoreContainer">
+    <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Transaction" EntityType="Self.Transaction" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Transaction].[id] AS [id], 
+    [Transaction].[transaction_date] AS [transaction_date], 
+    [Transaction].[system_user_id] AS [system_user_id], 
+    [Transaction].[other_user_id] AS [other_user_id], 
+    [Transaction].[transaction_type_id] AS [transaction_type_id], 
+    [Transaction].[remarks] AS [remarks]
+    FROM [dbo].[Transaction] AS [Transaction]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
