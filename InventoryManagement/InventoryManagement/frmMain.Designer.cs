@@ -165,6 +165,7 @@
             this.chkShowAllLocation.TabIndex = 46;
             this.chkShowAllLocation.Text = "Show All";
             this.chkShowAllLocation.UseVisualStyleBackColor = true;
+            this.chkShowAllLocation.CheckedChanged += new System.EventHandler(this.chkShowAllLocation_CheckedChanged);
             // 
             // chkShowAllSubType
             // 
@@ -177,6 +178,7 @@
             this.chkShowAllSubType.TabIndex = 45;
             this.chkShowAllSubType.Text = "Show All";
             this.chkShowAllSubType.UseVisualStyleBackColor = true;
+            this.chkShowAllSubType.CheckedChanged += new System.EventHandler(this.chkShowAllSubType_CheckedChanged);
             // 
             // chkShowAllType
             // 
@@ -189,6 +191,7 @@
             this.chkShowAllType.TabIndex = 44;
             this.chkShowAllType.Text = "Show All";
             this.chkShowAllType.UseVisualStyleBackColor = true;
+            this.chkShowAllType.CheckedChanged += new System.EventHandler(this.chkShowAllType_CheckedChanged);
             // 
             // chkShowAllStatus
             // 
@@ -201,6 +204,7 @@
             this.chkShowAllStatus.TabIndex = 43;
             this.chkShowAllStatus.Text = "Show All";
             this.chkShowAllStatus.UseVisualStyleBackColor = true;
+            this.chkShowAllStatus.CheckedChanged += new System.EventHandler(this.chkShowAllStatus_CheckedChanged);
             // 
             // label7
             // 
@@ -219,6 +223,7 @@
             this.cbxLocation.Name = "cbxLocation";
             this.cbxLocation.Size = new System.Drawing.Size(121, 23);
             this.cbxLocation.TabIndex = 41;
+            this.cbxLocation.SelectedIndexChanged += new System.EventHandler(this.cbxLocation_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -237,6 +242,7 @@
             this.cbxSubtype.Name = "cbxSubtype";
             this.cbxSubtype.Size = new System.Drawing.Size(121, 23);
             this.cbxSubtype.TabIndex = 39;
+            this.cbxSubtype.SelectedIndexChanged += new System.EventHandler(this.cbxSubtype_SelectedIndexChanged);
             // 
             // label3
             // 

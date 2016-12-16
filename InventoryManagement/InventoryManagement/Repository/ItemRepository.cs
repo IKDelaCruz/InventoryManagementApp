@@ -83,11 +83,21 @@ namespace InventoryManagement.Repository
                 iList.Add(new ItemViewModel
                 {
                     Id = i.id,
+                    AssetTag = i.asset_tag,
                     Name = i.name,
                     Description = i.description,
                     Type = (PrimaryItemType)i.item_type,
                     SubType = (SecondaryItemType)i.item_sub_type,
-                    Status = (ItemStatus)i.status
+                    BrandId = i.brand_id ?? 13,
+                    Model = i.model,
+                    Serial = i.serial,
+                    Status = (ItemStatus)i.status,
+                    CurrentOwner = i.current_owner ?? 0,
+                    LastUpdatedDate = i.last_updated ?? DateTime.MinValue,
+                    PurchaseDate = i.purchase_date ?? DateTime.MinValue,
+                    PurchasePrice = i.purchase_price,
+                    LifeSpan = i.life_span ?? 5,
+                    Currentvalue = i.current_value
                 });
             }
             return iList;

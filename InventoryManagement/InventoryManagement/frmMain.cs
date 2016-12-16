@@ -79,7 +79,11 @@ namespace InventoryManagement
             if (!chkShowAllLocation.Checked)
             {
                 var departmentId = (int)cbxLocation.SelectedValue;
-                //itms = itms.Where(h => h.CurrentOwner == ).ToList();
+                var usersIds = Singleton.Instance.UserModel.GetUsersByDepartmentId(departmentId).Select(h => h.Id).ToList(); ;
+
+                itms = (from i in itms
+                       where usersIds.Contains(i.CurrentOwner)
+                       select i).ToList();
             }
                 
 
@@ -157,6 +161,36 @@ namespace InventoryManagement
         }
 
         private void chckShowAll_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateView();
+        }
+
+        private void chkShowAllStatus_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateView();
+        }
+
+        private void chkShowAllType_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateView();
+        }
+
+        private void chkShowAllSubType_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateView();
+        }
+
+        private void chkShowAllLocation_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateView();
+        }
+
+        private void cbxLocation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateView();
+        }
+
+        private void cbxSubtype_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateView();
         }
