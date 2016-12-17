@@ -93,6 +93,18 @@
     <Compile Include="frmBase.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmManageUserInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManageUserInfo.Designer.cs">
+      <DependentUpon>frmManageUserInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmManageUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManageUsers.Designer.cs">
+      <DependentUpon>frmManageUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\BaseModel.cs" />
     <Compile Include="Model\CompanyDepartmentModel.cs" />
     <Compile Include="Model\ItemModel.cs" />
@@ -152,6 +164,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmBase.resx">
       <DependentUpon>frmBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmManageUserInfo.resx">
+      <DependentUpon>frmManageUserInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmManageUsers.resx">
+      <DependentUpon>frmManageUsers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

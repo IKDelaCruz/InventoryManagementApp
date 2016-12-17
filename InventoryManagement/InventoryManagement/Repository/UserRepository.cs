@@ -11,7 +11,7 @@ namespace InventoryManagement.Repository
     {
         public UserViewModel ValidateUsernameAndPassword(string username, string password)
         {
-            
+
             var user = Database.Users.FirstOrDefault(h => h.username == username && h.password == password);
             if (user != null)
             {
@@ -28,7 +28,7 @@ namespace InventoryManagement.Repository
 
         public int CreateNewUser(string username, string password, int type)
         {
-          
+
             var newUser = new User
             {
                 username = username,
@@ -40,12 +40,31 @@ namespace InventoryManagement.Repository
 
             return newUser.id;
         }
+
+        public bool UpdateUser(int userId, string firstName, string lastName, int companyId, int departmentId)
+        {
+            var user = Database.Users.FirstOrDefault(h => h.id == userId);
+            if (user != null)
+            {
+                user.first_name = firstName;
+                user.last_name = lastName;
+                user.company = companyId;
+                user.department = departmentId;
+
+                Database.SaveChanges();
+
+                return true;
+            }
+
+            return false;
+        }
         public UserViewModel GetUser(string username)
         {
             var user = Database.Users.FirstOrDefault(h => h.username == username);
-            if(user != null)
+            if (user != null)
             {
-                return new UserViewModel {
+                return new UserViewModel
+                {
                     Id = user.id,
                     Password = user.password,
                     Username = user.username,
@@ -59,9 +78,10 @@ namespace InventoryManagement.Repository
         {
             var list = new List<UserViewModel>();
             var user = Database.Users.ToList();
-            foreach(User u in user)
+            foreach (User u in user)
             {
-                list.Add(new UserViewModel {
+                list.Add(new UserViewModel
+                {
                     Id = u.id,
                     Password = u.password,
                     Username = u.username,
@@ -77,7 +97,7 @@ namespace InventoryManagement.Repository
         public List<UserViewModel> GetUsersByDepartmentId(int departmentId)
         {
             var list = new List<UserViewModel>();
-            var user = Database.Users.Where(h=> h.department == departmentId).ToList();
+            var user = Database.Users.Where(h => h.department == departmentId).ToList();
             foreach (User u in user)
             {
                 list.Add(new UserViewModel

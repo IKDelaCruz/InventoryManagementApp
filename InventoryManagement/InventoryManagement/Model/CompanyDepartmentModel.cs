@@ -11,12 +11,10 @@ namespace InventoryManagement.Model
     public class CompanyDepartmentModel : BaseModel
     {
         CompanyDepartmentRepository cdR;
-
         public CompanyDepartmentModel()
         {
             cdR = new CompanyDepartmentRepository();
         }
-
         public CompanyDepartmentViewModel GetCompany(int id)
         {
             return cdR.QueryCompany(id);
@@ -25,7 +23,6 @@ namespace InventoryManagement.Model
         {
             return cdR.QueryCompanies();
         }
-
         public CompanyDepartmentViewModel GetDepartment(int id)
         {
             return cdR.QueryDepartment(id);
@@ -34,7 +31,6 @@ namespace InventoryManagement.Model
         {
             return cdR.QueryDepartments(companyId);
         }
-
         public List<CompanyDepartmentViewModel> GetCompaniesWithDepartments()
         {
             var list = new List<CompanyDepartmentViewModel>();

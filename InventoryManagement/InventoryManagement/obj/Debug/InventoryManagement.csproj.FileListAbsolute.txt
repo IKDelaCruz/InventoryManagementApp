@@ -16,3 +16,5 @@ C:\Users\ian.delacruz.JAKAGROUP\Documents\GitHub\InventoryManagementApp\Inventor
 C:\Users\ian.delacruz.JAKAGROUP\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\bin\Debug\AuthenticationLibrary.dll
 C:\Users\ian.delacruz.JAKAGROUP\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\bin\Debug\AuthenticationLibrary.pdb
 C:\Users\ian.delacruz.JAKAGROUP\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.frmManageItem.resources
+C:\Users\ian.delacruz.JAKAGROUP\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.frmManageUserInfo.resources
+C:\Users\ian.delacruz.JAKAGROUP\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.frmManageUsers.resources

@@ -194,5 +194,19 @@ namespace InventoryManagement
         {
             UpdateView();
         }
+
+        private void addToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            var result = new frmManageUserInfo().ShowDialog();
+            if(result == DialogResult.OK)
+            {
+
+            }
+        }
+
+        private void manageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new frmManageUsers().ShowDialog();
+        }
     }
 }
