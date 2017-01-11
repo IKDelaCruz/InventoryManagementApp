@@ -59,6 +59,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -149,6 +151,8 @@
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\UserRepository.cs" />
+    <Compile Include="Utils\ErrorLogger.cs" />
+    <Compile Include="Utils\LDAPAuth.cs" />
     <Compile Include="Utils\ListViewExtension.cs" />
     <Compile Include="ViewModel\CompanyDepartmentViewModel.cs" />
     <Compile Include="ViewModel\ItemViewModel.cs" />
