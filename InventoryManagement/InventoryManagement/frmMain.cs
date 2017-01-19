@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using InventoryManagement.Utils;
 using InventoryManagement.ViewModel;
+using BarcodeLib;
 
 namespace InventoryManagement
 {
@@ -101,15 +102,15 @@ namespace InventoryManagement
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            if (Singleton.Instance.UserModel.CurrentUser == null)
-            {
-                var result = new frmLogin().ShowDialog();
-                if (result == DialogResult.Cancel)
-                {
-                    Application.Exit();
-                }
-                UpdateView();
-            }
+            //if (Singleton.Instance.UserModel.CurrentUser == null)
+            //{
+            //    var result = new frmLogin().ShowDialog();
+            //    if (result == DialogResult.Cancel)
+            //    {
+            //        Application.Exit();
+            //    }
+            //    UpdateView();
+            //}
         }
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -147,6 +148,8 @@ namespace InventoryManagement
                 lblAmount.Text = item.PurchasePrice.ToString("n2");
                 lblLifeSpan.Text = item.LifeSpan.ToString();
                 lblCurrentValue.Text = item.Currentvalue.ToString("n2");
+
+                btnPrintBarcode.Enabled = true;
             }
         }
 
@@ -207,6 +210,26 @@ namespace InventoryManagement
         private void manageToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new frmManageUsers().ShowDialog();
+        }
+
+        private void btnPrintBarcode_Click(object sender, EventArgs e)
+        {
+            BarcodeLib.Barcode barcode = new BarcodeLib.Barcode()
+            {
+                IncludeLabel = true,
+                Alignment = AlignmentPositions.CENTER,
+                Width = 300,
+                Height = 100,
+                RotateFlipType = RotateFlipType.RotateNoneFlipNone,
+                BackColor = Color.White,
+                ForeColor = Color.Black,
+                
+            };
+            //i.ToString().PadLeft(3, '0'); 
+            Image img = barcode.Encode(TYPE.EAN8, lblId.Text.ToString().PadLeft(7, '0'));
+
+            var dlg = new frmPrinter(img);
+            dlg.ShowDialog();
         }
     }
 }

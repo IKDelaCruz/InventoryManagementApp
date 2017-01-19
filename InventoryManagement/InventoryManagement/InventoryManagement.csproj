@@ -48,6 +48,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BarcodeLib">
+      <HintPath>..\..\..\..\..\Downloads\barcode_bin\BarcodeLib.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -74,6 +77,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmLauncher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLauncher.Designer.cs">
+      <DependentUpon>frmLauncher.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmManageItem.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,9 +116,16 @@
     <Compile Include="frmManageUsers.Designer.cs">
       <DependentUpon>frmManageUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPrinter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrinter.Designer.cs">
+      <DependentUpon>frmPrinter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\BaseModel.cs" />
     <Compile Include="Model\CompanyDepartmentModel.cs" />
     <Compile Include="Model\ItemModel.cs" />
+    <Compile Include="Model\ReturnValueModel.cs" />
     <Compile Include="Model\Singleton.cs" />
     <Compile Include="Model\UserModel.cs" />
     <Compile Include="Program.cs" />
@@ -157,6 +173,9 @@
     <Compile Include="ViewModel\CompanyDepartmentViewModel.cs" />
     <Compile Include="ViewModel\ItemViewModel.cs" />
     <Compile Include="ViewModel\UserViewModel.cs" />
+    <EmbeddedResource Include="frmLauncher.resx">
+      <DependentUpon>frmLauncher.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmManageItem.resx">
       <DependentUpon>frmManageItem.cs</DependentUpon>
     </EmbeddedResource>
@@ -174,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmManageUsers.resx">
       <DependentUpon>frmManageUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrinter.resx">
+      <DependentUpon>frmPrinter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

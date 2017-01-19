@@ -1,4 +1,5 @@
-﻿using InventoryManagement.Model;
+﻿using BarcodeLib;
+using InventoryManagement.Model;
 using InventoryManagement.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -68,18 +69,27 @@ namespace InventoryManagement
             };
             var result = Singleton.Instance.ItemModel.CreateNewItem(itm, Singleton.Instance.UserModel.CurrentUser.Id);
 
-            if (result)
+            if (result.Success)
             {
+                txtAssetTag.Text = result.Param2;
                 this.DialogResult = DialogResult.OK;
                 MessageBox.Show("Item successfully created.");
             }
 
-            this.Close();
+           
+
+            
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnPrintBarcode_Click(object sender, EventArgs e)
+        {
+          
+
         }
     }
 }

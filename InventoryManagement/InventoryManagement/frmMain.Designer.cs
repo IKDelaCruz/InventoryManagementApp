@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.lvMain = new System.Windows.Forms.ListView();
             this.imgMainImage = new System.Windows.Forms.ImageList(this.components);
             this.pnlTop = new System.Windows.Forms.Panel();
@@ -93,14 +94,14 @@
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnPrintBarcode = new System.Windows.Forms.Button();
             this.pnlMain.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.pnlTop.SuspendLayout();
             this.pnlRightInfo.SuspendLayout();
             this.pnlRightContent.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlMain
@@ -113,6 +114,16 @@
             this.pnlMain.Padding = new System.Windows.Forms.Padding(5);
             this.pnlMain.Size = new System.Drawing.Size(836, 601);
             this.pnlMain.TabIndex = 3;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.lvMain);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(5, 77);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.panel1.Size = new System.Drawing.Size(826, 519);
+            this.panel1.TabIndex = 2;
             // 
             // lvMain
             // 
@@ -300,6 +311,7 @@
             // 
             this.pnlRightContent.BackColor = System.Drawing.Color.White;
             this.pnlRightContent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlRightContent.Controls.Add(this.btnPrintBarcode);
             this.pnlRightContent.Controls.Add(this.lblCurrentValue);
             this.pnlRightContent.Controls.Add(this.label35);
             this.pnlRightContent.Controls.Add(this.lblLifeSpan);
@@ -710,7 +722,7 @@
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
@@ -725,19 +737,21 @@
             // manageToolStripMenuItem
             // 
             this.manageToolStripMenuItem.Name = "manageToolStripMenuItem";
-            this.manageToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.manageToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.manageToolStripMenuItem.Text = "Manage";
             this.manageToolStripMenuItem.Click += new System.EventHandler(this.manageToolStripMenuItem_Click);
             // 
-            // panel1
+            // btnPrintBarcode
             // 
-            this.panel1.Controls.Add(this.lvMain);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(5, 77);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.panel1.Size = new System.Drawing.Size(826, 519);
-            this.panel1.TabIndex = 2;
+            this.btnPrintBarcode.Enabled = false;
+            this.btnPrintBarcode.Location = new System.Drawing.Point(75, 418);
+            this.btnPrintBarcode.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnPrintBarcode.Name = "btnPrintBarcode";
+            this.btnPrintBarcode.Size = new System.Drawing.Size(159, 27);
+            this.btnPrintBarcode.TabIndex = 35;
+            this.btnPrintBarcode.Text = "Print Barcode Label";
+            this.btnPrintBarcode.UseVisualStyleBackColor = true;
+            this.btnPrintBarcode.Click += new System.EventHandler(this.btnPrintBarcode_Click);
             // 
             // frmMain
             // 
@@ -757,6 +771,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.pnlMain.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();
             this.pnlRightInfo.ResumeLayout(false);
@@ -766,7 +781,6 @@
             this.statusStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -838,6 +852,7 @@
         private System.Windows.Forms.ToolStripMenuItem usersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manageToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnPrintBarcode;
     }
 }
 

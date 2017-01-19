@@ -31,6 +31,8 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtAssetTag = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.dtpPurchaseDate = new System.Windows.Forms.DateTimePicker();
             this.lblCurrentValue = new System.Windows.Forms.Label();
@@ -90,6 +92,8 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label10);
+            this.panel1.Controls.Add(this.txtAssetTag);
             this.panel1.Controls.Add(this.label15);
             this.panel1.Controls.Add(this.dtpPurchaseDate);
             this.panel1.Controls.Add(this.lblCurrentValue);
@@ -125,6 +129,23 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(730, 341);
             this.panel1.TabIndex = 0;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(28, 30);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(57, 15);
+            this.label10.TabIndex = 36;
+            this.label10.Text = "Asset Tag";
+            // 
+            // txtAssetTag
+            // 
+            this.txtAssetTag.Location = new System.Drawing.Point(151, 27);
+            this.txtAssetTag.Name = "txtAssetTag";
+            this.txtAssetTag.ReadOnly = true;
+            this.txtAssetTag.Size = new System.Drawing.Size(169, 23);
+            this.txtAssetTag.TabIndex = 35;
             // 
             // label15
             // 
@@ -349,7 +370,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(28, 30);
+            this.label1.Location = new System.Drawing.Point(28, 59);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 15);
             this.label1.TabIndex = 7;
@@ -358,7 +379,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(28, 59);
+            this.label2.Location = new System.Drawing.Point(28, 88);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(70, 15);
             this.label2.TabIndex = 8;
@@ -366,20 +387,20 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(151, 27);
+            this.txtName.Location = new System.Drawing.Point(151, 56);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(169, 23);
             this.txtName.TabIndex = 5;
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(151, 56);
+            this.txtDescription.Location = new System.Drawing.Point(151, 85);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(169, 81);
+            this.txtDescription.Size = new System.Drawing.Size(169, 52);
             this.txtDescription.TabIndex = 6;
             // 
-            // frmAddItem
+            // frmManageItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -388,7 +409,7 @@
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Name = "frmAddItem";
+            this.Name = "frmManageItem";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create New Item";
@@ -433,5 +454,7 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.DateTimePicker dtpPurchaseDate;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtAssetTag;
     }
 }

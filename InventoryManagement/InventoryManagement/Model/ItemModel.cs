@@ -15,12 +15,20 @@ namespace InventoryManagement.Model
         {
             ir = new ItemRepository();
         }
-        public bool CreateNewItem(ItemViewModel newItem, int userId)
+        public ReturnValueModel CreateNewItem(ItemViewModel newItem, int userId)
         {
+            var rv = new ReturnValueModel();
             var newItemId = ir.Insert(newItem, userId);
             var assetTag = GenerateAssetTag(newItem.Type, newItem.SubType, newItemId);
 
-            return ir.AttachAssetTag(newItemId, assetTag); 
+            rv.Success = ir.AttachAssetTag(newItemId, assetTag);
+            if(rv.Success)
+            {
+                rv.Param1 = newItemId.ToString();
+                rv.Param2 = assetTag;
+            }
+
+            return rv;
         }
         public string GenerateAssetTag(PrimaryItemType type, SecondaryItemType subType, int itemId)
         {
