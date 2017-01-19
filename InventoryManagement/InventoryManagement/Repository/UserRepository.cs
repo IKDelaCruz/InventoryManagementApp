@@ -12,7 +12,7 @@ namespace InventoryManagement.Repository
         public UserViewModel ValidateUsernameAndPassword(string username, string password)
         {
 
-            var user = Database.Users.FirstOrDefault(h => h.username == username && h.password == password);
+            var user = InventoryDatabase.Users.FirstOrDefault(x => x.username == username && x.password == password);
             if (user != null)
             {
                 return new UserViewModel
@@ -20,7 +20,9 @@ namespace InventoryManagement.Repository
                     Id = user.id,
                     Password = user.password,
                     Username = user.username,
-                    UserType = user.type
+                    UserType = user.type,
+                    Firstname = user.first_name,
+                    Lastname = user.last_name
                 };
             }
             return null;
@@ -35,15 +37,15 @@ namespace InventoryManagement.Repository
                 password = password,
                 type = type
             };
-            Database.Users.Add(newUser);
-            Database.SaveChanges();
+            InventoryDatabase.Users.Add(newUser);
+            InventoryDatabase.SaveChanges();
 
             return newUser.id;
         }
 
         public bool UpdateUser(int userId, string firstName, string lastName, int companyId, int departmentId)
         {
-            var user = Database.Users.FirstOrDefault(h => h.id == userId);
+            var user = InventoryDatabase.Users.FirstOrDefault(h => h.id == userId);
             if (user != null)
             {
                 user.first_name = firstName;
@@ -51,7 +53,7 @@ namespace InventoryManagement.Repository
                 user.company = companyId;
                 user.department = departmentId;
 
-                Database.SaveChanges();
+                InventoryDatabase.SaveChanges();
 
                 return true;
             }
@@ -60,7 +62,7 @@ namespace InventoryManagement.Repository
         }
         public UserViewModel GetUser(string username)
         {
-            var user = Database.Users.FirstOrDefault(h => h.username == username);
+            var user = InventoryDatabase.Users.FirstOrDefault(h => h.username == username);
             if (user != null)
             {
                 return new UserViewModel
@@ -77,7 +79,7 @@ namespace InventoryManagement.Repository
         public List<UserViewModel> GetUsers()
         {
             var list = new List<UserViewModel>();
-            var user = Database.Users.ToList();
+            var user = InventoryDatabase.Users.ToList();
             foreach (User u in user)
             {
                 list.Add(new UserViewModel
@@ -97,7 +99,7 @@ namespace InventoryManagement.Repository
         public List<UserViewModel> GetUsersByDepartmentId(int departmentId)
         {
             var list = new List<UserViewModel>();
-            var user = Database.Users.Where(h => h.department == departmentId).ToList();
+            var user = InventoryDatabase.Users.Where(h => h.department == departmentId).ToList();
             foreach (User u in user)
             {
                 list.Add(new UserViewModel

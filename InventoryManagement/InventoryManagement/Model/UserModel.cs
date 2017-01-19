@@ -11,10 +11,10 @@ namespace InventoryManagement.Model
 {
     public class UserModel : BaseModel
     {
-        UserRepository ur;
+        UserRepository userRepository;
         public UserModel()
         {
-            ur = new UserRepository();
+            userRepository = new UserRepository();
         }
         public enum UserType
         {
@@ -27,7 +27,7 @@ namespace InventoryManagement.Model
         public UserViewModel AuthenticateUser(string username, string password)
         {
             
-            CurrentUser = ur.ValidateUsernameAndPassword(username, password);
+            CurrentUser = userRepository.ValidateUsernameAndPassword(username, password);
             return CurrentUser;
         }
         public bool LogoutUser()
@@ -37,27 +37,27 @@ namespace InventoryManagement.Model
         }
         public int CreateNewUser(string username, string password, UserType userType)
         {
-            return ur.CreateNewUser(username, password, (int)userType);
+            return userRepository.CreateNewUser(username, password, (int)userType);
         }
         public bool UpdateUser(int userId, string firstName, string lastName, int companyId, int departmentId)
         {
-            return ur.UpdateUser(userId, firstName, lastName, companyId, departmentId);
+            return userRepository.UpdateUser(userId, firstName, lastName, companyId, departmentId);
         }
         public void CheckDefaultUser()
         {
-            var adminUser = ur.GetUser("admin");
+            var adminUser = userRepository.GetUser("admin");
             if(adminUser == null)
             {
-                ur.CreateNewUser("admin", "admin", 1);
+                userRepository.CreateNewUser("admin", "admin", 1);
             }
         }
         public List<UserViewModel> GetUsers()
         {
-            return ur.GetUsers();
+            return userRepository.GetUsers();
         }
         public List<UserViewModel> GetUsersByDepartmentId(int departmentId)
         {
-            return ur.GetUsersByDepartmentId(departmentId);
+            return userRepository.GetUsersByDepartmentId(departmentId);
         }
     }
 }

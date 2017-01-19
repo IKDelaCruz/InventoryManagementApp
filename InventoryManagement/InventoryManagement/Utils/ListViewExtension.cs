@@ -24,5 +24,18 @@ namespace InventoryManagement.Utils
                 lv.Items.Add(newItem);
             }
         }
+        public static void LoadData(this ListView lv, List<UserViewModel> items)
+        {
+            lv.Items.Clear();
+
+            foreach (UserViewModel iVL in items)
+            {
+                var newItem = new ListViewItem(iVL.Lastname + ", " + iVL.Firstname);
+                newItem.ImageIndex = Convert.ToInt32(iVL.UserType) - 1;
+                newItem.SubItems.Add(iVL.Id.ToString());
+                newItem.SubItems.Add(iVL.Username.ToString());
+                lv.Items.Add(newItem);
+            }
+        }
     }
 }

@@ -20,15 +20,18 @@ namespace InventoryManagement
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+
+
             DoAuth();
         }
         private void DoAuth()
         {
-            
             var result = Singleton.Instance.UserModel.AuthenticateUser(txtUsername.Text.Trim(), txtPassord.Text.Trim());
-            if(result != null)
+            if (result != null)
             {
                 //Singleton.Instance.UserModel.CurrentUser = result;
+
+                //MessageBox.Show("Welcome Back "+ result.Firstname);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }

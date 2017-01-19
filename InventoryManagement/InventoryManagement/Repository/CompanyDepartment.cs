@@ -13,7 +13,7 @@ namespace InventoryManagement.Repository
         {
             var list = new List<CompanyDepartmentViewModel>();
 
-            var comp = Database.Companies.ToList();
+            var comp = InventoryDatabase.Companies.ToList();
 
             foreach (Company c in comp)
             {
@@ -29,7 +29,7 @@ namespace InventoryManagement.Repository
 
         public CompanyDepartmentViewModel QueryCompany(int id)
         {
-            var comp = Database.Companies.FirstOrDefault(h => h.id == id);
+            var comp = InventoryDatabase.Companies.FirstOrDefault(h => h.id == id);
             if (comp != null)
                 return new CompanyDepartmentViewModel
                 {
@@ -43,7 +43,7 @@ namespace InventoryManagement.Repository
         {
             var list = new List<CompanyDepartmentViewModel>();
 
-            var deps = Database.Departments.Where(h => h.company_id == companyId).ToList();
+            var deps = InventoryDatabase.Departments.Where(h => h.company_id == companyId).ToList();
 
             foreach (Department d in deps)
             {
@@ -59,7 +59,7 @@ namespace InventoryManagement.Repository
         }
         public CompanyDepartmentViewModel QueryDepartment(int id)
         {
-            var dep = Database.Departments.FirstOrDefault(h => h.id == id);
+            var dep = InventoryDatabase.Departments.FirstOrDefault(h => h.id == id);
             if (dep != null)
                 return new CompanyDepartmentViewModel
                 {

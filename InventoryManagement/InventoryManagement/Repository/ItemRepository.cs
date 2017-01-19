@@ -30,27 +30,45 @@ namespace InventoryManagement.Repository
                 status = (int)newItem.Status,
                 asset_tag = newItem.AssetTag
             };
-            Database.Items.Add(itm);
+            InventoryDatabase.Items.Add(itm);
 
-            Database.SaveChanges();
+            InventoryDatabase.SaveChanges();
 
             return itm.id;
         }
         public bool AttachAssetTag(int itemId, string assetTag)
         {
-            var item = Database.Items.FirstOrDefault(h => h.id == itemId);
+            var item = InventoryDatabase.Items.FirstOrDefault(h => h.id == itemId);
+
             if (item != null)
             {
                 item.asset_tag = assetTag;
-                Database.SaveChanges();
+                InventoryDatabase.SaveChanges();
 
                 return true;
             }
             return false;
         }
+
+        public bool UpdateItemStatus(int itemId, int itemStatus)
+        {
+            //var item = InventoryDatabase.Items.FirstOrDefault(h => h.id == itemId);
+            var item = InventoryDatabase.Items.FirstOrDefault(x => x.id == itemId);
+
+            if (item != null)
+            {
+                item.status = itemStatus;
+                InventoryDatabase.SaveChanges();
+
+                return true;
+            }
+            return false;
+        }
+
+        #region --- Queries ---
         public List<BrandViewModel> QueryBrands()
         {
-            var brands = Database.Brands.ToList();
+            var brands = InventoryDatabase.Brands.ToList();
             List<BrandViewModel> bList = new List<BrandViewModel>();
 
             foreach (Brand b in brands)
@@ -61,7 +79,7 @@ namespace InventoryManagement.Repository
         }
         public BrandViewModel QueryBrand(int id)
         {
-            var brands = Database.Brands.FirstOrDefault(h => h.id == id);
+            var brands = InventoryDatabase.Brands.FirstOrDefault(h => h.id == id);
 
             if (brands != null)
             {
@@ -75,7 +93,7 @@ namespace InventoryManagement.Repository
         }
         public List<ItemViewModel> QueryItems()
         {
-            var items = Database.Items.ToList();
+            var items = InventoryDatabase.Items.ToList();
             List<ItemViewModel> iList = new List<ItemViewModel>();
 
             foreach (Item i in items)
@@ -104,7 +122,7 @@ namespace InventoryManagement.Repository
         }
         public ItemViewModel QueryItem(int id)
         {
-            var i = Database.Items.FirstOrDefault(h => h.id == id);
+            var i = InventoryDatabase.Items.FirstOrDefault(h => h.id == id);
 
             return new ItemViewModel
             {
@@ -128,8 +146,8 @@ namespace InventoryManagement.Repository
         }
         public string QueryOwner(int id)
         {
-            var user = Database.Users.FirstOrDefault(h => h.id == id);
-            if(user != null)
+            var user = InventoryDatabase.Users.FirstOrDefault(h => h.id == id);
+            if (user != null)
             {
                 return user.last_name + ", " + user.first_name;
             }
@@ -138,5 +156,7 @@ namespace InventoryManagement.Repository
                 return "System";
             }
         }
+        #endregion
+
     }
 }

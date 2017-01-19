@@ -167,6 +167,7 @@
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\UserRepository.cs" />
+    <Compile Include="Utils\BarcodeGenerator.cs" />
     <Compile Include="Utils\ErrorLogger.cs" />
     <Compile Include="Utils\LDAPAuth.cs" />
     <Compile Include="Utils\ListViewExtension.cs" />

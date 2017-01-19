@@ -1,4 +1,6 @@
-﻿using System;
+﻿using InventoryManagement.Model;
+using InventoryManagement.Utils;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +17,8 @@ namespace InventoryManagement
         public frmManageUsers()
         {
             InitializeComponent();
+
+            DisplayUsers();
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -25,6 +29,16 @@ namespace InventoryManagement
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        private void DisplayUsers()
+        {
+            var users = Singleton.Instance.UserModel.GetUsers();
+            lvUsers.Items.Clear();
+
+            lvUsers.LoadData(users);
+
+         
+
         }
     }
 }

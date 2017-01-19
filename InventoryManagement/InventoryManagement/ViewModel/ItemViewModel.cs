@@ -35,7 +35,8 @@ namespace InventoryManagement.ViewModel
         Available,
         Borrowed,
         Broken,
-        Disposed
+        Disposed,
+        Unknown
     }
     public class BrandViewModel
     {

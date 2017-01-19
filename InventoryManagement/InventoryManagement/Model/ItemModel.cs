@@ -10,18 +10,18 @@ namespace InventoryManagement.Model
 {
     public class ItemModel : BaseModel
     {
-        ItemRepository ir;
+        ItemRepository itemRepostory;
         public ItemModel()
         {
-            ir = new ItemRepository();
+            itemRepostory = new ItemRepository();
         }
         public ReturnValueModel CreateNewItem(ItemViewModel newItem, int userId)
         {
             var rv = new ReturnValueModel();
-            var newItemId = ir.Insert(newItem, userId);
+            var newItemId = itemRepostory.Insert(newItem, userId);
             var assetTag = GenerateAssetTag(newItem.Type, newItem.SubType, newItemId);
 
-            rv.Success = ir.AttachAssetTag(newItemId, assetTag);
+            rv.Success = itemRepostory.AttachAssetTag(newItemId, assetTag);
             if(rv.Success)
             {
                 rv.Param1 = newItemId.ToString();
@@ -30,23 +30,35 @@ namespace InventoryManagement.Model
 
             return rv;
         }
+
+        public ReturnValueModel UpdateItemStatus(int itemId, ItemStatus itemStatus)
+        {
+            var result = new ReturnValueModel();
+
+            var success = itemRepostory.UpdateItemStatus(itemId, (int)itemStatus);
+
+            result.Success = success;
+            //result.Param1 = itemStatus.ToString();
+
+            return result;
+        }
         public string GenerateAssetTag(PrimaryItemType type, SecondaryItemType subType, int itemId)
         {
             return type.ToString().Substring(0, 1).ToUpper() + subType.ToString().Substring(0, 2).ToUpper() + itemId.ToString("D8");
         }
         public List<BrandViewModel> GetBrands()
         {
-            return ir.QueryBrands();
+            return itemRepostory.QueryBrands();
         }
         public List<ItemViewModel> GetItems()
         {
-            return ir.QueryItems();
+            return itemRepostory.QueryItems();
         }
         public ItemViewModel GetItem(int id)
         {
-            var item = ir.QueryItem(id);
-            item.Brand = ir.QueryBrand(item.BrandId).Name;
-            item.CurrentOwnerName = ir.QueryOwner(item.CurrentOwner);
+            var item = itemRepostory.QueryItem(id);
+            item.Brand = itemRepostory.QueryBrand(item.BrandId).Name;
+            item.CurrentOwnerName = itemRepostory.QueryOwner(item.CurrentOwner);
             return item;
         }
     }

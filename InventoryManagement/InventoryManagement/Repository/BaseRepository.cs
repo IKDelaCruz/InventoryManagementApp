@@ -15,7 +15,7 @@ namespace InventoryManagement.Repository
             Db = new InventoryMangementEntities();
         }
 
-        public InventoryMangementEntities Database
+        public InventoryMangementEntities InventoryDatabase
         {
             get
             {

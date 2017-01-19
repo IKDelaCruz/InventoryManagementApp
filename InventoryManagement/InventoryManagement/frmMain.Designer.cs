@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
+            this.imgMainImage = new System.Windows.Forms.ImageList(this.components);
             this.pnlMain = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lvMain = new System.Windows.Forms.ListView();
-            this.imgMainImage = new System.Windows.Forms.ImageList(this.components);
             this.pnlTop = new System.Windows.Forms.Panel();
             this.chkShowAllLocation = new System.Windows.Forms.CheckBox();
             this.chkShowAllSubType = new System.Windows.Forms.CheckBox();
@@ -49,41 +49,47 @@
             this.cbxStatus = new System.Windows.Forms.ComboBox();
             this.pnlRightInfo = new System.Windows.Forms.Panel();
             this.pnlRightContent = new System.Windows.Forms.Panel();
-            this.lblCurrentValue = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.lblLifeSpan = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.lblAmount = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.lblDatePurchase = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.lblLastUpdate = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.lblOwner = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.lblStatus = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.lblSerial = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.lblModel = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.lblBrand = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.lblSubType = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.lblType = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.lblDescription = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.lblAssetTag = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lblId = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnShowLogs = new System.Windows.Forms.Button();
+            this.btnReserve = new System.Windows.Forms.Button();
+            this.btnCheckin = new System.Windows.Forms.Button();
+            this.btnCheckout = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnPrintBarcode = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblCurrentValue = new System.Windows.Forms.Label();
+            this.lblId = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblLifeSpan = new System.Windows.Forms.Label();
+            this.lblAssetTag = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lblAmount = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lblDatePurchase = new System.Windows.Forms.Label();
+            this.lblDescription = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.lblType = new System.Windows.Forms.Label();
+            this.lblLastUpdate = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.lblSubType = new System.Windows.Forms.Label();
+            this.lblOwner = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.lblBrand = new System.Windows.Forms.Label();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.lblModel = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.lblSerial = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tssUsername = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -94,15 +100,26 @@
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnPrintBarcode = new System.Windows.Forms.Button();
+            this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlMain.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlTop.SuspendLayout();
             this.pnlRightInfo.SuspendLayout();
             this.pnlRightContent.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // imgMainImage
+            // 
+            this.imgMainImage.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgMainImage.ImageStream")));
+            this.imgMainImage.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgMainImage.Images.SetKeyName(0, "Desktop-My-Computer-icon.png");
+            this.imgMainImage.Images.SetKeyName(1, "Extras-Unlock-icon.png");
+            this.imgMainImage.Images.SetKeyName(2, "Drives-RAM-Drive-icon.png");
+            this.imgMainImage.Images.SetKeyName(3, "Extras-Battery-icon.png");
             // 
             // pnlMain
             // 
@@ -138,15 +155,6 @@
             this.lvMain.UseCompatibleStateImageBehavior = false;
             this.lvMain.SelectedIndexChanged += new System.EventHandler(this.lvMain_SelectedIndexChanged);
             // 
-            // imgMainImage
-            // 
-            this.imgMainImage.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgMainImage.ImageStream")));
-            this.imgMainImage.TransparentColor = System.Drawing.Color.Transparent;
-            this.imgMainImage.Images.SetKeyName(0, "Desktop-My-Computer-icon.png");
-            this.imgMainImage.Images.SetKeyName(1, "Extras-Unlock-icon.png");
-            this.imgMainImage.Images.SetKeyName(2, "Drives-RAM-Drive-icon.png");
-            this.imgMainImage.Images.SetKeyName(3, "Extras-Battery-icon.png");
-            // 
             // pnlTop
             // 
             this.pnlTop.BackColor = System.Drawing.Color.White;
@@ -180,7 +188,7 @@
             this.chkShowAllLocation.TabIndex = 46;
             this.chkShowAllLocation.Text = "Show All";
             this.chkShowAllLocation.UseVisualStyleBackColor = true;
-            this.chkShowAllLocation.CheckedChanged += new System.EventHandler(this.chkShowAllLocation_CheckedChanged);
+            this.chkShowAllLocation.CheckedChanged += new System.EventHandler(this.UpdateView);
             // 
             // chkShowAllSubType
             // 
@@ -193,7 +201,7 @@
             this.chkShowAllSubType.TabIndex = 45;
             this.chkShowAllSubType.Text = "Show All";
             this.chkShowAllSubType.UseVisualStyleBackColor = true;
-            this.chkShowAllSubType.CheckedChanged += new System.EventHandler(this.chkShowAllSubType_CheckedChanged);
+            this.chkShowAllSubType.CheckedChanged += new System.EventHandler(this.UpdateView);
             // 
             // chkShowAllType
             // 
@@ -206,7 +214,7 @@
             this.chkShowAllType.TabIndex = 44;
             this.chkShowAllType.Text = "Show All";
             this.chkShowAllType.UseVisualStyleBackColor = true;
-            this.chkShowAllType.CheckedChanged += new System.EventHandler(this.chkShowAllType_CheckedChanged);
+            this.chkShowAllType.CheckedChanged += new System.EventHandler(this.UpdateView);
             // 
             // chkShowAllStatus
             // 
@@ -219,7 +227,7 @@
             this.chkShowAllStatus.TabIndex = 43;
             this.chkShowAllStatus.Text = "Show All";
             this.chkShowAllStatus.UseVisualStyleBackColor = true;
-            this.chkShowAllStatus.CheckedChanged += new System.EventHandler(this.chkShowAllStatus_CheckedChanged);
+            this.chkShowAllStatus.CheckedChanged += new System.EventHandler(this.UpdateView);
             // 
             // label7
             // 
@@ -238,7 +246,7 @@
             this.cbxLocation.Name = "cbxLocation";
             this.cbxLocation.Size = new System.Drawing.Size(121, 23);
             this.cbxLocation.TabIndex = 41;
-            this.cbxLocation.SelectedIndexChanged += new System.EventHandler(this.cbxLocation_SelectedIndexChanged);
+            this.cbxLocation.SelectedIndexChanged += new System.EventHandler(this.UpdateView);
             // 
             // label5
             // 
@@ -257,7 +265,7 @@
             this.cbxSubtype.Name = "cbxSubtype";
             this.cbxSubtype.Size = new System.Drawing.Size(121, 23);
             this.cbxSubtype.TabIndex = 39;
-            this.cbxSubtype.SelectedIndexChanged += new System.EventHandler(this.cbxSubtype_SelectedIndexChanged);
+            this.cbxSubtype.SelectedIndexChanged += new System.EventHandler(this.UpdateView);
             // 
             // label3
             // 
@@ -276,7 +284,7 @@
             this.cbxType.Name = "cbxType";
             this.cbxType.Size = new System.Drawing.Size(121, 23);
             this.cbxType.TabIndex = 37;
-            this.cbxType.SelectedIndexChanged += new System.EventHandler(this.cbxType_SelectedIndexChanged);
+            this.cbxType.SelectedIndexChanged += new System.EventHandler(this.UpdateView);
             // 
             // label2
             // 
@@ -295,7 +303,7 @@
             this.cbxStatus.Name = "cbxStatus";
             this.cbxStatus.Size = new System.Drawing.Size(121, 23);
             this.cbxStatus.TabIndex = 0;
-            this.cbxStatus.SelectedIndexChanged += new System.EventHandler(this.cbxStatus_SelectedIndexChanged);
+            this.cbxStatus.SelectedIndexChanged += new System.EventHandler(this.UpdateView);
             // 
             // pnlRightInfo
             // 
@@ -311,352 +319,420 @@
             // 
             this.pnlRightContent.BackColor = System.Drawing.Color.White;
             this.pnlRightContent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlRightContent.Controls.Add(this.btnPrintBarcode);
-            this.pnlRightContent.Controls.Add(this.lblCurrentValue);
-            this.pnlRightContent.Controls.Add(this.label35);
-            this.pnlRightContent.Controls.Add(this.lblLifeSpan);
-            this.pnlRightContent.Controls.Add(this.label28);
-            this.pnlRightContent.Controls.Add(this.lblAmount);
-            this.pnlRightContent.Controls.Add(this.label30);
-            this.pnlRightContent.Controls.Add(this.lblDatePurchase);
-            this.pnlRightContent.Controls.Add(this.label32);
-            this.pnlRightContent.Controls.Add(this.label33);
-            this.pnlRightContent.Controls.Add(this.lblLastUpdate);
-            this.pnlRightContent.Controls.Add(this.label26);
-            this.pnlRightContent.Controls.Add(this.lblOwner);
-            this.pnlRightContent.Controls.Add(this.label24);
-            this.pnlRightContent.Controls.Add(this.lblStatus);
-            this.pnlRightContent.Controls.Add(this.label22);
-            this.pnlRightContent.Controls.Add(this.label20);
-            this.pnlRightContent.Controls.Add(this.label19);
-            this.pnlRightContent.Controls.Add(this.lblSerial);
-            this.pnlRightContent.Controls.Add(this.label18);
-            this.pnlRightContent.Controls.Add(this.lblModel);
-            this.pnlRightContent.Controls.Add(this.label16);
-            this.pnlRightContent.Controls.Add(this.lblBrand);
-            this.pnlRightContent.Controls.Add(this.label14);
-            this.pnlRightContent.Controls.Add(this.lblSubType);
-            this.pnlRightContent.Controls.Add(this.label12);
-            this.pnlRightContent.Controls.Add(this.lblType);
-            this.pnlRightContent.Controls.Add(this.label10);
-            this.pnlRightContent.Controls.Add(this.lblDescription);
-            this.pnlRightContent.Controls.Add(this.label8);
-            this.pnlRightContent.Controls.Add(this.lblName);
-            this.pnlRightContent.Controls.Add(this.label6);
-            this.pnlRightContent.Controls.Add(this.lblAssetTag);
-            this.pnlRightContent.Controls.Add(this.label4);
-            this.pnlRightContent.Controls.Add(this.lblId);
-            this.pnlRightContent.Controls.Add(this.label1);
+            this.pnlRightContent.Controls.Add(this.groupBox2);
+            this.pnlRightContent.Controls.Add(this.groupBox1);
             this.pnlRightContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlRightContent.Location = new System.Drawing.Point(0, 5);
             this.pnlRightContent.Name = "pnlRightContent";
             this.pnlRightContent.Size = new System.Drawing.Size(310, 591);
             this.pnlRightContent.TabIndex = 0;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btnShowLogs);
+            this.groupBox2.Controls.Add(this.btnReserve);
+            this.groupBox2.Controls.Add(this.btnCheckin);
+            this.groupBox2.Controls.Add(this.btnCheckout);
+            this.groupBox2.Location = new System.Drawing.Point(9, 463);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(290, 112);
+            this.groupBox2.TabIndex = 37;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Transaction";
+            // 
+            // btnShowLogs
+            // 
+            this.btnShowLogs.Enabled = false;
+            this.btnShowLogs.Location = new System.Drawing.Point(149, 59);
+            this.btnShowLogs.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnShowLogs.Name = "btnShowLogs";
+            this.btnShowLogs.Size = new System.Drawing.Size(100, 30);
+            this.btnShowLogs.TabIndex = 39;
+            this.btnShowLogs.Text = "SHOW LOGS";
+            this.btnShowLogs.UseVisualStyleBackColor = true;
+            // 
+            // btnReserve
+            // 
+            this.btnReserve.Enabled = false;
+            this.btnReserve.Location = new System.Drawing.Point(41, 59);
+            this.btnReserve.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnReserve.Name = "btnReserve";
+            this.btnReserve.Size = new System.Drawing.Size(100, 30);
+            this.btnReserve.TabIndex = 38;
+            this.btnReserve.Text = "RESERVE";
+            this.btnReserve.UseVisualStyleBackColor = true;
+            // 
+            // btnCheckin
+            // 
+            this.btnCheckin.Enabled = false;
+            this.btnCheckin.Location = new System.Drawing.Point(149, 23);
+            this.btnCheckin.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnCheckin.Name = "btnCheckin";
+            this.btnCheckin.Size = new System.Drawing.Size(100, 30);
+            this.btnCheckin.TabIndex = 37;
+            this.btnCheckin.Text = "CHECKIN";
+            this.btnCheckin.UseVisualStyleBackColor = true;
+            // 
+            // btnCheckout
+            // 
+            this.btnCheckout.Location = new System.Drawing.Point(41, 23);
+            this.btnCheckout.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnCheckout.Name = "btnCheckout";
+            this.btnCheckout.Size = new System.Drawing.Size(100, 30);
+            this.btnCheckout.TabIndex = 36;
+            this.btnCheckout.Text = "CHECKOUT";
+            this.btnCheckout.UseVisualStyleBackColor = true;
+            this.btnCheckout.Click += new System.EventHandler(this.btnCheckout_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnPrintBarcode);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.lblCurrentValue);
+            this.groupBox1.Controls.Add(this.lblId);
+            this.groupBox1.Controls.Add(this.label35);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.lblLifeSpan);
+            this.groupBox1.Controls.Add(this.lblAssetTag);
+            this.groupBox1.Controls.Add(this.label28);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.lblAmount);
+            this.groupBox1.Controls.Add(this.lblName);
+            this.groupBox1.Controls.Add(this.label30);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.lblDatePurchase);
+            this.groupBox1.Controls.Add(this.lblDescription);
+            this.groupBox1.Controls.Add(this.label32);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.label33);
+            this.groupBox1.Controls.Add(this.lblType);
+            this.groupBox1.Controls.Add(this.lblLastUpdate);
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.label26);
+            this.groupBox1.Controls.Add(this.lblSubType);
+            this.groupBox1.Controls.Add(this.lblOwner);
+            this.groupBox1.Controls.Add(this.label14);
+            this.groupBox1.Controls.Add(this.label24);
+            this.groupBox1.Controls.Add(this.lblBrand);
+            this.groupBox1.Controls.Add(this.lblStatus);
+            this.groupBox1.Controls.Add(this.label16);
+            this.groupBox1.Controls.Add(this.label22);
+            this.groupBox1.Controls.Add(this.lblModel);
+            this.groupBox1.Controls.Add(this.label20);
+            this.groupBox1.Controls.Add(this.label18);
+            this.groupBox1.Controls.Add(this.lblSerial);
+            this.groupBox1.Location = new System.Drawing.Point(9, 8);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(290, 449);
+            this.groupBox1.TabIndex = 36;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Item Details";
+            // 
+            // btnPrintBarcode
+            // 
+            this.btnPrintBarcode.Enabled = false;
+            this.btnPrintBarcode.Location = new System.Drawing.Point(65, 399);
+            this.btnPrintBarcode.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnPrintBarcode.Name = "btnPrintBarcode";
+            this.btnPrintBarcode.Size = new System.Drawing.Size(159, 27);
+            this.btnPrintBarcode.TabIndex = 35;
+            this.btnPrintBarcode.Text = "Print Barcode Label";
+            this.btnPrintBarcode.UseVisualStyleBackColor = true;
+            this.btnPrintBarcode.Click += new System.EventHandler(this.btnPrintBarcode_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(15, 28);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(18, 15);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Id";
+            // 
             // lblCurrentValue
             // 
-            this.lblCurrentValue.Location = new System.Drawing.Point(114, 373);
+            this.lblCurrentValue.Location = new System.Drawing.Point(107, 360);
             this.lblCurrentValue.Name = "lblCurrentValue";
             this.lblCurrentValue.Size = new System.Drawing.Size(174, 15);
             this.lblCurrentValue.TabIndex = 34;
             this.lblCurrentValue.Text = "-";
             // 
+            // lblId
+            // 
+            this.lblId.Location = new System.Drawing.Point(107, 28);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(167, 15);
+            this.lblId.TabIndex = 1;
+            this.lblId.Text = "-";
+            // 
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(22, 373);
+            this.label35.Location = new System.Drawing.Point(15, 360);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(81, 15);
             this.label35.TabIndex = 33;
             this.label35.Text = "Current Value";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(15, 43);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(57, 15);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Asset Tag";
+            // 
             // lblLifeSpan
             // 
-            this.lblLifeSpan.Location = new System.Drawing.Point(114, 358);
+            this.lblLifeSpan.Location = new System.Drawing.Point(107, 345);
             this.lblLifeSpan.Name = "lblLifeSpan";
             this.lblLifeSpan.Size = new System.Drawing.Size(174, 15);
             this.lblLifeSpan.TabIndex = 32;
             this.lblLifeSpan.Text = "-";
             // 
+            // lblAssetTag
+            // 
+            this.lblAssetTag.Location = new System.Drawing.Point(107, 43);
+            this.lblAssetTag.Name = "lblAssetTag";
+            this.lblAssetTag.Size = new System.Drawing.Size(167, 15);
+            this.lblAssetTag.TabIndex = 3;
+            this.lblAssetTag.Text = "-";
+            // 
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(22, 358);
+            this.label28.Location = new System.Drawing.Point(15, 345);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(53, 15);
             this.label28.TabIndex = 31;
             this.label28.Text = "LifeSpan";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(15, 58);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(38, 15);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "Name";
+            // 
             // lblAmount
             // 
-            this.lblAmount.Location = new System.Drawing.Point(114, 343);
+            this.lblAmount.Location = new System.Drawing.Point(107, 330);
             this.lblAmount.Name = "lblAmount";
             this.lblAmount.Size = new System.Drawing.Size(174, 15);
             this.lblAmount.TabIndex = 30;
             this.lblAmount.Text = "-";
             // 
+            // lblName
+            // 
+            this.lblName.Location = new System.Drawing.Point(107, 58);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(167, 15);
+            this.lblName.TabIndex = 5;
+            this.lblName.Text = "-";
+            // 
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(22, 343);
+            this.label30.Location = new System.Drawing.Point(15, 330);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(49, 15);
             this.label30.TabIndex = 29;
             this.label30.Text = "Amount";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(15, 73);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(70, 15);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "Description";
+            // 
             // lblDatePurchase
             // 
-            this.lblDatePurchase.Location = new System.Drawing.Point(114, 328);
+            this.lblDatePurchase.Location = new System.Drawing.Point(107, 315);
             this.lblDatePurchase.Name = "lblDatePurchase";
             this.lblDatePurchase.Size = new System.Drawing.Size(174, 15);
             this.lblDatePurchase.TabIndex = 28;
             this.lblDatePurchase.Text = "-";
             // 
+            // lblDescription
+            // 
+            this.lblDescription.Location = new System.Drawing.Point(107, 73);
+            this.lblDescription.Name = "lblDescription";
+            this.lblDescription.Size = new System.Drawing.Size(167, 52);
+            this.lblDescription.TabIndex = 7;
+            this.lblDescription.Text = "-";
+            // 
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(22, 328);
+            this.label32.Location = new System.Drawing.Point(15, 315);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(86, 15);
             this.label32.TabIndex = 27;
             this.label32.Text = "Date Purchase";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(15, 125);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(31, 15);
+            this.label10.TabIndex = 8;
+            this.label10.Text = "Type";
+            // 
             // label33
             // 
             this.label33.AutoSize = true;
             this.label33.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.Location = new System.Drawing.Point(22, 293);
+            this.label33.Location = new System.Drawing.Point(15, 280);
             this.label33.Name = "label33";
             this.label33.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
             this.label33.Size = new System.Drawing.Size(71, 35);
             this.label33.TabIndex = 26;
             this.label33.Text = "ITEM VALUE";
             // 
+            // lblType
+            // 
+            this.lblType.Location = new System.Drawing.Point(107, 125);
+            this.lblType.Name = "lblType";
+            this.lblType.Size = new System.Drawing.Size(167, 15);
+            this.lblType.TabIndex = 9;
+            this.lblType.Text = "-";
+            // 
             // lblLastUpdate
             // 
-            this.lblLastUpdate.Location = new System.Drawing.Point(114, 278);
+            this.lblLastUpdate.Location = new System.Drawing.Point(107, 265);
             this.lblLastUpdate.Name = "lblLastUpdate";
             this.lblLastUpdate.Size = new System.Drawing.Size(174, 15);
             this.lblLastUpdate.TabIndex = 25;
             this.lblLastUpdate.Text = "-";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(15, 140);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(55, 15);
+            this.label12.TabIndex = 10;
+            this.label12.Text = "Sub-Type";
+            // 
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(22, 278);
+            this.label26.Location = new System.Drawing.Point(15, 265);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(71, 15);
             this.label26.TabIndex = 24;
             this.label26.Text = "Last Update";
             // 
+            // lblSubType
+            // 
+            this.lblSubType.Location = new System.Drawing.Point(107, 140);
+            this.lblSubType.Name = "lblSubType";
+            this.lblSubType.Size = new System.Drawing.Size(167, 15);
+            this.lblSubType.TabIndex = 11;
+            this.lblSubType.Text = "-";
+            // 
             // lblOwner
             // 
-            this.lblOwner.Location = new System.Drawing.Point(114, 263);
+            this.lblOwner.Location = new System.Drawing.Point(107, 250);
             this.lblOwner.Name = "lblOwner";
             this.lblOwner.Size = new System.Drawing.Size(174, 15);
             this.lblOwner.TabIndex = 23;
             this.lblOwner.Text = "-";
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(15, 155);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(40, 15);
+            this.label14.TabIndex = 12;
+            this.label14.Text = "Brand";
+            // 
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(22, 263);
+            this.label24.Location = new System.Drawing.Point(15, 250);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(43, 15);
             this.label24.TabIndex = 22;
             this.label24.Text = "Owner";
             // 
+            // lblBrand
+            // 
+            this.lblBrand.Location = new System.Drawing.Point(107, 155);
+            this.lblBrand.Name = "lblBrand";
+            this.lblBrand.Size = new System.Drawing.Size(167, 15);
+            this.lblBrand.TabIndex = 13;
+            this.lblBrand.Text = "-";
+            // 
             // lblStatus
             // 
-            this.lblStatus.Location = new System.Drawing.Point(114, 248);
+            this.lblStatus.Location = new System.Drawing.Point(107, 235);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(174, 15);
             this.lblStatus.TabIndex = 21;
             this.lblStatus.Text = "-";
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(15, 170);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(42, 15);
+            this.label16.TabIndex = 14;
+            this.label16.Text = "Model";
+            // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(22, 248);
+            this.label22.Location = new System.Drawing.Point(15, 235);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(41, 15);
             this.label22.TabIndex = 20;
             this.label22.Text = "Status";
             // 
+            // lblModel
+            // 
+            this.lblModel.Location = new System.Drawing.Point(107, 170);
+            this.lblModel.Name = "lblModel";
+            this.lblModel.Size = new System.Drawing.Size(167, 15);
+            this.lblModel.TabIndex = 15;
+            this.lblModel.Text = "-";
+            // 
             // label20
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(22, 213);
+            this.label20.Location = new System.Drawing.Point(15, 200);
             this.label20.Name = "label20";
             this.label20.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
             this.label20.Size = new System.Drawing.Size(74, 35);
             this.label20.TabIndex = 19;
             this.label20.Text = "ITEM STATUS";
             // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(22, 16);
-            this.label19.Name = "label19";
-            this.label19.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
-            this.label19.Size = new System.Drawing.Size(78, 25);
-            this.label19.TabIndex = 18;
-            this.label19.Text = "ITEM DETAILS";
-            // 
-            // lblSerial
-            // 
-            this.lblSerial.Location = new System.Drawing.Point(114, 198);
-            this.lblSerial.Name = "lblSerial";
-            this.lblSerial.Size = new System.Drawing.Size(174, 15);
-            this.lblSerial.TabIndex = 17;
-            this.lblSerial.Text = "-";
-            // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(22, 198);
+            this.label18.Location = new System.Drawing.Point(15, 185);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(39, 15);
             this.label18.TabIndex = 16;
             this.label18.Text = "Serial";
             // 
-            // lblModel
+            // lblSerial
             // 
-            this.lblModel.Location = new System.Drawing.Point(114, 183);
-            this.lblModel.Name = "lblModel";
-            this.lblModel.Size = new System.Drawing.Size(167, 15);
-            this.lblModel.TabIndex = 15;
-            this.lblModel.Text = "-";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(22, 183);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(42, 15);
-            this.label16.TabIndex = 14;
-            this.label16.Text = "Model";
-            // 
-            // lblBrand
-            // 
-            this.lblBrand.Location = new System.Drawing.Point(114, 168);
-            this.lblBrand.Name = "lblBrand";
-            this.lblBrand.Size = new System.Drawing.Size(167, 15);
-            this.lblBrand.TabIndex = 13;
-            this.lblBrand.Text = "-";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(22, 168);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(40, 15);
-            this.label14.TabIndex = 12;
-            this.label14.Text = "Brand";
-            // 
-            // lblSubType
-            // 
-            this.lblSubType.Location = new System.Drawing.Point(114, 153);
-            this.lblSubType.Name = "lblSubType";
-            this.lblSubType.Size = new System.Drawing.Size(167, 15);
-            this.lblSubType.TabIndex = 11;
-            this.lblSubType.Text = "-";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(22, 153);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(55, 15);
-            this.label12.TabIndex = 10;
-            this.label12.Text = "Sub-Type";
-            // 
-            // lblType
-            // 
-            this.lblType.Location = new System.Drawing.Point(114, 138);
-            this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(167, 15);
-            this.lblType.TabIndex = 9;
-            this.lblType.Text = "-";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(22, 138);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(31, 15);
-            this.label10.TabIndex = 8;
-            this.label10.Text = "Type";
-            // 
-            // lblDescription
-            // 
-            this.lblDescription.Location = new System.Drawing.Point(114, 86);
-            this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(167, 52);
-            this.lblDescription.TabIndex = 7;
-            this.lblDescription.Text = "-";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(22, 86);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(70, 15);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "Description";
-            // 
-            // lblName
-            // 
-            this.lblName.Location = new System.Drawing.Point(114, 71);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(167, 15);
-            this.lblName.TabIndex = 5;
-            this.lblName.Text = "-";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(22, 71);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(38, 15);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Name";
-            // 
-            // lblAssetTag
-            // 
-            this.lblAssetTag.Location = new System.Drawing.Point(114, 56);
-            this.lblAssetTag.Name = "lblAssetTag";
-            this.lblAssetTag.Size = new System.Drawing.Size(167, 15);
-            this.lblAssetTag.TabIndex = 3;
-            this.lblAssetTag.Text = "-";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(22, 56);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(57, 15);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Asset Tag";
-            // 
-            // lblId
-            // 
-            this.lblId.Location = new System.Drawing.Point(114, 41);
-            this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(167, 15);
-            this.lblId.TabIndex = 1;
-            this.lblId.Text = "-";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 41);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(18, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Id";
+            this.lblSerial.Location = new System.Drawing.Point(107, 185);
+            this.lblSerial.Name = "lblSerial";
+            this.lblSerial.Size = new System.Drawing.Size(174, 15);
+            this.lblSerial.TabIndex = 17;
+            this.lblSerial.Text = "-";
             // 
             // statusStrip1
             // 
@@ -680,7 +756,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.inventoryToolStripMenuItem,
-            this.usersToolStripMenuItem});
+            this.usersToolStripMenuItem,
+            this.reportsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
@@ -722,7 +799,7 @@
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
@@ -741,17 +818,11 @@
             this.manageToolStripMenuItem.Text = "Manage";
             this.manageToolStripMenuItem.Click += new System.EventHandler(this.manageToolStripMenuItem_Click);
             // 
-            // btnPrintBarcode
+            // reportsToolStripMenuItem
             // 
-            this.btnPrintBarcode.Enabled = false;
-            this.btnPrintBarcode.Location = new System.Drawing.Point(75, 418);
-            this.btnPrintBarcode.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnPrintBarcode.Name = "btnPrintBarcode";
-            this.btnPrintBarcode.Size = new System.Drawing.Size(159, 27);
-            this.btnPrintBarcode.TabIndex = 35;
-            this.btnPrintBarcode.Text = "Print Barcode Label";
-            this.btnPrintBarcode.UseVisualStyleBackColor = true;
-            this.btnPrintBarcode.Click += new System.EventHandler(this.btnPrintBarcode_Click);
+            this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
+            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.reportsToolStripMenuItem.Text = "Reports";
             // 
             // frmMain
             // 
@@ -776,7 +847,9 @@
             this.pnlTop.PerformLayout();
             this.pnlRightInfo.ResumeLayout(false);
             this.pnlRightContent.ResumeLayout(false);
-            this.pnlRightContent.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -787,72 +860,77 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ImageList imgMainImage;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loginToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel tssUsername;
-        private System.Windows.Forms.Panel pnlRightInfo;
-        private System.Windows.Forms.Panel pnlMain;
-        private System.Windows.Forms.ListView lvMain;
-        private System.Windows.Forms.ImageList imgMainImage;
         private System.Windows.Forms.ToolStripMenuItem inventoryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
-        private System.Windows.Forms.Panel pnlRightContent;
-        private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label lblAssetTag;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label lblId;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblDescription;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label lblModel;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label lblBrand;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label lblSubType;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label lblType;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label lblSerial;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label lblStatus;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label lblLastUpdate;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label lblOwner;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label lblCurrentValue;
-        private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.Label lblLifeSpan;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label lblAmount;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.Label lblDatePurchase;
-        private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.ToolStripMenuItem usersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem manageToolStripMenuItem;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel tssUsername;
+        private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Panel pnlTop;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cbxStatus;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox cbxSubtype;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cbxType;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox cbxLocation;
         private System.Windows.Forms.CheckBox chkShowAllLocation;
         private System.Windows.Forms.CheckBox chkShowAllSubType;
         private System.Windows.Forms.CheckBox chkShowAllType;
         private System.Windows.Forms.CheckBox chkShowAllStatus;
-        private System.Windows.Forms.ToolStripMenuItem usersToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem manageToolStripMenuItem;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox cbxLocation;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cbxSubtype;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cbxType;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cbxStatus;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ListView lvMain;
+        private System.Windows.Forms.Panel pnlMain;
+        private System.Windows.Forms.Panel pnlRightInfo;
+        private System.Windows.Forms.Panel pnlRightContent;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnPrintBarcode;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblCurrentValue;
+        private System.Windows.Forms.Label lblId;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblLifeSpan;
+        private System.Windows.Forms.Label lblAssetTag;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblAmount;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblDatePurchase;
+        private System.Windows.Forms.Label lblDescription;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label lblType;
+        private System.Windows.Forms.Label lblLastUpdate;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label lblSubType;
+        private System.Windows.Forms.Label lblOwner;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label lblBrand;
+        private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label lblModel;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label lblSerial;
+        private System.Windows.Forms.Button btnCheckin;
+        private System.Windows.Forms.Button btnCheckout;
+        private System.Windows.Forms.Button btnShowLogs;
+        private System.Windows.Forms.Button btnReserve;
+        private System.Windows.Forms.ToolStripMenuItem reportsToolStripMenuItem;
     }
 }
 
