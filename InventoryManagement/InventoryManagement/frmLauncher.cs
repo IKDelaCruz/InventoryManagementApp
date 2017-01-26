@@ -29,8 +29,17 @@ namespace InventoryManagement
                 }
                 else
                 {
-                    var main = new frmMain();
-                    main.ShowDialog();
+
+                    if (Singleton.Instance.UserModel.CurrentUser.UserType == 1)
+                    {
+                        var main = new frmMain();
+                        main.ShowDialog();
+                    }
+                    else
+                    {
+                        var user = new frmEndUser();
+                        user.ShowDialog();
+                    }
 
                     Application.Exit();
                 }

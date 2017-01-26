@@ -40,5 +40,15 @@ namespace InventoryManagement
          
 
         }
+
+        private void lvUsers_DoubleClick(object sender, EventArgs e)
+        {
+            var selected = lvUsers.SelectedItems[0];
+            var id = Convert.ToInt32(selected.SubItems[1].Text);
+
+
+            var dlg = new frmManageUserInfo(id);
+            dlg.ShowDialog();
+        }
     }
 }

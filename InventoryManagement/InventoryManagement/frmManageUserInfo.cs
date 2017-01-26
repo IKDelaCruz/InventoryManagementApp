@@ -1,4 +1,5 @@
 ﻿using InventoryManagement.Model;
+using InventoryManagement.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,12 +15,21 @@ namespace InventoryManagement
 {
     public partial class frmManageUserInfo : frmBase
     {
-        public frmManageUserInfo()
+        bool isUpdate;
+        UserViewModel currentUSer;
+
+        public frmManageUserInfo(int userId = 0)
         {
             InitializeComponent();
             this.DialogResult = DialogResult.Cancel;
 
             LoadComboValues();
+            if (userId > 0)
+            {
+                LoadUserInfo(userId);
+                isUpdate = true;
+
+            }
         }
         private void LoadComboValues()
         {
@@ -36,20 +46,51 @@ namespace InventoryManagement
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            var id = Singleton.Instance.UserModel.CreateNewUser(txtUsername.Text, txtPassord.Text, (UserType)cbxUserType.SelectedItem, "", "", 0);
-            if (Singleton.Instance.UserModel.UpdateUser(id, txtFirstname.Text, txtLastname.Text, (int)cbxCompany.SelectedValue, (int)cbxDepartment.SelectedValue))
+            if(isUpdate)
             {
-                MessageBox.Show("User successfully created!");
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                if (Singleton.Instance.UserModel.UpdateUser(currentUSer.Id, txtFirstname.Text, txtLastname.Text, (int)cbxCompany.SelectedValue, (int)cbxDepartment.SelectedValue,
+                    (UserType)cbxUserType.SelectedItem))
+                {
+                    MessageBox.Show("User successfully created!");
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
             }
+            else
+            {
+                var id = Singleton.Instance.UserModel.CreateNewUser(txtUsername.Text, txtPassord.Text, (UserType)cbxUserType.SelectedItem, "", "", 0);
+                if (Singleton.Instance.UserModel.UpdateUser(id, txtFirstname.Text, txtLastname.Text, (int)cbxCompany.SelectedValue, (int)cbxDepartment.SelectedValue,
+                    (UserType)cbxUserType.SelectedItem))
+                {
+                    MessageBox.Show("User successfully created!");
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+            }
+          
         }
-
         private void cbxCompany_SelectedIndexChanged(object sender, EventArgs e)
         {
             cbxDepartment.ValueMember = "Id";
             cbxDepartment.DisplayMember = "Name";
             cbxDepartment.DataSource = Singleton.Instance.CompanyDepartmentModel.GetDepartments((int)cbxCompany.SelectedValue);
+        }
+        private void LoadUserInfo(int userId)
+        {
+            var info = Singleton.Instance.UserModel.GetUsersById(userId);
+            currentUSer = info;
+
+            if (info != null)
+            {
+                txtFirstname.Text = info.Firstname;
+                txtLastname.Text = info.Lastname;
+
+                txtUsername.Text = info.Username;
+                txtUsername.Enabled = false;
+
+                txtPassord.Text = info.Password;
+                txtPassord.Enabled = false;
+            }
         }
     }
 }

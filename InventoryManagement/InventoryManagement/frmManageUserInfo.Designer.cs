@@ -29,12 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManageUserInfo));
+            this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtUsername = new System.Windows.Forms.TextBox();
-            this.txtPassord = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label21 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cbxUserType = new System.Windows.Forms.ComboBox();
@@ -43,60 +41,39 @@
             this.cbxDepartment = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.grpUser = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.txtPassord = new System.Windows.Forms.TextBox();
             this.txtLastname = new System.Windows.Forms.TextBox();
+            this.txtUsername = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.txtFirstname = new System.Windows.Forms.TextBox();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.label21 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.grpUser.SuspendLayout();
             this.SuspendLayout();
             // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(227, 466);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(100, 30);
+            this.btnCancel.TabIndex = 8;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(334, 388);
+            this.btnSave.Location = new System.Drawing.Point(337, 466);
             this.btnSave.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(103, 31);
+            this.btnSave.Size = new System.Drawing.Size(100, 30);
             this.btnSave.TabIndex = 6;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(27, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 15);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Username";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(27, 63);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 15);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Password";
-            // 
-            // txtUsername
-            // 
-            this.txtUsername.Location = new System.Drawing.Point(150, 32);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(196, 23);
-            this.txtUsername.TabIndex = 1;
-            // 
-            // txtPassord
-            // 
-            this.txtPassord.Location = new System.Drawing.Point(150, 61);
-            this.txtPassord.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
-            this.txtPassord.Name = "txtPassord";
-            this.txtPassord.Size = new System.Drawing.Size(196, 23);
-            this.txtPassord.TabIndex = 2;
             // 
             // panel1
             // 
@@ -109,8 +86,17 @@
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(20);
-            this.panel1.Size = new System.Drawing.Size(425, 370);
+            this.panel1.Size = new System.Drawing.Size(425, 448);
             this.panel1.TabIndex = 7;
+            // 
+            // label21
+            // 
+            this.label21.Location = new System.Drawing.Point(23, 20);
+            this.label21.Margin = new System.Windows.Forms.Padding(3, 0, 3, 20);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(380, 50);
+            this.label21.TabIndex = 54;
+            this.label21.Text = resources.GetString("label21.Text");
             // 
             // groupBox1
             // 
@@ -120,7 +106,7 @@
             this.groupBox1.Controls.Add(this.cbxCompany);
             this.groupBox1.Controls.Add(this.cbxDepartment);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Location = new System.Drawing.Point(26, 216);
+            this.groupBox1.Location = new System.Drawing.Point(26, 290);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(380, 126);
             this.groupBox1.TabIndex = 53;
@@ -195,68 +181,82 @@
             this.grpUser.Location = new System.Drawing.Point(26, 93);
             this.grpUser.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
             this.grpUser.Name = "grpUser";
-            this.grpUser.Size = new System.Drawing.Size(380, 100);
+            this.grpUser.Size = new System.Drawing.Size(380, 174);
             this.grpUser.TabIndex = 52;
             this.grpUser.TabStop = false;
             this.grpUser.Text = "User Information";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(29, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(62, 15);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Username";
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(27, 139);
+            this.label7.Location = new System.Drawing.Point(29, 129);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(59, 15);
             this.label7.TabIndex = 51;
             this.label7.Text = "Lastname";
             // 
+            // txtPassord
+            // 
+            this.txtPassord.Location = new System.Drawing.Point(152, 51);
+            this.txtPassord.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
+            this.txtPassord.Name = "txtPassord";
+            this.txtPassord.Size = new System.Drawing.Size(196, 23);
+            this.txtPassord.TabIndex = 2;
+            // 
             // txtLastname
             // 
-            this.txtLastname.Location = new System.Drawing.Point(150, 136);
+            this.txtLastname.Location = new System.Drawing.Point(152, 126);
             this.txtLastname.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
             this.txtLastname.Name = "txtLastname";
             this.txtLastname.Size = new System.Drawing.Size(196, 23);
             this.txtLastname.TabIndex = 50;
             // 
+            // txtUsername
+            // 
+            this.txtUsername.Location = new System.Drawing.Point(152, 22);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(196, 23);
+            this.txtUsername.TabIndex = 1;
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(27, 110);
+            this.label6.Location = new System.Drawing.Point(29, 100);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(62, 15);
             this.label6.TabIndex = 49;
             this.label6.Text = "Firstname";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(29, 53);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(61, 15);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Password";
+            // 
             // txtFirstname
             // 
-            this.txtFirstname.Location = new System.Drawing.Point(150, 107);
+            this.txtFirstname.Location = new System.Drawing.Point(152, 97);
             this.txtFirstname.Name = "txtFirstname";
             this.txtFirstname.Size = new System.Drawing.Size(196, 23);
             this.txtFirstname.TabIndex = 48;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(221, 388);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(103, 31);
-            this.btnCancel.TabIndex = 8;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            // 
-            // label21
-            // 
-            this.label21.Location = new System.Drawing.Point(23, 20);
-            this.label21.Margin = new System.Windows.Forms.Padding(3, 0, 3, 20);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(380, 50);
-            this.label21.TabIndex = 54;
-            this.label21.Text = resources.GetString("label21.Text");
             // 
             // frmManageUserInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(449, 429);
+            this.ClientSize = new System.Drawing.Size(449, 511);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.panel1);

@@ -84,12 +84,12 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dvLogs = new System.Windows.Forms.DataGridView();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
             this.TransactionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SystemUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TransactionTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OtherUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.pnlMain.SuspendLayout();
@@ -663,28 +663,6 @@
             this.dvLogs.Size = new System.Drawing.Size(700, 340);
             this.dvLogs.TabIndex = 0;
             // 
-            // btnClose
-            // 
-            this.btnClose.Location = new System.Drawing.Point(549, 406);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(88, 27);
-            this.btnClose.TabIndex = 2;
-            this.btnClose.Text = "Cancel";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(645, 406);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(88, 27);
-            this.btnSave.TabIndex = 1;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
             // TransactionDate
             // 
             this.TransactionDate.DataPropertyName = "TransactionDate";
@@ -712,6 +690,28 @@
             this.OtherUserName.HeaderText = "OtherUserName";
             this.OtherUserName.Name = "OtherUserName";
             this.OtherUserName.Width = 150;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(528, 406);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(100, 30);
+            this.btnClose.TabIndex = 2;
+            this.btnClose.Text = "Cancel";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(636, 406);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(100, 30);
+            this.btnSave.TabIndex = 1;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // frmManageItem
             // 
