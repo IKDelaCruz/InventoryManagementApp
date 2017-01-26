@@ -11,8 +11,8 @@
         <EntityTypeShape EntityType="InventoryMangementModel.Item" Width="1.5" PointX="4.75" PointY="3.75" />
         <EntityTypeShape EntityType="InventoryMangementModel.Transaction" Width="1.5" PointX="6.75" PointY="0.75" />
         <EntityTypeShape EntityType="InventoryMangementModel.User" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="InventoryMangementModel.vwItemLog" Width="1.5" PointX="0.75" PointY="6.75" />
         <AssociationConnector Association="InventoryMangementModel.FK_User_User" />
+        <EntityTypeShape EntityType="InventoryMangementModel.vwItemLog" Width="1.5" PointX="0.75" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

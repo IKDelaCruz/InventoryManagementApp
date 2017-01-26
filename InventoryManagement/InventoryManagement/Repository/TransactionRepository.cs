@@ -41,9 +41,10 @@ namespace InventoryManagement.Repository
                     OtherUserName= t.OtherUserFirstname + " " + t.OtherUserLastname,
                     SystemUserName = t.SystemFirstname + " " + t.SystemLastname,
                     TransactionDate = t.TransactionDate,
-                    TransactionTypeId = (TransactionType)t.TransactionType,
+                    TransactionTypeId = (TransactionType)t.TransactionTypeId,
                     ItemId = t.ItemId ?? 0,
-                    ItemName = t.ItemName
+                    ItemName = t.ItemName,
+
 
                 });
             }

@@ -86,17 +86,18 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwItemLogs' does not have a
           <Key>
             <PropertyRef Name="TransactionId" />
             <PropertyRef Name="TransactionDate" />
-            <PropertyRef Name="TransactionType" />
+            <PropertyRef Name="TransactionTypeId" />
           </Key>
           <Property Name="TransactionId" Type="int" Nullable="false" />
           <Property Name="TransactionDate" Type="datetime" Nullable="false" />
-          <Property Name="SystemFirstname" Type="varchar" MaxLength="50" />
-          <Property Name="SystemLastname" Type="varchar" MaxLength="50" />
-          <Property Name="OtherUserFirstname" Type="varchar" MaxLength="50" />
-          <Property Name="OtherUserLastname" Type="varchar" MaxLength="50" />
+          <Property Name="TransactionTypeId" Type="int" Nullable="false" />
+          <Property Name="SystemFirstname" Type="varchar" MaxLength="150" />
+          <Property Name="SystemLastname" Type="varchar" MaxLength="150" />
+          <Property Name="OtherUserFirstname" Type="varchar" MaxLength="150" />
+          <Property Name="OtherUserLastname" Type="varchar" MaxLength="150" />
+          <Property Name="OtherUserId" Type="int" />
           <Property Name="ItemName" Type="varchar" MaxLength="50" />
           <Property Name="ItemId" Type="int" />
-          <Property Name="TransactionType" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_User_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
@@ -121,13 +122,14 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwItemLogs' does not have a
             <DefiningQuery>SELECT 
     [vwItemLogs].[TransactionId] AS [TransactionId], 
     [vwItemLogs].[TransactionDate] AS [TransactionDate], 
+    [vwItemLogs].[TransactionTypeId] AS [TransactionTypeId], 
     [vwItemLogs].[SystemFirstname] AS [SystemFirstname], 
     [vwItemLogs].[SystemLastname] AS [SystemLastname], 
     [vwItemLogs].[OtherUserFirstname] AS [OtherUserFirstname], 
     [vwItemLogs].[OtherUserLastname] AS [OtherUserLastname], 
+    [vwItemLogs].[OtherUserId] AS [OtherUserId], 
     [vwItemLogs].[ItemName] AS [ItemName], 
-    [vwItemLogs].[ItemId] AS [ItemId], 
-    [vwItemLogs].[TransactionType] AS [TransactionType]
+    [vwItemLogs].[ItemId] AS [ItemId]
     FROM [dbo].[vwItemLogs] AS [vwItemLogs]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_User_User" Association="Self.FK_User_User">
@@ -146,11 +148,11 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwItemLogs' does not have a
           <EntitySet Name="Items" EntityType="InventoryMangementModel.Item" />
           <EntitySet Name="Transactions" EntityType="InventoryMangementModel.Transaction" />
           <EntitySet Name="Users" EntityType="InventoryMangementModel.User" />
-          <EntitySet Name="vwItemLogs" EntityType="InventoryMangementModel.vwItemLog" />
           <AssociationSet Name="FK_User_User" Association="InventoryMangementModel.FK_User_User">
             <End Role="User" EntitySet="Users" />
             <End Role="User1" EntitySet="Users" />
           </AssociationSet>
+          <EntitySet Name="vwItemLogs" EntityType="InventoryMangementModel.vwItemLog" />
         </EntityContainer>
         <EntityType Name="Brand">
           <Key>
@@ -229,22 +231,6 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwItemLogs' does not have a
           <NavigationProperty Name="User1" Relationship="InventoryMangementModel.FK_User_User" FromRole="User" ToRole="User1" />
           <NavigationProperty Name="User2" Relationship="InventoryMangementModel.FK_User_User" FromRole="User1" ToRole="User" />
         </EntityType>
-        <EntityType Name="vwItemLog">
-          <Key>
-            <PropertyRef Name="TransactionId" />
-            <PropertyRef Name="TransactionDate" />
-            <PropertyRef Name="TransactionType" />
-          </Key>
-          <Property Name="TransactionId" Type="Int32" Nullable="false" />
-          <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="SystemFirstname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SystemLastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OtherUserFirstname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OtherUserLastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ItemId" Type="Int32" />
-          <Property Name="TransactionType" Type="Int32" Nullable="false" />
-        </EntityType>
         <Association Name="FK_User_User">
           <End Type="InventoryMangementModel.User" Role="User" Multiplicity="1" />
           <End Type="InventoryMangementModel.User" Role="User1" Multiplicity="0..1" />
@@ -257,6 +243,23 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwItemLogs' does not have a
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="vwItemLog">
+          <Key>
+            <PropertyRef Name="TransactionId" />
+            <PropertyRef Name="TransactionDate" />
+            <PropertyRef Name="TransactionTypeId" />
+          </Key>
+          <Property Name="TransactionId" Type="Int32" Nullable="false" />
+          <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TransactionTypeId" Type="Int32" Nullable="false" />
+          <Property Name="SystemFirstname" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="SystemLastname" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="OtherUserFirstname" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="OtherUserLastname" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="OtherUserId" Type="Int32" />
+          <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ItemId" Type="Int32" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -347,13 +350,14 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwItemLogs' does not have a
           <EntitySetMapping Name="vwItemLogs">
             <EntityTypeMapping TypeName="InventoryMangementModel.vwItemLog">
               <MappingFragment StoreEntitySet="vwItemLogs">
-                <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
                 <ScalarProperty Name="ItemId" ColumnName="ItemId" />
                 <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="OtherUserId" ColumnName="OtherUserId" />
                 <ScalarProperty Name="OtherUserLastname" ColumnName="OtherUserLastname" />
                 <ScalarProperty Name="OtherUserFirstname" ColumnName="OtherUserFirstname" />
                 <ScalarProperty Name="SystemLastname" ColumnName="SystemLastname" />
                 <ScalarProperty Name="SystemFirstname" ColumnName="SystemFirstname" />
+                <ScalarProperty Name="TransactionTypeId" ColumnName="TransactionTypeId" />
                 <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
                 <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
               </MappingFragment>

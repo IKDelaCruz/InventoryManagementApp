@@ -85,13 +85,14 @@
     <EntitySetMapping Name="vwItemLogs">
       <EntityTypeMapping TypeName="InventoryMangementModel.vwItemLog">
         <MappingFragment StoreEntitySet="vwItemLogs">
-          <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
           <ScalarProperty Name="ItemId" ColumnName="ItemId" />
           <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="OtherUserId" ColumnName="OtherUserId" />
           <ScalarProperty Name="OtherUserLastname" ColumnName="OtherUserLastname" />
           <ScalarProperty Name="OtherUserFirstname" ColumnName="OtherUserFirstname" />
           <ScalarProperty Name="SystemLastname" ColumnName="SystemLastname" />
           <ScalarProperty Name="SystemFirstname" ColumnName="SystemFirstname" />
+          <ScalarProperty Name="TransactionTypeId" ColumnName="TransactionTypeId" />
           <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
           <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
         </MappingFragment>

@@ -81,17 +81,18 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwItemLogs' does not have a
     <Key>
       <PropertyRef Name="TransactionId" />
       <PropertyRef Name="TransactionDate" />
-      <PropertyRef Name="TransactionType" />
+      <PropertyRef Name="TransactionTypeId" />
     </Key>
     <Property Name="TransactionId" Type="int" Nullable="false" />
     <Property Name="TransactionDate" Type="datetime" Nullable="false" />
-    <Property Name="SystemFirstname" Type="varchar" MaxLength="50" />
-    <Property Name="SystemLastname" Type="varchar" MaxLength="50" />
-    <Property Name="OtherUserFirstname" Type="varchar" MaxLength="50" />
-    <Property Name="OtherUserLastname" Type="varchar" MaxLength="50" />
+    <Property Name="TransactionTypeId" Type="int" Nullable="false" />
+    <Property Name="SystemFirstname" Type="varchar" MaxLength="150" />
+    <Property Name="SystemLastname" Type="varchar" MaxLength="150" />
+    <Property Name="OtherUserFirstname" Type="varchar" MaxLength="150" />
+    <Property Name="OtherUserLastname" Type="varchar" MaxLength="150" />
+    <Property Name="OtherUserId" Type="int" />
     <Property Name="ItemName" Type="varchar" MaxLength="50" />
     <Property Name="ItemId" Type="int" />
-    <Property Name="TransactionType" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK_User_User">
     <End Role="User" Type="Self.User" Multiplicity="1" />
@@ -116,13 +117,14 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwItemLogs' does not have a
       <DefiningQuery>SELECT 
     [vwItemLogs].[TransactionId] AS [TransactionId], 
     [vwItemLogs].[TransactionDate] AS [TransactionDate], 
+    [vwItemLogs].[TransactionTypeId] AS [TransactionTypeId], 
     [vwItemLogs].[SystemFirstname] AS [SystemFirstname], 
     [vwItemLogs].[SystemLastname] AS [SystemLastname], 
     [vwItemLogs].[OtherUserFirstname] AS [OtherUserFirstname], 
     [vwItemLogs].[OtherUserLastname] AS [OtherUserLastname], 
+    [vwItemLogs].[OtherUserId] AS [OtherUserId], 
     [vwItemLogs].[ItemName] AS [ItemName], 
-    [vwItemLogs].[ItemId] AS [ItemId], 
-    [vwItemLogs].[TransactionType] AS [TransactionType]
+    [vwItemLogs].[ItemId] AS [ItemId]
     FROM [dbo].[vwItemLogs] AS [vwItemLogs]</DefiningQuery>
     </EntitySet>
     <AssociationSet Name="FK_User_User" Association="Self.FK_User_User">

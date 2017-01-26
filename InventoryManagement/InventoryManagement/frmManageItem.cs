@@ -85,8 +85,10 @@ namespace InventoryManagement
                 BrandId = (int)cbxBrand.SelectedValue,
                 Model = txtModel.Text,
                 Serial = txtSerial.Text,
+
                 Status = (ItemStatus)cbxStatus.SelectedItem,
                 CurrentOwner = (int)cbxCurrentOwner.SelectedValue,
+                
                 LastUpdatedDate = DateTime.Now,
                 LastUpdatedUserId = Singleton.Instance.UserModel.CurrentUser.Id,
                 PurchaseDate = dtpPurchaseDate.Value,
@@ -118,7 +120,10 @@ namespace InventoryManagement
             {
                 txtAssetTag.Text = result.Param2;
                 this.DialogResult = DialogResult.OK;
-                MessageBox.Show("Item successfully created.");
+                if(isAddNewItem)
+                    MessageBox.Show("Item successfully created.");
+                else
+                    MessageBox.Show("Item successfully updated.");
             }
         }
         private void DoLoadItem(int itemId)
@@ -146,6 +151,9 @@ namespace InventoryManagement
             txtCurrentValue.Text = ((decimal)loadedItem.Currentvalue).ToString("n2");
 
             txtLastUpdate.Text = loadedItem.LastUpdatedDate.ToString();
+
+            cbxCurrentOwner.SelectedValue = loadedItem.CurrentOwner;
+            cbxStatus.Text = ((ItemStatus)loadedItem.Status).ToString();
 
             var owner = Singleton.Instance.UserModel.GetUsersById(loadedItem.LastUpdatedUserId);
 

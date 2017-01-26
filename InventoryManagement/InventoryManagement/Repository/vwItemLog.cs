@@ -16,12 +16,13 @@ namespace InventoryManagement.Repository
     {
         public int TransactionId { get; set; }
         public System.DateTime TransactionDate { get; set; }
+        public int TransactionTypeId { get; set; }
         public string SystemFirstname { get; set; }
         public string SystemLastname { get; set; }
         public string OtherUserFirstname { get; set; }
         public string OtherUserLastname { get; set; }
+        public Nullable<int> OtherUserId { get; set; }
         public string ItemName { get; set; }
         public Nullable<int> ItemId { get; set; }
-        public int TransactionType { get; set; }
     }
 }

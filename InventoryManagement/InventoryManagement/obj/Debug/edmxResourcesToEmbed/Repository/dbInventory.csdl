@@ -7,11 +7,11 @@
     <EntitySet Name="Items" EntityType="InventoryMangementModel.Item" />
     <EntitySet Name="Transactions" EntityType="InventoryMangementModel.Transaction" />
     <EntitySet Name="Users" EntityType="InventoryMangementModel.User" />
-    <EntitySet Name="vwItemLogs" EntityType="InventoryMangementModel.vwItemLog" />
     <AssociationSet Name="FK_User_User" Association="InventoryMangementModel.FK_User_User">
       <End Role="User" EntitySet="Users" />
       <End Role="User1" EntitySet="Users" />
     </AssociationSet>
+    <EntitySet Name="vwItemLogs" EntityType="InventoryMangementModel.vwItemLog" />
   </EntityContainer>
   <EntityType Name="Brand">
     <Key>
@@ -90,22 +90,6 @@
     <NavigationProperty Name="User1" Relationship="InventoryMangementModel.FK_User_User" FromRole="User" ToRole="User1" />
     <NavigationProperty Name="User2" Relationship="InventoryMangementModel.FK_User_User" FromRole="User1" ToRole="User" />
   </EntityType>
-  <EntityType Name="vwItemLog">
-    <Key>
-      <PropertyRef Name="TransactionId" />
-      <PropertyRef Name="TransactionDate" />
-      <PropertyRef Name="TransactionType" />
-    </Key>
-    <Property Name="TransactionId" Type="Int32" Nullable="false" />
-    <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="SystemFirstname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="SystemLastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="OtherUserFirstname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="OtherUserLastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ItemId" Type="Int32" />
-    <Property Name="TransactionType" Type="Int32" Nullable="false" />
-  </EntityType>
   <Association Name="FK_User_User">
     <End Type="InventoryMangementModel.User" Role="User" Multiplicity="1" />
     <End Type="InventoryMangementModel.User" Role="User1" Multiplicity="0..1" />
@@ -118,4 +102,21 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="vwItemLog">
+    <Key>
+      <PropertyRef Name="TransactionId" />
+      <PropertyRef Name="TransactionDate" />
+      <PropertyRef Name="TransactionTypeId" />
+    </Key>
+    <Property Name="TransactionId" Type="Int32" Nullable="false" />
+    <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TransactionTypeId" Type="Int32" Nullable="false" />
+    <Property Name="SystemFirstname" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="SystemLastname" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="OtherUserFirstname" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="OtherUserLastname" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="OtherUserId" Type="Int32" />
+    <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ItemId" Type="Int32" />
+  </EntityType>
 </Schema>
