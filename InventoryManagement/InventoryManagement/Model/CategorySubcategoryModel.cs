@@ -17,5 +17,14 @@ namespace InventoryManagement.Model
         {
             csR = new CategorySubcategoryRepository();
         }
+        public CategorySubcategoryViewModel GetCategory(int id)
+        {
+            return csR.QueryCategory(id);
+        }
+        public List<CategorySubcategoryViewModel> GetCategories()
+        {
+            return csR.QueryCategories();
+        }
+      
     }
 }

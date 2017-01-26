@@ -58,6 +58,7 @@
     <EntitySetMapping Name="Transactions">
       <EntityTypeMapping TypeName="InventoryMangementModel.Transaction">
         <MappingFragment StoreEntitySet="Transaction">
+          <ScalarProperty Name="request_id" ColumnName="request_id" />
           <ScalarProperty Name="item_id" ColumnName="item_id" />
           <ScalarProperty Name="remarks" ColumnName="remarks" />
           <ScalarProperty Name="transaction_type_id" ColumnName="transaction_type_id" />
@@ -95,6 +96,29 @@
           <ScalarProperty Name="TransactionTypeId" ColumnName="TransactionTypeId" />
           <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
           <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Requests">
+      <EntityTypeMapping TypeName="InventoryMangementModel.Request">
+        <MappingFragment StoreEntitySet="Request">
+          <ScalarProperty Name="request_status" ColumnName="request_status" />
+          <ScalarProperty Name="process_date" ColumnName="process_date" />
+          <ScalarProperty Name="request_date" ColumnName="request_date" />
+          <ScalarProperty Name="request_item_type" ColumnName="request_item_type" />
+          <ScalarProperty Name="request_type" ColumnName="request_type" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="InventoryMangementModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="prefix" ColumnName="prefix" />
+          <ScalarProperty Name="subtype" ColumnName="subtype" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
