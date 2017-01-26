@@ -129,6 +129,7 @@
       <DependentUpon>frmPrinter.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\BaseModel.cs" />
+    <Compile Include="Model\CategorySubcategoryModel.cs" />
     <Compile Include="Model\CompanyDepartmentModel.cs" />
     <Compile Include="Model\ItemModel.cs" />
     <Compile Include="Model\ReturnValueModel.cs" />
@@ -141,6 +142,10 @@
     <Compile Include="Repository\Brand.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repository\Category.cs">
+      <DependentUpon>dbInventory.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\CategorySubcategory.cs" />
     <Compile Include="Repository\Company.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
@@ -167,6 +172,9 @@
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\ItemRepository.cs" />
+    <Compile Include="Repository\Request.cs">
+      <DependentUpon>dbInventory.tt</DependentUpon>
+    </Compile>
     <Compile Include="Repository\Transaction.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
@@ -183,6 +191,7 @@
     <Compile Include="Utils\LDAPAuth.cs" />
     <Compile Include="Utils\LDAPUserImporter.cs" />
     <Compile Include="Utils\ListViewExtension.cs" />
+    <Compile Include="ViewModel\CategorySubcategoryViewModel.cs" />
     <Compile Include="ViewModel\CompanyDepartmentViewModel.cs" />
     <Compile Include="ViewModel\ItemViewModel.cs" />
     <Compile Include="ViewModel\TransactionViewModel.cs" />
