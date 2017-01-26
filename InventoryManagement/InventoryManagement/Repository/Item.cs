@@ -31,5 +31,10 @@ namespace InventoryManagement.Repository
         public string model { get; set; }
         public string serial { get; set; }
         public Nullable<int> current_owner { get; set; }
+        public Nullable<int> os_id { get; set; }
+        public Nullable<int> processor_id { get; set; }
+        public Nullable<int> memory_id { get; set; }
+        public Nullable<int> hdd1_id { get; set; }
+        public Nullable<int> hdd2_id { get; set; }
     }
 }

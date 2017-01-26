@@ -5,8 +5,13 @@
     <EntitySet Name="Companies" EntityType="InventoryMangementModel.Company" />
     <EntitySet Name="Departments" EntityType="InventoryMangementModel.Department" />
     <EntitySet Name="Items" EntityType="InventoryMangementModel.Item" />
-    <EntitySet Name="Users" EntityType="InventoryMangementModel.User" />
     <EntitySet Name="Transactions" EntityType="InventoryMangementModel.Transaction" />
+    <EntitySet Name="Users" EntityType="InventoryMangementModel.User" />
+    <EntitySet Name="vwItemLogs" EntityType="InventoryMangementModel.vwItemLog" />
+    <AssociationSet Name="FK_User_User" Association="InventoryMangementModel.FK_User_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="User1" EntitySet="Users" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Brand">
     <Key>
@@ -21,6 +26,7 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Department">
     <Key>
@@ -28,7 +34,7 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="company_id" Type="Int32" Nullable="false" />
-    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Item">
     <Key>
@@ -51,28 +57,15 @@
     <Property Name="model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="serial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="current_owner" Type="Int32" />
-  </EntityType>
-  <EntityType Name="User">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="type" Type="Int32" Nullable="false" />
-    <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="department" Type="Int32" />
-    <Property Name="company" Type="Int32" />
+    <Property Name="os_id" Type="Int32" />
+    <Property Name="processor_id" Type="Int32" />
+    <Property Name="memory_id" Type="Int32" />
+    <Property Name="hdd1_id" Type="Int32" />
+    <Property Name="hdd2_id" Type="Int32" />
   </EntityType>
   <EntityType Name="Transaction">
     <Key>
       <PropertyRef Name="id" />
-      <PropertyRef Name="transaction_date" />
-      <PropertyRef Name="system_user_id" />
-      <PropertyRef Name="other_user_id" />
-      <PropertyRef Name="transaction_type_id" />
-      <PropertyRef Name="remarks" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="transaction_date" Type="DateTime" Nullable="false" Precision="3" />
@@ -80,5 +73,49 @@
     <Property Name="other_user_id" Type="Int32" Nullable="false" />
     <Property Name="transaction_type_id" Type="Int32" Nullable="false" />
     <Property Name="remarks" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="item_id" Type="Int32" />
   </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="type" Type="Int32" Nullable="false" />
+    <Property Name="first_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="last_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="department" Type="Int32" />
+    <Property Name="company" Type="Int32" />
+    <NavigationProperty Name="User1" Relationship="InventoryMangementModel.FK_User_User" FromRole="User" ToRole="User1" />
+    <NavigationProperty Name="User2" Relationship="InventoryMangementModel.FK_User_User" FromRole="User1" ToRole="User" />
+  </EntityType>
+  <EntityType Name="vwItemLog">
+    <Key>
+      <PropertyRef Name="TransactionId" />
+      <PropertyRef Name="TransactionDate" />
+      <PropertyRef Name="TransactionType" />
+    </Key>
+    <Property Name="TransactionId" Type="Int32" Nullable="false" />
+    <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SystemFirstname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SystemLastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OtherUserFirstname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OtherUserLastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ItemId" Type="Int32" />
+    <Property Name="TransactionType" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_User_User">
+    <End Type="InventoryMangementModel.User" Role="User" Multiplicity="1" />
+    <End Type="InventoryMangementModel.User" Role="User1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="User1">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

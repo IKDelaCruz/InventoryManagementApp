@@ -13,12 +13,15 @@ namespace InventoryManagement.Model
         public UserModel UserModel { get; set; }
         public ItemModel ItemModel { get; set; }
 
+        public TransactionModel TransactionModel { get; set; }
+        
         public CompanyDepartmentModel CompanyDepartmentModel { get; set; }
 
         public Singleton()
         {
             UserModel = new UserModel();
             ItemModel = new ItemModel();
+            TransactionModel = new TransactionModel();
             CompanyDepartmentModel = new CompanyDepartmentModel();
         }
         public static Singleton Instance

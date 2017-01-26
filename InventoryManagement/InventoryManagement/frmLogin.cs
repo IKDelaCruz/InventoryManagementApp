@@ -20,8 +20,6 @@ namespace InventoryManagement
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-
-
             DoAuth();
         }
         private void DoAuth()
@@ -29,9 +27,10 @@ namespace InventoryManagement
             var result = Singleton.Instance.UserModel.AuthenticateUser(txtUsername.Text.Trim(), txtPassord.Text.Trim());
             if (result != null)
             {
-                //Singleton.Instance.UserModel.CurrentUser = result;
+                //= result;
 
                 //MessageBox.Show("Welcome Back "+ result.Firstname);
+                Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, 0, ViewModel.TransactionType.Login, "");
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
@@ -47,6 +46,12 @@ namespace InventoryManagement
             {
                 Application.Exit();
             }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
     }
 }

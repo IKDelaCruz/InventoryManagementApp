@@ -5,12 +5,14 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="39ec3eaa6fbf4add9d5e43f612422df5" Name="Diagram1">
-        <EntityTypeShape EntityType="InventoryMangementModel.Brand" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="InventoryMangementModel.Company" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="InventoryMangementModel.Department" Width="1.5" PointX="0.75" PointY="3.75" />
-        <EntityTypeShape EntityType="InventoryMangementModel.Item" Width="1.5" PointX="2.75" PointY="3.75" />
-        <EntityTypeShape EntityType="InventoryMangementModel.User" Width="1.5" PointX="4.75" PointY="0.75" />
-        <EntityTypeShape EntityType="InventoryMangementModel.Transaction" Width="1.5" PointX="4.75" PointY="4.75" />
+        <EntityTypeShape EntityType="InventoryMangementModel.Brand" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="InventoryMangementModel.Company" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="InventoryMangementModel.Department" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="InventoryMangementModel.Item" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="InventoryMangementModel.Transaction" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="InventoryMangementModel.User" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="InventoryMangementModel.vwItemLog" Width="1.5" PointX="0.75" PointY="6.75" />
+        <AssociationConnector Association="InventoryMangementModel.FK_User_User" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

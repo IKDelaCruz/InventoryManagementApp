@@ -22,5 +22,8 @@ namespace InventoryManagement.Repository
         public string last_name { get; set; }
         public Nullable<int> department { get; set; }
         public Nullable<int> company { get; set; }
+    
+        public virtual User User1 { get; set; }
+        public virtual User User2 { get; set; }
     }
 }

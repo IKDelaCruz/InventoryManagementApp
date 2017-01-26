@@ -13,9 +13,11 @@ namespace InventoryManagement.ViewModel
         public string Password { get; set; }
         public int UserType { get; set; }
         public string LastnameFirstName { get; set; }
+        public string LastnameFirstNameUsername { get; set; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public int Department { get; set; }
         public int Company { get; set; }
     }
 }
+

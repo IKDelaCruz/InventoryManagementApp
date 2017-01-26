@@ -29,6 +29,11 @@ namespace InventoryManagement
             cbxLocation.DisplayMember = "Name";
 
             cbxLocation.DataSource = Singleton.Instance.CompanyDepartmentModel.GetCompaniesWithDepartments();
+
+            cbxUsers.ValueMember = "Id";
+            cbxUsers.DisplayMember = "LastnameFirstNameUsername";
+
+            cbxUsers.DataSource = Singleton.Instance.UserModel.GetUsers();
             //UpdateView();
         }
 
@@ -105,24 +110,21 @@ namespace InventoryManagement
             dlg.ShowDialog();
         }
 
-        private void btnCheckout_Click(object sender, EventArgs e)
-        {
-            if(_selectedItem != null)
-            {
-                ItemModel itm = new ItemModel();
-                Singleton.Instance.ItemModel.UpdateItemStatus(_selectedItem.Id, ItemStatus.Borrowed);
-
-                DoUpdateView();
-                DoUpdateItemDetails(); 
-            }
-        }
 
         #endregion
 
         private void lvMain_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (lvMain.SelectedItems.Count == 0)
+                return;
+
+            var selected = lvMain.SelectedItems[0];
+            var id = Convert.ToInt32(selected.SubItems[1].Text);
+            _selectedItem = Singleton.Instance.ItemModel.GetItem(id);
+
+            
             DoUpdateItemDetails();
-        }
+        } 
 
         #region --- Methods --- 
         private bool DoExit()
@@ -179,14 +181,8 @@ namespace InventoryManagement
 
         private void DoUpdateItemDetails()
         {
-            if (lvMain.SelectedItems.Count == 0)
-                return;
-
-            var selected = lvMain.SelectedItems[0];
-            var id = Convert.ToInt32(selected.SubItems[1].Text);
-            var item = Singleton.Instance.ItemModel.GetItem(id);
-
-            _selectedItem = item;
+            
+            var item = Singleton.Instance.ItemModel.GetItem(_selectedItem.Id); 
 
             if (item != null)
             {
@@ -212,7 +208,56 @@ namespace InventoryManagement
                 lblCurrentValue.Text = item.Currentvalue.ToString("n2");
 
                 btnPrintBarcode.Enabled = true;
+
+                btnCheckout.Enabled = item.Status == ItemStatus.Available || item.Status == ItemStatus.Reserved;
+                btnReserve.Enabled = item.Status == ItemStatus.Available;
+                btnCheckin.Enabled = item.Status == ItemStatus.Borrowed || item.Status == ItemStatus.Reserved;
             }
+        }
+
+        private void UpdateItemStatus(ItemStatus status, int userId)
+        {
+            if (_selectedItem != null)
+            {
+                ItemModel itm = new ItemModel();
+                Singleton.Instance.ItemModel.UpdateItemStatus(_selectedItem.Id, userId, status);
+
+                DoUpdateView();
+                DoUpdateItemDetails();
+            }
+        }
+
+        private void btnCheckout_Click(object sender, EventArgs e)
+        {
+            UpdateItemStatus(ItemStatus.Borrowed, (int)cbxUsers.SelectedValue);
+            Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, (int)cbxUsers.SelectedValue, ViewModel.TransactionType.BorrowItem, "", _selectedItem.Id);
+        }
+
+        private void btnCheckin_Click(object sender, EventArgs e)
+        {
+            UpdateItemStatus(ItemStatus.Available,0);
+            Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, 0, ViewModel.TransactionType.ReturnItem, "", _selectedItem.Id);
+        }
+
+        private void btnReserve_Click(object sender, EventArgs e)
+        {
+            UpdateItemStatus(ItemStatus.Reserved, (int)cbxUsers.SelectedValue);
+            Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, (int)cbxUsers.SelectedValue, ViewModel.TransactionType.ReserveItem, "", _selectedItem.Id);
+        }
+
+        private void btnShowLogs_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lvMain_DoubleClick(object sender, EventArgs e)
+        {
+            var selected = lvMain.SelectedItems[0];
+            var id = Convert.ToInt32(selected.SubItems[1].Text);
+
+
+            var dlg = new frmManageItem(id, false);
+            dlg.ShowDialog();
         }
     }
 }

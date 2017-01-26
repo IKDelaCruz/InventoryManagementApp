@@ -35,9 +35,9 @@ namespace InventoryManagement.Model
             CurrentUser = null;
             return true;
         }
-        public int CreateNewUser(string username, string password, UserType userType)
+        public int CreateNewUser(string username, string password, UserType userType, string firstname, string lastname, int departmentId)
         {
-            return userRepository.CreateNewUser(username, password, (int)userType);
+            return userRepository.CreateNewUser(username, password, (int)userType, firstname, lastname, departmentId);
         }
         public bool UpdateUser(int userId, string firstName, string lastName, int companyId, int departmentId)
         {
@@ -48,12 +48,16 @@ namespace InventoryManagement.Model
             var adminUser = userRepository.GetUser("admin");
             if(adminUser == null)
             {
-                userRepository.CreateNewUser("admin", "admin", 1);
+                userRepository.CreateNewUser("admin", "admin", 1, "Admin", "Admin", 0);
             }
         }
         public List<UserViewModel> GetUsers()
         {
             return userRepository.GetUsers();
+        }
+        public UserViewModel GetUsersById(int id)
+        {
+            return userRepository.GetUserById(id);
         }
         public List<UserViewModel> GetUsersByDepartmentId(int departmentId)
         {

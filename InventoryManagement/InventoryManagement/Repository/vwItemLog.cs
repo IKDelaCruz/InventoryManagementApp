@@ -12,14 +12,16 @@ namespace InventoryManagement.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class Transaction
+    public partial class vwItemLog
     {
-        public int id { get; set; }
-        public System.DateTime transaction_date { get; set; }
-        public int system_user_id { get; set; }
-        public int other_user_id { get; set; }
-        public int transaction_type_id { get; set; }
-        public string remarks { get; set; }
-        public Nullable<int> item_id { get; set; }
+        public int TransactionId { get; set; }
+        public System.DateTime TransactionDate { get; set; }
+        public string SystemFirstname { get; set; }
+        public string SystemLastname { get; set; }
+        public string OtherUserFirstname { get; set; }
+        public string OtherUserLastname { get; set; }
+        public string ItemName { get; set; }
+        public Nullable<int> ItemId { get; set; }
+        public int TransactionType { get; set; }
     }
 }

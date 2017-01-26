@@ -15,28 +15,56 @@ namespace InventoryManagement
 {
     public partial class frmManageItem : frmBase
     {
-        private bool isAddItem;
-        public frmManageItem(bool AddItem = true)
+        private bool isAddNewItem;
+        private ItemViewModel loadedItem;
+        public frmManageItem(int itemId = 0, bool AddItem = true)
         {
             InitializeComponent();
+            dvLogs.AutoGenerateColumns = false;
 
-            isAddItem = AddItem;
+            isAddNewItem = AddItem;
 
             LoadComboBox();
 
-            txtLastUpdate.Visible = !isAddItem;
-            txtLastUpdatedUser.Visible = !isAddItem;
-            txtCurrentValue.Visible = !isAddItem;
-            lblLastUpdated.Visible = !isAddItem;
-            lblLastUpdatedBy.Visible = !isAddItem;
-            lblCurrentValue.Visible = !isAddItem;
+            txtLastUpdate.Visible = !isAddNewItem;
+            txtLastUpdatedUser.Visible = !isAddNewItem;
+            txtCurrentValue.Visible = !isAddNewItem;
+            lblLastUpdated.Visible = !isAddNewItem;
+            lblLastUpdatedBy.Visible = !isAddNewItem;
+            lblCurrentValue.Visible = !isAddNewItem;
+
+            if (!isAddNewItem)
+                DoLoadItem(itemId);
 
         }
+       
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            DoSaveItem();
+        }
+       
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnPrintBarcode_Click(object sender, EventArgs e)
+        {
+          
+
+        }
+
         private void LoadComboBox()
         {
             cbxType.DataSource = Enum.GetValues(typeof(PrimaryItemType));
             cbxSubType.DataSource = Enum.GetValues(typeof(SecondaryItemType));
             cbxStatus.DataSource = Enum.GetValues(typeof(ItemStatus));
+
+            cbxOS.DataSource = Enum.GetValues(typeof(ItemOperatingSystem));
+            cbxProcessor.DataSource = Enum.GetValues(typeof(ItemProcessors));
+            cbxMemory.DataSource = Enum.GetValues(typeof(ItemMemory));
+            cbxHDD1.DataSource = Enum.GetValues(typeof(ItemHDDCapacity));
+            cbxHDD2.DataSource = Enum.GetValues(typeof(ItemHDDCapacity));
 
             cbxBrand.DisplayMember = "Name";
             cbxBrand.ValueMember = "Id";
@@ -46,11 +74,10 @@ namespace InventoryManagement
             cbxCurrentOwner.ValueMember = "Id";
             cbxCurrentOwner.DataSource = Singleton.Instance.UserModel.GetUsers();
         }
-
-        private void btnSave_Click(object sender, EventArgs e)
+        private void DoSaveItem()
         {
             var itm = new ItemViewModel
-            {
+            { 
                 Name = txtName.Text,
                 Description = txtDescription.Text,
                 Type = (PrimaryItemType)cbxType.SelectedItem,
@@ -65,9 +92,27 @@ namespace InventoryManagement
                 PurchaseDate = dtpPurchaseDate.Value,
                 PurchasePrice = Convert.ToDecimal(txtPurchasePrice.Text),
                 LifeSpan = int.Parse(txtLifetime.Text),
-                Currentvalue = Convert.ToDecimal(txtPurchasePrice.Text)
+                Currentvalue = Convert.ToDecimal(txtPurchasePrice.Text),
+                OS = (ItemOperatingSystem)cbxOS.SelectedItem,
+                Processor = (ItemProcessors)cbxProcessor.SelectedItem,
+                Memory = (ItemMemory)cbxMemory.SelectedItem,
+                HDD1 = (ItemHDDCapacity)cbxHDD1.SelectedItem,
+                HDD2 = (ItemHDDCapacity)cbxHDD2.SelectedItem,
             };
-            var result = Singleton.Instance.ItemModel.CreateNewItem(itm, Singleton.Instance.UserModel.CurrentUser.Id);
+            var result = new ReturnValueModel();
+
+            if (isAddNewItem)
+            {
+                result = Singleton.Instance.ItemModel.CreateNewItem(itm, Singleton.Instance.UserModel.CurrentUser.Id);
+                Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, 0, ViewModel.TransactionType.CreateItem, "", itm.Id);
+            }
+            else
+            {
+                itm.Id = loadedItem.Id;
+                result = Singleton.Instance.ItemModel.UpdateItem(itm, Singleton.Instance.UserModel.CurrentUser.Id);
+                Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, 0, ViewModel.TransactionType.EditItem, "", itm.Id);
+            }
+                
 
             if (result.Success)
             {
@@ -75,21 +120,41 @@ namespace InventoryManagement
                 this.DialogResult = DialogResult.OK;
                 MessageBox.Show("Item successfully created.");
             }
-
-           
-
-            
         }
-
-        private void btnClose_Click(object sender, EventArgs e)
+        private void DoLoadItem(int itemId)
         {
-            this.Close();
+            loadedItem = Singleton.Instance.ItemModel.GetItem(itemId);
+
+            txtAssetTag.Text = loadedItem.AssetTag;
+            txtName.Text = loadedItem.Name;
+            txtDescription.Text = loadedItem.Description;
+            cbxType.Text = loadedItem.Type.ToString();
+            cbxSubType.Text = loadedItem.SubType.ToString();
+            cbxBrand.Text = loadedItem.Brand.ToString();
+            txtModel.Text = loadedItem.Model;
+            txtSerial.Text = loadedItem.Serial;
+
+            cbxOS.Text = loadedItem.OS.ToString();
+            cbxProcessor.Text = loadedItem.Processor.ToString();
+            cbxMemory.Text = loadedItem.Memory.ToString();
+            cbxHDD1.Text = loadedItem.HDD1.ToString();
+            cbxHDD2.Text = loadedItem.HDD2.ToString();
+
+            dtpPurchaseDate.Value = loadedItem.PurchaseDate;
+            txtPurchasePrice.Text = ((decimal)loadedItem.PurchasePrice).ToString("n2");
+            txtLifetime.Text = loadedItem.LifeSpan.ToString();
+            txtCurrentValue.Text = ((decimal)loadedItem.Currentvalue).ToString("n2");
+
+            txtLastUpdate.Text = loadedItem.LastUpdatedDate.ToString();
+
+            var owner = Singleton.Instance.UserModel.GetUsersById(loadedItem.LastUpdatedUserId);
+
+            txtLastUpdatedUser.Text = owner == null ? "SYSTEM" : owner.LastnameFirstName;
+            LoadTransactions(itemId);
         }
-
-        private void btnPrintBarcode_Click(object sender, EventArgs e)
+        private void LoadTransactions(int itemId)
         {
-          
-
+            dvLogs.DataSource = Singleton.Instance.TransactionModel.GetTransactionsByItemId(itemId);
         }
     }
 }

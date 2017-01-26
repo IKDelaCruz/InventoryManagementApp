@@ -50,11 +50,13 @@
             this.pnlRightInfo = new System.Windows.Forms.Panel();
             this.pnlRightContent = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnShowLogs = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.cbxUsers = new System.Windows.Forms.ComboBox();
             this.btnReserve = new System.Windows.Forms.Button();
             this.btnCheckin = new System.Windows.Forms.Button();
             this.btnCheckout = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.btnPrintBarcode = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblCurrentValue = new System.Windows.Forms.Label();
@@ -154,6 +156,7 @@
             this.lvMain.TabIndex = 0;
             this.lvMain.UseCompatibleStateImageBehavior = false;
             this.lvMain.SelectedIndexChanged += new System.EventHandler(this.lvMain_SelectedIndexChanged);
+            this.lvMain.DoubleClick += new System.EventHandler(this.lvMain_DoubleClick);
             // 
             // pnlTop
             // 
@@ -329,7 +332,8 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.btnShowLogs);
+            this.groupBox2.Controls.Add(this.label11);
+            this.groupBox2.Controls.Add(this.cbxUsers);
             this.groupBox2.Controls.Add(this.btnReserve);
             this.groupBox2.Controls.Add(this.btnCheckin);
             this.groupBox2.Controls.Add(this.btnCheckout);
@@ -340,52 +344,62 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Transaction";
             // 
-            // btnShowLogs
+            // label11
             // 
-            this.btnShowLogs.Enabled = false;
-            this.btnShowLogs.Location = new System.Drawing.Point(149, 59);
-            this.btnShowLogs.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnShowLogs.Name = "btnShowLogs";
-            this.btnShowLogs.Size = new System.Drawing.Size(100, 30);
-            this.btnShowLogs.TabIndex = 39;
-            this.btnShowLogs.Text = "SHOW LOGS";
-            this.btnShowLogs.UseVisualStyleBackColor = true;
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(26, 18);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(58, 15);
+            this.label11.TabIndex = 48;
+            this.label11.Text = "Borrower";
+            // 
+            // cbxUsers
+            // 
+            this.cbxUsers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxUsers.FormattingEnabled = true;
+            this.cbxUsers.Location = new System.Drawing.Point(29, 36);
+            this.cbxUsers.Name = "cbxUsers";
+            this.cbxUsers.Size = new System.Drawing.Size(232, 23);
+            this.cbxUsers.TabIndex = 47;
             // 
             // btnReserve
             // 
             this.btnReserve.Enabled = false;
-            this.btnReserve.Location = new System.Drawing.Point(41, 59);
+            this.btnReserve.Location = new System.Drawing.Point(109, 65);
             this.btnReserve.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnReserve.Name = "btnReserve";
-            this.btnReserve.Size = new System.Drawing.Size(100, 30);
+            this.btnReserve.Size = new System.Drawing.Size(72, 29);
             this.btnReserve.TabIndex = 38;
             this.btnReserve.Text = "RESERVE";
             this.btnReserve.UseVisualStyleBackColor = true;
+            this.btnReserve.Click += new System.EventHandler(this.btnReserve_Click);
             // 
             // btnCheckin
             // 
             this.btnCheckin.Enabled = false;
-            this.btnCheckin.Location = new System.Drawing.Point(149, 23);
+            this.btnCheckin.Location = new System.Drawing.Point(189, 65);
             this.btnCheckin.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnCheckin.Name = "btnCheckin";
-            this.btnCheckin.Size = new System.Drawing.Size(100, 30);
+            this.btnCheckin.Size = new System.Drawing.Size(72, 29);
             this.btnCheckin.TabIndex = 37;
-            this.btnCheckin.Text = "CHECKIN";
+            this.btnCheckin.Text = "RETURN";
             this.btnCheckin.UseVisualStyleBackColor = true;
+            this.btnCheckin.Click += new System.EventHandler(this.btnCheckin_Click);
             // 
             // btnCheckout
             // 
-            this.btnCheckout.Location = new System.Drawing.Point(41, 23);
+            this.btnCheckout.Location = new System.Drawing.Point(29, 65);
             this.btnCheckout.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnCheckout.Name = "btnCheckout";
-            this.btnCheckout.Size = new System.Drawing.Size(100, 30);
+            this.btnCheckout.Size = new System.Drawing.Size(72, 29);
             this.btnCheckout.TabIndex = 36;
-            this.btnCheckout.Text = "CHECKOUT";
+            this.btnCheckout.Text = "BORROW";
             this.btnCheckout.UseVisualStyleBackColor = true;
             this.btnCheckout.Click += new System.EventHandler(this.btnCheckout_Click);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.btnPrintBarcode);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.lblCurrentValue);
@@ -427,6 +441,17 @@
             this.groupBox1.TabIndex = 36;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Item Details";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(15, 90);
+            this.label9.Name = "label9";
+            this.label9.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.label9.Size = new System.Drawing.Size(78, 35);
+            this.label9.TabIndex = 36;
+            this.label9.Text = "ITEM DETAILS";
             // 
             // btnPrintBarcode
             // 
@@ -848,6 +873,7 @@
             this.pnlRightInfo.ResumeLayout(false);
             this.pnlRightContent.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -928,9 +954,11 @@
         private System.Windows.Forms.Label lblSerial;
         private System.Windows.Forms.Button btnCheckin;
         private System.Windows.Forms.Button btnCheckout;
-        private System.Windows.Forms.Button btnShowLogs;
         private System.Windows.Forms.Button btnReserve;
         private System.Windows.Forms.ToolStripMenuItem reportsToolStripMenuItem;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox cbxUsers;
     }
 }
 

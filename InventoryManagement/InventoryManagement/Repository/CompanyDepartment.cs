@@ -69,5 +69,16 @@ namespace InventoryManagement.Repository
             else
                 return null;
         }
+
+        public int CreateDepartment(string name)
+        {
+            var d = new Department { name = name, company_id = 0 };
+
+            InventoryDatabase.Departments.Add(d);
+
+            if (InventoryDatabase.SaveChanges() > 0)
+                return d.id;
+            return 0;
+        }
     }
 }

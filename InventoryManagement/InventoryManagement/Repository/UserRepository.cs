@@ -1,6 +1,7 @@
 ﻿using InventoryManagement.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,14 +29,17 @@ namespace InventoryManagement.Repository
             return null;
         }
 
-        public int CreateNewUser(string username, string password, int type)
+        public int CreateNewUser(string username, string password, int type, string firstname, string lastname, int departmentId)
         {
 
             var newUser = new User
             {
                 username = username,
                 password = password,
-                type = type
+                type = type,
+                first_name = firstname,
+                last_name = lastname,
+                department = departmentId
             };
             InventoryDatabase.Users.Add(newUser);
             InventoryDatabase.SaveChanges();
@@ -76,6 +80,26 @@ namespace InventoryManagement.Repository
 
             return null;
         }
+        public UserViewModel GetUserById(int id)
+        {
+            var user = InventoryDatabase.Users.FirstOrDefault(h => h.id == id);
+            if (user != null)
+            {
+                return new UserViewModel
+                {
+                    Id = user.id,
+                    Password = user.password,
+                    Username = user.username,
+                    UserType = user.type,
+                    Firstname = user.first_name,
+                    Lastname = user.last_name,
+                    LastnameFirstName = user.last_name + ", " + user.first_name,
+                    LastnameFirstNameUsername = user.last_name + ", " + user.first_name + " (" + user.username + ")"
+                };
+            }
+
+            return null;
+        }
         public List<UserViewModel> GetUsers()
         {
             var list = new List<UserViewModel>();
@@ -90,11 +114,12 @@ namespace InventoryManagement.Repository
                     UserType = u.type,
                     Firstname = u.first_name,
                     Lastname = u.last_name,
-                    LastnameFirstName = u.last_name + ", " + u.first_name
+                    LastnameFirstName = u.last_name + ", " + u.first_name,
+                    LastnameFirstNameUsername = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(u.last_name) + ", " + CultureInfo.CurrentCulture.TextInfo.ToTitleCase(u.first_name) + " (" + u.username + ")"
                 });
             }
 
-            return list;
+            return list.OrderBy(x=> x.LastnameFirstNameUsername).ToList();
         }
         public List<UserViewModel> GetUsersByDepartmentId(int departmentId)
         {

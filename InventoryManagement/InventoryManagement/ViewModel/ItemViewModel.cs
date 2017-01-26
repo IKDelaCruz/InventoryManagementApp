@@ -32,11 +32,68 @@ namespace InventoryManagement.ViewModel
     
     public enum ItemStatus
     {
+
         Available,
         Borrowed,
+        Reserved,
         Broken,
         Disposed,
         Unknown
+    }
+    public enum ItemOperatingSystem
+    {
+        Unknown,
+        WindowsNT,
+        WindowsXP,
+        Windows7,
+        Windows8,
+        Windows10,
+        OSX,
+        Windows2003,
+        Windows2008,
+        Windows2012,
+        Ubuntu,
+        Centos,
+        EXSI,
+        IOS,
+        Android
+    }
+    public enum ItemProcessors
+    {
+        Unknown,
+        PentiumI,
+        PentiumII,
+        PentiumIII,
+        DualCore,
+        Core2Duo,
+        I3,
+        I5,
+        I7,
+        Xeon,
+        AMD
+    }
+    public enum ItemMemory
+    {
+        Unknown,
+        DDRII256,
+        DDRII512,
+        DDRII1024,
+        DDRIII2GB,
+        DDRIII4GB,
+        DDRIII6GB,
+        DDRIII8GB,
+        DDRIII12GB
+    }
+    public enum ItemHDDCapacity
+    {
+        Unknown,
+        IDE256,
+        IDE500,
+        SATA500,
+        SATA1TB,
+        SATA2TB,
+        SATA4TB,
+        
     }
     public class BrandViewModel
     {
@@ -65,5 +122,10 @@ namespace InventoryManagement.ViewModel
         public DateTime LastUpdatedDate { get; set; }
         public string LastUpdatedUser { get; set; }
         public int LastUpdatedUserId { get; set; }
+        public ItemOperatingSystem OS { get; set; }
+        public ItemProcessors Processor { get; set; }
+        public ItemMemory Memory { get; set; }
+        public ItemHDDCapacity HDD1 { get; set; }
+        public ItemHDDCapacity HDD2 { get; set; }
     }
 }

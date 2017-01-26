@@ -12,6 +12,7 @@
     <EntitySetMapping Name="Companies">
       <EntityTypeMapping TypeName="InventoryMangementModel.Company">
         <MappingFragment StoreEntitySet="Company">
+          <ScalarProperty Name="address" ColumnName="address" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
@@ -29,6 +30,11 @@
     <EntitySetMapping Name="Items">
       <EntityTypeMapping TypeName="InventoryMangementModel.Item">
         <MappingFragment StoreEntitySet="Item">
+          <ScalarProperty Name="hdd2_id" ColumnName="hdd2_id" />
+          <ScalarProperty Name="hdd1_id" ColumnName="hdd1_id" />
+          <ScalarProperty Name="memory_id" ColumnName="memory_id" />
+          <ScalarProperty Name="processor_id" ColumnName="processor_id" />
+          <ScalarProperty Name="os_id" ColumnName="os_id" />
           <ScalarProperty Name="current_owner" ColumnName="current_owner" />
           <ScalarProperty Name="serial" ColumnName="serial" />
           <ScalarProperty Name="model" ColumnName="model" />
@@ -49,6 +55,19 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Transactions">
+      <EntityTypeMapping TypeName="InventoryMangementModel.Transaction">
+        <MappingFragment StoreEntitySet="Transaction">
+          <ScalarProperty Name="item_id" ColumnName="item_id" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+          <ScalarProperty Name="transaction_type_id" ColumnName="transaction_type_id" />
+          <ScalarProperty Name="other_user_id" ColumnName="other_user_id" />
+          <ScalarProperty Name="system_user_id" ColumnName="system_user_id" />
+          <ScalarProperty Name="transaction_date" ColumnName="transaction_date" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="InventoryMangementModel.User">
         <MappingFragment StoreEntitySet="User">
@@ -63,15 +82,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Transactions">
-      <EntityTypeMapping TypeName="InventoryMangementModel.Transaction">
-        <MappingFragment StoreEntitySet="Transaction">
-          <ScalarProperty Name="remarks" ColumnName="remarks" />
-          <ScalarProperty Name="transaction_type_id" ColumnName="transaction_type_id" />
-          <ScalarProperty Name="other_user_id" ColumnName="other_user_id" />
-          <ScalarProperty Name="system_user_id" ColumnName="system_user_id" />
-          <ScalarProperty Name="transaction_date" ColumnName="transaction_date" />
-          <ScalarProperty Name="id" ColumnName="id" />
+    <EntitySetMapping Name="vwItemLogs">
+      <EntityTypeMapping TypeName="InventoryMangementModel.vwItemLog">
+        <MappingFragment StoreEntitySet="vwItemLogs">
+          <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="OtherUserLastname" ColumnName="OtherUserLastname" />
+          <ScalarProperty Name="OtherUserFirstname" ColumnName="OtherUserFirstname" />
+          <ScalarProperty Name="SystemLastname" ColumnName="SystemLastname" />
+          <ScalarProperty Name="SystemFirstname" ColumnName="SystemFirstname" />
+          <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+          <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

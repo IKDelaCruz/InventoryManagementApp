@@ -36,7 +36,7 @@ namespace InventoryManagement
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            var id = Singleton.Instance.UserModel.CreateNewUser(txtUsername.Text, txtPassord.Text, (UserType)cbxUserType.SelectedItem);
+            var id = Singleton.Instance.UserModel.CreateNewUser(txtUsername.Text, txtPassord.Text, (UserType)cbxUserType.SelectedItem, "", "", 0);
             if (Singleton.Instance.UserModel.UpdateUser(id, txtFirstname.Text, txtLastname.Text, (int)cbxCompany.SelectedValue, (int)cbxDepartment.SelectedValue))
             {
                 MessageBox.Show("User successfully created!");

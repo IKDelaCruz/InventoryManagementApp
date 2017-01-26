@@ -51,5 +51,10 @@ namespace InventoryManagement.Model
 
             return list;
         }
+
+        public int CreateDepartment(string name)
+        {
+            return cdR.CreateDepartment(name);
+        }
     }
 }

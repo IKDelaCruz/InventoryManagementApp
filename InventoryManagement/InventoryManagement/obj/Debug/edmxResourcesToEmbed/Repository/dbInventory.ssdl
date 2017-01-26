@@ -13,6 +13,7 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="address" Type="varchar" MaxLength="250" />
   </EntityType>
   <EntityType Name="Department">
     <Key>
@@ -20,7 +21,7 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="company_id" Type="int" Nullable="false" />
-    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="500" Nullable="false" />
   </EntityType>
   <EntityType Name="Item">
     <Key>
@@ -43,17 +44,15 @@
     <Property Name="model" Type="varchar" MaxLength="50" />
     <Property Name="serial" Type="varchar" MaxLength="50" />
     <Property Name="current_owner" Type="int" />
+    <Property Name="os_id" Type="int" />
+    <Property Name="processor_id" Type="int" />
+    <Property Name="memory_id" Type="int" />
+    <Property Name="hdd1_id" Type="int" />
+    <Property Name="hdd2_id" Type="int" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'InventoryMangement.dbo.Transaction' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="Transaction">
     <Key>
       <PropertyRef Name="id" />
-      <PropertyRef Name="transaction_date" />
-      <PropertyRef Name="system_user_id" />
-      <PropertyRef Name="other_user_id" />
-      <PropertyRef Name="transaction_type_id" />
-      <PropertyRef Name="remarks" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="transaction_date" Type="datetime" Nullable="false" />
@@ -61,35 +60,74 @@ warning 6002: The table/view 'InventoryMangement.dbo.Transaction' does not have 
     <Property Name="other_user_id" Type="int" Nullable="false" />
     <Property Name="transaction_type_id" Type="int" Nullable="false" />
     <Property Name="remarks" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="item_id" Type="int" />
   </EntityType>
   <EntityType Name="User">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="150" Nullable="false" />
     <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="type" Type="int" Nullable="false" />
-    <Property Name="first_name" Type="varchar" MaxLength="50" />
-    <Property Name="last_name" Type="varchar" MaxLength="50" />
+    <Property Name="first_name" Type="varchar" MaxLength="150" />
+    <Property Name="last_name" Type="varchar" MaxLength="150" />
     <Property Name="department" Type="int" />
     <Property Name="company" Type="int" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'InventoryMangement.dbo.vwItemLogs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwItemLogs">
+    <Key>
+      <PropertyRef Name="TransactionId" />
+      <PropertyRef Name="TransactionDate" />
+      <PropertyRef Name="TransactionType" />
+    </Key>
+    <Property Name="TransactionId" Type="int" Nullable="false" />
+    <Property Name="TransactionDate" Type="datetime" Nullable="false" />
+    <Property Name="SystemFirstname" Type="varchar" MaxLength="50" />
+    <Property Name="SystemLastname" Type="varchar" MaxLength="50" />
+    <Property Name="OtherUserFirstname" Type="varchar" MaxLength="50" />
+    <Property Name="OtherUserLastname" Type="varchar" MaxLength="50" />
+    <Property Name="ItemName" Type="varchar" MaxLength="50" />
+    <Property Name="ItemId" Type="int" />
+    <Property Name="TransactionType" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_User_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="User1" Type="Self.User" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="User1">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="InventoryMangementModelStoreContainer">
     <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Transaction" EntityType="Self.Transaction" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Transaction" EntityType="Self.Transaction" store:Type="Tables" store:Schema="dbo">
+    <EntitySet Name="vwItemLogs" EntityType="Self.vwItemLogs" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
-    [Transaction].[id] AS [id], 
-    [Transaction].[transaction_date] AS [transaction_date], 
-    [Transaction].[system_user_id] AS [system_user_id], 
-    [Transaction].[other_user_id] AS [other_user_id], 
-    [Transaction].[transaction_type_id] AS [transaction_type_id], 
-    [Transaction].[remarks] AS [remarks]
-    FROM [dbo].[Transaction] AS [Transaction]</DefiningQuery>
+    [vwItemLogs].[TransactionId] AS [TransactionId], 
+    [vwItemLogs].[TransactionDate] AS [TransactionDate], 
+    [vwItemLogs].[SystemFirstname] AS [SystemFirstname], 
+    [vwItemLogs].[SystemLastname] AS [SystemLastname], 
+    [vwItemLogs].[OtherUserFirstname] AS [OtherUserFirstname], 
+    [vwItemLogs].[OtherUserLastname] AS [OtherUserLastname], 
+    [vwItemLogs].[ItemName] AS [ItemName], 
+    [vwItemLogs].[ItemId] AS [ItemId], 
+    [vwItemLogs].[TransactionType] AS [TransactionType]
+    FROM [dbo].[vwItemLogs] AS [vwItemLogs]</DefiningQuery>
     </EntitySet>
+    <AssociationSet Name="FK_User_User" Association="Self.FK_User_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="User1" EntitySet="User" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

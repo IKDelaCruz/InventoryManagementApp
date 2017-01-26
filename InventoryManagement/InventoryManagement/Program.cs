@@ -1,4 +1,6 @@
-﻿using InventoryManagement.Model;
+﻿using AuthenticationLibrary;
+using InventoryManagement.Model;
+using InventoryManagement.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,11 +17,14 @@ namespace InventoryManagement
         [STAThread]
         static void Main()
         {
-            Singleton.Instance.UserModel.CheckDefaultUser();
+            //new LDAPUserImporter().ImportLDAPUser();
+            //Singleton.Instance.UserModel.CheckDefaultUser();
+            
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            
 
             Application.Run(new frmLauncher());
         }

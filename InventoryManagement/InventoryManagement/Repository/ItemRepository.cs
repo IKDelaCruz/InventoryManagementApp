@@ -28,13 +28,54 @@ namespace InventoryManagement.Repository
                 current_owner = newItem.CurrentOwner,
                 serial = newItem.Serial,
                 status = (int)newItem.Status,
-                asset_tag = newItem.AssetTag
+                asset_tag = newItem.AssetTag,
+                os_id = (int)newItem.OS,
+                processor_id = (int)newItem.Processor,
+                memory_id = (int)newItem.Memory,
+                hdd1_id = (int)newItem.HDD1,
+                hdd2_id = (int)newItem.HDD2,
+
             };
             InventoryDatabase.Items.Add(itm);
 
             InventoryDatabase.SaveChanges();
 
             return itm.id;
+        }
+
+        public bool Update(ItemViewModel newItem, int userId)
+        {
+            var item = InventoryDatabase.Items.FirstOrDefault(h => h.id == newItem.Id);
+
+            if(item != null)
+            {
+                item.name = newItem.Name;
+                item.brand_id = newItem.BrandId;
+                item.description = newItem.Description;
+                item.item_sub_type = (int)newItem.SubType;
+                item.item_type = (int)newItem.Type;
+                item.last_updated = newItem.LastUpdatedDate;
+                item.last_updated_user = newItem.LastUpdatedUserId;
+                item.life_span = newItem.LifeSpan;
+                item.model = newItem.Model;
+                item.purchase_date = newItem.PurchaseDate;
+                item.purchase_price = newItem.PurchasePrice;
+                item.current_value = newItem.Currentvalue;
+                item.current_owner = newItem.CurrentOwner;
+                item.serial = newItem.Serial;
+                item.status = (int)newItem.Status;
+                item.os_id = (int)newItem.OS;
+                item.processor_id = (int)newItem.Processor;
+                item.memory_id = (int)newItem.Memory;
+                item.hdd1_id = (int)newItem.HDD1;
+                item.hdd2_id = (int)newItem.HDD2;
+
+                InventoryDatabase.SaveChanges();
+
+                return true;
+            }
+
+            return false;
         }
         public bool AttachAssetTag(int itemId, string assetTag)
         {
@@ -49,8 +90,7 @@ namespace InventoryManagement.Repository
             }
             return false;
         }
-
-        public bool UpdateItemStatus(int itemId, int itemStatus)
+        public bool UpdateItemStatus(int itemId, int userId, int itemStatus)
         {
             //var item = InventoryDatabase.Items.FirstOrDefault(h => h.id == itemId);
             var item = InventoryDatabase.Items.FirstOrDefault(x => x.id == itemId);
@@ -58,6 +98,7 @@ namespace InventoryManagement.Repository
             if (item != null)
             {
                 item.status = itemStatus;
+                item.current_owner = userId;
                 InventoryDatabase.SaveChanges();
 
                 return true;
@@ -141,7 +182,12 @@ namespace InventoryManagement.Repository
                 PurchaseDate = i.purchase_date ?? DateTime.MinValue,
                 PurchasePrice = i.purchase_price,
                 LifeSpan = i.life_span ?? 5,
-                Currentvalue = i.current_value
+                Currentvalue = i.current_value,
+                OS = (ItemOperatingSystem)(i.os_id ?? 0),
+                Processor = (ItemProcessors)(i.processor_id ?? 0),
+                Memory = (ItemMemory)(i.memory_id ?? 0),
+                HDD1 = (ItemHDDCapacity)(i.hdd1_id ?? 0),
+                HDD2 = (ItemHDDCapacity)(i.hdd2_id ?? 0),
             };
         }
         public string QueryOwner(int id)

@@ -117,4 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean maximus turpis tortor, vitae mollis arcu pellentesque sit amet. Curabitur dapibus ipsum tortor, sed fringilla tortor tempor eu. In hac habitasse platea dictumst. Suspendisse at semper leo, quis convallis nibh. Etiam felis ex, ultrices quis nisl in, faucibus sagittis dui.</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean maximus turpis tortor, vitae mollis arcu pellentesque sit amet. Curabitur dapibus ipsum tortor, sed fringilla tortor tempor eu. In hac habitasse platea dictumst. Suspendisse at semper leo, quis convallis nibh. Etiam felis ex, ultrices quis nisl in, faucibus sagittis dui.</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean maximus turpis tortor, vitae mollis arcu pellentesque sit amet. Curabitur dapibus ipsum tortor, sed fringilla tortor tempor eu. In hac habitasse platea dictumst. Suspendisse at semper leo, quis convallis nibh. Etiam felis ex, ultrices quis nisl in, faucibus sagittis dui.</value>
+  </data>
+  <metadata name="TransactionDate.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="SystemUserName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="TransactionTypeId.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="OtherUserName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>

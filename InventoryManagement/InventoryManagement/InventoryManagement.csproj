@@ -127,6 +127,7 @@
     <Compile Include="Model\ItemModel.cs" />
     <Compile Include="Model\ReturnValueModel.cs" />
     <Compile Include="Model\Singleton.cs" />
+    <Compile Include="Model\TransactionModel.cs" />
     <Compile Include="Model\UserModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -163,16 +164,22 @@
     <Compile Include="Repository\Transaction.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repository\TransactionRepository.cs" />
     <Compile Include="Repository\User.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\UserRepository.cs" />
+    <Compile Include="Repository\vwItemLog.cs">
+      <DependentUpon>dbInventory.tt</DependentUpon>
+    </Compile>
     <Compile Include="Utils\BarcodeGenerator.cs" />
     <Compile Include="Utils\ErrorLogger.cs" />
     <Compile Include="Utils\LDAPAuth.cs" />
+    <Compile Include="Utils\LDAPUserImporter.cs" />
     <Compile Include="Utils\ListViewExtension.cs" />
     <Compile Include="ViewModel\CompanyDepartmentViewModel.cs" />
     <Compile Include="ViewModel\ItemViewModel.cs" />
+    <Compile Include="ViewModel\TransactionViewModel.cs" />
     <Compile Include="ViewModel\UserViewModel.cs" />
     <EmbeddedResource Include="frmLauncher.resx">
       <DependentUpon>frmLauncher.cs</DependentUpon>
