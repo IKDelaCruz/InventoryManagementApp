@@ -2,3 +2,8 @@ C:\Users\ian.delacruz.JAKAGROUP\Documents\GitHub\InventoryManagementApp\Inventor
 C:\Users\ian.delacruz.JAKAGROUP\Documents\GitHub\InventoryManagementApp\InventoryManagement\AuthenticationLibrary\bin\Debug\AuthenticationLibrary.pdb
 C:\Users\ian.delacruz.JAKAGROUP\Documents\GitHub\InventoryManagementApp\InventoryManagement\AuthenticationLibrary\obj\Debug\AuthenticationLibrary.dll
 C:\Users\ian.delacruz.JAKAGROUP\Documents\GitHub\InventoryManagementApp\InventoryManagement\AuthenticationLibrary\obj\Debug\AuthenticationLibrary.pdb
+C:\Users\Pua\Documents\GitHub\InventoryManagementApp\InventoryManagement\AuthenticationLibrary\bin\Debug\AuthenticationLibrary.dll
+C:\Users\Pua\Documents\GitHub\InventoryManagementApp\InventoryManagement\AuthenticationLibrary\bin\Debug\AuthenticationLibrary.pdb
+C:\Users\Pua\Documents\GitHub\InventoryManagementApp\InventoryManagement\AuthenticationLibrary\obj\Debug\AuthenticationLibrary.csprojResolveAssemblyReference.cache
+C:\Users\Pua\Documents\GitHub\InventoryManagementApp\InventoryManagement\AuthenticationLibrary\obj\Debug\AuthenticationLibrary.dll
+C:\Users\Pua\Documents\GitHub\InventoryManagementApp\InventoryManagement\AuthenticationLibrary\obj\Debug\AuthenticationLibrary.pdb

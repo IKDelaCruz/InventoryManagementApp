@@ -57,7 +57,11 @@ namespace InventoryManagement
         private void LoadComboBox()
         {
             //cbxType.DataSource = Enum.GetValues(typeof(PrimaryItemType));
+            cbxType.DisplayMember = "category";
+            cbxType.ValueMember = "id";
+            
             cbxType.DataSource = Singleton.Instance.CategorySubcategoryModel.GetCategories();
+
             cbxSubType.DataSource = Enum.GetValues(typeof(SecondaryItemType));
             cbxStatus.DataSource = Enum.GetValues(typeof(ItemStatus));
 

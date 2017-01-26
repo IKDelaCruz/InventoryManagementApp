@@ -5,31 +5,52 @@ using System.Text;
 using System.Threading.Tasks;
 using InventoryManagement.ViewModel;
 
+
 namespace InventoryManagement.Repository
 {
     public class CategorySubcategoryRepository : BaseRepository
     {
 
-        public List <CategorySubcategoryViewModel> QueryCategories()
+        public List<CategorySubcategoryViewModel> QueryCategories()
         {
-            //var list = new List<CategorySubcategoryViewModel>();
+            var list = new List<CategorySubcategoryViewModel>();
             var categ = InventoryDatabase.Categories.ToList();
-            List<CategorySubcategoryViewModel> cList = new List<CategorySubcategoryViewModel>();
+
+            //var categ = categ1.GroupBy(i => i.id).Select(group => group.First());
+    
+            //List<CategorySubcategoryViewModel> cList = new List<CategorySubcategoryViewModel>();
 
             foreach (Category c in categ)
             {
-                cList.Add(new CategorySubcategoryViewModel
 
+                list.Add(new CategorySubcategoryViewModel
+
+                { id = c.id,
+                  category = c.type });
+                //subcategory = c.subtype 
+               
+            }
+            return list;
+
+        }
+        public List<CompanyDepartmentViewModel> QueryCompanies()
+        {
+            var list = new List<CompanyDepartmentViewModel>();
+
+            var comp = InventoryDatabase.Companies.ToList();
+
+            foreach (Company c in comp)
+            {
+                list.Add(new ViewModel.CompanyDepartmentViewModel
                 {
-                    id = c.id,
-                    category = c.type,
-                    //subcategory = c.subtype
+                    Id = c.id,
+                    Name = c.name
                 });
             }
 
-            return cList;
-
+            return list;
         }
+
 
         public CategorySubcategoryViewModel QueryCategory(int id)
         {
