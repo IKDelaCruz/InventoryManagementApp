@@ -12,6 +12,15 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="50" />
+          <Property Name="subtype" Type="varchar" MaxLength="50" />
+          <Property Name="prefix" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Company">
           <Key>
             <PropertyRef Name="id" />
@@ -129,6 +138,7 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwItemLogs' does not have a
         </Association>
         <EntityContainer Name="InventoryMangementModelStoreContainer">
           <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
@@ -160,6 +170,7 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwItemLogs' does not have a
       <Schema Namespace="InventoryMangementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="InventoryMangementEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Brands" EntityType="InventoryMangementModel.Brand" />
+          <EntitySet Name="Categories" EntityType="InventoryMangementModel.Category" />
           <EntitySet Name="Companies" EntityType="InventoryMangementModel.Company" />
           <EntitySet Name="Departments" EntityType="InventoryMangementModel.Department" />
           <EntitySet Name="Items" EntityType="InventoryMangementModel.Item" />
@@ -178,6 +189,15 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwItemLogs' does not have a
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="subtype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="prefix" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Company">
           <Key>
@@ -304,6 +324,16 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwItemLogs' does not have a
             <EntityTypeMapping TypeName="InventoryMangementModel.Brand">
               <MappingFragment StoreEntitySet="Brand">
                 <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="InventoryMangementModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="prefix" ColumnName="prefix" />
+                <ScalarProperty Name="subtype" ColumnName="subtype" />
+                <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

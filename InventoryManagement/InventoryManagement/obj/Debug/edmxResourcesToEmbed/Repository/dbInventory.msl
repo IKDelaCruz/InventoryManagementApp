@@ -9,6 +9,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="InventoryMangementModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="prefix" ColumnName="prefix" />
+          <ScalarProperty Name="subtype" ColumnName="subtype" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Companies">
       <EntityTypeMapping TypeName="InventoryMangementModel.Company">
         <MappingFragment StoreEntitySet="Company">
