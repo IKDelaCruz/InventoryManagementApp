@@ -5,13 +5,14 @@
     <EntitySet Name="Companies" EntityType="InventoryMangementModel.Company" />
     <EntitySet Name="Departments" EntityType="InventoryMangementModel.Department" />
     <EntitySet Name="Items" EntityType="InventoryMangementModel.Item" />
+    <EntitySet Name="Requests" EntityType="InventoryMangementModel.Request" />
     <EntitySet Name="Transactions" EntityType="InventoryMangementModel.Transaction" />
     <EntitySet Name="Users" EntityType="InventoryMangementModel.User" />
+    <EntitySet Name="vwItemLogs" EntityType="InventoryMangementModel.vwItemLog" />
     <AssociationSet Name="FK_User_User" Association="InventoryMangementModel.FK_User_User">
       <End Role="User" EntitySet="Users" />
       <End Role="User1" EntitySet="Users" />
     </AssociationSet>
-    <EntitySet Name="vwItemLogs" EntityType="InventoryMangementModel.vwItemLog" />
   </EntityContainer>
   <EntityType Name="Brand">
     <Key>
@@ -63,6 +64,21 @@
     <Property Name="hdd1_id" Type="Int32" />
     <Property Name="hdd2_id" Type="Int32" />
   </EntityType>
+  <EntityType Name="Request">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="request_type" Type="Int32" Nullable="false" />
+    <Property Name="request_item_type" Type="Int32" Nullable="false" />
+    <Property Name="request_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="process_date" Type="DateTime" Precision="0" />
+    <Property Name="request_status" Type="Int32" Nullable="false" />
+    <Property Name="requested_by_id" Type="Int32" Nullable="false" />
+    <Property Name="process_by_id" Type="Int32" />
+    <Property Name="remarks" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+  </EntityType>
   <EntityType Name="Transaction">
     <Key>
       <PropertyRef Name="id" />
@@ -74,6 +90,7 @@
     <Property Name="transaction_type_id" Type="Int32" Nullable="false" />
     <Property Name="remarks" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="item_id" Type="Int32" />
+    <Property Name="request_id" Type="Int32" />
   </EntityType>
   <EntityType Name="User">
     <Key>
@@ -90,18 +107,6 @@
     <NavigationProperty Name="User1" Relationship="InventoryMangementModel.FK_User_User" FromRole="User" ToRole="User1" />
     <NavigationProperty Name="User2" Relationship="InventoryMangementModel.FK_User_User" FromRole="User1" ToRole="User" />
   </EntityType>
-  <Association Name="FK_User_User">
-    <End Type="InventoryMangementModel.User" Role="User" Multiplicity="1" />
-    <End Type="InventoryMangementModel.User" Role="User1" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="User1">
-        <PropertyRef Name="id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="vwItemLog">
     <Key>
       <PropertyRef Name="TransactionId" />
@@ -119,4 +124,16 @@
     <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="ItemId" Type="Int32" />
   </EntityType>
+  <Association Name="FK_User_User">
+    <End Type="InventoryMangementModel.User" Role="User" Multiplicity="1" />
+    <End Type="InventoryMangementModel.User" Role="User1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="User1">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>
