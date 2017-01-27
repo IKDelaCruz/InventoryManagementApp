@@ -12,6 +12,8 @@
       <End Role="User1" EntitySet="Users" />
     </AssociationSet>
     <EntitySet Name="vwItemLogs" EntityType="InventoryMangementModel.vwItemLog" />
+    <EntitySet Name="Requests" EntityType="InventoryMangementModel.Request" />
+    <EntitySet Name="Categories" EntityType="InventoryMangementModel.Category" />
   </EntityContainer>
   <EntityType Name="Brand">
     <Key>
@@ -74,6 +76,7 @@
     <Property Name="transaction_type_id" Type="Int32" Nullable="false" />
     <Property Name="remarks" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="item_id" Type="Int32" />
+    <Property Name="request_id" Type="Int32" />
   </EntityType>
   <EntityType Name="User">
     <Key>
@@ -118,5 +121,26 @@
     <Property Name="OtherUserId" Type="Int32" />
     <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="ItemId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Request">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="request_type" Type="Int32" Nullable="false" />
+    <Property Name="request_item_type" Type="Int32" Nullable="false" />
+    <Property Name="request_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="process_date" Type="DateTime" Precision="0" />
+    <Property Name="request_status" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="subtype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="prefix" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

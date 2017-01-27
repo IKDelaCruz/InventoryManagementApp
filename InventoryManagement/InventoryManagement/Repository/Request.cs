@@ -12,15 +12,14 @@ namespace InventoryManagement.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class Transaction
+    public partial class Request
     {
         public int id { get; set; }
-        public System.DateTime transaction_date { get; set; }
-        public int system_user_id { get; set; }
-        public int other_user_id { get; set; }
-        public int transaction_type_id { get; set; }
-        public string remarks { get; set; }
-        public Nullable<int> item_id { get; set; }
-        public Nullable<int> request_id { get; set; }
+        public int user_id { get; set; }
+        public int request_type { get; set; }
+        public int request_item_type { get; set; }
+        public System.DateTime request_date { get; set; }
+        public Nullable<System.DateTime> process_date { get; set; }
+        public int request_status { get; set; }
     }
 }

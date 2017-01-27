@@ -7,6 +7,17 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'InventoryMangement.dbo.Category' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="type" Type="varchar" MaxLength="50" />
+    <Property Name="subtype" Type="varchar" MaxLength="50" />
+    <Property Name="prefix" Type="varchar" MaxLength="10" />
+  </EntityType>
   <EntityType Name="Company">
     <Key>
       <PropertyRef Name="id" />
@@ -50,6 +61,18 @@
     <Property Name="hdd1_id" Type="int" />
     <Property Name="hdd2_id" Type="int" />
   </EntityType>
+  <EntityType Name="Request">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="request_type" Type="int" Nullable="false" />
+    <Property Name="request_item_type" Type="int" Nullable="false" />
+    <Property Name="request_date" Type="date" Nullable="false" />
+    <Property Name="process_date" Type="date" />
+    <Property Name="request_status" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="Transaction">
     <Key>
       <PropertyRef Name="id" />
@@ -61,6 +84,7 @@
     <Property Name="transaction_type_id" Type="int" Nullable="false" />
     <Property Name="remarks" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="item_id" Type="int" />
+    <Property Name="request_id" Type="int" />
   </EntityType>
   <EntityType Name="User">
     <Key>
@@ -111,8 +135,17 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwItemLogs' does not have a
     <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Request" EntityType="Self.Request" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Transaction" EntityType="Self.Transaction" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Category" EntityType="Self.Category" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Category].[id] AS [id], 
+    [Category].[type] AS [type], 
+    [Category].[subtype] AS [subtype], 
+    [Category].[prefix] AS [prefix]
+    FROM [dbo].[Category] AS [Category]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="vwItemLogs" EntityType="Self.vwItemLogs" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [vwItemLogs].[TransactionId] AS [TransactionId], 
