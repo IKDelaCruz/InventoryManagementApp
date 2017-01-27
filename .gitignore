@@ -51,3 +51,5 @@ InventoryManagement/.vs/InventoryManagement/v14/.suo
 *.pdb
 *.cache
 *.suo
+InventoryManagement/InventoryManagement/obj/
+InventoryManagement/InventoryManagement/bin/
