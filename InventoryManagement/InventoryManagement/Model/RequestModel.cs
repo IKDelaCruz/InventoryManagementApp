@@ -1,4 +1,5 @@
 ﻿using InventoryManagement.Repository;
+using InventoryManagement.Utils;
 using InventoryManagement.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -16,9 +17,16 @@ namespace InventoryManagement.Model
             repo = new RequestRepository();
         }
 
-        public int InsertNewRequest(RequestViewModel newRequest)
+        public int CreateNewRequest(RequestViewModel newRequest)
         {
-            return repo.InsertNewRequest(newRequest);
+            var result = repo.InsertNewRequest(newRequest);
+            //SEND EMAIL NOTIFICATION TO USER - richmond.mendoza@jakagroup.com
+            //AND ADMIN - mis@jakagroup.com
+
+            EmailSender.SendEmailNotification("","");
+
+            return result;
+
         }
         public List<RequestViewModel> GetRequestByUserId(int userId)
         {
@@ -28,6 +36,32 @@ namespace InventoryManagement.Model
         public bool UpdateRequest(RequestViewModel req)
         {
             return repo.UpdateRequest(req);
+        }
+        public bool ApproveRequest(int id)
+        {
+            return repo.UpdateRequestStatus(id, RequestStatus.Approved);
+        }
+        public bool DeclineRequest(int id)
+        {
+            return repo.UpdateRequestStatus(id, RequestStatus.Declined);
+        }
+        public RequestViewModel GetRequestById(int requestId)
+        {
+            return repo.GetRequestById(requestId);
+        }
+
+        public List<RequestViewModel> GetRequestByStatus(RequestStatus status)
+        {
+            var result = repo.GetRequestByStatus(status);
+
+
+            foreach (RequestViewModel r in result)
+            {
+                r.UserFullnameEmail = Singleton.Instance.UserModel.GetUsersById(r.UserId).LastnameFirstNameUsername;
+              
+            }
+
+            return result;
         }
     }
 }

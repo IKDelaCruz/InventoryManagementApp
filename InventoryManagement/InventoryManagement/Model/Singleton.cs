@@ -12,6 +12,7 @@ namespace InventoryManagement.Model
 
         public UserModel UserModel { get; set; }
         public ItemModel ItemModel { get; set; }
+        public RequestModel RequestModel { get; set; }
         public TransactionModel TransactionModel { get; set; }
         public CompanyDepartmentModel CompanyDepartmentModel { get; set; }
         public CategorySubcategoryModel CategorySubcategoryModel { get; set; }
@@ -23,6 +24,7 @@ namespace InventoryManagement.Model
             TransactionModel = new TransactionModel();
             CompanyDepartmentModel = new CompanyDepartmentModel();
             CategorySubcategoryModel = new CategorySubcategoryModel();
+            RequestModel = new RequestModel();
         }
         public static Singleton Instance
         {

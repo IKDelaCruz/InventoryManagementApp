@@ -27,8 +27,9 @@ namespace InventoryManagement.ViewModel
     {
         public int Id { get; set; }
         public int UserId { get; set; }
+        public string UserFullnameEmail { get; set; }
         public RequestType RequestType { get; set; }
-        public PrimaryItemType RequestItemType { get; set; }
+        public PrimaryItemType RequestItemPrimaryType { get; set; }
         public SecondaryItemType RequestSecondaryItemType { get; set; }
         public int RequestedById { get; set; }
         public int ProcessedById { get; set; }
@@ -38,6 +39,7 @@ namespace InventoryManagement.ViewModel
         public RequestStatus RequestedStatus { get; set; }
 
         public string Remarks { get; set; }
+        public string AdminRemarks { get; set; }
     }
 }
 

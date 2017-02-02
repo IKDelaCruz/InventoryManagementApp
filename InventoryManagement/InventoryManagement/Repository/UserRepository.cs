@@ -42,9 +42,17 @@ namespace InventoryManagement.Repository
                 department = departmentId
             };
             InventoryDatabase.Users.Add(newUser);
-            InventoryDatabase.SaveChanges();
+            try
+            {
+                InventoryDatabase.SaveChanges();
+                return newUser.id;
+            }
+            catch
+            {
+                return 0;
+            }
 
-            return newUser.id;
+            
         }
 
         public bool UpdateUser(int userId, string firstName, string lastName, int companyId, int departmentId, int userType = 3)
@@ -84,6 +92,26 @@ namespace InventoryManagement.Repository
         public UserViewModel GetUserById(int id)
         {
             var user = InventoryDatabase.Users.FirstOrDefault(h => h.id == id);
+            if (user != null)
+            {
+                return new UserViewModel
+                {
+                    Id = user.id,
+                    Password = user.password,
+                    Username = user.username,
+                    UserType = user.type,
+                    Firstname = user.first_name,
+                    Lastname = user.last_name,
+                    LastnameFirstName = user.last_name + ", " + user.first_name,
+                    LastnameFirstNameUsername = user.last_name + ", " + user.first_name + " (" + user.username + ")"
+                };
+            }
+
+            return null;
+        }
+        public UserViewModel GetUserByUsername(string username)
+        {
+            var user = InventoryDatabase.Users.FirstOrDefault(h => h.username == username);
             if (user != null)
             {
                 return new UserViewModel

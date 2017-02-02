@@ -36,9 +36,9 @@
             // 
             // pbBarcode
             // 
-            this.pbBarcode.Location = new System.Drawing.Point(12, 12);
+            this.pbBarcode.Location = new System.Drawing.Point(12, 40);
             this.pbBarcode.Name = "pbBarcode";
-            this.pbBarcode.Size = new System.Drawing.Size(300, 100);
+            this.pbBarcode.Size = new System.Drawing.Size(300, 72);
             this.pbBarcode.TabIndex = 0;
             this.pbBarcode.TabStop = false;
             // 

@@ -259,5 +259,10 @@ namespace InventoryManagement
             var dlg = new frmManageItem(id, false);
             dlg.ShowDialog();
         }
+
+        private void manageToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new frmManageRequest().ShowDialog();
+        }
     }
 }

@@ -30,7 +30,7 @@ namespace AuthenticationLibrary
         {
             var list = new List<LDAPUserInformation>();
 
-            using (var context = new PrincipalContext(ContextType.Domain, "jakagroup.com", OU))
+            using (var context = new PrincipalContext(ContextType.Domain, "jakagroup.com", OU, "ian.delacruz", "1qa2ws3ed!!!"))
             {
                 using (var searcher = new PrincipalSearcher(new UserPrincipal(context)))
                 {

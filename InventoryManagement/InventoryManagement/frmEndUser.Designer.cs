@@ -51,21 +51,21 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.lblAdminRemarks = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.lblHandedBy = new System.Windows.Forms.Label();
+            this.lblStatus = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
+            this.lblDateRequested = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.lblRequestType = new System.Windows.Forms.Label();
+            this.lblItemType = new System.Windows.Forms.Label();
+            this.lblDateNeeded = new System.Windows.Forms.Label();
+            this.lblUserRemarks = new System.Windows.Forms.Label();
             this.lbRequest = new System.Windows.Forms.ListBox();
             this.pnlMain.SuspendLayout();
             this.tbMain.SuspendLayout();
@@ -97,6 +97,7 @@
             this.tbMain.SelectedIndex = 0;
             this.tbMain.Size = new System.Drawing.Size(551, 397);
             this.tbMain.TabIndex = 1;
+            this.tbMain.SelectedIndexChanged += new System.EventHandler(this.tbMain_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -179,12 +180,11 @@
             this.label3.TabIndex = 52;
             this.label3.Text = "Request Type";
             // 
-            // txtAssetTag
+            // txtRemarks
             // 
-            this.txtRemarks.Enabled = false;
             this.txtRemarks.Location = new System.Drawing.Point(118, 168);
             this.txtRemarks.Multiline = true;
-            this.txtRemarks.Name = "txtAssetTag";
+            this.txtRemarks.Name = "txtRemarks";
             this.txtRemarks.Size = new System.Drawing.Size(312, 51);
             this.txtRemarks.TabIndex = 48;
             // 
@@ -292,13 +292,13 @@
             // 
             this.groupBox3.Controls.Add(this.label18);
             this.groupBox3.Controls.Add(this.label17);
-            this.groupBox3.Controls.Add(this.label12);
+            this.groupBox3.Controls.Add(this.lblAdminRemarks);
             this.groupBox3.Controls.Add(this.label16);
-            this.groupBox3.Controls.Add(this.label13);
-            this.groupBox3.Controls.Add(this.label14);
-            this.groupBox3.Location = new System.Drawing.Point(190, 202);
+            this.groupBox3.Controls.Add(this.lblHandedBy);
+            this.groupBox3.Controls.Add(this.lblStatus);
+            this.groupBox3.Location = new System.Drawing.Point(139, 202);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(328, 125);
+            this.groupBox3.Size = new System.Drawing.Size(379, 125);
             this.groupBox3.TabIndex = 75;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Request Status";
@@ -306,81 +306,75 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(18, 19);
+            this.label18.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(20, 19);
             this.label18.Name = "label18";
-            this.label18.Padding = new System.Windows.Forms.Padding(6);
-            this.label18.Size = new System.Drawing.Size(53, 27);
+            this.label18.Size = new System.Drawing.Size(41, 15);
             this.label18.TabIndex = 66;
             this.label18.Text = "Status";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(18, 46);
+            this.label17.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(20, 46);
             this.label17.Name = "label17";
-            this.label17.Padding = new System.Windows.Forms.Padding(6);
-            this.label17.Size = new System.Drawing.Size(80, 27);
+            this.label17.Size = new System.Drawing.Size(69, 15);
             this.label17.TabIndex = 67;
             this.label17.Text = "Handled By";
             // 
-            // label12
+            // lblAdminRemarks
             // 
-            this.label12.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(128, 71);
-            this.label12.Name = "label12";
-            this.label12.Padding = new System.Windows.Forms.Padding(6);
-            this.label12.Size = new System.Drawing.Size(176, 65);
-            this.label12.TabIndex = 71;
-            this.label12.Text = "-";
+            this.lblAdminRemarks.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdminRemarks.Location = new System.Drawing.Point(130, 71);
+            this.lblAdminRemarks.Name = "lblAdminRemarks";
+            this.lblAdminRemarks.Size = new System.Drawing.Size(228, 65);
+            this.lblAdminRemarks.TabIndex = 71;
+            this.lblAdminRemarks.Text = "-";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(18, 72);
+            this.label16.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(20, 72);
             this.label16.Name = "label16";
-            this.label16.Padding = new System.Windows.Forms.Padding(6);
-            this.label16.Size = new System.Drawing.Size(66, 27);
+            this.label16.Size = new System.Drawing.Size(54, 15);
             this.label16.TabIndex = 68;
             this.label16.Text = "Remarks";
             // 
-            // label13
+            // lblHandedBy
             // 
-            this.label13.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(128, 46);
-            this.label13.Name = "label13";
-            this.label13.Padding = new System.Windows.Forms.Padding(6);
-            this.label13.Size = new System.Drawing.Size(176, 27);
-            this.label13.TabIndex = 70;
-            this.label13.Text = "-";
+            this.lblHandedBy.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHandedBy.Location = new System.Drawing.Point(130, 46);
+            this.lblHandedBy.Name = "lblHandedBy";
+            this.lblHandedBy.Size = new System.Drawing.Size(176, 27);
+            this.lblHandedBy.TabIndex = 70;
+            this.lblHandedBy.Text = "-";
             // 
-            // label14
+            // lblStatus
             // 
-            this.label14.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(128, 19);
-            this.label14.Name = "label14";
-            this.label14.Padding = new System.Windows.Forms.Padding(6);
-            this.label14.Size = new System.Drawing.Size(176, 27);
-            this.label14.TabIndex = 69;
-            this.label14.Text = "-";
+            this.lblStatus.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatus.Location = new System.Drawing.Point(130, 19);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(176, 27);
+            this.lblStatus.TabIndex = 69;
+            this.lblStatus.Text = "-";
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.label19);
+            this.groupBox2.Controls.Add(this.lblDateRequested);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label20);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Location = new System.Drawing.Point(190, 16);
+            this.groupBox2.Controls.Add(this.lblRequestType);
+            this.groupBox2.Controls.Add(this.lblItemType);
+            this.groupBox2.Controls.Add(this.lblDateNeeded);
+            this.groupBox2.Controls.Add(this.lblUserRemarks);
+            this.groupBox2.Location = new System.Drawing.Point(139, 16);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(328, 180);
+            this.groupBox2.Size = new System.Drawing.Size(379, 180);
             this.groupBox2.TabIndex = 74;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Request Deails";
@@ -388,107 +382,97 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(18, 19);
+            this.label5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(20, 19);
             this.label5.Name = "label5";
-            this.label5.Padding = new System.Windows.Forms.Padding(6);
-            this.label5.Size = new System.Drawing.Size(45, 27);
+            this.label5.Size = new System.Drawing.Size(31, 15);
             this.label5.TabIndex = 59;
             this.label5.Text = "Type";
             // 
-            // label19
+            // lblDateRequested
             // 
-            this.label19.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(128, 99);
-            this.label19.Name = "label19";
-            this.label19.Padding = new System.Windows.Forms.Padding(6);
-            this.label19.Size = new System.Drawing.Size(176, 27);
-            this.label19.TabIndex = 73;
-            this.label19.Text = "-";
+            this.lblDateRequested.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDateRequested.Location = new System.Drawing.Point(130, 99);
+            this.lblDateRequested.Name = "lblDateRequested";
+            this.lblDateRequested.Size = new System.Drawing.Size(176, 27);
+            this.lblDateRequested.TabIndex = 73;
+            this.lblDateRequested.Text = "-";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(18, 126);
+            this.label6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(20, 126);
             this.label6.Name = "label6";
-            this.label6.Padding = new System.Windows.Forms.Padding(6);
-            this.label6.Size = new System.Drawing.Size(66, 27);
+            this.label6.Size = new System.Drawing.Size(54, 15);
             this.label6.TabIndex = 58;
             this.label6.Text = "Remarks";
             // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(18, 99);
+            this.label20.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(20, 99);
             this.label20.Name = "label20";
-            this.label20.Padding = new System.Windows.Forms.Padding(6);
-            this.label20.Size = new System.Drawing.Size(107, 27);
+            this.label20.Size = new System.Drawing.Size(91, 15);
             this.label20.TabIndex = 72;
             this.label20.Text = "Date Requested";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(18, 46);
+            this.label4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(20, 46);
             this.label4.Name = "label4";
-            this.label4.Padding = new System.Windows.Forms.Padding(6);
-            this.label4.Size = new System.Drawing.Size(68, 27);
+            this.label4.Size = new System.Drawing.Size(55, 15);
             this.label4.TabIndex = 60;
-            this.label4.Text = "Sub Type";
+            this.label4.Text = "ItemType";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(18, 72);
+            this.label2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(20, 72);
             this.label2.Name = "label2";
-            this.label2.Padding = new System.Windows.Forms.Padding(6);
-            this.label2.Size = new System.Drawing.Size(92, 27);
+            this.label2.Size = new System.Drawing.Size(75, 15);
             this.label2.TabIndex = 61;
             this.label2.Text = "Date Needed";
             // 
-            // label9
+            // lblRequestType
             // 
-            this.label9.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(128, 19);
-            this.label9.Name = "label9";
-            this.label9.Padding = new System.Windows.Forms.Padding(6);
-            this.label9.Size = new System.Drawing.Size(176, 27);
-            this.label9.TabIndex = 62;
-            this.label9.Text = "-";
+            this.lblRequestType.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRequestType.Location = new System.Drawing.Point(130, 19);
+            this.lblRequestType.Name = "lblRequestType";
+            this.lblRequestType.Size = new System.Drawing.Size(176, 27);
+            this.lblRequestType.TabIndex = 62;
+            this.lblRequestType.Text = "-";
             // 
-            // label8
+            // lblItemType
             // 
-            this.label8.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(128, 46);
-            this.label8.Name = "label8";
-            this.label8.Padding = new System.Windows.Forms.Padding(6);
-            this.label8.Size = new System.Drawing.Size(176, 27);
-            this.label8.TabIndex = 63;
-            this.label8.Text = "-";
+            this.lblItemType.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblItemType.Location = new System.Drawing.Point(130, 46);
+            this.lblItemType.Name = "lblItemType";
+            this.lblItemType.Size = new System.Drawing.Size(176, 27);
+            this.lblItemType.TabIndex = 63;
+            this.lblItemType.Text = "-";
             // 
-            // label7
+            // lblDateNeeded
             // 
-            this.label7.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(128, 72);
-            this.label7.Name = "label7";
-            this.label7.Padding = new System.Windows.Forms.Padding(6);
-            this.label7.Size = new System.Drawing.Size(176, 27);
-            this.label7.TabIndex = 64;
-            this.label7.Text = "-";
+            this.lblDateNeeded.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDateNeeded.Location = new System.Drawing.Point(130, 72);
+            this.lblDateNeeded.Name = "lblDateNeeded";
+            this.lblDateNeeded.Size = new System.Drawing.Size(176, 27);
+            this.lblDateNeeded.TabIndex = 64;
+            this.lblDateNeeded.Text = "-";
             // 
-            // label11
+            // lblUserRemarks
             // 
-            this.label11.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(128, 126);
-            this.label11.Name = "label11";
-            this.label11.Padding = new System.Windows.Forms.Padding(6);
-            this.label11.Size = new System.Drawing.Size(176, 65);
-            this.label11.TabIndex = 65;
-            this.label11.Text = "-";
+            this.lblUserRemarks.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserRemarks.Location = new System.Drawing.Point(130, 126);
+            this.lblUserRemarks.Name = "lblUserRemarks";
+            this.lblUserRemarks.Size = new System.Drawing.Size(228, 65);
+            this.lblUserRemarks.TabIndex = 65;
+            this.lblUserRemarks.Text = "-";
             // 
             // lbRequest
             // 
@@ -496,8 +480,9 @@
             this.lbRequest.ItemHeight = 15;
             this.lbRequest.Location = new System.Drawing.Point(23, 23);
             this.lbRequest.Name = "lbRequest";
-            this.lbRequest.Size = new System.Drawing.Size(148, 304);
+            this.lbRequest.Size = new System.Drawing.Size(110, 304);
             this.lbRequest.TabIndex = 0;
+            this.lbRequest.SelectedIndexChanged += new System.EventHandler(this.lbRequest_SelectedIndexChanged);
             // 
             // frmEndUser
             // 
@@ -545,19 +530,19 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label lblUserRemarks;
+        private System.Windows.Forms.Label lblDateNeeded;
+        private System.Windows.Forms.Label lblItemType;
+        private System.Windows.Forms.Label lblRequestType;
+        private System.Windows.Forms.Label lblAdminRemarks;
+        private System.Windows.Forms.Label lblHandedBy;
+        private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label lblDateRequested;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox2;

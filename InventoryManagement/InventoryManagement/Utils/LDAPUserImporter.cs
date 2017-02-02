@@ -22,7 +22,9 @@ namespace InventoryManagement.Utils
                 {
                     foreach(LDAPUserInformation ui in l.Members)
                     {
-                        Singleton.Instance.UserModel.CreateNewUser(ui.Username, "", UserModel.UserType.User, ui.Firstname, ui.Lastname, departmentId);
+                        var existing = Singleton.Instance.UserModel.GetUsersByUsername(ui.Username);
+                        if(existing == null)
+                            Singleton.Instance.UserModel.CreateNewUser(ui.Username, "", UserModel.UserType.User, ui.Firstname, ui.Lastname, departmentId);
                     }
                 }
             }

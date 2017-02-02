@@ -17,7 +17,7 @@ namespace InventoryManagement
         [STAThread]
         static void Main()
         {
-            //new LDAPUserImporter().ImportLDAPUser();
+            new LDAPUserImporter().ImportLDAPUser();
             //Singleton.Instance.UserModel.CheckDefaultUser();
             
 

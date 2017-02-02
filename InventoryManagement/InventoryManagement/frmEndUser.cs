@@ -32,26 +32,39 @@ namespace InventoryManagement
             request.RequestedDate = DateTime.Now;
             request.RequestType = (RequestType)cbxRequestType.SelectedItem;
             request.RequestedStatus = RequestStatus.New;
-            request.RequestItemType = (PrimaryItemType)cbxType.SelectedItem;
+            request.RequestItemPrimaryType = (PrimaryItemType)cbxType.SelectedItem;
             request.RequestSecondaryItemType = (SecondaryItemType)cbxSubType.SelectedItem;
             request.NeededDate = dtpNeededDate.Value;
             request.UserId = (int)cbxUsers.SelectedValue;
-            request.Remarks = txtRemarks.ToString();
+            request.Remarks = txtRemarks.Text.ToString();
 
-            
+            var result = Singleton.Instance.RequestModel.CreateNewRequest(request);
+
+            if (result > 0)
+            {
+                MessageBox.Show("Request successfully submitted!");
+                ClearDisplay();
+            }
         }
-
+        private void ClearDisplay()
+        {
+            cbxRequestType.SelectedIndex = 0;
+            cbxType.SelectedIndex = 0;
+            cbxSubType.SelectedIndex = 0;
+            dtpNeededDate.Value = DateTime.Now;
+            cbxUsers.SelectedIndex = 0;
+            txtRemarks.Text = "";
+        }
         private void frmEndUser_Load(object sender, EventArgs e)
         {
-            for (int x = 0; x < 100; x++)
-                lbRequest.Items.Add("REQ #" + x.ToString());
+          
 
         }
         private void LoadComboBox()
         {
-            cbxRequestType.DataSource = Enum.GetValues(typeof(PrimaryItemType));
+            cbxRequestType.DataSource = Enum.GetValues(typeof(RequestType));
             cbxSubType.DataSource = Enum.GetValues(typeof(SecondaryItemType));
-            cbxType.DataSource = Enum.GetValues(typeof(RequestType));
+            cbxType.DataSource = Enum.GetValues(typeof(PrimaryItemType));
 
             cbxUsers.ValueMember = "Id";
             cbxUsers.DisplayMember = "LastnameFirstNameUsername";
@@ -62,6 +75,48 @@ namespace InventoryManagement
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        private void DisplayRequest()
+        {
+            var user = Singleton.Instance.UserModel.CurrentUser;
+            var requests = Singleton.Instance.RequestModel.GetRequestByUserId(user.Id);
+            lbRequest.Items.Clear();
+
+            foreach(RequestViewModel rv in requests)
+            {
+                lbRequest.Items.Add("REQ#" + rv.Id.ToString().PadLeft(7, '0'));
+            }
+        }
+
+        private void tbMain_TabIndexChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void tbMain_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tbMain.SelectedIndex == 1)
+                DisplayRequest();
+        }
+
+        private void lbRequest_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var item = lbRequest.SelectedItem.ToString();
+            var id = Convert.ToInt32(item.Replace("REQ#", ""));
+
+            var requestInfo = Singleton.Instance.RequestModel.GetRequestById(id);
+
+            if(requestInfo != null)
+            {
+                lblRequestType.Text = requestInfo.RequestType.ToString();
+                lblItemType.Text = requestInfo.RequestSecondaryItemType.ToString();
+                lblDateNeeded.Text = requestInfo.NeededDate.ToString();
+                lblDateRequested.Text = requestInfo.RequestedDate.ToString();
+                lblUserRemarks.Text = requestInfo.Remarks;
+                lblStatus.Text = requestInfo.RequestedStatus.ToString();
+                lblHandedBy.Text = requestInfo.ProcessedById != 0 ? Singleton.Instance.UserModel.GetUsersById(requestInfo.ProcessedById).LastnameFirstName : "System";
+                lblAdminRemarks.Text = requestInfo.AdminRemarks;
+
+            }
         }
     }
 }

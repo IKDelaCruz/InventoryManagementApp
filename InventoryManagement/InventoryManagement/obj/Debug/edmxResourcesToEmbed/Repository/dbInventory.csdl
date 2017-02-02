@@ -81,13 +81,16 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="user_id" Type="Int32" Nullable="false" />
     <Property Name="request_type" Type="Int32" Nullable="false" />
-    <Property Name="request_item_type" Type="Int32" Nullable="false" />
-    <Property Name="request_date" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="process_date" Type="DateTime" Precision="0" />
+    <Property Name="request_item_primary_type" Type="Int32" Nullable="false" />
+    <Property Name="request_item_secondary_type" Type="Int32" Nullable="false" />
+    <Property Name="request_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="process_date" Type="DateTime" Precision="3" />
     <Property Name="request_status" Type="Int32" Nullable="false" />
     <Property Name="requested_by_id" Type="Int32" Nullable="false" />
     <Property Name="process_by_id" Type="Int32" />
     <Property Name="remarks" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="need_date" Type="DateTime" Precision="3" />
+    <Property Name="admin_remarks" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Transaction">
     <Key>

@@ -68,13 +68,16 @@
     <EntitySetMapping Name="Requests">
       <EntityTypeMapping TypeName="InventoryMangementModel.Request">
         <MappingFragment StoreEntitySet="Request">
+          <ScalarProperty Name="admin_remarks" ColumnName="admin_remarks" />
+          <ScalarProperty Name="need_date" ColumnName="need_date" />
           <ScalarProperty Name="remarks" ColumnName="remarks" />
           <ScalarProperty Name="process_by_id" ColumnName="process_by_id" />
           <ScalarProperty Name="requested_by_id" ColumnName="requested_by_id" />
           <ScalarProperty Name="request_status" ColumnName="request_status" />
           <ScalarProperty Name="process_date" ColumnName="process_date" />
           <ScalarProperty Name="request_date" ColumnName="request_date" />
-          <ScalarProperty Name="request_item_type" ColumnName="request_item_type" />
+          <ScalarProperty Name="request_item_secondary_type" ColumnName="request_item_secondary_type" />
+          <ScalarProperty Name="request_item_primary_type" ColumnName="request_item_primary_type" />
           <ScalarProperty Name="request_type" ColumnName="request_type" />
           <ScalarProperty Name="user_id" ColumnName="user_id" />
           <ScalarProperty Name="id" ColumnName="id" />

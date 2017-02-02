@@ -59,6 +59,10 @@ namespace InventoryManagement.Model
         {
             return userRepository.GetUserById(id);
         }
+        public UserViewModel GetUsersByUsername(string username)
+        {
+            return userRepository.GetUserByUsername(username);
+        }
         public List<UserViewModel> GetUsersByDepartmentId(int departmentId)
         {
             return userRepository.GetUsersByDepartmentId(departmentId);

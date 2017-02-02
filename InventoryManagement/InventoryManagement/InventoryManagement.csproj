@@ -89,6 +89,12 @@
     <Compile Include="frmLauncher.Designer.cs">
       <DependentUpon>frmLauncher.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmManageRequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManageRequest.Designer.cs">
+      <DependentUpon>frmManageRequest.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmManageItem.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,6 +195,7 @@
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
     <Compile Include="Utils\BarcodeGenerator.cs" />
+    <Compile Include="Utils\EmailSender.cs" />
     <Compile Include="Utils\ErrorLogger.cs" />
     <Compile Include="Utils\LDAPAuth.cs" />
     <Compile Include="Utils\LDAPUserImporter.cs" />
@@ -204,6 +211,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLauncher.resx">
       <DependentUpon>frmLauncher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmManageRequest.resx">
+      <DependentUpon>frmManageRequest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmManageItem.resx">
       <DependentUpon>frmManageItem.cs</DependentUpon>
