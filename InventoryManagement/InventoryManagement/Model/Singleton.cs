@@ -17,8 +17,11 @@ namespace InventoryManagement.Model
         public CompanyDepartmentModel CompanyDepartmentModel { get; set; }
         public CategorySubcategoryModel CategorySubcategoryModel { get; set; }
 
+        public CategoryModel CategoryModel { get; set; }
+
         public Singleton()
         {
+            CategoryModel = new CategoryModel();
             UserModel = new UserModel();
             ItemModel = new ItemModel();
             TransactionModel = new TransactionModel();

@@ -46,3 +46,5 @@ C:\Users\ian.delacruz.JAKAGROUP\Documents\GitHub\InventoryManagementApp\Inventor
 C:\Users\ian.delacruz.JAKAGROUP\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.exe
 C:\Users\ian.delacruz.JAKAGROUP\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.pdb
 C:\Users\ian.delacruz.JAKAGROUP\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.frmManageRequest.resources
+C:\Users\Pua\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.frmManageRequest.resources
+C:\Users\Pua\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.frmManageItemType.resources

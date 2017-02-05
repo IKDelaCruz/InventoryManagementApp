@@ -11,71 +11,90 @@ namespace InventoryManagement.Repository
     public class CategorySubcategoryRepository : BaseRepository
     {
 
-        public List<CategorySubcategoryViewModel> QueryCategories()
+
+
+        public List<SubcategoryViewModel> GetSubcategoriesByType(int categ)
         {
-            var list = new List<CategorySubcategoryViewModel>();
-            var categ = InventoryDatabase.Categories.ToList();
+            var list = new List<SubcategoryViewModel>();
 
-            //var categ = categ1.GroupBy(i => i.id).Select(group => group.First());
-    
-            //List<CategorySubcategoryViewModel> cList = new List<CategorySubcategoryViewModel>();
-
-            foreach (Category c in categ)
+            var sub = InventoryDatabase.ItemSubtypes.Where(x => x.type_id == categ).ToList();
+            foreach (ItemSubtype s in sub)
             {
-
-                list.Add(new CategorySubcategoryViewModel
-
-                { id = c.id,
-                  category = c.type });
-                //subcategory = c.subtype 
-               
-            }
-            return list;
-
-        }
-        public List<CompanyDepartmentViewModel> QueryCompanies()
-        {
-            var list = new List<CompanyDepartmentViewModel>();
-
-            var comp = InventoryDatabase.Companies.ToList();
-
-            foreach (Company c in comp)
-            {
-                list.Add(new ViewModel.CompanyDepartmentViewModel
+                list.Add(new ViewModel.SubcategoryViewModel
                 {
-                    Id = c.id,
-                    Name = c.name
+                    id = s.id,
+                    subcategory = s.subtype,
+                    prefix = s.prefix
+                    
                 });
             }
 
             return list;
         }
 
-
-        public CategorySubcategoryViewModel QueryCategory(int id)
+        public SubcategoryViewModel QuerySubcategory(int id)
         {
-            var categ = InventoryDatabase.Categories.FirstOrDefault(h => h.id == id);
+            var categ = InventoryDatabase.ItemSubtypes.FirstOrDefault(h => h.id == id);
             if (categ != null)
-                return new CategorySubcategoryViewModel
+                return new ViewModel.SubcategoryViewModel
                 {
                     id = categ.id,
-                    category = categ.type,
-                    subcategory = categ.subtype
+                    subcategory = categ.subtype,
+
+
                 };
             else
                 return null;
         }
 
-        public int CreateCategorySubcategory(string type, string subtype, string prefix)
+
+        //public int CreateCategorySubcategory(string type)
+        //{
+        //    var c = new ItemType { type = type };
+
+        //    InventoryDatabase.ItemTypes.Add(c);
+
+        //    if (InventoryDatabase.SaveChanges() > 0)
+        //        return c.id;
+        //    return 0;
+        //}
+
+        public bool UpdateItemType(int id, string type)
         {
-            var c = new Category { type = type, subtype = subtype, prefix = prefix };
+            var categ = InventoryDatabase.ItemTypes.FirstOrDefault(h => h.id == id);
+            if (categ != null)
+            {
+                categ.type = type;
+       
+                InventoryDatabase.SaveChanges();
 
-            InventoryDatabase.Categories.Add(c);
+                return true;
+            }
 
-            if (InventoryDatabase.SaveChanges() > 0)
-                return c.id;
-            return 0;
+            return false;
         }
 
+
+
+        public int CreateNewType(string type)
+        {
+
+            ItemType newType = new ItemType
+            {
+                type = type
+            };
+            InventoryDatabase.ItemTypes.Add(newType);
+            try
+            {
+                InventoryDatabase.SaveChanges();
+                return newType.id;
+            }
+            catch
+            {
+                return 0;
+            }
+
+
+        }
     }
 }

@@ -10,16 +10,31 @@ namespace InventoryManagement.Model
 {
     public class ItemModel : BaseModel
     {
+        CategoryRepository catRepository;
         ItemRepository itemRepostory;
+        CategorySubcategoryRepository catSubRepository;
+
         public ItemModel()
         {
+            catRepository = new CategoryRepository();
             itemRepostory = new ItemRepository();
+            catSubRepository = new CategorySubcategoryRepository();
         }
         public ReturnValueModel CreateNewItem(ItemViewModel newItem, int userId)
         {
             var rv = new ReturnValueModel();
             var newItemId = itemRepostory.Insert(newItem, userId);
-            var assetTag = GenerateAssetTag(newItem.Type, newItem.SubType, newItemId);
+
+
+            var catRepo = new CategoryRepository();
+            var itemType = catRepo.QueryCategory(newItem.TypeId);
+            var itemSubtype = catSubRepository.QuerySubcategory(newItem.SubTypeId);
+
+
+
+
+
+            var assetTag = GenerateAssetTag(itemType.category, itemSubtype.subcategory, newItemId);
 
             rv.Success = itemRepostory.AttachAssetTag(newItemId, assetTag);
             if (rv.Success)
@@ -53,9 +68,9 @@ namespace InventoryManagement.Model
 
             return result;
         }
-        public string GenerateAssetTag(PrimaryItemType type, SecondaryItemType subType, int itemId)
+        public string GenerateAssetTag(string type, string subType, int itemId)
         {
-            return type.ToString().Substring(0, 1).ToUpper() + subType.ToString().Substring(0, 2).ToUpper() + itemId.ToString("D8");
+            return type.Substring(0, 1).ToUpper() + subType.Substring(0, 2).ToUpper() + itemId.ToString("D8");
         }
         public List<BrandViewModel> GetBrands()
         {

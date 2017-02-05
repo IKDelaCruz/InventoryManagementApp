@@ -16,8 +16,8 @@ namespace InventoryManagement.Repository
                 name = newItem.Name,
                 brand_id = newItem.BrandId,
                 description = newItem.Description,
-                item_sub_type = (int)newItem.SubType,
-                item_type = (int)newItem.Type,
+                item_sub_type_id = (int)newItem.SubTypeId,
+                item_type_id = (int)newItem.TypeId,
                 last_updated = newItem.LastUpdatedDate,
                 last_updated_user = newItem.LastUpdatedUserId,
                 life_span = newItem.LifeSpan,
@@ -52,8 +52,8 @@ namespace InventoryManagement.Repository
                 item.name = newItem.Name;
                 item.brand_id = newItem.BrandId;
                 item.description = newItem.Description;
-                item.item_sub_type = (int)newItem.SubType;
-                item.item_type = (int)newItem.Type;
+                item.item_sub_type_id = (int)newItem.SubTypeId;
+                item.item_type_id = (int)newItem.TypeId;
                 item.last_updated = newItem.LastUpdatedDate;
                 item.last_updated_user = newItem.LastUpdatedUserId;
                 item.life_span = newItem.LifeSpan;
@@ -145,8 +145,10 @@ namespace InventoryManagement.Repository
                     AssetTag = i.asset_tag,
                     Name = i.name,
                     Description = i.description,
-                    Type = (PrimaryItemType)i.item_type,
-                    SubType = (SecondaryItemType)i.item_sub_type,
+                    TypeId = Convert.ToInt32(i.item_type_id),
+                    Type = i.ItemType.type,
+                    SubTypeId = Convert.ToInt32(i.item_sub_type_id),
+                    SubType = i.ItemSubtype.subtype,
                     BrandId = i.brand_id ?? 13,
                     Model = i.model,
                     Serial = i.serial,
@@ -171,8 +173,10 @@ namespace InventoryManagement.Repository
                 AssetTag = i.asset_tag,
                 Name = i.name,
                 Description = i.description,
-                Type = (PrimaryItemType)i.item_type,
-                SubType = (SecondaryItemType)i.item_sub_type,
+                TypeId = i.item_type_id,
+                Type = i.ItemType.type,
+                SubTypeId = i.item_sub_type_id,
+                SubType = i.ItemSubtype.subtype,
                 BrandId = i.brand_id ?? 13,
                 Model = i.model,
                 Serial = i.serial,

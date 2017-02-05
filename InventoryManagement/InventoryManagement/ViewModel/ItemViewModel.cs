@@ -108,8 +108,10 @@ namespace InventoryManagement.ViewModel
         public string AssetTag { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public PrimaryItemType Type { get; set; }
-        public SecondaryItemType SubType { get; set; }
+        public int TypeId { get; set; }
+        public string Type { get; set; }
+        public int SubTypeId { get; set; }
+        public string SubType { get; set; }
         public string Brand { get; set; }
         public int BrandId { get; set; }
         public string Model { get; set; }
