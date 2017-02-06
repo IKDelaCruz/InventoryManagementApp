@@ -89,6 +89,12 @@
     <Compile Include="frmLauncher.Designer.cs">
       <DependentUpon>frmLauncher.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmManageItemType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManageItemType.Designer.cs">
+      <DependentUpon>frmManageItemType.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmManageRequest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +141,7 @@
       <DependentUpon>frmPrinter.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\BaseModel.cs" />
+    <Compile Include="Model\CategoryModel.cs" />
     <Compile Include="Model\CategorySubcategoryModel.cs" />
     <Compile Include="Model\CompanyDepartmentModel.cs" />
     <Compile Include="Model\ItemModel.cs" />
@@ -149,9 +156,7 @@
     <Compile Include="Repository\Brand.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repository\Category.cs">
-      <DependentUpon>dbInventory.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Repository\CategoryRepository.cs" />
     <Compile Include="Repository\CategorySubcategory.cs" />
     <Compile Include="Repository\Company.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
@@ -179,6 +184,12 @@
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\ItemRepository.cs" />
+    <Compile Include="Repository\ItemSubtype.cs">
+      <DependentUpon>dbInventory.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\ItemType.cs">
+      <DependentUpon>dbInventory.tt</DependentUpon>
+    </Compile>
     <Compile Include="Repository\Request.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
@@ -200,10 +211,11 @@
     <Compile Include="Utils\LDAPAuth.cs" />
     <Compile Include="Utils\LDAPUserImporter.cs" />
     <Compile Include="Utils\ListViewExtension.cs" />
-    <Compile Include="ViewModel\CategorySubcategoryViewModel.cs" />
+    <Compile Include="ViewModel\CategoryViewModel.cs" />
     <Compile Include="ViewModel\CompanyDepartmentViewModel.cs" />
     <Compile Include="ViewModel\ItemViewModel.cs" />
     <Compile Include="ViewModel\RequestViewModel.cs" />
+    <Compile Include="ViewModel\SubcategoryViewModel.cs" />
     <Compile Include="ViewModel\TransactionViewModel.cs" />
     <Compile Include="ViewModel\UserViewModel.cs" />
     <EmbeddedResource Include="frmEndUser.resx">
@@ -211,6 +223,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLauncher.resx">
       <DependentUpon>frmLauncher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmManageItemType.resx">
+      <DependentUpon>frmManageItemType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmManageRequest.resx">
       <DependentUpon>frmManageRequest.cs</DependentUpon>

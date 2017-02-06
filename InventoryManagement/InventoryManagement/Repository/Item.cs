@@ -18,8 +18,8 @@ namespace InventoryManagement.Repository
         public string asset_tag { get; set; }
         public string name { get; set; }
         public string description { get; set; }
-        public int item_type { get; set; }
-        public int item_sub_type { get; set; }
+        public int item_type_id { get; set; }
+        public int item_sub_type_id { get; set; }
         public decimal purchase_price { get; set; }
         public decimal current_value { get; set; }
         public Nullable<System.DateTime> purchase_date { get; set; }
@@ -36,5 +36,8 @@ namespace InventoryManagement.Repository
         public Nullable<int> memory_id { get; set; }
         public Nullable<int> hdd1_id { get; set; }
         public Nullable<int> hdd2_id { get; set; }
+    
+        public virtual ItemSubtype ItemSubtype { get; set; }
+        public virtual ItemType ItemType { get; set; }
     }
 }

@@ -9,22 +9,32 @@ using System.Collections.Generic;
 
 namespace InventoryManagement.Model
 {
-     public class CategorySubcategoryModel : BaseModel
+    public class CategorySubcategoryModel : BaseModel
     {
         CategorySubcategoryRepository csR;
+        CategoryRepository cR;
 
         public CategorySubcategoryModel()
         {
             csR = new CategorySubcategoryRepository();
+            cR = new CategoryRepository();
         }
-        public CategorySubcategoryViewModel GetCategory(int id)
+
+        public SubcategoryViewModel GetSubcategory(int id)
         {
-            return csR.QueryCategory(id);
+            return csR.QuerySubcategory(id);
         }
-        public List<CategorySubcategoryViewModel> GetCategories()
+        public List<SubcategoryViewModel> GetSubcategoriesByType(int categ)
         {
-            return csR.QueryCategories();
+            return csR.GetSubcategoriesByType(categ);
         }
-      
+        //public CategoryViewModel SaveItemType(int id)
+        //{
+        //    //return csR.CreateCategorySubcategory(id);
+        //}
+
+
+
     }
+    
 }

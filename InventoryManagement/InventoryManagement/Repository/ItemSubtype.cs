@@ -12,11 +12,21 @@ namespace InventoryManagement.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class Category
+    public partial class ItemSubtype
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ItemSubtype()
+        {
+            this.Items = new HashSet<Item>();
+        }
+    
         public int id { get; set; }
-        public string type { get; set; }
+        public int type_id { get; set; }
         public string subtype { get; set; }
         public string prefix { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Item> Items { get; set; }
+        public virtual ItemType ItemType { get; set; }
     }
 }

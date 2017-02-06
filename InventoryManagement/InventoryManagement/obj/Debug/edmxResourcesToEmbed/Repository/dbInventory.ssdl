@@ -7,15 +7,6 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <EntityType Name="Category">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="type" Type="varchar" MaxLength="50" />
-    <Property Name="subtype" Type="varchar" MaxLength="50" />
-    <Property Name="prefix" Type="varchar" MaxLength="50" />
-  </EntityType>
   <EntityType Name="Company">
     <Key>
       <PropertyRef Name="id" />
@@ -40,8 +31,8 @@
     <Property Name="asset_tag" Type="varchar" MaxLength="50" />
     <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="description" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="item_type" Type="int" Nullable="false" />
-    <Property Name="item_sub_type" Type="int" Nullable="false" />
+    <Property Name="item_type_id" Type="int" Nullable="false" />
+    <Property Name="item_sub_type_id" Type="int" Nullable="false" />
     <Property Name="purchase_price" Type="money" Nullable="false" />
     <Property Name="current_value" Type="money" Nullable="false" />
     <Property Name="purchase_date" Type="date" />
@@ -58,6 +49,22 @@
     <Property Name="memory_id" Type="int" />
     <Property Name="hdd1_id" Type="int" />
     <Property Name="hdd2_id" Type="int" />
+  </EntityType>
+  <EntityType Name="ItemSubtype">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="type_id" Type="int" Nullable="false" />
+    <Property Name="subtype" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="prefix" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ItemType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="type" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Request">
     <Key>
@@ -122,6 +129,42 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwItemLogs' does not have a
     <Property Name="ItemName" Type="varchar" MaxLength="50" />
     <Property Name="ItemId" Type="int" />
   </EntityType>
+  <Association Name="FK_Item_ItemSubtype">
+    <End Role="ItemSubtype" Type="Self.ItemSubtype" Multiplicity="1" />
+    <End Role="Item" Type="Self.Item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemSubtype">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Item">
+        <PropertyRef Name="item_sub_type_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Item_ItemType">
+    <End Role="ItemType" Type="Self.ItemType" Multiplicity="1" />
+    <End Role="Item" Type="Self.Item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemType">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Item">
+        <PropertyRef Name="item_type_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemSubtype_ItemType">
+    <End Role="ItemType" Type="Self.ItemType" Multiplicity="1" />
+    <End Role="ItemSubtype" Type="Self.ItemSubtype" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemType">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ItemSubtype">
+        <PropertyRef Name="type_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_User_User">
     <End Role="User" Type="Self.User" Multiplicity="1" />
     <End Role="User1" Type="Self.User" Multiplicity="0..1" />
@@ -136,10 +179,11 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwItemLogs' does not have a
   </Association>
   <EntityContainer Name="InventoryMangementModelStoreContainer">
     <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ItemSubtype" EntityType="Self.ItemSubtype" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ItemType" EntityType="Self.ItemType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Request" EntityType="Self.Request" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Transaction" EntityType="Self.Transaction" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
@@ -157,6 +201,18 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwItemLogs' does not have a
     [vwItemLogs].[ItemId] AS [ItemId]
     FROM [dbo].[vwItemLogs] AS [vwItemLogs]</DefiningQuery>
     </EntitySet>
+    <AssociationSet Name="FK_Item_ItemSubtype" Association="Self.FK_Item_ItemSubtype">
+      <End Role="ItemSubtype" EntitySet="ItemSubtype" />
+      <End Role="Item" EntitySet="Item" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Item_ItemType" Association="Self.FK_Item_ItemType">
+      <End Role="ItemType" EntitySet="ItemType" />
+      <End Role="Item" EntitySet="Item" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemSubtype_ItemType" Association="Self.FK_ItemSubtype_ItemType">
+      <End Role="ItemType" EntitySet="ItemType" />
+      <End Role="ItemSubtype" EntitySet="ItemSubtype" />
+    </AssociationSet>
     <AssociationSet Name="FK_User_User" Association="Self.FK_User_User">
       <End Role="User" EntitySet="User" />
       <End Role="User1" EntitySet="User" />
