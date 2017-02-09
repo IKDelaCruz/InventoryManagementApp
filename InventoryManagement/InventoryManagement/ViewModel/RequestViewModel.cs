@@ -29,8 +29,8 @@ namespace InventoryManagement.ViewModel
         public int UserId { get; set; }
         public string UserFullnameEmail { get; set; }
         public RequestType RequestType { get; set; }
-        public PrimaryItemType RequestItemPrimaryType { get; set; }
-        public SecondaryItemType RequestSecondaryItemType { get; set; }
+        public int RequestItemPrimaryType { get; set; }
+        public int RequestSecondaryItemType { get; set; }
         public int RequestedById { get; set; }
         public int ProcessedById { get; set; }
         public DateTime NeededDate { get; set; }

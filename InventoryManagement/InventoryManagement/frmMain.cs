@@ -198,8 +198,8 @@ namespace InventoryManagement
                 lblName.Text = item.Name;
                 lblDescription.Text = item.Description;
 
-                lblType.Text = item.TypeId.ToString();
-                lblSubType.Text = item.SubTypeId.ToString();
+                lblType.Text = item.Type;
+                lblSubType.Text = item.SubType;
 
                 lblBrand.Text = item.Brand;
                 lblModel.Text = item.Model;

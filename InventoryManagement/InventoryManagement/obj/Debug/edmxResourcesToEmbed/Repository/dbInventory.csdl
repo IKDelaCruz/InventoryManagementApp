@@ -2,7 +2,6 @@
 <Schema Namespace="InventoryMangementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="InventoryMangementEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Brands" EntityType="InventoryMangementModel.Brand" />
-    <EntitySet Name="Categories" EntityType="InventoryMangementModel.Category" />
     <EntitySet Name="Companies" EntityType="InventoryMangementModel.Company" />
     <EntitySet Name="Departments" EntityType="InventoryMangementModel.Department" />
     <EntitySet Name="Items" EntityType="InventoryMangementModel.Item" />
@@ -32,15 +31,6 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="Category">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="subtype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="prefix" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Company">
     <Key>

@@ -32,8 +32,8 @@ namespace InventoryManagement
             request.RequestedDate = DateTime.Now;
             request.RequestType = (RequestType)cbxRequestType.SelectedItem;
             request.RequestedStatus = RequestStatus.New;
-            request.RequestItemPrimaryType = (PrimaryItemType)cbxType.SelectedItem;
-            request.RequestSecondaryItemType = (SecondaryItemType)cbxSubType.SelectedItem;
+            request.RequestItemPrimaryType = (int)cbxType.SelectedValue;
+            request.RequestSecondaryItemType = (int)cbxSubType.SelectedValue;
             request.NeededDate = dtpNeededDate.Value;
             request.UserId = (int)cbxUsers.SelectedValue;
             request.Remarks = txtRemarks.Text.ToString();
@@ -63,8 +63,15 @@ namespace InventoryManagement
         private void LoadComboBox()
         {
             cbxRequestType.DataSource = Enum.GetValues(typeof(RequestType));
-            cbxSubType.DataSource = Enum.GetValues(typeof(SecondaryItemType));
-            cbxType.DataSource = Enum.GetValues(typeof(PrimaryItemType));
+
+            cbxType.ValueMember = "Id";
+            cbxType.DisplayMember = "Name";
+            cbxType.DataSource = Singleton.Instance.CategorySubcategoryModel.GetAllCategories();
+
+
+            cbxSubType.ValueMember = "Id";
+            cbxSubType.DisplayMember = "Name";
+            cbxSubType.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategoriesByType((int)cbxType.SelectedValue);
 
             cbxUsers.ValueMember = "Id";
             cbxUsers.DisplayMember = "LastnameFirstNameUsername";

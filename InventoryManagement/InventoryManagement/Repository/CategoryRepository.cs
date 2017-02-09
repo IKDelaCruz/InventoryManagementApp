@@ -22,8 +22,8 @@ namespace InventoryManagement.Repository
                 list.Add(new CategoryViewModel
 
                 {
-                    id = c.id,
-                    category = c.type
+                    Id = c.id,
+                    Name = c.type
                 });
                 //subcategory = c.subtype 
 
@@ -39,8 +39,8 @@ namespace InventoryManagement.Repository
             if (categ != null)
                 return new CategoryViewModel
                 {
-                    id = categ.id,
-                    category = categ.type,
+                    Id = categ.id,
+                    Name = categ.type,
 
                 };
             else

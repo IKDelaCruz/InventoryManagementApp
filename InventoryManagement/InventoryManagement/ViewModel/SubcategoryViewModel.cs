@@ -8,10 +8,10 @@ namespace InventoryManagement.ViewModel
 {
      public class SubcategoryViewModel
     {
-        public int id { get; set; }
-        public string categ { get; set; }
-        public string subcategory { get; set; }
-        public string prefix { get; set; }
+        public int Id { get; set; }
+        public int CategoryId { get; set; }
+        public string Name { get; set; }
+        public string Prefix { get; set; }
 
     }
 }

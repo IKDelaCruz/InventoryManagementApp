@@ -7,28 +7,28 @@ using System.Threading.Tasks;
 
 namespace InventoryManagement.ViewModel
 {
-    public enum PrimaryItemType
-    {
-        Asset = 1,
-        Licenses,
-        Accesories,
-        Consumable
-    }
-    public enum SecondaryItemType
-    {
-        CPUSet = 1,
-        AllInOnePC,
-        Laptop,
-        Server,
-        Switch,
-        Router,
-        Firewall,
-        Monitor,
-        HDD,
-        Memory,
-        UPS,
-        Printer
-    }
+    //public enum PrimaryItemType
+    //{
+    //    Asset = 1,
+    //    Licenses,
+    //    Accesories,
+    //    Consumable
+    //}
+    //public enum SecondaryItemType
+    //{
+    //    CPUSet = 1,
+    //    AllInOnePC,
+    //    Laptop,
+    //    Server,
+    //    Switch,
+    //    Router,
+    //    Firewall,
+    //    Monitor,
+    //    HDD,
+    //    Memory,
+    //    UPS,
+    //    Printer
+    //}
     
     public enum ItemStatus
     {

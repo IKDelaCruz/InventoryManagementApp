@@ -6,7 +6,6 @@
     <edmx:Diagrams>
       <Diagram DiagramId="39ec3eaa6fbf4add9d5e43f612422df5" Name="Diagram1">
         <EntityTypeShape EntityType="InventoryMangementModel.Brand" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="InventoryMangementModel.Category" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="InventoryMangementModel.Company" Width="1.5" PointX="4.75" PointY="0.75" />
         <EntityTypeShape EntityType="InventoryMangementModel.Department" Width="1.5" PointX="6.75" PointY="0.75" />
         <EntityTypeShape EntityType="InventoryMangementModel.Item" Width="1.5" PointX="5.25" PointY="6" />

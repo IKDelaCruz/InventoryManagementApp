@@ -12,13 +12,13 @@ namespace InventoryManagement.Model
     {
         CategoryRepository catRepository;
         ItemRepository itemRepostory;
-        CategorySubcategoryRepository catSubRepository;
+        SubCategoryRepository catSubRepository;
 
         public ItemModel()
         {
             catRepository = new CategoryRepository();
             itemRepostory = new ItemRepository();
-            catSubRepository = new CategorySubcategoryRepository();
+            catSubRepository = new SubCategoryRepository();
         }
         public ReturnValueModel CreateNewItem(ItemViewModel newItem, int userId)
         {
@@ -34,7 +34,7 @@ namespace InventoryManagement.Model
 
 
 
-            var assetTag = GenerateAssetTag(itemType.category, itemSubtype.subcategory, newItemId);
+            var assetTag = GenerateAssetTag(itemType.Name, itemSubtype.Name, newItemId);
 
             rv.Success = itemRepostory.AttachAssetTag(newItemId, assetTag);
             if (rv.Success)

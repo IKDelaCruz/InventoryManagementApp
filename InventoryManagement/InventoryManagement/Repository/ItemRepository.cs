@@ -42,7 +42,6 @@ namespace InventoryManagement.Repository
 
             return itm.id;
         }
-
         public bool Update(ItemViewModel newItem, int userId)
         {
             var item = InventoryDatabase.Items.FirstOrDefault(h => h.id == newItem.Id);

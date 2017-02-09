@@ -64,6 +64,10 @@ InventoryManagement/.vs/InventoryManagement/v14/.suo
 *.userosscache
 *.sln.docstates
 
+**/bin/Debug/
+**/bin/Release/
+**/obj/Debug/
+**/obj/Release/
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 

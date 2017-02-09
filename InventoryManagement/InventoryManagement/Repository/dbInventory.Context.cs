@@ -26,7 +26,6 @@ namespace InventoryManagement.Repository
         }
     
         public virtual DbSet<Brand> Brands { get; set; }
-        public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Company> Companies { get; set; }
         public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<Item> Items { get; set; }
