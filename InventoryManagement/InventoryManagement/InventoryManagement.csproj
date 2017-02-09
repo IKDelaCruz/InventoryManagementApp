@@ -156,6 +156,9 @@
     <Compile Include="Repository\Brand.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repository\Category.cs">
+      <DependentUpon>dbInventory.tt</DependentUpon>
+    </Compile>
     <Compile Include="Repository\CategoryRepository.cs" />
     <Compile Include="Repository\CategorySubcategory.cs" />
     <Compile Include="Repository\Company.cs">
@@ -194,6 +197,9 @@
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\RequestRepository.cs" />
+    <Compile Include="Repository\sysdiagram.cs">
+      <DependentUpon>dbInventory.tt</DependentUpon>
+    </Compile>
     <Compile Include="Repository\Transaction.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>

@@ -2,12 +2,14 @@
 <Schema Namespace="InventoryMangementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="InventoryMangementEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Brands" EntityType="InventoryMangementModel.Brand" />
+    <EntitySet Name="Categories" EntityType="InventoryMangementModel.Category" />
     <EntitySet Name="Companies" EntityType="InventoryMangementModel.Company" />
     <EntitySet Name="Departments" EntityType="InventoryMangementModel.Department" />
     <EntitySet Name="Items" EntityType="InventoryMangementModel.Item" />
     <EntitySet Name="ItemSubtypes" EntityType="InventoryMangementModel.ItemSubtype" />
     <EntitySet Name="ItemTypes" EntityType="InventoryMangementModel.ItemType" />
     <EntitySet Name="Requests" EntityType="InventoryMangementModel.Request" />
+    <EntitySet Name="sysdiagrams" EntityType="InventoryMangementModel.sysdiagram" />
     <EntitySet Name="Transactions" EntityType="InventoryMangementModel.Transaction" />
     <EntitySet Name="Users" EntityType="InventoryMangementModel.User" />
     <EntitySet Name="vwItemLogs" EntityType="InventoryMangementModel.vwItemLog" />
@@ -23,10 +25,6 @@
       <End Role="ItemType" EntitySet="ItemTypes" />
       <End Role="ItemSubtype" EntitySet="ItemSubtypes" />
     </AssociationSet>
-    <AssociationSet Name="FK_User_User" Association="InventoryMangementModel.FK_User_User">
-      <End Role="User" EntitySet="Users" />
-      <End Role="User1" EntitySet="Users" />
-    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Brand">
     <Key>
@@ -34,6 +32,15 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="subtype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="prefix" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Company">
     <Key>
@@ -118,6 +125,16 @@
     <Property Name="need_date" Type="DateTime" Precision="3" />
     <Property Name="admin_remarks" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
   </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
   <EntityType Name="Transaction">
     <Key>
       <PropertyRef Name="id" />
@@ -143,8 +160,6 @@
     <Property Name="last_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Name="department" Type="Int32" />
     <Property Name="company" Type="Int32" />
-    <NavigationProperty Name="User1" Relationship="InventoryMangementModel.FK_User_User" FromRole="User" ToRole="User1" />
-    <NavigationProperty Name="User2" Relationship="InventoryMangementModel.FK_User_User" FromRole="User1" ToRole="User" />
   </EntityType>
   <EntityType Name="vwItemLog">
     <Key>
@@ -196,18 +211,6 @@
       </Principal>
       <Dependent Role="ItemSubtype">
         <PropertyRef Name="type_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_User_User">
-    <End Type="InventoryMangementModel.User" Role="User" Multiplicity="1" />
-    <End Type="InventoryMangementModel.User" Role="User1" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="User1">
-        <PropertyRef Name="id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

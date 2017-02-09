@@ -12,15 +12,11 @@ namespace InventoryManagement.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Category
     {
         public int id { get; set; }
-        public string username { get; set; }
-        public string password { get; set; }
-        public int type { get; set; }
-        public string first_name { get; set; }
-        public string last_name { get; set; }
-        public Nullable<int> department { get; set; }
-        public Nullable<int> company { get; set; }
+        public string type { get; set; }
+        public string subtype { get; set; }
+        public string prefix { get; set; }
     }
 }

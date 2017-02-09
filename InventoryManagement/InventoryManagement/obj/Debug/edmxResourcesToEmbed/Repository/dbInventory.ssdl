@@ -7,6 +7,15 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="type" Type="varchar" MaxLength="50" />
+    <Property Name="subtype" Type="varchar" MaxLength="50" />
+    <Property Name="prefix" Type="varchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="Company">
     <Key>
       <PropertyRef Name="id" />
@@ -83,6 +92,16 @@
     <Property Name="remarks" Type="varchar" MaxLength="150" />
     <Property Name="need_date" Type="datetime" />
     <Property Name="admin_remarks" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="Transaction">
     <Key>
@@ -165,26 +184,16 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwItemLogs' does not have a
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_User_User">
-    <End Role="User" Type="Self.User" Multiplicity="1" />
-    <End Role="User1" Type="Self.User" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="User1">
-        <PropertyRef Name="id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="InventoryMangementModelStoreContainer">
     <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ItemSubtype" EntityType="Self.ItemSubtype" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ItemType" EntityType="Self.ItemType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Request" EntityType="Self.Request" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Transaction" EntityType="Self.Transaction" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="vwItemLogs" EntityType="Self.vwItemLogs" store:Type="Views" store:Schema="dbo">
@@ -212,10 +221,6 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwItemLogs' does not have a
     <AssociationSet Name="FK_ItemSubtype_ItemType" Association="Self.FK_ItemSubtype_ItemType">
       <End Role="ItemType" EntitySet="ItemType" />
       <End Role="ItemSubtype" EntitySet="ItemSubtype" />
-    </AssociationSet>
-    <AssociationSet Name="FK_User_User" Association="Self.FK_User_User">
-      <End Role="User" EntitySet="User" />
-      <End Role="User1" EntitySet="User" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

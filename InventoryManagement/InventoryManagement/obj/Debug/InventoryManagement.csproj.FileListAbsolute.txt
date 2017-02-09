@@ -21,6 +21,8 @@ C:\Users\Pua\Documents\GitHub\InventoryManagementApp\InventoryManagement\Invento
 C:\Users\Pua\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.frmPrinter.resources
 C:\Users\Pua\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.Properties.Resources.resources
 C:\Users\Pua\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.csproj.GenerateResource.Cache
+C:\Users\Pua\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.frmManageRequest.resources
+C:\Users\Pua\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.frmManageItemType.resources
 C:\Users\ian.delacruz.JAKAGROUP\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\bin\Debug\InventoryManagement.exe.config
 C:\Users\ian.delacruz.JAKAGROUP\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\bin\Debug\InventoryManagement.exe
 C:\Users\ian.delacruz.JAKAGROUP\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\bin\Debug\InventoryManagement.pdb
@@ -34,6 +36,8 @@ C:\Users\ian.delacruz.JAKAGROUP\Documents\GitHub\InventoryManagementApp\Inventor
 C:\Users\ian.delacruz.JAKAGROUP\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.csprojResolveAssemblyReference.cache
 C:\Users\ian.delacruz.JAKAGROUP\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.frmEndUser.resources
 C:\Users\ian.delacruz.JAKAGROUP\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.frmLauncher.resources
+C:\Users\ian.delacruz.JAKAGROUP\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.frmManageItemType.resources
+C:\Users\ian.delacruz.JAKAGROUP\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.frmManageRequest.resources
 C:\Users\ian.delacruz.JAKAGROUP\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.frmManageItem.resources
 C:\Users\ian.delacruz.JAKAGROUP\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.frmLogin.resources
 C:\Users\ian.delacruz.JAKAGROUP\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.frmMain.resources
@@ -45,7 +49,3 @@ C:\Users\ian.delacruz.JAKAGROUP\Documents\GitHub\InventoryManagementApp\Inventor
 C:\Users\ian.delacruz.JAKAGROUP\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.csproj.GenerateResource.Cache
 C:\Users\ian.delacruz.JAKAGROUP\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.exe
 C:\Users\ian.delacruz.JAKAGROUP\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.pdb
-C:\Users\ian.delacruz.JAKAGROUP\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.frmManageRequest.resources
-C:\Users\Pua\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.frmManageRequest.resources
-C:\Users\Pua\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.frmManageItemType.resources
-C:\Users\ian.delacruz.JAKAGROUP\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.frmManageItemType.resources

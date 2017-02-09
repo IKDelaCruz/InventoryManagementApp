@@ -26,12 +26,14 @@ namespace InventoryManagement.Repository
         }
     
         public virtual DbSet<Brand> Brands { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Company> Companies { get; set; }
         public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<Item> Items { get; set; }
         public virtual DbSet<ItemSubtype> ItemSubtypes { get; set; }
         public virtual DbSet<ItemType> ItemTypes { get; set; }
         public virtual DbSet<Request> Requests { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<vwItemLog> vwItemLogs { get; set; }
