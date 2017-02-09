@@ -2,14 +2,27 @@
 <Schema Namespace="InventoryMangementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="InventoryMangementEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Brands" EntityType="InventoryMangementModel.Brand" />
-    <EntitySet Name="Categories" EntityType="InventoryMangementModel.Category" />
     <EntitySet Name="Companies" EntityType="InventoryMangementModel.Company" />
     <EntitySet Name="Departments" EntityType="InventoryMangementModel.Department" />
     <EntitySet Name="Items" EntityType="InventoryMangementModel.Item" />
+    <EntitySet Name="ItemSubtypes" EntityType="InventoryMangementModel.ItemSubtype" />
+    <EntitySet Name="ItemTypes" EntityType="InventoryMangementModel.ItemType" />
     <EntitySet Name="Requests" EntityType="InventoryMangementModel.Request" />
     <EntitySet Name="Transactions" EntityType="InventoryMangementModel.Transaction" />
     <EntitySet Name="Users" EntityType="InventoryMangementModel.User" />
     <EntitySet Name="vwItemLogs" EntityType="InventoryMangementModel.vwItemLog" />
+    <AssociationSet Name="FK_Item_ItemSubtype" Association="InventoryMangementModel.FK_Item_ItemSubtype">
+      <End Role="ItemSubtype" EntitySet="ItemSubtypes" />
+      <End Role="Item" EntitySet="Items" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Item_ItemType" Association="InventoryMangementModel.FK_Item_ItemType">
+      <End Role="ItemType" EntitySet="ItemTypes" />
+      <End Role="Item" EntitySet="Items" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemSubtype_ItemType" Association="InventoryMangementModel.FK_ItemSubtype_ItemType">
+      <End Role="ItemType" EntitySet="ItemTypes" />
+      <End Role="ItemSubtype" EntitySet="ItemSubtypes" />
+    </AssociationSet>
     <AssociationSet Name="FK_User_User" Association="InventoryMangementModel.FK_User_User">
       <End Role="User" EntitySet="Users" />
       <End Role="User1" EntitySet="Users" />
@@ -21,15 +34,6 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="Category">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="subtype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="prefix" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Company">
     <Key>
@@ -55,8 +59,8 @@
     <Property Name="asset_tag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="item_type" Type="Int32" Nullable="false" />
-    <Property Name="item_sub_type" Type="Int32" Nullable="false" />
+    <Property Name="item_type_id" Type="Int32" Nullable="false" />
+    <Property Name="item_sub_type_id" Type="Int32" Nullable="false" />
     <Property Name="purchase_price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
     <Property Name="current_value" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
     <Property Name="purchase_date" Type="DateTime" Precision="0" />
@@ -73,6 +77,28 @@
     <Property Name="memory_id" Type="Int32" />
     <Property Name="hdd1_id" Type="Int32" />
     <Property Name="hdd2_id" Type="Int32" />
+    <NavigationProperty Name="ItemSubtype" Relationship="InventoryMangementModel.FK_Item_ItemSubtype" FromRole="Item" ToRole="ItemSubtype" />
+    <NavigationProperty Name="ItemType" Relationship="InventoryMangementModel.FK_Item_ItemType" FromRole="Item" ToRole="ItemType" />
+  </EntityType>
+  <EntityType Name="ItemSubtype">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="type_id" Type="Int32" Nullable="false" />
+    <Property Name="subtype" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="prefix" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Items" Relationship="InventoryMangementModel.FK_Item_ItemSubtype" FromRole="ItemSubtype" ToRole="Item" />
+    <NavigationProperty Name="ItemType" Relationship="InventoryMangementModel.FK_ItemSubtype_ItemType" FromRole="ItemSubtype" ToRole="ItemType" />
+  </EntityType>
+  <EntityType Name="ItemType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Items" Relationship="InventoryMangementModel.FK_Item_ItemType" FromRole="ItemType" ToRole="Item" />
+    <NavigationProperty Name="ItemSubtypes" Relationship="InventoryMangementModel.FK_ItemSubtype_ItemType" FromRole="ItemType" ToRole="ItemSubtype" />
   </EntityType>
   <EntityType Name="Request">
     <Key>
@@ -137,6 +163,42 @@
     <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="ItemId" Type="Int32" />
   </EntityType>
+  <Association Name="FK_Item_ItemSubtype">
+    <End Type="InventoryMangementModel.ItemSubtype" Role="ItemSubtype" Multiplicity="1" />
+    <End Type="InventoryMangementModel.Item" Role="Item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemSubtype">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Item">
+        <PropertyRef Name="item_sub_type_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Item_ItemType">
+    <End Type="InventoryMangementModel.ItemType" Role="ItemType" Multiplicity="1" />
+    <End Type="InventoryMangementModel.Item" Role="Item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemType">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Item">
+        <PropertyRef Name="item_type_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemSubtype_ItemType">
+    <End Type="InventoryMangementModel.ItemType" Role="ItemType" Multiplicity="1" />
+    <End Type="InventoryMangementModel.ItemSubtype" Role="ItemSubtype" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemType">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ItemSubtype">
+        <PropertyRef Name="type_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_User_User">
     <End Type="InventoryMangementModel.User" Role="User" Multiplicity="1" />
     <End Type="InventoryMangementModel.User" Role="User1" Multiplicity="0..1" />

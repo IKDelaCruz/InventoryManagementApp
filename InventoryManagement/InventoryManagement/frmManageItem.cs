@@ -57,13 +57,14 @@ namespace InventoryManagement
         private void LoadComboBox()
         {
             //cbxType.DataSource = Enum.GetValues(typeof(PrimaryItemType));
+            
+            
             cbxType.DisplayMember = "category";
             cbxType.ValueMember = "id";
-            
-            cbxType.DataSource = Singleton.Instance.CategorySubcategoryModel.GetCategories();
+            cbxType.DataSource = Singleton.Instance.CategoryModel.GetCategories();
 
-            cbxSubType.DataSource = Enum.GetValues(typeof(SecondaryItemType));
-            cbxStatus.DataSource = Enum.GetValues(typeof(ItemStatus));
+            //cbxSubType.DataSource = Enum.GetValues(typeof(SecondaryItemType));
+            //cbxStatus.DataSource = Enum.GetValues(typeof(ItemStatus));
 
             cbxOS.DataSource = Enum.GetValues(typeof(ItemOperatingSystem));
             cbxProcessor.DataSource = Enum.GetValues(typeof(ItemProcessors));
@@ -81,17 +82,21 @@ namespace InventoryManagement
         }
         private void DoSaveItem()
         {
+
+
             var itm = new ItemViewModel
             { 
                 Name = txtName.Text,
                 Description = txtDescription.Text,
-                Type = (PrimaryItemType)cbxType.SelectedItem,
-                SubType = (SecondaryItemType)cbxSubType.SelectedItem,
+                TypeId = Convert.ToInt32(cbxType.SelectedValue),
+                Type = cbxType.SelectedText,
+                SubTypeId = Convert.ToInt32(cbxSubType.SelectedValue),
+                SubType = cbxSubType.SelectedText,
                 BrandId = (int)cbxBrand.SelectedValue,
                 Model = txtModel.Text,
                 Serial = txtSerial.Text,
 
-                Status = (ItemStatus)cbxStatus.SelectedItem,
+                Status = ItemStatus.Available,
                 CurrentOwner = (int)cbxCurrentOwner.SelectedValue,
                 
                 LastUpdatedDate = DateTime.Now,
@@ -138,8 +143,8 @@ namespace InventoryManagement
             txtAssetTag.Text = loadedItem.AssetTag;
             txtName.Text = loadedItem.Name;
             txtDescription.Text = loadedItem.Description;
-            cbxType.Text = loadedItem.Type.ToString();
-            cbxSubType.Text = loadedItem.SubType.ToString();
+            cbxType.Text = loadedItem.TypeId.ToString();
+            cbxSubType.Text = loadedItem.SubTypeId.ToString();
             cbxBrand.Text = loadedItem.Brand.ToString();
             txtModel.Text = loadedItem.Model;
             txtSerial.Text = loadedItem.Serial;
@@ -168,6 +173,19 @@ namespace InventoryManagement
         private void LoadTransactions(int itemId)
         {
             dvLogs.DataSource = Singleton.Instance.TransactionModel.GetTransactionsByItemId(itemId);
+        }
+
+        private void cbxType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var selected = (int)cbxType.SelectedValue;
+            LoadSubtypes(selected);
+        }
+
+        private void LoadSubtypes(int categ)
+        {
+            cbxSubType.DisplayMember = "subcategory";
+            cbxSubType.ValueMember = "id";
+            cbxSubType.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategoriesByType(categ);
         }
     }
 }

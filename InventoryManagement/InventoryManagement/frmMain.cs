@@ -22,17 +22,24 @@ namespace InventoryManagement
             InitializeComponent();
 
             cbxStatus.DataSource = Enum.GetValues(typeof(ItemStatus));
-            cbxType.DataSource = Enum.GetValues(typeof(PrimaryItemType));
-            cbxSubtype.DataSource = Enum.GetValues(typeof(SecondaryItemType));
+           // cbxType.DataSource = Enum.GetValues(typeof(PrimaryItemType));
+           // cbxSubtype.DataSource = Enum.GetValues(typeof(SecondaryItemType));
+
+            cbxType.ValueMember = "id";
+            cbxType.DisplayMember = "category";
+            cbxType.DataSource = Singleton.Instance.CategoryModel.GetCategories();
+
+            var selected = Convert.ToInt32(cbxType.SelectedValue);
+            cbxSubtype.ValueMember = "id";
+            cbxSubtype.DisplayMember = "subcategory";
+            cbxSubtype.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategoriesByType(selected);
 
             cbxLocation.ValueMember = "Id";
             cbxLocation.DisplayMember = "Name";
-
             cbxLocation.DataSource = Singleton.Instance.CompanyDepartmentModel.GetCompaniesWithDepartments();
 
             cbxUsers.ValueMember = "Id";
             cbxUsers.DisplayMember = "LastnameFirstNameUsername";
-
             cbxUsers.DataSource = Singleton.Instance.UserModel.GetUsers();
             //UpdateView();
         }
@@ -145,9 +152,9 @@ namespace InventoryManagement
             if (!chkShowAllStatus.Checked)
                 itms = itms.Where(h => h.Status == (ItemStatus)cbxStatus.SelectedItem).ToList();
             if (!chkShowAllType.Checked)
-                itms = itms.Where(h => h.Type == (PrimaryItemType)cbxType.SelectedItem).ToList();
+                itms = itms.Where(h => h.TypeId == Convert.ToInt32(cbxType.SelectedValue)).ToList();
             if (!chkShowAllSubType.Checked)
-                itms = itms.Where(h => h.SubType == (SecondaryItemType)cbxSubtype.SelectedItem).ToList();
+                itms = itms.Where(h => h.SubTypeId == Convert.ToInt32(cbxSubtype.SelectedValue)).ToList();
             if (!chkShowAllLocation.Checked)
             {
                 var departmentId = (int)cbxLocation.SelectedValue;
@@ -191,8 +198,8 @@ namespace InventoryManagement
                 lblName.Text = item.Name;
                 lblDescription.Text = item.Description;
 
-                lblType.Text = item.Type.ToString();
-                lblSubType.Text = item.SubType.ToString();
+                lblType.Text = item.TypeId.ToString();
+                lblSubType.Text = item.SubTypeId.ToString();
 
                 lblBrand.Text = item.Brand;
                 lblModel.Text = item.Model;
@@ -263,6 +270,11 @@ namespace InventoryManagement
         private void manageToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             new frmManageRequest().ShowDialog();
+        }
+
+        private void addItemTypeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new frmManageItemType().ShowDialog();
         }
     }
 }

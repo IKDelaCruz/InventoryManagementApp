@@ -50,5 +50,10 @@ namespace InventoryManagement
             var dlg = new frmManageUserInfo(id);
             dlg.ShowDialog();
         }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace InventoryManagement.ViewModel
 {
-    public class CategorySubcategoryViewModel
+    public class CategoryViewModel
     {
         public int id { get; set; }
         public string category { get; set; }
-        public string subcategory { get; set; }
-        public string prefix { get; set; }
 
     }
 }
