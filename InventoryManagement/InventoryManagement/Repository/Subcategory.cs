@@ -11,8 +11,6 @@ namespace InventoryManagement.Repository
     public class SubCategoryRepository : BaseRepository
     {
 
-
-
         public List<SubcategoryViewModel> GetSubcategoriesByType(int categoryId)
         {
             var list = new List<SubcategoryViewModel>();
@@ -22,10 +20,10 @@ namespace InventoryManagement.Repository
             {
                 list.Add(new ViewModel.SubcategoryViewModel
                 {
-                    Id = s.id,
-                    CategoryId = categoryId,
+                    Sub_Id = s.id,
+                    CategoryId = s.type_id,
                     Name = s.subtype,
-                    Prefix = s.prefix
+                   
                     
                 });
             }
@@ -39,7 +37,7 @@ namespace InventoryManagement.Repository
             if (categ != null)
                 return new ViewModel.SubcategoryViewModel
                 {
-                    Id = categ.id,
+                    Sub_Id = categ.id,
                     Name = categ.subtype,
 
 
@@ -97,5 +95,12 @@ namespace InventoryManagement.Repository
 
 
         }
+
+       
+
+            
+        }
+
+
+
     }
-}

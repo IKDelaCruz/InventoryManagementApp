@@ -84,7 +84,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(36, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 15);
+            this.label1.Size = new System.Drawing.Size(95, 24);
             this.label1.TabIndex = 3;
             this.label1.Text = "Username";
             // 
@@ -92,15 +92,16 @@
             // 
             this.txtPassord.Location = new System.Drawing.Point(104, 53);
             this.txtPassord.Name = "txtPassord";
-            this.txtPassord.Size = new System.Drawing.Size(196, 23);
+            this.txtPassord.Size = new System.Drawing.Size(196, 31);
             this.txtPassord.TabIndex = 2;
+            this.txtPassord.UseSystemPasswordChar = true;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(36, 56);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 15);
+            this.label2.Size = new System.Drawing.Size(89, 24);
             this.label2.TabIndex = 4;
             this.label2.Text = "Password";
             // 
@@ -108,7 +109,7 @@
             // 
             this.txtUsername.Location = new System.Drawing.Point(104, 24);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(196, 23);
+            this.txtUsername.Size = new System.Drawing.Size(196, 31);
             this.txtUsername.TabIndex = 1;
             // 
             // label21
@@ -133,7 +134,8 @@
             // 
             // frmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AcceptButton = this.btnLogin;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(392, 268);
             this.Controls.Add(this.btnCancel);
@@ -146,6 +148,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "User Login";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmLogin_FormClosing);
+            this.Load += new System.EventHandler(this.frmLogin_Load);
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

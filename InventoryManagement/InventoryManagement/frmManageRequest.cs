@@ -47,6 +47,7 @@ namespace InventoryManagement
 
             var id = dvLogs.SelectedRows[0].Cells[0].Value;
             Singleton.Instance.RequestModel.ApproveRequest(Convert.ToInt32(id));
+            LoadPendingRequest();
         }
 
         private void btnDecline_Click(object sender, EventArgs e)
@@ -56,6 +57,7 @@ namespace InventoryManagement
 
             var id = dvLogs.SelectedRows[0].Cells[0].Value;
             Singleton.Instance.RequestModel.DeclineRequest(Convert.ToInt32(id));
+            LoadPendingRequest();
         }
     }
 }

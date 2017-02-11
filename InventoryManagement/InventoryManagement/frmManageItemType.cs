@@ -32,7 +32,7 @@ namespace InventoryManagement
         }
 
 
-        private void btnSubmit_Click(object sender, EventArgs e)
+        private void btnSave1_Click(object sender, EventArgs e)
         {
             //Create
             if (!isUpdate)
@@ -41,7 +41,7 @@ namespace InventoryManagement
 
                 if(retVal > 0)
                 {
-                    MessageBox.Show("Successfully save");
+                    MessageBox.Show("Successfully saved");
                 }
 
             }
@@ -51,40 +51,61 @@ namespace InventoryManagement
 
                 if (retVal > 0)
                 {
-                    MessageBox.Show("Successfully save");
+                    MessageBox.Show("Successfully saved");
                 }
             }
 
+            //this.DialogResult = DialogResult.OK;
+            //this.Close();
+        }
 
-            //    if (isUpdate)
-            //    {
-            //        if ()
-            //        {
-            //            MessageBox.Show("User successfully created!");
-            //            this.DialogResult = DialogResult.OK;
-            //            this.Close();
-            //        }
-            //    }
-            //    else
-            //    {
-            //        if (Singleton.Instance.CategorySubcategoryModel.UpdateItem(4, txtType.Text))
-            //        {
-            //            MessageBox.Show("User successfully created!");
-            //            this.DialogResult = DialogResult.OK;
-            //            this.Close();
-            //        }
-            //    }
-            //}
-            //var type = txtType.Text;
-            //Singleton.Instance.CategorySubcategoryModel.CreateType(type);
-            MessageBox.Show("User successfully created!");
-            this.DialogResult = DialogResult.OK;
+        private void frmManageItemType_Load(object sender, EventArgs e)
+        {
+            FillCombobox();  
+        }
+
+        private void FillCombobox() {
+
+            cbxType.DisplayMember = "Name";
+            cbxType.ValueMember = "Id";
+            cbxType.DataSource = Singleton.Instance.CategoryModel.GetCategories();
+
+        }
+
+        private void btnCancel2_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnSave2_Click(object sender, EventArgs e)
         {
+            if (!isUpdate)
+            {
+                var ret = Singleton.Instance.CategoryModel.CreateSubtype((Convert.ToInt32(cbxType.SelectedIndex + 1)), txtSubtype.Text);
 
+                if (ret > 0)
+                {
+                    MessageBox.Show("Successfully saved");
+                }
+                
+            }
+            else
+            {
+                var ret = Singleton.Instance.CategoryModel.UpdateSubtype(id, txtSubtype.Text);
+
+                if (ret > 0)
+                {
+                    MessageBox.Show("Successfully saved");
+                }
+            }
+
+           // this.DialogResult = DialogResult.OK;
+
+        }
+
+        private void tabControl1_Click(object sender, EventArgs e)
+        {
+            FillCombobox();
         }
     }
 }

@@ -31,10 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManageUsers));
             this.imgMain = new System.Windows.Forms.ImageList(this.components);
-            this.btnModify = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.lvUsers = new System.Windows.Forms.ListView();
             this.pnlMain.SuspendLayout();
@@ -47,16 +45,6 @@
             this.imgMain.Images.SetKeyName(0, "admin-admin.png");
             this.imgMain.Images.SetKeyName(1, "admin-custodian.png");
             this.imgMain.Images.SetKeyName(2, "admin-user.png");
-            // 
-            // btnModify
-            // 
-            this.btnModify.Location = new System.Drawing.Point(120, 308);
-            this.btnModify.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
-            this.btnModify.Name = "btnModify";
-            this.btnModify.Size = new System.Drawing.Size(100, 30);
-            this.btnModify.TabIndex = 11;
-            this.btnModify.Text = "Modify";
-            this.btnModify.UseVisualStyleBackColor = true;
             // 
             // btnNew
             // 
@@ -71,7 +59,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(527, 308);
+            this.btnCancel.Location = new System.Drawing.Point(637, 308);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(100, 30);
@@ -79,17 +67,6 @@
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(637, 308);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(100, 30);
-            this.btnSave.TabIndex = 7;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // pnlMain
             // 
@@ -111,6 +88,7 @@
             this.lvUsers.Size = new System.Drawing.Size(727, 292);
             this.lvUsers.TabIndex = 0;
             this.lvUsers.UseCompatibleStateImageBehavior = false;
+            this.lvUsers.SelectedIndexChanged += new System.EventHandler(this.lvUsers_SelectedIndexChanged);
             this.lvUsers.DoubleClick += new System.EventHandler(this.lvUsers_DoubleClick);
             // 
             // frmManageUsers
@@ -118,10 +96,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(747, 348);
-            this.Controls.Add(this.btnModify);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.pnlMain);
             this.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmManageUsers";
@@ -137,10 +113,8 @@
 
         private System.Windows.Forms.Panel pnlMain;
         private System.Windows.Forms.ListView lvUsers;
-        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnNew;
-        private System.Windows.Forms.Button btnModify;
         private System.Windows.Forms.ImageList imgMain;
     }
 }

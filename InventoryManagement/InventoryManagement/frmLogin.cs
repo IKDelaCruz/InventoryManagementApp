@@ -42,7 +42,7 @@ namespace InventoryManagement
 
         private void frmLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(Singleton.Instance.UserModel.CurrentUser == null)
+            if (Singleton.Instance.UserModel.CurrentUser == null)
             {
                 Application.Exit();
             }
@@ -52,6 +52,11 @@ namespace InventoryManagement
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            txtUsername.Select();
         }
     }
 }

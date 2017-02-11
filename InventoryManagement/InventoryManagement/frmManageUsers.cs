@@ -55,5 +55,15 @@ namespace InventoryManagement
         {
 
         }
+
+        private void btnModify_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lvUsers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DisplayUsers();
+        }
     }
 }

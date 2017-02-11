@@ -63,7 +63,7 @@ namespace InventoryManagement
 
 
             cbxSubType.DisplayMember = "Name";
-            cbxSubType.ValueMember = "Id";
+            cbxSubType.ValueMember = "Sub_Id";
             cbxSubType.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategoriesByType((int)cbxType.SelectedValue);
         
 
@@ -184,9 +184,9 @@ namespace InventoryManagement
 
         private void LoadSubtypes(int categ)
         {
-            cbxSubType.DisplayMember = "subcategory";
-            cbxSubType.ValueMember = "id";
-            cbxSubType.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategoriesByType(categ);
+            cbxSubType.DisplayMember = "Name";
+            cbxSubType.ValueMember = "Sub_Id";
+            cbxSubType.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategoriesByType((int)cbxType.SelectedValue);
         }
     }
 }

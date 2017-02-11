@@ -31,6 +31,8 @@
             this.pbBarcode = new System.Windows.Forms.PictureBox();
             this.btnPrintBarcode = new System.Windows.Forms.Button();
             this.lblDatePrinted = new System.Windows.Forms.Label();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             ((System.ComponentModel.ISupportInitialize)(this.pbBarcode)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,9 +65,17 @@
             this.lblDatePrinted.Text = "...";
             this.lblDatePrinted.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // printDialog1
+            // 
+            this.printDialog1.UseEXDialog = true;
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
             // frmPrinter
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(324, 223);
             this.Controls.Add(this.lblDatePrinted);
@@ -85,5 +95,7 @@
         private System.Windows.Forms.PictureBox pbBarcode;
         private System.Windows.Forms.Button btnPrintBarcode;
         private System.Windows.Forms.Label lblDatePrinted;
+        private System.Windows.Forms.PrintDialog printDialog1;
+        private System.Drawing.Printing.PrintDocument printDocument1;
     }
 }

@@ -50,8 +50,8 @@ namespace InventoryManagement.Repository
 
         public int Create(string name)
         {
-           var  cat = InventoryDatabase.ItemTypes.FirstOrDefault(s => s.type.Equals(name));
-            if(cat== null)
+            var cat = InventoryDatabase.ItemTypes.FirstOrDefault(s => s.type.Equals(name));
+            if (cat == null)
             {
                 var newCat = new ItemType() { type = name };
                 InventoryDatabase.ItemTypes.Add(newCat);
@@ -63,14 +63,14 @@ namespace InventoryManagement.Repository
             }
             //Already exist;
             return -2;
-            
+
         }
 
         public int Update(int id, string name)
         {
             var cat = InventoryDatabase.ItemTypes.FirstOrDefault(s => s.id == id);
 
-            if(cat != null)
+            if (cat != null)
             {
                 var catExist = InventoryDatabase.ItemTypes.FirstOrDefault(s => s.type == name);
 
@@ -78,16 +78,58 @@ namespace InventoryManagement.Repository
                 //Name already exist
                 if (catExist != null)
                 {
-                    if(catExist.id == id)
+                    if (catExist.id == id)
                     {
                         return -1;
-                    }   
+                    }
                     return -2;
                 }
 
                 cat.type = name;
             }
 
+            InventoryDatabase.SaveChanges();
+            return 1;
+        }
+        public int CreateSubCateg(int id, string name)
+        {
+            var cat = InventoryDatabase.ItemSubtypes.FirstOrDefault(s => s.subtype.Equals(name));
+            if (cat == null)
+            {
+                var newCat = new ItemSubtype() { type_id = id, subtype = name };
+                InventoryDatabase.ItemSubtypes.Add(newCat);
+                if (InventoryDatabase.SaveChanges() > 0) 
+                    return newCat.id;
+
+                //Unable to save 
+                return -1;
+            }
+            //Already exist;
+            return -2;
+
+        }
+
+        public int UpdateSubCateg(int id, string name)
+        {
+            var cat = InventoryDatabase.ItemSubtypes.FirstOrDefault(s => s.type_id == id);
+
+            if (cat != null)
+            {
+                var catExist = InventoryDatabase.ItemSubtypes.FirstOrDefault(s => s.subtype == name);
+
+
+                //Name already exist
+                if (catExist != null)
+                {
+                    if (catExist.id == id)
+                    {
+                        return -1;
+                    }
+                    return -2;
+                }
+
+                cat.subtype = name;
+            }
             InventoryDatabase.SaveChanges();
             return 1;
         }

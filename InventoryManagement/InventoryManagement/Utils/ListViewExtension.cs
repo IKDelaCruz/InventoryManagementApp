@@ -17,7 +17,15 @@ namespace InventoryManagement.Utils
             foreach (ItemViewModel iVL in items)
             {
                 var newItem = new ListViewItem(iVL.Name + " [" + iVL.Status.ToString() + "]");
-                newItem.ImageIndex = Convert.ToInt32(iVL.TypeId) - 1;
+                if (iVL.TypeId <= 4)
+                {
+                    newItem.ImageIndex = Convert.ToInt32(iVL.TypeId) - 1;
+                }
+                else {
+                    newItem.ImageIndex = 4;
+
+                }
+               
                 newItem.SubItems.Add(iVL.Id.ToString());
                 newItem.SubItems.Add(iVL.TypeId.ToString());
 

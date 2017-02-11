@@ -35,6 +35,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lvMain = new System.Windows.Forms.ListView();
             this.pnlTop = new System.Windows.Forms.Panel();
+            this.txtScan = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.chkShowAllLocation = new System.Windows.Forms.CheckBox();
             this.chkShowAllSubType = new System.Windows.Forms.CheckBox();
             this.chkShowAllType = new System.Windows.Forms.CheckBox();
@@ -100,12 +102,12 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inventoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addItemTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.requestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.addItemTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlMain.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlTop.SuspendLayout();
@@ -124,7 +126,8 @@
             this.imgMainImage.Images.SetKeyName(0, "Desktop-My-Computer-icon.png");
             this.imgMainImage.Images.SetKeyName(1, "Extras-Unlock-icon.png");
             this.imgMainImage.Images.SetKeyName(2, "Drives-RAM-Drive-icon.png");
-            this.imgMainImage.Images.SetKeyName(3, "Extras-Battery-icon.png");
+            this.imgMainImage.Images.SetKeyName(3, "network-cable-icon-8.jpg");
+            this.imgMainImage.Images.SetKeyName(4, "others.png");
             // 
             // pnlMain
             // 
@@ -134,17 +137,17 @@
             this.pnlMain.Location = new System.Drawing.Point(0, 33);
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Padding = new System.Windows.Forms.Padding(5);
-            this.pnlMain.Size = new System.Drawing.Size(836, 584);
+            this.pnlMain.Size = new System.Drawing.Size(816, 581);
             this.pnlMain.TabIndex = 3;
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.lvMain);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(5, 77);
+            this.panel1.Location = new System.Drawing.Point(5, 126);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.panel1.Size = new System.Drawing.Size(826, 502);
+            this.panel1.Size = new System.Drawing.Size(806, 450);
             this.panel1.TabIndex = 2;
             // 
             // lvMain
@@ -154,17 +157,20 @@
             this.lvMain.LargeImageList = this.imgMainImage;
             this.lvMain.Location = new System.Drawing.Point(0, 5);
             this.lvMain.Name = "lvMain";
-            this.lvMain.Size = new System.Drawing.Size(826, 497);
+            this.lvMain.Size = new System.Drawing.Size(806, 445);
             this.lvMain.SmallImageList = this.imgMainImage;
             this.lvMain.TabIndex = 0;
             this.lvMain.UseCompatibleStateImageBehavior = false;
             this.lvMain.SelectedIndexChanged += new System.EventHandler(this.lvMain_SelectedIndexChanged);
+            this.lvMain.Click += new System.EventHandler(this.lvMain_Click);
             this.lvMain.DoubleClick += new System.EventHandler(this.lvMain_DoubleClick);
             // 
             // pnlTop
             // 
             this.pnlTop.BackColor = System.Drawing.Color.White;
             this.pnlTop.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlTop.Controls.Add(this.txtScan);
+            this.pnlTop.Controls.Add(this.label13);
             this.pnlTop.Controls.Add(this.chkShowAllLocation);
             this.pnlTop.Controls.Add(this.chkShowAllSubType);
             this.pnlTop.Controls.Add(this.chkShowAllType);
@@ -180,8 +186,27 @@
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop.Location = new System.Drawing.Point(5, 5);
             this.pnlTop.Name = "pnlTop";
-            this.pnlTop.Size = new System.Drawing.Size(826, 72);
+            this.pnlTop.Size = new System.Drawing.Size(806, 121);
             this.pnlTop.TabIndex = 1;
+            // 
+            // txtScan
+            // 
+            this.txtScan.BackColor = System.Drawing.Color.Gainsboro;
+            this.txtScan.Location = new System.Drawing.Point(120, 79);
+            this.txtScan.Name = "txtScan";
+            this.txtScan.Size = new System.Drawing.Size(247, 31);
+            this.txtScan.TabIndex = 48;
+            this.txtScan.Click += new System.EventHandler(this.txtScan_Click);
+            this.txtScan.TextChanged += new System.EventHandler(this.txtScan_TextChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(15, 81);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(126, 24);
+            this.label13.TabIndex = 47;
+            this.label13.Text = "&Scan Barcode:";
             // 
             // chkShowAllLocation
             // 
@@ -207,7 +232,7 @@
             this.chkShowAllSubType.TabIndex = 45;
             this.chkShowAllSubType.Text = "Show All";
             this.chkShowAllSubType.UseVisualStyleBackColor = true;
-            this.chkShowAllSubType.CheckedChanged += new System.EventHandler(this.UpdateView);
+            this.chkShowAllSubType.CheckedChanged += new System.EventHandler(this.chkShowAllSubType_CheckedChanged);
             // 
             // chkShowAllType
             // 
@@ -271,7 +296,7 @@
             this.cbxSubtype.Name = "cbxSubtype";
             this.cbxSubtype.Size = new System.Drawing.Size(121, 32);
             this.cbxSubtype.TabIndex = 39;
-            this.cbxSubtype.SelectedIndexChanged += new System.EventHandler(this.UpdateView);
+            this.cbxSubtype.SelectedIndexChanged += new System.EventHandler(this.cbxSubtype_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -315,10 +340,10 @@
             // 
             this.pnlRightInfo.Controls.Add(this.pnlRightContent);
             this.pnlRightInfo.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlRightInfo.Location = new System.Drawing.Point(836, 33);
+            this.pnlRightInfo.Location = new System.Drawing.Point(816, 33);
             this.pnlRightInfo.Name = "pnlRightInfo";
             this.pnlRightInfo.Padding = new System.Windows.Forms.Padding(0, 5, 5, 5);
-            this.pnlRightInfo.Size = new System.Drawing.Size(315, 584);
+            this.pnlRightInfo.Size = new System.Drawing.Size(315, 581);
             this.pnlRightInfo.TabIndex = 2;
             // 
             // pnlRightContent
@@ -330,7 +355,7 @@
             this.pnlRightContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlRightContent.Location = new System.Drawing.Point(0, 5);
             this.pnlRightContent.Name = "pnlRightContent";
-            this.pnlRightContent.Size = new System.Drawing.Size(310, 574);
+            this.pnlRightContent.Size = new System.Drawing.Size(310, 571);
             this.pnlRightContent.TabIndex = 0;
             // 
             // groupBox2
@@ -340,7 +365,7 @@
             this.groupBox2.Controls.Add(this.btnReserve);
             this.groupBox2.Controls.Add(this.btnCheckin);
             this.groupBox2.Controls.Add(this.btnCheckout);
-            this.groupBox2.Location = new System.Drawing.Point(9, 463);
+            this.groupBox2.Location = new System.Drawing.Point(12, 455);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(290, 112);
             this.groupBox2.TabIndex = 37;
@@ -438,9 +463,9 @@
             this.groupBox1.Controls.Add(this.label20);
             this.groupBox1.Controls.Add(this.label18);
             this.groupBox1.Controls.Add(this.lblSerial);
-            this.groupBox1.Location = new System.Drawing.Point(9, 8);
+            this.groupBox1.Location = new System.Drawing.Point(12, 14);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(290, 449);
+            this.groupBox1.Size = new System.Drawing.Size(290, 435);
             this.groupBox1.TabIndex = 36;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Item Details";
@@ -767,10 +792,10 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tssUsername});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 617);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 614);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(1151, 30);
+            this.statusStrip1.Size = new System.Drawing.Size(1131, 30);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -792,9 +817,10 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1151, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(1131, 33);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // fileToolStripMenuItem
             // 
@@ -835,6 +861,13 @@
             this.addToolStripMenuItem.Text = "Add Item";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
+            // addItemTypeToolStripMenuItem
+            // 
+            this.addItemTypeToolStripMenuItem.Name = "addItemTypeToolStripMenuItem";
+            this.addItemTypeToolStripMenuItem.Size = new System.Drawing.Size(214, 30);
+            this.addItemTypeToolStripMenuItem.Text = "Add Item Type";
+            this.addItemTypeToolStripMenuItem.Click += new System.EventHandler(this.addItemTypeToolStripMenuItem_Click);
+            // 
             // usersToolStripMenuItem
             // 
             this.usersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -871,19 +904,12 @@
             this.manageToolStripMenuItem1.Text = "Manage";
             this.manageToolStripMenuItem1.Click += new System.EventHandler(this.manageToolStripMenuItem1_Click);
             // 
-            // addItemTypeToolStripMenuItem
-            // 
-            this.addItemTypeToolStripMenuItem.Name = "addItemTypeToolStripMenuItem";
-            this.addItemTypeToolStripMenuItem.Size = new System.Drawing.Size(214, 30);
-            this.addItemTypeToolStripMenuItem.Text = "Add Item Type";
-            this.addItemTypeToolStripMenuItem.Click += new System.EventHandler(this.addItemTypeToolStripMenuItem_Click);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            this.ClientSize = new System.Drawing.Size(1151, 647);
+            this.ClientSize = new System.Drawing.Size(1131, 644);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.pnlRightInfo);
             this.Controls.Add(this.statusStrip1);
@@ -991,6 +1017,8 @@
         private System.Windows.Forms.ToolStripMenuItem requestToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manageToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem addItemTypeToolStripMenuItem;
+        private System.Windows.Forms.TextBox txtScan;
+        private System.Windows.Forms.Label label13;
     }
 }
 

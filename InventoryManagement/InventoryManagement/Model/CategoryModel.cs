@@ -11,7 +11,8 @@ namespace InventoryManagement.Model
 {
     public class CategoryModel
     {
-
+        //SubCategoryRepository Sr; // <--- eto yung nag eerror pauiee, di niya marecognize yung repo na to
+        // dahil ata di pwedeng dalawang repo  sa bawat isang model, so nilagay ko na lang sya sa cR and it worked.
         CategoryRepository cR;
 
         public CategoryModel()
@@ -37,5 +38,16 @@ namespace InventoryManagement.Model
         {
             return cR.Update(id, type);
         }
+
+        public int CreateSubtype(int id, string type)
+        {
+            return cR.CreateSubCateg(id, type);
+        }
+
+        public int UpdateSubtype(int id, string type)
+        {
+            return cR.UpdateSubCateg(id, type);
+        }
+
     }
 }

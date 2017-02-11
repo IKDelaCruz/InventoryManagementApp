@@ -20,19 +20,23 @@ namespace InventoryManagement
         public frmMain()
         {
             InitializeComponent();
+            fillcombo();
+      
+        }
 
+        private void fillcombo() {
             cbxStatus.DataSource = Enum.GetValues(typeof(ItemStatus));
-           // cbxType.DataSource = Enum.GetValues(typeof(PrimaryItemType));
-           // cbxSubtype.DataSource = Enum.GetValues(typeof(SecondaryItemType));
+            // cbxType.DataSource = Enum.GetValues(typeof(PrimaryItemType));
+            // cbxSubtype.DataSource = Enum.GetValues(typeof(SecondaryItemType));
 
-            cbxType.ValueMember = "id";
-            cbxType.DisplayMember = "category";
+            cbxType.DisplayMember = "Name";
+            cbxType.ValueMember = "Id";
             cbxType.DataSource = Singleton.Instance.CategoryModel.GetCategories();
 
-            var selected = Convert.ToInt32(cbxType.SelectedValue);
-            cbxSubtype.ValueMember = "id";
-            cbxSubtype.DisplayMember = "subcategory";
-            cbxSubtype.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategoriesByType(selected);
+
+            cbxSubtype.DisplayMember = "Name";
+            cbxSubtype.ValueMember = "Sub_Id";
+            cbxSubtype.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategoriesByType((int)cbxType.SelectedIndex + 1);
 
             cbxLocation.ValueMember = "Id";
             cbxLocation.DisplayMember = "Name";
@@ -42,10 +46,12 @@ namespace InventoryManagement
             cbxUsers.DisplayMember = "LastnameFirstNameUsername";
             cbxUsers.DataSource = Singleton.Instance.UserModel.GetUsers();
             //UpdateView();
+
         }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+            txtScan.Select();
             //if (Singleton.Instance.UserModel.CurrentUser == null)
             //{
             //    var result = new frmLogin().ShowDialog();
@@ -112,7 +118,6 @@ namespace InventoryManagement
         {
             var br = new BarcodeGenerator();
             var barcodeImage = br.DrawBarcode(lblId.Text.ToString().PadLeft(7, '0'));
-
             var dlg = new frmPrinter(barcodeImage);
             dlg.ShowDialog();
         }
@@ -129,9 +134,10 @@ namespace InventoryManagement
             var id = Convert.ToInt32(selected.SubItems[1].Text);
             _selectedItem = Singleton.Instance.ItemModel.GetItem(id);
 
-            
+
             DoUpdateItemDetails();
-        } 
+
+        }
 
         #region --- Methods --- 
         private bool DoExit()
@@ -152,9 +158,10 @@ namespace InventoryManagement
             if (!chkShowAllStatus.Checked)
                 itms = itms.Where(h => h.Status == (ItemStatus)cbxStatus.SelectedItem).ToList();
             if (!chkShowAllType.Checked)
-                itms = itms.Where(h => h.TypeId == Convert.ToInt32(cbxType.SelectedValue)).ToList();
+                itms = itms.Where(h => h.TypeId == Convert.ToInt32(cbxType.SelectedIndex + 1)).ToList();
             if (!chkShowAllSubType.Checked)
                 itms = itms.Where(h => h.SubTypeId == Convert.ToInt32(cbxSubtype.SelectedValue)).ToList();
+
             if (!chkShowAllLocation.Checked)
             {
                 var departmentId = (int)cbxLocation.SelectedValue;
@@ -166,7 +173,7 @@ namespace InventoryManagement
             }
 
             #endregion
-            
+
             lvMain.LoadData(itms);
 
             tssUsername.Text = string.Format("Current User [{0}]", Singleton.Instance.UserModel.CurrentUser == null ? "" :
@@ -184,12 +191,17 @@ namespace InventoryManagement
         private void UpdateView(object sender, EventArgs e)
         {
             DoUpdateView();
+
+            cbxSubtype.DisplayMember = "Name";
+            cbxSubtype.ValueMember = "Sub_Id";
+            cbxSubtype.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategoriesByType((int)cbxType.SelectedIndex + 1);
+
         }
 
         private void DoUpdateItemDetails()
         {
-            
-            var item = Singleton.Instance.ItemModel.GetItem(_selectedItem.Id); 
+
+            var item = Singleton.Instance.ItemModel.GetItem(_selectedItem.Id);
 
             if (item != null)
             {
@@ -242,7 +254,7 @@ namespace InventoryManagement
 
         private void btnCheckin_Click(object sender, EventArgs e)
         {
-            UpdateItemStatus(ItemStatus.Available,0);
+            UpdateItemStatus(ItemStatus.Available, 0);
             Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, 0, ViewModel.TransactionType.ReturnItem, "", _selectedItem.Id);
         }
 
@@ -276,5 +288,89 @@ namespace InventoryManagement
         {
             new frmManageItemType().ShowDialog();
         }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void txtScan_TextChanged(object sender, EventArgs e)
+        {
+
+            var itms = Singleton.Instance.ItemModel.GetItems();
+            var val = txtScan.Text;
+            
+
+            if (txtScan.Text.Length == 8)
+            {
+
+                if (txtScan.Text != null)
+                {
+                    if (itms.Count >= 0)
+                    {
+                        val = val.Substring(0, val.Length - 1);
+                        itms = itms.Where(h => h.Id == Convert.ToInt32(val)).ToList();
+                        lvMain.LoadData(itms);
+                        if (lvMain.Items.Count > 0)
+                        {
+                            lvMain.Items[0].Selected = true;
+                            lvMain.Select();
+      
+                            //if (lvMain.Items[0].Selected == false)
+                            //{
+                       
+
+                            //}           
+
+                        }
+
+                    }
+                    if (txtScan.Text.Length == 8 && !itms.Any())
+                    {
+                        MessageBox.Show("Item/s is not found!");
+
+                    }
+                    if (txtScan.Text.Length == 8)
+                    {
+                        txtScan.SelectAll();
+                    }
+
+                }
+                
+
+            }
+
+
+        }
+
+        private void txtScan_Click(object sender, EventArgs e)
+        {
+            txtScan.Clear();
+            DoUpdateView();
+        }
+
+        private void cbxSubtype_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (chkShowAllSubType.Checked == false) {
+                var itms = Singleton.Instance.ItemModel.GetItems();
+                itms = itms.Where(h => h.SubTypeId == Convert.ToInt32(cbxSubtype.SelectedValue)).ToList();
+                lvMain.LoadData(itms);
+                        }
+            }
+            
+
+        private void chkShowAllSubType_CheckedChanged(object sender, EventArgs e)
+        {
+            DoUpdateView();
+        }
+
+        private void lvMain_Click(object sender, EventArgs e)
+        {
+           // DoUpdateView();
+        }
     }
+
 }
+
+
+
