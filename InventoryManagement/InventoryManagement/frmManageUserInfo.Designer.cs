@@ -63,6 +63,7 @@
             this.btnCancel.TabIndex = 8;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
@@ -118,7 +119,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(29, 28);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(59, 15);
+            this.label3.Size = new System.Drawing.Size(92, 24);
             this.label3.TabIndex = 43;
             this.label3.Text = "User Type";
             // 
@@ -128,7 +129,7 @@
             this.cbxUserType.FormattingEnabled = true;
             this.cbxUserType.Location = new System.Drawing.Point(152, 26);
             this.cbxUserType.Name = "cbxUserType";
-            this.cbxUserType.Size = new System.Drawing.Size(196, 23);
+            this.cbxUserType.Size = new System.Drawing.Size(196, 32);
             this.cbxUserType.TabIndex = 42;
             // 
             // label5
@@ -136,7 +137,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(29, 86);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(71, 15);
+            this.label5.Size = new System.Drawing.Size(111, 24);
             this.label5.TabIndex = 47;
             this.label5.Text = "Department";
             // 
@@ -146,7 +147,7 @@
             this.cbxCompany.FormattingEnabled = true;
             this.cbxCompany.Location = new System.Drawing.Point(152, 55);
             this.cbxCompany.Name = "cbxCompany";
-            this.cbxCompany.Size = new System.Drawing.Size(196, 23);
+            this.cbxCompany.Size = new System.Drawing.Size(196, 32);
             this.cbxCompany.TabIndex = 44;
             this.cbxCompany.SelectedIndexChanged += new System.EventHandler(this.cbxCompany_SelectedIndexChanged);
             // 
@@ -156,7 +157,7 @@
             this.cbxDepartment.FormattingEnabled = true;
             this.cbxDepartment.Location = new System.Drawing.Point(152, 84);
             this.cbxDepartment.Name = "cbxDepartment";
-            this.cbxDepartment.Size = new System.Drawing.Size(196, 23);
+            this.cbxDepartment.Size = new System.Drawing.Size(196, 32);
             this.cbxDepartment.TabIndex = 46;
             // 
             // label4
@@ -164,7 +165,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(29, 57);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(58, 15);
+            this.label4.Size = new System.Drawing.Size(89, 24);
             this.label4.TabIndex = 45;
             this.label4.Text = "Company";
             // 
@@ -191,7 +192,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(29, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 15);
+            this.label1.Size = new System.Drawing.Size(95, 24);
             this.label1.TabIndex = 3;
             this.label1.Text = "Username";
             // 
@@ -200,7 +201,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(29, 129);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(59, 15);
+            this.label7.Size = new System.Drawing.Size(90, 24);
             this.label7.TabIndex = 51;
             this.label7.Text = "Lastname";
             // 
@@ -209,7 +210,7 @@
             this.txtPassord.Location = new System.Drawing.Point(152, 51);
             this.txtPassord.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
             this.txtPassord.Name = "txtPassord";
-            this.txtPassord.Size = new System.Drawing.Size(196, 23);
+            this.txtPassord.Size = new System.Drawing.Size(196, 31);
             this.txtPassord.TabIndex = 2;
             // 
             // txtLastname
@@ -217,14 +218,14 @@
             this.txtLastname.Location = new System.Drawing.Point(152, 126);
             this.txtLastname.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
             this.txtLastname.Name = "txtLastname";
-            this.txtLastname.Size = new System.Drawing.Size(196, 23);
+            this.txtLastname.Size = new System.Drawing.Size(196, 31);
             this.txtLastname.TabIndex = 50;
             // 
             // txtUsername
             // 
             this.txtUsername.Location = new System.Drawing.Point(152, 22);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(196, 23);
+            this.txtUsername.Size = new System.Drawing.Size(196, 31);
             this.txtUsername.TabIndex = 1;
             // 
             // label6
@@ -232,7 +233,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(29, 100);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 15);
+            this.label6.Size = new System.Drawing.Size(93, 24);
             this.label6.TabIndex = 49;
             this.label6.Text = "Firstname";
             // 
@@ -241,7 +242,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(29, 53);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 15);
+            this.label2.Size = new System.Drawing.Size(89, 24);
             this.label2.TabIndex = 4;
             this.label2.Text = "Password";
             // 
@@ -249,12 +250,12 @@
             // 
             this.txtFirstname.Location = new System.Drawing.Point(152, 97);
             this.txtFirstname.Name = "txtFirstname";
-            this.txtFirstname.Size = new System.Drawing.Size(196, 23);
+            this.txtFirstname.Size = new System.Drawing.Size(196, 31);
             this.txtFirstname.TabIndex = 48;
             // 
             // frmManageUserInfo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(449, 511);
             this.Controls.Add(this.btnCancel);

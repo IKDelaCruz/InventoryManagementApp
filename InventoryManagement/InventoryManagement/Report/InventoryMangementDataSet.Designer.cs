@@ -26,7 +26,7 @@ namespace InventoryManagement.Report {
         
         private ItemDataTable tableItem;
         
-        private RequestDataTable tableRequest;
+        private DataTable1DataTable tableDataTable1;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -59,8 +59,8 @@ namespace InventoryManagement.Report {
                 if ((ds.Tables["Item"] != null)) {
                     base.Tables.Add(new ItemDataTable(ds.Tables["Item"]));
                 }
-                if ((ds.Tables["Request"] != null)) {
-                    base.Tables.Add(new RequestDataTable(ds.Tables["Request"]));
+                if ((ds.Tables["DataTable1"] != null)) {
+                    base.Tables.Add(new DataTable1DataTable(ds.Tables["DataTable1"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -94,9 +94,9 @@ namespace InventoryManagement.Report {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public RequestDataTable Request {
+        public DataTable1DataTable DataTable1 {
             get {
-                return this.tableRequest;
+                return this.tableDataTable1;
             }
         }
         
@@ -170,8 +170,8 @@ namespace InventoryManagement.Report {
                 if ((ds.Tables["Item"] != null)) {
                     base.Tables.Add(new ItemDataTable(ds.Tables["Item"]));
                 }
-                if ((ds.Tables["Request"] != null)) {
-                    base.Tables.Add(new RequestDataTable(ds.Tables["Request"]));
+                if ((ds.Tables["DataTable1"] != null)) {
+                    base.Tables.Add(new DataTable1DataTable(ds.Tables["DataTable1"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -212,10 +212,10 @@ namespace InventoryManagement.Report {
                     this.tableItem.InitVars();
                 }
             }
-            this.tableRequest = ((RequestDataTable)(base.Tables["Request"]));
+            this.tableDataTable1 = ((DataTable1DataTable)(base.Tables["DataTable1"]));
             if ((initTable == true)) {
-                if ((this.tableRequest != null)) {
-                    this.tableRequest.InitVars();
+                if ((this.tableDataTable1 != null)) {
+                    this.tableDataTable1.InitVars();
                 }
             }
         }
@@ -230,8 +230,8 @@ namespace InventoryManagement.Report {
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableItem = new ItemDataTable();
             base.Tables.Add(this.tableItem);
-            this.tableRequest = new RequestDataTable();
-            base.Tables.Add(this.tableRequest);
+            this.tableDataTable1 = new DataTable1DataTable();
+            base.Tables.Add(this.tableDataTable1);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -242,7 +242,7 @@ namespace InventoryManagement.Report {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeRequest() {
+        private bool ShouldSerializeDataTable1() {
             return false;
         }
         
@@ -305,7 +305,7 @@ namespace InventoryManagement.Report {
         public delegate void ItemRowChangeEventHandler(object sender, ItemRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void RequestRowChangeEventHandler(object sender, RequestRowChangeEvent e);
+        public delegate void DataTable1RowChangeEventHandler(object sender, DataTable1RowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -907,7 +907,7 @@ namespace InventoryManagement.Report {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class RequestDataTable : global::System.Data.TypedTableBase<RequestRow> {
+        public partial class DataTable1DataTable : global::System.Data.TypedTableBase<DataTable1Row> {
             
             private global::System.Data.DataColumn columnid;
             
@@ -939,8 +939,8 @@ namespace InventoryManagement.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RequestDataTable() {
-                this.TableName = "Request";
+            public DataTable1DataTable() {
+                this.TableName = "DataTable1";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -948,7 +948,7 @@ namespace InventoryManagement.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal RequestDataTable(global::System.Data.DataTable table) {
+            internal DataTable1DataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -965,7 +965,7 @@ namespace InventoryManagement.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected RequestDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected DataTable1DataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -1093,34 +1093,34 @@ namespace InventoryManagement.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RequestRow this[int index] {
+            public DataTable1Row this[int index] {
                 get {
-                    return ((RequestRow)(this.Rows[index]));
+                    return ((DataTable1Row)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event RequestRowChangeEventHandler RequestRowChanging;
+            public event DataTable1RowChangeEventHandler DataTable1RowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event RequestRowChangeEventHandler RequestRowChanged;
+            public event DataTable1RowChangeEventHandler DataTable1RowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event RequestRowChangeEventHandler RequestRowDeleting;
+            public event DataTable1RowChangeEventHandler DataTable1RowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event RequestRowChangeEventHandler RequestRowDeleted;
+            public event DataTable1RowChangeEventHandler DataTable1RowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddRequestRow(RequestRow row) {
+            public void AddDataTable1Row(DataTable1Row row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RequestRow AddRequestRow(int user_id, int request_type, int request_item_primary_type, int request_item_secondary_type, string subtype, System.DateTime request_date, System.DateTime process_date, int request_status, int requested_by_id, int process_by_id, string remarks, System.DateTime need_date, string admin_remarks) {
-                RequestRow rowRequestRow = ((RequestRow)(this.NewRow()));
+            public DataTable1Row AddDataTable1Row(int user_id, int request_type, int request_item_primary_type, int request_item_secondary_type, string subtype, System.DateTime request_date, System.DateTime process_date, int request_status, int requested_by_id, int process_by_id, string remarks, System.DateTime need_date, string admin_remarks) {
+                DataTable1Row rowDataTable1Row = ((DataTable1Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         user_id,
@@ -1136,22 +1136,22 @@ namespace InventoryManagement.Report {
                         remarks,
                         need_date,
                         admin_remarks};
-                rowRequestRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowRequestRow);
-                return rowRequestRow;
+                rowDataTable1Row.ItemArray = columnValuesArray;
+                this.Rows.Add(rowDataTable1Row);
+                return rowDataTable1Row;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RequestRow FindByid(int id) {
-                return ((RequestRow)(this.Rows.Find(new object[] {
+            public DataTable1Row FindByid(int id) {
+                return ((DataTable1Row)(this.Rows.Find(new object[] {
                             id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                RequestDataTable cln = ((RequestDataTable)(base.Clone()));
+                DataTable1DataTable cln = ((DataTable1DataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -1159,7 +1159,7 @@ namespace InventoryManagement.Report {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new RequestDataTable();
+                return new DataTable1DataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1234,28 +1234,28 @@ namespace InventoryManagement.Report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RequestRow NewRequestRow() {
-                return ((RequestRow)(this.NewRow()));
+            public DataTable1Row NewDataTable1Row() {
+                return ((DataTable1Row)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new RequestRow(builder);
+                return new DataTable1Row(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(RequestRow);
+                return typeof(DataTable1Row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.RequestRowChanged != null)) {
-                    this.RequestRowChanged(this, new RequestRowChangeEvent(((RequestRow)(e.Row)), e.Action));
+                if ((this.DataTable1RowChanged != null)) {
+                    this.DataTable1RowChanged(this, new DataTable1RowChangeEvent(((DataTable1Row)(e.Row)), e.Action));
                 }
             }
             
@@ -1263,8 +1263,8 @@ namespace InventoryManagement.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.RequestRowChanging != null)) {
-                    this.RequestRowChanging(this, new RequestRowChangeEvent(((RequestRow)(e.Row)), e.Action));
+                if ((this.DataTable1RowChanging != null)) {
+                    this.DataTable1RowChanging(this, new DataTable1RowChangeEvent(((DataTable1Row)(e.Row)), e.Action));
                 }
             }
             
@@ -1272,8 +1272,8 @@ namespace InventoryManagement.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.RequestRowDeleted != null)) {
-                    this.RequestRowDeleted(this, new RequestRowChangeEvent(((RequestRow)(e.Row)), e.Action));
+                if ((this.DataTable1RowDeleted != null)) {
+                    this.DataTable1RowDeleted(this, new DataTable1RowChangeEvent(((DataTable1Row)(e.Row)), e.Action));
                 }
             }
             
@@ -1281,14 +1281,14 @@ namespace InventoryManagement.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.RequestRowDeleting != null)) {
-                    this.RequestRowDeleting(this, new RequestRowChangeEvent(((RequestRow)(e.Row)), e.Action));
+                if ((this.DataTable1RowDeleting != null)) {
+                    this.DataTable1RowDeleting(this, new DataTable1RowChangeEvent(((DataTable1Row)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveRequestRow(RequestRow row) {
+            public void RemoveDataTable1Row(DataTable1Row row) {
                 this.Rows.Remove(row);
             }
             
@@ -1315,7 +1315,7 @@ namespace InventoryManagement.Report {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "RequestDataTable";
+                attribute2.FixedValue = "DataTable1DataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1871,25 +1871,25 @@ namespace InventoryManagement.Report {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class RequestRow : global::System.Data.DataRow {
+        public partial class DataTable1Row : global::System.Data.DataRow {
             
-            private RequestDataTable tableRequest;
+            private DataTable1DataTable tableDataTable1;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal RequestRow(global::System.Data.DataRowBuilder rb) : 
+            internal DataTable1Row(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableRequest = ((RequestDataTable)(this.Table));
+                this.tableDataTable1 = ((DataTable1DataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int id {
                 get {
-                    return ((int)(this[this.tableRequest.idColumn]));
+                    return ((int)(this[this.tableDataTable1.idColumn]));
                 }
                 set {
-                    this[this.tableRequest.idColumn] = value;
+                    this[this.tableDataTable1.idColumn] = value;
                 }
             }
             
@@ -1897,10 +1897,10 @@ namespace InventoryManagement.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int user_id {
                 get {
-                    return ((int)(this[this.tableRequest.user_idColumn]));
+                    return ((int)(this[this.tableDataTable1.user_idColumn]));
                 }
                 set {
-                    this[this.tableRequest.user_idColumn] = value;
+                    this[this.tableDataTable1.user_idColumn] = value;
                 }
             }
             
@@ -1908,10 +1908,10 @@ namespace InventoryManagement.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int request_type {
                 get {
-                    return ((int)(this[this.tableRequest.request_typeColumn]));
+                    return ((int)(this[this.tableDataTable1.request_typeColumn]));
                 }
                 set {
-                    this[this.tableRequest.request_typeColumn] = value;
+                    this[this.tableDataTable1.request_typeColumn] = value;
                 }
             }
             
@@ -1919,10 +1919,10 @@ namespace InventoryManagement.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int request_item_primary_type {
                 get {
-                    return ((int)(this[this.tableRequest.request_item_primary_typeColumn]));
+                    return ((int)(this[this.tableDataTable1.request_item_primary_typeColumn]));
                 }
                 set {
-                    this[this.tableRequest.request_item_primary_typeColumn] = value;
+                    this[this.tableDataTable1.request_item_primary_typeColumn] = value;
                 }
             }
             
@@ -1930,10 +1930,10 @@ namespace InventoryManagement.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int request_item_secondary_type {
                 get {
-                    return ((int)(this[this.tableRequest.request_item_secondary_typeColumn]));
+                    return ((int)(this[this.tableDataTable1.request_item_secondary_typeColumn]));
                 }
                 set {
-                    this[this.tableRequest.request_item_secondary_typeColumn] = value;
+                    this[this.tableDataTable1.request_item_secondary_typeColumn] = value;
                 }
             }
             
@@ -1942,14 +1942,14 @@ namespace InventoryManagement.Report {
             public string subtype {
                 get {
                     try {
-                        return ((string)(this[this.tableRequest.subtypeColumn]));
+                        return ((string)(this[this.tableDataTable1.subtypeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'subtype\' in table \'Request\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'subtype\' in table \'DataTable1\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableRequest.subtypeColumn] = value;
+                    this[this.tableDataTable1.subtypeColumn] = value;
                 }
             }
             
@@ -1957,10 +1957,10 @@ namespace InventoryManagement.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public System.DateTime request_date {
                 get {
-                    return ((global::System.DateTime)(this[this.tableRequest.request_dateColumn]));
+                    return ((global::System.DateTime)(this[this.tableDataTable1.request_dateColumn]));
                 }
                 set {
-                    this[this.tableRequest.request_dateColumn] = value;
+                    this[this.tableDataTable1.request_dateColumn] = value;
                 }
             }
             
@@ -1969,14 +1969,14 @@ namespace InventoryManagement.Report {
             public System.DateTime process_date {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableRequest.process_dateColumn]));
+                        return ((global::System.DateTime)(this[this.tableDataTable1.process_dateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'process_date\' in table \'Request\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'process_date\' in table \'DataTable1\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableRequest.process_dateColumn] = value;
+                    this[this.tableDataTable1.process_dateColumn] = value;
                 }
             }
             
@@ -1984,10 +1984,10 @@ namespace InventoryManagement.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int request_status {
                 get {
-                    return ((int)(this[this.tableRequest.request_statusColumn]));
+                    return ((int)(this[this.tableDataTable1.request_statusColumn]));
                 }
                 set {
-                    this[this.tableRequest.request_statusColumn] = value;
+                    this[this.tableDataTable1.request_statusColumn] = value;
                 }
             }
             
@@ -1995,10 +1995,10 @@ namespace InventoryManagement.Report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int requested_by_id {
                 get {
-                    return ((int)(this[this.tableRequest.requested_by_idColumn]));
+                    return ((int)(this[this.tableDataTable1.requested_by_idColumn]));
                 }
                 set {
-                    this[this.tableRequest.requested_by_idColumn] = value;
+                    this[this.tableDataTable1.requested_by_idColumn] = value;
                 }
             }
             
@@ -2007,14 +2007,14 @@ namespace InventoryManagement.Report {
             public int process_by_id {
                 get {
                     try {
-                        return ((int)(this[this.tableRequest.process_by_idColumn]));
+                        return ((int)(this[this.tableDataTable1.process_by_idColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'process_by_id\' in table \'Request\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'process_by_id\' in table \'DataTable1\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableRequest.process_by_idColumn] = value;
+                    this[this.tableDataTable1.process_by_idColumn] = value;
                 }
             }
             
@@ -2023,14 +2023,14 @@ namespace InventoryManagement.Report {
             public string remarks {
                 get {
                     try {
-                        return ((string)(this[this.tableRequest.remarksColumn]));
+                        return ((string)(this[this.tableDataTable1.remarksColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'remarks\' in table \'Request\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'remarks\' in table \'DataTable1\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableRequest.remarksColumn] = value;
+                    this[this.tableDataTable1.remarksColumn] = value;
                 }
             }
             
@@ -2039,14 +2039,14 @@ namespace InventoryManagement.Report {
             public System.DateTime need_date {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableRequest.need_dateColumn]));
+                        return ((global::System.DateTime)(this[this.tableDataTable1.need_dateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'need_date\' in table \'Request\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'need_date\' in table \'DataTable1\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableRequest.need_dateColumn] = value;
+                    this[this.tableDataTable1.need_dateColumn] = value;
                 }
             }
             
@@ -2055,87 +2055,87 @@ namespace InventoryManagement.Report {
             public string admin_remarks {
                 get {
                     try {
-                        return ((string)(this[this.tableRequest.admin_remarksColumn]));
+                        return ((string)(this[this.tableDataTable1.admin_remarksColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'admin_remarks\' in table \'Request\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'admin_remarks\' in table \'DataTable1\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableRequest.admin_remarksColumn] = value;
+                    this[this.tableDataTable1.admin_remarksColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IssubtypeNull() {
-                return this.IsNull(this.tableRequest.subtypeColumn);
+                return this.IsNull(this.tableDataTable1.subtypeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetsubtypeNull() {
-                this[this.tableRequest.subtypeColumn] = global::System.Convert.DBNull;
+                this[this.tableDataTable1.subtypeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Isprocess_dateNull() {
-                return this.IsNull(this.tableRequest.process_dateColumn);
+                return this.IsNull(this.tableDataTable1.process_dateColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Setprocess_dateNull() {
-                this[this.tableRequest.process_dateColumn] = global::System.Convert.DBNull;
+                this[this.tableDataTable1.process_dateColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Isprocess_by_idNull() {
-                return this.IsNull(this.tableRequest.process_by_idColumn);
+                return this.IsNull(this.tableDataTable1.process_by_idColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Setprocess_by_idNull() {
-                this[this.tableRequest.process_by_idColumn] = global::System.Convert.DBNull;
+                this[this.tableDataTable1.process_by_idColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsremarksNull() {
-                return this.IsNull(this.tableRequest.remarksColumn);
+                return this.IsNull(this.tableDataTable1.remarksColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetremarksNull() {
-                this[this.tableRequest.remarksColumn] = global::System.Convert.DBNull;
+                this[this.tableDataTable1.remarksColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Isneed_dateNull() {
-                return this.IsNull(this.tableRequest.need_dateColumn);
+                return this.IsNull(this.tableDataTable1.need_dateColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Setneed_dateNull() {
-                this[this.tableRequest.need_dateColumn] = global::System.Convert.DBNull;
+                this[this.tableDataTable1.need_dateColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Isadmin_remarksNull() {
-                return this.IsNull(this.tableRequest.admin_remarksColumn);
+                return this.IsNull(this.tableDataTable1.admin_remarksColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Setadmin_remarksNull() {
-                this[this.tableRequest.admin_remarksColumn] = global::System.Convert.DBNull;
+                this[this.tableDataTable1.admin_remarksColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2177,22 +2177,22 @@ namespace InventoryManagement.Report {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class RequestRowChangeEvent : global::System.EventArgs {
+        public class DataTable1RowChangeEvent : global::System.EventArgs {
             
-            private RequestRow eventRow;
+            private DataTable1Row eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RequestRowChangeEvent(RequestRow row, global::System.Data.DataRowAction action) {
+            public DataTable1RowChangeEvent(DataTable1Row row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RequestRow Row {
+            public DataTable1Row Row {
                 get {
                     return this.eventRow;
                 }
@@ -3308,7 +3308,7 @@ SELECT id, asset_tag, name, description, item_type_id, item_sub_type_id, purchas
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class RequestTableAdapter : global::System.ComponentModel.Component {
+    public partial class DataTable1TableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -3322,7 +3322,7 @@ SELECT id, asset_tag, name, description, item_type_id, item_sub_type_id, purchas
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public RequestTableAdapter() {
+        public DataTable1TableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -3419,7 +3419,7 @@ SELECT id, asset_tag, name, description, item_type_id, item_sub_type_id, purchas
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Request";
+            tableMapping.DataSetTable = "DataTable1";
             tableMapping.ColumnMappings.Add("id", "id");
             tableMapping.ColumnMappings.Add("user_id", "user_id");
             tableMapping.ColumnMappings.Add("request_type", "request_type");
@@ -3561,7 +3561,7 @@ SELECT id, user_id, request_type, request_item_primary_type, request_item_second
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(InventoryMangementDataSet.RequestDataTable dataTable) {
+        public virtual int Fill(InventoryMangementDataSet.DataTable1DataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -3574,9 +3574,9 @@ SELECT id, user_id, request_type, request_item_primary_type, request_item_second
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual InventoryMangementDataSet.RequestDataTable GetData() {
+        public virtual InventoryMangementDataSet.DataTable1DataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            InventoryMangementDataSet.RequestDataTable dataTable = new InventoryMangementDataSet.RequestDataTable();
+            InventoryMangementDataSet.DataTable1DataTable dataTable = new InventoryMangementDataSet.DataTable1DataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -3584,7 +3584,7 @@ SELECT id, user_id, request_type, request_item_primary_type, request_item_second
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(InventoryMangementDataSet.RequestDataTable dataTable) {
+        public virtual int Update(InventoryMangementDataSet.DataTable1DataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
@@ -3592,7 +3592,7 @@ SELECT id, user_id, request_type, request_item_primary_type, request_item_second
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(InventoryMangementDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "Request");
+            return this.Adapter.Update(dataSet, "DataTable1");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3950,7 +3950,7 @@ SELECT id, user_id, request_type, request_item_primary_type, request_item_second
         
         private ItemTableAdapter _itemTableAdapter;
         
-        private RequestTableAdapter _requestTableAdapter;
+        private DataTable1TableAdapter _dataTable1TableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -3986,12 +3986,12 @@ SELECT id, user_id, request_type, request_item_primary_type, request_item_second
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public RequestTableAdapter RequestTableAdapter {
+        public DataTable1TableAdapter DataTable1TableAdapter {
             get {
-                return this._requestTableAdapter;
+                return this._dataTable1TableAdapter;
             }
             set {
-                this._requestTableAdapter = value;
+                this._dataTable1TableAdapter = value;
             }
         }
         
@@ -4018,9 +4018,9 @@ SELECT id, user_id, request_type, request_item_primary_type, request_item_second
                             && (this._itemTableAdapter.Connection != null))) {
                     return this._itemTableAdapter.Connection;
                 }
-                if (((this._requestTableAdapter != null) 
-                            && (this._requestTableAdapter.Connection != null))) {
-                    return this._requestTableAdapter.Connection;
+                if (((this._dataTable1TableAdapter != null) 
+                            && (this._dataTable1TableAdapter.Connection != null))) {
+                    return this._dataTable1TableAdapter.Connection;
                 }
                 return null;
             }
@@ -4038,7 +4038,7 @@ SELECT id, user_id, request_type, request_item_primary_type, request_item_second
                 if ((this._itemTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._requestTableAdapter != null)) {
+                if ((this._dataTable1TableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -4061,12 +4061,12 @@ SELECT id, user_id, request_type, request_item_primary_type, request_item_second
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._requestTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Request.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._dataTable1TableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.DataTable1.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._requestTableAdapter.Update(updatedRows));
+                    result = (result + this._dataTable1TableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -4088,11 +4088,11 @@ SELECT id, user_id, request_type, request_item_primary_type, request_item_second
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._requestTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Request.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._dataTable1TableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.DataTable1.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._requestTableAdapter.Update(addedRows));
+                    result = (result + this._dataTable1TableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -4106,11 +4106,11 @@ SELECT id, user_id, request_type, request_item_primary_type, request_item_second
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(InventoryMangementDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._requestTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Request.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._dataTable1TableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.DataTable1.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._requestTableAdapter.Update(deletedRows));
+                    result = (result + this._dataTable1TableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -4166,8 +4166,8 @@ SELECT id, user_id, request_type, request_item_primary_type, request_item_second
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._requestTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._requestTableAdapter.Connection) == false))) {
+            if (((this._dataTable1TableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._dataTable1TableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -4212,13 +4212,13 @@ SELECT id, user_id, request_type, request_item_primary_type, request_item_second
                         adaptersWithAcceptChangesDuringUpdate.Add(this._itemTableAdapter.Adapter);
                     }
                 }
-                if ((this._requestTableAdapter != null)) {
-                    revertConnections.Add(this._requestTableAdapter, this._requestTableAdapter.Connection);
-                    this._requestTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._requestTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._requestTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._requestTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._requestTableAdapter.Adapter);
+                if ((this._dataTable1TableAdapter != null)) {
+                    revertConnections.Add(this._dataTable1TableAdapter, this._dataTable1TableAdapter.Connection);
+                    this._dataTable1TableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._dataTable1TableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._dataTable1TableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._dataTable1TableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._dataTable1TableAdapter.Adapter);
                     }
                 }
                 // 
@@ -4283,9 +4283,9 @@ SELECT id, user_id, request_type, request_item_primary_type, request_item_second
                     this._itemTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._itemTableAdapter]));
                     this._itemTableAdapter.Transaction = null;
                 }
-                if ((this._requestTableAdapter != null)) {
-                    this._requestTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._requestTableAdapter]));
-                    this._requestTableAdapter.Transaction = null;
+                if ((this._dataTable1TableAdapter != null)) {
+                    this._dataTable1TableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._dataTable1TableAdapter]));
+                    this._dataTable1TableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

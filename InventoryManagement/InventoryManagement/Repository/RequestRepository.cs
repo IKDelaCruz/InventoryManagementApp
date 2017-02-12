@@ -135,15 +135,15 @@ namespace InventoryManagement.Repository
 
         }
 
-        public bool UpdateRequestStatus(int id, string remark, RequestStatus status)
+        public bool UpdateRequestStatus(int id, string remark, int user, RequestStatus status)
         {
             var oldRequest = InventoryDatabase.Requests.FirstOrDefault(x => x.id == id);
             if (oldRequest != null)
             {
                 oldRequest.request_status = (int)status;
                 oldRequest.process_date = DateTime.Now;
-                oldRequest.process_by_id = id;
-                oldRequest.requested_by_id = id;
+                oldRequest.process_by_id = user;
+                oldRequest.requested_by_id = oldRequest.user_id;
                 oldRequest.admin_remarks = remark;
                 
                 InventoryDatabase.SaveChanges();

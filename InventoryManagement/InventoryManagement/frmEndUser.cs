@@ -19,6 +19,10 @@ namespace InventoryManagement
             InitializeComponent();
 
             LoadComboBox();
+
+            var user = Singleton.Instance.UserModel.CurrentUser.Id;
+            cbxUsers.SelectedValue = user;
+
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -58,7 +62,9 @@ namespace InventoryManagement
         }
         private void frmEndUser_Load(object sender, EventArgs e)
         {
-          
+
+            var user = Singleton.Instance.UserModel.CurrentUser.Id;
+            cbxUsers.SelectedValue = user;
 
         }
         private void LoadComboBox()

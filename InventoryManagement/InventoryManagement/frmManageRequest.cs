@@ -52,18 +52,23 @@ namespace InventoryManagement
             if (dvLogs.SelectedRows.Count == 0)
                 return;
 
+
+            var user = Singleton.Instance.UserModel.CurrentUser.Id;
+
             var id = dvLogs.SelectedRows[0].Cells[0].Value;
-            Singleton.Instance.RequestModel.ApproveRequest(Convert.ToInt32(id), txtAdminRemarks.Text);
+            Singleton.Instance.RequestModel.ApproveRequest(Convert.ToInt32(id), txtAdminRemarks.Text, user);
             LoadPendingRequest();
+
+            
         }
 
         private void btnDecline_Click(object sender, EventArgs e)
         {
             if (dvLogs.SelectedRows.Count == 0)
                 return;
-
+            var user = Singleton.Instance.UserModel.CurrentUser.Id;
             var id = dvLogs.SelectedRows[0].Cells[0].Value;
-            Singleton.Instance.RequestModel.DeclineRequest(Convert.ToInt32(id), txtAdminRemarks.Text);
+            Singleton.Instance.RequestModel.DeclineRequest(Convert.ToInt32(id), txtAdminRemarks.Text, user);
             LoadPendingRequest();
         }
 

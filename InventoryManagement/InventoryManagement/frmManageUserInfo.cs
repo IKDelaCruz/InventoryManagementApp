@@ -30,6 +30,7 @@ namespace InventoryManagement
                 isUpdate = true;
 
             }
+            //load existing values to update/edit
         }
         private void LoadComboValues()
         {
@@ -51,7 +52,7 @@ namespace InventoryManagement
                 if (Singleton.Instance.UserModel.UpdateUser(currentUSer.Id, txtFirstname.Text, txtLastname.Text, (int)cbxCompany.SelectedValue, (int)cbxDepartment.SelectedValue,
                     (UserType)cbxUserType.SelectedItem))
                 {
-                    MessageBox.Show("User successfully created!");
+                    MessageBox.Show("User successfully updated!");
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
@@ -91,6 +92,11 @@ namespace InventoryManagement
                 txtPassord.Text = info.Password;
                 txtPassord.Enabled = false;
             }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

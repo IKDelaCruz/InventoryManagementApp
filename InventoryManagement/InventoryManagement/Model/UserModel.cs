@@ -43,14 +43,14 @@ namespace InventoryManagement.Model
         {
             return userRepository.UpdateUser(userId, firstName, lastName, companyId, departmentId, (int)userType);
         }
-        public void CheckDefaultUser()
-        {
-            var adminUser = userRepository.GetUser("admin");
-            if(adminUser == null)
-            {
-                userRepository.CreateNewUser("admin", "admin", 1, "Admin", "Admin", 0);
-            }
-        }
+        //public void CheckDefaultUser()
+        //{
+        //    var adminUser = userRepository.GetUser("admin");
+        //    if(adminUser == null)
+        //    {
+        //        userRepository.CreateNewUser("admin", "admin", 1, "Admin", "Admin", 0);
+        //    }
+        //}
         public List<UserViewModel> GetUsers()
         {
             return userRepository.GetUsers();
