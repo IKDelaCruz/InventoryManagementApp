@@ -371,6 +371,11 @@ namespace InventoryManagement
         {
            // DoUpdateView();
         }
+
+        private void processedRequestsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new frmProcReqReport().ShowDialog();
+        }
     }
 
 }
