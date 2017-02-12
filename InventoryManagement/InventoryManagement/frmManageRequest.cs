@@ -22,6 +22,7 @@ namespace InventoryManagement
             dvLogs.AutoGenerateColumns = false;
 
             LoadPendingRequest();
+            LoadApproved();
         }
        
         private void LoadPendingRequest()
@@ -29,6 +30,12 @@ namespace InventoryManagement
             var request = Singleton.Instance.RequestModel.GetRequestByStatus(RequestStatus.New);
 
             dvLogs.DataSource = request;
+        }
+
+        private void LoadApproved() {
+            var request = Singleton.Instance.RequestModel.GetApprovedReqs(RequestStatus.Approved);
+
+            dvProcessed.DataSource = request;
         }
 
         private void dvLogs_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -46,7 +53,7 @@ namespace InventoryManagement
                 return;
 
             var id = dvLogs.SelectedRows[0].Cells[0].Value;
-            Singleton.Instance.RequestModel.ApproveRequest(Convert.ToInt32(id));
+            Singleton.Instance.RequestModel.ApproveRequest(Convert.ToInt32(id), txtAdminRemarks.Text);
             LoadPendingRequest();
         }
 
@@ -56,8 +63,23 @@ namespace InventoryManagement
                 return;
 
             var id = dvLogs.SelectedRows[0].Cells[0].Value;
-            Singleton.Instance.RequestModel.DeclineRequest(Convert.ToInt32(id));
+            Singleton.Instance.RequestModel.DeclineRequest(Convert.ToInt32(id), txtAdminRemarks.Text);
             LoadPendingRequest();
+        }
+
+        private void tabControl1_Click(object sender, EventArgs e)
+        {
+            LoadApproved();
+        }
+
+        private void frmManageRequest_Load(object sender, EventArgs e)
+        {
+            //LoadPendingRequest();
+        }
+
+        private void tabControl1_Click_1(object sender, EventArgs e)
+        {
+            LoadApproved();
         }
     }
 }

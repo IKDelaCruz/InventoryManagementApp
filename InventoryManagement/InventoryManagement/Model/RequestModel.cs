@@ -37,13 +37,13 @@ namespace InventoryManagement.Model
         {
             return repo.UpdateRequest(req);
         }
-        public bool ApproveRequest(int id)
+        public bool ApproveRequest(int id, string remark)
         {
-            return repo.UpdateRequestStatus(id, RequestStatus.Approved);
+            return repo.UpdateRequestStatus(id, remark, RequestStatus.Approved);
         }
-        public bool DeclineRequest(int id)
+        public bool DeclineRequest(int id, string remark)
         {
-            return repo.UpdateRequestStatus(id, RequestStatus.Declined);
+            return repo.UpdateRequestStatus(id, remark, RequestStatus.Declined);
         }
         public RequestViewModel GetRequestById(int requestId)
         {
@@ -63,5 +63,20 @@ namespace InventoryManagement.Model
 
             return result;
         }
+
+        public List<RequestViewModel> GetApprovedReqs(RequestStatus status)
+        {
+            var result = repo.GetApprovedRequests(status);
+
+
+            foreach (RequestViewModel r in result)
+            {
+                r.UserFullnameEmail = Singleton.Instance.UserModel.GetUsersById(r.UserId).LastnameFirstNameUsername;
+
+            }
+
+            return result;
+        }
+
     }
 }

@@ -25,5 +25,9 @@ namespace InventoryManagement.Model
         {
             return tRepository.GetTransactionsByItemId(id);
         }
+        public List<TransactionViewModel> GetTransactions()
+        {
+            return tRepository.GetTransactions();
+        }
     }
 }

@@ -22,6 +22,8 @@ namespace InventoryManagement
             InitializeComponent();
             dvLogs.AutoGenerateColumns = false;
 
+
+
             isAddNewItem = AddItem;
 
             LoadComboBox();
@@ -54,6 +56,7 @@ namespace InventoryManagement
 
         }
 
+  
         private void LoadComboBox()
         {
           
@@ -169,13 +172,18 @@ namespace InventoryManagement
             var owner = Singleton.Instance.UserModel.GetUsersById(loadedItem.LastUpdatedUserId);
 
             txtLastUpdatedUser.Text = owner == null ? "SYSTEM" : owner.LastnameFirstName;
-            LoadTransactions(itemId);
+            //LoadTransactions(itemId);
+           
         }
-        private void LoadTransactions(int itemId)
-        {
-            dvLogs.DataSource = Singleton.Instance.TransactionModel.GetTransactionsByItemId(itemId);
-        }
+        //private void LoadTransactions(int itemId)
+        //{
+        //    dvLogs.DataSource = Singleton.Instance.TransactionModel.GetTransactionsByItemId(itemId);
+        //}
 
+        private void LoadTransactions()
+        {
+            dvLogs.DataSource = Singleton.Instance.TransactionModel.GetTransactions();
+        }
         private void cbxType_SelectedIndexChanged(object sender, EventArgs e)
         {
             var selected = (int)cbxType.SelectedValue;
@@ -187,6 +195,17 @@ namespace InventoryManagement
             cbxSubType.DisplayMember = "Name";
             cbxSubType.ValueMember = "Sub_Id";
             cbxSubType.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategoriesByType((int)cbxType.SelectedValue);
+        }
+
+        private void frmManageItem_Load(object sender, EventArgs e)
+        {
+            //load all transactions from transactions table
+            LoadTransactions();
+        }
+
+        private void txtLifetime_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

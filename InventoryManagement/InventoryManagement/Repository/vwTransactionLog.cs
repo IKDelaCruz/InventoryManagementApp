@@ -12,21 +12,20 @@ namespace InventoryManagement.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class Request
+    public partial class vwTransactionLog
     {
         public int id { get; set; }
         public int user_id { get; set; }
         public int request_type { get; set; }
         public int request_item_primary_type { get; set; }
+        public string type { get; set; }
         public int request_item_secondary_type { get; set; }
+        public string subtype { get; set; }
         public System.DateTime request_date { get; set; }
         public Nullable<System.DateTime> process_date { get; set; }
         public int request_status { get; set; }
-        public int requested_by_id { get; set; }
-        public Nullable<int> process_by_id { get; set; }
-        public string remarks { get; set; }
         public Nullable<System.DateTime> need_date { get; set; }
+        public string remarks { get; set; }
         public string admin_remarks { get; set; }
-        public string subtype { get; set; }
     }
 }

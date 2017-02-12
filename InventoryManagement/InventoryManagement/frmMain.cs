@@ -66,6 +66,7 @@ namespace InventoryManagement
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = !DoExit();
+            
         }
 
         #region --- Click Events ---
@@ -145,9 +146,11 @@ namespace InventoryManagement
             var msg = MessageBox.Show("Are you sure you want to quit?", "Exit Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (msg == DialogResult.Yes)
             {
-                return true;
+                return true; 
             }
             return false;
+
+            new frmLogin().ShowDialog();
         }
         private void DoUpdateView()
         {

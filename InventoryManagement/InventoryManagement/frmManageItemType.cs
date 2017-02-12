@@ -14,7 +14,7 @@ using InventoryManagement.ViewModel;
 
 namespace InventoryManagement
 {
-    public partial class frmManageItemType : Form
+    public partial class frmManageItemType : frmBase
     {
         bool isUpdate;
 

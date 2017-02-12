@@ -450,7 +450,6 @@
             // 
             // txtPurchasePrice
             // 
-            this.txtPurchasePrice.Enabled = false;
             this.txtPurchasePrice.Location = new System.Drawing.Point(148, 113);
             this.txtPurchasePrice.Name = "txtPurchasePrice";
             this.txtPurchasePrice.Size = new System.Drawing.Size(169, 31);
@@ -459,7 +458,6 @@
             // 
             // dtpPurchaseDate
             // 
-            this.dtpPurchaseDate.Enabled = false;
             this.dtpPurchaseDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpPurchaseDate.Location = new System.Drawing.Point(148, 84);
             this.dtpPurchaseDate.Name = "dtpPurchaseDate";
@@ -486,16 +484,15 @@
             // 
             // txtLifetime
             // 
-            this.txtLifetime.Enabled = false;
             this.txtLifetime.Location = new System.Drawing.Point(148, 142);
             this.txtLifetime.Name = "txtLifetime";
             this.txtLifetime.Size = new System.Drawing.Size(169, 31);
             this.txtLifetime.TabIndex = 37;
             this.txtLifetime.Text = "5";
+            this.txtLifetime.TextChanged += new System.EventHandler(this.txtLifetime_TextChanged);
             // 
             // txtCurrentValue
             // 
-            this.txtCurrentValue.Enabled = false;
             this.txtCurrentValue.Location = new System.Drawing.Point(148, 171);
             this.txtCurrentValue.Name = "txtCurrentValue";
             this.txtCurrentValue.Size = new System.Drawing.Size(169, 31);
@@ -571,6 +568,7 @@
             // cbxStatus
             // 
             this.cbxStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxStatus.Enabled = false;
             this.cbxStatus.FormattingEnabled = true;
             this.cbxStatus.Location = new System.Drawing.Point(146, 87);
             this.cbxStatus.Name = "cbxStatus";
@@ -676,6 +674,7 @@
             this.SystemUserName.DataPropertyName = "SystemUserName";
             this.SystemUserName.HeaderText = "SystemUserName";
             this.SystemUserName.Name = "SystemUserName";
+            this.SystemUserName.Visible = false;
             this.SystemUserName.Width = 150;
             // 
             // TransactionTypeId
@@ -690,6 +689,7 @@
             this.OtherUserName.DataPropertyName = "OtherUserName";
             this.OtherUserName.HeaderText = "OtherUserName";
             this.OtherUserName.Name = "OtherUserName";
+            this.OtherUserName.Visible = false;
             this.OtherUserName.Width = 150;
             // 
             // btnClose
@@ -727,6 +727,7 @@
             this.Padding = new System.Windows.Forms.Padding(10);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create New Item";
+            this.Load += new System.EventHandler(this.frmManageItem_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.pnlMain.ResumeLayout(false);

@@ -28,6 +28,7 @@ namespace InventoryManagement.Repository
 
             return list;
         }
+
         public List<TransactionViewModel> GetTransactionsByItemId(int id)
         {
             var list = new List<TransactionViewModel>();
@@ -51,6 +52,30 @@ namespace InventoryManagement.Repository
 
             return list;
         }
+
+        public List<TransactionViewModel> GetTransactions()
+        {
+            var list = new List<TransactionViewModel>();
+
+            var trans = InventoryDatabase.Transactions.ToList();
+            foreach (Transaction t in trans)
+            {
+                list.Add(new ViewModel.TransactionViewModel
+                {
+                    Id = t.id,
+                    OtherUserId = t.other_user_id,
+                    Remarks = t.remarks,
+                    SystemUserId = t.system_user_id,
+                    TransactionDate = t.transaction_date,
+                    TransactionTypeId = (TransactionType)t.transaction_type_id
+
+
+                });
+            }
+
+            return list;
+        }
+
         public bool InsertTransaction(int systemUserIdm, int otherUserId, TransactionType transactionType, string remarks, int itemId = 0)
         {
              InventoryDatabase.Transactions.Add(new Repository.Transaction {

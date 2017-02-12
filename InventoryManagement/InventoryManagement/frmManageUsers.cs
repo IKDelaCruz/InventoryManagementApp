@@ -63,7 +63,7 @@ namespace InventoryManagement
 
         private void lvUsers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DisplayUsers();
+            //DisplayUsers();
         }
     }
 }

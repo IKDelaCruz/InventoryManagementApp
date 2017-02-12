@@ -119,7 +119,7 @@
             // txtType
             // 
             this.txtType.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtType.Location = new System.Drawing.Point(59, 59);
+            this.txtType.Location = new System.Drawing.Point(59, 47);
             this.txtType.Margin = new System.Windows.Forms.Padding(2);
             this.txtType.Name = "txtType";
             this.txtType.Size = new System.Drawing.Size(224, 31);
@@ -129,7 +129,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(9, 62);
+            this.label2.Location = new System.Drawing.Point(9, 50);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 24);
@@ -182,7 +182,7 @@
             // 
             // txtSubtype
             // 
-            this.txtSubtype.Location = new System.Drawing.Point(59, 101);
+            this.txtSubtype.Location = new System.Drawing.Point(59, 89);
             this.txtSubtype.Margin = new System.Windows.Forms.Padding(2);
             this.txtSubtype.Name = "txtSubtype";
             this.txtSubtype.Size = new System.Drawing.Size(215, 31);
@@ -191,7 +191,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 104);
+            this.label4.Location = new System.Drawing.Point(9, 92);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(78, 24);
@@ -202,7 +202,7 @@
             // 
             this.cbxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxType.FormattingEnabled = true;
-            this.cbxType.Location = new System.Drawing.Point(59, 59);
+            this.cbxType.Location = new System.Drawing.Point(59, 47);
             this.cbxType.Margin = new System.Windows.Forms.Padding(2);
             this.cbxType.Name = "cbxType";
             this.cbxType.Size = new System.Drawing.Size(215, 32);
@@ -211,7 +211,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 62);
+            this.label3.Location = new System.Drawing.Point(9, 50);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 24);
@@ -234,7 +234,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(360, 241);
+            this.ClientSize = new System.Drawing.Size(360, 257);
             this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(2);

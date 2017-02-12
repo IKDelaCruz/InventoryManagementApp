@@ -214,6 +214,9 @@
     <Compile Include="Repository\vwItemLog.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repository\vwTransactionLog.cs">
+      <DependentUpon>dbInventory.tt</DependentUpon>
+    </Compile>
     <Compile Include="Utils\BarcodeGenerator.cs" />
     <Compile Include="Utils\EmailSender.cs" />
     <Compile Include="Utils\ErrorLogger.cs" />

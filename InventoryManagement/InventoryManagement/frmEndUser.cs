@@ -34,6 +34,7 @@ namespace InventoryManagement
             request.RequestedStatus = RequestStatus.New;
             request.RequestItemPrimaryType = (int)cbxType.SelectedIndex + 1;
             request.RequestSecondaryItemType = (int)cbxSubType.SelectedValue;
+            request.Subtype = cbxSubType.Text;
             request.NeededDate = dtpNeededDate.Value;
             request.UserId = (int)cbxUsers.SelectedValue;
             request.Remarks = txtRemarks.Text.ToString();

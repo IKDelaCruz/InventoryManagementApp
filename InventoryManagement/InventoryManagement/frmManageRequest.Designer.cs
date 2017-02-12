@@ -38,6 +38,12 @@
             this.btnApproved = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.dvLogs = new System.Windows.Forms.DataGridView();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dvProcessed = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TransactionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SystemUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,18 +51,12 @@
             this.OtherUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NeededDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvLogs)).BeginInit();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dvProcessed)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -69,15 +69,16 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(730, 456);
             this.tabControl1.TabIndex = 3;
+            this.tabControl1.Click += new System.EventHandler(this.tabControl1_Click_1);
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.dvLogs);
-            this.tabPage1.Location = new System.Drawing.Point(4, 24);
+            this.tabPage1.Location = new System.Drawing.Point(4, 33);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(722, 428);
+            this.tabPage1.Size = new System.Drawing.Size(722, 419);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Pending Request";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -111,7 +112,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(37, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 15);
+            this.label1.Size = new System.Drawing.Size(124, 24);
             this.label1.TabIndex = 50;
             this.label1.Text = "User Remarks";
             // 
@@ -150,7 +151,7 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(37, 92);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(92, 15);
+            this.label10.Size = new System.Drawing.Size(141, 24);
             this.label10.TabIndex = 49;
             this.label10.Text = "Admin Remarks";
             // 
@@ -181,6 +182,72 @@
             this.dvLogs.TabIndex = 1;
             this.dvLogs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvLogs_CellClick);
             // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.dvProcessed);
+            this.tabPage2.Location = new System.Drawing.Point(4, 33);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(722, 419);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Processed Request";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // dvProcessed
+            // 
+            this.dvProcessed.AllowUserToAddRows = false;
+            this.dvProcessed.AllowUserToDeleteRows = false;
+            this.dvProcessed.AllowUserToResizeRows = false;
+            this.dvProcessed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dvProcessed.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4});
+            this.dvProcessed.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dvProcessed.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dvProcessed.Location = new System.Drawing.Point(3, 3);
+            this.dvProcessed.Name = "dvProcessed";
+            this.dvProcessed.RowHeadersVisible = false;
+            this.dvProcessed.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dvProcessed.ShowCellToolTips = false;
+            this.dvProcessed.ShowEditingIcon = false;
+            this.dvProcessed.ShowRowErrors = false;
+            this.dvProcessed.Size = new System.Drawing.Size(716, 253);
+            this.dvProcessed.TabIndex = 2;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "TransactionDate";
+            this.dataGridViewTextBoxColumn1.HeaderText = "TransactionDate";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            this.dataGridViewTextBoxColumn1.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "SystemUserName";
+            this.dataGridViewTextBoxColumn2.HeaderText = "SystemUserName";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Visible = false;
+            this.dataGridViewTextBoxColumn2.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "TransactionTypeId";
+            this.dataGridViewTextBoxColumn3.HeaderText = "TransactionTypeId";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Visible = false;
+            this.dataGridViewTextBoxColumn3.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "OtherUserName";
+            this.dataGridViewTextBoxColumn4.HeaderText = "OtherUserName";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Visible = false;
+            this.dataGridViewTextBoxColumn4.Width = 150;
+            // 
             // Id
             // 
             this.Id.DataPropertyName = "Id";
@@ -202,8 +269,8 @@
             // 
             // TransactionTypeId
             // 
-            this.TransactionTypeId.DataPropertyName = "RequestSecondaryItemType";
-            this.TransactionTypeId.HeaderText = "Item Type";
+            this.TransactionTypeId.DataPropertyName = "Subtype";
+            this.TransactionTypeId.HeaderText = "Item Subtype";
             this.TransactionTypeId.Name = "TransactionTypeId";
             // 
             // OtherUserName
@@ -226,71 +293,9 @@
             this.UserRemarks.Name = "UserRemarks";
             this.UserRemarks.Visible = false;
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.dataGridView1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 24);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(722, 428);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Processed Request";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.ShowCellToolTips = false;
-            this.dataGridView1.ShowEditingIcon = false;
-            this.dataGridView1.ShowRowErrors = false;
-            this.dataGridView1.Size = new System.Drawing.Size(716, 253);
-            this.dataGridView1.TabIndex = 2;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "TransactionDate";
-            this.dataGridViewTextBoxColumn1.HeaderText = "TransactionDate";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "SystemUserName";
-            this.dataGridViewTextBoxColumn2.HeaderText = "SystemUserName";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "TransactionTypeId";
-            this.dataGridViewTextBoxColumn3.HeaderText = "TransactionTypeId";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "OtherUserName";
-            this.dataGridViewTextBoxColumn4.HeaderText = "OtherUserName";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Width = 150;
-            // 
             // frmManageRequest
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(750, 476);
             this.Controls.Add(this.tabControl1);
@@ -305,7 +310,7 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvLogs)).EndInit();
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dvProcessed)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -320,13 +325,13 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnDecline;
         private System.Windows.Forms.Button btnApproved;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dvProcessed;
+        private System.Windows.Forms.TextBox txtUserRemarks;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.TextBox txtUserRemarks;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn TransactionDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn SystemUserName;

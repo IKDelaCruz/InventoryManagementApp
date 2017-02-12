@@ -54,6 +54,7 @@
       <Parameter Name="new_diagramname" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="vwTransactionLogs" EntityType="InventoryMangementModel.vwTransactionLog" />
   </EntityContainer>
   <EntityType Name="Brand">
     <Key>
@@ -143,6 +144,7 @@
     <Property Name="remarks" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Name="need_date" Type="DateTime" Precision="3" />
     <Property Name="admin_remarks" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="subtype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>
@@ -244,4 +246,29 @@
     <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
     <Property Type="Int32" Name="OwnerID" Nullable="false" />
   </ComplexType>
+  <EntityType Name="vwTransactionLog">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="user_id" />
+      <PropertyRef Name="request_type" />
+      <PropertyRef Name="request_item_primary_type" />
+      <PropertyRef Name="request_item_secondary_type" />
+      <PropertyRef Name="subtype" />
+      <PropertyRef Name="request_date" />
+      <PropertyRef Name="request_status" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="request_type" Type="Int32" Nullable="false" />
+    <Property Name="request_item_primary_type" Type="Int32" Nullable="false" />
+    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="request_item_secondary_type" Type="Int32" Nullable="false" />
+    <Property Name="subtype" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="request_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="process_date" Type="DateTime" Precision="3" />
+    <Property Name="request_status" Type="Int32" Nullable="false" />
+    <Property Name="need_date" Type="DateTime" Precision="3" />
+    <Property Name="remarks" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="admin_remarks" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

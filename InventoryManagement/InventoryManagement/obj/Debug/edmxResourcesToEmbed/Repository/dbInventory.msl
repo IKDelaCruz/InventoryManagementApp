@@ -75,6 +75,7 @@
     <EntitySetMapping Name="Requests">
       <EntityTypeMapping TypeName="InventoryMangementModel.Request">
         <MappingFragment StoreEntitySet="Request">
+          <ScalarProperty Name="subtype" ColumnName="subtype" />
           <ScalarProperty Name="admin_remarks" ColumnName="admin_remarks" />
           <ScalarProperty Name="need_date" ColumnName="need_date" />
           <ScalarProperty Name="remarks" ColumnName="remarks" />
@@ -170,5 +171,24 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="InventoryMangementModel.Store.sp_renamediagram" />
     <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="InventoryMangementModel.Store.sp_upgraddiagrams" />
+    <EntitySetMapping Name="vwTransactionLogs">
+      <EntityTypeMapping TypeName="InventoryMangementModel.vwTransactionLog">
+        <MappingFragment StoreEntitySet="vwTransactionLogs">
+          <ScalarProperty Name="admin_remarks" ColumnName="admin_remarks" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+          <ScalarProperty Name="need_date" ColumnName="need_date" />
+          <ScalarProperty Name="request_status" ColumnName="request_status" />
+          <ScalarProperty Name="process_date" ColumnName="process_date" />
+          <ScalarProperty Name="request_date" ColumnName="request_date" />
+          <ScalarProperty Name="subtype" ColumnName="subtype" />
+          <ScalarProperty Name="request_item_secondary_type" ColumnName="request_item_secondary_type" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="request_item_primary_type" ColumnName="request_item_primary_type" />
+          <ScalarProperty Name="request_type" ColumnName="request_type" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

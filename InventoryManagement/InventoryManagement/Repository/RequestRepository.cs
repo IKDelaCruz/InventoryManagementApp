@@ -1,4 +1,5 @@
 ﻿using InventoryManagement.ViewModel;
+using InventoryManagement.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,7 @@ namespace InventoryManagement.Repository
                 requested_by_id = req.RequestedById,
                 request_item_primary_type = (int)req.RequestItemPrimaryType,
                 request_item_secondary_type = (int)req.RequestSecondaryItemType,
+                subtype = req.Subtype,
                 request_status = (int)req.RequestedStatus,
                 user_id = req.UserId,
                 request_type = (int)req.RequestType,
@@ -42,7 +44,7 @@ namespace InventoryManagement.Repository
                 return 0;
         }
         public List<RequestViewModel> GetRequestByUserId(int userId)
-        {
+        {        
             var result = new List<RequestViewModel>();
             var reqs = InventoryDatabase.Requests.Where(x => x.user_id == userId);
             foreach (Request r in reqs)
@@ -69,6 +71,8 @@ namespace InventoryManagement.Repository
         {
             var result = new List<RequestViewModel>();
             var reqs = InventoryDatabase.Requests.Where(x => x.request_status == (int)status);
+
+            
             foreach (Request r in reqs)
             {
                 result.Add(new RequestViewModel
@@ -81,6 +85,7 @@ namespace InventoryManagement.Repository
                     RequestedStatus = (RequestStatus)r.request_status,
                     RequestItemPrimaryType = (int)r.request_item_primary_type,
                     RequestSecondaryItemType = (int)r.request_item_secondary_type,
+                    Subtype = r.subtype,
                     RequestType = (RequestType)r.request_type,
                     Remarks = r.remarks,
                     UserId = r.user_id,
@@ -130,12 +135,17 @@ namespace InventoryManagement.Repository
 
         }
 
-        public bool UpdateRequestStatus(int id, RequestStatus status)
+        public bool UpdateRequestStatus(int id, string remark, RequestStatus status)
         {
             var oldRequest = InventoryDatabase.Requests.FirstOrDefault(x => x.id == id);
             if (oldRequest != null)
             {
                 oldRequest.request_status = (int)status;
+                oldRequest.process_date = DateTime.Now;
+                oldRequest.process_by_id = id;
+                oldRequest.requested_by_id = id;
+                oldRequest.admin_remarks = remark;
+                
                 InventoryDatabase.SaveChanges();
 
                 return true;
@@ -143,6 +153,35 @@ namespace InventoryManagement.Repository
             return false;
 
         }
+
+        public List<RequestViewModel> GetApprovedRequests(RequestStatus status)
+        {
+            var result = new List<RequestViewModel>();
+            var reqs = InventoryDatabase.Requests.Where(x => x.request_status == (int)status);
+            foreach (Request r in reqs)
+            {
+                result.Add(new RequestViewModel
+                {
+                    Id = r.id,
+                    ProcessDate = r.process_date ?? DateTime.MinValue,
+                    ProcessedById = r.process_by_id ?? 0,
+                    RequestedById = r.requested_by_id,
+                    RequestedDate = r.request_date,
+                    RequestedStatus = (RequestStatus)r.request_status,
+                    RequestItemPrimaryType = (int)r.request_item_primary_type,
+                    RequestSecondaryItemType = (int)r.request_item_secondary_type,
+                    Subtype = r.subtype,
+                    RequestType = (RequestType)r.request_type,
+                    Remarks = r.remarks,
+                    UserId = r.user_id,
+                    AdminRemarks = r.admin_remarks,
+                    NeededDate = r.need_date ?? DateTime.MinValue,
+
+                });
+            }
+            return result;
+        }
+
     }
 }
 

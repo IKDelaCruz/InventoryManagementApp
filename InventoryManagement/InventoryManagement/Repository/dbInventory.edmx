@@ -79,6 +79,7 @@
           <Property Name="request_type" Type="int" Nullable="false" />
           <Property Name="request_item_primary_type" Type="int" Nullable="false" />
           <Property Name="request_item_secondary_type" Type="int" Nullable="false" />
+          <Property Name="subtype" Type="varchar" MaxLength="50" />
           <Property Name="request_date" Type="datetime" Nullable="false" />
           <Property Name="process_date" Type="datetime" />
           <Property Name="request_status" Type="int" Nullable="false" />
@@ -142,6 +143,33 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwItemLogs' does not have a
           <Property Name="OtherUserId" Type="int" />
           <Property Name="ItemName" Type="varchar" MaxLength="50" />
           <Property Name="ItemId" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'InventoryMangement.dbo.vwTransactionLogs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwTransactionLogs">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="request_type" />
+            <PropertyRef Name="request_item_primary_type" />
+            <PropertyRef Name="request_item_secondary_type" />
+            <PropertyRef Name="subtype" />
+            <PropertyRef Name="request_date" />
+            <PropertyRef Name="request_status" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="request_type" Type="int" Nullable="false" />
+          <Property Name="request_item_primary_type" Type="int" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="50" />
+          <Property Name="request_item_secondary_type" Type="int" Nullable="false" />
+          <Property Name="subtype" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="request_date" Type="datetime" Nullable="false" />
+          <Property Name="process_date" Type="datetime" />
+          <Property Name="request_status" Type="int" Nullable="false" />
+          <Property Name="need_date" Type="datetime" />
+          <Property Name="remarks" Type="varchar" MaxLength="150" />
+          <Property Name="admin_remarks" Type="varchar" MaxLength="150" />
         </EntityType>
         <Association Name="FK_Item_ItemSubtype">
           <End Role="ItemSubtype" Type="Self.ItemSubtype" Multiplicity="1" />
@@ -235,6 +263,23 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwItemLogs' does not have a
     [vwItemLogs].[ItemId] AS [ItemId]
     FROM [dbo].[vwItemLogs] AS [vwItemLogs]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="vwTransactionLogs" EntityType="Self.vwTransactionLogs" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwTransactionLogs].[id] AS [id], 
+    [vwTransactionLogs].[user_id] AS [user_id], 
+    [vwTransactionLogs].[request_type] AS [request_type], 
+    [vwTransactionLogs].[request_item_primary_type] AS [request_item_primary_type], 
+    [vwTransactionLogs].[type] AS [type], 
+    [vwTransactionLogs].[request_item_secondary_type] AS [request_item_secondary_type], 
+    [vwTransactionLogs].[subtype] AS [subtype], 
+    [vwTransactionLogs].[request_date] AS [request_date], 
+    [vwTransactionLogs].[process_date] AS [process_date], 
+    [vwTransactionLogs].[request_status] AS [request_status], 
+    [vwTransactionLogs].[need_date] AS [need_date], 
+    [vwTransactionLogs].[remarks] AS [remarks], 
+    [vwTransactionLogs].[admin_remarks] AS [admin_remarks]
+    FROM [dbo].[vwTransactionLogs] AS [vwTransactionLogs]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Item_ItemSubtype" Association="Self.FK_Item_ItemSubtype">
             <End Role="ItemSubtype" EntitySet="ItemSubtype" />
             <End Role="Item" EntitySet="Item" />
@@ -306,6 +351,7 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwItemLogs' does not have a
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="vwTransactionLogs" EntityType="InventoryMangementModel.vwTransactionLog" />
         </EntityContainer>
         <EntityType Name="Brand">
           <Key>
@@ -395,6 +441,7 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwItemLogs' does not have a
           <Property Name="remarks" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="need_date" Type="DateTime" Precision="3" />
           <Property Name="admin_remarks" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="subtype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -496,6 +543,31 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwItemLogs' does not have a
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <EntityType Name="vwTransactionLog">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="request_type" />
+            <PropertyRef Name="request_item_primary_type" />
+            <PropertyRef Name="request_item_secondary_type" />
+            <PropertyRef Name="subtype" />
+            <PropertyRef Name="request_date" />
+            <PropertyRef Name="request_status" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="request_type" Type="Int32" Nullable="false" />
+          <Property Name="request_item_primary_type" Type="Int32" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="request_item_secondary_type" Type="Int32" Nullable="false" />
+          <Property Name="subtype" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="request_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="process_date" Type="DateTime" Precision="3" />
+          <Property Name="request_status" Type="Int32" Nullable="false" />
+          <Property Name="need_date" Type="DateTime" Precision="3" />
+          <Property Name="remarks" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="admin_remarks" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -576,6 +648,7 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwItemLogs' does not have a
           <EntitySetMapping Name="Requests">
             <EntityTypeMapping TypeName="InventoryMangementModel.Request">
               <MappingFragment StoreEntitySet="Request">
+                <ScalarProperty Name="subtype" ColumnName="subtype" />
                 <ScalarProperty Name="admin_remarks" ColumnName="admin_remarks" />
                 <ScalarProperty Name="need_date" ColumnName="need_date" />
                 <ScalarProperty Name="remarks" ColumnName="remarks" />
@@ -671,6 +744,25 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwItemLogs' does not have a
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="InventoryMangementModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="InventoryMangementModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="vwTransactionLogs">
+            <EntityTypeMapping TypeName="InventoryMangementModel.vwTransactionLog">
+              <MappingFragment StoreEntitySet="vwTransactionLogs">
+                <ScalarProperty Name="admin_remarks" ColumnName="admin_remarks" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="need_date" ColumnName="need_date" />
+                <ScalarProperty Name="request_status" ColumnName="request_status" />
+                <ScalarProperty Name="process_date" ColumnName="process_date" />
+                <ScalarProperty Name="request_date" ColumnName="request_date" />
+                <ScalarProperty Name="subtype" ColumnName="subtype" />
+                <ScalarProperty Name="request_item_secondary_type" ColumnName="request_item_secondary_type" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="request_item_primary_type" ColumnName="request_item_primary_type" />
+                <ScalarProperty Name="request_type" ColumnName="request_type" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
