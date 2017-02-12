@@ -51,6 +51,9 @@
     <Reference Include="BarcodeLib">
       <HintPath>..\..\..\..\..\Downloads\barcode_bin\BarcodeLib.dll</HintPath>
     </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -140,6 +143,17 @@
     <Compile Include="frmPrinter.Designer.cs">
       <DependentUpon>frmPrinter.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmProcReqReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProcReqReport.Designer.cs">
+      <DependentUpon>frmProcReqReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\InventoryMangementDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InventoryMangementDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Model\BaseModel.cs" />
     <Compile Include="Model\CategoryModel.cs" />
     <Compile Include="Model\CategorySubcategoryModel.cs" />
@@ -152,6 +166,12 @@
     <Compile Include="Model\UserModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\ProcReqReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProcReqReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Repository\BaseRepository.cs" />
     <Compile Include="Repository\Brand.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
@@ -263,6 +283,9 @@
     <EmbeddedResource Include="frmPrinter.resx">
       <DependentUpon>frmPrinter.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmProcReqReport.resx">
+      <DependentUpon>frmProcReqReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -272,6 +295,21 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Report\ProcReqReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ProcReqReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Report\InventoryMangementDataSet.xsc">
+      <DependentUpon>InventoryMangementDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Report\InventoryMangementDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>InventoryMangementDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Report\InventoryMangementDataSet.xss">
+      <DependentUpon>InventoryMangementDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -327,7 +365,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

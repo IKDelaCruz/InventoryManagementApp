@@ -49,3 +49,6 @@ C:\Users\ian.delacruz.JAKAGROUP\Documents\GitHub\InventoryManagementApp\Inventor
 C:\Users\ian.delacruz.JAKAGROUP\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.csproj.GenerateResource.Cache
 C:\Users\ian.delacruz.JAKAGROUP\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.exe
 C:\Users\ian.delacruz.JAKAGROUP\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.pdb
+C:\Users\Angelito\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\bin\Debug\InventoryManagement.exe.config
+C:\Users\Angelito\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.exe
+C:\Users\Angelito\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.pdb
