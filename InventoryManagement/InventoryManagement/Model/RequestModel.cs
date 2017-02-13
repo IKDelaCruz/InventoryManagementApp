@@ -20,14 +20,17 @@ namespace InventoryManagement.Model
         public int CreateNewRequest(RequestViewModel newRequest)
         {
             var result = repo.InsertNewRequest(newRequest);
+            
             //SEND EMAIL NOTIFICATION TO USER - richmond.mendoza@jakagroup.com
             //AND ADMIN - mis@jakagroup.com
 
-            EmailSender.SendEmailNotification("","");
+            //EmailSender.SendMail();
 
             return result;
 
         }
+
+
         public List<RequestViewModel> GetRequestByUserId(int userId)
         {
             return repo.GetRequestByUserId(userId);
@@ -58,7 +61,7 @@ namespace InventoryManagement.Model
             foreach (RequestViewModel r in result)
             {
                 r.UserFullnameEmail = Singleton.Instance.UserModel.GetUsersById(r.UserId).LastnameFirstNameUsername;
-              
+
             }
 
             return result;
@@ -76,6 +79,11 @@ namespace InventoryManagement.Model
             }
 
             return result;
+        }
+
+        public List<RequestViewModel> SendEmail()
+        {
+            return repo.GetExpectedReturnDate();
         }
 
     }

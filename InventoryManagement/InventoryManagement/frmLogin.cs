@@ -1,4 +1,7 @@
 ﻿using InventoryManagement.Model;
+using InventoryManagement.Repository;
+using InventoryManagement.Utils;
+using InventoryManagement.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +16,8 @@ namespace InventoryManagement
 {
     public partial class frmLogin : frmBase
     {
+        public object InventoryDatabase { get; private set; }
+
         public frmLogin()
         {
             InitializeComponent();
@@ -21,7 +26,10 @@ namespace InventoryManagement
         private void btnLogin_Click(object sender, EventArgs e)
         {
             DoAuth();
+            Singleton.Instance.RequestModel.SendEmail();
         }
+
+
         private void DoAuth()
         {
             var result = Singleton.Instance.UserModel.AuthenticateUser(txtUsername.Text.Trim(), txtPassord.Text.Trim());

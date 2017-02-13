@@ -3,49 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net;
+using System.Net.Mail;
+using System.Web;
 
 namespace InventoryManagement.Utils
 {
     public class EmailSender
     {
-        public static bool SendEmailNotification(string borrowerEmail, string adminEmail)
+        public static void SendMail(int user)
         {
-            //LOGIC SEND EMAIL
+            //SEND EMAIL NOTIFICATION TO USER - richmond.mendoza@jakagroup.com
+            //AND ADMIN - mis@jakagroup.com
 
-            //try
-            //{
-            //    System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient();
-            //    client.Host = "smtp.gmail.com";
-            //    client.UseDefaultCredentials = false;
-            //    client.EnableSsl = false;
-            //    client.Credentials = new System.Net.NetworkCredential("IAP", "password of IAP");
-            //    client.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
-            //    System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage("IAP@gmail.com", recieve email);
-            //    message.Subject = "<By Default: IAP Choices Notification>";
-            //    message.Body = "Hi"+"<Name>"+ ", the item you borrowed must be returned!";
+            System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage();
+            message.To.Add("itsjpua@gmail.com");
+            message.Subject = "This is the Subject line";
+            message.From = new System.Net.Mail.MailAddress("pua.jeanne@gmail.com");
+            message.Body = "This is the message body";
+            //System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient("smtp.gmail.com", 578);
+            var client = new SmtpClient("smtp.gmail.com", 587)
+            {
+                Credentials = new NetworkCredential("pua.jeanne@gmail.com", "popoislove"),
+                EnableSsl = true
+            };
 
-            //    message.BodyEncoding = System.Text.Encoding.UTF8;
-            //    message.IsBodyHtml = true;
+            string msg = "The item " + "User with User ID: " + user+ " " + "borrowed is expected to be returned today. Please notify the user.";
+            client.Send("pua.jeanne@gmail.com", "kyleangelo20@gmail.com", "Return Item", msg);
 
-
-            //    try
-            //    {
-            //        client.Send(message);
-            //        return true;
-            //    }
-            //    catch
-            //    {
-
-            //        return false;
-            //    }
-            //}
-            //catch
-            //{
-
-            //    return false;
-            //}
-
-           return true;
         }
     }
 }

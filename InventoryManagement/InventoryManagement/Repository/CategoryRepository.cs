@@ -91,6 +91,19 @@ namespace InventoryManagement.Repository
             InventoryDatabase.SaveChanges();
             return 1;
         }
+
+        public int Delete(int id)
+        {
+            var cat = InventoryDatabase.ItemTypes.FirstOrDefault(s => s.id == id);
+
+            if (cat != null)
+            {
+                InventoryDatabase.ItemTypes.Remove(cat);
+            }
+
+            InventoryDatabase.SaveChanges();
+            return 1;
+        }
         public int CreateSubCateg(int id, string name)
         {
             var cat = InventoryDatabase.ItemSubtypes.FirstOrDefault(s => s.subtype.Equals(name));

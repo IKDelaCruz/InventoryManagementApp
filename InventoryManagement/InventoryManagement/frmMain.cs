@@ -285,7 +285,7 @@ namespace InventoryManagement
 
         private void manageToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            new frmManageItem().ShowDialog();
+            new frmManageRequest().ShowDialog();
         }
 
         private void addItemTypeToolStripMenuItem_Click(object sender, EventArgs e)

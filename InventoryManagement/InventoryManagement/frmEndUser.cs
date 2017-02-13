@@ -44,6 +44,7 @@ namespace InventoryManagement
             request.Remarks = txtRemarks.Text.ToString();
 
             var result = Singleton.Instance.RequestModel.CreateNewRequest(request);
+           
 
             if (result > 0)
             {
@@ -122,7 +123,7 @@ namespace InventoryManagement
             if(requestInfo != null)
             {
                 lblRequestType.Text = requestInfo.RequestType.ToString();
-                lblItemType.Text = requestInfo.RequestSecondaryItemType.ToString();
+                lblItemType.Text = requestInfo.Subtype.ToString();
                 lblDateNeeded.Text = requestInfo.NeededDate.ToString();
                 lblDateRequested.Text = requestInfo.RequestedDate.ToString();
                 lblUserRemarks.Text = requestInfo.Remarks;

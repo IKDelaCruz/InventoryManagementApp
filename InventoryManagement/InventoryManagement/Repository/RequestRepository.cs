@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InventoryManagement.Utils;
 
 namespace InventoryManagement.Repository
 {
@@ -111,6 +112,7 @@ namespace InventoryManagement.Repository
                 RequestItemPrimaryType = (int)r.request_item_primary_type,
                 RequestSecondaryItemType = (int)r.request_item_secondary_type,
                 RequestType = (RequestType)r.request_type,
+                Subtype = r.subtype,
                 Remarks = r.remarks,
                 UserId = r.user_id,
                 AdminRemarks = r.admin_remarks
@@ -182,6 +184,7 @@ namespace InventoryManagement.Repository
                     Remarks = r.remarks,
                     UserId = r.user_id,
                     AdminRemarks = r.admin_remarks,
+                    ExpectedReturnDate = r.expected_return_date ?? DateTime.MinValue,
                     NeededDate = r.need_date?? DateTime.MinValue,
 
                 });
@@ -210,12 +213,53 @@ namespace InventoryManagement.Repository
                     Remarks = r.remarks,
                     UserId = r.user_id,
                     AdminRemarks = r.admin_remarks,
+                    ExpectedReturnDate = r.expected_return_date ?? DateTime.MinValue,
                     NeededDate = r.need_date ?? DateTime.MinValue,
-
                 });
+
+
             }
             return result;
         }
+
+        public List<RequestViewModel> GetExpectedReturnDate()
+        {
+            //SEND EMAIL NOTIFICATION TO USER - richmond.mendoza@jakagroup.com
+            //AND ADMIN - mis@jakagroup.com
+
+            var result = new List<RequestViewModel>();
+            var reqs = InventoryDatabase.Requests;
+            foreach (Request r in reqs)
+            {
+                result.Add(new RequestViewModel
+                {
+                    ExpectedReturnDate = r.expected_return_date ?? DateTime.MinValue,
+                });
+
+                var expectedreturn = r.expected_return_date;
+
+                DateTime retdate = Convert.ToDateTime(expectedreturn).Date;
+
+                if (retdate == DateTime.Today)
+                {
+
+                    var query = (from u in InventoryDatabase.Requests
+                                 where u.expected_return_date == expectedreturn
+                                 select u.user_id).FirstOrDefault();
+
+                    
+                    EmailSender.SendMail(query);
+
+                }
+            }
+            return result;
+        }
+
+
+
+
+
+
 
     }
 }

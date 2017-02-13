@@ -9,10 +9,10 @@ namespace InventoryManagement.ViewModel
     public enum RequestType
     {
         Borrow,
-        Return,
+        //Return,
         Reserve,
-        Repair,
-        Dispose
+        //Repair,
+        //Dispose
     }
     public enum RequestStatus
     {
