@@ -37,13 +37,13 @@ namespace InventoryManagement.Model
         {
             return repo.UpdateRequest(req);
         }
-        public bool ApproveRequest(int id, string remark, int user)
+        public bool ApproveRequest(int id, string remark, int user, DateTime need_date)
         {
-            return repo.UpdateRequestStatus(id, remark, user, RequestStatus.Approved);
+            return repo.UpdateRequestStatus(id, remark, user, need_date, RequestStatus.Approved);
         }
-        public bool DeclineRequest(int id, string remark, int user)
+        public bool DeclineRequest(int id, string remark, int user, DateTime need_date)
         {
-            return repo.UpdateRequestStatus(id, remark, user, RequestStatus.Declined);
+            return repo.UpdateRequestStatus(id, remark, user, need_date, RequestStatus.Declined);
         }
         public RequestViewModel GetRequestById(int requestId)
         {

@@ -30,7 +30,7 @@
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -150,22 +150,11 @@
     <Compile Include="frmPrinter.Designer.cs">
       <DependentUpon>frmPrinter.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmProcReqReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmProcReqReport.Designer.cs">
-      <DependentUpon>frmProcReqReport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Report\CrystalReport1.cs">
+    <Compile Include="Report\InventoryManagementData\DataFiller.cs" />
+    <Compile Include="Report\InventoryManagementData\InventoryDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CrystalReport1.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Report\InventoryMangementDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>InventoryMangementDataSet.xsd</DependentUpon>
+      <DependentUpon>InventoryDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Model\BaseModel.cs" />
     <Compile Include="Model\CategoryModel.cs" />
@@ -179,6 +168,19 @@
     <Compile Include="Model\UserModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\InventoryMangementDataSetTableAdapters\RequestsTableAdapter.cs" />
+    <Compile Include="Report\ReportRPT\InventoryRpt.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InventoryRpt.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\ReportViewer.Designer.cs">
+      <DependentUpon>ReportViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repository\BaseRepository.cs" />
     <Compile Include="Repository\Brand.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
@@ -290,9 +292,6 @@
     <EmbeddedResource Include="frmPrinter.resx">
       <DependentUpon>frmPrinter.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmProcReqReport.resx">
-      <DependentUpon>frmProcReqReport.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -303,20 +302,23 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Report\CrystalReport1.rpt">
+    <EmbeddedResource Include="Report\ReportRPT\InventoryRpt.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
+      <LastGenOutput>InventoryRpt.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Report\InventoryMangementDataSet.xsc">
-      <DependentUpon>InventoryMangementDataSet.xsd</DependentUpon>
+    <EmbeddedResource Include="Report\ReportViewer.resx">
+      <DependentUpon>ReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Report\InventoryManagementData\InventoryDataSet.xsc">
+      <DependentUpon>InventoryDataSet.xsd</DependentUpon>
     </None>
-    <None Include="Report\InventoryMangementDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>InventoryMangementDataSet.Designer.cs</LastGenOutput>
+    <None Include="Report\InventoryManagementData\InventoryDataSet.xsd">
       <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>InventoryDataSet.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Report\InventoryMangementDataSet.xss">
-      <DependentUpon>InventoryMangementDataSet.xsd</DependentUpon>
+    <None Include="Report\InventoryManagementData\InventoryDataSet.xss">
+      <DependentUpon>InventoryDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

@@ -172,5 +172,8 @@ namespace InventoryManagement.Repository
 
             return list;
         }
+
+
+        
     }
 }

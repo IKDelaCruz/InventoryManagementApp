@@ -9,17 +9,17 @@
         <EntityTypeShape EntityType="InventoryMangementModel.Company" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="InventoryMangementModel.Department" Width="1.5" PointX="4.75" PointY="0.75" />
         <EntityTypeShape EntityType="InventoryMangementModel.Item" Width="1.5" PointX="5.25" PointY="5.875" />
-        <EntityTypeShape EntityType="InventoryMangementModel.ItemSubtype" Width="1.5" PointX="2.625" PointY="11" />
+        <EntityTypeShape EntityType="InventoryMangementModel.ItemSubtype" Width="1.5" PointX="3" PointY="10.875" />
         <EntityTypeShape EntityType="InventoryMangementModel.ItemType" Width="1.5" PointX="0.75" PointY="4.5" />
         <EntityTypeShape EntityType="InventoryMangementModel.Request" Width="1.5" PointX="6.75" PointY="0.75" />
         <EntityTypeShape EntityType="InventoryMangementModel.sysdiagram" Width="1.5" PointX="0.75" PointY="7.75" />
         <EntityTypeShape EntityType="InventoryMangementModel.Transaction" Width="1.5" PointX="7.75" PointY="5.75" />
         <EntityTypeShape EntityType="InventoryMangementModel.User" Width="1.5" PointX="8.75" PointY="0.75" />
         <EntityTypeShape EntityType="InventoryMangementModel.vwItemLog" Width="1.5" PointX="9.75" PointY="4.75" />
+        <EntityTypeShape EntityType="InventoryMangementModel.vwTransactionLog" Width="1.5" PointX="7.75" PointY="9.75" />
         <AssociationConnector Association="InventoryMangementModel.FK_Item_ItemSubtype" />
         <AssociationConnector Association="InventoryMangementModel.FK_Item_ItemType" />
         <AssociationConnector Association="InventoryMangementModel.FK_ItemSubtype_ItemType" />
-        <EntityTypeShape EntityType="InventoryMangementModel.vwTransactionLog" Width="1.5" PointX="7.375" PointY="9.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

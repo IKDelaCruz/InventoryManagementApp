@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace InventoryManagement.Report {
+namespace InventoryManagement.Report.ReportRPT {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -16,14 +16,14 @@ namespace InventoryManagement.Report {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class CrystalReport1 : ReportClass {
+    public class InventoryRpt : ReportClass {
         
-        public CrystalReport1() {
+        public InventoryRpt() {
         }
         
         public override string ResourceName {
             get {
-                return "CrystalReport1.rpt";
+                return "InventoryRpt.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace InventoryManagement.Report {
         
         public override string FullResourceName {
             get {
-                return "InventoryManagement.Report.CrystalReport1.rpt";
+                return "InventoryManagement.Report.ReportRPT.InventoryRpt.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace InventoryManagement.Report {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedCrystalReport1 : Component, ICachedReport {
+    public class CachedInventoryRpt : Component, ICachedReport {
         
-        public CachedCrystalReport1() {
+        public CachedInventoryRpt() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace InventoryManagement.Report {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            CrystalReport1 rpt = new CrystalReport1();
+            InventoryRpt rpt = new InventoryRpt();
             rpt.Site = this.Site;
             return rpt;
         }

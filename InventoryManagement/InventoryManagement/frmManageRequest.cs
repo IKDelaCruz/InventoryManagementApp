@@ -56,7 +56,8 @@ namespace InventoryManagement
             var user = Singleton.Instance.UserModel.CurrentUser.Id;
 
             var id = dvLogs.SelectedRows[0].Cells[0].Value;
-            Singleton.Instance.RequestModel.ApproveRequest(Convert.ToInt32(id), txtAdminRemarks.Text, user);
+            var need_date = dvLogs.SelectedRows[0].Cells[5].Value.ToString();
+            Singleton.Instance.RequestModel.ApproveRequest(Convert.ToInt32(id), txtAdminRemarks.Text, user, Convert.ToDateTime(need_date));
             LoadPendingRequest();
 
             
@@ -68,7 +69,8 @@ namespace InventoryManagement
                 return;
             var user = Singleton.Instance.UserModel.CurrentUser.Id;
             var id = dvLogs.SelectedRows[0].Cells[0].Value;
-            Singleton.Instance.RequestModel.DeclineRequest(Convert.ToInt32(id), txtAdminRemarks.Text, user);
+            var need_date = dvLogs.SelectedRows[0].Cells[5].Value.ToString();
+            Singleton.Instance.RequestModel.DeclineRequest(Convert.ToInt32(id), txtAdminRemarks.Text, user, Convert.ToDateTime(need_date));
             LoadPendingRequest();
         }
 

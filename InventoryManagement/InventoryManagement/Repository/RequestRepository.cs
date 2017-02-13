@@ -90,7 +90,8 @@ namespace InventoryManagement.Repository
                     Remarks = r.remarks,
                     UserId = r.user_id,
                     AdminRemarks = r.admin_remarks,
-                    NeededDate = r.need_date ?? DateTime.MinValue,
+                    ExpectedReturnDate = r.expected_return_date ?? DateTime.MinValue,
+                    NeededDate = r.need_date?? DateTime.MinValue,
 
                 });
             }
@@ -135,8 +136,9 @@ namespace InventoryManagement.Repository
 
         }
 
-        public bool UpdateRequestStatus(int id, string remark, int user, RequestStatus status)
+        public bool UpdateRequestStatus(int id, string remark, int user, DateTime need_date, RequestStatus status)
         {
+            
             var oldRequest = InventoryDatabase.Requests.FirstOrDefault(x => x.id == id);
             if (oldRequest != null)
             {
@@ -145,7 +147,12 @@ namespace InventoryManagement.Repository
                 oldRequest.process_by_id = user;
                 oldRequest.requested_by_id = oldRequest.user_id;
                 oldRequest.admin_remarks = remark;
-                
+
+                //DateTime need = Convert.ToDateTime(need_date);
+                DateTime expected_return = need_date.AddDays(2);
+
+                oldRequest.expected_return_date = expected_return;
+
                 InventoryDatabase.SaveChanges();
 
                 return true;
@@ -158,6 +165,34 @@ namespace InventoryManagement.Repository
         {
             var result = new List<RequestViewModel>();
             var reqs = InventoryDatabase.Requests.Where(x => x.request_status == (int)status);
+            foreach (Request r in reqs)
+            {
+                result.Add(new RequestViewModel
+                {
+                    Id = r.id,
+                    ProcessDate = r.process_date ?? DateTime.MinValue,
+                    ProcessedById = r.process_by_id ?? 0,
+                    RequestedById = r.requested_by_id,
+                    RequestedDate = r.request_date,
+                    RequestedStatus = (RequestStatus)r.request_status,
+                    RequestItemPrimaryType = (int)r.request_item_primary_type,
+                    RequestSecondaryItemType = (int)r.request_item_secondary_type,
+                    Subtype = r.subtype,
+                    RequestType = (RequestType)r.request_type,
+                    Remarks = r.remarks,
+                    UserId = r.user_id,
+                    AdminRemarks = r.admin_remarks,
+                    NeededDate = r.need_date?? DateTime.MinValue,
+
+                });
+            }
+            return result;
+        }
+
+        public List<RequestViewModel> GetListRequests()
+        {
+            var result = new List<RequestViewModel>();
+            var reqs = InventoryDatabase.Requests;
             foreach (Request r in reqs)
             {
                 result.Add(new RequestViewModel

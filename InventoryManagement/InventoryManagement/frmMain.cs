@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using InventoryManagement.Utils;
 using InventoryManagement.ViewModel;
 using BarcodeLib;
+using InventoryManagement.Report;
 
 namespace InventoryManagement
 {
@@ -284,7 +285,7 @@ namespace InventoryManagement
 
         private void manageToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            new frmManageRequest().ShowDialog();
+            new frmManageItem().ShowDialog();
         }
 
         private void addItemTypeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -374,7 +375,7 @@ namespace InventoryManagement
 
         private void processedRequestsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new frmProcReqReport().ShowDialog();
+            new ReportViewer().ShowDialog();
         }
     }
 

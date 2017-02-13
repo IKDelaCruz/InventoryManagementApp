@@ -82,6 +82,7 @@
     <Property Name="process_by_id" Type="int" />
     <Property Name="remarks" Type="varchar" MaxLength="150" />
     <Property Name="need_date" Type="datetime" />
+    <Property Name="expected_return_date" Type="datetime" />
     <Property Name="admin_remarks" Type="varchar" MaxLength="150" />
   </EntityType>
   <EntityType Name="sysdiagrams">

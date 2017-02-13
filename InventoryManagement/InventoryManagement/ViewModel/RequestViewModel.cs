@@ -38,8 +38,8 @@ namespace InventoryManagement.ViewModel
         public DateTime RequestedDate { get; set; }
         public DateTime ProcessDate { get; set; }
         public RequestStatus RequestedStatus { get; set; }
-
         public string Remarks { get; set; }
+        public DateTime ExpectedReturnDate { get; set; }
         public string AdminRemarks { get; set; }
     }
 }

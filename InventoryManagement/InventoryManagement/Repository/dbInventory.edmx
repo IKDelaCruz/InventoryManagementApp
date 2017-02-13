@@ -87,6 +87,7 @@
           <Property Name="process_by_id" Type="int" />
           <Property Name="remarks" Type="varchar" MaxLength="150" />
           <Property Name="need_date" Type="datetime" />
+          <Property Name="expected_return_date" Type="datetime" />
           <Property Name="admin_remarks" Type="varchar" MaxLength="150" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -298,29 +299,6 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwTransactionLogs' does not
     <edmx:ConceptualModels>
       <Schema Namespace="InventoryMangementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="InventoryMangementEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Brands" EntityType="InventoryMangementModel.Brand" />
-          <EntitySet Name="Companies" EntityType="InventoryMangementModel.Company" />
-          <EntitySet Name="Departments" EntityType="InventoryMangementModel.Department" />
-          <EntitySet Name="Items" EntityType="InventoryMangementModel.Item" />
-          <EntitySet Name="ItemSubtypes" EntityType="InventoryMangementModel.ItemSubtype" />
-          <EntitySet Name="ItemTypes" EntityType="InventoryMangementModel.ItemType" />
-          <EntitySet Name="Requests" EntityType="InventoryMangementModel.Request" />
-          <EntitySet Name="sysdiagrams" EntityType="InventoryMangementModel.sysdiagram" />
-          <EntitySet Name="Transactions" EntityType="InventoryMangementModel.Transaction" />
-          <EntitySet Name="Users" EntityType="InventoryMangementModel.User" />
-          <EntitySet Name="vwItemLogs" EntityType="InventoryMangementModel.vwItemLog" />
-          <AssociationSet Name="FK_Item_ItemSubtype" Association="InventoryMangementModel.FK_Item_ItemSubtype">
-            <End Role="ItemSubtype" EntitySet="ItemSubtypes" />
-            <End Role="Item" EntitySet="Items" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Item_ItemType" Association="InventoryMangementModel.FK_Item_ItemType">
-            <End Role="ItemType" EntitySet="ItemTypes" />
-            <End Role="Item" EntitySet="Items" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ItemSubtype_ItemType" Association="InventoryMangementModel.FK_ItemSubtype_ItemType">
-            <End Role="ItemType" EntitySet="ItemTypes" />
-            <End Role="ItemSubtype" EntitySet="ItemSubtypes" />
-          </AssociationSet>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -351,8 +329,42 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwTransactionLogs' does not
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="Brands" EntityType="InventoryMangementModel.Brand" />
+          <EntitySet Name="Companies" EntityType="InventoryMangementModel.Company" />
+          <EntitySet Name="Departments" EntityType="InventoryMangementModel.Department" />
+          <EntitySet Name="Items" EntityType="InventoryMangementModel.Item" />
+          <EntitySet Name="ItemSubtypes" EntityType="InventoryMangementModel.ItemSubtype" />
+          <EntitySet Name="ItemTypes" EntityType="InventoryMangementModel.ItemType" />
+          <EntitySet Name="Requests" EntityType="InventoryMangementModel.Request" />
+          <EntitySet Name="sysdiagrams" EntityType="InventoryMangementModel.sysdiagram" />
+          <EntitySet Name="Transactions" EntityType="InventoryMangementModel.Transaction" />
+          <EntitySet Name="Users" EntityType="InventoryMangementModel.User" />
+          <EntitySet Name="vwItemLogs" EntityType="InventoryMangementModel.vwItemLog" />
           <EntitySet Name="vwTransactionLogs" EntityType="InventoryMangementModel.vwTransactionLog" />
+          <AssociationSet Name="FK_Item_ItemSubtype" Association="InventoryMangementModel.FK_Item_ItemSubtype">
+            <End Role="ItemSubtype" EntitySet="ItemSubtypes" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_ItemType" Association="InventoryMangementModel.FK_Item_ItemType">
+            <End Role="ItemType" EntitySet="ItemTypes" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemSubtype_ItemType" Association="InventoryMangementModel.FK_ItemSubtype_ItemType">
+            <End Role="ItemType" EntitySet="ItemTypes" />
+            <End Role="ItemSubtype" EntitySet="ItemSubtypes" />
+          </AssociationSet>
         </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
         <EntityType Name="Brand">
           <Key>
             <PropertyRef Name="id" />
@@ -433,6 +445,7 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwTransactionLogs' does not
           <Property Name="request_type" Type="Int32" Nullable="false" />
           <Property Name="request_item_primary_type" Type="Int32" Nullable="false" />
           <Property Name="request_item_secondary_type" Type="Int32" Nullable="false" />
+          <Property Name="subtype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="request_date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="process_date" Type="DateTime" Precision="3" />
           <Property Name="request_status" Type="Int32" Nullable="false" />
@@ -440,8 +453,8 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwTransactionLogs' does not
           <Property Name="process_by_id" Type="Int32" />
           <Property Name="remarks" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="need_date" Type="DateTime" Precision="3" />
+          <Property Name="expected_return_date" Type="DateTime" Precision="3" />
           <Property Name="admin_remarks" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="subtype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -496,6 +509,31 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwTransactionLogs' does not
           <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ItemId" Type="Int32" />
         </EntityType>
+        <EntityType Name="vwTransactionLog">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="request_type" />
+            <PropertyRef Name="request_item_primary_type" />
+            <PropertyRef Name="request_item_secondary_type" />
+            <PropertyRef Name="subtype" />
+            <PropertyRef Name="request_date" />
+            <PropertyRef Name="request_status" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="request_type" Type="Int32" Nullable="false" />
+          <Property Name="request_item_primary_type" Type="Int32" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="request_item_secondary_type" Type="Int32" Nullable="false" />
+          <Property Name="subtype" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="request_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="process_date" Type="DateTime" Precision="3" />
+          <Property Name="request_status" Type="Int32" Nullable="false" />
+          <Property Name="need_date" Type="DateTime" Precision="3" />
+          <Property Name="remarks" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="admin_remarks" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+        </EntityType>
         <Association Name="FK_Item_ItemSubtype">
           <End Type="InventoryMangementModel.ItemSubtype" Role="ItemSubtype" Multiplicity="1" />
           <End Type="InventoryMangementModel.Item" Role="Item" Multiplicity="*" />
@@ -532,48 +570,36 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwTransactionLogs' does not
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
-        <EntityType Name="vwTransactionLog">
-          <Key>
-            <PropertyRef Name="id" />
-            <PropertyRef Name="user_id" />
-            <PropertyRef Name="request_type" />
-            <PropertyRef Name="request_item_primary_type" />
-            <PropertyRef Name="request_item_secondary_type" />
-            <PropertyRef Name="subtype" />
-            <PropertyRef Name="request_date" />
-            <PropertyRef Name="request_status" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="user_id" Type="Int32" Nullable="false" />
-          <Property Name="request_type" Type="Int32" Nullable="false" />
-          <Property Name="request_item_primary_type" Type="Int32" Nullable="false" />
-          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="request_item_secondary_type" Type="Int32" Nullable="false" />
-          <Property Name="subtype" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="request_date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="process_date" Type="DateTime" Precision="3" />
-          <Property Name="request_status" Type="Int32" Nullable="false" />
-          <Property Name="need_date" Type="DateTime" Precision="3" />
-          <Property Name="remarks" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="admin_remarks" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="InventoryMangementModelStoreContainer" CdmEntityContainer="InventoryMangementEntities">
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="InventoryMangementModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="InventoryMangementModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="InventoryMangementModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="InventoryMangementModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="InventoryMangementModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="InventoryMangementModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="InventoryMangementModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="InventoryMangementModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="InventoryMangementModel.Store.sp_upgraddiagrams" />
           <EntitySetMapping Name="Brands">
             <EntityTypeMapping TypeName="InventoryMangementModel.Brand">
               <MappingFragment StoreEntitySet="Brand">
@@ -648,8 +674,8 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwTransactionLogs' does not
           <EntitySetMapping Name="Requests">
             <EntityTypeMapping TypeName="InventoryMangementModel.Request">
               <MappingFragment StoreEntitySet="Request">
-                <ScalarProperty Name="subtype" ColumnName="subtype" />
                 <ScalarProperty Name="admin_remarks" ColumnName="admin_remarks" />
+                <ScalarProperty Name="expected_return_date" ColumnName="expected_return_date" />
                 <ScalarProperty Name="need_date" ColumnName="need_date" />
                 <ScalarProperty Name="remarks" ColumnName="remarks" />
                 <ScalarProperty Name="process_by_id" ColumnName="process_by_id" />
@@ -657,6 +683,7 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwTransactionLogs' does not
                 <ScalarProperty Name="request_status" ColumnName="request_status" />
                 <ScalarProperty Name="process_date" ColumnName="process_date" />
                 <ScalarProperty Name="request_date" ColumnName="request_date" />
+                <ScalarProperty Name="subtype" ColumnName="subtype" />
                 <ScalarProperty Name="request_item_secondary_type" ColumnName="request_item_secondary_type" />
                 <ScalarProperty Name="request_item_primary_type" ColumnName="request_item_primary_type" />
                 <ScalarProperty Name="request_type" ColumnName="request_type" />
@@ -720,30 +747,6 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwTransactionLogs' does not
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="InventoryMangementModel.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="InventoryMangementModel.Store.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="InventoryMangementModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="InventoryMangementModel.Store.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="InventoryMangementModel.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="InventoryMangementModel.Store.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="InventoryMangementModel.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="InventoryMangementModel.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="InventoryMangementModel.Store.sp_upgraddiagrams" />
           <EntitySetMapping Name="vwTransactionLogs">
             <EntityTypeMapping TypeName="InventoryMangementModel.vwTransactionLog">
               <MappingFragment StoreEntitySet="vwTransactionLogs">
