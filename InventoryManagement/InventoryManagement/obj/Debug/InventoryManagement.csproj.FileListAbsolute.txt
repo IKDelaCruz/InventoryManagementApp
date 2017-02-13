@@ -114,3 +114,4 @@ C:\Users\Pua\Documents\GitHub\InventoryManagementApp\InventoryManagement\Invento
 C:\Users\Pua\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
 C:\Users\Pua\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\bin\Debug\stdole.dll
 C:\Users\Pua\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.Report.ReportViewer.resources
+C:\Users\Pua\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.frmUserLogs.resources

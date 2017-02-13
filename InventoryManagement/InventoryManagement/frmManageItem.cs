@@ -20,9 +20,6 @@ namespace InventoryManagement
         public frmManageItem(int itemId = 0, bool AddItem = true)
         {
             InitializeComponent();
-            dvLogs.AutoGenerateColumns = false;
-
-
 
             isAddNewItem = AddItem;
 
@@ -180,10 +177,7 @@ namespace InventoryManagement
         //    dvLogs.DataSource = Singleton.Instance.TransactionModel.GetTransactionsByItemId(itemId);
         //}
 
-        private void LoadTransactions()
-        {
-            dvLogs.DataSource = Singleton.Instance.TransactionModel.GetTransactions();
-        }
+       
         private void cbxType_SelectedIndexChanged(object sender, EventArgs e)
         {
             var selected = (int)cbxType.SelectedValue;
@@ -200,8 +194,11 @@ namespace InventoryManagement
         private void frmManageItem_Load(object sender, EventArgs e)
         {
             //load all transactions from transactions table
-            LoadTransactions();
+
         }
+          
+           
+        
 
         private void txtLifetime_TextChanged(object sender, EventArgs e)
         {

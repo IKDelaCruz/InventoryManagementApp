@@ -62,9 +62,9 @@ namespace InventoryManagement.Repository
             {
                 list.Add(new ViewModel.TransactionViewModel
                 {
-                    Id = t.id,
-                    OtherUserId = t.other_user_id,
-                    Remarks = t.remarks,
+                    //Id = t.id,
+                    //OtherUserId = t.other_user_id,
+                    //Remarks = t.remarks,
                     SystemUserId = t.system_user_id,
                     TransactionDate = t.transaction_date,
                     TransactionTypeId = (TransactionType)t.transaction_type_id

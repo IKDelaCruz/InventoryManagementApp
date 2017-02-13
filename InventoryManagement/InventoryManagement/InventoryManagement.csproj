@@ -150,6 +150,12 @@
     <Compile Include="frmPrinter.Designer.cs">
       <DependentUpon>frmPrinter.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmUserLogs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserLogs.Designer.cs">
+      <DependentUpon>frmUserLogs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\InventoryManagementData\DataFiller.cs" />
     <Compile Include="Report\InventoryManagementData\InventoryDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -291,6 +297,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrinter.resx">
       <DependentUpon>frmPrinter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserLogs.resx">
+      <DependentUpon>frmUserLogs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

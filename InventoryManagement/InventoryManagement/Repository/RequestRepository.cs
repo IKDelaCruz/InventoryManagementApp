@@ -112,6 +112,7 @@ namespace InventoryManagement.Repository
                 RequestItemPrimaryType = (int)r.request_item_primary_type,
                 RequestSecondaryItemType = (int)r.request_item_secondary_type,
                 RequestType = (RequestType)r.request_type,
+                NeededDate = r.need_date ?? DateTime.MinValue,
                 Subtype = r.subtype,
                 Remarks = r.remarks,
                 UserId = r.user_id,

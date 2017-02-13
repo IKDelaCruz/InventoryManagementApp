@@ -495,7 +495,7 @@
             this.Name = "frmEndUser";
             this.Padding = new System.Windows.Forms.Padding(12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmEndUser";
+            this.Text = "User";
             this.Load += new System.EventHandler(this.frmEndUser_Load);
             this.pnlMain.ResumeLayout(false);
             this.tbMain.ResumeLayout(false);

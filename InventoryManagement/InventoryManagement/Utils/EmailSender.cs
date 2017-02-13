@@ -17,11 +17,12 @@ namespace InventoryManagement.Utils
             //AND ADMIN - mis@jakagroup.com
 
             System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage();
-            message.To.Add("itsjpua@gmail.com");
-            message.Subject = "This is the Subject line";
+            //message.To.Add("itsjpua@gmail.com");
+            //message.Subject = "This is the Subject line";
             message.From = new System.Net.Mail.MailAddress("pua.jeanne@gmail.com");
-            message.Body = "This is the message body";
+            //message.Body = "This is the message body";
             //System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient("smtp.gmail.com", 578);
+
             var client = new SmtpClient("smtp.gmail.com", 587)
             {
                 Credentials = new NetworkCredential("pua.jeanne@gmail.com", "popoislove"),
@@ -29,7 +30,7 @@ namespace InventoryManagement.Utils
             };
 
             string msg = "The item " + "User with User ID: " + user+ " " + "borrowed is expected to be returned today. Please notify the user.";
-            client.Send("pua.jeanne@gmail.com", "kyleangelo20@gmail.com", "Return Item", msg);
+            client.Send("pua.jeanne@gmail.com", "itsjpua@gmail.com", "Return Item", msg);
 
         }
     }

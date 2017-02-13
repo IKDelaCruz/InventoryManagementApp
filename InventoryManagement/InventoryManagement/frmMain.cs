@@ -377,6 +377,11 @@ namespace InventoryManagement
         {
             new ReportViewer().ShowDialog();
         }
+
+        private void logsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new frmUserLogs().ShowDialog();
+        }
     }
 
 }

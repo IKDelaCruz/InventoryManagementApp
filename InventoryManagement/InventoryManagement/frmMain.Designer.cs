@@ -109,6 +109,7 @@
             this.manageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.processedRequestsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlMain.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlTop.SuspendLayout();
@@ -872,7 +873,8 @@
             // usersToolStripMenuItem
             // 
             this.usersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.manageToolStripMenuItem});
+            this.manageToolStripMenuItem,
+            this.logsToolStripMenuItem});
             this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
             this.usersToolStripMenuItem.Size = new System.Drawing.Size(67, 29);
             this.usersToolStripMenuItem.Text = "Users";
@@ -880,7 +882,7 @@
             // manageToolStripMenuItem
             // 
             this.manageToolStripMenuItem.Name = "manageToolStripMenuItem";
-            this.manageToolStripMenuItem.Size = new System.Drawing.Size(161, 30);
+            this.manageToolStripMenuItem.Size = new System.Drawing.Size(211, 30);
             this.manageToolStripMenuItem.Text = "Manage";
             this.manageToolStripMenuItem.Click += new System.EventHandler(this.manageToolStripMenuItem_Click);
             // 
@@ -913,6 +915,13 @@
             this.processedRequestsToolStripMenuItem.Size = new System.Drawing.Size(253, 30);
             this.processedRequestsToolStripMenuItem.Text = "Processed Requests";
             this.processedRequestsToolStripMenuItem.Click += new System.EventHandler(this.processedRequestsToolStripMenuItem_Click);
+            // 
+            // logsToolStripMenuItem
+            // 
+            this.logsToolStripMenuItem.Name = "logsToolStripMenuItem";
+            this.logsToolStripMenuItem.Size = new System.Drawing.Size(211, 30);
+            this.logsToolStripMenuItem.Text = "Logs";
+            this.logsToolStripMenuItem.Click += new System.EventHandler(this.logsToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -1030,6 +1039,7 @@
         private System.Windows.Forms.TextBox txtScan;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ToolStripMenuItem processedRequestsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem logsToolStripMenuItem;
     }
 }
 

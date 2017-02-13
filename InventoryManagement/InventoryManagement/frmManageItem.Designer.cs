@@ -81,13 +81,6 @@
             this.lblLastUpdated = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtLastUpdate = new System.Windows.Forms.TextBox();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.dvLogs = new System.Windows.Forms.DataGridView();
-            this.TransactionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SystemUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TransactionTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OtherUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
@@ -97,9 +90,6 @@
             this.panel1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.tabPage4.SuspendLayout();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dvLogs)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -107,7 +97,6 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tabControl1.Location = new System.Drawing.Point(10, 10);
             this.tabControl1.Name = "tabControl1";
@@ -618,80 +607,6 @@
             this.txtLastUpdate.Size = new System.Drawing.Size(169, 31);
             this.txtLastUpdate.TabIndex = 31;
             // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.panel3);
-            this.tabPage4.Location = new System.Drawing.Point(4, 33);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(722, 353);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Logs";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // panel3
-            // 
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.dvLogs);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Padding = new System.Windows.Forms.Padding(10);
-            this.panel3.Size = new System.Drawing.Size(722, 353);
-            this.panel3.TabIndex = 36;
-            // 
-            // dvLogs
-            // 
-            this.dvLogs.AllowUserToAddRows = false;
-            this.dvLogs.AllowUserToDeleteRows = false;
-            this.dvLogs.AllowUserToResizeRows = false;
-            this.dvLogs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvLogs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.TransactionDate,
-            this.SystemUserName,
-            this.TransactionTypeId,
-            this.OtherUserName});
-            this.dvLogs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dvLogs.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dvLogs.Location = new System.Drawing.Point(10, 10);
-            this.dvLogs.Name = "dvLogs";
-            this.dvLogs.RowHeadersVisible = false;
-            this.dvLogs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dvLogs.ShowCellToolTips = false;
-            this.dvLogs.ShowEditingIcon = false;
-            this.dvLogs.ShowRowErrors = false;
-            this.dvLogs.Size = new System.Drawing.Size(700, 331);
-            this.dvLogs.TabIndex = 0;
-            // 
-            // TransactionDate
-            // 
-            this.TransactionDate.DataPropertyName = "TransactionDate";
-            this.TransactionDate.HeaderText = "TransactionDate";
-            this.TransactionDate.Name = "TransactionDate";
-            this.TransactionDate.Width = 150;
-            // 
-            // SystemUserName
-            // 
-            this.SystemUserName.DataPropertyName = "SystemUserName";
-            this.SystemUserName.HeaderText = "SystemUserName";
-            this.SystemUserName.Name = "SystemUserName";
-            this.SystemUserName.Visible = false;
-            this.SystemUserName.Width = 150;
-            // 
-            // TransactionTypeId
-            // 
-            this.TransactionTypeId.DataPropertyName = "TransactionTypeId";
-            this.TransactionTypeId.HeaderText = "TransactionTypeId";
-            this.TransactionTypeId.Name = "TransactionTypeId";
-            this.TransactionTypeId.Width = 150;
-            // 
-            // OtherUserName
-            // 
-            this.OtherUserName.DataPropertyName = "OtherUserName";
-            this.OtherUserName.HeaderText = "OtherUserName";
-            this.OtherUserName.Name = "OtherUserName";
-            this.OtherUserName.Visible = false;
-            this.OtherUserName.Width = 150;
-            // 
             // btnClose
             // 
             this.btnClose.Location = new System.Drawing.Point(528, 406);
@@ -738,9 +653,6 @@
             this.tabPage3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.tabPage4.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dvLogs)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -800,12 +712,5 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.DataGridView dvLogs;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TransactionDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SystemUserName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TransactionTypeId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OtherUserName;
     }
 }
