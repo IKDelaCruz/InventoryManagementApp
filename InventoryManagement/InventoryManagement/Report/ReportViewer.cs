@@ -19,7 +19,9 @@ namespace InventoryManagement.Report
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+
+        private void ReportViewer_Load(object sender, EventArgs e)
         {
             var rpt = new InventoryRpt();
             rpt.SetDataSource(DataFiller.GetInventory(0));

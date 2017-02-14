@@ -76,6 +76,9 @@ FROM   Request INNER JOIN
               <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" type="xs:string" minOccurs="0" />
               <xs:element name="Date" msprop:Generator_ColumnVarNameInTable="columnDate" msprop:Generator_ColumnPropNameInRow="Date" msprop:Generator_ColumnPropNameInTable="DateColumn" msprop:Generator_UserColumnName="Date" type="xs:string" minOccurs="0" />
               <xs:element name="Status" msprop:Generator_ColumnVarNameInTable="columnStatus" msprop:Generator_ColumnPropNameInRow="Status" msprop:Generator_ColumnPropNameInTable="StatusColumn" msprop:Generator_UserColumnName="Status" type="xs:string" minOccurs="0" />
+              <xs:element name="RequestType" msprop:Generator_ColumnVarNameInTable="columnRequestType" msprop:Generator_ColumnPropNameInRow="RequestType" msprop:Generator_ColumnPropNameInTable="RequestTypeColumn" msprop:Generator_UserColumnName="RequestType" type="xs:string" minOccurs="0" />
+              <xs:element name="Subtype" msprop:Generator_ColumnVarNameInTable="columnSubtype" msprop:Generator_ColumnPropNameInRow="Subtype" msprop:Generator_ColumnPropNameInTable="SubtypeColumn" msprop:Generator_UserColumnName="Subtype" type="xs:string" minOccurs="0" />
+              <xs:element name="RequestedBy" msprop:Generator_ColumnVarNameInTable="columnRequestedBy" msprop:Generator_ColumnPropNameInRow="RequestedBy" msprop:Generator_ColumnPropNameInTable="RequestedByColumn" msprop:Generator_UserColumnName="RequestedBy" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

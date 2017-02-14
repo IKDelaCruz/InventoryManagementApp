@@ -84,7 +84,10 @@ namespace InventoryManagement.Repository
                 system_user_id = systemUserIdm,
                 transaction_date = DateTime.Now,
                 transaction_type_id = (int)transactionType,
-                item_id = itemId
+                item_id = itemId,
+                request_id = 0
+                
+                
              });
 
             var result = InventoryDatabase.SaveChanges();

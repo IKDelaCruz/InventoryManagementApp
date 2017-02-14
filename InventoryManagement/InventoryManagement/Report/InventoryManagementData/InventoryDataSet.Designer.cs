@@ -1150,6 +1150,12 @@ namespace InventoryManagement.Report.InventoryManagementData {
             
             private global::System.Data.DataColumn columnStatus;
             
+            private global::System.Data.DataColumn columnRequestType;
+            
+            private global::System.Data.DataColumn columnSubtype;
+            
+            private global::System.Data.DataColumn columnRequestedBy;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ItemsDataTable() {
@@ -1217,6 +1223,30 @@ namespace InventoryManagement.Report.InventoryManagementData {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn RequestTypeColumn {
+                get {
+                    return this.columnRequestType;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SubtypeColumn {
+                get {
+                    return this.columnSubtype;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn RequestedByColumn {
+                get {
+                    return this.columnRequestedBy;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1252,13 +1282,16 @@ namespace InventoryManagement.Report.InventoryManagementData {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ItemsRow AddItemsRow(string Id, string Name, string Date, string Status) {
+            public ItemsRow AddItemsRow(string Id, string Name, string Date, string Status, string RequestType, string Subtype, string RequestedBy) {
                 ItemsRow rowItemsRow = ((ItemsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id,
                         Name,
                         Date,
-                        Status};
+                        Status,
+                        RequestType,
+                        Subtype,
+                        RequestedBy};
                 rowItemsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowItemsRow);
                 return rowItemsRow;
@@ -1285,6 +1318,9 @@ namespace InventoryManagement.Report.InventoryManagementData {
                 this.columnName = base.Columns["Name"];
                 this.columnDate = base.Columns["Date"];
                 this.columnStatus = base.Columns["Status"];
+                this.columnRequestType = base.Columns["RequestType"];
+                this.columnSubtype = base.Columns["Subtype"];
+                this.columnRequestedBy = base.Columns["RequestedBy"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1298,6 +1334,12 @@ namespace InventoryManagement.Report.InventoryManagementData {
                 base.Columns.Add(this.columnDate);
                 this.columnStatus = new global::System.Data.DataColumn("Status", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnStatus);
+                this.columnRequestType = new global::System.Data.DataColumn("RequestType", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRequestType);
+                this.columnSubtype = new global::System.Data.DataColumn("Subtype", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSubtype);
+                this.columnRequestedBy = new global::System.Data.DataColumn("RequestedBy", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRequestedBy);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2300,6 +2342,54 @@ namespace InventoryManagement.Report.InventoryManagementData {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string RequestType {
+                get {
+                    try {
+                        return ((string)(this[this.tableItems.RequestTypeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'RequestType\' in table \'Items\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableItems.RequestTypeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Subtype {
+                get {
+                    try {
+                        return ((string)(this[this.tableItems.SubtypeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Subtype\' in table \'Items\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableItems.SubtypeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string RequestedBy {
+                get {
+                    try {
+                        return ((string)(this[this.tableItems.RequestedByColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'RequestedBy\' in table \'Items\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableItems.RequestedByColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsIdNull() {
                 return this.IsNull(this.tableItems.IdColumn);
             }
@@ -2344,6 +2434,42 @@ namespace InventoryManagement.Report.InventoryManagementData {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetStatusNull() {
                 this[this.tableItems.StatusColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsRequestTypeNull() {
+                return this.IsNull(this.tableItems.RequestTypeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetRequestTypeNull() {
+                this[this.tableItems.RequestTypeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSubtypeNull() {
+                return this.IsNull(this.tableItems.SubtypeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSubtypeNull() {
+                this[this.tableItems.SubtypeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsRequestedByNull() {
+                return this.IsNull(this.tableItems.RequestedByColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetRequestedByNull() {
+                this[this.tableItems.RequestedByColumn] = global::System.Convert.DBNull;
             }
         }
         

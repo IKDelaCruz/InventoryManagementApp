@@ -25,6 +25,10 @@ namespace InventoryManagement.Report.InventoryManagementData
                 row["Name"] = rec.ProcessedById;
                 row["Date"] = rec.ProcessDate;
                 row["Status"] = rec.RequestedStatus;
+                row["RequestType"] = rec.RequestType;
+                row["Subtype"] = rec.Subtype;
+                row["RequestedBy"] = rec.UserId;
+
                 dataSet.Items.Rows.Add(row);
             }
 
