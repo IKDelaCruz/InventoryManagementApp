@@ -29,7 +29,7 @@ namespace InventoryManagement.Utils
                 EnableSsl = true
             };
 
-            string msg = "The item " + "User with User ID: " + user+ " " + "borrowed is expected to be returned today. Please notify the user.";
+            string msg = "The item that" + "User with User ID: " + user+ " " + "borrowed is expected to be returned today. Please notify the user.";
             client.Send("pua.jeanne@gmail.com", "itsjpua@gmail.com", "Return Item", msg);
 
         }
