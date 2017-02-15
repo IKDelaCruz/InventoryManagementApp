@@ -50,6 +50,9 @@ namespace InventoryManagement
             {
                 MessageBox.Show("Request successfully submitted!");
                 ClearDisplay();
+                var user = Singleton.Instance.UserModel.CurrentUser.Id;
+                cbxUsers.SelectedValue = user;
+
             }
         }
         private void ClearDisplay()
@@ -67,6 +70,7 @@ namespace InventoryManagement
             var user = Singleton.Instance.UserModel.CurrentUser.Id;
             cbxUsers.SelectedValue = user;
 
+           
         }
         private void LoadComboBox()
         {
@@ -115,12 +119,17 @@ namespace InventoryManagement
 
         private void lbRequest_SelectedIndexChanged(object sender, EventArgs e)
         {
+            UpdateInfo();
+         
+        }
+        private void UpdateInfo()
+        {
             var item = lbRequest.SelectedItem.ToString();
             var id = Convert.ToInt32(item.Replace("REQ#", ""));
 
             var requestInfo = Singleton.Instance.RequestModel.GetRequestById(id);
 
-            if(requestInfo != null)
+            if (requestInfo != null)
             {
                 lblRequestType.Text = requestInfo.RequestType.ToString();
                 lblItemType.Text = requestInfo.Subtype.ToString();
@@ -134,11 +143,30 @@ namespace InventoryManagement
             }
         }
 
+        private void RefreshStatus(){
+            var item = lbRequest.SelectedItem.ToString();
+            var id = Convert.ToInt32(item.Replace("REQ#", ""));
+
+            var requestInfo = Singleton.Instance.RequestModel.GetRequestById(id);
+
+        }
+
         private void cbxType_SelectedIndexChanged(object sender, EventArgs e)
         {
             cbxSubType.DisplayMember = "Name";
             cbxSubType.ValueMember = "Sub_Id";
             cbxSubType.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategoriesByType((int)cbxType.SelectedValue);
+        }
+
+        private void tbMain_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            RefreshStatus();
+           
         }
     }
 }

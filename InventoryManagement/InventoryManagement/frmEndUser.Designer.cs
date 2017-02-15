@@ -98,6 +98,7 @@
             this.tbMain.Size = new System.Drawing.Size(551, 397);
             this.tbMain.TabIndex = 1;
             this.tbMain.SelectedIndexChanged += new System.EventHandler(this.tbMain_SelectedIndexChanged);
+            this.tbMain.Click += new System.EventHandler(this.tbMain_Click);
             // 
             // tabPage1
             // 
