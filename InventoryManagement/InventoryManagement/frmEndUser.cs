@@ -36,7 +36,7 @@ namespace InventoryManagement
             request.RequestedDate = DateTime.Now;
             request.RequestType = (RequestType)cbxRequestType.SelectedItem;
             request.RequestedStatus = RequestStatus.New;
-            request.RequestItemPrimaryType = (int)cbxType.SelectedIndex + 1;
+            request.RequestItemPrimaryType = (int)cbxType.SelectedValue;
             request.RequestSecondaryItemType = (int)cbxSubType.SelectedValue;
             request.Subtype = cbxSubType.Text;
             request.NeededDate = dtpNeededDate.Value;
@@ -79,7 +79,7 @@ namespace InventoryManagement
 
             cbxSubType.DisplayMember = "Name";
             cbxSubType.ValueMember = "Sub_Id";
-            cbxSubType.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategoriesByType((int)cbxType.SelectedIndex + 1);
+            cbxSubType.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategoriesByType((int)cbxType.SelectedValue);
 
             cbxUsers.ValueMember = "Id";
             cbxUsers.DisplayMember = "LastnameFirstNameUsername";
@@ -138,7 +138,7 @@ namespace InventoryManagement
         {
             cbxSubType.DisplayMember = "Name";
             cbxSubType.ValueMember = "Sub_Id";
-            cbxSubType.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategoriesByType((int)cbxType.SelectedIndex + 1);
+            cbxSubType.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategoriesByType((int)cbxType.SelectedValue);
         }
     }
 }

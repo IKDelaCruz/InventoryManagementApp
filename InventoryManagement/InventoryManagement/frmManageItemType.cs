@@ -81,7 +81,7 @@ namespace InventoryManagement
         {
             if (!isUpdate)
             {
-                var ret = Singleton.Instance.CategoryModel.CreateSubtype((Convert.ToInt32(cbxType.SelectedIndex + 1)), txtSubtype.Text);
+                var ret = Singleton.Instance.CategoryModel.CreateSubtype((Convert.ToInt32(cbxType.SelectedValue)), txtSubtype.Text);
 
                 if (ret > 0)
                 {

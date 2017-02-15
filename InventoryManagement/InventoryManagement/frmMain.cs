@@ -37,7 +37,7 @@ namespace InventoryManagement
 
             cbxSubtype.DisplayMember = "Name";
             cbxSubtype.ValueMember = "Sub_Id";
-            cbxSubtype.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategoriesByType((int)cbxType.SelectedIndex + 1);
+            cbxSubtype.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategoriesByType((int)cbxType.SelectedValue);
 
             cbxLocation.ValueMember = "Id";
             cbxLocation.DisplayMember = "Name";
@@ -162,7 +162,7 @@ namespace InventoryManagement
             if (!chkShowAllStatus.Checked)
                 itms = itms.Where(h => h.Status == (ItemStatus)cbxStatus.SelectedItem).ToList();
             if (!chkShowAllType.Checked)
-                itms = itms.Where(h => h.TypeId == Convert.ToInt32(cbxType.SelectedIndex + 1)).ToList();
+                itms = itms.Where(h => h.TypeId == Convert.ToInt32(cbxType.SelectedValue)).ToList();
             if (!chkShowAllSubType.Checked)
                 itms = itms.Where(h => h.SubTypeId == Convert.ToInt32(cbxSubtype.SelectedValue)).ToList();
 
@@ -198,7 +198,7 @@ namespace InventoryManagement
 
             cbxSubtype.DisplayMember = "Name";
             cbxSubtype.ValueMember = "Sub_Id";
-            cbxSubtype.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategoriesByType((int)cbxType.SelectedIndex + 1);
+            cbxSubtype.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategoriesByType((int)cbxType.SelectedValue);
 
         }
 

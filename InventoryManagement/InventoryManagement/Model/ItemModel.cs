@@ -31,9 +31,6 @@ namespace InventoryManagement.Model
             var itemSubtype = catSubRepository.QuerySubcategory(newItem.SubTypeId);
 
 
-
-
-
             var assetTag = GenerateAssetTag(itemType.Name, itemSubtype.Name, newItemId);
 
             rv.Success = itemRepostory.AttachAssetTag(newItemId, assetTag);

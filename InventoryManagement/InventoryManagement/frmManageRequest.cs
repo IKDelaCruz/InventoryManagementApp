@@ -23,6 +23,8 @@ namespace InventoryManagement
 
             LoadPendingRequest();
             LoadApproved();
+
+            //Singleton.Instance.RequestModel.SendEmail();
         }
        
         private void LoadPendingRequest()

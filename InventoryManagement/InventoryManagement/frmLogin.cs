@@ -26,7 +26,7 @@ namespace InventoryManagement
         private void btnLogin_Click(object sender, EventArgs e)
         {
             DoAuth();
-            Singleton.Instance.RequestModel.SendEmail();
+            //Singleton.Instance.RequestModel.SendEmail();
         }
 
 
