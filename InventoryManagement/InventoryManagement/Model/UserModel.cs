@@ -19,7 +19,6 @@ namespace InventoryManagement.Model
         public enum UserType
         {
             Admin = 1,
-            Custodian,
             User
         }
         public UserViewModel CurrentUser { get;private set; }

@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -39,7 +40,17 @@ namespace InventoryManagement
        
         private void btnSave_Click(object sender, EventArgs e)
         {
-            DoSaveItem();
+            int purchaseprice;
+            purchaseprice = Convert.ToInt32(txtPurchasePrice.Text);
+            if (purchaseprice == 0)
+            {
+                MessageBox.Show("Invalid Purchase Price","Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                DoSaveItem();
+            }
+
         }
        
         private void btnClose_Click(object sender, EventArgs e)
@@ -83,8 +94,6 @@ namespace InventoryManagement
         }
         private void DoSaveItem()
         {
-
-
             var itm = new ItemViewModel
             { 
                 Name = txtName.Text,
@@ -203,6 +212,18 @@ namespace InventoryManagement
         private void txtLifetime_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtPurchasePrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //disable space
+            e.Handled = (e.KeyChar == (char)Keys.Space);
+            //allows only numerical characters 
+            var regex = new Regex(@"[^0-9\s]");
+            if (!char.IsControl(e.KeyChar) && regex.IsMatch(e.KeyChar.ToString()))
+            {
+                e.Handled = true;               
+            }
         }
     }
 }

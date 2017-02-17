@@ -47,7 +47,21 @@ namespace InventoryManagement
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if(isUpdate)
+            var un = txtUsername.Text;
+            var password = txtPassord.Text;
+            if (un.Contains(" "))
+            {
+                MessageBox.Show("Invalid Username, Spaces are not allowed", "Invalid",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (password.Contains(" "))
+            {
+                MessageBox.Show("Invalid Password, Spaces are not allowed", "Invalid",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                  if(isUpdate)
             {
                 if (Singleton.Instance.UserModel.UpdateUser(currentUSer.Id, txtFirstname.Text, txtLastname.Text, (int)cbxCompany.SelectedValue, (int)cbxDepartment.SelectedValue,
                     (UserType)cbxUserType.SelectedItem))
@@ -59,7 +73,7 @@ namespace InventoryManagement
             }
             else
             {
-                var id = Singleton.Instance.UserModel.CreateNewUser(txtUsername.Text, txtPassord.Text, (UserType)cbxUserType.SelectedItem, "", "", 0);
+                var id = Singleton.Instance.UserModel.CreateNewUser(txtUsername.Text, txtPassord.Text, (UserType)cbxUserType.SelectedItem, txtFirstname.Text, txtLastname.Text, (int)cbxDepartment.SelectedValue);
                 if (Singleton.Instance.UserModel.UpdateUser(id, txtFirstname.Text, txtLastname.Text, (int)cbxCompany.SelectedValue, (int)cbxDepartment.SelectedValue,
                     (UserType)cbxUserType.SelectedItem))
                 {
@@ -68,6 +82,9 @@ namespace InventoryManagement
                     this.Close();
                 }
             }
+            }
+
+          
           
         }
         private void cbxCompany_SelectedIndexChanged(object sender, EventArgs e)

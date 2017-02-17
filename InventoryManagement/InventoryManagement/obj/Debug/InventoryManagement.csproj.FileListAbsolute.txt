@@ -91,7 +91,6 @@ C:\Users\Angelito\Documents\GitHub\InventoryManagementApp\InventoryManagement\In
 C:\Users\Angelito\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.frmManageUserInfo.resources
 C:\Users\Angelito\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.frmManageUsers.resources
 C:\Users\Angelito\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.frmPrinter.resources
-C:\Users\Angelito\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.frmProcReqReport.resources
 C:\Users\Angelito\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.Properties.Resources.resources
 C:\Users\Angelito\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.csproj.GenerateResource.Cache
 C:\Users\Pua\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
@@ -115,3 +114,5 @@ C:\Users\Pua\Documents\GitHub\InventoryManagementApp\InventoryManagement\Invento
 C:\Users\Pua\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\bin\Debug\stdole.dll
 C:\Users\Pua\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.Report.ReportViewer.resources
 C:\Users\Pua\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.frmUserLogs.resources
+C:\Users\Angelito\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.frmUserLogs.resources
+C:\Users\Angelito\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.Report.ReportViewer.resources

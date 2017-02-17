@@ -11,6 +11,7 @@ namespace InventoryManagement.Repository
     {
         public int Insert(ItemViewModel newItem, int userId)
         {
+           
             var itm = new Item
             {
                 name = newItem.Name,

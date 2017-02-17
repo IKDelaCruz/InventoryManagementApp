@@ -30,7 +30,7 @@ namespace InventoryManagement
         {
             this.Close();
         }
-        private void DisplayUsers()
+        public void DisplayUsers()
         {
             var users = Singleton.Instance.UserModel.GetUsers();
             lvUsers.Items.Clear();
@@ -65,5 +65,6 @@ namespace InventoryManagement
         {
             //DisplayUsers();
         }
+
     }
 }
