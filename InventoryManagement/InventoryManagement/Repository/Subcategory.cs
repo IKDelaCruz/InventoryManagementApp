@@ -31,6 +31,18 @@ namespace InventoryManagement.Repository
             return list;
         }
 
+        public List<SubcategoryViewModel> QuerySubcategories()
+        {
+            var subtypes = InventoryDatabase.ItemSubtypes.ToList();
+            List<SubcategoryViewModel> bList = new List<SubcategoryViewModel>();
+
+            foreach (ItemSubtype s in subtypes)
+            {
+                bList.Add(new SubcategoryViewModel { Sub_Id = s.id, Name = s.subtype });
+            }
+            return bList;
+        }
+
         public SubcategoryViewModel QuerySubcategory(int id)
         {
             var categ = InventoryDatabase.ItemSubtypes.FirstOrDefault(h => h.id == id);

@@ -14,6 +14,12 @@ namespace InventoryManagement.Repository
     
     public partial class User
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public User()
+        {
+            this.Requests = new HashSet<Request>();
+        }
+    
         public int id { get; set; }
         public string username { get; set; }
         public string password { get; set; }
@@ -22,5 +28,10 @@ namespace InventoryManagement.Repository
         public string last_name { get; set; }
         public Nullable<int> department { get; set; }
         public Nullable<int> company { get; set; }
+    
+        public virtual Company Company1 { get; set; }
+        public virtual Department Department1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Request> Requests { get; set; }
     }
 }

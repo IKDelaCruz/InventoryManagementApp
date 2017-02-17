@@ -156,6 +156,7 @@
     <Compile Include="frmUserLogs.Designer.cs">
       <DependentUpon>frmUserLogs.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\BrandModel.cs" />
     <Compile Include="Report\InventoryManagementData\DataFiller.cs" />
     <Compile Include="Report\InventoryManagementData\InventoryDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -191,6 +192,7 @@
     <Compile Include="Repository\Brand.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repository\BrandRepository.cs" />
     <Compile Include="Repository\CategoryRepository.cs" />
     <Compile Include="Repository\sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>

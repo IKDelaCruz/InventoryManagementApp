@@ -29,6 +29,7 @@
       <EntityTypeMapping TypeName="InventoryMangementModel.Brand">
         <MappingFragment StoreEntitySet="Brand">
           <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="subtype_id" ColumnName="subtype_id" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>

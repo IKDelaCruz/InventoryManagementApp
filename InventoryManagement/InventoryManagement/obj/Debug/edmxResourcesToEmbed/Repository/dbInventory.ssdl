@@ -5,6 +5,7 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="subtype_id" Type="int" Nullable="false" />
     <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Company">
@@ -167,6 +168,18 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwTransactionLogs' does not
     <Property Name="remarks" Type="varchar" MaxLength="150" />
     <Property Name="admin_remarks" Type="varchar" MaxLength="150" />
   </EntityType>
+  <Association Name="FK_Item_Brand">
+    <End Role="Brand" Type="Self.Brand" Multiplicity="0..1" />
+    <End Role="Item" Type="Self.Item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Brand">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Item">
+        <PropertyRef Name="brand_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Item_ItemSubtype">
     <End Role="ItemSubtype" Type="Self.ItemSubtype" Multiplicity="1" />
     <End Role="Item" Type="Self.Item" Multiplicity="*" />
@@ -191,6 +204,18 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwTransactionLogs' does not
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_ItemSubtype_Brand">
+    <End Role="ItemSubtype" Type="Self.ItemSubtype" Multiplicity="1" />
+    <End Role="Brand" Type="Self.Brand" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemSubtype">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Brand">
+        <PropertyRef Name="subtype_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_ItemSubtype_ItemType">
     <End Role="ItemType" Type="Self.ItemType" Multiplicity="1" />
     <End Role="ItemSubtype" Type="Self.ItemSubtype" Multiplicity="*" />
@@ -200,6 +225,42 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwTransactionLogs' does not
       </Principal>
       <Dependent Role="ItemSubtype">
         <PropertyRef Name="type_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Request_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Company1">
+    <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="company" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Department">
+    <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="department" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -276,6 +337,10 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwTransactionLogs' does not
     [vwTransactionLogs].[admin_remarks] AS [admin_remarks]
     FROM [dbo].[vwTransactionLogs] AS [vwTransactionLogs]</DefiningQuery>
     </EntitySet>
+    <AssociationSet Name="FK_Item_Brand" Association="Self.FK_Item_Brand">
+      <End Role="Brand" EntitySet="Brand" />
+      <End Role="Item" EntitySet="Item" />
+    </AssociationSet>
     <AssociationSet Name="FK_Item_ItemSubtype" Association="Self.FK_Item_ItemSubtype">
       <End Role="ItemSubtype" EntitySet="ItemSubtype" />
       <End Role="Item" EntitySet="Item" />
@@ -284,9 +349,25 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwTransactionLogs' does not
       <End Role="ItemType" EntitySet="ItemType" />
       <End Role="Item" EntitySet="Item" />
     </AssociationSet>
+    <AssociationSet Name="FK_ItemSubtype_Brand" Association="Self.FK_ItemSubtype_Brand">
+      <End Role="ItemSubtype" EntitySet="ItemSubtype" />
+      <End Role="Brand" EntitySet="Brand" />
+    </AssociationSet>
     <AssociationSet Name="FK_ItemSubtype_ItemType" Association="Self.FK_ItemSubtype_ItemType">
       <End Role="ItemType" EntitySet="ItemType" />
       <End Role="ItemSubtype" EntitySet="ItemSubtype" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Request_User" Association="Self.FK_Request_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Request" EntitySet="Request" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Company1" Association="Self.FK_User_Company1">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Department" Association="Self.FK_User_Department">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="User" EntitySet="User" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

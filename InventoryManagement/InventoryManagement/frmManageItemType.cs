@@ -10,13 +10,14 @@ using System.Windows.Forms;
 using static InventoryManagement.Model.CategorySubcategoryModel;
 using InventoryManagement.Model;
 using InventoryManagement.ViewModel;
-
+using InventoryManagement.Repository;
 
 namespace InventoryManagement
 {
     public partial class frmManageItemType : frmBase
     {
         bool isUpdate;
+       
 
         int id;
 
@@ -70,6 +71,10 @@ namespace InventoryManagement
             cbxType.ValueMember = "Id";
             cbxType.DataSource = Singleton.Instance.CategoryModel.GetCategories();
 
+            cbxSubtype.DisplayMember = "Name";
+            cbxSubtype.ValueMember = "Sub_Id";
+            cbxSubtype.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategories();
+
         }
 
         private void btnCancel2_Click(object sender, EventArgs e)
@@ -106,6 +111,38 @@ namespace InventoryManagement
         private void tabControl1_Click(object sender, EventArgs e)
         {
             FillCombobox();
+        }
+
+   
+
+        private void SaveBrand_Click(object sender, EventArgs e)
+        {
+ 
+            if (!isUpdate)
+            {
+                var retBrand = Singleton.Instance.BrandModel.CreateNewBrand(Convert.ToInt32(cbxSubtype.SelectedValue), txtNewBrand.Text);
+
+                if (retBrand > 0)
+                {
+                    MessageBox.Show("Successfully saved");
+                }
+
+            }
+            else
+            {
+                var retBrand = Singleton.Instance.BrandModel.Update(id, txtNewBrand.Text);
+
+                if (retBrand > 0)
+                {
+                    MessageBox.Show("Successfully saved");
+                }
+            }
+          
+        }
+
+        private void btnCancel3_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

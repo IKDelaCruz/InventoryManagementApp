@@ -43,17 +43,28 @@
             this.cbxType = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnSave2 = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.SaveBrand = new System.Windows.Forms.Button();
+            this.btnCancel3 = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtNewBrand = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbxSubtype = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(8, 8);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
@@ -230,6 +241,95 @@
             this.btnSave2.UseVisualStyleBackColor = true;
             this.btnSave2.Click += new System.EventHandler(this.btnSave2_Click);
             // 
+            // tabPage3
+            // 
+            this.tabPage3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPage3.Controls.Add(this.SaveBrand);
+            this.tabPage3.Controls.Add(this.btnCancel3);
+            this.tabPage3.Controls.Add(this.groupBox3);
+            this.tabPage3.Location = new System.Drawing.Point(4, 33);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(341, 197);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "New Item Brand";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // SaveBrand
+            // 
+            this.SaveBrand.Location = new System.Drawing.Point(234, 163);
+            this.SaveBrand.Name = "SaveBrand";
+            this.SaveBrand.Size = new System.Drawing.Size(81, 33);
+            this.SaveBrand.TabIndex = 59;
+            this.SaveBrand.Text = "Save";
+            this.SaveBrand.UseVisualStyleBackColor = true;
+            this.SaveBrand.Click += new System.EventHandler(this.SaveBrand_Click);
+            // 
+            // btnCancel3
+            // 
+            this.btnCancel3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel3.Location = new System.Drawing.Point(155, 163);
+            this.btnCancel3.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCancel3.Name = "btnCancel3";
+            this.btnCancel3.Size = new System.Drawing.Size(74, 32);
+            this.btnCancel3.TabIndex = 58;
+            this.btnCancel3.Text = "Cancel";
+            this.btnCancel3.UseVisualStyleBackColor = true;
+            this.btnCancel3.Click += new System.EventHandler(this.btnCancel3_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.txtNewBrand);
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Controls.Add(this.cbxSubtype);
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(15, 13);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox3.Size = new System.Drawing.Size(300, 140);
+            this.groupBox3.TabIndex = 57;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Subtype Details";
+            // 
+            // txtNewBrand
+            // 
+            this.txtNewBrand.Location = new System.Drawing.Point(59, 89);
+            this.txtNewBrand.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNewBrand.Name = "txtNewBrand";
+            this.txtNewBrand.Size = new System.Drawing.Size(215, 31);
+            this.txtNewBrand.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 92);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 24);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Brand";
+            // 
+            // cbxSubtype
+            // 
+            this.cbxSubtype.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxSubtype.FormattingEnabled = true;
+            this.cbxSubtype.Location = new System.Drawing.Point(59, 47);
+            this.cbxSubtype.Margin = new System.Windows.Forms.Padding(2);
+            this.cbxSubtype.Name = "cbxSubtype";
+            this.cbxSubtype.Size = new System.Drawing.Size(215, 32);
+            this.cbxSubtype.TabIndex = 1;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(9, 50);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(78, 24);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Subtype";
+            // 
             // frmManageItemType
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -249,6 +349,9 @@
             this.tabPage2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -270,5 +373,13 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cbxType;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Button btnCancel3;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox txtNewBrand;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cbxSubtype;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button SaveBrand;
     }
 }

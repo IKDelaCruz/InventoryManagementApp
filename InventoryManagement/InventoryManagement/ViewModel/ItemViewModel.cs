@@ -97,7 +97,8 @@ namespace InventoryManagement.ViewModel
     }
     public class BrandViewModel
     {
-        public int Id { get; set; }
+        public int Brand_Id { get; set; }
+        public int SubId { get; set; }
         public string Name { get; set; }
     }
 

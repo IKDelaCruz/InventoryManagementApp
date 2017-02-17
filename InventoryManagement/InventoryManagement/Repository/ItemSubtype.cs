@@ -17,6 +17,7 @@ namespace InventoryManagement.Repository
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ItemSubtype()
         {
+            this.Brands = new HashSet<Brand>();
             this.Items = new HashSet<Item>();
         }
     
@@ -24,6 +25,8 @@ namespace InventoryManagement.Repository
         public int type_id { get; set; }
         public string subtype { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Brand> Brands { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Item> Items { get; set; }
         public virtual ItemType ItemType { get; set; }

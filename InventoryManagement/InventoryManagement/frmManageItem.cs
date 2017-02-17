@@ -85,8 +85,8 @@ namespace InventoryManagement
             cbxHDD2.DataSource = Enum.GetValues(typeof(ItemHDDCapacity));
 
             cbxBrand.DisplayMember = "Name";
-            cbxBrand.ValueMember = "Id";
-            cbxBrand.DataSource = Singleton.Instance.ItemModel.GetBrands();
+            cbxBrand.ValueMember = "Brand_Id";
+            cbxBrand.DataSource = Singleton.Instance.ItemModel.GetBrandsBySubtype((int)cbxSubType.SelectedValue);
 
             cbxCurrentOwner.DisplayMember = "LastnameFirstName";
             cbxCurrentOwner.ValueMember = "Id";
@@ -199,6 +199,17 @@ namespace InventoryManagement
             cbxSubType.ValueMember = "Sub_Id";
             cbxSubType.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategoriesByType((int)cbxType.SelectedValue);
         }
+        private void LoadBrands(int subtypeId)
+        {
+            cbxBrand.DisplayMember = "Name";
+            cbxBrand.ValueMember = "Brand_Id";
+            cbxBrand.DataSource = Singleton.Instance.ItemModel.GetBrandsBySubtype((int)cbxSubType.SelectedValue);
+        }
+        private void cbxSubType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var selected = (int)cbxSubType.SelectedValue;
+            LoadBrands(selected);
+        }
 
         private void frmManageItem_Load(object sender, EventArgs e)
         {
@@ -225,5 +236,7 @@ namespace InventoryManagement
                 e.Handled = true;               
             }
         }
+
+   
     }
 }

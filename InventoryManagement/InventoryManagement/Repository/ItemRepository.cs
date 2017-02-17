@@ -9,6 +9,8 @@ namespace InventoryManagement.Repository
 {
     public class ItemRepository : BaseRepository
     {
+        public object ItemModel { get; internal set; }
+
         public int Insert(ItemViewModel newItem, int userId)
         {
            
@@ -114,9 +116,27 @@ namespace InventoryManagement.Repository
 
             foreach (Brand b in brands)
             {
-                bList.Add(new BrandViewModel { Id = b.id, Name = b.name });
+                bList.Add(new BrandViewModel { Brand_Id = b.id, SubId = b.subtype_id, Name = b.name });
             }
             return bList;
+        }
+
+        public List<BrandViewModel> GetBrandsBySubtype(int subtypeId)
+        {
+            var brandslist = new List<BrandViewModel>();
+
+            var brands = InventoryDatabase.Brands.Where(x => x.subtype_id == subtypeId).ToList();
+            foreach (Brand b in brands)
+            {
+                brandslist.Add(new ViewModel.BrandViewModel
+                {
+                    Brand_Id = b.id,
+                    SubId = b.subtype_id,
+                    Name = b.name,
+                });
+            }
+
+            return brandslist;
         }
         public BrandViewModel QueryBrand(int id)
         {
@@ -126,12 +146,16 @@ namespace InventoryManagement.Repository
             {
                 return new BrandViewModel
                 {
-                    Id = brands.id,
+                    Brand_Id = brands.id,
+                    SubId = brands.subtype_id,
                     Name = brands.name
                 };
             }
             return null;
         }
+
+       
+
         public List<ItemViewModel> QueryItems()
         {
             var items = InventoryDatabase.Items.ToList();

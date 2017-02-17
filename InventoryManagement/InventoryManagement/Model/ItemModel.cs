@@ -69,10 +69,17 @@ namespace InventoryManagement.Model
         {
             return type.Substring(0, 1).ToUpper() + subType.Substring(0, 2).ToUpper() + itemId.ToString("D8");
         }
+        public List<BrandViewModel> GetBrandsBySubtype(int subtypeId)
+        {
+            return itemRepostory.GetBrandsBySubtype(subtypeId);
+        }
+
         public List<BrandViewModel> GetBrands()
         {
             return itemRepostory.QueryBrands();
         }
+
+
         public List<ItemViewModel> GetItems()
         {
             return itemRepostory.QueryItems();
@@ -84,5 +91,6 @@ namespace InventoryManagement.Model
             item.CurrentOwnerName = itemRepostory.QueryOwner(item.CurrentOwner);
             return item;
         }
+
     }
 }

@@ -19,6 +19,8 @@ namespace InventoryManagement.Model
 
         public CategoryModel CategoryModel { get; set; }
 
+        public BrandModel BrandModel { get; set; }
+
         public Singleton()
         {
             CategoryModel = new CategoryModel();
@@ -28,6 +30,7 @@ namespace InventoryManagement.Model
             CompanyDepartmentModel = new CompanyDepartmentModel();
             CategorySubcategoryModel = new CategorySubcategoryModel();
             RequestModel = new RequestModel();
+            BrandModel = new BrandModel();
         }
         public static Singleton Instance
         {
