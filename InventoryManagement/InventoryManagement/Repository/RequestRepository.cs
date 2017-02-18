@@ -193,6 +193,35 @@ namespace InventoryManagement.Repository
             return result;
         }
 
+        public List<RequestViewModel> GetDeclinedRequests(RequestStatus status)
+        {
+            var result = new List<RequestViewModel>();
+            var reqs = InventoryDatabase.Requests.Where(x => x.request_status == (int)status);
+            foreach (Request r in reqs)
+            {
+                result.Add(new RequestViewModel
+                {
+                    Id = r.id,
+                    ProcessDate = r.process_date ?? DateTime.MinValue,
+                    ProcessedById = r.process_by_id ?? 0,
+                    RequestedById = r.requested_by_id,
+                    RequestedDate = r.request_date,
+                    RequestedStatus = (RequestStatus)r.request_status,
+                    RequestItemPrimaryType = (int)r.request_item_primary_type,
+                    RequestSecondaryItemType = (int)r.request_item_secondary_type,
+                    Subtype = r.subtype,
+                    RequestType = (RequestType)r.request_type,
+                    Remarks = r.remarks,
+                    UserId = r.user_id,
+                    AdminRemarks = r.admin_remarks,
+                    ExpectedReturnDate = r.expected_return_date ?? DateTime.MinValue,
+                    NeededDate = r.need_date ?? DateTime.MinValue,
+
+                });
+            }
+            return result;
+        }
+
         public List<RequestViewModel> GetListRequests()
         {
             var result = new List<RequestViewModel>();

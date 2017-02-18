@@ -75,6 +75,10 @@ namespace InventoryManagement
             cbxSubtype.ValueMember = "Sub_Id";
             cbxSubtype.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategories();
 
+            cbxSubtypeOS.DisplayMember = "Name";
+            cbxSubtypeOS.ValueMember = "Sub_Id";
+            cbxSubtypeOS.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategories();
+
         }
 
         private void btnCancel2_Click(object sender, EventArgs e)
@@ -144,5 +148,34 @@ namespace InventoryManagement
         {
             this.Close();
         }
+
+        private void btnSaveOs_Click(object sender, EventArgs e)
+        {
+            if (!isUpdate)
+            {
+                var retOs = Singleton.Instance.ItemModel.createOS(Convert.ToInt32(cbxSubtypeOS.SelectedValue), txtOs.Text);
+
+                if (retOs > 0)
+                {
+                    MessageBox.Show("Successfully saved");
+                }
+
+            }
+            else
+            {
+                var retOs = Singleton.Instance.ItemModel.UpdateOs(id, txtOs.Text);
+
+                if (retOs > 0)
+                {
+                    MessageBox.Show("Successfully saved");
+                }
+            }
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
-}
+    }

@@ -319,13 +319,16 @@ namespace InventoryManagement
                     {
                         val = val.Substring(0, val.Length - 1);
                         itms = itms.Where(h => h.Id == Convert.ToInt32(val)).ToList();
-                        lvMain.LoadData(itms);
+                        lvMain.LoadData(itms); 
 
                         var item = Singleton.Instance.ItemModel.GetItem(Convert.ToInt32(val));
+
                         if (item.Status == ItemStatus.Borrowed)
                         {
                             Singleton.Instance.ItemModel.UpdateItemStatusById(Convert.ToInt32(val), ItemStatus.Available);
+                            Singleton.Instance.ItemModel.UpdateItemOwner(Convert.ToInt32(val), 0);
                             DialogResult msg = MessageBox.Show("Successfully returned!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, item.CurrentOwner, ViewModel.TransactionType.ReturnItem, "", Convert.ToInt32(val));
                             if (msg == DialogResult.OK)
                             {
                                 DoUpdateView();
@@ -333,8 +336,9 @@ namespace InventoryManagement
                         }
                         else if (item.Status == ItemStatus.Reserved)
                         {
-                            Singleton.Instance.ItemModel.UpdateItemStatusById(Convert.ToInt32(val), ItemStatus.Borrowed);
+                            Singleton.Instance.ItemModel.UpdateItemStatusById(Convert.ToInt32(val),  ItemStatus.Borrowed);
                             DialogResult msg = MessageBox.Show("Successfully borrowed!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, item.CurrentOwner, ViewModel.TransactionType.BorrowItem, "", Convert.ToInt32(val));
                             if (msg == DialogResult.OK)
                             {
                                 DoUpdateView();
@@ -344,6 +348,7 @@ namespace InventoryManagement
                         {
                             Singleton.Instance.ItemModel.UpdateItemStatusById(Convert.ToInt32(val), ItemStatus.Borrowed);
                             DialogResult msg = MessageBox.Show("Successfully borrowed!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, item.CurrentOwner, ViewModel.TransactionType.BorrowItem, "", Convert.ToInt32(val));
                             if (msg == DialogResult.OK)
                             {
                                 DoUpdateView();

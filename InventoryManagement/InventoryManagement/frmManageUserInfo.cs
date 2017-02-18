@@ -61,10 +61,7 @@ namespace InventoryManagement
                 MessageBox.Show("Invalid Password", "Invalid",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (result != null)
-            {
-                MessageBox.Show("Username already exists!", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
             else
             {
                 if (isUpdate)
@@ -76,9 +73,13 @@ namespace InventoryManagement
                         this.DialogResult = DialogResult.OK;
                         this.Close();
                     }
+                    
                 }
                 else
                 {
+                    if (result != null)
+                    {
+                        MessageBox.Show("Username already exists!", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     var id = Singleton.Instance.UserModel.CreateNewUser(txtUsername.Text, txtPassord.Text, (UserType)cbxUserType.SelectedItem, txtFirstname.Text, txtLastname.Text, (int)cbxDepartment.SelectedValue);
                     if (Singleton.Instance.UserModel.UpdateUser(id, txtFirstname.Text, txtLastname.Text, (int)cbxCompany.SelectedValue, (int)cbxDepartment.SelectedValue,
                         (UserType)cbxUserType.SelectedItem))
@@ -87,6 +88,8 @@ namespace InventoryManagement
                         this.DialogResult = DialogResult.OK;
                         this.Close();
                     }
+                    }
+                    
                 }
 
             }

@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.dtpDate2 = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnGenerate = new System.Windows.Forms.Button();
             this.cbxSubType = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // crystalReportViewer1
@@ -51,14 +51,6 @@
             this.crystalReportViewer1.Size = new System.Drawing.Size(1350, 605);
             this.crystalReportViewer1.TabIndex = 1;
             this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
-            // 
-            // dtpDate
-            // 
-            this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDate.Location = new System.Drawing.Point(117, 21);
-            this.dtpDate.Name = "dtpDate";
-            this.dtpDate.Size = new System.Drawing.Size(182, 26);
-            this.dtpDate.TabIndex = 57;
             // 
             // dtpDate2
             // 
@@ -88,7 +80,7 @@
             // 
             // btnGenerate
             // 
-            this.btnGenerate.Location = new System.Drawing.Point(863, 22);
+            this.btnGenerate.Location = new System.Drawing.Point(973, 21);
             this.btnGenerate.Name = "btnGenerate";
             this.btnGenerate.Size = new System.Drawing.Size(98, 27);
             this.btnGenerate.TabIndex = 60;
@@ -114,18 +106,27 @@
             this.label3.TabIndex = 59;
             this.label3.Text = "Type";
             // 
+            // dtpDate
+            // 
+            this.dtpDate.CustomFormat = "mm/dd/yyyy";
+            this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDate.Location = new System.Drawing.Point(124, 19);
+            this.dtpDate.Name = "dtpDate";
+            this.dtpDate.Size = new System.Drawing.Size(182, 26);
+            this.dtpDate.TabIndex = 62;
+            // 
             // ReportViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1350, 675);
+            this.Controls.Add(this.dtpDate);
             this.Controls.Add(this.cbxSubType);
             this.Controls.Add(this.btnGenerate);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dtpDate2);
-            this.Controls.Add(this.dtpDate);
             this.Controls.Add(this.crystalReportViewer1);
             this.Name = "ReportViewer";
             this.Text = "ReportViewer";
@@ -138,12 +139,12 @@
 
         #endregion
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
-        private System.Windows.Forms.DateTimePicker dtpDate;
         private System.Windows.Forms.DateTimePicker dtpDate2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnGenerate;
         private System.Windows.Forms.ComboBox cbxSubType;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker dtpDate;
     }
 }

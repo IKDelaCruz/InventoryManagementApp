@@ -36,8 +36,9 @@ namespace InventoryManagement.Report
 
         }
 
-        private void btnGenerate_Click(object sender, EventArgs e)
+        private void IfCheckedFalse()
         {
+
             var rpt = new InventoryRpt();
             rpt.SetDataSource(DataFiller.GetInventory(0));
 
@@ -73,15 +74,18 @@ namespace InventoryManagement.Report
             pfield2.CurrentValues.Add(pdiscrete2);
             pfields.Add(pfield2);
 
-
-
-
             crystalReportViewer1.ReportSource = rpt;
-
             crystalReportViewer1.ParameterFieldInfo = pfields;
-
-
             crystalReportViewer1.Refresh();
+
         }
+
+
+        private void btnGenerate_Click(object sender, EventArgs e)
+        {
+            IfCheckedFalse();
+        }
+
+
     }
 }

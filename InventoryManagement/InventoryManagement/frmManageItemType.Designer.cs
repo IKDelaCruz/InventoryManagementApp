@@ -51,6 +51,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbxSubtype = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.btnSaveOs = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.txtOs = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cbxSubtypeOS = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -58,6 +66,8 @@
             this.groupBox1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -65,6 +75,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(8, 8);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
@@ -330,6 +341,95 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "Subtype";
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.btnSaveOs);
+            this.tabPage4.Controls.Add(this.button2);
+            this.tabPage4.Controls.Add(this.groupBox4);
+            this.tabPage4.Location = new System.Drawing.Point(4, 33);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(341, 197);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "New Item OS";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // btnSaveOs
+            // 
+            this.btnSaveOs.Location = new System.Drawing.Point(249, 159);
+            this.btnSaveOs.Name = "btnSaveOs";
+            this.btnSaveOs.Size = new System.Drawing.Size(81, 33);
+            this.btnSaveOs.TabIndex = 61;
+            this.btnSaveOs.Text = "Save";
+            this.btnSaveOs.UseVisualStyleBackColor = true;
+            this.btnSaveOs.Click += new System.EventHandler(this.btnSaveOs_Click);
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(170, 159);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(74, 32);
+            this.button2.TabIndex = 60;
+            this.button2.Text = "Cancel";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.txtOs);
+            this.groupBox4.Controls.Add(this.label6);
+            this.groupBox4.Controls.Add(this.cbxSubtypeOS);
+            this.groupBox4.Controls.Add(this.label7);
+            this.groupBox4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Location = new System.Drawing.Point(20, 15);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox4.Size = new System.Drawing.Size(300, 140);
+            this.groupBox4.TabIndex = 58;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Subtype Details";
+            // 
+            // txtOs
+            // 
+            this.txtOs.Location = new System.Drawing.Point(59, 89);
+            this.txtOs.Margin = new System.Windows.Forms.Padding(2);
+            this.txtOs.Name = "txtOs";
+            this.txtOs.Size = new System.Drawing.Size(215, 31);
+            this.txtOs.TabIndex = 3;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(9, 92);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(32, 24);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "OS";
+            // 
+            // cbxSubtypeOS
+            // 
+            this.cbxSubtypeOS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxSubtypeOS.FormattingEnabled = true;
+            this.cbxSubtypeOS.Location = new System.Drawing.Point(59, 47);
+            this.cbxSubtypeOS.Margin = new System.Windows.Forms.Padding(2);
+            this.cbxSubtypeOS.Name = "cbxSubtypeOS";
+            this.cbxSubtypeOS.Size = new System.Drawing.Size(215, 32);
+            this.cbxSubtypeOS.TabIndex = 1;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(9, 50);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(78, 24);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Subtype";
+            // 
             // frmManageItemType
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -352,6 +452,9 @@
             this.tabPage3.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -381,5 +484,13 @@
         private System.Windows.Forms.ComboBox cbxSubtype;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button SaveBrand;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.Button btnSaveOs;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.TextBox txtOs;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cbxSubtypeOS;
+        private System.Windows.Forms.Label label7;
     }
 }

@@ -80,6 +80,19 @@ namespace InventoryManagement.Model
 
             return result;
         }
+        public List<RequestViewModel> GetDeclinedReqs(RequestStatus status)
+        {
+            var result = repo.GetDeclinedRequests(status);
+
+
+            foreach (RequestViewModel r in result)
+            {
+                r.UserFullnameEmail = Singleton.Instance.UserModel.GetUsersById(r.UserId).LastnameFirstNameUsername;
+
+            }
+
+            return result;
+        }
 
         public List<RequestViewModel> SendEmail()
         {

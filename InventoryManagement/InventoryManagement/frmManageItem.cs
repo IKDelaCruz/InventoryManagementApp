@@ -34,6 +34,9 @@ namespace InventoryManagement
             lblLastUpdatedBy.Visible = !isAddNewItem;
             lblCurrentValue.Visible = !isAddNewItem;
 
+            cbxStatus.SelectedItem = "Available";
+            cbxCurrentOwner.SelectedValue = 0;
+
             if (!isAddNewItem)
                 DoLoadItem(itemId);
 
@@ -41,8 +44,8 @@ namespace InventoryManagement
        
         private void btnSave_Click(object sender, EventArgs e)
         {
-            int purchaseprice;
-            purchaseprice = Convert.ToInt32(txtPurchasePrice.Text);
+            double purchaseprice;
+            purchaseprice = Convert.ToDouble(txtPurchasePrice.Text);
             if (purchaseprice == 0)
             {
                 MessageBox.Show("Invalid Purchase Price","Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -84,7 +87,7 @@ namespace InventoryManagement
 
             //cbxOS.DataSource = Enum.GetValues(typeof(ItemOperatingSystem));
 
-
+            cbxStatus.DataSource = Enum.GetValues(typeof(ItemStatus));
             cbxProcessor.DataSource = Enum.GetValues(typeof(ItemProcessors));
             cbxMemory.DataSource = Enum.GetValues(typeof(ItemMemory));
             cbxHDD1.DataSource = Enum.GetValues(typeof(ItemHDDCapacity));
@@ -100,6 +103,15 @@ namespace InventoryManagement
         }
         private void DoSaveItem()
         {
+            var brand = cbxBrand.SelectedValue;
+            if (brand == null)
+            {
+                brand = 0;
+            }
+            else {
+                brand = cbxBrand.SelectedValue;
+            }
+
             var os = cbxOS.SelectedValue;
             if (os == null)
             {
@@ -110,6 +122,15 @@ namespace InventoryManagement
                 os = cbxOS.SelectedValue;
             }
 
+            var curowner = cbxCurrentOwner.SelectedValue;
+            if (curowner == null)
+            {
+                curowner = 0;
+            }
+            else {
+                curowner = cbxCurrentOwner.SelectedValue;
+            }
+
             var itm = new ItemViewModel
             { 
                 Name = txtName.Text,
@@ -118,12 +139,11 @@ namespace InventoryManagement
                 Type = cbxType.SelectedText,
                 SubTypeId = Convert.ToInt32(cbxSubType.SelectedValue),
                 SubType = cbxSubType.SelectedText,
-                BrandId = (int)cbxBrand.SelectedValue,
+                BrandId = (int)brand,
                 Model = txtModel.Text,
                 Serial = txtSerial.Text,
-
-                Status = ItemStatus.Available,
-                CurrentOwner = (int)cbxCurrentOwner.SelectedValue,
+                Status = (ItemStatus)cbxStatus.SelectedItem,
+                CurrentOwner = (int)curowner,
                 
                 LastUpdatedDate = DateTime.Now,
                 LastUpdatedUserId = Singleton.Instance.UserModel.CurrentUser.Id,

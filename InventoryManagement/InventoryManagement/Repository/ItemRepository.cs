@@ -80,13 +80,14 @@ namespace InventoryManagement.Repository
             return false;
         }
 
-        public bool UpdateItemStatusBySubtype(int subtypeId, ItemStatus status)
+        public bool UpdateItemStatusBySubtype(int subtypeId, int reqby, ItemStatus status)
         {
 
             var item = InventoryDatabase.Items.FirstOrDefault(x => x.item_sub_type_id == subtypeId && x.status == 0);
             if (item != null)
             {
                 item.status = 2;
+                item.current_owner = reqby;
                 InventoryDatabase.SaveChanges();
 
                 return true;
@@ -98,10 +99,27 @@ namespace InventoryManagement.Repository
         public bool UpdateItemStatusById(int id, ItemStatus status)
         {
 
-            var item = InventoryDatabase.Items.FirstOrDefault(x => x.item_sub_type_id == id);
+            var item = InventoryDatabase.Items.FirstOrDefault(x => x.id == id);
             if (item != null)
             {
                 item.status = (int)status;
+              
+                InventoryDatabase.SaveChanges();
+
+                return true;
+            }
+            return false;
+
+        }
+
+        public bool UpdateOwnerByStatus(int id, int owner)
+        {
+
+            var item = InventoryDatabase.Items.FirstOrDefault(x => x.id == id);
+            if (item != null)
+            {
+                item.current_owner = owner;
+
                 InventoryDatabase.SaveChanges();
 
                 return true;
@@ -139,6 +157,48 @@ namespace InventoryManagement.Repository
         }
 
         #region --- Queries ---
+
+        public int CreateOS(int id, string name)
+        {
+            var os = InventoryDatabase.OperatingSystems.FirstOrDefault(b => b.OS == name);
+            if (os == null)
+            {
+                var newOs = new OperatingSystem() { subtype_id = id, OS = name };
+                InventoryDatabase.OperatingSystems.Add(newOs);
+                if (InventoryDatabase.SaveChanges() > 0)
+                    return newOs.id;
+
+                //Unable to save 
+                return -1;
+            }
+            //Already exist;
+            return -2;
+
+        }
+        public int UpdateOS(int id, string name)
+        {
+            var os = InventoryDatabase.OperatingSystems.FirstOrDefault(b => b.subtype_id == id);
+
+            if (os != null)
+            {
+                var osExists = InventoryDatabase.OperatingSystems.FirstOrDefault(b => b.OS == name);
+
+
+                //Name already exist
+                if (osExists != null)
+                {
+                    if (osExists.id == id)
+                    {
+                        return -1;
+                    }
+                    return -2;
+                }
+
+                os.OS = name;
+            }
+            InventoryDatabase.SaveChanges();
+            return 1;
+        }
         public List<BrandViewModel> QueryBrands()
         {
             var brands = InventoryDatabase.Brands.ToList();

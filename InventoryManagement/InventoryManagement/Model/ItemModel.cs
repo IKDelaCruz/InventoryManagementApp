@@ -66,16 +66,27 @@ namespace InventoryManagement.Model
             return result;
         }
 
-        public bool UpdateItemStatusBySubtype(int id)
+        public bool UpdateItemStatusBySubtype(int id, int requestedby)
         {
-            return itemRepostory.UpdateItemStatusBySubtype(id, ItemStatus.Available);
+            return itemRepostory.UpdateItemStatusBySubtype(id, requestedby, ItemStatus.Available);
         }
 
         public bool UpdateItemStatusById(int id, ItemStatus status)
         {
             return itemRepostory.UpdateItemStatusById(id, status);
         }
-
+        public bool UpdateItemOwner(int id, int owner)
+        {
+            return itemRepostory.UpdateOwnerByStatus(id, owner);
+        }
+        public int createOS(int id, string name)
+        {
+            return itemRepostory.CreateOS(id, name);
+        }
+        public int UpdateOs(int id, string name)
+        {
+            return itemRepostory.UpdateOS(id, name);
+        }
 
         public string GenerateAssetTag(string type, string subType, int itemId)
         {

@@ -8,7 +8,7 @@ namespace InventoryManagement.ViewModel
 {
     public enum RequestType
     {
-        Borrow,
+        //Borrow,
         //Return,
         Reserve,
         //Repair,

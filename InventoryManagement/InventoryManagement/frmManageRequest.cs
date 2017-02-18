@@ -23,6 +23,7 @@ namespace InventoryManagement
 
             LoadPendingRequest();
             LoadApproved();
+            LoadDeclined();
 
             //Singleton.Instance.RequestModel.SendEmail();
         }
@@ -40,12 +41,19 @@ namespace InventoryManagement
             dvProcessed.DataSource = request;
         }
 
+        private void LoadDeclined()
+        {
+            var request = Singleton.Instance.RequestModel.GetDeclinedReqs(RequestStatus.Declined);
+
+            dvDeclined.DataSource = request;
+        }
+
         private void dvLogs_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dvLogs.SelectedRows.Count == 0)
                 return;
 
-            txtUserRemarks.Text = dvLogs.SelectedRows[0].Cells[6].Value.ToString();
+            txtUserRemarks.Text = dvLogs.SelectedRows[0].Cells[8].Value.ToString();
 
         }
 
@@ -59,10 +67,10 @@ namespace InventoryManagement
 
             var id = dvLogs.SelectedRows[0].Cells[0].Value;
             var subtypeId = dvLogs.SelectedRows[0].Cells[3].Value;
-            var need_date = dvLogs.SelectedRows[0].Cells[6].Value.ToString();
-            
+            var requestedby = dvLogs.SelectedRows[0].Cells[5].Value;
+            var need_date = dvLogs.SelectedRows[0].Cells[7].Value.ToString();
 
-            var ret = Singleton.Instance.ItemModel.UpdateItemStatusBySubtype((int)subtypeId);
+            var ret = Singleton.Instance.ItemModel.UpdateItemStatusBySubtype((int)subtypeId,(int)requestedby);
 
             if (!ret)
             {
@@ -70,13 +78,12 @@ namespace InventoryManagement
             }
             else {
                 Singleton.Instance.RequestModel.ApproveRequest(Convert.ToInt32(id), txtAdminRemarks.Text, user, Convert.ToDateTime(need_date));
+                Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, (int)requestedby, ViewModel.TransactionType.ReserveItem, "", (int)id);
             }
 
             LoadPendingRequest();
 
 
-
-            
         }
 
         private void btnDecline_Click(object sender, EventArgs e)
@@ -85,7 +92,7 @@ namespace InventoryManagement
                 return;
             var user = Singleton.Instance.UserModel.CurrentUser.Id;
             var id = dvLogs.SelectedRows[0].Cells[0].Value;
-            var need_date = dvLogs.SelectedRows[0].Cells[6].Value.ToString();
+            var need_date = dvLogs.SelectedRows[0].Cells[7].Value.ToString();
             Singleton.Instance.RequestModel.DeclineRequest(Convert.ToInt32(id), txtAdminRemarks.Text, user, Convert.ToDateTime(need_date));
             LoadPendingRequest();
         }
@@ -104,6 +111,8 @@ namespace InventoryManagement
         {
             LoadApproved();
             LoadPendingRequest();
+            LoadDeclined();
+
         }
     }
 }
