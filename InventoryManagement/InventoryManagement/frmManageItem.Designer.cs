@@ -61,11 +61,13 @@
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtSalvageValue = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.txtPurchasePrice = new System.Windows.Forms.TextBox();
             this.dtpPurchaseDate = new System.Windows.Forms.DateTimePicker();
             this.label12 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
             this.lblCurrentValue = new System.Windows.Forms.Label();
             this.txtLifetime = new System.Windows.Forms.TextBox();
             this.txtCurrentValue = new System.Windows.Forms.TextBox();
@@ -404,11 +406,13 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.txtSalvageValue);
             this.panel1.Controls.Add(this.label19);
             this.panel1.Controls.Add(this.label15);
             this.panel1.Controls.Add(this.txtPurchasePrice);
             this.panel1.Controls.Add(this.dtpPurchaseDate);
             this.panel1.Controls.Add(this.label12);
+            this.panel1.Controls.Add(this.label22);
             this.panel1.Controls.Add(this.lblCurrentValue);
             this.panel1.Controls.Add(this.txtLifetime);
             this.panel1.Controls.Add(this.txtCurrentValue);
@@ -419,6 +423,14 @@
             this.panel1.Padding = new System.Windows.Forms.Padding(20);
             this.panel1.Size = new System.Drawing.Size(716, 347);
             this.panel1.TabIndex = 43;
+            // 
+            // txtSalvageValue
+            // 
+            this.txtSalvageValue.Location = new System.Drawing.Point(148, 173);
+            this.txtSalvageValue.Name = "txtSalvageValue";
+            this.txtSalvageValue.Size = new System.Drawing.Size(169, 31);
+            this.txtSalvageValue.TabIndex = 44;
+            this.txtSalvageValue.Text = "0";
             // 
             // label19
             // 
@@ -464,10 +476,19 @@
             this.label12.TabIndex = 36;
             this.label12.Text = "Purchase Price";
             // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(24, 173);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(123, 24);
+            this.label22.TabIndex = 40;
+            this.label22.Text = "Salvage Value";
+            // 
             // lblCurrentValue
             // 
             this.lblCurrentValue.AutoSize = true;
-            this.lblCurrentValue.Location = new System.Drawing.Point(23, 174);
+            this.lblCurrentValue.Location = new System.Drawing.Point(23, 207);
             this.lblCurrentValue.Name = "lblCurrentValue";
             this.lblCurrentValue.Size = new System.Drawing.Size(125, 24);
             this.lblCurrentValue.TabIndex = 40;
@@ -484,7 +505,8 @@
             // 
             // txtCurrentValue
             // 
-            this.txtCurrentValue.Location = new System.Drawing.Point(148, 171);
+            this.txtCurrentValue.Enabled = false;
+            this.txtCurrentValue.Location = new System.Drawing.Point(148, 204);
             this.txtCurrentValue.Name = "txtCurrentValue";
             this.txtCurrentValue.Size = new System.Drawing.Size(169, 31);
             this.txtCurrentValue.TabIndex = 39;
@@ -713,5 +735,7 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox txtSalvageValue;
+        private System.Windows.Forms.Label label22;
     }
 }

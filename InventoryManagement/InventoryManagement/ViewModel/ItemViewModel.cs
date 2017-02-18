@@ -125,6 +125,7 @@ namespace InventoryManagement.ViewModel
         public string Model { get; set; }
         public string Serial { get; set; }
         public decimal PurchasePrice { get; set; }
+        public decimal SalvageValue { get; set; }
         public decimal Currentvalue { get; set; }
         public DateTime PurchaseDate { get; set; }
         public int LifeSpan { get; set; }

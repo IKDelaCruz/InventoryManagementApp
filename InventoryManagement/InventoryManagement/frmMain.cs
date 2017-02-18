@@ -209,9 +209,11 @@ namespace InventoryManagement
         {
 
             var item = Singleton.Instance.ItemModel.GetItem(_selectedItem.Id);
+          
 
             if (item != null)
             {
+
                 lblId.Text = item.Id.ToString();
                 lblAssetTag.Text = item.AssetTag;
                 lblName.Text = item.Name;

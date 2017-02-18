@@ -44,11 +44,15 @@ namespace InventoryManagement
        
         private void btnSave_Click(object sender, EventArgs e)
         {
-            double purchaseprice;
-            purchaseprice = Convert.ToDouble(txtPurchasePrice.Text);
-            if (purchaseprice == 0)
+            decimal purchaseprice, salvagevalue;
+            decimal lifespan;
+            purchaseprice = Convert.ToDecimal(txtPurchasePrice.Text);
+            salvagevalue = Convert.ToDecimal(txtSalvageValue.Text);
+            lifespan = Convert.ToDecimal(txtLifetime.Text);
+
+            if (purchaseprice == 0 || salvagevalue == 0 || lifespan == 0)
             {
-                MessageBox.Show("Invalid Purchase Price","Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Invalid input for Depreciation","Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -131,8 +135,29 @@ namespace InventoryManagement
                 curowner = cbxCurrentOwner.SelectedValue;
             }
 
+            //DEPRECIATION COMPUTATION
+            DateTime purchasedate = dtpPurchaseDate.Value;
+            decimal purchaseprice = Convert.ToDecimal(txtPurchasePrice.Text);
+            decimal lifespan = Convert.ToDecimal(txtLifetime.Text);
+            DateTime annum = purchasedate.AddYears(1);
+            int salvageValue = 2000;
+            decimal initialValue;
+            decimal currentvalue;
+
+            if (annum == DateTime.Now)
+            {
+                MessageBox.Show("Annual Depreciation marks today!", "Message");
+            }
+            else
+            {
+                initialValue = ((purchaseprice - salvageValue) / lifespan) / 365;
+                currentvalue = purchaseprice - initialValue;
+                txtCurrentValue.Text = currentvalue.ToString("n2");
+            }
+
             var itm = new ItemViewModel
-            { 
+            {
+
                 Name = txtName.Text,
                 Description = txtDescription.Text,
                 TypeId = Convert.ToInt32(cbxType.SelectedValue),
@@ -144,13 +169,13 @@ namespace InventoryManagement
                 Serial = txtSerial.Text,
                 Status = (ItemStatus)cbxStatus.SelectedItem,
                 CurrentOwner = (int)curowner,
-                
+                SalvageValue = Convert.ToDecimal(txtSalvageValue.Text),
                 LastUpdatedDate = DateTime.Now,
                 LastUpdatedUserId = Singleton.Instance.UserModel.CurrentUser.Id,
                 PurchaseDate = dtpPurchaseDate.Value,
                 PurchasePrice = Convert.ToDecimal(txtPurchasePrice.Text),
-                LifeSpan = int.Parse(txtLifetime.Text),
-                Currentvalue = Convert.ToDecimal(txtPurchasePrice.Text),
+                LifeSpan = Convert.ToInt32(txtLifetime.Text),
+                Currentvalue = Convert.ToDecimal(txtCurrentValue.Text),
                 OS = (int)os,
                 Processor = (ItemProcessors)cbxProcessor.SelectedItem,
                 Memory = (ItemMemory)cbxMemory.SelectedItem,
@@ -189,11 +214,12 @@ namespace InventoryManagement
             txtAssetTag.Text = loadedItem.AssetTag;
             txtName.Text = loadedItem.Name;
             txtDescription.Text = loadedItem.Description;
-            cbxType.Text = loadedItem.TypeId.ToString();
-            cbxSubType.Text = loadedItem.SubTypeId.ToString();
-            cbxBrand.Text = loadedItem.Brand.ToString();
+            cbxType.SelectedValue = loadedItem.TypeId;
+            cbxSubType.SelectedValue = loadedItem.SubTypeId;
+            cbxBrand.SelectedValue = loadedItem.BrandId;
             txtModel.Text = loadedItem.Model;
             txtSerial.Text = loadedItem.Serial;
+            txtSalvageValue.Text = loadedItem.SalvageValue.ToString();
 
             cbxOS.Text = loadedItem.OS.ToString();
             cbxProcessor.Text = loadedItem.Processor.ToString();

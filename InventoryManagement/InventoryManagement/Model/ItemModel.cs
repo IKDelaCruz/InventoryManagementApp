@@ -109,9 +109,16 @@ namespace InventoryManagement.Model
         }
         public ItemViewModel GetItem(int id)
         {
+            //get value from two tables
+            
             var item = itemRepostory.QueryItem(id);
+            var subcateg = catSubRepository.QuerySubcategory(item.SubTypeId).Name;
+            var categ = catRepository.QueryCategory(item.TypeId).Name;
             item.Brand = itemRepostory.QueryBrand(item.BrandId).Name;
+            item.SubType = subcateg;
+            item.Type = categ;
             item.CurrentOwnerName = itemRepostory.QueryOwner(item.CurrentOwner);
+
             return item;
         }
 
