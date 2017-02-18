@@ -47,6 +47,7 @@
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TransactionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SystemUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubtypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TransactionTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OtherUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NeededDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -165,6 +166,7 @@
             this.Id,
             this.TransactionDate,
             this.SystemUserName,
+            this.SubtypeId,
             this.TransactionTypeId,
             this.OtherUserName,
             this.NeededDate,
@@ -267,6 +269,12 @@
             this.SystemUserName.HeaderText = "Request Type";
             this.SystemUserName.Name = "SystemUserName";
             // 
+            // SubtypeId
+            // 
+            this.SubtypeId.DataPropertyName = "RequestSecondaryItemType";
+            this.SubtypeId.HeaderText = "Subtype Id";
+            this.SubtypeId.Name = "SubtypeId";
+            // 
             // TransactionTypeId
             // 
             this.TransactionTypeId.DataPropertyName = "Subtype";
@@ -335,6 +343,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn TransactionDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn SystemUserName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SubtypeId;
         private System.Windows.Forms.DataGridViewTextBoxColumn TransactionTypeId;
         private System.Windows.Forms.DataGridViewTextBoxColumn OtherUserName;
         private System.Windows.Forms.DataGridViewTextBoxColumn NeededDate;

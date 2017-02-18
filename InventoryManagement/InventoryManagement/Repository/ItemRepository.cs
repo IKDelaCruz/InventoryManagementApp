@@ -79,6 +79,21 @@ namespace InventoryManagement.Repository
 
             return false;
         }
+
+        public bool UpdateItemStatus(int subtypeId, ItemStatus status)
+        {
+
+            var item = InventoryDatabase.Items.FirstOrDefault(x => x.item_sub_type_id == subtypeId && x.status == 0);
+            if (item != null)
+            {
+                item.status = 2;
+                InventoryDatabase.SaveChanges();
+
+                return true;
+            }
+            return false;
+
+        }
         public bool AttachAssetTag(int itemId, string assetTag)
         {
             var item = InventoryDatabase.Items.FirstOrDefault(h => h.id == itemId);
@@ -154,7 +169,23 @@ namespace InventoryManagement.Repository
             return null;
         }
 
-       
+        public List<OSViewModel> QueryOSBySubtype(int subtypeId)
+        {
+            var OSList = new List<OSViewModel>();
+
+            var operatingsystems = InventoryDatabase.OperatingSystems.Where(x => x.subtype_id == subtypeId).ToList();
+            foreach (OperatingSystem o in operatingsystems)
+            {
+                OSList.Add(new ViewModel.OSViewModel
+                {
+                    OS_Id = o.id,
+                    SubtypeId = o.subtype_id,
+                    OSName = o.OS,
+                });
+            }
+
+            return OSList;
+        }
 
         public List<ItemViewModel> QueryItems()
         {
@@ -211,7 +242,7 @@ namespace InventoryManagement.Repository
                 PurchasePrice = i.purchase_price,
                 LifeSpan = i.life_span ?? 5,
                 Currentvalue = i.current_value,
-                OS = (ItemOperatingSystem)(i.os_id ?? 0),
+                OS = (int)(i.os_id ?? 0),
                 Processor = (ItemProcessors)(i.processor_id ?? 0),
                 Memory = (ItemMemory)(i.memory_id ?? 0),
                 HDD1 = (ItemHDDCapacity)(i.hdd1_id ?? 0),

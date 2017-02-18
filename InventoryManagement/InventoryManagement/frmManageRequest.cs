@@ -58,9 +58,23 @@ namespace InventoryManagement
             var user = Singleton.Instance.UserModel.CurrentUser.Id;
 
             var id = dvLogs.SelectedRows[0].Cells[0].Value;
-            var need_date = dvLogs.SelectedRows[0].Cells[5].Value.ToString();
-            Singleton.Instance.RequestModel.ApproveRequest(Convert.ToInt32(id), txtAdminRemarks.Text, user, Convert.ToDateTime(need_date));
+            var subtypeId = dvLogs.SelectedRows[0].Cells[3].Value;
+            var need_date = dvLogs.SelectedRows[0].Cells[6].Value.ToString();
+            
+
+            var ret = Singleton.Instance.ItemModel.UpdateItemStatusBySubtype((int)subtypeId);
+
+            if (!ret)
+            {
+                MessageBox.Show("Item not available!");
+            }
+            else {
+                Singleton.Instance.RequestModel.ApproveRequest(Convert.ToInt32(id), txtAdminRemarks.Text, user, Convert.ToDateTime(need_date));
+            }
+
             LoadPendingRequest();
+
+
 
             
         }
@@ -71,7 +85,7 @@ namespace InventoryManagement
                 return;
             var user = Singleton.Instance.UserModel.CurrentUser.Id;
             var id = dvLogs.SelectedRows[0].Cells[0].Value;
-            var need_date = dvLogs.SelectedRows[0].Cells[5].Value.ToString();
+            var need_date = dvLogs.SelectedRows[0].Cells[6].Value.ToString();
             Singleton.Instance.RequestModel.DeclineRequest(Convert.ToInt32(id), txtAdminRemarks.Text, user, Convert.ToDateTime(need_date));
             LoadPendingRequest();
         }

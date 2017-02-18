@@ -65,6 +65,11 @@ namespace InventoryManagement.Model
 
             return result;
         }
+
+        public bool UpdateItemStatusBySubtype(int id)
+        {
+            return itemRepostory.UpdateItemStatus(id, ItemStatus.Available);
+        }
         public string GenerateAssetTag(string type, string subType, int itemId)
         {
             return type.Substring(0, 1).ToUpper() + subType.Substring(0, 2).ToUpper() + itemId.ToString("D8");
@@ -90,6 +95,11 @@ namespace InventoryManagement.Model
             item.Brand = itemRepostory.QueryBrand(item.BrandId).Name;
             item.CurrentOwnerName = itemRepostory.QueryOwner(item.CurrentOwner);
             return item;
+        }
+
+        public List<OSViewModel> GetOSBySubtype(int subtypeId)
+        {
+            return itemRepostory.QueryOSBySubtype(subtypeId);
         }
 
     }

@@ -25,6 +25,7 @@
         <AssociationConnector Association="InventoryMangementModel.FK_Item_ItemType" />
         <AssociationConnector Association="InventoryMangementModel.FK_ItemSubtype_ItemType" />
         <AssociationConnector Association="InventoryMangementModel.FK_Request_User" />
+        <EntityTypeShape EntityType="InventoryMangementModel.OperatingSystem" Width="1.5" PointX="7.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

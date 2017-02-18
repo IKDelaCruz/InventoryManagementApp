@@ -58,6 +58,33 @@ namespace InventoryManagement.Repository
                 return null;
         }
 
+        public List<SubcategoryViewModel> QueryListofSub()
+        {
+            var sublist = new List<SubcategoryViewModel>();
+            var sub = InventoryDatabase.ItemSubtypes.ToList();
+
+            //var categ = categ1.GroupBy(i => i.id).Select(group => group.First());
+
+            //List<CategorySubcategoryViewModel> cList = new List<CategorySubcategoryViewModel>();
+
+            foreach (ItemSubtype s in sub)
+            {
+
+                sublist.Add(new SubcategoryViewModel
+
+                {
+                    Sub_Id = s.id,
+                    CategoryId = s.type_id,
+                    Name = s.subtype,
+
+                });
+                //subcategory = c.subtype 
+
+            }
+            return sublist;
+
+        }
+
 
         //public int CreateCategorySubcategory(string type)
         //{

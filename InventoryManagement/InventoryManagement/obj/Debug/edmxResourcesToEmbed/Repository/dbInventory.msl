@@ -192,5 +192,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="OperatingSystems">
+      <EntityTypeMapping TypeName="InventoryMangementModel.OperatingSystem">
+        <MappingFragment StoreEntitySet="OperatingSystem">
+          <ScalarProperty Name="OS" ColumnName="OS" />
+          <ScalarProperty Name="subtype_id" ColumnName="subtype_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

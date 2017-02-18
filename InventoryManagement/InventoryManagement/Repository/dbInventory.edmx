@@ -11,7 +11,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="subtype_id" Type="int" Nullable="false" />
-          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Company">
           <Key>
@@ -71,6 +71,14 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="type" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="OperatingSystem">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="subtype_id" Type="int" Nullable="false" />
+          <Property Name="OS" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Request">
           <Key>
             <PropertyRef Name="id" />
@@ -114,6 +122,8 @@
           <Property Name="item_id" Type="int" />
           <Property Name="request_id" Type="int" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'InventoryMangement.dbo.TransactionType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="id" />
@@ -307,6 +317,7 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwTransactionLogs' does not
           <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemSubtype" EntityType="Self.ItemSubtype" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemType" EntityType="Self.ItemType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OperatingSystem" EntityType="Self.OperatingSystem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Request" EntityType="Self.Request" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Transaction" EntityType="Self.Transaction" Schema="dbo" store:Type="Tables" />
@@ -454,6 +465,7 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwTransactionLogs' does not
             <End Role="User" EntitySet="Users" />
             <End Role="Request" EntitySet="Requests" />
           </AssociationSet>
+          <EntitySet Name="OperatingSystems" EntityType="InventoryMangementModel.OperatingSystem" />
           </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -472,7 +484,7 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwTransactionLogs' does not
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="subtype_id" Type="Int32" Nullable="false" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Items" Relationship="InventoryMangementModel.FK_Item_Brand" FromRole="Brand" ToRole="Item" />
           <NavigationProperty Name="ItemSubtype" Relationship="InventoryMangementModel.FK_ItemSubtype_Brand" FromRole="Brand" ToRole="ItemSubtype" />
         </EntityType>
@@ -742,6 +754,14 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwTransactionLogs' does not
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="OperatingSystem">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="subtype_id" Type="Int32" Nullable="false" />
+          <Property Name="OS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -935,6 +955,15 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwTransactionLogs' does not
                 <ScalarProperty Name="request_item_primary_type" ColumnName="request_item_primary_type" />
                 <ScalarProperty Name="request_type" ColumnName="request_type" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OperatingSystems">
+            <EntityTypeMapping TypeName="InventoryMangementModel.OperatingSystem">
+              <MappingFragment StoreEntitySet="OperatingSystem">
+                <ScalarProperty Name="OS" ColumnName="OS" />
+                <ScalarProperty Name="subtype_id" ColumnName="subtype_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

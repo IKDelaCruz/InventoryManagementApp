@@ -1,5 +1,6 @@
 ﻿using BarcodeLib;
 using InventoryManagement.Model;
+using InventoryManagement.Repository;
 using InventoryManagement.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -76,9 +77,14 @@ namespace InventoryManagement
             cbxSubType.DisplayMember = "Name";
             cbxSubType.ValueMember = "Sub_Id";
             cbxSubType.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategoriesByType((int)cbxType.SelectedValue);
-        
 
-            cbxOS.DataSource = Enum.GetValues(typeof(ItemOperatingSystem));
+            //cbxOS.DisplayMember = "OSName";
+            //cbxOS.ValueMember = "OS_Id";
+            //cbxOS.DataSource = Singleton.Instance.ItemModel.GetOSBySubtype((int)cbxSubType.SelectedValue);
+
+            //cbxOS.DataSource = Enum.GetValues(typeof(ItemOperatingSystem));
+
+
             cbxProcessor.DataSource = Enum.GetValues(typeof(ItemProcessors));
             cbxMemory.DataSource = Enum.GetValues(typeof(ItemMemory));
             cbxHDD1.DataSource = Enum.GetValues(typeof(ItemHDDCapacity));
@@ -94,6 +100,16 @@ namespace InventoryManagement
         }
         private void DoSaveItem()
         {
+            var os = cbxOS.SelectedValue;
+            if (os == null)
+            {
+                os = 0;
+
+            }
+            else {
+                os = cbxOS.SelectedValue;
+            }
+
             var itm = new ItemViewModel
             { 
                 Name = txtName.Text,
@@ -115,7 +131,7 @@ namespace InventoryManagement
                 PurchasePrice = Convert.ToDecimal(txtPurchasePrice.Text),
                 LifeSpan = int.Parse(txtLifetime.Text),
                 Currentvalue = Convert.ToDecimal(txtPurchasePrice.Text),
-                OS = (ItemOperatingSystem)cbxOS.SelectedItem,
+                OS = (int)os,
                 Processor = (ItemProcessors)cbxProcessor.SelectedItem,
                 Memory = (ItemMemory)cbxMemory.SelectedItem,
                 HDD1 = (ItemHDDCapacity)cbxHDD1.SelectedItem,
@@ -205,10 +221,18 @@ namespace InventoryManagement
             cbxBrand.ValueMember = "Brand_Id";
             cbxBrand.DataSource = Singleton.Instance.ItemModel.GetBrandsBySubtype((int)cbxSubType.SelectedValue);
         }
+
         private void cbxSubType_SelectedIndexChanged(object sender, EventArgs e)
         {
+         
             var selected = (int)cbxSubType.SelectedValue;
             LoadBrands(selected);
+
+            cbxOS.DisplayMember = "OSName";
+            cbxOS.ValueMember = "OS_Id";
+            cbxOS.DataSource = Singleton.Instance.ItemModel.GetOSBySubtype((int)cbxSubType.SelectedValue);
+
+
         }
 
         private void frmManageItem_Load(object sender, EventArgs e)

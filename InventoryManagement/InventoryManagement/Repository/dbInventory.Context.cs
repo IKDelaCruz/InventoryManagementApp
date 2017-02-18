@@ -39,6 +39,7 @@ namespace InventoryManagement.Repository
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<vwItemLog> vwItemLogs { get; set; }
         public virtual DbSet<vwTransactionLog> vwTransactionLogs { get; set; }
+        public virtual DbSet<OperatingSystem> OperatingSystems { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

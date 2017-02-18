@@ -33,7 +33,7 @@ namespace InventoryManagement.ViewModel
     public enum ItemStatus
     {
 
-        Available,
+        Available = 0,
         Borrowed,
         Reserved,
         Broken,
@@ -102,6 +102,13 @@ namespace InventoryManagement.ViewModel
         public string Name { get; set; }
     }
 
+    public class OSViewModel {
+        public int OS_Id { get; set; }
+        public int SubtypeId { get; set; }
+        public string OSName { get; set; }
+
+    }
+
 
     public class ItemViewModel
     {
@@ -127,7 +134,7 @@ namespace InventoryManagement.ViewModel
         public DateTime LastUpdatedDate { get; set; }
         public string LastUpdatedUser { get; set; }
         public int LastUpdatedUserId { get; set; }
-        public ItemOperatingSystem OS { get; set; }
+        public int OS { get; set; }
         public ItemProcessors Processor { get; set; }
         public ItemMemory Memory { get; set; }
         public ItemHDDCapacity HDD1 { get; set; }
