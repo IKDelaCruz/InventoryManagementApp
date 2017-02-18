@@ -80,13 +80,28 @@ namespace InventoryManagement.Repository
             return false;
         }
 
-        public bool UpdateItemStatus(int subtypeId, ItemStatus status)
+        public bool UpdateItemStatusBySubtype(int subtypeId, ItemStatus status)
         {
 
             var item = InventoryDatabase.Items.FirstOrDefault(x => x.item_sub_type_id == subtypeId && x.status == 0);
             if (item != null)
             {
                 item.status = 2;
+                InventoryDatabase.SaveChanges();
+
+                return true;
+            }
+            return false;
+
+        }
+
+        public bool UpdateItemStatusById(int id, ItemStatus status)
+        {
+
+            var item = InventoryDatabase.Items.FirstOrDefault(x => x.item_sub_type_id == id);
+            if (item != null)
+            {
+                item.status = (int)status;
                 InventoryDatabase.SaveChanges();
 
                 return true;

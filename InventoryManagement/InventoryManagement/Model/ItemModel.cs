@@ -68,8 +68,15 @@ namespace InventoryManagement.Model
 
         public bool UpdateItemStatusBySubtype(int id)
         {
-            return itemRepostory.UpdateItemStatus(id, ItemStatus.Available);
+            return itemRepostory.UpdateItemStatusBySubtype(id, ItemStatus.Available);
         }
+
+        public bool UpdateItemStatusById(int id, ItemStatus status)
+        {
+            return itemRepostory.UpdateItemStatusById(id, status);
+        }
+
+
         public string GenerateAssetTag(string type, string subType, int itemId)
         {
             return type.Substring(0, 1).ToUpper() + subType.Substring(0, 2).ToUpper() + itemId.ToString("D8");

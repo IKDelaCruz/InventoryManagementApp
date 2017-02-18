@@ -304,6 +304,8 @@ namespace InventoryManagement
         private void txtScan_TextChanged(object sender, EventArgs e)
         {
 
+            
+
             var itms = Singleton.Instance.ItemModel.GetItems();
             var val = txtScan.Text;
             
@@ -318,17 +320,42 @@ namespace InventoryManagement
                         val = val.Substring(0, val.Length - 1);
                         itms = itms.Where(h => h.Id == Convert.ToInt32(val)).ToList();
                         lvMain.LoadData(itms);
+
+                        var item = Singleton.Instance.ItemModel.GetItem(Convert.ToInt32(val));
+                        if (item.Status == ItemStatus.Borrowed)
+                        {
+                            Singleton.Instance.ItemModel.UpdateItemStatusById(Convert.ToInt32(val), ItemStatus.Available);
+                            DialogResult msg = MessageBox.Show("Successfully returned!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            if (msg == DialogResult.OK)
+                            {
+                                DoUpdateView();
+                            }
+                        }
+                        else if (item.Status == ItemStatus.Reserved)
+                        {
+                            Singleton.Instance.ItemModel.UpdateItemStatusById(Convert.ToInt32(val), ItemStatus.Borrowed);
+                            DialogResult msg = MessageBox.Show("Successfully borrowed!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            if (msg == DialogResult.OK)
+                            {
+                                DoUpdateView();
+                            }
+                        }
+                        else
+                        {
+                            Singleton.Instance.ItemModel.UpdateItemStatusById(Convert.ToInt32(val), ItemStatus.Borrowed);
+                            DialogResult msg = MessageBox.Show("Successfully borrowed!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            if (msg == DialogResult.OK)
+                            {
+                                DoUpdateView();
+                            }
+                        }
+
+
                         if (lvMain.Items.Count > 0)
                         {
                             lvMain.Items[0].Selected = true;
                             lvMain.Select();
-      
-                            //if (lvMain.Items[0].Selected == false)
-                            //{
-                       
-
-                            //}           
-
+       
                         }
 
                     }
