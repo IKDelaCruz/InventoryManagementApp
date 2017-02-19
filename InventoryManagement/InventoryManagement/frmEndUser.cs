@@ -74,7 +74,7 @@ namespace InventoryManagement
         }
         private void LoadComboBox()
         {
-            cbxRequestType.Items.Add(RequestType.Borrow);
+            cbxRequestType.Items.Add(RequestType.Reserve);
             cbxRequestType.Items.Add(RequestType.Repair);
             cbxRequestType.SelectedIndex = 0;
 

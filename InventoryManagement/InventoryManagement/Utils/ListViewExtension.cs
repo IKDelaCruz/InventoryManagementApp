@@ -22,11 +22,11 @@ namespace InventoryManagement.Utils
             var dir = "";
             if (type == 1)
             {
-                dir = @"C:\Users\ian.delacruz\Documents\GitHub\InventoryManagementApp\InventoryManagementApp\InventoryManagement\InventoryManagement\bin\Debug\icons\type";
+                dir = @"C:\Users\Pua\Documents\GitHub\InventoryManagementApp\InventoryManagement\images\icons\type";
             }
             else
             {
-                dir = @"C:\Users\ian.delacruz\Documents\GitHub\InventoryManagementApp\InventoryManagementApp\InventoryManagement\InventoryManagement\bin\Debug\icons\subtype";
+                dir = @"C:\Users\Pua\Documents\GitHub\InventoryManagementApp\InventoryManagement\images\icons\subtype";
             }
             string[] fileEntries = Directory.GetFiles(dir);
 

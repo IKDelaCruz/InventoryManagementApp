@@ -38,15 +38,6 @@
             this.btnApproved = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.dvLogs = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TransactionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SystemUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SubtypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TransactionTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OtherUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NeededDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UserRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dvProcessed = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,6 +46,16 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dvDeclined = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TransactionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RequestTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SystemUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubtypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TransactionTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OtherUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NeededDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -171,6 +172,7 @@
             this.dvLogs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
             this.TransactionDate,
+            this.RequestTypeId,
             this.SystemUserName,
             this.SubtypeId,
             this.TransactionTypeId,
@@ -190,62 +192,6 @@
             this.dvLogs.Size = new System.Drawing.Size(716, 205);
             this.dvLogs.TabIndex = 1;
             this.dvLogs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvLogs_CellClick);
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.Width = 50;
-            // 
-            // TransactionDate
-            // 
-            this.TransactionDate.DataPropertyName = "RequestedDate";
-            this.TransactionDate.HeaderText = "Date";
-            this.TransactionDate.Name = "TransactionDate";
-            // 
-            // SystemUserName
-            // 
-            this.SystemUserName.DataPropertyName = "RequestType";
-            this.SystemUserName.HeaderText = "Request Type";
-            this.SystemUserName.Name = "SystemUserName";
-            // 
-            // SubtypeId
-            // 
-            this.SubtypeId.DataPropertyName = "RequestSecondaryItemType";
-            this.SubtypeId.HeaderText = "Subtype Id";
-            this.SubtypeId.Name = "SubtypeId";
-            // 
-            // TransactionTypeId
-            // 
-            this.TransactionTypeId.DataPropertyName = "Subtype";
-            this.TransactionTypeId.HeaderText = "Item Subtype";
-            this.TransactionTypeId.Name = "TransactionTypeId";
-            // 
-            // UserId
-            // 
-            this.UserId.DataPropertyName = "UserId";
-            this.UserId.HeaderText = "User Id";
-            this.UserId.Name = "UserId";
-            // 
-            // OtherUserName
-            // 
-            this.OtherUserName.DataPropertyName = "UserFullnameEmail";
-            this.OtherUserName.HeaderText = "User";
-            this.OtherUserName.Name = "OtherUserName";
-            this.OtherUserName.Width = 200;
-            // 
-            // NeededDate
-            // 
-            this.NeededDate.DataPropertyName = "NeededDate";
-            this.NeededDate.HeaderText = "Date Needed";
-            this.NeededDate.Name = "NeededDate";
-            // 
-            // UserRemarks
-            // 
-            this.UserRemarks.DataPropertyName = "Remarks";
-            this.UserRemarks.HeaderText = "UserRemarks";
-            this.UserRemarks.Name = "UserRemarks";
             // 
             // tabPage2
             // 
@@ -341,6 +287,68 @@
             this.dvDeclined.Size = new System.Drawing.Size(722, 253);
             this.dvDeclined.TabIndex = 3;
             // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.Width = 50;
+            // 
+            // TransactionDate
+            // 
+            this.TransactionDate.DataPropertyName = "RequestedDate";
+            this.TransactionDate.HeaderText = "Date";
+            this.TransactionDate.Name = "TransactionDate";
+            // 
+            // RequestTypeId
+            // 
+            this.RequestTypeId.DataPropertyName = "RequestTypeInt";
+            this.RequestTypeId.HeaderText = "Request Type Id";
+            this.RequestTypeId.Name = "RequestTypeId";
+            // 
+            // SystemUserName
+            // 
+            this.SystemUserName.DataPropertyName = "RequestType";
+            this.SystemUserName.HeaderText = "Request Type";
+            this.SystemUserName.Name = "SystemUserName";
+            // 
+            // SubtypeId
+            // 
+            this.SubtypeId.DataPropertyName = "RequestSecondaryItemType";
+            this.SubtypeId.HeaderText = "Subtype Id";
+            this.SubtypeId.Name = "SubtypeId";
+            // 
+            // TransactionTypeId
+            // 
+            this.TransactionTypeId.DataPropertyName = "Subtype";
+            this.TransactionTypeId.HeaderText = "Item Subtype";
+            this.TransactionTypeId.Name = "TransactionTypeId";
+            // 
+            // UserId
+            // 
+            this.UserId.DataPropertyName = "UserId";
+            this.UserId.HeaderText = "User Id";
+            this.UserId.Name = "UserId";
+            // 
+            // OtherUserName
+            // 
+            this.OtherUserName.DataPropertyName = "UserFullnameEmail";
+            this.OtherUserName.HeaderText = "User";
+            this.OtherUserName.Name = "OtherUserName";
+            this.OtherUserName.Width = 200;
+            // 
+            // NeededDate
+            // 
+            this.NeededDate.DataPropertyName = "NeededDate";
+            this.NeededDate.HeaderText = "Date Needed";
+            this.NeededDate.Name = "NeededDate";
+            // 
+            // UserRemarks
+            // 
+            this.UserRemarks.DataPropertyName = "Remarks";
+            this.UserRemarks.HeaderText = "UserRemarks";
+            this.UserRemarks.Name = "UserRemarks";
+            // 
             // frmManageRequest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
@@ -382,8 +390,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.DataGridView dvDeclined;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn TransactionDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RequestTypeId;
         private System.Windows.Forms.DataGridViewTextBoxColumn SystemUserName;
         private System.Windows.Forms.DataGridViewTextBoxColumn SubtypeId;
         private System.Windows.Forms.DataGridViewTextBoxColumn TransactionTypeId;
@@ -391,7 +402,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn OtherUserName;
         private System.Windows.Forms.DataGridViewTextBoxColumn NeededDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserRemarks;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.DataGridView dvDeclined;
     }
 }

@@ -75,7 +75,8 @@ namespace InventoryManagement
         private void frmLauncher_FormClosing(object sender, FormClosingEventArgs e)
         {
 
-           e.Cancel = !DoCleanExit();
+            e.Cancel = !DoCleanExit();
+            //LoadLogin();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)

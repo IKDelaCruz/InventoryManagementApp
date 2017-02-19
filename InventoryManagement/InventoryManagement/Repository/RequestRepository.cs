@@ -88,6 +88,7 @@ namespace InventoryManagement.Repository
                     RequestSecondaryItemType = (int)r.request_item_secondary_type,
                     Subtype = r.subtype,
                     RequestType = (RequestType)r.request_type,
+                    RequestTypeInt = r.request_type,
                     Remarks = r.remarks,
                     UserId = r.user_id,
                     AdminRemarks = r.admin_remarks,
@@ -152,9 +153,11 @@ namespace InventoryManagement.Repository
                 oldRequest.admin_remarks = remark;
 
                 //DateTime need = Convert.ToDateTime(need_date);
-                DateTime expected_return = need_date.AddDays(2);
-
-                oldRequest.expected_return_date = expected_return;
+                if (oldRequest.request_type == 0)
+                {
+                    DateTime expected_return = need_date.AddDays(2);
+                    oldRequest.expected_return_date = expected_return;
+                }
 
                 InventoryDatabase.SaveChanges();
 
@@ -182,6 +185,7 @@ namespace InventoryManagement.Repository
                     RequestSecondaryItemType = (int)r.request_item_secondary_type,
                     Subtype = r.subtype,
                     RequestType = (RequestType)r.request_type,
+                    RequestTypeInt = r.request_type,
                     Remarks = r.remarks,
                     UserId = r.user_id,
                     AdminRemarks = r.admin_remarks,
@@ -211,6 +215,7 @@ namespace InventoryManagement.Repository
                     RequestSecondaryItemType = (int)r.request_item_secondary_type,
                     Subtype = r.subtype,
                     RequestType = (RequestType)r.request_type,
+                    RequestTypeInt = r.request_type,
                     Remarks = r.remarks,
                     UserId = r.user_id,
                     AdminRemarks = r.admin_remarks,

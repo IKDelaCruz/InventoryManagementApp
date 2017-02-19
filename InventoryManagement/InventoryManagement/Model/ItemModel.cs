@@ -66,9 +66,14 @@ namespace InventoryManagement.Model
             return result;
         }
 
-        public bool UpdateItemStatusBySubtype(int id, int requestedby)
+        public bool UpdateItemStatusBySubtype(int id, int requestedby, ItemStatus status)
         {
-            return itemRepostory.UpdateItemStatusBySubtype(id, requestedby, ItemStatus.Available);
+            return itemRepostory.UpdateItemStatusBySubtype(id, requestedby, status);
+        }
+
+        public bool UpdateItemStatusToBroken(int id, int requestedby, ItemStatus status)
+        {
+            return itemRepostory.UpdateItemStatusToBroken(id, requestedby, status);
         }
 
         public bool UpdateItemStatusById(int id, ItemStatus status)

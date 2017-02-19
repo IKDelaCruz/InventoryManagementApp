@@ -66,19 +66,28 @@ namespace InventoryManagement
             var user = Singleton.Instance.UserModel.CurrentUser.Id;
 
             var id = dvLogs.SelectedRows[0].Cells[0].Value;
-            var subtypeId = dvLogs.SelectedRows[0].Cells[3].Value;
-            var requestedby = dvLogs.SelectedRows[0].Cells[5].Value;
-            var need_date = dvLogs.SelectedRows[0].Cells[7].Value.ToString();
+            var subtypeId = dvLogs.SelectedRows[0].Cells[4].Value;
+            var requestedby = dvLogs.SelectedRows[0].Cells[6].Value;
+            var need_date = dvLogs.SelectedRows[0].Cells[8].Value.ToString();
+            var reqtype = dvLogs.SelectedRows[0].Cells[2].Value.ToString();
 
-            var ret = Singleton.Instance.ItemModel.UpdateItemStatusBySubtype((int)subtypeId,(int)requestedby);
-
-            if (!ret)
+            if (Convert.ToInt32(reqtype) == 0)
             {
-                MessageBox.Show("Item not available!");
+                var ret = Singleton.Instance.ItemModel.UpdateItemStatusBySubtype((int)subtypeId, (int)requestedby, ItemStatus.Available);
+                if (!ret)
+                {
+                    MessageBox.Show("Item not available!");
+                }
+                else
+                {
+                    Singleton.Instance.RequestModel.ApproveRequest(Convert.ToInt32(id), txtAdminRemarks.Text, user, Convert.ToDateTime(need_date));
+                    Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, (int)requestedby, ViewModel.TransactionType.ReserveItem, "", (int)id);
+                }
             }
-            else {
+            else if(Convert.ToInt32(reqtype) == 2) {
+
+                var ret = Singleton.Instance.ItemModel.UpdateItemStatusToBroken((int)subtypeId, (int)requestedby, ItemStatus.Broken);
                 Singleton.Instance.RequestModel.ApproveRequest(Convert.ToInt32(id), txtAdminRemarks.Text, user, Convert.ToDateTime(need_date));
-                Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, (int)requestedby, ViewModel.TransactionType.ReserveItem, "", (int)id);
             }
 
             LoadPendingRequest();
@@ -92,7 +101,7 @@ namespace InventoryManagement
                 return;
             var user = Singleton.Instance.UserModel.CurrentUser.Id;
             var id = dvLogs.SelectedRows[0].Cells[0].Value;
-            var need_date = dvLogs.SelectedRows[0].Cells[7].Value.ToString();
+            var need_date = dvLogs.SelectedRows[0].Cells[8].Value.ToString();
             Singleton.Instance.RequestModel.DeclineRequest(Convert.ToInt32(id), txtAdminRemarks.Text, user, Convert.ToDateTime(need_date));
             LoadPendingRequest();
         }

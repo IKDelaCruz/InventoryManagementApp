@@ -8,9 +8,8 @@ namespace InventoryManagement.ViewModel
 {
     public enum RequestType
     {
-        Borrow,
-        Return,
         Reserve,
+        Return,
         Repair,
         Dispose
     }
@@ -29,6 +28,7 @@ namespace InventoryManagement.ViewModel
         public int UserId { get; set; }
         public string UserFullnameEmail { get; set; }
         public RequestType RequestType { get; set; }
+        public int RequestTypeInt { get; set; }
         public int RequestItemPrimaryType { get; set; }
         public int RequestSecondaryItemType { get; set; }
         public string Subtype { get; set; }

@@ -62,11 +62,11 @@ namespace InventoryManagement
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-           
-            
+          
         }
 
-        #region --- Click Events ---
+
+    #region --- Click Events ---
 
         private void loginToolStripMenuItem_Click(object sender, EventArgs e)
         {

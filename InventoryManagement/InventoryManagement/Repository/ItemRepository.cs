@@ -96,6 +96,22 @@ namespace InventoryManagement.Repository
 
         }
 
+        public bool UpdateItemStatusToBroken(int subtypeId, int reqby, ItemStatus status)
+        {
+
+            var item = InventoryDatabase.Items.FirstOrDefault(x => x.status == 1);
+            if (item != null)
+            {
+                item.status = 3;
+                item.current_owner = reqby;
+                InventoryDatabase.SaveChanges();
+
+                return true;
+            }
+            return false;
+
+        }
+
         public bool UpdateItemStatusById(int id, ItemStatus status)
         {
 
