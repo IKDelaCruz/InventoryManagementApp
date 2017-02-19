@@ -117,3 +117,4 @@ C:\Users\Pua\Documents\GitHub\InventoryManagementApp\InventoryManagement\Invento
 C:\Users\Angelito\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.frmUserLogs.resources
 C:\Users\Angelito\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.Report.ReportViewer.resources
 C:\Users\Pua\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.frmItemSummary.resources
+C:\Users\Angelito\Documents\GitHub\InventoryManagementApp\InventoryManagement\InventoryManagement\obj\Debug\InventoryManagement.frmItemSummary.resources

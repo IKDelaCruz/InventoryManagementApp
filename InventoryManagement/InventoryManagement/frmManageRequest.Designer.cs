@@ -38,14 +38,6 @@
             this.btnApproved = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.dvLogs = new System.Windows.Forms.DataGridView();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dvProcessed = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.dvDeclined = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TransactionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RequestTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,6 +48,14 @@
             this.OtherUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NeededDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dvProcessed = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.dvDeclined = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -83,10 +83,10 @@
             // 
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.dvLogs);
-            this.tabPage1.Location = new System.Drawing.Point(4, 33);
+            this.tabPage1.Location = new System.Drawing.Point(4, 28);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(722, 419);
+            this.tabPage1.Size = new System.Drawing.Size(722, 424);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Pending Requests";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -114,13 +114,14 @@
             this.txtUserRemarks.ReadOnly = true;
             this.txtUserRemarks.Size = new System.Drawing.Size(638, 52);
             this.txtUserRemarks.TabIndex = 51;
+            this.txtUserRemarks.TextChanged += new System.EventHandler(this.txtUserRemarks_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(37, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(124, 24);
+            this.label1.Size = new System.Drawing.Size(106, 21);
             this.label1.TabIndex = 50;
             this.label1.Text = "User Remarks";
             // 
@@ -159,7 +160,7 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(37, 92);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(141, 24);
+            this.label10.Size = new System.Drawing.Size(120, 21);
             this.label10.TabIndex = 49;
             this.label10.Text = "Admin Remarks";
             // 
@@ -192,100 +193,6 @@
             this.dvLogs.Size = new System.Drawing.Size(716, 205);
             this.dvLogs.TabIndex = 1;
             this.dvLogs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvLogs_CellClick);
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.dvProcessed);
-            this.tabPage2.Location = new System.Drawing.Point(4, 33);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(722, 419);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Approved Requests";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // dvProcessed
-            // 
-            this.dvProcessed.AllowUserToAddRows = false;
-            this.dvProcessed.AllowUserToDeleteRows = false;
-            this.dvProcessed.AllowUserToResizeRows = false;
-            this.dvProcessed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvProcessed.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4});
-            this.dvProcessed.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dvProcessed.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dvProcessed.Location = new System.Drawing.Point(3, 3);
-            this.dvProcessed.Name = "dvProcessed";
-            this.dvProcessed.RowHeadersVisible = false;
-            this.dvProcessed.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dvProcessed.ShowCellToolTips = false;
-            this.dvProcessed.ShowEditingIcon = false;
-            this.dvProcessed.ShowRowErrors = false;
-            this.dvProcessed.Size = new System.Drawing.Size(716, 253);
-            this.dvProcessed.TabIndex = 2;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "TransactionDate";
-            this.dataGridViewTextBoxColumn1.HeaderText = "TransactionDate";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            this.dataGridViewTextBoxColumn1.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "SystemUserName";
-            this.dataGridViewTextBoxColumn2.HeaderText = "SystemUserName";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Visible = false;
-            this.dataGridViewTextBoxColumn2.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "TransactionTypeId";
-            this.dataGridViewTextBoxColumn3.HeaderText = "TransactionTypeId";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Visible = false;
-            this.dataGridViewTextBoxColumn3.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "OtherUserName";
-            this.dataGridViewTextBoxColumn4.HeaderText = "OtherUserName";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Visible = false;
-            this.dataGridViewTextBoxColumn4.Width = 150;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.dvDeclined);
-            this.tabPage3.Location = new System.Drawing.Point(4, 33);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(722, 419);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Declined Requests";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // dvDeclined
-            // 
-            this.dvDeclined.AllowUserToAddRows = false;
-            this.dvDeclined.AllowUserToDeleteRows = false;
-            this.dvDeclined.AllowUserToResizeRows = false;
-            this.dvDeclined.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvDeclined.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dvDeclined.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dvDeclined.Location = new System.Drawing.Point(0, 0);
-            this.dvDeclined.Name = "dvDeclined";
-            this.dvDeclined.RowHeadersVisible = false;
-            this.dvDeclined.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dvDeclined.ShowCellToolTips = false;
-            this.dvDeclined.ShowEditingIcon = false;
-            this.dvDeclined.ShowRowErrors = false;
-            this.dvDeclined.Size = new System.Drawing.Size(722, 253);
-            this.dvDeclined.TabIndex = 3;
             // 
             // Id
             // 
@@ -349,9 +256,103 @@
             this.UserRemarks.HeaderText = "UserRemarks";
             this.UserRemarks.Name = "UserRemarks";
             // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.dvProcessed);
+            this.tabPage2.Location = new System.Drawing.Point(4, 28);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(722, 424);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Approved Requests";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // dvProcessed
+            // 
+            this.dvProcessed.AllowUserToAddRows = false;
+            this.dvProcessed.AllowUserToDeleteRows = false;
+            this.dvProcessed.AllowUserToResizeRows = false;
+            this.dvProcessed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dvProcessed.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4});
+            this.dvProcessed.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dvProcessed.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dvProcessed.Location = new System.Drawing.Point(3, 3);
+            this.dvProcessed.Name = "dvProcessed";
+            this.dvProcessed.RowHeadersVisible = false;
+            this.dvProcessed.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dvProcessed.ShowCellToolTips = false;
+            this.dvProcessed.ShowEditingIcon = false;
+            this.dvProcessed.ShowRowErrors = false;
+            this.dvProcessed.Size = new System.Drawing.Size(716, 253);
+            this.dvProcessed.TabIndex = 2;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "TransactionDate";
+            this.dataGridViewTextBoxColumn1.HeaderText = "TransactionDate";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            this.dataGridViewTextBoxColumn1.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "SystemUserName";
+            this.dataGridViewTextBoxColumn2.HeaderText = "SystemUserName";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Visible = false;
+            this.dataGridViewTextBoxColumn2.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "TransactionTypeId";
+            this.dataGridViewTextBoxColumn3.HeaderText = "TransactionTypeId";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Visible = false;
+            this.dataGridViewTextBoxColumn3.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "OtherUserName";
+            this.dataGridViewTextBoxColumn4.HeaderText = "OtherUserName";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Visible = false;
+            this.dataGridViewTextBoxColumn4.Width = 150;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.dvDeclined);
+            this.tabPage3.Location = new System.Drawing.Point(4, 28);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(722, 424);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Declined Requests";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // dvDeclined
+            // 
+            this.dvDeclined.AllowUserToAddRows = false;
+            this.dvDeclined.AllowUserToDeleteRows = false;
+            this.dvDeclined.AllowUserToResizeRows = false;
+            this.dvDeclined.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dvDeclined.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dvDeclined.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dvDeclined.Location = new System.Drawing.Point(0, 0);
+            this.dvDeclined.Name = "dvDeclined";
+            this.dvDeclined.RowHeadersVisible = false;
+            this.dvDeclined.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dvDeclined.ShowCellToolTips = false;
+            this.dvDeclined.ShowEditingIcon = false;
+            this.dvDeclined.ShowRowErrors = false;
+            this.dvDeclined.Size = new System.Drawing.Size(722, 253);
+            this.dvDeclined.TabIndex = 3;
+            // 
             // frmManageRequest
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(750, 476);
             this.Controls.Add(this.tabControl1);

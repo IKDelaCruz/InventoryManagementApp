@@ -44,7 +44,7 @@ namespace InventoryManagement
             request.Remarks = txtRemarks.Text.ToString();
 
             var result = Singleton.Instance.RequestModel.CreateNewRequest(request);
-           
+
 
             if (result > 0)
             {
@@ -70,7 +70,7 @@ namespace InventoryManagement
             var user = Singleton.Instance.UserModel.CurrentUser.Id;
             cbxUsers.SelectedValue = user;
 
-           
+
         }
         private void LoadComboBox()
         {
@@ -103,7 +103,7 @@ namespace InventoryManagement
             var requests = Singleton.Instance.RequestModel.GetRequestByUserId(user.Id);
             lbRequest.Items.Clear();
 
-            foreach(RequestViewModel rv in requests)
+            foreach (RequestViewModel rv in requests)
             {
                 lbRequest.Items.Add("REQ#" + rv.Id.ToString().PadLeft(7, '0'));
             }
@@ -122,7 +122,7 @@ namespace InventoryManagement
         private void lbRequest_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateInfo();
-         
+
         }
         private void UpdateInfo()
         {
@@ -148,7 +148,8 @@ namespace InventoryManagement
             }
         }
 
-        private void RefreshStatus(){
+        private void RefreshStatus()
+        {
             var item = lbRequest.SelectedItem.ToString();
             var id = Convert.ToInt32(item.Replace("REQ#", ""));
 
@@ -165,13 +166,28 @@ namespace InventoryManagement
 
         private void tbMain_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             RefreshStatus();
-           
+
+        }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (logoutToolStripMenuItem.Text == "Logout")
+            {
+                var msg = MessageBox.Show("Are you sure you want to logout?", "Logout User", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (msg == DialogResult.Yes)
+                {
+                    Singleton.Instance.UserModel.LogoutUser();
+                    this.Close();
+
+                }
+            }
         }
     }
 }
+

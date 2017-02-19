@@ -53,7 +53,7 @@ namespace InventoryManagement
             if (dvLogs.SelectedRows.Count == 0)
                 return;
 
-            txtUserRemarks.Text = dvLogs.SelectedRows[0].Cells[8].Value.ToString();
+            txtUserRemarks.Text = dvLogs.SelectedRows[0].Cells[9].Value.ToString();
 
         }
 
@@ -121,6 +121,11 @@ namespace InventoryManagement
             LoadApproved();
             LoadPendingRequest();
             LoadDeclined();
+
+        }
+
+        private void txtUserRemarks_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }
