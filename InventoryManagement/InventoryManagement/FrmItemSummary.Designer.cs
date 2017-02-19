@@ -34,6 +34,7 @@
             this.lvMain = new System.Windows.Forms.ListView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.homeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,9 +55,9 @@
             this.lvMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lvMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvMain.LargeImageList = this.typeImageList;
-            this.lvMain.Location = new System.Drawing.Point(0, 24);
+            this.lvMain.Location = new System.Drawing.Point(0, 28);
             this.lvMain.Name = "lvMain";
-            this.lvMain.Size = new System.Drawing.Size(604, 341);
+            this.lvMain.Size = new System.Drawing.Size(604, 337);
             this.lvMain.SmallImageList = this.typeImageList;
             this.lvMain.TabIndex = 1;
             this.lvMain.UseCompatibleStateImageBehavior = false;
@@ -64,24 +65,33 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.homeToolStripMenuItem});
+            this.homeToolStripMenuItem,
+            this.mainToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(604, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(604, 28);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // homeToolStripMenuItem
             // 
             this.homeToolStripMenuItem.Name = "homeToolStripMenuItem";
-            this.homeToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.homeToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
             this.homeToolStripMenuItem.Text = "Home";
             this.homeToolStripMenuItem.Click += new System.EventHandler(this.homeToolStripMenuItem_Click);
             // 
+            // mainToolStripMenuItem
+            // 
+            this.mainToolStripMenuItem.Name = "mainToolStripMenuItem";
+            this.mainToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
+            this.mainToolStripMenuItem.Text = "Home";
+            this.mainToolStripMenuItem.Click += new System.EventHandler(this.mainToolStripMenuItem_Click);
+            // 
             // frmItemSummary
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(604, 365);
             this.Controls.Add(this.lvMain);
@@ -106,5 +116,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem homeToolStripMenuItem;
         private System.Windows.Forms.ImageList subTypeImageList;
+        private System.Windows.Forms.ToolStripMenuItem mainToolStripMenuItem;
     }
 }

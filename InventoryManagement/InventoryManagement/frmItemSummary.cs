@@ -66,5 +66,10 @@ namespace InventoryManagement
 
             LoadCategory();
         }
+
+        private void mainToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
