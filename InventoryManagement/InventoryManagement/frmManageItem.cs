@@ -85,9 +85,9 @@ namespace InventoryManagement
             cbxSubType.ValueMember = "Sub_Id";
             cbxSubType.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategoriesByType((int)cbxType.SelectedValue);
 
-            //cbxOS.DisplayMember = "OSName";
-            //cbxOS.ValueMember = "OS_Id";
-            //cbxOS.DataSource = Singleton.Instance.ItemModel.GetOSBySubtype((int)cbxSubType.SelectedValue);
+            cbxOS.DisplayMember = "OSName";
+            cbxOS.ValueMember = "OS_Id";
+            cbxOS.DataSource = Singleton.Instance.ItemModel.GetOSBySubtype((int)cbxSubType.SelectedValue);
 
             //cbxOS.DataSource = Enum.GetValues(typeof(ItemOperatingSystem));
 

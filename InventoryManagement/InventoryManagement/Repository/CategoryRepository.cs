@@ -32,6 +32,22 @@ namespace InventoryManagement.Repository
 
         }
 
+        public CategoryViewModel GetItemTypebyName(string name)
+        {
+            var type = InventoryDatabase.ItemTypes.FirstOrDefault(h => h.type == name);
+            if (type != null)
+            {
+                return new CategoryViewModel
+                {
+                    Id = type.id,
+                    Name = type.type,
+                    
+                };
+            }
+
+            return null;
+        }
+
 
         public CategoryViewModel QueryCategory(int id)
         {

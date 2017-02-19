@@ -92,11 +92,11 @@
             this.tabPage1.Controls.Add(this.btnSave1);
             this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabPage1.Location = new System.Drawing.Point(4, 33);
+            this.tabPage1.Location = new System.Drawing.Point(4, 28);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage1.Size = new System.Drawing.Size(341, 197);
+            this.tabPage1.Size = new System.Drawing.Size(341, 202);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "New Item Type";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -111,6 +111,7 @@
             this.btnCancel.TabIndex = 54;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave1
             // 
@@ -144,7 +145,7 @@
             this.txtType.Location = new System.Drawing.Point(59, 47);
             this.txtType.Margin = new System.Windows.Forms.Padding(2);
             this.txtType.Name = "txtType";
-            this.txtType.Size = new System.Drawing.Size(224, 31);
+            this.txtType.Size = new System.Drawing.Size(224, 27);
             this.txtType.TabIndex = 1;
             // 
             // label2
@@ -154,7 +155,7 @@
             this.label2.Location = new System.Drawing.Point(9, 50);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 24);
+            this.label2.Size = new System.Drawing.Size(42, 21);
             this.label2.TabIndex = 0;
             this.label2.Text = "Type";
             // 
@@ -165,11 +166,11 @@
             this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Controls.Add(this.btnSave2);
             this.tabPage2.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabPage2.Location = new System.Drawing.Point(4, 33);
+            this.tabPage2.Location = new System.Drawing.Point(4, 28);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage2.Size = new System.Drawing.Size(341, 197);
+            this.tabPage2.Size = new System.Drawing.Size(341, 202);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "New Item Subtype";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -207,7 +208,7 @@
             this.txtSubtype.Location = new System.Drawing.Point(59, 89);
             this.txtSubtype.Margin = new System.Windows.Forms.Padding(2);
             this.txtSubtype.Name = "txtSubtype";
-            this.txtSubtype.Size = new System.Drawing.Size(215, 31);
+            this.txtSubtype.Size = new System.Drawing.Size(215, 27);
             this.txtSubtype.TabIndex = 3;
             // 
             // label4
@@ -216,7 +217,7 @@
             this.label4.Location = new System.Drawing.Point(9, 92);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 24);
+            this.label4.Size = new System.Drawing.Size(67, 21);
             this.label4.TabIndex = 2;
             this.label4.Text = "Subtype";
             // 
@@ -227,7 +228,7 @@
             this.cbxType.Location = new System.Drawing.Point(59, 47);
             this.cbxType.Margin = new System.Windows.Forms.Padding(2);
             this.cbxType.Name = "cbxType";
-            this.cbxType.Size = new System.Drawing.Size(215, 32);
+            this.cbxType.Size = new System.Drawing.Size(215, 27);
             this.cbxType.TabIndex = 1;
             // 
             // label3
@@ -236,7 +237,7 @@
             this.label3.Location = new System.Drawing.Point(9, 50);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 24);
+            this.label3.Size = new System.Drawing.Size(42, 21);
             this.label3.TabIndex = 0;
             this.label3.Text = "Type";
             // 
@@ -258,9 +259,9 @@
             this.tabPage3.Controls.Add(this.SaveBrand);
             this.tabPage3.Controls.Add(this.btnCancel3);
             this.tabPage3.Controls.Add(this.groupBox3);
-            this.tabPage3.Location = new System.Drawing.Point(4, 33);
+            this.tabPage3.Location = new System.Drawing.Point(4, 28);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(341, 197);
+            this.tabPage3.Size = new System.Drawing.Size(341, 202);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "New Item Brand";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -308,7 +309,7 @@
             this.txtNewBrand.Location = new System.Drawing.Point(59, 89);
             this.txtNewBrand.Margin = new System.Windows.Forms.Padding(2);
             this.txtNewBrand.Name = "txtNewBrand";
-            this.txtNewBrand.Size = new System.Drawing.Size(215, 31);
+            this.txtNewBrand.Size = new System.Drawing.Size(215, 27);
             this.txtNewBrand.TabIndex = 3;
             // 
             // label1
@@ -317,7 +318,7 @@
             this.label1.Location = new System.Drawing.Point(9, 92);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 24);
+            this.label1.Size = new System.Drawing.Size(51, 21);
             this.label1.TabIndex = 2;
             this.label1.Text = "Brand";
             // 
@@ -328,7 +329,7 @@
             this.cbxSubtype.Location = new System.Drawing.Point(59, 47);
             this.cbxSubtype.Margin = new System.Windows.Forms.Padding(2);
             this.cbxSubtype.Name = "cbxSubtype";
-            this.cbxSubtype.Size = new System.Drawing.Size(215, 32);
+            this.cbxSubtype.Size = new System.Drawing.Size(215, 27);
             this.cbxSubtype.TabIndex = 1;
             // 
             // label5
@@ -337,7 +338,7 @@
             this.label5.Location = new System.Drawing.Point(9, 50);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(78, 24);
+            this.label5.Size = new System.Drawing.Size(67, 21);
             this.label5.TabIndex = 0;
             this.label5.Text = "Subtype";
             // 
@@ -346,10 +347,10 @@
             this.tabPage4.Controls.Add(this.btnSaveOs);
             this.tabPage4.Controls.Add(this.button2);
             this.tabPage4.Controls.Add(this.groupBox4);
-            this.tabPage4.Location = new System.Drawing.Point(4, 33);
+            this.tabPage4.Location = new System.Drawing.Point(4, 28);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(341, 197);
+            this.tabPage4.Size = new System.Drawing.Size(341, 202);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "New Item OS";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -397,7 +398,7 @@
             this.txtOs.Location = new System.Drawing.Point(59, 89);
             this.txtOs.Margin = new System.Windows.Forms.Padding(2);
             this.txtOs.Name = "txtOs";
-            this.txtOs.Size = new System.Drawing.Size(215, 31);
+            this.txtOs.Size = new System.Drawing.Size(215, 27);
             this.txtOs.TabIndex = 3;
             // 
             // label6
@@ -406,7 +407,7 @@
             this.label6.Location = new System.Drawing.Point(9, 92);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(32, 24);
+            this.label6.Size = new System.Drawing.Size(29, 21);
             this.label6.TabIndex = 2;
             this.label6.Text = "OS";
             // 
@@ -417,7 +418,7 @@
             this.cbxSubtypeOS.Location = new System.Drawing.Point(59, 47);
             this.cbxSubtypeOS.Margin = new System.Windows.Forms.Padding(2);
             this.cbxSubtypeOS.Name = "cbxSubtypeOS";
-            this.cbxSubtypeOS.Size = new System.Drawing.Size(215, 32);
+            this.cbxSubtypeOS.Size = new System.Drawing.Size(215, 27);
             this.cbxSubtypeOS.TabIndex = 1;
             // 
             // label7
@@ -426,13 +427,13 @@
             this.label7.Location = new System.Drawing.Point(9, 50);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(78, 24);
+            this.label7.Size = new System.Drawing.Size(67, 21);
             this.label7.TabIndex = 0;
             this.label7.Text = "Subtype";
             // 
             // frmManageItemType
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(360, 272);
             this.Controls.Add(this.tabControl1);

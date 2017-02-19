@@ -188,6 +188,11 @@ namespace InventoryManagement
                 }
             }
         }
+
+        private void frmEndUser_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+        }
     }
 }
 

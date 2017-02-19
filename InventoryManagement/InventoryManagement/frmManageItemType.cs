@@ -35,7 +35,8 @@ namespace InventoryManagement
 
         private void btnSave1_Click(object sender, EventArgs e)
         {
-            //Create
+            var result = Singleton.Instance.CategoryModel.GetItemTypeName(txtType.Text);
+            //ASDSADASDASDAS
             if (!isUpdate)
             {
                var retVal = Singleton.Instance.CategoryModel.CreateType(txtType.Text);
@@ -44,17 +45,21 @@ namespace InventoryManagement
                 {
                     MessageBox.Show("Successfully saved");
                 }
-
-            }
-            else
-            {
-                var retVal = Singleton.Instance.CategoryModel.Update(id, txtType.Text);
-
-                if (retVal > 0)
+                if (result != null)
                 {
-                    MessageBox.Show("Successfully saved");
+                    MessageBox.Show("Type already exists!", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
             }
+            //else
+            //{
+            //    var retVal = Singleton.Instance.CategoryModel.Update(id, txtType.Text);
+
+            //    if (retVal > 0)
+            //    {
+            //        MessageBox.Show("Successfully saved");
+            //    }
+            //}
 
             //this.DialogResult = DialogResult.OK;
             //this.Close();
@@ -88,6 +93,8 @@ namespace InventoryManagement
 
         private void btnSave2_Click(object sender, EventArgs e)
         {
+            var result = Singleton.Instance.CategorySubcategoryModel.GetSubtypeName(txtSubtype.Text);
+
             if (!isUpdate)
             {
                 var ret = Singleton.Instance.CategoryModel.CreateSubtype((Convert.ToInt32(cbxType.SelectedValue)), txtSubtype.Text);
@@ -96,16 +103,21 @@ namespace InventoryManagement
                 {
                     MessageBox.Show("Successfully saved");
                 }
-                
-            }
-            else
-            {
-                var ret = Singleton.Instance.CategoryModel.UpdateSubtype(id, txtSubtype.Text);
-
-                if (ret > 0)
+                if (result != null)
                 {
-                    MessageBox.Show("Successfully saved");
+                    MessageBox.Show("Subtype already exists!", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
+                //}
+                //else
+                //{
+                //    var ret = Singleton.Instance.CategoryModel.UpdateSubtype(id, txtSubtype.Text);
+
+                //    if (ret > 0)
+                //    {
+                //        MessageBox.Show("Successfully saved");
+                //    }
+                //}
             }
 
            // this.DialogResult = DialogResult.OK;
@@ -174,6 +186,11 @@ namespace InventoryManagement
         }
 
         private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }

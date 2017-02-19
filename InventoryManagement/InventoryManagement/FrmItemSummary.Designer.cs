@@ -85,8 +85,8 @@
             // mainToolStripMenuItem
             // 
             this.mainToolStripMenuItem.Name = "mainToolStripMenuItem";
-            this.mainToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
-            this.mainToolStripMenuItem.Text = "Home";
+            this.mainToolStripMenuItem.Size = new System.Drawing.Size(54, 24);
+            this.mainToolStripMenuItem.Text = "Main";
             this.mainToolStripMenuItem.Click += new System.EventHandler(this.mainToolStripMenuItem_Click);
             // 
             // frmItemSummary

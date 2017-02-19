@@ -57,6 +57,23 @@ namespace InventoryManagement.Repository
             else
                 return null;
         }
+        public SubcategoryViewModel GetSubtypeByName(string name)
+        {
+            var subtype = InventoryDatabase.ItemSubtypes.FirstOrDefault(h => h.subtype == name);
+            if (subtype != null)
+            {
+                return new SubcategoryViewModel
+                {
+                    Sub_Id = subtype.id,
+                    Name = subtype.subtype,
+
+                };
+            }
+
+            return null;
+        }
+
+
 
         public List<SubcategoryViewModel> QueryListofSub()
         {

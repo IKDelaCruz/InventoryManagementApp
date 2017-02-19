@@ -62,8 +62,9 @@ namespace InventoryManagement
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-          
+
         }
+
 
 
     #region --- Click Events ---

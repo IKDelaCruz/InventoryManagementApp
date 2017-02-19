@@ -19,6 +19,10 @@ namespace InventoryManagement.Model
         {
             cR = new CategoryRepository();
         }
+        public CategoryViewModel GetItemTypeName(string name)
+        {
+            return cR.GetItemTypebyName(name);
+        }
         public CategoryViewModel GetCategory(int id)
         {
             return cR.QueryCategory(id);

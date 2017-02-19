@@ -529,6 +529,7 @@
             this.Padding = new System.Windows.Forms.Padding(12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "User";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmEndUser_FormClosing);
             this.Load += new System.EventHandler(this.frmEndUser_Load);
             this.pnlMain.ResumeLayout(false);
             this.pnlMain.PerformLayout();

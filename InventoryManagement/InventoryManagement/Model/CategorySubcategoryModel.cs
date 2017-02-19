@@ -37,6 +37,11 @@ namespace InventoryManagement.Model
         {
             return catRepo.QueryCategory(id);
         }
+
+        public SubcategoryViewModel GetSubtypeName(string name)
+        {
+            return subRepo.GetSubtypeByName(name);
+        }
         public List<CategoryViewModel> GetAllCategories()
         {
             return catRepo.QueryCategories();
