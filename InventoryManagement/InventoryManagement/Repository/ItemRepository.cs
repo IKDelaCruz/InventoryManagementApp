@@ -88,6 +88,7 @@ namespace InventoryManagement.Repository
             {
                 item.status = 2;
                 item.current_owner = reqby;
+                item.last_updated = DateTime.Now;
                 InventoryDatabase.SaveChanges();
 
                 return true;
@@ -104,6 +105,7 @@ namespace InventoryManagement.Repository
             {
                 item.status = 3;
                 item.current_owner = reqby;
+                item.last_updated = DateTime.Now;
                 InventoryDatabase.SaveChanges();
 
                 return true;
@@ -119,7 +121,8 @@ namespace InventoryManagement.Repository
             if (item != null)
             {
                 item.status = (int)status;
-              
+                item.last_updated = DateTime.Now;
+
                 InventoryDatabase.SaveChanges();
 
                 return true;
