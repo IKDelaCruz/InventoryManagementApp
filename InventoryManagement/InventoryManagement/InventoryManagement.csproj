@@ -50,6 +50,9 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>App.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="BarcodeLib">
       <HintPath>..\..\..\..\..\Downloads\barcode_bin\BarcodeLib.dll</HintPath>
@@ -92,6 +95,12 @@
     </Compile>
     <Compile Include="frmEndUser.Designer.cs">
       <DependentUpon>frmEndUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmItemSummary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmItemSummary.Designer.cs">
+      <DependentUpon>frmItemSummary.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLauncher.cs">
       <SubType>Form</SubType>
@@ -247,11 +256,20 @@
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\TransactionRepository.cs" />
+    <Compile Include="Repository\TransactionType.cs">
+      <DependentUpon>dbInventory.tt</DependentUpon>
+    </Compile>
     <Compile Include="Repository\User.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="Repository\vwItemLog.cs">
+      <DependentUpon>dbInventory.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\vwItemSubTypeSummary.cs">
+      <DependentUpon>dbInventory.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\vwItemTypeSummarySub.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\vwTransactionLog.cs">
@@ -272,6 +290,9 @@
     <Compile Include="ViewModel\UserViewModel.cs" />
     <EmbeddedResource Include="frmEndUser.resx">
       <DependentUpon>frmEndUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmItemSummary.resx">
+      <DependentUpon>frmItemSummary.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLauncher.resx">
       <DependentUpon>frmLauncher.cs</DependentUpon>
@@ -376,6 +397,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App.ico" />
     <Content Include="Repository\dbInventory.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>dbInventory.edmx</DependentUpon>

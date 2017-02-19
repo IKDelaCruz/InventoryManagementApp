@@ -29,7 +29,7 @@ namespace InventoryManagement.ViewModel
     //    UPS,
     //    Printer
     //}
-    
+
     public enum ItemStatus
     {
 
@@ -93,7 +93,7 @@ namespace InventoryManagement.ViewModel
         SATA1TB,
         SATA2TB,
         SATA4TB,
-        
+
     }
     public class BrandViewModel
     {
@@ -102,7 +102,8 @@ namespace InventoryManagement.ViewModel
         public string Name { get; set; }
     }
 
-    public class OSViewModel {
+    public class OSViewModel
+    {
         public int OS_Id { get; set; }
         public int SubtypeId { get; set; }
         public string OSName { get; set; }
@@ -113,6 +114,8 @@ namespace InventoryManagement.ViewModel
     public class ItemViewModel
     {
         public int Id { get; set; }
+        public bool IsSummary { get; set; }
+        public int SummaryCount { get; set; }
         public string AssetTag { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }

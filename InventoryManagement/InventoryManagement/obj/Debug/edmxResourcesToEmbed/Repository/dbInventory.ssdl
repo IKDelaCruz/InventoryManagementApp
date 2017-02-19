@@ -5,8 +5,8 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="subtype_id" Type="int" Nullable="false" />
-    <Property Name="name" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Company">
     <Key>
@@ -50,6 +50,7 @@
     <Property Name="memory_id" Type="int" />
     <Property Name="hdd1_id" Type="int" />
     <Property Name="hdd2_id" Type="int" />
+    <Property Name="salvage_value" Type="money" />
   </EntityType>
   <EntityType Name="ItemSubtype">
     <Key>
@@ -58,6 +59,7 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="type_id" Type="int" Nullable="false" />
     <Property Name="subtype" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="icon" Type="image" />
   </EntityType>
   <EntityType Name="ItemType">
     <Key>
@@ -65,6 +67,7 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="type" Type="varchar" MaxLength="50" />
+    <Property Name="icon" Type="image" />
   </EntityType>
   <EntityType Name="OperatingSystem">
     <Key>
@@ -72,7 +75,7 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="subtype_id" Type="int" Nullable="false" />
-    <Property Name="OS" Type="varchar" MaxLength="50" />
+    <Property Name="OS" Type="varchar" MaxLength="150" Nullable="false" />
   </EntityType>
   <EntityType Name="Request">
     <Key>
@@ -117,8 +120,13 @@
     <Property Name="item_id" Type="int" />
     <Property Name="request_id" Type="int" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'InventoryMangement.dbo.TransactionType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TransactionType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="User">
     <Key>
       <PropertyRef Name="id" />
@@ -133,7 +141,7 @@ warning 6002: The table/view 'InventoryMangement.dbo.TransactionType' does not h
     <Property Name="company" Type="int" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'InventoryMangement.dbo.vwItemLogs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'InventoryManagement.dbo.vwItemLogs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="vwItemLogs">
     <Key>
       <PropertyRef Name="TransactionId" />
@@ -152,7 +160,36 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwItemLogs' does not have a
     <Property Name="ItemId" Type="int" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'InventoryMangement.dbo.vwTransactionLogs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'InventoryManagement.dbo.vwItemSubTypeSummary' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwItemSubTypeSummary">
+    <Key>
+      <PropertyRef Name="ISTSubTypeID" />
+    </Key>
+    <Property Name="ISTType" Type="varchar" MaxLength="50" />
+    <Property Name="ISTSubType" Type="varchar" MaxLength="50" />
+    <Property Name="ISTTotalAvailable" Type="int" />
+    <Property Name="ISTTypeId" Type="int" />
+    <Property Name="ISTSubTypeID" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'InventoryManagement.dbo.vwItemTypeSummary' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="vwItemTypeSummary">
+          <Property Name="ITTypeId" Type="int" />
+          <Property Name="ITTypeName" Type="varchar" MaxLength="50" />
+          <Property Name="ITTotalAvailable" Type="int" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'InventoryManagement.dbo.vwItemTypeSummarySub' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwItemTypeSummarySub">
+    <Key>
+      <PropertyRef Name="TypeId" />
+    </Key>
+    <Property Name="TypeId" Type="int" Nullable="false" />
+    <Property Name="ITTypeName" Type="varchar" MaxLength="50" />
+    <Property Name="ITTotalAvailable" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="vwTransactionLogs">
     <Key>
       <PropertyRef Name="id" />
@@ -178,6 +215,18 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwTransactionLogs' does not
     <Property Name="remarks" Type="varchar" MaxLength="150" />
     <Property Name="admin_remarks" Type="varchar" MaxLength="150" />
   </EntityType>
+  <Association Name="FK_Brand_ItmeSubType">
+    <End Role="ItemSubtype" Type="Self.ItemSubtype" Multiplicity="1" />
+    <End Role="Brand" Type="Self.Brand" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemSubtype">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Brand">
+        <PropertyRef Name="subtype_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Item_Brand">
     <End Role="Brand" Type="Self.Brand" Multiplicity="0..1" />
     <End Role="Item" Type="Self.Item" Multiplicity="*" />
@@ -214,18 +263,6 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwTransactionLogs' does not
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_ItemSubtype_Brand">
-    <End Role="ItemSubtype" Type="Self.ItemSubtype" Multiplicity="1" />
-    <End Role="Brand" Type="Self.Brand" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ItemSubtype">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Brand">
-        <PropertyRef Name="subtype_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_ItemSubtype_ItemType">
     <End Role="ItemType" Type="Self.ItemType" Multiplicity="1" />
     <End Role="ItemSubtype" Type="Self.ItemSubtype" Multiplicity="*" />
@@ -235,6 +272,18 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwTransactionLogs' does not
       </Principal>
       <Dependent Role="ItemSubtype">
         <PropertyRef Name="type_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OperatingSystem_ItemSubType">
+    <End Role="ItemSubtype" Type="Self.ItemSubtype" Multiplicity="1" />
+    <End Role="OperatingSystem" Type="Self.OperatingSystem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemSubtype">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="OperatingSystem">
+        <PropertyRef Name="subtype_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -316,6 +365,7 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwTransactionLogs' does not
     <EntitySet Name="Request" EntityType="Self.Request" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Transaction" EntityType="Self.Transaction" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TransactionType" EntityType="Self.TransactionType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="vwItemLogs" EntityType="Self.vwItemLogs" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
@@ -330,6 +380,22 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwTransactionLogs' does not
     [vwItemLogs].[ItemName] AS [ItemName], 
     [vwItemLogs].[ItemId] AS [ItemId]
     FROM [dbo].[vwItemLogs] AS [vwItemLogs]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwItemSubTypeSummary" EntityType="Self.vwItemSubTypeSummary" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vwItemSubTypeSummary].[ISTType] AS [ISTType], 
+    [vwItemSubTypeSummary].[ISTSubType] AS [ISTSubType], 
+    [vwItemSubTypeSummary].[ISTTotalAvailable] AS [ISTTotalAvailable], 
+    [vwItemSubTypeSummary].[ISTTypeId] AS [ISTTypeId], 
+    [vwItemSubTypeSummary].[ISTSubTypeID] AS [ISTSubTypeID]
+    FROM [dbo].[vwItemSubTypeSummary] AS [vwItemSubTypeSummary]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwItemTypeSummarySub" EntityType="Self.vwItemTypeSummarySub" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vwItemTypeSummarySub].[TypeId] AS [TypeId], 
+    [vwItemTypeSummarySub].[ITTypeName] AS [ITTypeName], 
+    [vwItemTypeSummarySub].[ITTotalAvailable] AS [ITTotalAvailable]
+    FROM [dbo].[vwItemTypeSummarySub] AS [vwItemTypeSummarySub]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="vwTransactionLogs" EntityType="Self.vwTransactionLogs" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
@@ -348,6 +414,10 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwTransactionLogs' does not
     [vwTransactionLogs].[admin_remarks] AS [admin_remarks]
     FROM [dbo].[vwTransactionLogs] AS [vwTransactionLogs]</DefiningQuery>
     </EntitySet>
+    <AssociationSet Name="FK_Brand_ItmeSubType" Association="Self.FK_Brand_ItmeSubType">
+      <End Role="ItemSubtype" EntitySet="ItemSubtype" />
+      <End Role="Brand" EntitySet="Brand" />
+    </AssociationSet>
     <AssociationSet Name="FK_Item_Brand" Association="Self.FK_Item_Brand">
       <End Role="Brand" EntitySet="Brand" />
       <End Role="Item" EntitySet="Item" />
@@ -360,13 +430,13 @@ warning 6002: The table/view 'InventoryMangement.dbo.vwTransactionLogs' does not
       <End Role="ItemType" EntitySet="ItemType" />
       <End Role="Item" EntitySet="Item" />
     </AssociationSet>
-    <AssociationSet Name="FK_ItemSubtype_Brand" Association="Self.FK_ItemSubtype_Brand">
-      <End Role="ItemSubtype" EntitySet="ItemSubtype" />
-      <End Role="Brand" EntitySet="Brand" />
-    </AssociationSet>
     <AssociationSet Name="FK_ItemSubtype_ItemType" Association="Self.FK_ItemSubtype_ItemType">
       <End Role="ItemType" EntitySet="ItemType" />
       <End Role="ItemSubtype" EntitySet="ItemSubtype" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OperatingSystem_ItemSubType" Association="Self.FK_OperatingSystem_ItemSubType">
+      <End Role="ItemSubtype" EntitySet="ItemSubtype" />
+      <End Role="OperatingSystem" EntitySet="OperatingSystem" />
     </AssociationSet>
     <AssociationSet Name="FK_Request_User" Association="Self.FK_Request_User">
       <End Role="User" EntitySet="User" />

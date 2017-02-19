@@ -22,7 +22,8 @@ namespace InventoryManagement
         {
             InitializeComponent();
             fillcombo();
-      
+
+            ListViewExtension.LoadImageList(imgMainImage, 2);
         }
 
         private void fillcombo() {
@@ -53,20 +54,15 @@ namespace InventoryManagement
         private void frmMain_Load(object sender, EventArgs e)
         {
             txtScan.Select();
-            //if (Singleton.Instance.UserModel.CurrentUser == null)
-            //{
-            //    var result = new frmLogin().ShowDialog();
-            //    if (result == DialogResult.Cancel)
-            //    {
-            //        Application.Exit();
-            //    }
-            //    UpdateView();
-            //}
+
+
+            ShowSummary();
+           
         }
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            e.Cancel = !DoExit();
+           
             
         }
 
@@ -89,7 +85,7 @@ namespace InventoryManagement
                 if (msg == DialogResult.Yes)
                 {
                     Singleton.Instance.UserModel.LogoutUser();
-                    DoUpdateView();
+                    this.Close();
 
                 }
             }
@@ -97,7 +93,8 @@ namespace InventoryManagement
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            //Application.Exit();
+            this.Close();
         }
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
@@ -145,17 +142,7 @@ namespace InventoryManagement
         }
 
         #region --- Methods --- 
-        private bool DoExit()
-        {
-            var msg = MessageBox.Show("Are you sure you want to quit?", "Exit Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (msg == DialogResult.Yes)
-            {
-                return true; 
-            }
-            return false;
-
-            new frmLogin().ShowDialog();
-        }
+       
         private void DoUpdateView()
         {
             var itms = Singleton.Instance.ItemModel.GetItems();
@@ -181,7 +168,7 @@ namespace InventoryManagement
 
             #endregion
 
-            lvMain.LoadData(itms);
+            lvMain.LoadData(itms, imgMainImage);
 
             tssUsername.Text = string.Format("Current User [{0}]", Singleton.Instance.UserModel.CurrentUser == null ? "" :
                 Singleton.Instance.UserModel.CurrentUser.Username);
@@ -199,9 +186,7 @@ namespace InventoryManagement
         {
             DoUpdateView();
 
-            cbxSubtype.DisplayMember = "Name";
-            cbxSubtype.ValueMember = "Sub_Id";
-            cbxSubtype.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategoriesByType((int)cbxType.SelectedValue);
+           
 
         }
 
@@ -321,7 +306,7 @@ namespace InventoryManagement
                     {
                         val = val.Substring(0, val.Length - 1);
                         itms = itms.Where(h => h.Id == Convert.ToInt32(val)).ToList();
-                        lvMain.LoadData(itms); 
+                        lvMain.LoadData(itms, imgMainImage); 
 
                         var item = Singleton.Instance.ItemModel.GetItem(Convert.ToInt32(val));
 
@@ -392,13 +377,9 @@ namespace InventoryManagement
 
         private void cbxSubtype_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (chkShowAllSubType.Checked == false) {
-                var itms = Singleton.Instance.ItemModel.GetItems();
-                itms = itms.Where(h => h.SubTypeId == Convert.ToInt32(cbxSubtype.SelectedValue)).ToList();
-                lvMain.LoadData(itms);
-                        }
-            }
-            
+
+        }
+
 
         private void chkShowAllSubType_CheckedChanged(object sender, EventArgs e)
         {
@@ -418,6 +399,34 @@ namespace InventoryManagement
         private void logsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new frmUserLogs().ShowDialog();
+        }
+
+        private void summaryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowSummary();
+        }
+        private void ShowSummary()
+        {
+            var dlg = new frmItemSummary();
+            var result = dlg.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                int itemSubTypeId = dlg.ReturnInt;
+
+                var itms = Singleton.Instance.ItemModel.GetItemsBySubType(itemSubTypeId);
+                lvMain.LoadData(itms, imgMainImage);
+            }
+        }
+        private void cbxType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbxSubtype.DisplayMember = "Name";
+            cbxSubtype.ValueMember = "Sub_Id";
+            cbxSubtype.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategoriesByType((int)cbxType.SelectedValue);
+        }
+
+        private void pnlTop_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 

@@ -21,11 +21,11 @@ namespace InventoryManagement.Repository
         }
     
         public int id { get; set; }
-        public int subtype_id { get; set; }
         public string name { get; set; }
+        public int subtype_id { get; set; }
     
+        public virtual ItemSubtype ItemSubtype { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Item> Items { get; set; }
-        public virtual ItemSubtype ItemSubtype { get; set; }
     }
 }

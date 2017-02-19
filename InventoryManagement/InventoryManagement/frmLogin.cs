@@ -66,7 +66,7 @@ namespace InventoryManagement
         {
             if (Singleton.Instance.UserModel.CurrentUser == null)
             {
-                Application.Exit();
+                //Application.Exit();
             }
         }
 

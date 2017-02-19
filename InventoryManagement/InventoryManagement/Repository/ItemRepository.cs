@@ -71,7 +71,7 @@ namespace InventoryManagement.Repository
                 item.memory_id = (int)newItem.Memory;
                 item.hdd1_id = (int)newItem.HDD1;
                 item.hdd2_id = (int)newItem.HDD2;
-
+                item.salvage_value = newItem.SalvageValue;
                 InventoryDatabase.SaveChanges();
 
                 return true;
@@ -216,6 +216,10 @@ namespace InventoryManagement.Repository
             var brandslist = new List<BrandViewModel>();
 
             var brands = InventoryDatabase.Brands.Where(x => x.subtype_id == subtypeId).ToList();
+            if(subtypeId == 0)
+            {
+                brands = InventoryDatabase.Brands.ToList();
+            }
             foreach (Brand b in brands)
             {
                 brandslist.Add(new ViewModel.BrandViewModel
@@ -288,7 +292,79 @@ namespace InventoryManagement.Repository
                     PurchaseDate = i.purchase_date ?? DateTime.MinValue,
                     PurchasePrice = i.purchase_price,
                     LifeSpan = i.life_span ?? 5,
+                    Currentvalue = i.current_value,
+                    SalvageValue = i.salvage_value ?? 0
+                });
+            }
+            return iList;
+        }
+        public List<ItemViewModel> QueryItemsBySubType(int subtypeId)
+        {
+            var items = InventoryDatabase.Items.Where(h=> h.item_sub_type_id == subtypeId).ToList();
+            List<ItemViewModel> iList = new List<ItemViewModel>();
+
+            foreach (Item i in items)
+            {
+                iList.Add(new ItemViewModel
+                {
+                    Id = i.id,
+                    AssetTag = i.asset_tag,
+                    Name = i.name,
+                    Description = i.description,
+                    TypeId = Convert.ToInt32(i.item_type_id),
+                    //Type = i.ItemType.type,
+                    SubTypeId = Convert.ToInt32(i.item_sub_type_id),
+                    //SubType = i.ItemSubtype.subtype,
+                    BrandId = i.brand_id ?? 13,
+                    Model = i.model,
+                    Serial = i.serial,
+                    Status = (ItemStatus)i.status,
+                    CurrentOwner = i.current_owner ?? 0,
+                    LastUpdatedDate = i.last_updated ?? DateTime.MinValue,
+                    PurchaseDate = i.purchase_date ?? DateTime.MinValue,
+                    PurchasePrice = i.purchase_price,
+                    LifeSpan = i.life_span ?? 5,
                     Currentvalue = i.current_value
+                });
+            }
+            return iList;
+        }
+        
+        public List<ItemViewModel> QueryItemTypeSummary()
+        {
+            var items = InventoryDatabase.vwItemTypeSummarySubs.ToList();
+            List<ItemViewModel> iList = new List<ItemViewModel>();
+
+            foreach (vwItemTypeSummarySub s in items)
+            {
+                iList.Add(new ItemViewModel
+                {
+                    Id = s.TypeId,
+                    TypeId = s.TypeId,
+                    SubTypeId = s.TypeId,
+                    Name = s.ITTypeName,
+                    SummaryCount = s.ITTotalAvailable ?? 0,
+                    IsSummary = true
+                });
+            }
+            return iList;
+        }
+
+        public List<ItemViewModel> QueryItemSubTypeSummary(int typeId)
+        {
+            var items = InventoryDatabase.vwItemSubTypeSummaries.Where(x=> x.ISTTypeId == typeId).ToList();
+            List<ItemViewModel> iList = new List<ItemViewModel>();
+
+            foreach (vwItemSubTypeSummary s in items)
+            {
+                iList.Add(new ItemViewModel
+                {
+                    Id = s.ISTSubTypeID,
+                    TypeId = s.ISTTypeId ?? 0,
+                    SubTypeId = s.ISTSubTypeID,
+                    Name = s.ISTSubType,
+                    SummaryCount = s.ISTTotalAvailable ?? 0,
+                    IsSummary = true
                 });
             }
             return iList;
@@ -322,6 +398,7 @@ namespace InventoryManagement.Repository
                 Memory = (ItemMemory)(i.memory_id ?? 0),
                 HDD1 = (ItemHDDCapacity)(i.hdd1_id ?? 0),
                 HDD2 = (ItemHDDCapacity)(i.hdd2_id ?? 0),
+                SalvageValue = i.salvage_value ?? 0
             };
         }
         public string QueryOwner(int id)
@@ -340,3 +417,5 @@ namespace InventoryManagement.Repository
 
     }
 }
+
+

@@ -36,6 +36,7 @@ namespace InventoryManagement.Repository
         public Nullable<int> memory_id { get; set; }
         public Nullable<int> hdd1_id { get; set; }
         public Nullable<int> hdd2_id { get; set; }
+        public Nullable<decimal> salvage_value { get; set; }
     
         public virtual Brand Brand { get; set; }
         public virtual ItemSubtype ItemSubtype { get; set; }

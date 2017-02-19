@@ -1,6 +1,8 @@
 ﻿using InventoryManagement.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,22 +12,53 @@ namespace InventoryManagement.Utils
 {
     public static class ListViewExtension
     {
-        public static void LoadData(this ListView lv, List<ItemViewModel> items)
+        private static bool HasImageExtension(this string source)
+        {
+            return (source.EndsWith(".png") || source.EndsWith(".jpg"));
+        }
+        public static void LoadImageList(ImageList iml, int type)
+        {
+            
+            var dir = "";
+            if (type == 1)
+            {
+                dir = @"C:\Users\ian.delacruz\Documents\GitHub\InventoryManagementApp\InventoryManagementApp\InventoryManagement\InventoryManagement\bin\Debug\icons\type";
+            }
+            else
+            {
+                dir = @"C:\Users\ian.delacruz\Documents\GitHub\InventoryManagementApp\InventoryManagementApp\InventoryManagement\InventoryManagement\bin\Debug\icons\subtype";
+            }
+            string[] fileEntries = Directory.GetFiles(dir);
+
+            foreach (string fileName in fileEntries)
+            {
+                if (HasImageExtension(fileName))
+                    iml.Images.Add(Image.FromFile(fileName));
+            }
+
+
+        }
+        public static void LoadData(this ListView lv, List<ItemViewModel> items, ImageList imgList, bool summary = false)
         {
             lv.Items.Clear();
+            lv.LargeImageList = imgList;
 
             foreach (ItemViewModel iVL in items)
             {
-                var newItem = new ListViewItem(iVL.Name + " [" + iVL.Status.ToString() + "]");
-                if (iVL.TypeId <= 4)
-                {
-                    newItem.ImageIndex = Convert.ToInt32(iVL.TypeId) - 1;
-                }
-                else {
-                    newItem.ImageIndex = 4;
+                var itemName = iVL.Name + " [" + iVL.Status.ToString() + "]";
 
+                if (summary)
+                {
+                    itemName = iVL.Name + " (" + iVL.SummaryCount.ToString() + ")";
                 }
-               
+
+                var newItem = new ListViewItem(itemName);
+
+
+                newItem.ImageIndex = Convert.ToInt32(iVL.SubTypeId) - 1;
+
+
+
                 newItem.SubItems.Add(iVL.Id.ToString());
                 newItem.SubItems.Add(iVL.TypeId.ToString());
 

@@ -110,7 +110,8 @@ namespace InventoryManagement
             var brand = cbxBrand.SelectedValue;
             if (brand == null)
             {
-                brand = 0;
+                //Default brand is Generic
+                brand = 13;
             }
             else {
                 brand = cbxBrand.SelectedValue;

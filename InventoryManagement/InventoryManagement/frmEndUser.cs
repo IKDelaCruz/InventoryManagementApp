@@ -74,7 +74,9 @@ namespace InventoryManagement
         }
         private void LoadComboBox()
         {
-            cbxRequestType.DataSource = Enum.GetValues(typeof(RequestType));
+            cbxRequestType.Items.Add(RequestType.Borrow);
+            cbxRequestType.Items.Add(RequestType.Repair);
+            cbxRequestType.SelectedIndex = 0;
 
             cbxType.DisplayMember = "Name";
             cbxType.ValueMember = "Id";
@@ -124,6 +126,9 @@ namespace InventoryManagement
         }
         private void UpdateInfo()
         {
+            if (lbRequest.SelectedItem == null)
+                return;
+
             var item = lbRequest.SelectedItem.ToString();
             var id = Convert.ToInt32(item.Replace("REQ#", ""));
 

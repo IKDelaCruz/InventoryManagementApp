@@ -31,7 +31,7 @@ namespace InventoryManagement.ViewModel
         public string SystemUserName { get; set; }
         public int OtherUserId { get; set; }
         public string OtherUserName { get; set; }
-        public TransactionType TransactionTypeId { get; set; }
+        public int TransactionTypeId { get; set; }
         public int ItemId { get; set; }
         public string ItemName { get; set; }
         public string Remarks { get; set; }

@@ -37,19 +37,23 @@
     <EntitySet Name="Items" EntityType="InventoryMangementModel.Item" />
     <EntitySet Name="ItemSubtypes" EntityType="InventoryMangementModel.ItemSubtype" />
     <EntitySet Name="ItemTypes" EntityType="InventoryMangementModel.ItemType" />
+    <EntitySet Name="OperatingSystems" EntityType="InventoryMangementModel.OperatingSystem" />
     <EntitySet Name="Requests" EntityType="InventoryMangementModel.Request" />
     <EntitySet Name="sysdiagrams" EntityType="InventoryMangementModel.sysdiagram" />
     <EntitySet Name="Transactions" EntityType="InventoryMangementModel.Transaction" />
+    <EntitySet Name="TransactionTypes" EntityType="InventoryMangementModel.TransactionType" />
     <EntitySet Name="Users" EntityType="InventoryMangementModel.User" />
     <EntitySet Name="vwItemLogs" EntityType="InventoryMangementModel.vwItemLog" />
+    <EntitySet Name="vwItemSubTypeSummaries" EntityType="InventoryMangementModel.vwItemSubTypeSummary" />
+    <EntitySet Name="vwItemTypeSummarySubs" EntityType="InventoryMangementModel.vwItemTypeSummarySub" />
     <EntitySet Name="vwTransactionLogs" EntityType="InventoryMangementModel.vwTransactionLog" />
+    <AssociationSet Name="FK_Brand_ItmeSubType" Association="InventoryMangementModel.FK_Brand_ItmeSubType">
+      <End Role="ItemSubtype" EntitySet="ItemSubtypes" />
+      <End Role="Brand" EntitySet="Brands" />
+    </AssociationSet>
     <AssociationSet Name="FK_Item_Brand" Association="InventoryMangementModel.FK_Item_Brand">
       <End Role="Brand" EntitySet="Brands" />
       <End Role="Item" EntitySet="Items" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ItemSubtype_Brand" Association="InventoryMangementModel.FK_ItemSubtype_Brand">
-      <End Role="ItemSubtype" EntitySet="ItemSubtypes" />
-      <End Role="Brand" EntitySet="Brands" />
     </AssociationSet>
     <AssociationSet Name="FK_User_Company1" Association="InventoryMangementModel.FK_User_Company1">
       <End Role="Company" EntitySet="Companies" />
@@ -71,11 +75,14 @@
       <End Role="ItemType" EntitySet="ItemTypes" />
       <End Role="ItemSubtype" EntitySet="ItemSubtypes" />
     </AssociationSet>
+    <AssociationSet Name="FK_OperatingSystem_ItemSubType" Association="InventoryMangementModel.FK_OperatingSystem_ItemSubType">
+      <End Role="ItemSubtype" EntitySet="ItemSubtypes" />
+      <End Role="OperatingSystem" EntitySet="OperatingSystems" />
+    </AssociationSet>
     <AssociationSet Name="FK_Request_User" Association="InventoryMangementModel.FK_Request_User">
       <End Role="User" EntitySet="Users" />
       <End Role="Request" EntitySet="Requests" />
     </AssociationSet>
-    <EntitySet Name="OperatingSystems" EntityType="InventoryMangementModel.OperatingSystem" />
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
@@ -93,10 +100,10 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="subtype_id" Type="Int32" Nullable="false" />
-    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ItemSubtype" Relationship="InventoryMangementModel.FK_Brand_ItmeSubType" FromRole="Brand" ToRole="ItemSubtype" />
     <NavigationProperty Name="Items" Relationship="InventoryMangementModel.FK_Item_Brand" FromRole="Brand" ToRole="Item" />
-    <NavigationProperty Name="ItemSubtype" Relationship="InventoryMangementModel.FK_ItemSubtype_Brand" FromRole="Brand" ToRole="ItemSubtype" />
   </EntityType>
   <EntityType Name="Company">
     <Key>
@@ -142,6 +149,7 @@
     <Property Name="memory_id" Type="Int32" />
     <Property Name="hdd1_id" Type="Int32" />
     <Property Name="hdd2_id" Type="Int32" />
+    <Property Name="salvage_value" Type="Decimal" Precision="19" Scale="4" />
     <NavigationProperty Name="Brand" Relationship="InventoryMangementModel.FK_Item_Brand" FromRole="Item" ToRole="Brand" />
     <NavigationProperty Name="ItemSubtype" Relationship="InventoryMangementModel.FK_Item_ItemSubtype" FromRole="Item" ToRole="ItemSubtype" />
     <NavigationProperty Name="ItemType" Relationship="InventoryMangementModel.FK_Item_ItemType" FromRole="Item" ToRole="ItemType" />
@@ -153,9 +161,11 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="type_id" Type="Int32" Nullable="false" />
     <Property Name="subtype" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Brands" Relationship="InventoryMangementModel.FK_ItemSubtype_Brand" FromRole="ItemSubtype" ToRole="Brand" />
+    <Property Name="icon" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Brands" Relationship="InventoryMangementModel.FK_Brand_ItmeSubType" FromRole="ItemSubtype" ToRole="Brand" />
     <NavigationProperty Name="Items" Relationship="InventoryMangementModel.FK_Item_ItemSubtype" FromRole="ItemSubtype" ToRole="Item" />
     <NavigationProperty Name="ItemType" Relationship="InventoryMangementModel.FK_ItemSubtype_ItemType" FromRole="ItemSubtype" ToRole="ItemType" />
+    <NavigationProperty Name="OperatingSystems" Relationship="InventoryMangementModel.FK_OperatingSystem_ItemSubType" FromRole="ItemSubtype" ToRole="OperatingSystem" />
   </EntityType>
   <EntityType Name="ItemType">
     <Key>
@@ -163,8 +173,18 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="icon" Type="Binary" MaxLength="Max" FixedLength="false" />
     <NavigationProperty Name="Items" Relationship="InventoryMangementModel.FK_Item_ItemType" FromRole="ItemType" ToRole="Item" />
     <NavigationProperty Name="ItemSubtypes" Relationship="InventoryMangementModel.FK_ItemSubtype_ItemType" FromRole="ItemType" ToRole="ItemSubtype" />
+  </EntityType>
+  <EntityType Name="OperatingSystem">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="subtype_id" Type="Int32" Nullable="false" />
+    <Property Name="OS" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ItemSubtype" Relationship="InventoryMangementModel.FK_OperatingSystem_ItemSubType" FromRole="OperatingSystem" ToRole="ItemSubtype" />
   </EntityType>
   <EntityType Name="Request">
     <Key>
@@ -210,6 +230,13 @@
     <Property Name="item_id" Type="Int32" />
     <Property Name="request_id" Type="Int32" />
   </EntityType>
+  <EntityType Name="TransactionType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
   <EntityType Name="User">
     <Key>
       <PropertyRef Name="id" />
@@ -243,6 +270,24 @@
     <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="ItemId" Type="Int32" />
   </EntityType>
+  <EntityType Name="vwItemSubTypeSummary">
+    <Key>
+      <PropertyRef Name="ISTSubTypeID" />
+    </Key>
+    <Property Name="ISTType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ISTSubType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ISTTotalAvailable" Type="Int32" />
+    <Property Name="ISTTypeId" Type="Int32" />
+    <Property Name="ISTSubTypeID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vwItemTypeSummarySub">
+    <Key>
+      <PropertyRef Name="TypeId" />
+    </Key>
+    <Property Name="TypeId" Type="Int32" Nullable="false" />
+    <Property Name="ITTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ITTotalAvailable" Type="Int32" />
+  </EntityType>
   <EntityType Name="vwTransactionLog">
     <Key>
       <PropertyRef Name="id" />
@@ -268,6 +313,18 @@
     <Property Name="remarks" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Name="admin_remarks" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
   </EntityType>
+  <Association Name="FK_Brand_ItmeSubType">
+    <End Type="InventoryMangementModel.ItemSubtype" Role="ItemSubtype" Multiplicity="1" />
+    <End Type="InventoryMangementModel.Brand" Role="Brand" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemSubtype">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Brand">
+        <PropertyRef Name="subtype_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Item_Brand">
     <End Type="InventoryMangementModel.Brand" Role="Brand" Multiplicity="0..1" />
     <End Type="InventoryMangementModel.Item" Role="Item" Multiplicity="*" />
@@ -277,18 +334,6 @@
       </Principal>
       <Dependent Role="Item">
         <PropertyRef Name="brand_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ItemSubtype_Brand">
-    <End Type="InventoryMangementModel.ItemSubtype" Role="ItemSubtype" Multiplicity="1" />
-    <End Type="InventoryMangementModel.Brand" Role="Brand" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ItemSubtype">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Brand">
-        <PropertyRef Name="subtype_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -352,6 +397,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_OperatingSystem_ItemSubType">
+    <End Type="InventoryMangementModel.ItemSubtype" Role="ItemSubtype" Multiplicity="1" />
+    <End Type="InventoryMangementModel.OperatingSystem" Role="OperatingSystem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemSubtype">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="OperatingSystem">
+        <PropertyRef Name="subtype_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Request_User">
     <End Type="InventoryMangementModel.User" Role="User" Multiplicity="1" />
     <End Type="InventoryMangementModel.Request" Role="Request" Multiplicity="*" />
@@ -364,12 +421,4 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="OperatingSystem">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="subtype_id" Type="Int32" Nullable="false" />
-    <Property Name="OS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-  </EntityType>
 </Schema>

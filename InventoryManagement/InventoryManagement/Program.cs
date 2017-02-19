@@ -1,17 +1,18 @@
-﻿using AuthenticationLibrary;
-using InventoryManagement.Model;
-using InventoryManagement.Utils;
+﻿using InventoryManagement.Utils;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace InventoryManagement
 {
     static class Program
     {
+        public static ImageList imlType;
+        public static ImageList imlSubType;
+
+      
+
         /// <summary>
+        /// 
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
@@ -19,7 +20,8 @@ namespace InventoryManagement
         {
             //new LDAPUserImporter().ImportLDAPUser();
             //Singleton.Instance.UserModel.CheckDefaultUser();
-            
+
+      
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

@@ -16,9 +16,9 @@ namespace InventoryManagement.Model
             tRepository = new Repository.TransactionRepository();
         }
 
-        public bool InsertLog(int systemUserId, int otherUserId, TransactionType type, string remarks, int itemId = 0)
+        public bool InsertLog(int systemUserId, int otherUserId, ViewModel.TransactionType type, string remarks, int itemId = 0)
         {
-            return tRepository.InsertTransaction(systemUserId, otherUserId, type, remarks, itemId);
+            return tRepository.InsertTransaction(systemUserId, otherUserId, (int)type, remarks, itemId);
         }
 
         public List<TransactionViewModel> GetTransactionsByItemId(int id)

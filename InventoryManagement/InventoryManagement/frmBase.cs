@@ -24,7 +24,7 @@ namespace InventoryManagement
             this.ResumeLayout(false);
 
         }
-
+        public int ReturnInt { get; set; }
         private void frmBase_Load(object sender, EventArgs e)
         {
 

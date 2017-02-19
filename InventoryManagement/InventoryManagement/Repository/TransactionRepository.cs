@@ -22,7 +22,7 @@ namespace InventoryManagement.Repository
                     Remarks = t.remarks,
                     SystemUserId = t.system_user_id,
                     TransactionDate = t.transaction_date,
-                    TransactionTypeId = (TransactionType)t.transaction_type_id
+                    TransactionTypeId = t.transaction_type_id
                 });
             }
 
@@ -42,7 +42,7 @@ namespace InventoryManagement.Repository
                     OtherUserName= t.OtherUserFirstname + " " + t.OtherUserLastname,
                     SystemUserName = t.SystemFirstname + " " + t.SystemLastname,
                     TransactionDate = t.TransactionDate,
-                    TransactionTypeId = (TransactionType)t.TransactionTypeId,
+                    TransactionTypeId = t.TransactionTypeId,
                     ItemId = t.ItemId ?? 0,
                     ItemName = t.ItemName,
 
@@ -67,7 +67,7 @@ namespace InventoryManagement.Repository
                     //Remarks = t.remarks,
                     SystemUserId = t.system_user_id,
                     TransactionDate = t.transaction_date,
-                    TransactionTypeId = (TransactionType)t.transaction_type_id
+                    TransactionTypeId = t.transaction_type_id
 
 
                 });
@@ -76,7 +76,7 @@ namespace InventoryManagement.Repository
             return list;
         }
 
-        public bool InsertTransaction(int systemUserIdm, int otherUserId, TransactionType transactionType, string remarks, int itemId = 0)
+        public bool InsertTransaction(int systemUserIdm, int otherUserId, int transactionType, string remarks, int itemId = 0)
         {
              InventoryDatabase.Transactions.Add(new Repository.Transaction {
                 other_user_id = otherUserId,

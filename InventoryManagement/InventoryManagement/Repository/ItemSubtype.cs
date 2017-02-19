@@ -19,16 +19,20 @@ namespace InventoryManagement.Repository
         {
             this.Brands = new HashSet<Brand>();
             this.Items = new HashSet<Item>();
+            this.OperatingSystems = new HashSet<OperatingSystem>();
         }
     
         public int id { get; set; }
         public int type_id { get; set; }
         public string subtype { get; set; }
+        public byte[] icon { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Brand> Brands { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Item> Items { get; set; }
         public virtual ItemType ItemType { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OperatingSystem> OperatingSystems { get; set; }
     }
 }

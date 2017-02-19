@@ -107,6 +107,18 @@ namespace InventoryManagement.Model
         {
             return itemRepostory.QueryItems();
         }
+        public List<ItemViewModel> GetItemsBySubType(int subTypeId)
+        {
+            return itemRepostory.QueryItemsBySubType(subTypeId);
+        }
+        public List<ItemViewModel> GetItemTypeSummary()
+        {
+            return itemRepostory.QueryItemTypeSummary();
+        }
+        public List<ItemViewModel> GetItemSubTypeSummary(int typeId)
+        {
+            return itemRepostory.QueryItemSubTypeSummary(typeId);
+        }
         public ItemViewModel GetItem(int id)
         {
             //get value from two tables
@@ -126,6 +138,7 @@ namespace InventoryManagement.Model
         {
             return itemRepostory.QueryOSBySubtype(subtypeId);
         }
+
 
     }
 }

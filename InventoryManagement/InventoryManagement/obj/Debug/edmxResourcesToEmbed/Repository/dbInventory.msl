@@ -28,8 +28,8 @@
     <EntitySetMapping Name="Brands">
       <EntityTypeMapping TypeName="InventoryMangementModel.Brand">
         <MappingFragment StoreEntitySet="Brand">
-          <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="subtype_id" ColumnName="subtype_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -55,6 +55,7 @@
     <EntitySetMapping Name="Items">
       <EntityTypeMapping TypeName="InventoryMangementModel.Item">
         <MappingFragment StoreEntitySet="Item">
+          <ScalarProperty Name="salvage_value" ColumnName="salvage_value" />
           <ScalarProperty Name="hdd2_id" ColumnName="hdd2_id" />
           <ScalarProperty Name="hdd1_id" ColumnName="hdd1_id" />
           <ScalarProperty Name="memory_id" ColumnName="memory_id" />
@@ -83,6 +84,7 @@
     <EntitySetMapping Name="ItemSubtypes">
       <EntityTypeMapping TypeName="InventoryMangementModel.ItemSubtype">
         <MappingFragment StoreEntitySet="ItemSubtype">
+          <ScalarProperty Name="icon" ColumnName="icon" />
           <ScalarProperty Name="subtype" ColumnName="subtype" />
           <ScalarProperty Name="type_id" ColumnName="type_id" />
           <ScalarProperty Name="id" ColumnName="id" />
@@ -92,7 +94,17 @@
     <EntitySetMapping Name="ItemTypes">
       <EntityTypeMapping TypeName="InventoryMangementModel.ItemType">
         <MappingFragment StoreEntitySet="ItemType">
+          <ScalarProperty Name="icon" ColumnName="icon" />
           <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OperatingSystems">
+      <EntityTypeMapping TypeName="InventoryMangementModel.OperatingSystem">
+        <MappingFragment StoreEntitySet="OperatingSystem">
+          <ScalarProperty Name="OS" ColumnName="OS" />
+          <ScalarProperty Name="subtype_id" ColumnName="subtype_id" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -143,6 +155,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TransactionTypes">
+      <EntityTypeMapping TypeName="InventoryMangementModel.TransactionType">
+        <MappingFragment StoreEntitySet="TransactionType">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="InventoryMangementModel.User">
         <MappingFragment StoreEntitySet="User">
@@ -173,6 +193,26 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="vwItemSubTypeSummaries">
+      <EntityTypeMapping TypeName="InventoryMangementModel.vwItemSubTypeSummary">
+        <MappingFragment StoreEntitySet="vwItemSubTypeSummary">
+          <ScalarProperty Name="ISTSubTypeID" ColumnName="ISTSubTypeID" />
+          <ScalarProperty Name="ISTTypeId" ColumnName="ISTTypeId" />
+          <ScalarProperty Name="ISTTotalAvailable" ColumnName="ISTTotalAvailable" />
+          <ScalarProperty Name="ISTSubType" ColumnName="ISTSubType" />
+          <ScalarProperty Name="ISTType" ColumnName="ISTType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwItemTypeSummarySubs">
+      <EntityTypeMapping TypeName="InventoryMangementModel.vwItemTypeSummarySub">
+        <MappingFragment StoreEntitySet="vwItemTypeSummarySub">
+          <ScalarProperty Name="ITTotalAvailable" ColumnName="ITTotalAvailable" />
+          <ScalarProperty Name="ITTypeName" ColumnName="ITTypeName" />
+          <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="vwTransactionLogs">
       <EntityTypeMapping TypeName="InventoryMangementModel.vwTransactionLog">
         <MappingFragment StoreEntitySet="vwTransactionLogs">
@@ -188,15 +228,6 @@
           <ScalarProperty Name="request_item_primary_type" ColumnName="request_item_primary_type" />
           <ScalarProperty Name="request_type" ColumnName="request_type" />
           <ScalarProperty Name="user_id" ColumnName="user_id" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="OperatingSystems">
-      <EntityTypeMapping TypeName="InventoryMangementModel.OperatingSystem">
-        <MappingFragment StoreEntitySet="OperatingSystem">
-          <ScalarProperty Name="OS" ColumnName="OS" />
-          <ScalarProperty Name="subtype_id" ColumnName="subtype_id" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>

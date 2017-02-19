@@ -20,13 +20,18 @@ namespace InventoryManagement
 
         private void frmLauncher_Load(object sender, EventArgs e)
         {
+            
+        }
+        private void LoadLogin()
+        {
             if (Singleton.Instance.UserModel.CurrentUser == null)
             {
                 var result = new frmLogin().ShowDialog();
                 var dresult = new DialogResult();
+
                 if (result == DialogResult.Cancel)
                 {
-                    Application.Exit();
+                    //Application.Exit();
                 }
                 else
                 {
@@ -43,24 +48,49 @@ namespace InventoryManagement
                     }
                     if (dresult != DialogResult.OK)
                     {
-                        Application.Exit();
+                        //Application.Exit();
                     }
                     else
                     {
 
-
-
-
-
-
-
-
-
-
-
                     }
                 }
             }
+        }
+        private bool DoCleanExit()
+        {
+            var msg = MessageBox.Show("Are you sure you want to quit?", "Exit Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (msg == DialogResult.Yes)
+            {
+                return true;
+            }
+            return false;
+
+        }
+        private void loginToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadLogin();
+        }
+
+        private void frmLauncher_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+           e.Cancel = !DoCleanExit();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            LoadLogin();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
