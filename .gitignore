@@ -72,6 +72,7 @@ InventoryManagement/.vs/InventoryManagement/v14/.suo
 *.userprefs
 
 # Build results
+
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
@@ -335,3 +336,4 @@ __pycache__/
 # Cake - Uncomment if you are using it
 # tools/**
 # !tools/packages.config
+*.cache
