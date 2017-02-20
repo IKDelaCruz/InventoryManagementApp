@@ -176,7 +176,8 @@ namespace InventoryManagement
 
         private void tmrRefresh_Tick(object sender, EventArgs e)
         {
-            UpdateInfo();
+            if(tbMain.SelectedIndex == 1)
+                UpdateInfo();
         }
     }
 }
