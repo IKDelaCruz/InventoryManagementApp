@@ -259,9 +259,6 @@
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\TransactionRepository.cs" />
-    <Compile Include="Repository\TransactionType.cs">
-      <DependentUpon>dbInventory.tt</DependentUpon>
-    </Compile>
     <Compile Include="Repository\User.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>

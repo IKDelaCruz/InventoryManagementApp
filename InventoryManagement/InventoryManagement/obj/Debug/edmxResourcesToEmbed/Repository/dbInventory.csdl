@@ -42,7 +42,6 @@
     <EntitySet Name="Requests" EntityType="InventoryMangementModel.Request" />
     <EntitySet Name="sysdiagrams" EntityType="InventoryMangementModel.sysdiagram" />
     <EntitySet Name="Transactions" EntityType="InventoryMangementModel.Transaction" />
-    <EntitySet Name="TransactionTypes" EntityType="InventoryMangementModel.TransactionType" />
     <EntitySet Name="Users" EntityType="InventoryMangementModel.User" />
     <EntitySet Name="vwItemLogs" EntityType="InventoryMangementModel.vwItemLog" />
     <EntitySet Name="vwItemSubTypeSummaries" EntityType="InventoryMangementModel.vwItemSubTypeSummary" />
@@ -238,13 +237,6 @@
     <Property Name="remarks" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="item_id" Type="Int32" />
     <Property Name="request_id" Type="Int32" />
-  </EntityType>
-  <EntityType Name="TransactionType">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="User">
     <Key>

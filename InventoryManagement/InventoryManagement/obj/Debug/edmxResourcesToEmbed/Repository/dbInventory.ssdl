@@ -128,13 +128,6 @@
     <Property Name="item_id" Type="int" />
     <Property Name="request_id" Type="int" />
   </EntityType>
-  <EntityType Name="TransactionType">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="name" Type="varchar" MaxLength="50" />
-  </EntityType>
   <EntityType Name="User">
     <Key>
       <PropertyRef Name="id" />
@@ -374,7 +367,6 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
     <EntitySet Name="Request" EntityType="Self.Request" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Transaction" EntityType="Self.Transaction" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="TransactionType" EntityType="Self.TransactionType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="vwItemLogs" EntityType="Self.vwItemLogs" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 

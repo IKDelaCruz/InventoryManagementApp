@@ -4,24 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="39ec3eaa6fbf4add9d5e43f612422df5" Name="Diagram1" ZoomLevel="64">
-        <EntityTypeShape EntityType="InventoryMangementModel.Brand" Width="1.5" PointX="5.25" PointY="8.875" />
-        <EntityTypeShape EntityType="InventoryMangementModel.Company" Width="1.5" PointX="9.75" PointY="0.75" />
-        <EntityTypeShape EntityType="InventoryMangementModel.Department" Width="1.5" PointX="9.75" PointY="3.75" />
-        <EntityTypeShape EntityType="InventoryMangementModel.Item" Width="1.5" PointX="7.5" PointY="6.125" />
-        <EntityTypeShape EntityType="InventoryMangementModel.ItemImage" Width="1.5" PointX="0.75" PointY="2.375" />
-        <EntityTypeShape EntityType="InventoryMangementModel.ItemSubtype" Width="1.5" PointX="3" PointY="7.375" />
+      <Diagram DiagramId="39ec3eaa6fbf4add9d5e43f612422df5" Name="Diagram1" ZoomLevel="83">
+        <EntityTypeShape EntityType="InventoryMangementModel.Brand" Width="1.5" PointX="5.25" PointY="13.125" />
+        <EntityTypeShape EntityType="InventoryMangementModel.Company" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="InventoryMangementModel.Department" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="InventoryMangementModel.Item" Width="1.5" PointX="7.5" PointY="9.125" />
+        <EntityTypeShape EntityType="InventoryMangementModel.ItemImage" Width="1.5" PointX="2.75" PointY="7.375" />
+        <EntityTypeShape EntityType="InventoryMangementModel.ItemSubtype" Width="1.5" PointX="3" PointY="14.125" />
         <EntityTypeShape EntityType="InventoryMangementModel.ItemType" Width="1.5" PointX="0.75" PointY="7.625" />
-        <EntityTypeShape EntityType="InventoryMangementModel.OperatingSystem" Width="1.5" PointX="5.25" PointY="6.375" />
-        <EntityTypeShape EntityType="InventoryMangementModel.Request" Width="1.5" PointX="14.25" PointY="2.625" />
-        <EntityTypeShape EntityType="InventoryMangementModel.sysdiagram" Width="1.5" PointX="2.75" PointY="2.375" />
-        <EntityTypeShape EntityType="InventoryMangementModel.Transaction" Width="1.5" PointX="4.75" PointY="2.375" />
-        <EntityTypeShape EntityType="InventoryMangementModel.TransactionType" Width="1.5" PointX="6.75" PointY="2.375" />
-        <EntityTypeShape EntityType="InventoryMangementModel.User" Width="1.5" PointX="12" PointY="3.125" />
-        <EntityTypeShape EntityType="InventoryMangementModel.vwItemLog" Width="1.5" PointX="0.75" PointY="11.375" />
-        <EntityTypeShape EntityType="InventoryMangementModel.vwItemSubTypeSummary" Width="1.5" PointX="9.75" PointY="7.375" />
+        <EntityTypeShape EntityType="InventoryMangementModel.OperatingSystem" Width="1.5" PointX="5.25" PointY="15.875" />
+        <EntityTypeShape EntityType="InventoryMangementModel.Request" Width="1.5" PointX="7.25" PointY="2.625" />
+        <EntityTypeShape EntityType="InventoryMangementModel.sysdiagram" Width="1.5" PointX="4.75" PointY="8.375" />
+        <EntityTypeShape EntityType="InventoryMangementModel.Transaction" Width="1.5" PointX="9.75" PointY="2.375" />
+        <EntityTypeShape EntityType="InventoryMangementModel.User" Width="1.5" PointX="5" PointY="3.125" />
+        <EntityTypeShape EntityType="InventoryMangementModel.vwItemLog" Width="1.5" PointX="9.75" PointY="6.375" />
+        <EntityTypeShape EntityType="InventoryMangementModel.vwItemSubTypeSummary" Width="1.5" PointX="0.75" PointY="11.375" />
         <EntityTypeShape EntityType="InventoryMangementModel.vwItemTypeSummarySub" Width="1.5" PointX="9.75" PointY="10.375" />
-        <EntityTypeShape EntityType="InventoryMangementModel.vwTransactionLog" Width="1.5" PointX="2.75" PointY="12.375" />
+        <EntityTypeShape EntityType="InventoryMangementModel.vwTransactionLog" Width="1.5" PointX="11.75" PointY="2.375" />
         <AssociationConnector Association="InventoryMangementModel.FK_Brand_ItmeSubType" />
         <AssociationConnector Association="InventoryMangementModel.FK_Item_Brand" />
         <AssociationConnector Association="InventoryMangementModel.FK_User_Company1" />

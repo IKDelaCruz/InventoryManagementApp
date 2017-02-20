@@ -28,6 +28,7 @@ namespace InventoryManagement.Repository
                 purchase_date = newItem.PurchaseDate,
                 purchase_price = newItem.PurchasePrice,
                 current_value = newItem.Currentvalue,
+                salvage_value = newItem.SalvageValue,
                 current_owner = newItem.CurrentOwner,
                 serial = newItem.Serial,
                 status = (int)newItem.Status,
@@ -63,6 +64,7 @@ namespace InventoryManagement.Repository
                 item.purchase_date = newItem.PurchaseDate;
                 item.purchase_price = newItem.PurchasePrice;
                 item.current_value = newItem.Currentvalue;
+                item.salvage_value = newItem.SalvageValue;
                 item.current_owner = newItem.CurrentOwner;
                 item.serial = newItem.Serial;
                 item.status = (int)newItem.Status;

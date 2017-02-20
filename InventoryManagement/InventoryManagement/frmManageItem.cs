@@ -242,13 +242,14 @@ namespace InventoryManagement
             txtPurchasePrice.Text = ((decimal)loadedItem.PurchasePrice).ToString("n2");
             txtLifetime.Text = loadedItem.LifeSpan.ToString();
             txtCurrentValue.Text = ((decimal)loadedItem.Currentvalue).ToString("n2");
+            txtSalvageValue.Text = ((decimal)loadedItem.SalvageValue).ToString("n2");
 
             txtLastUpdate.Text = loadedItem.LastUpdatedDate.ToString();
 
             cbxCurrentOwner.SelectedValue = loadedItem.CurrentOwner;
             cbxStatus.Text = ((ItemStatus)loadedItem.Status).ToString();
 
-            pbId.BackgroundImage = Singleton.Instance.ItemModel.GetItemImage(itemId);
+            //pbId.BackgroundImage = Singleton.Instance.ItemModel.GetItemImage(itemId);
 
 
             var owner = Singleton.Instance.UserModel.GetUsersById(loadedItem.LastUpdatedUserId);

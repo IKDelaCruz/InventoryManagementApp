@@ -73,7 +73,6 @@ namespace InventoryManagement.Model
 
             byte[] bArr = Utils.ImageCon.imgToByteConverter(img);
             var success = itemRepostory.UpdateItemImage(itemId, bArr);
-
             result.Success = success;
             
             return result;

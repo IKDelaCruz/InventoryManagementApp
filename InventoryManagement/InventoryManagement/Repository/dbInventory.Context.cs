@@ -38,7 +38,6 @@ namespace InventoryManagement.Repository
         public virtual DbSet<Request> Requests { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
-        public virtual DbSet<TransactionType> TransactionTypes { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<vwItemLog> vwItemLogs { get; set; }
         public virtual DbSet<vwItemSubTypeSummary> vwItemSubTypeSummaries { get; set; }
