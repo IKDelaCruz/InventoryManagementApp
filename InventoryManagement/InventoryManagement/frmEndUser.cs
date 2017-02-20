@@ -166,16 +166,7 @@ namespace InventoryManagement
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (logoutToolStripMenuItem.Text == "Logout")
-            {
-                var msg = MessageBox.Show("Are you sure you want to logout?", "Logout User", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (msg == DialogResult.Yes)
-                {
-                    Singleton.Instance.UserModel.LogoutUser();
-                    this.Close();
-
-                }
-            }
+          
         }
 
         private void frmEndUser_FormClosing(object sender, FormClosingEventArgs e)
