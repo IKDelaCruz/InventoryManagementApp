@@ -73,7 +73,6 @@ namespace InventoryManagement.Model
 
             byte[] bArr = Utils.ImageCon.imgToByteConverter(img);
             var success = itemRepostory.UpdateItemImage(itemId, bArr);
-
             result.Success = success;
             
             return result;
@@ -88,9 +87,9 @@ namespace InventoryManagement.Model
             return itemRepostory.UpdateItemStatusToBroken(id, requestedby, status);
         }
 
-        public bool UpdateItemStatusById(int id, ItemStatus status)
+        public bool UpdateItemStatusById(int id, ItemStatus status, int owner)
         {
-            return itemRepostory.UpdateItemStatusById(id, status);
+            return itemRepostory.UpdateItemStatusById(id, status, owner);
         }
         public bool UpdateItemOwner(int id, int owner)
         {

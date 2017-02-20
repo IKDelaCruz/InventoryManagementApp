@@ -41,9 +41,34 @@ namespace InventoryManagement
                 DoLoadItem(itemId);
 
         }
+        private void Depreciation() {
+
+            //DEPRECIATION COMPUTATION
+            DateTime purchasedate = dtpPurchaseDate.Value;
+            decimal purchaseprice = Convert.ToDecimal(txtPurchasePrice.Text);
+            decimal lifespan = Convert.ToDecimal(txtLifetime.Text);
+            DateTime annum = purchasedate.AddYears(1);
+            int salvageValue = Convert.ToInt32(txtSalvageValue.Text);
+            decimal initialValue;
+            decimal currentvalue;
+
+            if (annum == DateTime.Now)
+            {
+                MessageBox.Show("Annual Depreciation marks today!", "Message");
+            }
+            else
+            {
+                var days = (DateTime.Now - purchasedate).TotalDays;
+                initialValue = ((purchaseprice - salvageValue) / lifespan) / 365;
+                currentvalue = purchaseprice - (initialValue * Convert.ToInt32(days));
+                txtCurrentValue.Text = currentvalue.ToString("n2");
+            }
+
+        }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            Depreciation();
             decimal purchaseprice, salvagevalue;
             decimal lifespan;
             purchaseprice = Convert.ToDecimal(txtPurchasePrice.Text);
@@ -139,25 +164,7 @@ namespace InventoryManagement
                 curowner = cbxCurrentOwner.SelectedValue;
             }
 
-            //DEPRECIATION COMPUTATION
-            DateTime purchasedate = dtpPurchaseDate.Value;
-            decimal purchaseprice = Convert.ToDecimal(txtPurchasePrice.Text);
-            decimal lifespan = Convert.ToDecimal(txtLifetime.Text);
-            DateTime annum = purchasedate.AddYears(1);
-            int salvageValue = 2000;
-            decimal initialValue;
-            decimal currentvalue;
-
-            if (annum == DateTime.Now)
-            {
-                MessageBox.Show("Annual Depreciation marks today!", "Message");
-            }
-            else
-            {
-                initialValue = ((purchaseprice - salvageValue) / lifespan) / 365;
-                currentvalue = purchaseprice - initialValue;
-                txtCurrentValue.Text = currentvalue.ToString("n2");
-            }
+          
 
             var itm = new ItemViewModel
             {
@@ -211,7 +218,7 @@ namespace InventoryManagement
                     MessageBox.Show("Item successfully updated.");
             }
         }
-        private void DoLoadItem(int itemId)
+        public void DoLoadItem(int itemId)
         {
             loadedItem = Singleton.Instance.ItemModel.GetItem(itemId);
 
@@ -235,13 +242,14 @@ namespace InventoryManagement
             txtPurchasePrice.Text = ((decimal)loadedItem.PurchasePrice).ToString("n2");
             txtLifetime.Text = loadedItem.LifeSpan.ToString();
             txtCurrentValue.Text = ((decimal)loadedItem.Currentvalue).ToString("n2");
+            txtSalvageValue.Text = ((decimal)loadedItem.SalvageValue).ToString("n2");
 
             txtLastUpdate.Text = loadedItem.LastUpdatedDate.ToString();
 
             cbxCurrentOwner.SelectedValue = loadedItem.CurrentOwner;
             cbxStatus.Text = ((ItemStatus)loadedItem.Status).ToString();
 
-            pbId.BackgroundImage = Singleton.Instance.ItemModel.GetItemImage(itemId);
+            //pbId.BackgroundImage = Singleton.Instance.ItemModel.GetItemImage(itemId);
 
 
             var owner = Singleton.Instance.UserModel.GetUsersById(loadedItem.LastUpdatedUserId);
@@ -280,6 +288,23 @@ namespace InventoryManagement
 
             var selected = (int)cbxSubType.SelectedValue;
             LoadBrands(selected);
+
+            if (selected == 1 || selected == 7 || selected == 12) {
+                cbxOS.Enabled = true;
+                cbxMemory.Enabled = true;
+                cbxProcessor.Enabled = true;
+                cbxHDD1.Enabled = true;
+                cbxHDD2.Enabled = true;
+            }
+            else
+            {
+
+                cbxOS.Enabled = false;
+                cbxMemory.Enabled = false;
+                cbxProcessor.Enabled = false;
+                cbxHDD1.Enabled = false;
+                cbxHDD2.Enabled = false;
+            }
 
             cbxOS.DisplayMember = "OSName";
             cbxOS.ValueMember = "OS_Id";
