@@ -281,6 +281,23 @@ namespace InventoryManagement
             var selected = (int)cbxSubType.SelectedValue;
             LoadBrands(selected);
 
+            if (selected == 1 || selected == 7 || selected == 12) {
+                cbxOS.Enabled = true;
+                cbxMemory.Enabled = true;
+                cbxProcessor.Enabled = true;
+                cbxHDD1.Enabled = true;
+                cbxHDD2.Enabled = true;
+            }
+            else
+            {
+
+                cbxOS.Enabled = false;
+                cbxMemory.Enabled = false;
+                cbxProcessor.Enabled = false;
+                cbxHDD1.Enabled = false;
+                cbxHDD2.Enabled = false;
+            }
+
             cbxOS.DisplayMember = "OSName";
             cbxOS.ValueMember = "OS_Id";
             cbxOS.DataSource = Singleton.Instance.ItemModel.GetOSBySubtype((int)cbxSubType.SelectedValue);

@@ -114,7 +114,7 @@ namespace InventoryManagement.Repository
 
         }
 
-        public bool UpdateItemStatusById(int id, ItemStatus status)
+        public bool UpdateItemStatusById(int id, ItemStatus status, int owner)
         {
 
             var item = InventoryDatabase.Items.FirstOrDefault(x => x.id == id);
@@ -122,6 +122,7 @@ namespace InventoryManagement.Repository
             {
                 item.status = (int)status;
                 item.last_updated = DateTime.Now;
+                item.current_owner = owner;
 
                 InventoryDatabase.SaveChanges();
 
