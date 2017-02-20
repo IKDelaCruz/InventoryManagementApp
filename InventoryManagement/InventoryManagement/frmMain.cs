@@ -20,22 +20,23 @@ namespace InventoryManagement
         ItemViewModel _selectedItem;
         public frmMain()
         {
+            IsInitializing = true;
+
             InitializeComponent();
             fillcombo();
-
             ListViewExtension.LoadImageList(imgMainImage, 2);
+
+            IsInitializing = false;
         }
 
         private void fillcombo() {
-            cbxStatus.DataSource = Enum.GetValues(typeof(ItemStatus));
-            // cbxType.DataSource = Enum.GetValues(typeof(PrimaryItemType));
-            // cbxSubtype.DataSource = Enum.GetValues(typeof(SecondaryItemType));
 
+            cbxStatus.DataSource = Enum.GetValues(typeof(ItemStatus));
+           
             cbxType.DisplayMember = "Name";
             cbxType.ValueMember = "Id";
             cbxType.DataSource = Singleton.Instance.CategoryModel.GetCategories();
-
-
+            
             cbxSubtype.DisplayMember = "Name";
             cbxSubtype.ValueMember = "Sub_Id";
             cbxSubtype.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategoriesByType((int)cbxType.SelectedValue);
@@ -146,6 +147,9 @@ namespace InventoryManagement
        
         private void DoUpdateView()
         {
+            if (IsInitializing)
+                return;
+
             var itms = Singleton.Instance.ItemModel.GetItems();
 
             #region --- FILTER LOGIC ---

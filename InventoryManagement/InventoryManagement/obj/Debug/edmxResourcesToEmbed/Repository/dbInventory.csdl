@@ -35,6 +35,7 @@
     <EntitySet Name="Companies" EntityType="InventoryMangementModel.Company" />
     <EntitySet Name="Departments" EntityType="InventoryMangementModel.Department" />
     <EntitySet Name="Items" EntityType="InventoryMangementModel.Item" />
+    <EntitySet Name="ItemImages" EntityType="InventoryMangementModel.ItemImage" />
     <EntitySet Name="ItemSubtypes" EntityType="InventoryMangementModel.ItemSubtype" />
     <EntitySet Name="ItemTypes" EntityType="InventoryMangementModel.ItemType" />
     <EntitySet Name="OperatingSystems" EntityType="InventoryMangementModel.OperatingSystem" />
@@ -153,6 +154,14 @@
     <NavigationProperty Name="Brand" Relationship="InventoryMangementModel.FK_Item_Brand" FromRole="Item" ToRole="Brand" />
     <NavigationProperty Name="ItemSubtype" Relationship="InventoryMangementModel.FK_Item_ItemSubtype" FromRole="Item" ToRole="ItemSubtype" />
     <NavigationProperty Name="ItemType" Relationship="InventoryMangementModel.FK_Item_ItemType" FromRole="Item" ToRole="ItemType" />
+  </EntityType>
+  <EntityType Name="ItemImage">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="item_id" Type="Int32" Nullable="false" />
+    <Property Name="picture" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <EntityType Name="ItemSubtype">
     <Key>

@@ -52,6 +52,14 @@
     <Property Name="hdd2_id" Type="int" />
     <Property Name="salvage_value" Type="money" />
   </EntityType>
+  <EntityType Name="ItemImage">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="item_id" Type="int" Nullable="false" />
+    <Property Name="picture" Type="varbinary(max)" Nullable="false" />
+  </EntityType>
   <EntityType Name="ItemSubtype">
     <Key>
       <PropertyRef Name="id" />
@@ -359,6 +367,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
     <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ItemImage" EntityType="Self.ItemImage" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ItemSubtype" EntityType="Self.ItemSubtype" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ItemType" EntityType="Self.ItemType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="OperatingSystem" EntityType="Self.OperatingSystem" Schema="dbo" store:Type="Tables" />

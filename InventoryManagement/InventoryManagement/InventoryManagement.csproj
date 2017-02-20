@@ -203,6 +203,9 @@
     </Compile>
     <Compile Include="Repository\BrandRepository.cs" />
     <Compile Include="Repository\CategoryRepository.cs" />
+    <Compile Include="Repository\ItemImage.cs">
+      <DependentUpon>dbInventory.tt</DependentUpon>
+    </Compile>
     <Compile Include="Repository\OperatingSystem.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
@@ -278,6 +281,8 @@
     <Compile Include="Utils\BarcodeGenerator.cs" />
     <Compile Include="Utils\EmailSender.cs" />
     <Compile Include="Utils\ErrorLogger.cs" />
+    <Compile Include="Utils\Helper.cs" />
+    <Compile Include="Utils\ImageCon.cs" />
     <Compile Include="Utils\LDAPAuth.cs" />
     <Compile Include="Utils\LDAPUserImporter.cs" />
     <Compile Include="Utils\ListViewExtension.cs" />

@@ -337,3 +337,8 @@ __pycache__/
 # tools/**
 # !tools/packages.config
 *.cache
+*.pdb
+*.pdb
+*.pdb
+*.cache
+*.Cache

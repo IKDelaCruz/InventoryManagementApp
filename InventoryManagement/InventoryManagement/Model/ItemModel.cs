@@ -2,6 +2,7 @@
 using InventoryManagement.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace InventoryManagement.Model
             itemRepostory = new ItemRepository();
             catSubRepository = new SubCategoryRepository();
         }
+
         public ReturnValueModel CreateNewItem(ItemViewModel newItem, int userId)
         {
             var rv = new ReturnValueModel();
@@ -65,7 +67,17 @@ namespace InventoryManagement.Model
 
             return result;
         }
+        public ReturnValueModel UpdateItemImage(int itemId, Image img)
+        {
+            var result = new ReturnValueModel();
 
+            byte[] bArr = Utils.ImageCon.imgToByteConverter(img);
+            var success = itemRepostory.UpdateItemImage(itemId, bArr);
+
+            result.Success = success;
+            
+            return result;
+        }
         public bool UpdateItemStatusBySubtype(int id, int requestedby, ItemStatus status)
         {
             return itemRepostory.UpdateItemStatusBySubtype(id, requestedby, status);
@@ -137,6 +149,14 @@ namespace InventoryManagement.Model
             item.CurrentOwnerName = itemRepostory.QueryOwner(item.CurrentOwner);
 
             return item;
+        }
+        public Image GetItemImage(int id)
+        {
+            var raw = itemRepostory.GetItemIage(id);
+            if (raw != null)
+                return Utils.ImageCon.byteArrayToImage(raw);
+            else
+                return Image.FromFile(Utils.Helper.GetImageDirectory(@"\items\default.jpg"));
         }
 
         public List<OSViewModel> GetOSBySubtype(int subtypeId)

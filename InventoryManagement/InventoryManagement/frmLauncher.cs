@@ -24,8 +24,7 @@ namespace InventoryManagement
         }
         private void LoadLogin()
         {
-            if (Singleton.Instance.UserModel.CurrentUser == null)
-            {
+         
                 var result = new frmLogin().ShowDialog();
                 var dresult = new DialogResult();
 
@@ -55,7 +54,7 @@ namespace InventoryManagement
 
                     }
                 }
-            }
+          
         }
         private bool DoCleanExit()
         {

@@ -57,6 +57,14 @@
           <Property Name="hdd2_id" Type="int" />
           <Property Name="salvage_value" Type="money" />
         </EntityType>
+        <EntityType Name="ItemImage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="item_id" Type="int" Nullable="false" />
+          <Property Name="picture" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
         <EntityType Name="ItemSubtype">
           <Key>
             <PropertyRef Name="id" />
@@ -364,6 +372,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
           <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemImage" EntityType="Self.ItemImage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemSubtype" EntityType="Self.ItemSubtype" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemType" EntityType="Self.ItemType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OperatingSystem" EntityType="Self.OperatingSystem" Schema="dbo" store:Type="Tables" />
@@ -495,6 +504,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
           <EntitySet Name="Companies" EntityType="InventoryMangementModel.Company" />
           <EntitySet Name="Departments" EntityType="InventoryMangementModel.Department" />
           <EntitySet Name="Items" EntityType="InventoryMangementModel.Item" />
+          <EntitySet Name="ItemImages" EntityType="InventoryMangementModel.ItemImage" />
           <EntitySet Name="ItemSubtypes" EntityType="InventoryMangementModel.ItemSubtype" />
           <EntitySet Name="ItemTypes" EntityType="InventoryMangementModel.ItemType" />
           <EntitySet Name="OperatingSystems" EntityType="InventoryMangementModel.OperatingSystem" />
@@ -613,6 +623,14 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
           <NavigationProperty Name="Brand" Relationship="InventoryMangementModel.FK_Item_Brand" FromRole="Item" ToRole="Brand" />
           <NavigationProperty Name="ItemSubtype" Relationship="InventoryMangementModel.FK_Item_ItemSubtype" FromRole="Item" ToRole="ItemSubtype" />
           <NavigationProperty Name="ItemType" Relationship="InventoryMangementModel.FK_Item_ItemType" FromRole="Item" ToRole="ItemType" />
+        </EntityType>
+        <EntityType Name="ItemImage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="item_id" Type="Int32" Nullable="false" />
+          <Property Name="picture" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="ItemSubtype">
           <Key>
@@ -963,6 +981,15 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="asset_tag" ColumnName="asset_tag" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemImages">
+            <EntityTypeMapping TypeName="InventoryMangementModel.ItemImage">
+              <MappingFragment StoreEntitySet="ItemImage">
+                <ScalarProperty Name="picture" ColumnName="picture" />
+                <ScalarProperty Name="item_id" ColumnName="item_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

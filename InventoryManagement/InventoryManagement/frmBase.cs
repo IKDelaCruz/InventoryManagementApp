@@ -25,6 +25,8 @@ namespace InventoryManagement
 
         }
         public int ReturnInt { get; set; }
+        public bool IsInitializing { get; set; }
+
         private void frmBase_Load(object sender, EventArgs e)
         {
 

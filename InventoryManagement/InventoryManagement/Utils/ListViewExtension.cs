@@ -22,18 +22,18 @@ namespace InventoryManagement.Utils
             var dir = "";
             if (type == 1)
             {
-                dir = @"C:\Users\Pua\Documents\GitHub\InventoryManagementApp\InventoryManagement\images\icons\type";
+                dir = Helper.GetImageDirectory(@"\icons\type");
             }
             else
             {
-                dir = @"C:\Users\Pua\Documents\GitHub\InventoryManagementApp\InventoryManagement\images\icons\subtype";
+                dir = Helper.GetImageDirectory(@"\icons\subtype");
             }
             string[] fileEntries = Directory.GetFiles(dir);
 
             foreach (string fileName in fileEntries)
             {
                 if (HasImageExtension(fileName))
-                    iml.Images.Add(Image.FromFile(fileName));
+                    iml.Images.Add(Path.GetFileName(fileName), Image.FromFile(fileName));
             }
 
 
@@ -55,9 +55,7 @@ namespace InventoryManagement.Utils
                 var newItem = new ListViewItem(itemName);
 
 
-                newItem.ImageIndex = Convert.ToInt32(iVL.SubTypeId) - 1;
-
-
+                newItem.ImageIndex = lv.LargeImageList.Images.IndexOfKey(iVL.SubTypeId + ".png");
 
                 newItem.SubItems.Add(iVL.Id.ToString());
                 newItem.SubItems.Add(iVL.TypeId.ToString());

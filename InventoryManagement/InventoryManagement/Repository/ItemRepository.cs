@@ -13,7 +13,7 @@ namespace InventoryManagement.Repository
 
         public int Insert(ItemViewModel newItem, int userId)
         {
-           
+
             var itm = new Item
             {
                 name = newItem.Name,
@@ -49,7 +49,7 @@ namespace InventoryManagement.Repository
         {
             var item = InventoryDatabase.Items.FirstOrDefault(h => h.id == newItem.Id);
 
-            if(item != null)
+            if (item != null)
             {
                 item.name = newItem.Name;
                 item.brand_id = newItem.BrandId;
@@ -174,7 +174,40 @@ namespace InventoryManagement.Repository
             }
             return false;
         }
+        public bool UpdateItemImage(int itemId, byte[] bArr)
+        {
+            //var item = InventoryDatabase.Items.FirstOrDefault(h => h.id == itemId);
+            var item = InventoryDatabase.ItemImages.FirstOrDefault(x => x.item_id == itemId);
 
+            if (item != null)
+            {
+
+                item.picture = bArr;
+                InventoryDatabase.SaveChanges();
+
+                return true;
+            }
+            else
+            {
+                InventoryDatabase.ItemImages.Add(new ItemImage
+                {
+                    item_id = itemId,
+                    picture = bArr
+                });
+                InventoryDatabase.SaveChanges();
+                return true;
+            }
+
+        }
+        public byte[] GetItemIage(int itemId)
+        {
+            var item = InventoryDatabase.ItemImages.FirstOrDefault(x => x.item_id == itemId);
+            if(item!= null)
+            {
+                return item.picture;
+            }
+            return null;
+        }
         #region --- Queries ---
 
         public int CreateOS(int id, string name)
@@ -235,7 +268,7 @@ namespace InventoryManagement.Repository
             var brandslist = new List<BrandViewModel>();
 
             var brands = InventoryDatabase.Brands.Where(x => x.subtype_id == subtypeId).ToList();
-            if(subtypeId == 0)
+            if (subtypeId == 0)
             {
                 brands = InventoryDatabase.Brands.ToList();
             }
@@ -319,7 +352,7 @@ namespace InventoryManagement.Repository
         }
         public List<ItemViewModel> QueryItemsBySubType(int subtypeId)
         {
-            var items = InventoryDatabase.Items.Where(h=> h.item_sub_type_id == subtypeId).ToList();
+            var items = InventoryDatabase.Items.Where(h => h.item_sub_type_id == subtypeId).ToList();
             List<ItemViewModel> iList = new List<ItemViewModel>();
 
             foreach (Item i in items)
@@ -348,7 +381,7 @@ namespace InventoryManagement.Repository
             }
             return iList;
         }
-        
+
         public List<ItemViewModel> QueryItemTypeSummary()
         {
             var items = InventoryDatabase.vwItemTypeSummarySubs.ToList();
@@ -371,7 +404,7 @@ namespace InventoryManagement.Repository
 
         public List<ItemViewModel> QueryItemSubTypeSummary(int typeId)
         {
-            var items = InventoryDatabase.vwItemSubTypeSummaries.Where(x=> x.ISTTypeId == typeId).ToList();
+            var items = InventoryDatabase.vwItemSubTypeSummaries.Where(x => x.ISTTypeId == typeId).ToList();
             List<ItemViewModel> iList = new List<ItemViewModel>();
 
             foreach (vwItemSubTypeSummary s in items)

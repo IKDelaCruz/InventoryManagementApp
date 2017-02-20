@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.tmrRefresh = new System.Windows.Forms.Timer(this.components);
             this.pnlMain = new System.Windows.Forms.Panel();
             this.tbMain = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -67,9 +69,6 @@
             this.lblDateNeeded = new System.Windows.Forms.Label();
             this.lblUserRemarks = new System.Windows.Forms.Label();
             this.lbRequest = new System.Windows.Forms.ListBox();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlMain.SuspendLayout();
             this.tbMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -77,14 +76,18 @@
             this.tabPage2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // tmrRefresh
+            // 
+            this.tmrRefresh.Enabled = true;
+            this.tmrRefresh.Interval = 5000;
+            this.tmrRefresh.Tick += new System.EventHandler(this.tmrRefresh_Tick);
             // 
             // pnlMain
             // 
             this.pnlMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlMain.Controls.Add(this.tbMain);
-            this.pnlMain.Controls.Add(this.menuStrip1);
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlMain.Location = new System.Drawing.Point(12, 12);
             this.pnlMain.Name = "pnlMain";
@@ -97,7 +100,7 @@
             this.tbMain.Controls.Add(this.tabPage2);
             this.tbMain.Dock = System.Windows.Forms.DockStyle.Top;
             this.tbMain.ItemSize = new System.Drawing.Size(115, 30);
-            this.tbMain.Location = new System.Drawing.Point(0, 28);
+            this.tbMain.Location = new System.Drawing.Point(0, 0);
             this.tbMain.Name = "tbMain";
             this.tbMain.SelectedIndex = 0;
             this.tbMain.Size = new System.Drawing.Size(551, 405);
@@ -136,7 +139,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(30, 74);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(485, 221);
+            this.groupBox1.Size = new System.Drawing.Size(485, 229);
             this.groupBox1.TabIndex = 60;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Request Details";
@@ -146,7 +149,7 @@
             this.label23.AutoSize = true;
             this.label23.Location = new System.Drawing.Point(15, 53);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(78, 21);
+            this.label23.Size = new System.Drawing.Size(58, 15);
             this.label23.TabIndex = 61;
             this.label23.Text = "Item Type";
             // 
@@ -156,7 +159,7 @@
             this.cbxType.FormattingEnabled = true;
             this.cbxType.Location = new System.Drawing.Point(118, 50);
             this.cbxType.Name = "cbxType";
-            this.cbxType.Size = new System.Drawing.Size(182, 27);
+            this.cbxType.Size = new System.Drawing.Size(182, 23);
             this.cbxType.TabIndex = 60;
             this.cbxType.SelectedIndexChanged += new System.EventHandler(this.cbxType_SelectedIndexChanged);
             // 
@@ -165,7 +168,7 @@
             this.label22.AutoSize = true;
             this.label22.Location = new System.Drawing.Point(15, 142);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(104, 21);
+            this.label22.Size = new System.Drawing.Size(79, 15);
             this.label22.TabIndex = 59;
             this.label22.Text = "Requested By";
             // 
@@ -175,7 +178,7 @@
             this.cbxUsers.FormattingEnabled = true;
             this.cbxUsers.Location = new System.Drawing.Point(118, 139);
             this.cbxUsers.Name = "cbxUsers";
-            this.cbxUsers.Size = new System.Drawing.Size(312, 27);
+            this.cbxUsers.Size = new System.Drawing.Size(312, 23);
             this.cbxUsers.TabIndex = 58;
             // 
             // label3
@@ -183,7 +186,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(15, 24);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(102, 21);
+            this.label3.Size = new System.Drawing.Size(77, 15);
             this.label3.TabIndex = 52;
             this.label3.Text = "Request Type";
             // 
@@ -200,7 +203,7 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(15, 172);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(63, 21);
+            this.label10.Size = new System.Drawing.Size(48, 15);
             this.label10.TabIndex = 49;
             this.label10.Text = "Remark";
             // 
@@ -209,7 +212,7 @@
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(15, 110);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(99, 21);
+            this.label15.Size = new System.Drawing.Size(75, 15);
             this.label15.TabIndex = 57;
             this.label15.Text = "Date Needed";
             // 
@@ -219,7 +222,7 @@
             this.cbxRequestType.FormattingEnabled = true;
             this.cbxRequestType.Location = new System.Drawing.Point(118, 21);
             this.cbxRequestType.Name = "cbxRequestType";
-            this.cbxRequestType.Size = new System.Drawing.Size(182, 27);
+            this.cbxRequestType.Size = new System.Drawing.Size(182, 23);
             this.cbxRequestType.TabIndex = 51;
             // 
             // dtpNeededDate
@@ -227,7 +230,7 @@
             this.dtpNeededDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpNeededDate.Location = new System.Drawing.Point(118, 110);
             this.dtpNeededDate.Name = "dtpNeededDate";
-            this.dtpNeededDate.Size = new System.Drawing.Size(182, 27);
+            this.dtpNeededDate.Size = new System.Drawing.Size(182, 23);
             this.dtpNeededDate.TabIndex = 56;
             // 
             // cbxSubType
@@ -236,7 +239,7 @@
             this.cbxSubType.FormattingEnabled = true;
             this.cbxSubType.Location = new System.Drawing.Point(118, 79);
             this.cbxSubType.Name = "cbxSubType";
-            this.cbxSubType.Size = new System.Drawing.Size(182, 27);
+            this.cbxSubType.Size = new System.Drawing.Size(182, 23);
             this.cbxSubType.TabIndex = 53;
             // 
             // label1
@@ -244,13 +247,13 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(15, 82);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 21);
+            this.label1.Size = new System.Drawing.Size(54, 15);
             this.label1.TabIndex = 54;
             this.label1.Text = "Sub Type";
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(425, 301);
+            this.btnSubmit.Location = new System.Drawing.Point(415, 309);
             this.btnSubmit.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(100, 30);
@@ -272,7 +275,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(303, 301);
+            this.btnCancel.Location = new System.Drawing.Point(293, 309);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(100, 30);
@@ -316,7 +319,7 @@
             this.label18.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.Location = new System.Drawing.Point(20, 19);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(54, 21);
+            this.label18.Size = new System.Drawing.Size(41, 15);
             this.label18.TabIndex = 66;
             this.label18.Text = "Status";
             // 
@@ -326,7 +329,7 @@
             this.label17.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.Location = new System.Drawing.Point(20, 46);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(89, 21);
+            this.label17.Size = new System.Drawing.Size(69, 15);
             this.label17.TabIndex = 67;
             this.label17.Text = "Handled By";
             // 
@@ -345,7 +348,7 @@
             this.label16.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(20, 72);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(70, 21);
+            this.label16.Size = new System.Drawing.Size(54, 15);
             this.label16.TabIndex = 68;
             this.label16.Text = "Remarks";
             // 
@@ -392,7 +395,7 @@
             this.label5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(20, 19);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(42, 21);
+            this.label5.Size = new System.Drawing.Size(31, 15);
             this.label5.TabIndex = 59;
             this.label5.Text = "Type";
             // 
@@ -411,7 +414,7 @@
             this.label6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(20, 126);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(70, 21);
+            this.label6.Size = new System.Drawing.Size(54, 15);
             this.label6.TabIndex = 58;
             this.label6.Text = "Remarks";
             // 
@@ -421,7 +424,7 @@
             this.label20.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.Location = new System.Drawing.Point(20, 99);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(119, 21);
+            this.label20.Size = new System.Drawing.Size(91, 15);
             this.label20.TabIndex = 72;
             this.label20.Text = "Date Requested";
             // 
@@ -431,7 +434,7 @@
             this.label4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(20, 46);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 21);
+            this.label4.Size = new System.Drawing.Size(55, 15);
             this.label4.TabIndex = 60;
             this.label4.Text = "ItemType";
             // 
@@ -441,7 +444,7 @@
             this.label2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(20, 72);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(99, 21);
+            this.label2.Size = new System.Drawing.Size(75, 15);
             this.label2.TabIndex = 61;
             this.label2.Text = "Date Needed";
             // 
@@ -484,47 +487,20 @@
             // lbRequest
             // 
             this.lbRequest.FormattingEnabled = true;
-            this.lbRequest.ItemHeight = 19;
+            this.lbRequest.ItemHeight = 15;
             this.lbRequest.Location = new System.Drawing.Point(23, 23);
             this.lbRequest.Name = "lbRequest";
             this.lbRequest.Size = new System.Drawing.Size(110, 289);
             this.lbRequest.TabIndex = 0;
             this.lbRequest.SelectedIndexChanged += new System.EventHandler(this.lbRequest_SelectedIndexChanged);
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(551, 28);
-            this.menuStrip1.TabIndex = 2;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.logoutToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
-            this.fileToolStripMenuItem.Text = "File";
-            // 
-            // logoutToolStripMenuItem
-            // 
-            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.logoutToolStripMenuItem.Text = "Logout";
-            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
-            // 
             // frmEndUser
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(577, 424);
             this.Controls.Add(this.pnlMain);
             this.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmEndUser";
             this.Padding = new System.Windows.Forms.Padding(12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -532,7 +508,6 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmEndUser_FormClosing);
             this.Load += new System.EventHandler(this.frmEndUser_Load);
             this.pnlMain.ResumeLayout(false);
-            this.pnlMain.PerformLayout();
             this.tbMain.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -542,8 +517,6 @@
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -588,8 +561,6 @@
         private System.Windows.Forms.ComboBox cbxUsers;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.ComboBox cbxType;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
+        private System.Windows.Forms.Timer tmrRefresh;
     }
 }

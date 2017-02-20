@@ -18,9 +18,13 @@ namespace InventoryManagement
 
         public frmItemSummary()
         {
+            IsInitializing = true;
+
             InitializeComponent();
             ListViewExtension.LoadImageList(typeImageList, 1);
             ListViewExtension.LoadImageList(subTypeImageList,  2);
+
+            IsInitializing = false;
         }
         private void LoadCategory()
         {

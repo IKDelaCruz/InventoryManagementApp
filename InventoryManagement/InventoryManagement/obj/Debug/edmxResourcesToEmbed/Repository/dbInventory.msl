@@ -81,6 +81,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ItemImages">
+      <EntityTypeMapping TypeName="InventoryMangementModel.ItemImage">
+        <MappingFragment StoreEntitySet="ItemImage">
+          <ScalarProperty Name="picture" ColumnName="picture" />
+          <ScalarProperty Name="item_id" ColumnName="item_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="ItemSubtypes">
       <EntityTypeMapping TypeName="InventoryMangementModel.ItemSubtype">
         <MappingFragment StoreEntitySet="ItemSubtype">

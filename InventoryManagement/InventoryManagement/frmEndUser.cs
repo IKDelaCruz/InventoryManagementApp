@@ -148,14 +148,7 @@ namespace InventoryManagement
             }
         }
 
-        private void RefreshStatus()
-        {
-            var item = lbRequest.SelectedItem.ToString();
-            var id = Convert.ToInt32(item.Replace("REQ#", ""));
-
-            var requestInfo = Singleton.Instance.RequestModel.GetRequestById(id);
-
-        }
+       
 
         private void cbxType_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -169,11 +162,7 @@ namespace InventoryManagement
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            RefreshStatus();
-
-        }
+      
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -192,6 +181,11 @@ namespace InventoryManagement
         private void frmEndUser_FormClosing(object sender, FormClosingEventArgs e)
         {
             
+        }
+
+        private void tmrRefresh_Tick(object sender, EventArgs e)
+        {
+            UpdateInfo();
         }
     }
 }

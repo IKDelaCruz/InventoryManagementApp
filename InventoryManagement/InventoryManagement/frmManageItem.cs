@@ -41,7 +41,7 @@ namespace InventoryManagement
                 DoLoadItem(itemId);
 
         }
-       
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             decimal purchaseprice, salvagevalue;
@@ -52,7 +52,7 @@ namespace InventoryManagement
 
             if (purchaseprice == 0 || salvagevalue == 0 || lifespan == 0)
             {
-                MessageBox.Show("Invalid input for Depreciation","Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Invalid input for Depreciation", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -60,7 +60,7 @@ namespace InventoryManagement
             }
 
         }
-       
+
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -68,14 +68,14 @@ namespace InventoryManagement
 
         private void btnPrintBarcode_Click(object sender, EventArgs e)
         {
-          
+
 
         }
 
-  
+
         private void LoadComboBox()
         {
-          
+
             cbxType.DisplayMember = "Name";
             cbxType.ValueMember = "Id";
             cbxType.DataSource = Singleton.Instance.CategoryModel.GetCategories();
@@ -113,7 +113,8 @@ namespace InventoryManagement
                 //Default brand is Generic
                 brand = 13;
             }
-            else {
+            else
+            {
                 brand = cbxBrand.SelectedValue;
             }
 
@@ -123,7 +124,8 @@ namespace InventoryManagement
                 os = 0;
 
             }
-            else {
+            else
+            {
                 os = cbxOS.SelectedValue;
             }
 
@@ -132,7 +134,8 @@ namespace InventoryManagement
             {
                 curowner = 0;
             }
-            else {
+            else
+            {
                 curowner = cbxCurrentOwner.SelectedValue;
             }
 
@@ -196,13 +199,13 @@ namespace InventoryManagement
                 result = Singleton.Instance.ItemModel.UpdateItem(itm, Singleton.Instance.UserModel.CurrentUser.Id);
                 Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, 0, ViewModel.TransactionType.EditItem, "", itm.Id);
             }
-                
+
 
             if (result.Success)
             {
                 txtAssetTag.Text = result.Param2;
                 this.DialogResult = DialogResult.OK;
-                if(isAddNewItem)
+                if (isAddNewItem)
                     MessageBox.Show("Item successfully created.");
                 else
                     MessageBox.Show("Item successfully updated.");
@@ -238,18 +241,21 @@ namespace InventoryManagement
             cbxCurrentOwner.SelectedValue = loadedItem.CurrentOwner;
             cbxStatus.Text = ((ItemStatus)loadedItem.Status).ToString();
 
+            pbId.BackgroundImage = Singleton.Instance.ItemModel.GetItemImage(itemId);
+
+
             var owner = Singleton.Instance.UserModel.GetUsersById(loadedItem.LastUpdatedUserId);
 
             txtLastUpdatedUser.Text = owner == null ? "SYSTEM" : owner.LastnameFirstName;
             //LoadTransactions(itemId);
-           
+
         }
         //private void LoadTransactions(int itemId)
         //{
         //    dvLogs.DataSource = Singleton.Instance.TransactionModel.GetTransactionsByItemId(itemId);
         //}
 
-       
+
         private void cbxType_SelectedIndexChanged(object sender, EventArgs e)
         {
             var selected = (int)cbxType.SelectedValue;
@@ -271,7 +277,7 @@ namespace InventoryManagement
 
         private void cbxSubType_SelectedIndexChanged(object sender, EventArgs e)
         {
-         
+
             var selected = (int)cbxSubType.SelectedValue;
             LoadBrands(selected);
 
@@ -287,9 +293,9 @@ namespace InventoryManagement
             //load all transactions from transactions table
 
         }
-          
-           
-        
+
+
+
 
         private void txtLifetime_TextChanged(object sender, EventArgs e)
         {
@@ -304,10 +310,36 @@ namespace InventoryManagement
             var regex = new Regex(@"[^0-9\s]");
             if (!char.IsControl(e.KeyChar) && regex.IsMatch(e.KeyChar.ToString()))
             {
-                e.Handled = true;               
+                e.Handled = true;
             }
         }
 
-   
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+            {
+                OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+                openFileDialog1.InitialDirectory = "c:\\";
+                openFileDialog1.Filter = "jpg files (*.jpg)|*.jpg";
+                openFileDialog1.FilterIndex = 1;
+                //openFileDialog1.RestoreDirectory = true;
+
+                var res = openFileDialog1.ShowDialog();
+
+                if (res == DialogResult.OK)
+                {
+                    Image img = Image.FromFile(openFileDialog1.FileName);
+                    pbId.BackgroundImage = img;
+
+                    Singleton.Instance.ItemModel.UpdateItemImage(loadedItem.Id, img);
+                }
+
+            }
+        }
+
+        private void label24_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
