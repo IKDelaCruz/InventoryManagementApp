@@ -342,3 +342,5 @@ __pycache__/
 *.pdb
 *.cache
 *.Cache
+*.pdb
+InventoryManagement/AuthenticationLibrary/obj/Debug/AuthenticationLibrary.pdb
