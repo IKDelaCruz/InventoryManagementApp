@@ -17,5 +17,7 @@ namespace InventoryManagement.Repository
         public int id { get; set; }
         public int item_id { get; set; }
         public byte[] picture { get; set; }
+    
+        public virtual Item Item { get; set; }
     }
 }

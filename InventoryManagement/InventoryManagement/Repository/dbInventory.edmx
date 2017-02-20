@@ -133,6 +133,13 @@
           <Property Name="item_id" Type="int" />
           <Property Name="request_id" Type="int" />
         </EntityType>
+        <EntityType Name="TransactionType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="id" />
@@ -269,6 +276,18 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ItemImage_Item">
+          <End Role="Item" Type="Self.Item" Multiplicity="1" />
+          <End Role="ItemImage" Type="Self.ItemImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ItemImage">
+              <PropertyRef Name="item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ItemSubtype_ItemType">
           <End Role="ItemType" Type="Self.ItemType" Multiplicity="1" />
           <End Role="ItemSubtype" Type="Self.ItemSubtype" Multiplicity="*" />
@@ -372,6 +391,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
           <EntitySet Name="Request" EntityType="Self.Request" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Transaction" EntityType="Self.Transaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransactionType" EntityType="Self.TransactionType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="vwItemLogs" EntityType="Self.vwItemLogs" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -435,6 +455,10 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
           <AssociationSet Name="FK_Item_ItemType" Association="Self.FK_Item_ItemType">
             <End Role="ItemType" EntitySet="ItemType" />
             <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemImage_Item" Association="Self.FK_ItemImage_Item">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="ItemImage" EntitySet="ItemImage" />
           </AssociationSet>
           <AssociationSet Name="FK_ItemSubtype_ItemType" Association="Self.FK_ItemSubtype_ItemType">
             <End Role="ItemType" EntitySet="ItemType" />
@@ -503,6 +527,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
           <EntitySet Name="Requests" EntityType="InventoryMangementModel.Request" />
           <EntitySet Name="sysdiagrams" EntityType="InventoryMangementModel.sysdiagram" />
           <EntitySet Name="Transactions" EntityType="InventoryMangementModel.Transaction" />
+          <EntitySet Name="TransactionTypes" EntityType="InventoryMangementModel.TransactionType" />
           <EntitySet Name="Users" EntityType="InventoryMangementModel.User" />
           <EntitySet Name="vwItemLogs" EntityType="InventoryMangementModel.vwItemLog" />
           <EntitySet Name="vwItemSubTypeSummaries" EntityType="InventoryMangementModel.vwItemSubTypeSummary" />
@@ -531,6 +556,10 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
           <AssociationSet Name="FK_Item_ItemType" Association="InventoryMangementModel.FK_Item_ItemType">
             <End Role="ItemType" EntitySet="ItemTypes" />
             <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemImage_Item" Association="InventoryMangementModel.FK_ItemImage_Item">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="ItemImage" EntitySet="ItemImages" />
           </AssociationSet>
           <AssociationSet Name="FK_ItemSubtype_ItemType" Association="InventoryMangementModel.FK_ItemSubtype_ItemType">
             <End Role="ItemType" EntitySet="ItemTypes" />
@@ -614,6 +643,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
           <NavigationProperty Name="Brand" Relationship="InventoryMangementModel.FK_Item_Brand" FromRole="Item" ToRole="Brand" />
           <NavigationProperty Name="ItemSubtype" Relationship="InventoryMangementModel.FK_Item_ItemSubtype" FromRole="Item" ToRole="ItemSubtype" />
           <NavigationProperty Name="ItemType" Relationship="InventoryMangementModel.FK_Item_ItemType" FromRole="Item" ToRole="ItemType" />
+          <NavigationProperty Name="ItemImages" Relationship="InventoryMangementModel.FK_ItemImage_Item" FromRole="Item" ToRole="ItemImage" />
         </EntityType>
         <EntityType Name="ItemImage">
           <Key>
@@ -622,6 +652,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="item_id" Type="Int32" Nullable="false" />
           <Property Name="picture" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Item" Relationship="InventoryMangementModel.FK_ItemImage_Item" FromRole="ItemImage" ToRole="Item" />
         </EntityType>
         <EntityType Name="ItemSubtype">
           <Key>
@@ -698,6 +729,13 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
           <Property Name="remarks" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="item_id" Type="Int32" />
           <Property Name="request_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TransactionType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -844,6 +882,18 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
             </Principal>
             <Dependent Role="Item">
               <PropertyRef Name="item_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemImage_Item">
+          <End Type="InventoryMangementModel.Item" Role="Item" Multiplicity="1" />
+          <End Type="InventoryMangementModel.ItemImage" Role="ItemImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ItemImage">
+              <PropertyRef Name="item_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1048,6 +1098,14 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
                 <ScalarProperty Name="other_user_id" ColumnName="other_user_id" />
                 <ScalarProperty Name="system_user_id" ColumnName="system_user_id" />
                 <ScalarProperty Name="transaction_date" ColumnName="transaction_date" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransactionTypes">
+            <EntityTypeMapping TypeName="InventoryMangementModel.TransactionType">
+              <MappingFragment StoreEntitySet="TransactionType">
+                <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

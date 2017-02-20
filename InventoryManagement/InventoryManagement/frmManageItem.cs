@@ -48,7 +48,7 @@ namespace InventoryManagement
             decimal purchaseprice = Convert.ToDecimal(txtPurchasePrice.Text);
             decimal lifespan = Convert.ToDecimal(txtLifetime.Text);
             DateTime annum = purchasedate.AddYears(1);
-            int salvageValue = Convert.ToInt32(txtSalvageValue.Text);
+            decimal salvageValue = Convert.ToDecimal(txtSalvageValue.Text);
             decimal initialValue;
             decimal currentvalue;
 
@@ -198,12 +198,15 @@ namespace InventoryManagement
             if (isAddNewItem)
             {
                 result = Singleton.Instance.ItemModel.CreateNewItem(itm, Singleton.Instance.UserModel.CurrentUser.Id);
+                if(result.Success)
+                    Singleton.Instance.ItemModel.UpdateItemImage(Convert.ToInt32(result.Param1), pbId.BackgroundImage);
                 Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, 0, ViewModel.TransactionType.CreateItem, "", itm.Id);
             }
             else
             {
                 itm.Id = loadedItem.Id;
                 result = Singleton.Instance.ItemModel.UpdateItem(itm, Singleton.Instance.UserModel.CurrentUser.Id);
+                Singleton.Instance.ItemModel.UpdateItemImage(loadedItem.Id, pbId.BackgroundImage);
                 Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, 0, ViewModel.TransactionType.EditItem, "", itm.Id);
             }
 
@@ -249,7 +252,7 @@ namespace InventoryManagement
             cbxCurrentOwner.SelectedValue = loadedItem.CurrentOwner;
             cbxStatus.Text = ((ItemStatus)loadedItem.Status).ToString();
 
-            //pbId.BackgroundImage = Singleton.Instance.ItemModel.GetItemImage(itemId);
+            pbId.BackgroundImage = Singleton.Instance.ItemModel.GetItemImage(itemId);
 
 
             var owner = Singleton.Instance.UserModel.GetUsersById(loadedItem.LastUpdatedUserId);
@@ -356,7 +359,7 @@ namespace InventoryManagement
                     Image img = Image.FromFile(openFileDialog1.FileName);
                     pbId.BackgroundImage = img;
 
-                    Singleton.Instance.ItemModel.UpdateItemImage(loadedItem.Id, img);
+                    
                 }
 
             }

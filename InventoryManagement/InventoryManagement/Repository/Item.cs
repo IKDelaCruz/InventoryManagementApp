@@ -14,6 +14,12 @@ namespace InventoryManagement.Repository
     
     public partial class Item
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Item()
+        {
+            this.ItemImages = new HashSet<ItemImage>();
+        }
+    
         public int id { get; set; }
         public string asset_tag { get; set; }
         public string name { get; set; }
@@ -41,5 +47,7 @@ namespace InventoryManagement.Repository
         public virtual Brand Brand { get; set; }
         public virtual ItemSubtype ItemSubtype { get; set; }
         public virtual ItemType ItemType { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ItemImage> ItemImages { get; set; }
     }
 }
