@@ -31,8 +31,7 @@ namespace InventoryManagement.Report.InventoryManagementData
 
                 dataSet.Items.Rows.Add(row);
             }
-
-
+            
 
             // for Table Adapter
             //InventoryDataSetTableAdapters.DataTable1TableAdapter tableAdapter = new InventoryDataSetTableAdapters.DataTable1TableAdapter();

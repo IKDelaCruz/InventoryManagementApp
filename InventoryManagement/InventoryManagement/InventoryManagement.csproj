@@ -93,6 +93,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Report\DepreciationDatSetTableadapters\datatable2tableadapter.cs" />
     <Compile Include="frmEndUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,7 +170,14 @@
       <DependentUpon>frmUserLogs.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\BrandModel.cs" />
+    <Compile Include="Report\InventoryManagementData\DataFiller2.cs" />
     <Compile Include="Report\InventoryManagementData\DataFiller.cs" />
+    <Compile Include="Report\InventoryManagementData\DataFiller3.cs" />
+    <Compile Include="Report\InventoryManagementData\DepreciationDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DepreciationDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Report\InventoryManagementData\InventoryDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -187,11 +195,31 @@
     <Compile Include="Model\UserModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\InventoryManagementData\ItemStatusDataSet.cs">
+      <DependentUpon>ItemStatusDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\InventoryManagementData\ItemStatusDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ItemStatusDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Report\InventoryMangementDataSetTableAdapters\RequestsTableAdapter.cs" />
+    <Compile Include="Report\ReportRPT\DepreciationRPT.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DepreciationRPT.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Report\ReportRPT\InventoryRpt.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>InventoryRpt.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportRPT\ItemStatRPT.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ItemStatRPT.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Report\ReportViewer.cs">
@@ -199,6 +227,18 @@
     </Compile>
     <Compile Include="Report\ReportViewer.Designer.cs">
       <DependentUpon>ReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\ReportViewer2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\ReportViewer2.Designer.cs">
+      <DependentUpon>ReportViewer2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\ReportViewer3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\ReportViewer3.Designer.cs">
+      <DependentUpon>ReportViewer3.cs</DependentUpon>
     </Compile>
     <Compile Include="Repository\BaseRepository.cs" />
     <Compile Include="Repository\Brand.cs">
@@ -269,6 +309,9 @@
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\UserRepository.cs" />
+    <Compile Include="Repository\vwItemDepeciationReport.cs">
+      <DependentUpon>dbInventory.tt</DependentUpon>
+    </Compile>
     <Compile Include="Repository\vwItemLog.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
@@ -345,13 +388,38 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Report\ReportRPT\DepreciationRPT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DepreciationRPT.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\ReportRPT\InventoryRpt.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>InventoryRpt.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportRPT\ItemStatRPT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ItemStatRPT.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\ReportViewer.resx">
       <DependentUpon>ReportViewer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportViewer2.resx">
+      <DependentUpon>ReportViewer2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportViewer3.resx">
+      <DependentUpon>ReportViewer3.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Report\InventoryManagementData\DepreciationDataSet.xsc">
+      <DependentUpon>DepreciationDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Report\InventoryManagementData\DepreciationDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DepreciationDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Report\InventoryManagementData\DepreciationDataSet.xss">
+      <DependentUpon>DepreciationDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Report\InventoryManagementData\InventoryDataSet.xsc">
       <DependentUpon>InventoryDataSet.xsd</DependentUpon>
     </None>
@@ -377,6 +445,17 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>dbInventory.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="Report\InventoryManagementData\ItemStatusDataSet.xsc">
+      <DependentUpon>ItemStatusDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Report\InventoryManagementData\ItemStatusDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ItemStatusDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Report\InventoryManagementData\ItemStatusDataSet.xss">
+      <DependentUpon>ItemStatusDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Repository\dbInventory.edmx.diagram">
       <DependentUpon>dbInventory.edmx</DependentUpon>
     </None>

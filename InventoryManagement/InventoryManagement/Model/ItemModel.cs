@@ -154,6 +154,11 @@ namespace InventoryManagement.Model
 
             return item;
         }
+
+        public List<ItemViewModel> QueryListItemStat()
+        {
+            return itemRepostory.QueryListofItemStat();
+        }
         public Image GetItemImage(int id)
         {
             var raw = itemRepostory.GetItemIage(id);

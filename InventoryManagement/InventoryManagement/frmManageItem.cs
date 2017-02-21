@@ -199,7 +199,7 @@ namespace InventoryManagement
             {
                 result = Singleton.Instance.ItemModel.CreateNewItem(itm, Singleton.Instance.UserModel.CurrentUser.Id);
                 if(result.Success)
-                    Singleton.Instance.ItemModel.UpdateItemImage(Convert.ToInt32(result.Param1), pbId.BackgroundImage);
+                Singleton.Instance.ItemModel.UpdateItemImage(Convert.ToInt32(result.Param1), pbId.BackgroundImage);
                 Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, 0, ViewModel.TransactionType.CreateItem, "", itm.Id);
             }
             else
@@ -252,9 +252,14 @@ namespace InventoryManagement
             cbxCurrentOwner.SelectedValue = loadedItem.CurrentOwner;
             cbxStatus.Text = ((ItemStatus)loadedItem.Status).ToString();
 
-            pbId.BackgroundImage = Singleton.Instance.ItemModel.GetItemImage(itemId);
-
-
+            if (Singleton.Instance.ItemModel.GetItemImage(itemId) != null)
+            {
+                pbId.BackgroundImage = Singleton.Instance.ItemModel.GetItemImage(itemId);
+            }
+            else {
+                pbId.BackgroundImage = Image.FromFile(Utils.Helper.GetImageDirectory(@"\items\default.jpg"));
+            }
+           
             var owner = Singleton.Instance.UserModel.GetUsersById(loadedItem.LastUpdatedUserId);
 
             txtLastUpdatedUser.Text = owner == null ? "SYSTEM" : owner.LastnameFirstName;
@@ -298,6 +303,9 @@ namespace InventoryManagement
                 cbxProcessor.Enabled = true;
                 cbxHDD1.Enabled = true;
                 cbxHDD2.Enabled = true;
+            }
+            else if (selected == 10) {
+                cbxMemory.Enabled = true;
             }
             else
             {

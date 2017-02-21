@@ -154,6 +154,37 @@
           <Property Name="company" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'InventoryManagement.dbo.vwItemDepeciationReport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwItemDepeciationReport">
+          <Key>
+            <PropertyRef Name="subtype" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="description" />
+            <PropertyRef Name="item_type_id" />
+            <PropertyRef Name="item_sub_type_id" />
+            <PropertyRef Name="purchase_price" />
+            <PropertyRef Name="current_value" />
+            <PropertyRef Name="id" />
+            <PropertyRef Name="Expr1" />
+            <PropertyRef Name="Expr2" />
+          </Key>
+          <Property Name="type" Type="varchar" MaxLength="50" />
+          <Property Name="subtype" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="asset_tag" Type="varchar" MaxLength="50" />
+          <Property Name="item_type_id" Type="int" Nullable="false" />
+          <Property Name="item_sub_type_id" Type="int" Nullable="false" />
+          <Property Name="purchase_price" Type="money" Nullable="false" />
+          <Property Name="current_value" Type="money" Nullable="false" />
+          <Property Name="purchase_date" Type="date" />
+          <Property Name="life_span" Type="int" />
+          <Property Name="salvage_value" Type="money" />
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="Expr1" Type="int" Nullable="false" />
+          <Property Name="Expr2" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'InventoryManagement.dbo.vwItemLogs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwItemLogs">
           <Key>
@@ -184,13 +215,6 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwItemSubTypeSummary' does
           <Property Name="ISTTypeId" Type="int" />
           <Property Name="ISTSubTypeID" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'InventoryManagement.dbo.vwItemTypeSummary' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vwItemTypeSummary">
-          <Property Name="ITTypeId" Type="int" />
-          <Property Name="ITTypeName" Type="varchar" MaxLength="50" />
-          <Property Name="ITTotalAvailable" Type="int" />
-        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'InventoryManagement.dbo.vwItemTypeSummarySub' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwItemTypeSummarySub">
@@ -393,6 +417,25 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
           <EntitySet Name="Transaction" EntityType="Self.Transaction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TransactionType" EntityType="Self.TransactionType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vwItemDepeciationReport" EntityType="Self.vwItemDepeciationReport" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwItemDepeciationReport].[type] AS [type], 
+    [vwItemDepeciationReport].[subtype] AS [subtype], 
+    [vwItemDepeciationReport].[name] AS [name], 
+    [vwItemDepeciationReport].[description] AS [description], 
+    [vwItemDepeciationReport].[asset_tag] AS [asset_tag], 
+    [vwItemDepeciationReport].[item_type_id] AS [item_type_id], 
+    [vwItemDepeciationReport].[item_sub_type_id] AS [item_sub_type_id], 
+    [vwItemDepeciationReport].[purchase_price] AS [purchase_price], 
+    [vwItemDepeciationReport].[current_value] AS [current_value], 
+    [vwItemDepeciationReport].[purchase_date] AS [purchase_date], 
+    [vwItemDepeciationReport].[life_span] AS [life_span], 
+    [vwItemDepeciationReport].[salvage_value] AS [salvage_value], 
+    [vwItemDepeciationReport].[id] AS [id], 
+    [vwItemDepeciationReport].[Expr1] AS [Expr1], 
+    [vwItemDepeciationReport].[Expr2] AS [Expr2]
+    FROM [dbo].[vwItemDepeciationReport] AS [vwItemDepeciationReport]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="vwItemLogs" EntityType="Self.vwItemLogs" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vwItemLogs].[TransactionId] AS [TransactionId], 
@@ -573,6 +616,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
             <End Role="User" EntitySet="Users" />
             <End Role="Request" EntitySet="Requests" />
           </AssociationSet>
+          <EntitySet Name="vwItemDepeciationReports" EntityType="InventoryMangementModel.vwItemDepeciationReport" />
           </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -933,6 +977,35 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="vwItemDepeciationReport">
+          <Key>
+            <PropertyRef Name="subtype" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="description" />
+            <PropertyRef Name="item_type_id" />
+            <PropertyRef Name="item_sub_type_id" />
+            <PropertyRef Name="purchase_price" />
+            <PropertyRef Name="current_value" />
+            <PropertyRef Name="id" />
+            <PropertyRef Name="Expr1" />
+            <PropertyRef Name="Expr2" />
+          </Key>
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="subtype" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="asset_tag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="item_type_id" Type="Int32" Nullable="false" />
+          <Property Name="item_sub_type_id" Type="Int32" Nullable="false" />
+          <Property Name="purchase_price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="current_value" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="purchase_date" Type="DateTime" Precision="0" />
+          <Property Name="life_span" Type="Int32" />
+          <Property Name="salvage_value" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Expr1" Type="Int32" Nullable="false" />
+          <Property Name="Expr2" Type="Int32" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1176,6 +1249,27 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
                 <ScalarProperty Name="request_type" ColumnName="request_type" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwItemDepeciationReports">
+            <EntityTypeMapping TypeName="InventoryMangementModel.vwItemDepeciationReport">
+              <MappingFragment StoreEntitySet="vwItemDepeciationReport">
+                <ScalarProperty Name="Expr2" ColumnName="Expr2" />
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="salvage_value" ColumnName="salvage_value" />
+                <ScalarProperty Name="life_span" ColumnName="life_span" />
+                <ScalarProperty Name="purchase_date" ColumnName="purchase_date" />
+                <ScalarProperty Name="current_value" ColumnName="current_value" />
+                <ScalarProperty Name="purchase_price" ColumnName="purchase_price" />
+                <ScalarProperty Name="item_sub_type_id" ColumnName="item_sub_type_id" />
+                <ScalarProperty Name="item_type_id" ColumnName="item_type_id" />
+                <ScalarProperty Name="asset_tag" ColumnName="asset_tag" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="subtype" ColumnName="subtype" />
+                <ScalarProperty Name="type" ColumnName="type" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

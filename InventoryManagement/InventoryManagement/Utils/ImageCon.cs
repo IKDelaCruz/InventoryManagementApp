@@ -17,6 +17,7 @@ namespace InventoryManagement.Utils
             {
                 return Image.FromStream(mStream);
             }
+          
         }
         //another easy way to convert image to bytearray
         public static byte[] imgToByteConverter(Image inImg)

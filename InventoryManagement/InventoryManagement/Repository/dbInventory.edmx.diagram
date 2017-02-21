@@ -4,13 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="39ec3eaa6fbf4add9d5e43f612422df5" Name="Diagram1" ZoomLevel="83">
+      <Diagram DiagramId="39ec3eaa6fbf4add9d5e43f612422df5" Name="Diagram1" ZoomLevel="62">
 <<<<<<< HEAD
         
         <EntityTypeShape EntityType="InventoryMangementModel.Brand" Width="1.5" PointX="11.9512037951272" PointY="20.535908216860104" />
         <EntityTypeShape EntityType="InventoryMangementModel.Company" Width="1.5" PointX="6.8898371378378194" PointY="16.73728650097609" />
         <EntityTypeShape EntityType="InventoryMangementModel.Department" Width="1.5" PointX="9.5183365333445078" PointY="24.83937365973339" />
-        <EntityTypeShape EntityType="InventoryMangementModel.Item" Width="1.5" PointX="7.0710920445020742" PointY="22.94587696667103" />
+        <EntityTypeShape EntityType="InventoryMangementModel.Item" Width="1.5" PointX="5.875" PointY="24" />
         <EntityTypeShape EntityType="InventoryMangementModel.ItemImage" Width="1.5" PointX="8.5595027397198145" PointY="0.33976812676515811" />
         <EntityTypeShape EntityType="InventoryMangementModel.ItemSubtype" Width="1.5" PointX="0.52242251696177866" PointY="26.752259401023508" />
         <EntityTypeShape EntityType="InventoryMangementModel.ItemType" Width="1.5" PointX="9.3787081080389711" PointY="3.2088479563635066" />
@@ -23,7 +23,7 @@
         <EntityTypeShape EntityType="InventoryMangementModel.vwItemLog" Width="1.5" PointX="4.8967482749823237" PointY="13.675334772875223" />
         <EntityTypeShape EntityType="InventoryMangementModel.vwItemSubTypeSummary" Width="1.5" PointX="2.3060276034781837" PointY="26.085396018850336" />
         <EntityTypeShape EntityType="InventoryMangementModel.vwItemTypeSummarySub" Width="1.5" PointX="2.3287791285332196" PointY="13.460132143208819" />
-        <EntityTypeShape EntityType="InventoryMangementModel.vwTransactionLog" Width="1.5" PointX="4.125" PointY="24.625" />
+        <EntityTypeShape EntityType="InventoryMangementModel.vwTransactionLog" Width="1.5" PointX="3.875" PointY="23.625" />
         <AssociationConnector Association="InventoryMangementModel.FK_Brand_ItmeSubType" />
         <AssociationConnector Association="InventoryMangementModel.FK_Item_Brand" />
         <AssociationConnector Association="InventoryMangementModel.FK_User_Company1" />
@@ -34,6 +34,7 @@
         <AssociationConnector Association="InventoryMangementModel.FK_ItemSubtype_ItemType" />
         <AssociationConnector Association="InventoryMangementModel.FK_OperatingSystem_ItemSubType" />
         <AssociationConnector Association="InventoryMangementModel.FK_Request_User" />
+        <EntityTypeShape EntityType="InventoryMangementModel.vwItemDepeciationReport" Width="1.5" PointX="5.625" PointY="19.5" />
         
         
         

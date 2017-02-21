@@ -359,7 +359,7 @@ namespace InventoryManagement.Repository
                     TypeId = Convert.ToInt32(i.item_type_id),
                     //Type = i.ItemType.type,
                     SubTypeId = Convert.ToInt32(i.item_sub_type_id),
-                    //SubType = i.ItemSubtype.subtype,
+                    //SubType = subtype,
                     BrandId = i.brand_id ?? 13,
                     Model = i.model,
                     Serial = i.serial,
@@ -445,6 +445,33 @@ namespace InventoryManagement.Repository
                 });
             }
             return iList;
+        }
+
+        public List<ItemViewModel> QueryListofItemStat()
+        {
+            var statList = new List<ItemViewModel>();
+            var sub = InventoryDatabase.Items.ToList();
+
+            //var categ = categ1.GroupBy(i => i.id).Select(group => group.First());
+
+            //List<CategorySubcategoryViewModel> cList = new List<CategorySubcategoryViewModel>();
+
+            foreach (Item s in sub)
+            {
+
+                statList.Add(new ItemViewModel
+
+                {
+                    Id = s.id,
+                    AssetTag = s.asset_tag,
+                    Status = (ItemStatus)s.status,
+
+                });
+                //subcategory = c.subtype 
+
+            }
+            return statList;
+
         }
         public ItemViewModel QueryItem(int id)
         {

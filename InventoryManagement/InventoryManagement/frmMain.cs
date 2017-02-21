@@ -295,9 +295,6 @@ namespace InventoryManagement
         private void txtScan_TextChanged(object sender, EventArgs e)
         {
 
-
-            var itemselected = Singleton.Instance.ItemModel.GetItem(_selectedItem.Id);
-            var curowner = itemselected.CurrentOwner;
             var itms = Singleton.Instance.ItemModel.GetItems();
             var val = txtScan.Text;
             
@@ -328,7 +325,7 @@ namespace InventoryManagement
                         }
                         else if (item.Status == ItemStatus.Reserved)
                         {
-                            Singleton.Instance.ItemModel.UpdateItemStatusById(Convert.ToInt32(val),  ItemStatus.Borrowed, curowner);
+                            Singleton.Instance.ItemModel.UpdateItemStatusById(Convert.ToInt32(val),  ItemStatus.Borrowed, item.CurrentOwner);
                             DialogResult msg = MessageBox.Show("Successfully borrowed!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, item.CurrentOwner, ViewModel.TransactionType.BorrowItem, "", Convert.ToInt32(val));
                             if (msg == DialogResult.OK)
@@ -338,7 +335,7 @@ namespace InventoryManagement
                         }
                         else
                         {
-                            Singleton.Instance.ItemModel.UpdateItemStatusById(Convert.ToInt32(val), ItemStatus.Borrowed, curowner);
+                            Singleton.Instance.ItemModel.UpdateItemStatusById(Convert.ToInt32(val), ItemStatus.Borrowed, item.CurrentOwner);
                             DialogResult msg = MessageBox.Show("Successfully borrowed!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, item.CurrentOwner, ViewModel.TransactionType.BorrowItem, "", Convert.ToInt32(val));
                             if (msg == DialogResult.OK)
@@ -432,6 +429,21 @@ namespace InventoryManagement
         private void pnlTop_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void manageItemsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void depreciationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new ReportViewer2().ShowDialog();
+        }
+
+        private void borrowedReservedBrokenItemsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new ReportViewer3().ShowDialog();
         }
     }
 

@@ -36,9 +36,9 @@ namespace InventoryManagement.ViewModel
         Available = 0,
         Borrowed,
         Reserved,
-        Broken,
-        Disposed,
-        Unknown
+        Broken
+       // Disposed,
+       // Unknown
     }
     public enum ItemOperatingSystem
     {
