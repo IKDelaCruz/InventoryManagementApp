@@ -21,6 +21,11 @@ namespace InventoryManagement.Model
             return bR.CreateBrand(id, name);
         }
 
+        public BrandViewModel GetBrandName(int id, string name)
+        {
+            return bR.GetBrandbyName(id, name);
+        }
+
         public int Update(int id, string name)
         {
             return bR.UpdateBrand(id, name);

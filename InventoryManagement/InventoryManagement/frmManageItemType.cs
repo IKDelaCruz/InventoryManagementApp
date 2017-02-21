@@ -41,14 +41,16 @@ namespace InventoryManagement
             {
                var retVal = Singleton.Instance.CategoryModel.CreateType(txtType.Text);
 
-                if(retVal > 0)
-                {
-                    MessageBox.Show("Successfully saved");
-                }
+
                 if (result != null)
                 {
                     MessageBox.Show("Type already exists!", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                else if (retVal > 0)
+                {
+                    MessageBox.Show("Successfully saved");
+                }
+
 
             }
             //else
@@ -99,14 +101,16 @@ namespace InventoryManagement
             {
                 var ret = Singleton.Instance.CategoryModel.CreateSubtype((Convert.ToInt32(cbxType.SelectedValue)), txtSubtype.Text);
 
-                if (ret > 0)
-                {
-                    MessageBox.Show("Successfully saved");
-                }
+
                 if (result != null)
                 {
                     MessageBox.Show("Subtype already exists!", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                else if (ret > 0)
+                {
+                    MessageBox.Show("Successfully saved");
+                }
+
 
                 //}
                 //else
@@ -133,26 +137,34 @@ namespace InventoryManagement
 
         private void SaveBrand_Click(object sender, EventArgs e)
         {
- 
+            var result = Singleton.Instance.BrandModel.GetBrandName(Convert.ToInt32(cbxSubtype.SelectedValue) ,txtNewBrand.Text);
+
             if (!isUpdate)
             {
                 var retBrand = Singleton.Instance.BrandModel.CreateNewBrand(Convert.ToInt32(cbxSubtype.SelectedValue), txtNewBrand.Text);
 
-                if (retBrand > 0)
+                if (result != null)
+                {
+                    MessageBox.Show("Brand already exists!", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (retBrand > 0)
                 {
                     MessageBox.Show("Successfully saved");
                 }
 
             }
-            else
-            {
-                var retBrand = Singleton.Instance.BrandModel.Update(id, txtNewBrand.Text);
 
-                if (retBrand > 0)
-                {
-                    MessageBox.Show("Successfully saved");
-                }
-            }
+
+
+            //else
+            //{
+            //    var retBrand = Singleton.Instance.BrandModel.Update(id, txtNewBrand.Text);
+
+            //    if (retBrand > 0)
+            //    {
+            //        MessageBox.Show("Successfully saved");
+            //    }
+            //}
           
         }
 
@@ -163,25 +175,31 @@ namespace InventoryManagement
 
         private void btnSaveOs_Click(object sender, EventArgs e)
         {
+            var result = Singleton.Instance.ItemModel.GetOSname(Convert.ToInt32(cbxSubtypeOS.SelectedValue), txtOs.Text);
+
             if (!isUpdate)
             {
                 var retOs = Singleton.Instance.ItemModel.createOS(Convert.ToInt32(cbxSubtypeOS.SelectedValue), txtOs.Text);
 
-                if (retOs > 0)
+                if (result != null)
+                {
+                    MessageBox.Show("Operating System already exists!", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (retOs > 0)
                 {
                     MessageBox.Show("Successfully saved");
                 }
 
             }
-            else
-            {
-                var retOs = Singleton.Instance.ItemModel.UpdateOs(id, txtOs.Text);
+            //else
+            //{
+            //    var retOs = Singleton.Instance.ItemModel.UpdateOs(id, txtOs.Text);
 
-                if (retOs > 0)
-                {
-                    MessageBox.Show("Successfully saved");
-                }
-            }
+            //    if (retOs > 0)
+            //    {
+            //        MessageBox.Show("Successfully saved");
+            //    }
+            //}
 
         }
 

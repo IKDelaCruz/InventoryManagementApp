@@ -46,6 +46,9 @@ namespace InventoryManagement.Repository
 
             return itm.id;
         }
+
+
+
         public bool Update(ItemViewModel newItem, int userId)
         {
             var item = InventoryDatabase.Items.FirstOrDefault(h => h.id == newItem.Id);
@@ -230,6 +233,25 @@ namespace InventoryManagement.Repository
             return -2;
 
         }
+
+        public OSViewModel GetOSbyName(int id, string os)
+        {
+            var OS = InventoryDatabase.OperatingSystems.FirstOrDefault(h => h.subtype_id == id && h.OS == os);
+            if (OS != null)
+            {
+                return new OSViewModel
+                {
+                    id = OS.id,
+                    subtype_id = OS.subtype_id,
+                    OS = OS.OS,
+
+                };
+            }
+
+            return null;
+        }
+
+
         public int UpdateOS(int id, string name)
         {
             var os = InventoryDatabase.OperatingSystems.FirstOrDefault(b => b.subtype_id == id);
@@ -312,9 +334,9 @@ namespace InventoryManagement.Repository
             {
                 OSList.Add(new ViewModel.OSViewModel
                 {
-                    OS_Id = o.id,
-                    SubtypeId = o.subtype_id,
-                    OSName = o.OS,
+                    id = o.id,
+                    subtype_id = o.subtype_id,
+                    OS = o.OS,
                 });
             }
 

@@ -110,8 +110,8 @@ namespace InventoryManagement
             cbxSubType.ValueMember = "Sub_Id";
             cbxSubType.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategoriesByType((int)cbxType.SelectedValue);
 
-            cbxOS.DisplayMember = "OSName";
-            cbxOS.ValueMember = "OS_Id";
+            cbxOS.DisplayMember = "OS";
+            cbxOS.ValueMember = "id";
             cbxOS.DataSource = Singleton.Instance.ItemModel.GetOSBySubtype((int)cbxSubType.SelectedValue);
 
             //cbxOS.DataSource = Enum.GetValues(typeof(ItemOperatingSystem));
@@ -309,8 +309,8 @@ namespace InventoryManagement
                 cbxHDD2.Enabled = false;
             }
 
-            cbxOS.DisplayMember = "OSName";
-            cbxOS.ValueMember = "OS_Id";
+            cbxOS.DisplayMember = "OS";
+            cbxOS.ValueMember = "id";
             cbxOS.DataSource = Singleton.Instance.ItemModel.GetOSBySubtype((int)cbxSubType.SelectedValue);
 
 

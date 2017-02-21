@@ -95,19 +95,18 @@ namespace InventoryManagement.ViewModel
         SATA4TB,
 
     }
+
+    public class OSViewModel
+    {
+        public int id { get; set;}
+        public int subtype_id { get; set; }
+        public string OS { get; set; }
+    }
     public class BrandViewModel
     {
         public int Brand_Id { get; set; }
         public int SubId { get; set; }
         public string Name { get; set; }
-    }
-
-    public class OSViewModel
-    {
-        public int OS_Id { get; set; }
-        public int SubtypeId { get; set; }
-        public string OSName { get; set; }
-
     }
 
 

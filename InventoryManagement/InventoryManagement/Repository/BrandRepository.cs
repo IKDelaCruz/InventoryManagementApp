@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InventoryManagement.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,23 @@ namespace InventoryManagement.Repository
             return -2;
 
         }
+
+        public BrandViewModel GetBrandbyName(int id, string brandName)
+        {
+            var brand = InventoryDatabase.Brands.FirstOrDefault(h => h.id == id && h.name == brandName);
+            if (brand != null)
+            {
+                return new BrandViewModel
+                {
+                    Brand_Id = brand.id,
+                    Name = brand.name,
+
+                };
+            }
+
+            return null;
+        }
+
 
         public int UpdateBrand(int id, string name)
         {
