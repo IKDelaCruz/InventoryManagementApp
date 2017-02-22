@@ -355,7 +355,7 @@
             // tmrRefresh
             // 
             this.tmrRefresh.Enabled = true;
-            this.tmrRefresh.Interval = 5000;
+            this.tmrRefresh.Interval = 10000;
             this.tmrRefresh.Tick += new System.EventHandler(this.tmrRefresh_Tick);
             // 
             // frmManageRequest

@@ -19,6 +19,7 @@ namespace InventoryManagement
     {
         private bool isAddNewItem;
         private ItemViewModel loadedItem;
+       
         public frmManageItem(int itemId = 0, bool AddItem = true)
         {
             InitializeComponent();
@@ -41,7 +42,7 @@ namespace InventoryManagement
                 DoLoadItem(itemId);
 
         }
-        private void Depreciation() {
+        public void Depreciation() {
 
             //DEPRECIATION COMPUTATION
             DateTime purchasedate = dtpPurchaseDate.Value;
@@ -51,6 +52,7 @@ namespace InventoryManagement
             decimal salvageValue = Convert.ToDecimal(txtSalvageValue.Text);
             decimal initialValue;
             decimal currentvalue;
+           
 
             if (annum == DateTime.Now)
             {
@@ -164,7 +166,6 @@ namespace InventoryManagement
                 curowner = cbxCurrentOwner.SelectedValue;
             }
 
-          
 
             var itm = new ItemViewModel
             {
@@ -198,8 +199,19 @@ namespace InventoryManagement
             if (isAddNewItem)
             {
                 result = Singleton.Instance.ItemModel.CreateNewItem(itm, Singleton.Instance.UserModel.CurrentUser.Id);
-                if(result.Success)
-                Singleton.Instance.ItemModel.UpdateItemImage(Convert.ToInt32(result.Param1), pbId.BackgroundImage);
+                if (result.Success)
+                    if (pbId.BackgroundImage == null) {
+                        pbId.BackgroundImage = Image.FromFile(Utils.Helper.GetImageDirectory(@"\items\default.jpg"));
+                        var img = pbId.BackgroundImage;
+                        Singleton.Instance.ItemModel.UpdateItemImage(Convert.ToInt32(result.Param1), img);
+                    }
+                    else {
+                        var img = pbId.BackgroundImage;
+                        Singleton.Instance.ItemModel.UpdateItemImage(Convert.ToInt32(result.Param1), img);
+
+                    }
+            
+                
                 Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, 0, ViewModel.TransactionType.CreateItem, "", itm.Id);
             }
             else
@@ -254,12 +266,13 @@ namespace InventoryManagement
 
             if (Singleton.Instance.ItemModel.GetItemImage(itemId) != null)
             {
-                pbId.BackgroundImage = Singleton.Instance.ItemModel.GetItemImage(itemId);
+                var img = Singleton.Instance.ItemModel.GetItemImage(itemId);
+                if (img != null) {
+                    pbId.BackgroundImage = img;
+                }
+                          
             }
-            else {
-                pbId.BackgroundImage = Image.FromFile(Utils.Helper.GetImageDirectory(@"\items\default.jpg"));
-            }
-           
+
             var owner = Singleton.Instance.UserModel.GetUsersById(loadedItem.LastUpdatedUserId);
 
             txtLastUpdatedUser.Text = owner == null ? "SYSTEM" : owner.LastnameFirstName;
@@ -376,6 +389,10 @@ namespace InventoryManagement
         private void label24_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtSalvageValue_TextChanged(object sender, EventArgs e)
+        {
         }
     }
 }

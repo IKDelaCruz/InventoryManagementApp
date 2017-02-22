@@ -77,7 +77,6 @@ namespace InventoryManagement
                 var result = frm.ShowDialog();
                 if (result == DialogResult.OK)
                     DoUpdateView();
-
                                    
             }
             else

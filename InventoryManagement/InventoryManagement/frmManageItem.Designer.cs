@@ -423,6 +423,7 @@
             this.txtSalvageValue.Size = new System.Drawing.Size(169, 31);
             this.txtSalvageValue.TabIndex = 44;
             this.txtSalvageValue.Text = "0";
+            this.txtSalvageValue.TextChanged += new System.EventHandler(this.txtSalvageValue_TextChanged);
             // 
             // label15
             // 
