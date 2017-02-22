@@ -87,7 +87,18 @@ namespace InventoryManagement
             else if(Convert.ToInt32(reqtype) == 2) {
 
                 var ret = Singleton.Instance.ItemModel.UpdateItemStatusToBroken((int)subtypeId, (int)requestedby, ItemStatus.Broken);
-                Singleton.Instance.RequestModel.ApproveRequest(Convert.ToInt32(id), txtAdminRemarks.Text, user, Convert.ToDateTime(need_date));
+                if (!ret)
+                {
+                    MessageBox.Show("Item does not exist!");
+                }
+                else
+                {
+                    Singleton.Instance.RequestModel.ApproveRequest(Convert.ToInt32(id), txtAdminRemarks.Text, user, Convert.ToDateTime(need_date));
+                    Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, (int)requestedby, ViewModel.TransactionType.ReserveItem, "", (int)id);
+                }
+
+
+               
             }
 
             LoadPendingRequest();

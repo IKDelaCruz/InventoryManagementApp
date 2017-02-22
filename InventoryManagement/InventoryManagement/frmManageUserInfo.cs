@@ -125,6 +125,9 @@ namespace InventoryManagement
 
                 txtPassord.Text = info.Password;
                 txtPassord.Enabled = false;
+                cbxUserType.SelectedItem = info.UserType;
+                cbxCompany.SelectedItem = info.Company;
+                cbxDepartment.SelectedItem = info.Department;
             }
         }
 
