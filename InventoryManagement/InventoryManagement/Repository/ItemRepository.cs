@@ -218,9 +218,9 @@ namespace InventoryManagement.Repository
 
         public int CreateOS(int id, string name)
         {
-            var os = InventoryDatabase.OperatingSystems.FirstOrDefault(b => b.OS == name);
-            if (os == null)
-            {
+            //var os = InventoryDatabase.OperatingSystems.FirstOrDefault(b => b.OS == name);
+            //if (os == null)
+            //{
                 var newOs = new OperatingSystem() { subtype_id = id, OS = name };
                 InventoryDatabase.OperatingSystems.Add(newOs);
                 if (InventoryDatabase.SaveChanges() > 0)
@@ -228,9 +228,9 @@ namespace InventoryManagement.Repository
 
                 //Unable to save 
                 return -1;
-            }
-            //Already exist;
-            return -2;
+            //}
+            ////Already exist;
+            //return -2;
 
         }
 

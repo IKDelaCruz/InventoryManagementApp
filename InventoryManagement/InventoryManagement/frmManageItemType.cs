@@ -101,7 +101,6 @@ namespace InventoryManagement
             {
                 var ret = Singleton.Instance.CategoryModel.CreateSubtype((Convert.ToInt32(cbxType.SelectedValue)), txtSubtype.Text);
 
-
                 if (result != null)
                 {
                     MessageBox.Show("Subtype already exists!", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -137,19 +136,24 @@ namespace InventoryManagement
 
         private void SaveBrand_Click(object sender, EventArgs e)
         {
-            var result = Singleton.Instance.BrandModel.GetBrandName(Convert.ToInt32(cbxSubtype.SelectedValue) ,txtNewBrand.Text);
+            var result = Singleton.Instance.BrandModel.GetBrandName(Convert.ToInt32(cbxSubtype.SelectedValue),txtNewBrand.Text);
 
-            if (!isUpdate)
+            if (result != null)
             {
-                var retBrand = Singleton.Instance.BrandModel.CreateNewBrand(Convert.ToInt32(cbxSubtype.SelectedValue), txtNewBrand.Text);
+                MessageBox.Show("Brand name already exists!", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else {
 
-                if (result != null)
+                if (!isUpdate)
                 {
-                    MessageBox.Show("Brand already exists!", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else if (retBrand > 0)
-                {
-                    MessageBox.Show("Successfully saved");
+                    var retval = Singleton.Instance.BrandModel.CreateNewBrand(Convert.ToInt32(cbxSubtype.SelectedValue), txtNewBrand.Text);
+
+                    if (retval > 0)
+                    {
+                        MessageBox.Show("Successfully saved");
+
+                    }
+
                 }
 
             }
@@ -175,22 +179,31 @@ namespace InventoryManagement
 
         private void btnSaveOs_Click(object sender, EventArgs e)
         {
+            
+
             var result = Singleton.Instance.ItemModel.GetOSname(Convert.ToInt32(cbxSubtypeOS.SelectedValue), txtOs.Text);
 
-            if (!isUpdate)
+            if (result != null)
             {
-                var retOs = Singleton.Instance.ItemModel.createOS(Convert.ToInt32(cbxSubtypeOS.SelectedValue), txtOs.Text);
+                MessageBox.Show("OS name already exists!", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
 
-                if (result != null)
+                if (!isUpdate)
                 {
-                    MessageBox.Show("Operating System already exists!", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else if (retOs > 0)
-                {
-                    MessageBox.Show("Successfully saved");
+                    var retOs = Singleton.Instance.ItemModel.createOS(Convert.ToInt32(cbxSubtypeOS.SelectedValue), txtOs.Text);
+
+                    if (retOs > 0)
+                    {
+                        MessageBox.Show("Successfully saved");
+
+                    }
+
                 }
 
             }
+
             //else
             //{
             //    var retOs = Singleton.Instance.ItemModel.UpdateOs(id, txtOs.Text);

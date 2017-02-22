@@ -128,5 +128,10 @@ namespace InventoryManagement
         {
 
         }
+
+        private void tmrRefresh_Tick(object sender, EventArgs e)
+        {
+            LoadPendingRequest();
+        }
     }
 }

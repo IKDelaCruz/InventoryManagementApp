@@ -235,7 +235,7 @@ namespace InventoryManagement
             txtSerial.Text = loadedItem.Serial;
             txtSalvageValue.Text = loadedItem.SalvageValue.ToString();
 
-            cbxOS.Text = loadedItem.OS.ToString();
+            cbxOS.SelectedValue = loadedItem.OS;
             cbxProcessor.Text = loadedItem.Processor.ToString();
             cbxMemory.Text = loadedItem.Memory.ToString();
             cbxHDD1.Text = loadedItem.HDD1.ToString();

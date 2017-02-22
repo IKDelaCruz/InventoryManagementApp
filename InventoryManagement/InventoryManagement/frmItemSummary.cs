@@ -50,7 +50,6 @@ namespace InventoryManagement
             if (isType)
             {
                
-
                 LoadSubCategory(id);
 
                 isType = false;
@@ -74,6 +73,16 @@ namespace InventoryManagement
         private void mainToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void tmrRefresh_Tick(object sender, EventArgs e)
+        {
+         
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -56,6 +57,7 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dvDeclined = new System.Windows.Forms.DataGridView();
+            this.tmrRefresh = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -83,10 +85,10 @@
             // 
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.dvLogs);
-            this.tabPage1.Location = new System.Drawing.Point(4, 28);
+            this.tabPage1.Location = new System.Drawing.Point(4, 33);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(722, 424);
+            this.tabPage1.Size = new System.Drawing.Size(722, 419);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Pending Requests";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -121,7 +123,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(37, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 21);
+            this.label1.Size = new System.Drawing.Size(124, 24);
             this.label1.TabIndex = 50;
             this.label1.Text = "User Remarks";
             // 
@@ -160,7 +162,7 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(37, 92);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(120, 21);
+            this.label10.Size = new System.Drawing.Size(141, 24);
             this.label10.TabIndex = 49;
             this.label10.Text = "Admin Remarks";
             // 
@@ -259,10 +261,10 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.dvProcessed);
-            this.tabPage2.Location = new System.Drawing.Point(4, 28);
+            this.tabPage2.Location = new System.Drawing.Point(4, 33);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(722, 424);
+            this.tabPage2.Size = new System.Drawing.Size(722, 419);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Approved Requests";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -325,9 +327,9 @@
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.dvDeclined);
-            this.tabPage3.Location = new System.Drawing.Point(4, 28);
+            this.tabPage3.Location = new System.Drawing.Point(4, 33);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(722, 424);
+            this.tabPage3.Size = new System.Drawing.Size(722, 419);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Declined Requests";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -350,9 +352,15 @@
             this.dvDeclined.Size = new System.Drawing.Size(722, 253);
             this.dvDeclined.TabIndex = 3;
             // 
+            // tmrRefresh
+            // 
+            this.tmrRefresh.Enabled = true;
+            this.tmrRefresh.Interval = 5000;
+            this.tmrRefresh.Tick += new System.EventHandler(this.tmrRefresh_Tick);
+            // 
             // frmManageRequest
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(750, 476);
             this.Controls.Add(this.tabControl1);
@@ -403,5 +411,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn OtherUserName;
         private System.Windows.Forms.DataGridViewTextBoxColumn NeededDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserRemarks;
+        private System.Windows.Forms.Timer tmrRefresh;
     }
 }
