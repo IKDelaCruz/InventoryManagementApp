@@ -28,6 +28,7 @@ namespace InventoryManagement.Repository
                 purchase_date = newItem.PurchaseDate,
                 purchase_price = newItem.PurchasePrice,
                 current_value = newItem.Currentvalue,
+                salvage_value = newItem.SalvageValue,
                 current_owner = newItem.CurrentOwner,
                 serial = newItem.Serial,
                 status = (int)newItem.Status,
@@ -45,6 +46,9 @@ namespace InventoryManagement.Repository
 
             return itm.id;
         }
+
+
+
         public bool Update(ItemViewModel newItem, int userId)
         {
             var item = InventoryDatabase.Items.FirstOrDefault(h => h.id == newItem.Id);
@@ -63,6 +67,7 @@ namespace InventoryManagement.Repository
                 item.purchase_date = newItem.PurchaseDate;
                 item.purchase_price = newItem.PurchasePrice;
                 item.current_value = newItem.Currentvalue;
+                item.salvage_value = newItem.SalvageValue;
                 item.current_owner = newItem.CurrentOwner;
                 item.serial = newItem.Serial;
                 item.status = (int)newItem.Status;
@@ -99,11 +104,10 @@ namespace InventoryManagement.Repository
 
         public bool UpdateItemStatusToBroken(int subtypeId, int reqby, ItemStatus status)
         {
-
-            var item = InventoryDatabase.Items.FirstOrDefault(x => x.status == 1);
+            var item = InventoryDatabase.Items.FirstOrDefault(x => x.item_sub_type_id == subtypeId && x.status == 1 && x.current_owner == reqby);
             if (item != null)
             {
-                item.status = 3;
+                item.status = (int)ItemStatus.Broken;
                 item.current_owner = reqby;
                 item.last_updated = DateTime.Now;
                 InventoryDatabase.SaveChanges();
@@ -114,7 +118,7 @@ namespace InventoryManagement.Repository
 
         }
 
-        public bool UpdateItemStatusById(int id, ItemStatus status)
+        public bool UpdateItemStatusById(int id, ItemStatus status, int curowner)
         {
 
             var item = InventoryDatabase.Items.FirstOrDefault(x => x.id == id);
@@ -122,6 +126,7 @@ namespace InventoryManagement.Repository
             {
                 item.status = (int)status;
                 item.last_updated = DateTime.Now;
+                item.current_owner = curowner;
 
                 InventoryDatabase.SaveChanges();
 
@@ -212,9 +217,9 @@ namespace InventoryManagement.Repository
 
         public int CreateOS(int id, string name)
         {
-            var os = InventoryDatabase.OperatingSystems.FirstOrDefault(b => b.OS == name);
-            if (os == null)
-            {
+            //var os = InventoryDatabase.OperatingSystems.FirstOrDefault(b => b.OS == name);
+            //if (os == null)
+            //{
                 var newOs = new OperatingSystem() { subtype_id = id, OS = name };
                 InventoryDatabase.OperatingSystems.Add(newOs);
                 if (InventoryDatabase.SaveChanges() > 0)
@@ -222,11 +227,30 @@ namespace InventoryManagement.Repository
 
                 //Unable to save 
                 return -1;
-            }
-            //Already exist;
-            return -2;
+            //}
+            ////Already exist;
+            //return -2;
 
         }
+
+        public OSViewModel GetOSbyName(int id, string os)
+        {
+            var OS = InventoryDatabase.OperatingSystems.FirstOrDefault(h => h.subtype_id == id && h.OS == os);
+            if (OS != null)
+            {
+                return new OSViewModel
+                {
+                    id = OS.id,
+                    subtype_id = OS.subtype_id,
+                    OS = OS.OS,
+
+                };
+            }
+
+            return null;
+        }
+
+
         public int UpdateOS(int id, string name)
         {
             var os = InventoryDatabase.OperatingSystems.FirstOrDefault(b => b.subtype_id == id);
@@ -309,9 +333,9 @@ namespace InventoryManagement.Repository
             {
                 OSList.Add(new ViewModel.OSViewModel
                 {
-                    OS_Id = o.id,
-                    SubtypeId = o.subtype_id,
-                    OSName = o.OS,
+                    id = o.id,
+                    subtype_id = o.subtype_id,
+                    OS = o.OS,
                 });
             }
 
@@ -334,7 +358,7 @@ namespace InventoryManagement.Repository
                     TypeId = Convert.ToInt32(i.item_type_id),
                     //Type = i.ItemType.type,
                     SubTypeId = Convert.ToInt32(i.item_sub_type_id),
-                    //SubType = i.ItemSubtype.subtype,
+                    //SubType = subtype,
                     BrandId = i.brand_id ?? 13,
                     Model = i.model,
                     Serial = i.serial,
@@ -420,6 +444,33 @@ namespace InventoryManagement.Repository
                 });
             }
             return iList;
+        }
+
+        public List<ItemViewModel> QueryListofItemStat()
+        {
+            var statList = new List<ItemViewModel>();
+            var sub = InventoryDatabase.Items.ToList();
+
+            //var categ = categ1.GroupBy(i => i.id).Select(group => group.First());
+
+            //List<CategorySubcategoryViewModel> cList = new List<CategorySubcategoryViewModel>();
+
+            foreach (Item s in sub)
+            {
+
+                statList.Add(new ItemViewModel
+
+                {
+                    Id = s.id,
+                    AssetTag = s.asset_tag,
+                    Status = (ItemStatus)s.status,
+
+                });
+                //subcategory = c.subtype 
+
+            }
+            return statList;
+
         }
         public ItemViewModel QueryItem(int id)
         {

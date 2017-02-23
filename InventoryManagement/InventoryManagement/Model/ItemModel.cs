@@ -73,7 +73,6 @@ namespace InventoryManagement.Model
 
             byte[] bArr = Utils.ImageCon.imgToByteConverter(img);
             var success = itemRepostory.UpdateItemImage(itemId, bArr);
-
             result.Success = success;
             
             return result;
@@ -88,9 +87,9 @@ namespace InventoryManagement.Model
             return itemRepostory.UpdateItemStatusToBroken(id, requestedby, status);
         }
 
-        public bool UpdateItemStatusById(int id, ItemStatus status)
+        public bool UpdateItemStatusById(int id, ItemStatus status, int owner)
         {
-            return itemRepostory.UpdateItemStatusById(id, status);
+            return itemRepostory.UpdateItemStatusById(id, status, owner);
         }
         public bool UpdateItemOwner(int id, int owner)
         {
@@ -104,6 +103,15 @@ namespace InventoryManagement.Model
         {
             return itemRepostory.UpdateOS(id, name);
         }
+<<<<<<< HEAD
+=======
+
+        public OSViewModel GetOSname(int id, string os)
+        {
+            return itemRepostory.GetOSbyName(id, os);
+        }
+
+>>>>>>> origin/master
         public string GenerateAssetTag(string type, string subType, int itemId)
         {
             return type.Substring(0, 1).ToUpper() + subType.Substring(0, 2).ToUpper() + itemId.ToString("D8");
@@ -145,6 +153,11 @@ namespace InventoryManagement.Model
             item.CurrentOwnerName = itemRepostory.QueryOwner(item.CurrentOwner);
 
             return item;
+        }
+
+        public List<ItemViewModel> QueryListItemStat()
+        {
+            return itemRepostory.QueryListofItemStat();
         }
         public Image GetItemImage(int id)
         {

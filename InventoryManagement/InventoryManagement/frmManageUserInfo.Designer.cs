@@ -28,11 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManageUserInfo));
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label21 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cbxUserType = new System.Windows.Forms.ComboBox();
@@ -49,6 +47,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtFirstname = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.grpUser.SuspendLayout();
@@ -89,15 +88,6 @@
             this.panel1.Padding = new System.Windows.Forms.Padding(20);
             this.panel1.Size = new System.Drawing.Size(425, 448);
             this.panel1.TabIndex = 7;
-            // 
-            // label21
-            // 
-            this.label21.Location = new System.Drawing.Point(23, 20);
-            this.label21.Margin = new System.Windows.Forms.Padding(3, 0, 3, 20);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(380, 50);
-            this.label21.TabIndex = 54;
-            this.label21.Text = resources.GetString("label21.Text");
             // 
             // groupBox1
             // 
@@ -252,6 +242,15 @@
             this.txtFirstname.Name = "txtFirstname";
             this.txtFirstname.Size = new System.Drawing.Size(196, 31);
             this.txtFirstname.TabIndex = 48;
+            // 
+            // label21
+            // 
+            this.label21.Location = new System.Drawing.Point(20, 26);
+            this.label21.Margin = new System.Windows.Forms.Padding(3, 0, 3, 20);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(380, 50);
+            this.label21.TabIndex = 54;
+            this.label21.Text = "Create Account";
             // 
             // frmManageUserInfo
             // 

@@ -44,6 +44,7 @@ namespace InventoryManagement.Repository
         public virtual DbSet<vwItemSubTypeSummary> vwItemSubTypeSummaries { get; set; }
         public virtual DbSet<vwItemTypeSummarySub> vwItemTypeSummarySubs { get; set; }
         public virtual DbSet<vwTransactionLog> vwTransactionLogs { get; set; }
+        public virtual DbSet<vwItemDepeciationReport> vwItemDepeciationReports { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

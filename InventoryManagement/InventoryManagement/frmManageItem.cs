@@ -19,6 +19,7 @@ namespace InventoryManagement
     {
         private bool isAddNewItem;
         private ItemViewModel loadedItem;
+       
         public frmManageItem(int itemId = 0, bool AddItem = true)
         {
             InitializeComponent();
@@ -41,9 +42,35 @@ namespace InventoryManagement
                 DoLoadItem(itemId);
 
         }
+        public void Depreciation() {
+
+            //DEPRECIATION COMPUTATION
+            DateTime purchasedate = dtpPurchaseDate.Value;
+            decimal purchaseprice = Convert.ToDecimal(txtPurchasePrice.Text);
+            decimal lifespan = Convert.ToDecimal(txtLifetime.Text);
+            DateTime annum = purchasedate.AddYears(1);
+            decimal salvageValue = Convert.ToDecimal(txtSalvageValue.Text);
+            decimal initialValue;
+            decimal currentvalue;
+           
+
+            if (annum == DateTime.Now)
+            {
+                MessageBox.Show("Annual Depreciation marks today!", "Message");
+            }
+            else
+            {
+                var days = (DateTime.Now - purchasedate).TotalDays;
+                initialValue = ((purchaseprice - salvageValue) / lifespan) / 365;
+                currentvalue = purchaseprice - (initialValue * Convert.ToInt32(days));
+                txtCurrentValue.Text = currentvalue.ToString("n2");
+            }
+
+        }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            Depreciation();
             decimal purchaseprice, salvagevalue;
             decimal lifespan;
             purchaseprice = Convert.ToDecimal(txtPurchasePrice.Text);
@@ -85,8 +112,8 @@ namespace InventoryManagement
             cbxSubType.ValueMember = "Sub_Id";
             cbxSubType.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategoriesByType((int)cbxType.SelectedValue);
 
-            cbxOS.DisplayMember = "OSName";
-            cbxOS.ValueMember = "OS_Id";
+            cbxOS.DisplayMember = "OS";
+            cbxOS.ValueMember = "id";
             cbxOS.DataSource = Singleton.Instance.ItemModel.GetOSBySubtype((int)cbxSubType.SelectedValue);
 
             //cbxOS.DataSource = Enum.GetValues(typeof(ItemOperatingSystem));
@@ -139,25 +166,6 @@ namespace InventoryManagement
                 curowner = cbxCurrentOwner.SelectedValue;
             }
 
-            //DEPRECIATION COMPUTATION
-            DateTime purchasedate = dtpPurchaseDate.Value;
-            decimal purchaseprice = Convert.ToDecimal(txtPurchasePrice.Text);
-            decimal lifespan = Convert.ToDecimal(txtLifetime.Text);
-            DateTime annum = purchasedate.AddYears(1);
-            int salvageValue = 2000;
-            decimal initialValue;
-            decimal currentvalue;
-
-            if (annum == DateTime.Now)
-            {
-                MessageBox.Show("Annual Depreciation marks today!", "Message");
-            }
-            else
-            {
-                initialValue = ((purchaseprice - salvageValue) / lifespan) / 365;
-                currentvalue = purchaseprice - initialValue;
-                txtCurrentValue.Text = currentvalue.ToString("n2");
-            }
 
             var itm = new ItemViewModel
             {
@@ -191,12 +199,26 @@ namespace InventoryManagement
             if (isAddNewItem)
             {
                 result = Singleton.Instance.ItemModel.CreateNewItem(itm, Singleton.Instance.UserModel.CurrentUser.Id);
+                if (result.Success)
+                    if (pbId.BackgroundImage == null) {
+                        pbId.BackgroundImage = Image.FromFile(Utils.Helper.GetImageDirectory(@"\items\default.jpg"));
+                        var img = pbId.BackgroundImage;
+                        Singleton.Instance.ItemModel.UpdateItemImage(Convert.ToInt32(result.Param1), img);
+                    }
+                    else {
+                        var img = pbId.BackgroundImage;
+                        Singleton.Instance.ItemModel.UpdateItemImage(Convert.ToInt32(result.Param1), img);
+
+                    }
+            
+                
                 Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, 0, ViewModel.TransactionType.CreateItem, "", itm.Id);
             }
             else
             {
                 itm.Id = loadedItem.Id;
                 result = Singleton.Instance.ItemModel.UpdateItem(itm, Singleton.Instance.UserModel.CurrentUser.Id);
+                Singleton.Instance.ItemModel.UpdateItemImage(loadedItem.Id, pbId.BackgroundImage);
                 Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, 0, ViewModel.TransactionType.EditItem, "", itm.Id);
             }
 
@@ -211,7 +233,7 @@ namespace InventoryManagement
                     MessageBox.Show("Item successfully updated.");
             }
         }
-        private void DoLoadItem(int itemId)
+        public void DoLoadItem(int itemId)
         {
             loadedItem = Singleton.Instance.ItemModel.GetItem(itemId);
 
@@ -225,7 +247,7 @@ namespace InventoryManagement
             txtSerial.Text = loadedItem.Serial;
             txtSalvageValue.Text = loadedItem.SalvageValue.ToString();
 
-            cbxOS.Text = loadedItem.OS.ToString();
+            cbxOS.SelectedValue = loadedItem.OS;
             cbxProcessor.Text = loadedItem.Processor.ToString();
             cbxMemory.Text = loadedItem.Memory.ToString();
             cbxHDD1.Text = loadedItem.HDD1.ToString();
@@ -235,14 +257,21 @@ namespace InventoryManagement
             txtPurchasePrice.Text = ((decimal)loadedItem.PurchasePrice).ToString("n2");
             txtLifetime.Text = loadedItem.LifeSpan.ToString();
             txtCurrentValue.Text = ((decimal)loadedItem.Currentvalue).ToString("n2");
+            txtSalvageValue.Text = ((decimal)loadedItem.SalvageValue).ToString("n2");
 
             txtLastUpdate.Text = loadedItem.LastUpdatedDate.ToString();
 
             cbxCurrentOwner.SelectedValue = loadedItem.CurrentOwner;
             cbxStatus.Text = ((ItemStatus)loadedItem.Status).ToString();
 
-            pbId.BackgroundImage = Singleton.Instance.ItemModel.GetItemImage(itemId);
-
+            if (Singleton.Instance.ItemModel.GetItemImage(itemId) != null)
+            {
+                var img = Singleton.Instance.ItemModel.GetItemImage(itemId);
+                if (img != null) {
+                    pbId.BackgroundImage = img;
+                }
+                          
+            }
 
             var owner = Singleton.Instance.UserModel.GetUsersById(loadedItem.LastUpdatedUserId);
 
@@ -281,8 +310,28 @@ namespace InventoryManagement
             var selected = (int)cbxSubType.SelectedValue;
             LoadBrands(selected);
 
-            cbxOS.DisplayMember = "OSName";
-            cbxOS.ValueMember = "OS_Id";
+            if (selected == 1 || selected == 7 || selected == 12) {
+                cbxOS.Enabled = true;
+                cbxMemory.Enabled = true;
+                cbxProcessor.Enabled = true;
+                cbxHDD1.Enabled = true;
+                cbxHDD2.Enabled = true;
+            }
+            else if (selected == 10) {
+                cbxMemory.Enabled = true;
+            }
+            else
+            {
+
+                cbxOS.Enabled = false;
+                cbxMemory.Enabled = false;
+                cbxProcessor.Enabled = false;
+                cbxHDD1.Enabled = false;
+                cbxHDD2.Enabled = false;
+            }
+
+            cbxOS.DisplayMember = "OS";
+            cbxOS.ValueMember = "id";
             cbxOS.DataSource = Singleton.Instance.ItemModel.GetOSBySubtype((int)cbxSubType.SelectedValue);
 
 
@@ -331,7 +380,7 @@ namespace InventoryManagement
                     Image img = Image.FromFile(openFileDialog1.FileName);
                     pbId.BackgroundImage = img;
 
-                    Singleton.Instance.ItemModel.UpdateItemImage(loadedItem.Id, img);
+                    
                 }
 
             }
@@ -340,6 +389,10 @@ namespace InventoryManagement
         private void label24_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtSalvageValue_TextChanged(object sender, EventArgs e)
+        {
         }
     }
 }

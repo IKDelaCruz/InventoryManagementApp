@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DepreciationDataSet" targetNamespace="http://tempuri.org/DepreciationDataSet.xsd" xmlns:mstns="http://tempuri.org/DepreciationDataSet.xsd" xmlns="http://tempuri.org/DepreciationDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="InventoryManagementConnectionString2" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="InventoryManagementConnectionString2 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.InventoryManagement.Properties.Settings.GlobalReference.Default.InventoryManagementConnectionString2" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable2TableAdapter" GeneratorDataComponentClassName="DataTable2TableAdapter" Name="DataTable2" UserDataComponentName="DataTable2TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="InventoryManagementConnectionString2 (Settings)" DbObjectName="InventoryManagement.dbo.vwItemDepeciationReport" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT vwItemDepeciationReport.*
+FROM   vwItemDepeciationReport</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="type" DataSetColumn="type" />
+              <Mapping SourceColumn="subtype" DataSetColumn="subtype" />
+              <Mapping SourceColumn="name" DataSetColumn="name" />
+              <Mapping SourceColumn="description" DataSetColumn="description" />
+              <Mapping SourceColumn="asset_tag" DataSetColumn="asset_tag" />
+              <Mapping SourceColumn="item_type_id" DataSetColumn="item_type_id" />
+              <Mapping SourceColumn="item_sub_type_id" DataSetColumn="item_sub_type_id" />
+              <Mapping SourceColumn="purchase_price" DataSetColumn="purchase_price" />
+              <Mapping SourceColumn="current_value" DataSetColumn="current_value" />
+              <Mapping SourceColumn="purchase_date" DataSetColumn="purchase_date" />
+              <Mapping SourceColumn="life_span" DataSetColumn="life_span" />
+              <Mapping SourceColumn="salvage_value" DataSetColumn="salvage_value" />
+              <Mapping SourceColumn="id" DataSetColumn="id" />
+              <Mapping SourceColumn="Expr1" DataSetColumn="Expr1" />
+              <Mapping SourceColumn="Expr2" DataSetColumn="Expr2" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DepreciationDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DepreciationDataSet" msprop:Generator_UserDSName="DepreciationDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable2" msprop:Generator_TableClassName="DataTable2DataTable" msprop:Generator_TableVarName="tableDataTable2" msprop:Generator_TablePropName="DataTable2" msprop:Generator_RowDeletingName="DataTable2RowDeleting" msprop:Generator_RowChangingName="DataTable2RowChanging" msprop:Generator_RowEvHandlerName="DataTable2RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable2RowDeleted" msprop:Generator_UserTableName="DataTable2" msprop:Generator_RowChangedName="DataTable2RowChanged" msprop:Generator_RowEvArgName="DataTable2RowChangeEvent" msprop:Generator_RowClassName="DataTable2Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="type" msprop:Generator_ColumnVarNameInTable="columntype" msprop:Generator_ColumnPropNameInRow="type" msprop:Generator_ColumnPropNameInTable="typeColumn" msprop:Generator_UserColumnName="type" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="subtype" msprop:Generator_ColumnVarNameInTable="columnsubtype" msprop:Generator_ColumnPropNameInRow="subtype" msprop:Generator_ColumnPropNameInTable="subtypeColumn" msprop:Generator_UserColumnName="subtype">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="description" msprop:Generator_ColumnVarNameInTable="columndescription" msprop:Generator_ColumnPropNameInRow="description" msprop:Generator_ColumnPropNameInTable="descriptionColumn" msprop:Generator_UserColumnName="description">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="asset_tag" msprop:Generator_ColumnVarNameInTable="columnasset_tag" msprop:Generator_ColumnPropNameInRow="asset_tag" msprop:Generator_ColumnPropNameInTable="asset_tagColumn" msprop:Generator_UserColumnName="asset_tag" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="item_type_id" msprop:Generator_ColumnVarNameInTable="columnitem_type_id" msprop:Generator_ColumnPropNameInRow="item_type_id" msprop:Generator_ColumnPropNameInTable="item_type_idColumn" msprop:Generator_UserColumnName="item_type_id" type="xs:int" />
+              <xs:element name="item_sub_type_id" msprop:Generator_ColumnVarNameInTable="columnitem_sub_type_id" msprop:Generator_ColumnPropNameInRow="item_sub_type_id" msprop:Generator_ColumnPropNameInTable="item_sub_type_idColumn" msprop:Generator_UserColumnName="item_sub_type_id" type="xs:int" />
+              <xs:element name="purchase_price" msprop:Generator_ColumnVarNameInTable="columnpurchase_price" msprop:Generator_ColumnPropNameInRow="purchase_price" msprop:Generator_ColumnPropNameInTable="purchase_priceColumn" msprop:Generator_UserColumnName="purchase_price" type="xs:decimal" />
+              <xs:element name="current_value" msprop:Generator_ColumnVarNameInTable="columncurrent_value" msprop:Generator_ColumnPropNameInRow="current_value" msprop:Generator_ColumnPropNameInTable="current_valueColumn" msprop:Generator_UserColumnName="current_value" type="xs:decimal" />
+              <xs:element name="purchase_date" msprop:Generator_ColumnVarNameInTable="columnpurchase_date" msprop:Generator_ColumnPropNameInRow="purchase_date" msprop:Generator_ColumnPropNameInTable="purchase_dateColumn" msprop:Generator_UserColumnName="purchase_date" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="life_span" msprop:Generator_ColumnVarNameInTable="columnlife_span" msprop:Generator_ColumnPropNameInRow="life_span" msprop:Generator_ColumnPropNameInTable="life_spanColumn" msprop:Generator_UserColumnName="life_span" type="xs:int" minOccurs="0" />
+              <xs:element name="salvage_value" msprop:Generator_ColumnVarNameInTable="columnsalvage_value" msprop:Generator_ColumnPropNameInRow="salvage_value" msprop:Generator_ColumnPropNameInTable="salvage_valueColumn" msprop:Generator_UserColumnName="salvage_value" type="xs:decimal" minOccurs="0" />
+              <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
+              <xs:element name="Expr1" msprop:Generator_ColumnVarNameInTable="columnExpr1" msprop:Generator_ColumnPropNameInRow="Expr1" msprop:Generator_ColumnPropNameInTable="Expr1Column" msprop:Generator_UserColumnName="Expr1" type="xs:int" />
+              <xs:element name="Expr2" msprop:Generator_ColumnVarNameInTable="columnExpr2" msprop:Generator_ColumnPropNameInRow="Expr2" msprop:Generator_ColumnPropNameInTable="Expr2Column" msprop:Generator_UserColumnName="Expr2" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DataTable2" />
+      <xs:field xpath="mstns:id" />
+      <xs:field xpath="mstns:Expr1" />
+      <xs:field xpath="mstns:Expr2" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

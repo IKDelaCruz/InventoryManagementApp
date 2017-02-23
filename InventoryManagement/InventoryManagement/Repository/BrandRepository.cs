@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InventoryManagement.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,9 +11,9 @@ namespace InventoryManagement.Repository
     {
         public int CreateBrand(int id, string name)
         {
-            var brand = InventoryDatabase.Brands.FirstOrDefault(b => b.name == name);
-            if (brand == null)
-            {
+            //var brand = InventoryDatabase.Brands.FirstOrDefault(b => b.id == id);
+            //if (brand == null)
+            //{
                 var newBrand = new Brand() { subtype_id = id, name = name };
                 InventoryDatabase.Brands.Add(newBrand);
                 if (InventoryDatabase.SaveChanges() > 0)
@@ -20,11 +21,29 @@ namespace InventoryManagement.Repository
 
                 //Unable to save 
                 return -1;
-            }
+            //}
             //Already exist;
-            return -2;
+            //return -2;
 
         }
+
+        public BrandViewModel GetBrandbyName(int id, string brandName)
+        {
+            var brand = InventoryDatabase.Brands.FirstOrDefault(h => h.subtype_id == id && h.name == brandName);
+            if (brand != null)
+            {
+                return new BrandViewModel
+                {
+                    Brand_Id = brand.id,
+                    SubId = brand.subtype_id,
+                    Name = brand.name,
+
+                };
+            }
+
+            return null;
+        }
+
 
         public int UpdateBrand(int id, string name)
         {

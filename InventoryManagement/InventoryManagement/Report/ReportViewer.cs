@@ -42,6 +42,7 @@ namespace InventoryManagement.Report
             var rpt = new InventoryRpt();
             rpt.SetDataSource(DataFiller.GetInventory(0));
 
+            //
             var firstDate = new DateTime();
             var secondDate = new DateTime();
 
@@ -74,6 +75,7 @@ namespace InventoryManagement.Report
             pfield2.CurrentValues.Add(pdiscrete2);
             pfields.Add(pfield2);
 
+            //
             crystalReportViewer1.ReportSource = rpt;
             crystalReportViewer1.ParameterFieldInfo = pfields;
             crystalReportViewer1.Refresh();

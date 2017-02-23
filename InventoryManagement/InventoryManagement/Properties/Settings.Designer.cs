@@ -44,5 +44,27 @@ namespace InventoryManagement.Properties {
                 return ((string)(this["InventoryMangementConnectionString1"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=PAUP\\SQLEXPRESS;Initial Catalog=InventoryManagement;Persist Security " +
+            "Info=True;User ID=dev;Password=1q2w3e!!!")]
+        public string InventoryManagementConnectionString2 {
+            get {
+                return ((string)(this["InventoryManagementConnectionString2"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=PAUP\\SQLEXPRESS;Initial Catalog=InventoryManagement;Integrated Securi" +
+            "ty=True")]
+        public string InventoryManagementConnectionString3 {
+            get {
+                return ((string)(this["InventoryManagementConnectionString3"]));
+            }
+        }
     }
 }

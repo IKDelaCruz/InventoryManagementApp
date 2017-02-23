@@ -77,18 +77,23 @@ namespace InventoryManagement
                 }
                 else
                 {
-                    var id = Singleton.Instance.UserModel.CreateNewUser(txtUsername.Text, txtPassord.Text, (UserType)cbxUserType.SelectedItem, txtFirstname.Text, txtLastname.Text, (int)cbxDepartment.SelectedValue);
-                    if (Singleton.Instance.UserModel.UpdateUser(id, txtFirstname.Text, txtLastname.Text, (int)cbxCompany.SelectedValue, (int)cbxDepartment.SelectedValue,
-                    (UserType)cbxUserType.SelectedItem))
+                    if (result != null)
+                    {
+                        MessageBox.Show("Username already exists!", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else {
+                        var id = Singleton.Instance.UserModel.CreateNewUser(txtUsername.Text, txtPassord.Text, (UserType)cbxUserType.SelectedItem, txtFirstname.Text, txtLastname.Text, (int)cbxDepartment.SelectedValue);
+                        if (Singleton.Instance.UserModel.UpdateUser(id, txtFirstname.Text, txtLastname.Text, (int)cbxCompany.SelectedValue, (int)cbxDepartment.SelectedValue,
+                        (UserType)cbxUserType.SelectedItem))
                         {
                             MessageBox.Show("User successfully created!");
                             this.DialogResult = DialogResult.OK;
                             this.Close();
                         }
-                    if (result != null)
-                        {
-                            MessageBox.Show("Username already exists!", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);       
-                        }
+
+                    }
+                    
+                    
                     
                 }
 
@@ -120,6 +125,9 @@ namespace InventoryManagement
 
                 txtPassord.Text = info.Password;
                 txtPassord.Enabled = false;
+                cbxUserType.SelectedItem = info.UserType;
+                cbxCompany.SelectedItem = info.Company;
+                cbxDepartment.SelectedItem = info.Department;
             }
         }
 
