@@ -104,7 +104,6 @@ namespace InventoryManagement.Model
         {
             return itemRepostory.UpdateOS(id, name);
         }
-
         public string GenerateAssetTag(string type, string subType, int itemId)
         {
             return type.Substring(0, 1).ToUpper() + subType.Substring(0, 2).ToUpper() + itemId.ToString("D8");
@@ -113,13 +112,10 @@ namespace InventoryManagement.Model
         {
             return itemRepostory.GetBrandsBySubtype(subtypeId);
         }
-
         public List<BrandViewModel> GetBrands()
         {
             return itemRepostory.QueryBrands();
         }
-
-
         public List<ItemViewModel> GetItems()
         {
             return itemRepostory.QueryItems();
