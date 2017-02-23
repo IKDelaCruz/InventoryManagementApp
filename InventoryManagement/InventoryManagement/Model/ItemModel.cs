@@ -103,15 +103,14 @@ namespace InventoryManagement.Model
         {
             return itemRepostory.UpdateOS(id, name);
         }
-<<<<<<< HEAD
-=======
+
 
         public OSViewModel GetOSname(int id, string os)
         {
             return itemRepostory.GetOSbyName(id, os);
         }
 
->>>>>>> origin/master
+
         public string GenerateAssetTag(string type, string subType, int itemId)
         {
             return type.Substring(0, 1).ToUpper() + subType.Substring(0, 2).ToUpper() + itemId.ToString("D8");

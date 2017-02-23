@@ -48,10 +48,13 @@ namespace InventoryManagement
         private void btnSave_Click(object sender, EventArgs e)
         {
 
-            var result = Singleton.Instance.UserModel.GetUsersByUsername(txtUsername.Text);
-            var un = txtUsername.Text;
+        }
+        private void DoSaveUser()
+        {
+            var username = txtUsername.Text;
             var password = txtPassord.Text;
-            if (string.IsNullOrWhiteSpace(un))
+
+            if (string.IsNullOrWhiteSpace(username))
             {
                 MessageBox.Show("Invalid Username", "Invalid",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -61,7 +64,6 @@ namespace InventoryManagement
                 MessageBox.Show("Invalid Password", "Invalid",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
             else
             {
                 if (isUpdate)
@@ -73,18 +75,19 @@ namespace InventoryManagement
                         this.DialogResult = DialogResult.OK;
                         this.Close();
                     }
-                    
+
                 }
                 else
                 {
+                    var result = Singleton.Instance.UserModel.GetUsersByUsername(txtUsername.Text);
                     if (result != null)
                     {
                         MessageBox.Show("Username already exists!", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    else {
+                    else
+                    {
                         var id = Singleton.Instance.UserModel.CreateNewUser(txtUsername.Text, txtPassord.Text, (UserType)cbxUserType.SelectedItem, txtFirstname.Text, txtLastname.Text, (int)cbxDepartment.SelectedValue);
-                        if (Singleton.Instance.UserModel.UpdateUser(id, txtFirstname.Text, txtLastname.Text, (int)cbxCompany.SelectedValue, (int)cbxDepartment.SelectedValue,
-                        (UserType)cbxUserType.SelectedItem))
+
                         {
                             MessageBox.Show("User successfully created!");
                             this.DialogResult = DialogResult.OK;
@@ -92,18 +95,10 @@ namespace InventoryManagement
                         }
 
                     }
-                    
-                    
-                    
                 }
-
             }
         }
 
-
-
-
-            
         private void cbxCompany_SelectedIndexChanged(object sender, EventArgs e)
         {
             cbxDepartment.ValueMember = "Id";
@@ -137,3 +132,4 @@ namespace InventoryManagement
         }
     }
 }
+ 
