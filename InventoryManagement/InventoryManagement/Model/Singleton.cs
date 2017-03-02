@@ -15,20 +15,20 @@ namespace InventoryManagement.Model
         public RequestModel RequestModel { get; set; }
         public TransactionModel TransactionModel { get; set; }
         public CompanyDepartmentModel CompanyDepartmentModel { get; set; }
-        public CategorySubcategoryModel CategorySubcategoryModel { get; set; }
+        public ItemSubTypeModel ItemSubTypeModel { get; set; }
 
-        public CategoryModel CategoryModel { get; set; }
+        public ItemTypeModel ItemTypeModel { get; set; }
 
         public BrandModel BrandModel { get; set; }
 
         public Singleton()
         {
-            CategoryModel = new CategoryModel();
+            ItemTypeModel = new ItemTypeModel();
             UserModel = new UserModel();
             ItemModel = new ItemModel();
             TransactionModel = new TransactionModel();
             CompanyDepartmentModel = new CompanyDepartmentModel();
-            CategorySubcategoryModel = new CategorySubcategoryModel();
+            ItemSubTypeModel = new ItemSubTypeModel();
             RequestModel = new RequestModel();
             BrandModel = new BrandModel();
         }

@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace InventoryManagement.ViewModel
 {
-    public class CategoryViewModel
+     public class ItemSubTypeViewModel : ParentChildViewModel
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public byte icon { get; set; }
 
     }
 }

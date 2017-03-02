@@ -12,21 +12,12 @@ namespace InventoryManagement.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class Brand
+    public partial class ItemSubTypeImage
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Brand()
-        {
-            this.Items = new HashSet<Item>();
-        }
-    
         public int id { get; set; }
-        public string name { get; set; }
         public int subtype_id { get; set; }
-        public string description { get; set; }
+        public byte[] picture { get; set; }
     
         public virtual ItemSubtype ItemSubtype { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Item> Items { get; set; }
     }
 }

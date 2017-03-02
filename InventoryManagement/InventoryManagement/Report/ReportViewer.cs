@@ -26,7 +26,7 @@ namespace InventoryManagement.Report
         {
             cbxSubType.DisplayMember = "Name";
             cbxSubType.ValueMember = "Sub_Id";
-            cbxSubType.DataSource = Singleton.Instance.CategorySubcategoryModel.QueryListSub();
+            cbxSubType.DataSource = Singleton.Instance.ItemSubTypeModel.GetSubTypes();
         }
 
 

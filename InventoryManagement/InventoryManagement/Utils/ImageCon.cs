@@ -13,6 +13,9 @@ namespace InventoryManagement.Utils
         //convert bytearray to image
         public static Image byteArrayToImage(byte[] byteArrayIn)
         {
+            if (byteArrayIn == null)
+                return null;
+
             using (MemoryStream mStream = new MemoryStream(byteArrayIn))
             {
                 return Image.FromStream(mStream);

@@ -11,27 +11,42 @@ namespace InventoryManagement.Model
 {
     public class BrandModel
     {
-        BrandRepository bR;
+        BrandRepository brandRepository;
         public BrandModel()
         {
-            bR = new BrandRepository();
+            brandRepository = new BrandRepository();
         }
-        public int CreateNewBrand(int id, string name)
+        public ReturnValueRepo CreateNewBrand(int id, string name)
         {
-            return bR.CreateBrand(id, name);
+            return brandRepository.CreateBrand(id, name);
         }
-
+        public ReturnValueRepo Delete(int id)
+        {
+            return brandRepository.Delete(id);
+        }
         public BrandViewModel GetBrandName(int id, string name)
         {
-            return bR.GetBrandbyName(id, name);
+            return brandRepository.GetBrandbyName(id, name);
         }
 
         public int Update(int id, string name)
         {
-            return bR.UpdateBrand(id, name);
+            return brandRepository.UpdateBrand(id, name);
         }
-        
-    
+
+        public List<BrandViewModel> GetBrandSummary()
+        {
+            return brandRepository.GetBrandSummary();
+        }
+
+        public List<BrandViewModel> GetBrandSummaryBySubType(int subTypeId)
+        {
+            return brandRepository.GetBrandSummaryBySubType(subTypeId);
+        }
+
+
+
+
 
 }
 }

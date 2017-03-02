@@ -40,27 +40,34 @@ namespace InventoryManagement.Utils
         }
         public static void LoadData(this ListView lv, List<ItemViewModel> items, ImageList imgList, bool summary = false)
         {
+            var defaultImage = Image.FromFile(Utils.Helper.GetImageDirectory(@"\items\default.jpg"));
+            
             lv.Items.Clear();
             lv.LargeImageList = imgList;
-
-            foreach (ItemViewModel iVL in items)
+            if(summary)
+                imgList.Images.Clear();
+            int x = 0;
+            foreach (ItemViewModel item in items)
             {
-                var itemName = iVL.Name + " [" + iVL.Status.ToString() + "]";
+               
+                var itemName = item.Name + " [" + item.Status.ToString() + "]";
 
                 if (summary)
                 {
-                    itemName = iVL.Name + " (" + iVL.SummaryCount.ToString() + ")";
+                    imgList.Images.Add(item.Picture ?? defaultImage);
+                    itemName = item.Name + " (" + item.SummaryCount.ToString() + ")";
                 }
 
                 var newItem = new ListViewItem(itemName);
 
+                
+                newItem.ImageIndex = summary ? x : imgList.Images.IndexOfKey(item.SubTypeId.ToString());
 
-                newItem.ImageIndex = lv.LargeImageList.Images.IndexOfKey(iVL.SubTypeId + ".png");
-
-                newItem.SubItems.Add(iVL.Id.ToString());
-                newItem.SubItems.Add(iVL.TypeId.ToString());
+                newItem.SubItems.Add(item.Id.ToString());
+                newItem.SubItems.Add(item.TypeId.ToString());
 
                 lv.Items.Add(newItem);
+                x++;
             }
         }
         public static void LoadData(this ListView lv, List<UserViewModel> items)

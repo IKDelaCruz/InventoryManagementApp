@@ -12,13 +12,12 @@ namespace InventoryManagement.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class vwItemSubTypeSummary
+    public partial class vwItemSubTypeCount
     {
-        public int ISTSubTypeID { get; set; }
-        public string ISTSubType { get; set; }
-        public int ISTTypeId { get; set; }
-        public string ISTType { get; set; }
-        public Nullable<int> ISTTotalAvailable { get; set; }
-        public byte[] ITemTypePicture { get; set; }
+        public int SubTypeId { get; set; }
+        public string SubTypeName { get; set; }
+        public Nullable<int> TypeId { get; set; }
+        public Nullable<int> SubTypeItemCount { get; set; }
+        public byte[] Picture { get; set; }
     }
 }

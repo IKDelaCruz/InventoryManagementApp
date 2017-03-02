@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static InventoryManagement.Model.CategorySubcategoryModel;
+using static InventoryManagement.Model.ItemSubTypeModel;
 using InventoryManagement.Model;
 using InventoryManagement.ViewModel;
 using InventoryManagement.Repository;
@@ -17,7 +17,7 @@ namespace InventoryManagement
     public partial class frmManageItemType : frmBase
     {
         bool isUpdate;
-       
+
 
         int id;
 
@@ -35,56 +35,43 @@ namespace InventoryManagement
 
         private void btnSave1_Click(object sender, EventArgs e)
         {
-            var result = Singleton.Instance.CategoryModel.GetItemTypeName(txtType.Text);
-            //ASDSADASDASDAS
             if (!isUpdate)
             {
-               var retVal = Singleton.Instance.CategoryModel.CreateType(txtType.Text);
+                var retVal = Singleton.Instance.ItemTypeModel.CreateType(txtType.Text);
 
 
-                if (result != null)
-                {
-                    MessageBox.Show("Type already exists!", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else if (retVal > 0)
+                if (retVal.Success)
                 {
                     MessageBox.Show("Successfully saved");
                 }
-
+                else
+                {
+                    MessageBox.Show(retVal.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
             }
-            //else
-            //{
-            //    var retVal = Singleton.Instance.CategoryModel.Update(id, txtType.Text);
 
-            //    if (retVal > 0)
-            //    {
-            //        MessageBox.Show("Successfully saved");
-            //    }
-            //}
-
-            //this.DialogResult = DialogResult.OK;
-            //this.Close();
         }
 
         private void frmManageItemType_Load(object sender, EventArgs e)
         {
-            FillCombobox();  
+            FillCombobox();
         }
 
-        private void FillCombobox() {
+        private void FillCombobox()
+        {
 
             cbxType.DisplayMember = "Name";
             cbxType.ValueMember = "Id";
-            cbxType.DataSource = Singleton.Instance.CategoryModel.GetCategories();
+            cbxType.DataSource = Singleton.Instance.ItemTypeModel.GetTypes();
 
             cbxSubtype.DisplayMember = "Name";
             cbxSubtype.ValueMember = "Sub_Id";
-            cbxSubtype.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategories();
+            cbxSubtype.DataSource = Singleton.Instance.ItemSubTypeModel.GetSubTypes();
 
             cbxSubtypeOS.DisplayMember = "Name";
             cbxSubtypeOS.ValueMember = "Sub_Id";
-            cbxSubtypeOS.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategories();
+            cbxSubtypeOS.DataSource = Singleton.Instance.ItemSubTypeModel.GetSubTypes();
 
         }
 
@@ -95,35 +82,23 @@ namespace InventoryManagement
 
         private void btnSave2_Click(object sender, EventArgs e)
         {
-            var result = Singleton.Instance.CategorySubcategoryModel.GetSubtypeName(txtSubtype.Text);
-
             if (!isUpdate)
             {
-                var ret = Singleton.Instance.CategoryModel.CreateSubtype((Convert.ToInt32(cbxType.SelectedValue)), txtSubtype.Text);
+                var result = Singleton.Instance.ItemSubTypeModel.CreateSubItemType((Convert.ToInt32(cbxType.SelectedValue)), txtSubtype.Text);
 
-                if (result != null)
-                {
-                    MessageBox.Show("Subtype already exists!", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else if (ret > 0)
+                if (result.Success)
                 {
                     MessageBox.Show("Successfully saved");
                 }
+                else
+                {
+                    MessageBox.Show(result.Message);
+                }
 
 
-                //}
-                //else
-                //{
-                //    var ret = Singleton.Instance.CategoryModel.UpdateSubtype(id, txtSubtype.Text);
-
-                //    if (ret > 0)
-                //    {
-                //        MessageBox.Show("Successfully saved");
-                //    }
-                //}
             }
 
-           // this.DialogResult = DialogResult.OK;
+
 
         }
 
@@ -132,23 +107,24 @@ namespace InventoryManagement
             FillCombobox();
         }
 
-   
+
 
         private void SaveBrand_Click(object sender, EventArgs e)
         {
-            var result = Singleton.Instance.BrandModel.GetBrandName(Convert.ToInt32(cbxSubtype.SelectedValue),txtNewBrand.Text);
+            var result = Singleton.Instance.BrandModel.GetBrandName(Convert.ToInt32(cbxSubtype.SelectedValue), txtNewBrand.Text);
 
             if (result != null)
             {
                 MessageBox.Show("Brand name already exists!", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else {
+            else
+            {
 
                 if (!isUpdate)
                 {
                     var retval = Singleton.Instance.BrandModel.CreateNewBrand(Convert.ToInt32(cbxSubtype.SelectedValue), txtNewBrand.Text);
 
-                    if (retval > 0)
+                    if (retval.Success)
                     {
                         MessageBox.Show("Successfully saved");
 
@@ -169,7 +145,7 @@ namespace InventoryManagement
             //        MessageBox.Show("Successfully saved");
             //    }
             //}
-          
+
         }
 
         private void btnCancel3_Click(object sender, EventArgs e)
@@ -179,7 +155,7 @@ namespace InventoryManagement
 
         private void btnSaveOs_Click(object sender, EventArgs e)
         {
-            
+
 
             var result = Singleton.Instance.ItemModel.GetOSname(Convert.ToInt32(cbxSubtypeOS.SelectedValue), txtOs.Text);
 
@@ -226,4 +202,4 @@ namespace InventoryManagement
             this.Close();
         }
     }
-    }
+}

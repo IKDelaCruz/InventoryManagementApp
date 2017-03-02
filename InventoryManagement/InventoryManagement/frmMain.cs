@@ -12,6 +12,7 @@ using InventoryManagement.Utils;
 using InventoryManagement.ViewModel;
 using BarcodeLib;
 using InventoryManagement.Report;
+using InventoryManagement.Manage;
 
 namespace InventoryManagement
 {
@@ -29,17 +30,18 @@ namespace InventoryManagement
             IsInitializing = false;
         }
 
-        private void fillcombo() {
+        private void fillcombo()
+        {
 
             cbxStatus.DataSource = Enum.GetValues(typeof(ItemStatus));
-           
+
             cbxType.DisplayMember = "Name";
             cbxType.ValueMember = "Id";
-            cbxType.DataSource = Singleton.Instance.CategoryModel.GetCategories();
-            
+            cbxType.DataSource = Singleton.Instance.ItemTypeModel.GetTypes();
+
             cbxSubtype.DisplayMember = "Name";
-            cbxSubtype.ValueMember = "Sub_Id";
-            cbxSubtype.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategoriesByType((int)cbxType.SelectedValue);
+            cbxSubtype.ValueMember = "Id";
+            cbxSubtype.DataSource = Singleton.Instance.ItemSubTypeModel.GetSubTypesByType((int)cbxType.SelectedValue);
 
             cbxLocation.ValueMember = "Id";
             cbxLocation.DisplayMember = "Name";
@@ -55,9 +57,9 @@ namespace InventoryManagement
         private void frmMain_Load(object sender, EventArgs e)
         {
             txtScan.Select();
-            DoUpdateView();
+            DoUpdateView(false);
             ShowSummary();
-           
+
         }
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -67,7 +69,7 @@ namespace InventoryManagement
 
 
 
-    #region --- Click Events ---
+        #region --- Click Events ---
 
         private void loginToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -76,8 +78,8 @@ namespace InventoryManagement
                 var frm = new frmLogin();
                 var result = frm.ShowDialog();
                 if (result == DialogResult.OK)
-                    DoUpdateView();
-                                   
+                    DoUpdateView(false);
+
             }
             else
             {
@@ -142,13 +144,13 @@ namespace InventoryManagement
         }
 
         #region --- Methods --- 
-       
-        private void DoUpdateView()
+
+        private void DoUpdateView(bool useCache)
         {
             if (IsInitializing)
                 return;
 
-            var itms = Singleton.Instance.ItemModel.GetItems();
+            var itms = Singleton.Instance.ItemModel.GetItems(useCache);
 
             #region --- FILTER LOGIC ---
 
@@ -171,6 +173,10 @@ namespace InventoryManagement
 
             #endregion
 
+            var images = Singleton.Instance.ItemSubTypeModel.GetItemSubTypeImages();
+            foreach (ItemSubTypeViewModel x in images)
+                imgMainImage.Images.Add(x.Id.ToString(), x.Picture);
+
             lvMain.LoadData(itms, imgMainImage);
 
             tssUsername.Text = string.Format("Current User [{0}]", Singleton.Instance.UserModel.CurrentUser == null ? "" :
@@ -187,18 +193,13 @@ namespace InventoryManagement
 
         private void UpdateView(object sender, EventArgs e)
         {
-            DoUpdateView();
-
-           
-
+            if(!IsInitializing)
+                DoUpdateView(true);
         }
 
         private void DoUpdateItemDetails()
         {
-
-            var item = Singleton.Instance.ItemModel.GetItem(_selectedItem.Id);
-          
-
+            var item = _selectedItem;
             if (item != null)
             {
 
@@ -238,7 +239,7 @@ namespace InventoryManagement
                 ItemModel itm = new ItemModel();
                 Singleton.Instance.ItemModel.UpdateItemStatus(_selectedItem.Id, userId, status);
 
-                DoUpdateView();
+                DoUpdateView(false);
                 DoUpdateItemDetails();
             }
         }
@@ -283,7 +284,7 @@ namespace InventoryManagement
 
         private void addItemTypeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new frmManageItemType().ShowDialog();
+            new frmManageType().ShowDialog();
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -294,78 +295,7 @@ namespace InventoryManagement
         private void txtScan_TextChanged(object sender, EventArgs e)
         {
 
-            var itms = Singleton.Instance.ItemModel.GetItems();
-            var val = txtScan.Text;
-            
 
-            if (txtScan.Text.Length == 8)
-            {
-
-                if (txtScan.Text != null)
-                {
-                    if (itms.Count >= 0)
-                    {
-                        val = val.Substring(0, val.Length - 1);
-                        itms = itms.Where(h => h.Id == Convert.ToInt32(val)).ToList();
-                        lvMain.LoadData(itms, imgMainImage); 
-
-                        var item = Singleton.Instance.ItemModel.GetItem(Convert.ToInt32(val));
-
-                        if (item.Status == ItemStatus.Borrowed)
-                        {
-                            Singleton.Instance.ItemModel.UpdateItemStatusById(Convert.ToInt32(val), ItemStatus.Available, 0);
-                            //Singleton.Instance.ItemModel.UpdateItemOwner(Convert.ToInt32(val), 0);
-                            DialogResult msg = MessageBox.Show("Successfully returned!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, item.CurrentOwner, ViewModel.TransactionType.ReturnItem, "", Convert.ToInt32(val));
-                            if (msg == DialogResult.OK)
-                            {
-                                DoUpdateView();
-                            }
-                        }
-                        else if (item.Status == ItemStatus.Reserved)
-                        {
-                            Singleton.Instance.ItemModel.UpdateItemStatusById(Convert.ToInt32(val),  ItemStatus.Borrowed, item.CurrentOwner);
-                            DialogResult msg = MessageBox.Show("Successfully borrowed!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, item.CurrentOwner, ViewModel.TransactionType.BorrowItem, "", Convert.ToInt32(val));
-                            if (msg == DialogResult.OK)
-                            {
-                                DoUpdateView();
-                            }
-                        }
-                        else
-                        {
-                            Singleton.Instance.ItemModel.UpdateItemStatusById(Convert.ToInt32(val), ItemStatus.Borrowed, item.CurrentOwner);
-                            DialogResult msg = MessageBox.Show("Successfully borrowed!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, item.CurrentOwner, ViewModel.TransactionType.BorrowItem, "", Convert.ToInt32(val));
-                            if (msg == DialogResult.OK)
-                            {
-                                DoUpdateView();
-                            }
-                        }
-
-
-                        if (lvMain.Items.Count > 0)
-                        {
-                            lvMain.Items[0].Selected = true;
-                            lvMain.Select();
-       
-                        }
-
-                    }
-                    if (txtScan.Text.Length == 8 && !itms.Any())
-                    {
-                        MessageBox.Show("Item/s is not found!");
-
-                    }
-                    if (txtScan.Text.Length == 8)
-                    {
-                        txtScan.SelectAll();
-                    }
-
-                }
-                
-
-            }
 
 
         }
@@ -373,7 +303,7 @@ namespace InventoryManagement
         private void txtScan_Click(object sender, EventArgs e)
         {
             txtScan.Clear();
-            DoUpdateView();
+
         }
 
         private void cbxSubtype_SelectedIndexChanged(object sender, EventArgs e)
@@ -384,12 +314,12 @@ namespace InventoryManagement
 
         private void chkShowAllSubType_CheckedChanged(object sender, EventArgs e)
         {
-            DoUpdateView();
+            DoUpdateView(true);
         }
 
         private void lvMain_Click(object sender, EventArgs e)
         {
-           // DoUpdateView();
+            //DoUpdateView();
         }
 
         private void processedRequestsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -422,7 +352,7 @@ namespace InventoryManagement
         {
             cbxSubtype.DisplayMember = "Name";
             cbxSubtype.ValueMember = "Sub_Id";
-            cbxSubtype.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategoriesByType((int)cbxType.SelectedValue);
+            cbxSubtype.DataSource = Singleton.Instance.ItemSubTypeModel.GetSubTypesByType((int)cbxType.SelectedValue);
         }
 
         private void pnlTop_Paint(object sender, PaintEventArgs e)
@@ -443,6 +373,12 @@ namespace InventoryManagement
         private void borrowedReservedBrokenItemsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new ReportViewer3().ShowDialog();
+        }
+
+        private void manageBrandToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var dlg = new frmManageBrand();
+            dlg.ShowDialog();
         }
     }
 

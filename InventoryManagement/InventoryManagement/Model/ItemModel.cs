@@ -11,15 +11,17 @@ namespace InventoryManagement.Model
 {
     public class ItemModel : BaseModel
     {
-        CategoryRepository catRepository;
+        List<ItemViewModel> itemCache;
+
+        ItemTypeRepository catRepository;
         ItemRepository itemRepostory;
-        SubCategoryRepository catSubRepository;
+        ItemSubTypeRepository catSubRepository;
 
         public ItemModel()
         {
-            catRepository = new CategoryRepository();
+            catRepository = new ItemTypeRepository();
             itemRepostory = new ItemRepository();
-            catSubRepository = new SubCategoryRepository();
+            catSubRepository = new ItemSubTypeRepository();
         }
 
         public ReturnValueModel CreateNewItem(ItemViewModel newItem, int userId)
@@ -28,9 +30,9 @@ namespace InventoryManagement.Model
             var newItemId = itemRepostory.Insert(newItem, userId);
 
 
-            var catRepo = new CategoryRepository();
-            var itemType = catRepo.QueryCategory(newItem.TypeId);
-            var itemSubtype = catSubRepository.QuerySubcategory(newItem.SubTypeId);
+            var catRepo = new ItemTypeRepository();
+            var itemType = catRepo.QueryItemType(newItem.TypeId);
+            var itemSubtype = catSubRepository.QuerySubTypeById(newItem.SubTypeId);
 
 
             var assetTag = GenerateAssetTag(itemType.Name, itemSubtype.Name, newItemId);
@@ -123,9 +125,21 @@ namespace InventoryManagement.Model
         {
             return itemRepostory.QueryBrands();
         }
-        public List<ItemViewModel> GetItems()
+        public List<ItemViewModel> GetItems(bool useCache)
         {
-            return itemRepostory.QueryItems();
+            if (useCache)
+            {
+                if (itemCache == null)
+                {
+                    itemCache = itemRepostory.QueryItems();
+                }
+            }
+            else
+            {
+                itemCache = itemRepostory.QueryItems();
+            }
+
+            return itemCache;
         }
         public List<ItemViewModel> GetItemsBySubType(int subTypeId)
         {
@@ -144,12 +158,12 @@ namespace InventoryManagement.Model
             //get value from two tables
             
             var item = itemRepostory.QueryItem(id);
-            var subcateg = catSubRepository.QuerySubcategory(item.SubTypeId).Name;
-            var categ = catRepository.QueryCategory(item.TypeId).Name;
-            item.Brand = itemRepostory.QueryBrand(item.BrandId).Name;
-            item.SubType = subcateg;
-            item.Type = categ;
-            item.CurrentOwnerName = itemRepostory.QueryOwner(item.CurrentOwner);
+            //var subcateg = catSubRepository.QuerySubTypeById(item.SubTypeId).Name;
+            //var categ = catRepository.QueryItemType(item.TypeId).Name;
+            //item.Brand = itemRepostory.QueryBrand(item.BrandId).Name;
+            //item.SubType = subcateg;
+            //item.Type = categ;
+            //item.CurrentOwnerName = itemRepostory.QueryOwner(item.CurrentOwner);
 
             return item;
         }
@@ -167,9 +181,9 @@ namespace InventoryManagement.Model
                 return Image.FromFile(Utils.Helper.GetImageDirectory(@"\items\default.jpg"));
         }
 
-        public List<OSViewModel> GetOSBySubtype(int subtypeId)
+        public List<OSViewModel> GetOSBySubtype()
         {
-            return itemRepostory.QueryOSBySubtype(subtypeId);
+            return itemRepostory.QueryOSBySubtype();
         }
 
 

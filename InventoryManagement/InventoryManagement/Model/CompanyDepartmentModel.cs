@@ -15,34 +15,34 @@ namespace InventoryManagement.Model
         {
             cdR = new CompanyDepartmentRepository();
         }
-        public CompanyDepartmentViewModel GetCompany(int id)
+        public CompanyViewModel GetCompany(int id)
         {
             return cdR.QueryCompany(id);
         }
-        public List<CompanyDepartmentViewModel> GetCompanies()
+        public List<CompanyViewModel> GetCompanies()
         {
             return cdR.QueryCompanies();
         }
-        public CompanyDepartmentViewModel GetDepartment(int id)
+        public CompanyViewModel GetDepartment(int id)
         {
             return cdR.QueryDepartment(id);
         }
-        public List<CompanyDepartmentViewModel> GetDepartments(int companyId)
+        public List<CompanyViewModel> GetDepartments(int companyId)
         {
             return cdR.QueryDepartments(companyId);
         }
-        public List<CompanyDepartmentViewModel> GetCompaniesWithDepartments()
+        public List<CompanyViewModel> GetCompaniesWithDepartments()
         {
-            var list = new List<CompanyDepartmentViewModel>();
+            var list = new List<CompanyViewModel>();
 
             var comps = cdR.QueryCompanies();
 
-            foreach(CompanyDepartmentViewModel c in comps)
+            foreach(CompanyViewModel c in comps)
             {
                 var deps = cdR.QueryDepartments(c.Id);
-                foreach(CompanyDepartmentViewModel d in deps)
+                foreach(CompanyViewModel d in deps)
                 {
-                    list.Add(new CompanyDepartmentViewModel {
+                    list.Add(new CompanyViewModel {
                         Id = d.Id,
                         Name = c.Name + " - " + d.Name
                     });

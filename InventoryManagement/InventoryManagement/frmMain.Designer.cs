@@ -113,6 +113,7 @@
             this.processedRequestsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.depreciationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.borrowedReservedBrokenItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manageBrandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlMain.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlTop.SuspendLayout();
@@ -135,10 +136,10 @@
             this.pnlMain.Controls.Add(this.panel1);
             this.pnlMain.Controls.Add(this.pnlTop);
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMain.Location = new System.Drawing.Point(0, 33);
+            this.pnlMain.Location = new System.Drawing.Point(0, 24);
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Padding = new System.Windows.Forms.Padding(5);
-            this.pnlMain.Size = new System.Drawing.Size(816, 581);
+            this.pnlMain.Size = new System.Drawing.Size(816, 598);
             this.pnlMain.TabIndex = 3;
             // 
             // panel1
@@ -148,7 +149,7 @@
             this.panel1.Location = new System.Drawing.Point(5, 93);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.panel1.Size = new System.Drawing.Size(806, 483);
+            this.panel1.Size = new System.Drawing.Size(806, 500);
             this.panel1.TabIndex = 2;
             // 
             // lvMain
@@ -158,7 +159,7 @@
             this.lvMain.LargeImageList = this.imgMainImage;
             this.lvMain.Location = new System.Drawing.Point(0, 5);
             this.lvMain.Name = "lvMain";
-            this.lvMain.Size = new System.Drawing.Size(806, 478);
+            this.lvMain.Size = new System.Drawing.Size(806, 495);
             this.lvMain.SmallImageList = this.imgMainImage;
             this.lvMain.TabIndex = 0;
             this.lvMain.UseCompatibleStateImageBehavior = false;
@@ -196,7 +197,7 @@
             this.txtScan.BackColor = System.Drawing.Color.Gainsboro;
             this.txtScan.Location = new System.Drawing.Point(35, 32);
             this.txtScan.Name = "txtScan";
-            this.txtScan.Size = new System.Drawing.Size(121, 31);
+            this.txtScan.Size = new System.Drawing.Size(121, 23);
             this.txtScan.TabIndex = 48;
             this.txtScan.Click += new System.EventHandler(this.txtScan_Click);
             this.txtScan.TextChanged += new System.EventHandler(this.txtScan_TextChanged);
@@ -206,7 +207,7 @@
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(32, 14);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(126, 24);
+            this.label13.Size = new System.Drawing.Size(84, 15);
             this.label13.TabIndex = 47;
             this.label13.Text = "&Scan Barcode:";
             // 
@@ -217,7 +218,7 @@
             this.chkShowAllLocation.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkShowAllLocation.Location = new System.Drawing.Point(651, 61);
             this.chkShowAllLocation.Name = "chkShowAllLocation";
-            this.chkShowAllLocation.Size = new System.Drawing.Size(108, 28);
+            this.chkShowAllLocation.Size = new System.Drawing.Size(73, 19);
             this.chkShowAllLocation.TabIndex = 46;
             this.chkShowAllLocation.Text = "Show All";
             this.chkShowAllLocation.UseVisualStyleBackColor = true;
@@ -230,7 +231,7 @@
             this.chkShowAllSubType.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkShowAllSubType.Location = new System.Drawing.Point(497, 61);
             this.chkShowAllSubType.Name = "chkShowAllSubType";
-            this.chkShowAllSubType.Size = new System.Drawing.Size(108, 28);
+            this.chkShowAllSubType.Size = new System.Drawing.Size(73, 19);
             this.chkShowAllSubType.TabIndex = 45;
             this.chkShowAllSubType.Text = "Show All";
             this.chkShowAllSubType.UseVisualStyleBackColor = true;
@@ -243,7 +244,7 @@
             this.chkShowAllType.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkShowAllType.Location = new System.Drawing.Point(343, 61);
             this.chkShowAllType.Name = "chkShowAllType";
-            this.chkShowAllType.Size = new System.Drawing.Size(108, 28);
+            this.chkShowAllType.Size = new System.Drawing.Size(73, 19);
             this.chkShowAllType.TabIndex = 44;
             this.chkShowAllType.Text = "Show All";
             this.chkShowAllType.UseVisualStyleBackColor = true;
@@ -256,7 +257,7 @@
             this.chkShowAllStatus.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkShowAllStatus.Location = new System.Drawing.Point(189, 61);
             this.chkShowAllStatus.Name = "chkShowAllStatus";
-            this.chkShowAllStatus.Size = new System.Drawing.Size(108, 28);
+            this.chkShowAllStatus.Size = new System.Drawing.Size(73, 19);
             this.chkShowAllStatus.TabIndex = 43;
             this.chkShowAllStatus.Text = "Show All";
             this.chkShowAllStatus.UseVisualStyleBackColor = true;
@@ -267,7 +268,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(648, 14);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(80, 24);
+            this.label7.Size = new System.Drawing.Size(53, 15);
             this.label7.TabIndex = 42;
             this.label7.Text = "Location";
             // 
@@ -278,7 +279,7 @@
             this.cbxLocation.Location = new System.Drawing.Point(651, 32);
             this.cbxLocation.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.cbxLocation.Name = "cbxLocation";
-            this.cbxLocation.Size = new System.Drawing.Size(121, 32);
+            this.cbxLocation.Size = new System.Drawing.Size(121, 23);
             this.cbxLocation.TabIndex = 41;
             this.cbxLocation.SelectedIndexChanged += new System.EventHandler(this.UpdateView);
             // 
@@ -287,7 +288,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(494, 14);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(86, 24);
+            this.label5.Size = new System.Drawing.Size(55, 15);
             this.label5.TabIndex = 40;
             this.label5.Text = "Sub-Type";
             // 
@@ -298,7 +299,7 @@
             this.cbxSubtype.Location = new System.Drawing.Point(497, 32);
             this.cbxSubtype.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.cbxSubtype.Name = "cbxSubtype";
-            this.cbxSubtype.Size = new System.Drawing.Size(121, 32);
+            this.cbxSubtype.Size = new System.Drawing.Size(121, 23);
             this.cbxSubtype.TabIndex = 39;
             this.cbxSubtype.SelectedIndexChanged += new System.EventHandler(this.UpdateView);
             // 
@@ -307,7 +308,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(340, 14);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 24);
+            this.label3.Size = new System.Drawing.Size(31, 15);
             this.label3.TabIndex = 38;
             this.label3.Text = "Type";
             // 
@@ -318,7 +319,7 @@
             this.cbxType.Location = new System.Drawing.Point(343, 32);
             this.cbxType.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.cbxType.Name = "cbxType";
-            this.cbxType.Size = new System.Drawing.Size(121, 32);
+            this.cbxType.Size = new System.Drawing.Size(121, 23);
             this.cbxType.TabIndex = 37;
             this.cbxType.SelectedIndexChanged += new System.EventHandler(this.cbxType_SelectedIndexChanged);
             // 
@@ -327,7 +328,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(186, 14);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 24);
+            this.label2.Size = new System.Drawing.Size(41, 15);
             this.label2.TabIndex = 35;
             this.label2.Text = "Status";
             // 
@@ -338,7 +339,7 @@
             this.cbxStatus.Location = new System.Drawing.Point(189, 32);
             this.cbxStatus.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.cbxStatus.Name = "cbxStatus";
-            this.cbxStatus.Size = new System.Drawing.Size(121, 32);
+            this.cbxStatus.Size = new System.Drawing.Size(121, 23);
             this.cbxStatus.TabIndex = 0;
             this.cbxStatus.SelectedIndexChanged += new System.EventHandler(this.UpdateView);
             // 
@@ -346,10 +347,10 @@
             // 
             this.pnlRightInfo.Controls.Add(this.pnlRightContent);
             this.pnlRightInfo.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlRightInfo.Location = new System.Drawing.Point(816, 33);
+            this.pnlRightInfo.Location = new System.Drawing.Point(816, 24);
             this.pnlRightInfo.Name = "pnlRightInfo";
             this.pnlRightInfo.Padding = new System.Windows.Forms.Padding(0, 5, 5, 5);
-            this.pnlRightInfo.Size = new System.Drawing.Size(315, 581);
+            this.pnlRightInfo.Size = new System.Drawing.Size(315, 598);
             this.pnlRightInfo.TabIndex = 2;
             // 
             // pnlRightContent
@@ -361,7 +362,7 @@
             this.pnlRightContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlRightContent.Location = new System.Drawing.Point(0, 5);
             this.pnlRightContent.Name = "pnlRightContent";
-            this.pnlRightContent.Size = new System.Drawing.Size(310, 571);
+            this.pnlRightContent.Size = new System.Drawing.Size(310, 588);
             this.pnlRightContent.TabIndex = 0;
             // 
             // groupBox2
@@ -383,7 +384,7 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(26, 18);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(88, 24);
+            this.label11.Size = new System.Drawing.Size(58, 15);
             this.label11.TabIndex = 48;
             this.label11.Text = "Borrower";
             // 
@@ -393,7 +394,7 @@
             this.cbxUsers.FormattingEnabled = true;
             this.cbxUsers.Location = new System.Drawing.Point(29, 36);
             this.cbxUsers.Name = "cbxUsers";
-            this.cbxUsers.Size = new System.Drawing.Size(232, 32);
+            this.cbxUsers.Size = new System.Drawing.Size(232, 23);
             this.cbxUsers.TabIndex = 47;
             // 
             // btnReserve
@@ -483,7 +484,7 @@
             this.label9.Location = new System.Drawing.Point(15, 90);
             this.label9.Name = "label9";
             this.label9.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.label9.Size = new System.Drawing.Size(122, 44);
+            this.label9.Size = new System.Drawing.Size(78, 35);
             this.label9.TabIndex = 36;
             this.label9.Text = "ITEM DETAILS";
             // 
@@ -504,7 +505,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(15, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(26, 24);
+            this.label1.Size = new System.Drawing.Size(18, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Id";
             // 
@@ -529,7 +530,7 @@
             this.label35.AutoSize = true;
             this.label35.Location = new System.Drawing.Point(15, 360);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(125, 24);
+            this.label35.Size = new System.Drawing.Size(81, 15);
             this.label35.TabIndex = 33;
             this.label35.Text = "Current Value";
             // 
@@ -538,7 +539,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(15, 43);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(87, 24);
+            this.label4.Size = new System.Drawing.Size(57, 15);
             this.label4.TabIndex = 2;
             this.label4.Text = "Asset Tag";
             // 
@@ -563,7 +564,7 @@
             this.label28.AutoSize = true;
             this.label28.Location = new System.Drawing.Point(15, 345);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(80, 24);
+            this.label28.Size = new System.Drawing.Size(53, 15);
             this.label28.TabIndex = 31;
             this.label28.Text = "LifeSpan";
             // 
@@ -572,7 +573,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(15, 58);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(59, 24);
+            this.label6.Size = new System.Drawing.Size(38, 15);
             this.label6.TabIndex = 4;
             this.label6.Text = "Name";
             // 
@@ -597,7 +598,7 @@
             this.label30.AutoSize = true;
             this.label30.Location = new System.Drawing.Point(15, 330);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(78, 24);
+            this.label30.Size = new System.Drawing.Size(49, 15);
             this.label30.TabIndex = 29;
             this.label30.Text = "Amount";
             // 
@@ -606,7 +607,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(15, 73);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(104, 24);
+            this.label8.Size = new System.Drawing.Size(70, 15);
             this.label8.TabIndex = 6;
             this.label8.Text = "Description";
             // 
@@ -631,7 +632,7 @@
             this.label32.AutoSize = true;
             this.label32.Location = new System.Drawing.Point(15, 315);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(129, 24);
+            this.label32.Size = new System.Drawing.Size(86, 15);
             this.label32.TabIndex = 27;
             this.label32.Text = "Date Purchase";
             // 
@@ -640,7 +641,7 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(15, 125);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(49, 24);
+            this.label10.Size = new System.Drawing.Size(31, 15);
             this.label10.TabIndex = 8;
             this.label10.Text = "Type";
             // 
@@ -651,7 +652,7 @@
             this.label33.Location = new System.Drawing.Point(15, 280);
             this.label33.Name = "label33";
             this.label33.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.label33.Size = new System.Drawing.Size(180, 44);
+            this.label33.Size = new System.Drawing.Size(114, 35);
             this.label33.TabIndex = 26;
             this.label33.Text = "ITEM DEPRECIATION";
             // 
@@ -676,7 +677,7 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(15, 140);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(86, 24);
+            this.label12.Size = new System.Drawing.Size(55, 15);
             this.label12.TabIndex = 10;
             this.label12.Text = "Sub-Type";
             // 
@@ -685,7 +686,7 @@
             this.label26.AutoSize = true;
             this.label26.Location = new System.Drawing.Point(15, 265);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(110, 24);
+            this.label26.Size = new System.Drawing.Size(71, 15);
             this.label26.TabIndex = 24;
             this.label26.Text = "Last Update";
             // 
@@ -710,7 +711,7 @@
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(15, 155);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(60, 24);
+            this.label14.Size = new System.Drawing.Size(40, 15);
             this.label14.TabIndex = 12;
             this.label14.Text = "Brand";
             // 
@@ -719,7 +720,7 @@
             this.label24.AutoSize = true;
             this.label24.Location = new System.Drawing.Point(15, 250);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(134, 24);
+            this.label24.Size = new System.Drawing.Size(87, 15);
             this.label24.TabIndex = 22;
             this.label24.Text = "Current Owner";
             // 
@@ -744,7 +745,7 @@
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(15, 170);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(64, 24);
+            this.label16.Size = new System.Drawing.Size(42, 15);
             this.label16.TabIndex = 14;
             this.label16.Text = "Model";
             // 
@@ -753,7 +754,7 @@
             this.label22.AutoSize = true;
             this.label22.Location = new System.Drawing.Point(15, 235);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(62, 24);
+            this.label22.Size = new System.Drawing.Size(41, 15);
             this.label22.TabIndex = 20;
             this.label22.Text = "Status";
             // 
@@ -772,7 +773,7 @@
             this.label20.Location = new System.Drawing.Point(15, 200);
             this.label20.Name = "label20";
             this.label20.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.label20.Size = new System.Drawing.Size(116, 44);
+            this.label20.Size = new System.Drawing.Size(74, 35);
             this.label20.TabIndex = 19;
             this.label20.Text = "ITEM STATUS";
             // 
@@ -781,7 +782,7 @@
             this.label18.AutoSize = true;
             this.label18.Location = new System.Drawing.Point(15, 185);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(56, 24);
+            this.label18.Size = new System.Drawing.Size(39, 15);
             this.label18.TabIndex = 16;
             this.label18.Text = "Serial";
             // 
@@ -798,17 +799,17 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tssUsername});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 614);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 622);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(1131, 30);
+            this.statusStrip1.Size = new System.Drawing.Size(1131, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // tssUsername
             // 
             this.tssUsername.Name = "tssUsername";
-            this.tssUsername.Size = new System.Drawing.Size(125, 25);
+            this.tssUsername.Size = new System.Drawing.Size(84, 17);
             this.tssUsername.Text = "Current User []";
             // 
             // menuStrip1
@@ -823,7 +824,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1131, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(1131, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -834,20 +835,20 @@
             this.loginToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(50, 29);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // loginToolStripMenuItem
             // 
             this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            this.loginToolStripMenuItem.Size = new System.Drawing.Size(141, 30);
+            this.loginToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
             this.loginToolStripMenuItem.Text = "Login";
             this.loginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(141, 30);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Visible = false;
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
@@ -858,35 +859,36 @@
             this.summaryToolStripMenuItem,
             this.toolStripSeparator1,
             this.addToolStripMenuItem,
-            this.addItemTypeToolStripMenuItem});
+            this.addItemTypeToolStripMenuItem,
+            this.manageBrandToolStripMenuItem});
             this.inventoryToolStripMenuItem.Name = "inventoryToolStripMenuItem";
-            this.inventoryToolStripMenuItem.Size = new System.Drawing.Size(99, 29);
+            this.inventoryToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.inventoryToolStripMenuItem.Text = "Inventory";
             // 
             // summaryToolStripMenuItem
             // 
             this.summaryToolStripMenuItem.Name = "summaryToolStripMenuItem";
-            this.summaryToolStripMenuItem.Size = new System.Drawing.Size(214, 30);
+            this.summaryToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.summaryToolStripMenuItem.Text = "Summary";
             this.summaryToolStripMenuItem.Click += new System.EventHandler(this.summaryToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(211, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(180, 6);
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(214, 30);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.addToolStripMenuItem.Text = "Add Item";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // addItemTypeToolStripMenuItem
             // 
             this.addItemTypeToolStripMenuItem.Name = "addItemTypeToolStripMenuItem";
-            this.addItemTypeToolStripMenuItem.Size = new System.Drawing.Size(214, 30);
-            this.addItemTypeToolStripMenuItem.Text = "Add Item Type";
+            this.addItemTypeToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.addItemTypeToolStripMenuItem.Text = "Manage Types";
             this.addItemTypeToolStripMenuItem.Click += new System.EventHandler(this.addItemTypeToolStripMenuItem_Click);
             // 
             // usersToolStripMenuItem
@@ -895,20 +897,20 @@
             this.manageToolStripMenuItem,
             this.logsToolStripMenuItem});
             this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
-            this.usersToolStripMenuItem.Size = new System.Drawing.Size(67, 29);
+            this.usersToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.usersToolStripMenuItem.Text = "Users";
             // 
             // manageToolStripMenuItem
             // 
             this.manageToolStripMenuItem.Name = "manageToolStripMenuItem";
-            this.manageToolStripMenuItem.Size = new System.Drawing.Size(161, 30);
+            this.manageToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.manageToolStripMenuItem.Text = "Manage";
             this.manageToolStripMenuItem.Click += new System.EventHandler(this.manageToolStripMenuItem_Click);
             // 
             // logsToolStripMenuItem
             // 
             this.logsToolStripMenuItem.Name = "logsToolStripMenuItem";
-            this.logsToolStripMenuItem.Size = new System.Drawing.Size(161, 30);
+            this.logsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.logsToolStripMenuItem.Text = "Logs";
             this.logsToolStripMenuItem.Click += new System.EventHandler(this.logsToolStripMenuItem_Click);
             // 
@@ -917,13 +919,13 @@
             this.requestToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.manageToolStripMenuItem1});
             this.requestToolStripMenuItem.Name = "requestToolStripMenuItem";
-            this.requestToolStripMenuItem.Size = new System.Drawing.Size(87, 29);
+            this.requestToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.requestToolStripMenuItem.Text = "Request";
             // 
             // manageToolStripMenuItem1
             // 
             this.manageToolStripMenuItem1.Name = "manageToolStripMenuItem1";
-            this.manageToolStripMenuItem1.Size = new System.Drawing.Size(161, 30);
+            this.manageToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.manageToolStripMenuItem1.Text = "Manage";
             this.manageToolStripMenuItem1.Click += new System.EventHandler(this.manageToolStripMenuItem1_Click);
             // 
@@ -934,33 +936,40 @@
             this.depreciationToolStripMenuItem,
             this.borrowedReservedBrokenItemsToolStripMenuItem});
             this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
-            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(85, 29);
+            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.reportsToolStripMenuItem.Text = "Reports";
             // 
             // processedRequestsToolStripMenuItem
             // 
             this.processedRequestsToolStripMenuItem.Name = "processedRequestsToolStripMenuItem";
-            this.processedRequestsToolStripMenuItem.Size = new System.Drawing.Size(363, 30);
+            this.processedRequestsToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
             this.processedRequestsToolStripMenuItem.Text = "Processed Requests";
             this.processedRequestsToolStripMenuItem.Click += new System.EventHandler(this.processedRequestsToolStripMenuItem_Click);
             // 
             // depreciationToolStripMenuItem
             // 
             this.depreciationToolStripMenuItem.Name = "depreciationToolStripMenuItem";
-            this.depreciationToolStripMenuItem.Size = new System.Drawing.Size(363, 30);
+            this.depreciationToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
             this.depreciationToolStripMenuItem.Text = "Depreciation";
             this.depreciationToolStripMenuItem.Click += new System.EventHandler(this.depreciationToolStripMenuItem_Click);
             // 
             // borrowedReservedBrokenItemsToolStripMenuItem
             // 
             this.borrowedReservedBrokenItemsToolStripMenuItem.Name = "borrowedReservedBrokenItemsToolStripMenuItem";
-            this.borrowedReservedBrokenItemsToolStripMenuItem.Size = new System.Drawing.Size(363, 30);
+            this.borrowedReservedBrokenItemsToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
             this.borrowedReservedBrokenItemsToolStripMenuItem.Text = "Borrowed/Reserved/Broken Items";
             this.borrowedReservedBrokenItemsToolStripMenuItem.Click += new System.EventHandler(this.borrowedReservedBrokenItemsToolStripMenuItem_Click);
             // 
+            // manageBrandToolStripMenuItem
+            // 
+            this.manageBrandToolStripMenuItem.Name = "manageBrandToolStripMenuItem";
+            this.manageBrandToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.manageBrandToolStripMenuItem.Text = "Manage Brand";
+            this.manageBrandToolStripMenuItem.Click += new System.EventHandler(this.manageBrandToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(1131, 644);
@@ -1079,6 +1088,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem depreciationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem borrowedReservedBrokenItemsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem manageBrandToolStripMenuItem;
     }
 }
 

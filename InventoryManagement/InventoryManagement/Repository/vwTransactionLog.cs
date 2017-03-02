@@ -20,7 +20,7 @@ namespace InventoryManagement.Repository
         public int request_item_primary_type { get; set; }
         public string type { get; set; }
         public int request_item_secondary_type { get; set; }
-        public string subtype { get; set; }
+        public int Expr1 { get; set; }
         public System.DateTime request_date { get; set; }
         public Nullable<System.DateTime> process_date { get; set; }
         public int request_status { get; set; }

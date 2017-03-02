@@ -42,50 +42,11 @@ namespace InventoryManagement
                 DoLoadItem(itemId);
 
         }
-        public void Depreciation() {
-
-            //DEPRECIATION COMPUTATION
-            DateTime purchasedate = dtpPurchaseDate.Value;
-            decimal purchaseprice = Convert.ToDecimal(txtPurchasePrice.Text);
-            decimal lifespan = Convert.ToDecimal(txtLifetime.Text);
-            DateTime annum = purchasedate.AddYears(1);
-            decimal salvageValue = Convert.ToDecimal(txtSalvageValue.Text);
-            decimal initialValue;
-            decimal currentvalue;
-           
-
-            if (annum == DateTime.Now)
-            {
-                MessageBox.Show("Annual Depreciation marks today!", "Message");
-            }
-            else
-            {
-                var days = (DateTime.Now - purchasedate).TotalDays;
-                initialValue = ((purchaseprice - salvageValue) / lifespan) / 365;
-                currentvalue = purchaseprice - (initialValue * Convert.ToInt32(days));
-                txtCurrentValue.Text = currentvalue.ToString("n2");
-            }
-
-        }
+        
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Depreciation();
-            decimal purchaseprice, salvagevalue;
-            decimal lifespan;
-            purchaseprice = Convert.ToDecimal(txtPurchasePrice.Text);
-            salvagevalue = Convert.ToDecimal(txtSalvageValue.Text);
-            lifespan = Convert.ToDecimal(txtLifetime.Text);
-
-            if (purchaseprice == 0 || salvagevalue == 0 || lifespan == 0)
-            {
-                MessageBox.Show("Invalid input for Depreciation", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                DoSaveItem();
-            }
-
+            DoSaveItem();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -102,21 +63,17 @@ namespace InventoryManagement
 
         private void LoadComboBox()
         {
-
             cbxType.DisplayMember = "Name";
             cbxType.ValueMember = "Id";
-            cbxType.DataSource = Singleton.Instance.CategoryModel.GetCategories();
-
+            cbxType.DataSource = Singleton.Instance.ItemTypeModel.GetTypes();
 
             cbxSubType.DisplayMember = "Name";
-            cbxSubType.ValueMember = "Sub_Id";
-            cbxSubType.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategoriesByType((int)cbxType.SelectedValue);
+            cbxSubType.ValueMember = "Id";
+            cbxSubType.DataSource = Singleton.Instance.ItemSubTypeModel.GetSubTypesByType((int)cbxType.SelectedValue);
 
-            cbxOS.DisplayMember = "OS";
-            cbxOS.ValueMember = "id";
-            cbxOS.DataSource = Singleton.Instance.ItemModel.GetOSBySubtype((int)cbxSubType.SelectedValue);
-
-            //cbxOS.DataSource = Enum.GetValues(typeof(ItemOperatingSystem));
+            cbxOS.DisplayMember = "Name";
+            cbxOS.ValueMember = "Id";
+            cbxOS.DataSource = Singleton.Instance.ItemModel.GetOSBySubtype();
 
             cbxStatus.DataSource = Enum.GetValues(typeof(ItemStatus));
             cbxProcessor.DataSource = Enum.GetValues(typeof(ItemProcessors));
@@ -125,7 +82,7 @@ namespace InventoryManagement
             cbxHDD2.DataSource = Enum.GetValues(typeof(ItemHDDCapacity));
 
             cbxBrand.DisplayMember = "Name";
-            cbxBrand.ValueMember = "Brand_Id";
+            cbxBrand.ValueMember = "Id";
             cbxBrand.DataSource = Singleton.Instance.ItemModel.GetBrandsBySubtype((int)cbxSubType.SelectedValue);
 
             cbxCurrentOwner.DisplayMember = "LastnameFirstName";
@@ -137,7 +94,6 @@ namespace InventoryManagement
             var brand = cbxBrand.SelectedValue;
             if (brand == null)
             {
-                //Default brand is Generic
                 brand = 13;
             }
             else
@@ -218,7 +174,10 @@ namespace InventoryManagement
             {
                 itm.Id = loadedItem.Id;
                 result = Singleton.Instance.ItemModel.UpdateItem(itm, Singleton.Instance.UserModel.CurrentUser.Id);
-                Singleton.Instance.ItemModel.UpdateItemImage(loadedItem.Id, pbId.BackgroundImage);
+              
+                var img = new Bitmap(pbId.BackgroundImage);
+
+                Singleton.Instance.ItemModel.UpdateItemImage(loadedItem.Id, img);
                 Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, 0, ViewModel.TransactionType.EditItem, "", itm.Id);
             }
 
@@ -276,9 +235,12 @@ namespace InventoryManagement
             var owner = Singleton.Instance.UserModel.GetUsersById(loadedItem.LastUpdatedUserId);
 
             txtLastUpdatedUser.Text = owner == null ? "SYSTEM" : owner.LastnameFirstName;
+
+          
             //LoadTransactions(itemId);
 
         }
+
         //private void LoadTransactions(int itemId)
         //{
         //    dvLogs.DataSource = Singleton.Instance.TransactionModel.GetTransactionsByItemId(itemId);
@@ -290,12 +252,11 @@ namespace InventoryManagement
             var selected = (int)cbxType.SelectedValue;
             LoadSubtypes(selected);
         }
-
         private void LoadSubtypes(int categ)
         {
             cbxSubType.DisplayMember = "Name";
-            cbxSubType.ValueMember = "Sub_Id";
-            cbxSubType.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategoriesByType((int)cbxType.SelectedValue);
+            cbxSubType.ValueMember = "Id";
+            cbxSubType.DataSource = Singleton.Instance.ItemSubTypeModel.GetSubTypesByType((int)cbxType.SelectedValue);
         }
         private void LoadBrands(int subtypeId)
         {
@@ -303,54 +264,23 @@ namespace InventoryManagement
             cbxBrand.ValueMember = "Brand_Id";
             cbxBrand.DataSource = Singleton.Instance.ItemModel.GetBrandsBySubtype((int)cbxSubType.SelectedValue);
         }
-
         private void cbxSubType_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            var selected = (int)cbxSubType.SelectedValue;
-            LoadBrands(selected);
-
-            if (selected == 1 || selected == 7 || selected == 12) {
-                cbxOS.Enabled = true;
-                cbxMemory.Enabled = true;
-                cbxProcessor.Enabled = true;
-                cbxHDD1.Enabled = true;
-                cbxHDD2.Enabled = true;
-            }
-            else if (selected == 10) {
-                cbxMemory.Enabled = true;
-            }
-            else
-            {
-
-                cbxOS.Enabled = false;
-                cbxMemory.Enabled = false;
-                cbxProcessor.Enabled = false;
-                cbxHDD1.Enabled = false;
-                cbxHDD2.Enabled = false;
-            }
-
-            cbxOS.DisplayMember = "OS";
-            cbxOS.ValueMember = "id";
-            cbxOS.DataSource = Singleton.Instance.ItemModel.GetOSBySubtype((int)cbxSubType.SelectedValue);
+           
 
 
         }
-
         private void frmManageItem_Load(object sender, EventArgs e)
         {
             //load all transactions from transactions table
 
         }
 
-
-
-
         private void txtLifetime_TextChanged(object sender, EventArgs e)
         {
 
         }
-
         private void txtPurchasePrice_KeyPress(object sender, KeyPressEventArgs e)
         {
             //disable space
@@ -362,22 +292,21 @@ namespace InventoryManagement
                 e.Handled = true;
             }
         }
-
         private void btnBrowse_Click(object sender, EventArgs e)
         {
             {
-                OpenFileDialog openFileDialog1 = new OpenFileDialog();
+                OpenFileDialog openDlg = new OpenFileDialog();
 
-                openFileDialog1.InitialDirectory = "c:\\";
-                openFileDialog1.Filter = "jpg files (*.jpg)|*.jpg";
-                openFileDialog1.FilterIndex = 1;
+                openDlg.InitialDirectory = "c:\\";
+                openDlg.Filter = "image files |*.jpg; *.jpeg; *.png";
+                openDlg.FilterIndex = 1;
                 //openFileDialog1.RestoreDirectory = true;
 
-                var res = openFileDialog1.ShowDialog();
+                var res = openDlg.ShowDialog();
 
                 if (res == DialogResult.OK)
                 {
-                    Image img = Image.FromFile(openFileDialog1.FileName);
+                    Image img = Image.FromFile(openDlg.FileName);
                     pbId.BackgroundImage = img;
 
                     
@@ -385,12 +314,10 @@ namespace InventoryManagement
 
             }
         }
-
         private void label24_Click(object sender, EventArgs e)
         {
 
         }
-
         private void txtSalvageValue_TextChanged(object sender, EventArgs e)
         {
         }

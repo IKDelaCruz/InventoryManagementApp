@@ -2,46 +2,43 @@
 using System.Collections.Generic;
 using System.Linq;
 using InventoryManagement.ViewModel;
+using System.Drawing;
 
 namespace InventoryManagement.Repository
 {
-    public class CategoryRepository : BaseRepository
+    public class ItemTypeRepository : BaseRepository
     {
-        public List<CategoryViewModel> QueryCategories()
+        public List<ItemTypeViewModel> QueryItemTypes()
         {
-            var list = new List<CategoryViewModel>();
-            var categ = InventoryDatabase.ItemTypes.ToList();
-
-            //var categ = categ1.GroupBy(i => i.id).Select(group => group.First());
-
-            //List<CategorySubcategoryViewModel> cList = new List<CategorySubcategoryViewModel>();
+            var list = new List<ItemTypeViewModel>();
+            var categ = InventoryDatabase.ItemTypes.OrderBy(h => h.type).ToList();
 
             foreach (ItemType c in categ)
             {
 
-                list.Add(new CategoryViewModel
+                list.Add(new ItemTypeViewModel
 
                 {
                     Id = c.id,
                     Name = c.type
                 });
-                //subcategory = c.subtype 
+             
 
             }
             return list;
 
         }
 
-        public CategoryViewModel GetItemTypebyName(string name)
+        public ItemTypeViewModel QueryItemTypeByName(string name)
         {
             var type = InventoryDatabase.ItemTypes.FirstOrDefault(h => h.type == name);
             if (type != null)
             {
-                return new CategoryViewModel
+                return new ItemTypeViewModel
                 {
                     Id = type.id,
                     Name = type.type,
-                    
+
                 };
             }
 
@@ -49,11 +46,11 @@ namespace InventoryManagement.Repository
         }
 
 
-        public CategoryViewModel QueryCategory(int id)
+        public ItemTypeViewModel QueryItemType(int id)
         {
             var categ = InventoryDatabase.ItemTypes.FirstOrDefault(h => h.id == id);
             if (categ != null)
-                return new CategoryViewModel
+                return new ItemTypeViewModel
                 {
                     Id = categ.id,
                     Name = categ.type,
@@ -64,21 +61,26 @@ namespace InventoryManagement.Repository
         }
 
 
-        public int Create(string name)
+        public ReturnValueRepo Create(string name)
         {
+            var result = new ReturnValueRepo();
             var cat = InventoryDatabase.ItemTypes.FirstOrDefault(s => s.type.Equals(name));
             if (cat == null)
             {
                 var newCat = new ItemType() { type = name };
                 InventoryDatabase.ItemTypes.Add(newCat);
                 if (InventoryDatabase.SaveChanges() > 0)
-                    return newCat.id;
-
-                //Unable to save 
-                return -1;
+                {
+                    result.Success = true;
+                    result.Param1 = newCat.id.ToString();
+                }
             }
-            //Already exist;
-            return -2;
+            else
+            {
+                result.Message = "Type already exist!";
+            }
+            
+            return result;
 
         }
 
@@ -120,47 +122,42 @@ namespace InventoryManagement.Repository
             InventoryDatabase.SaveChanges();
             return 1;
         }
-        public int CreateSubCateg(int id, string name)
-        {
-            var cat = InventoryDatabase.ItemSubtypes.FirstOrDefault(s => s.subtype.Equals(name));
-            if (cat == null)
-            {
-                var newCat = new ItemSubtype() { type_id = id, subtype = name };
-                InventoryDatabase.ItemSubtypes.Add(newCat);
-                if (InventoryDatabase.SaveChanges() > 0) 
-                    return newCat.id;
 
-                //Unable to save 
-                return -1;
+        public bool UpdateItemTypeImage(int typeId, byte[] bArr)
+        {
+            //var item = InventoryDatabase.Items.FirstOrDefault(h => h.id == itemId);
+            var item = InventoryDatabase.ItemTypeImages.FirstOrDefault(x => x.type_id == typeId);
+
+            if (item != null)
+            {
+
+                item.picture = bArr;
+                InventoryDatabase.SaveChanges();
+
+                return true;
             }
-            //Already exist;
-            return -2;
-
-        }
-
-        public int UpdateSubCateg(int id, string name)
-        {
-            var cat = InventoryDatabase.ItemSubtypes.FirstOrDefault(s => s.type_id == id);
-
-            if (cat != null)
+            else
             {
-                var catExist = InventoryDatabase.ItemSubtypes.FirstOrDefault(s => s.subtype == name);
-
-
-                //Name already exist
-                if (catExist != null)
+                InventoryDatabase.ItemTypeImages.Add(new ItemTypeImage
                 {
-                    if (catExist.id == id)
-                    {
-                        return -1;
-                    }
-                    return -2;
-                }
-
-                cat.subtype = name;
+                    type_id = typeId,
+                    picture = bArr
+                });
+                InventoryDatabase.SaveChanges();
+                return true;
             }
-            InventoryDatabase.SaveChanges();
-            return 1;
+
         }
+
+        public byte[] GetItemIage(int typeId)
+        {
+            var item = InventoryDatabase.ItemTypeImages.FirstOrDefault(x => x.type_id == typeId);
+            if (item != null)
+            {
+                return item.picture;
+            }
+            return null;
+        }
+
     }
 }

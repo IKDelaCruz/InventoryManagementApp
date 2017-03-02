@@ -15,9 +15,6 @@ namespace InventoryManagement.Repository
     public partial class OperatingSystem
     {
         public int id { get; set; }
-        public int subtype_id { get; set; }
-        public string OS { get; set; }
-    
-        public virtual ItemSubtype ItemSubtype { get; set; }
+        public string name { get; set; }
     }
 }

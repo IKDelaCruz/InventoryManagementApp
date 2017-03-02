@@ -1,4 +1,5 @@
-﻿using InventoryManagement.Utils;
+﻿using InventoryManagement.Manage;
+using InventoryManagement.Utils;
 using System;
 using System.Windows.Forms;
 
@@ -26,9 +27,10 @@ namespace InventoryManagement
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            
+
 
             Application.Run(new frmLauncher());
+            //Application.Run(new frmManageBrand());
         }
     }
 }

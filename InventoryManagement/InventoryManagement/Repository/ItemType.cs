@@ -19,6 +19,7 @@ namespace InventoryManagement.Repository
         {
             this.Items = new HashSet<Item>();
             this.ItemSubtypes = new HashSet<ItemSubtype>();
+            this.ItemTypeImages = new HashSet<ItemTypeImage>();
         }
     
         public int id { get; set; }
@@ -29,5 +30,7 @@ namespace InventoryManagement.Repository
         public virtual ICollection<Item> Items { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ItemSubtype> ItemSubtypes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ItemTypeImage> ItemTypeImages { get; set; }
     }
 }

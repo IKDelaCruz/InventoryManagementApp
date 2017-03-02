@@ -12,6 +12,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="subtype_id" Type="int" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="150" />
         </EntityType>
         <EntityType Name="Company">
           <Key>
@@ -28,6 +29,13 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="company_id" Type="int" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HDD">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="150" Nullable="false" />
         </EntityType>
         <EntityType Name="Item">
           <Key>
@@ -71,8 +79,16 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="type_id" Type="int" Nullable="false" />
-          <Property Name="subtype" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="icon" Type="image" />
+        </EntityType>
+        <EntityType Name="ItemSubTypeImage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="subtype_id" Type="int" Nullable="false" />
+          <Property Name="picture" Type="varbinary(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="ItemType">
           <Key>
@@ -82,13 +98,34 @@
           <Property Name="type" Type="varchar" MaxLength="50" />
           <Property Name="icon" Type="image" />
         </EntityType>
-        <EntityType Name="OperatingSystem">
+        <EntityType Name="ItemTypeImage">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="subtype_id" Type="int" Nullable="false" />
-          <Property Name="OS" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="type_id" Type="int" Nullable="false" />
+          <Property Name="picture" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Memory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OperatingSystem">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Processor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="150" Nullable="false" />
         </EntityType>
         <EntityType Name="Request">
           <Key>
@@ -154,35 +191,56 @@
           <Property Name="company" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'InventoryManagement.dbo.vwItemDepeciationReport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="vwItemDepeciationReport">
+warning 6002: The table/view 'InventoryManagement.dbo.vwBrandSummary' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwBrandSummary">
           <Key>
-            <PropertyRef Name="subtype" />
-            <PropertyRef Name="name" />
-            <PropertyRef Name="description" />
-            <PropertyRef Name="item_type_id" />
-            <PropertyRef Name="item_sub_type_id" />
-            <PropertyRef Name="purchase_price" />
-            <PropertyRef Name="current_value" />
-            <PropertyRef Name="id" />
-            <PropertyRef Name="Expr1" />
-            <PropertyRef Name="Expr2" />
+            <PropertyRef Name="BrandId" />
           </Key>
-          <Property Name="type" Type="varchar" MaxLength="50" />
-          <Property Name="subtype" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="description" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="asset_tag" Type="varchar" MaxLength="50" />
-          <Property Name="item_type_id" Type="int" Nullable="false" />
-          <Property Name="item_sub_type_id" Type="int" Nullable="false" />
-          <Property Name="purchase_price" Type="money" Nullable="false" />
-          <Property Name="current_value" Type="money" Nullable="false" />
-          <Property Name="purchase_date" Type="date" />
-          <Property Name="life_span" Type="int" />
-          <Property Name="salvage_value" Type="money" />
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="Expr1" Type="int" Nullable="false" />
-          <Property Name="Expr2" Type="int" Nullable="false" />
+          <Property Name="BrandId" Type="int" Nullable="false" />
+          <Property Name="ItemSubTypeId" Type="int" />
+          <Property Name="BrandName" Type="varchar" MaxLength="50" />
+          <Property Name="ItemCount" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'InventoryManagement.dbo.vwItemDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwItemDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="ItemTypeId" />
+            <PropertyRef Name="ItemSubTypeId" />
+            <PropertyRef Name="PurchasePrice" />
+            <PropertyRef Name="CurrentValue" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="AssetTag" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ItemTypeId" Type="int" Nullable="false" />
+          <Property Name="ItemSubTypeId" Type="int" Nullable="false" />
+          <Property Name="PurchasePrice" Type="money" Nullable="false" />
+          <Property Name="CurrentValue" Type="money" Nullable="false" />
+          <Property Name="PurchaseDate" Type="date" />
+          <Property Name="LifeSpan" Type="int" />
+          <Property Name="Status" Type="int" />
+          <Property Name="LastUpdated" Type="datetime" />
+          <Property Name="LastUpdatedUser" Type="int" />
+          <Property Name="BrandId" Type="int" />
+          <Property Name="Model" Type="varchar" MaxLength="50" />
+          <Property Name="Serial" Type="varchar" MaxLength="50" />
+          <Property Name="CurrentOwner" Type="int" />
+          <Property Name="OsId" Type="int" />
+          <Property Name="ProcessorId" Type="int" />
+          <Property Name="MemoryId" Type="int" />
+          <Property Name="HddId" Type="int" />
+          <Property Name="Hdd2Id" Type="int" />
+          <Property Name="SalvageValue" Type="money" />
+          <Property Name="TypeName" Type="varchar" MaxLength="50" />
+          <Property Name="SubTypeName" Type="varchar" MaxLength="50" />
+          <Property Name="BrandName" Type="varchar" MaxLength="50" />
+          <Property Name="UserFirstName" Type="varchar" MaxLength="150" />
+          <Property Name="UserLastName" Type="varchar" MaxLength="150" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'InventoryManagement.dbo.vwItemLogs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -204,26 +262,41 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwItemLogs' does not have 
           <Property Name="ItemId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'InventoryManagement.dbo.vwItemSubTypeCount' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwItemSubTypeCount">
+          <Key>
+            <PropertyRef Name="SubTypeId" />
+          </Key>
+          <Property Name="SubTypeId" Type="int" Nullable="false" />
+          <Property Name="SubTypeName" Type="varchar" MaxLength="50" />
+          <Property Name="TypeId" Type="int" />
+          <Property Name="SubTypeItemCount" Type="int" />
+          <Property Name="Picture" Type="varbinary(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'InventoryManagement.dbo.vwItemSubTypeSummary' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwItemSubTypeSummary">
           <Key>
             <PropertyRef Name="ISTSubTypeID" />
+            <PropertyRef Name="ISTTypeId" />
           </Key>
-          <Property Name="ISTType" Type="varchar" MaxLength="50" />
-          <Property Name="ISTSubType" Type="varchar" MaxLength="50" />
-          <Property Name="ISTTotalAvailable" Type="int" />
-          <Property Name="ISTTypeId" Type="int" />
           <Property Name="ISTSubTypeID" Type="int" Nullable="false" />
+          <Property Name="ISTSubType" Type="varchar" MaxLength="50" />
+          <Property Name="ISTTypeId" Type="int" Nullable="false" />
+          <Property Name="ISTType" Type="varchar" MaxLength="50" />
+          <Property Name="ISTTotalAvailable" Type="int" />
+          <Property Name="ITemTypePicture" Type="varbinary(max)" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'InventoryManagement.dbo.vwItemTypeSummarySub' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="vwItemTypeSummarySub">
+warning 6002: The table/view 'InventoryManagement.dbo.vwItemTypeSummary' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwItemTypeSummary">
           <Key>
-            <PropertyRef Name="TypeId" />
+            <PropertyRef Name="ITTypeId" />
           </Key>
-          <Property Name="TypeId" Type="int" Nullable="false" />
+          <Property Name="ITTypeId" Type="int" Nullable="false" />
           <Property Name="ITTypeName" Type="varchar" MaxLength="50" />
           <Property Name="ITTotalAvailable" Type="int" />
+          <Property Name="Picture" Type="varbinary(max)" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -234,7 +307,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
             <PropertyRef Name="request_type" />
             <PropertyRef Name="request_item_primary_type" />
             <PropertyRef Name="request_item_secondary_type" />
-            <PropertyRef Name="subtype" />
+            <PropertyRef Name="Expr1" />
             <PropertyRef Name="request_date" />
             <PropertyRef Name="request_status" />
           </Key>
@@ -244,7 +317,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
           <Property Name="request_item_primary_type" Type="int" Nullable="false" />
           <Property Name="type" Type="varchar" MaxLength="50" />
           <Property Name="request_item_secondary_type" Type="int" Nullable="false" />
-          <Property Name="subtype" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Expr1" Type="int" Nullable="false" />
           <Property Name="request_date" Type="datetime" Nullable="false" />
           <Property Name="process_date" Type="datetime" />
           <Property Name="request_status" Type="int" Nullable="false" />
@@ -324,15 +397,27 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_OperatingSystem_ItemSubType">
+        <Association Name="FK_ItemSubTypeImage_Item">
           <End Role="ItemSubtype" Type="Self.ItemSubtype" Multiplicity="1" />
-          <End Role="OperatingSystem" Type="Self.OperatingSystem" Multiplicity="*" />
+          <End Role="ItemSubTypeImage" Type="Self.ItemSubTypeImage" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ItemSubtype">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="OperatingSystem">
+            <Dependent Role="ItemSubTypeImage">
               <PropertyRef Name="subtype_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemTypeImage_Item">
+          <End Role="ItemType" Type="Self.ItemType" Multiplicity="1" />
+          <End Role="ItemTypeImage" Type="Self.ItemTypeImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ItemTypeImage">
+              <PropertyRef Name="type_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -407,34 +492,60 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
           <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HDD" EntityType="Self.HDD" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemImage" EntityType="Self.ItemImage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemSubtype" EntityType="Self.ItemSubtype" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemSubTypeImage" EntityType="Self.ItemSubTypeImage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemType" EntityType="Self.ItemType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemTypeImage" EntityType="Self.ItemTypeImage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Memory" EntityType="Self.Memory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OperatingSystem" EntityType="Self.OperatingSystem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Processor" EntityType="Self.Processor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Request" EntityType="Self.Request" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Transaction" EntityType="Self.Transaction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TransactionType" EntityType="Self.TransactionType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="vwItemDepeciationReport" EntityType="Self.vwItemDepeciationReport" store:Type="Views" store:Schema="dbo">
+          <EntitySet Name="vwBrandSummary" EntityType="Self.vwBrandSummary" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [vwItemDepeciationReport].[type] AS [type], 
-    [vwItemDepeciationReport].[subtype] AS [subtype], 
-    [vwItemDepeciationReport].[name] AS [name], 
-    [vwItemDepeciationReport].[description] AS [description], 
-    [vwItemDepeciationReport].[asset_tag] AS [asset_tag], 
-    [vwItemDepeciationReport].[item_type_id] AS [item_type_id], 
-    [vwItemDepeciationReport].[item_sub_type_id] AS [item_sub_type_id], 
-    [vwItemDepeciationReport].[purchase_price] AS [purchase_price], 
-    [vwItemDepeciationReport].[current_value] AS [current_value], 
-    [vwItemDepeciationReport].[purchase_date] AS [purchase_date], 
-    [vwItemDepeciationReport].[life_span] AS [life_span], 
-    [vwItemDepeciationReport].[salvage_value] AS [salvage_value], 
-    [vwItemDepeciationReport].[id] AS [id], 
-    [vwItemDepeciationReport].[Expr1] AS [Expr1], 
-    [vwItemDepeciationReport].[Expr2] AS [Expr2]
-    FROM [dbo].[vwItemDepeciationReport] AS [vwItemDepeciationReport]</DefiningQuery>
+    [vwBrandSummary].[BrandId] AS [BrandId], 
+    [vwBrandSummary].[ItemSubTypeId] AS [ItemSubTypeId], 
+    [vwBrandSummary].[BrandName] AS [BrandName], 
+    [vwBrandSummary].[ItemCount] AS [ItemCount]
+    FROM [dbo].[vwBrandSummary] AS [vwBrandSummary]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwItemDetails" EntityType="Self.vwItemDetails" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwItemDetails].[Id] AS [Id], 
+    [vwItemDetails].[AssetTag] AS [AssetTag], 
+    [vwItemDetails].[Name] AS [Name], 
+    [vwItemDetails].[Description] AS [Description], 
+    [vwItemDetails].[ItemTypeId] AS [ItemTypeId], 
+    [vwItemDetails].[ItemSubTypeId] AS [ItemSubTypeId], 
+    [vwItemDetails].[PurchasePrice] AS [PurchasePrice], 
+    [vwItemDetails].[CurrentValue] AS [CurrentValue], 
+    [vwItemDetails].[PurchaseDate] AS [PurchaseDate], 
+    [vwItemDetails].[LifeSpan] AS [LifeSpan], 
+    [vwItemDetails].[Status] AS [Status], 
+    [vwItemDetails].[LastUpdated] AS [LastUpdated], 
+    [vwItemDetails].[LastUpdatedUser] AS [LastUpdatedUser], 
+    [vwItemDetails].[BrandId] AS [BrandId], 
+    [vwItemDetails].[Model] AS [Model], 
+    [vwItemDetails].[Serial] AS [Serial], 
+    [vwItemDetails].[CurrentOwner] AS [CurrentOwner], 
+    [vwItemDetails].[OsId] AS [OsId], 
+    [vwItemDetails].[ProcessorId] AS [ProcessorId], 
+    [vwItemDetails].[MemoryId] AS [MemoryId], 
+    [vwItemDetails].[HddId] AS [HddId], 
+    [vwItemDetails].[Hdd2Id] AS [Hdd2Id], 
+    [vwItemDetails].[SalvageValue] AS [SalvageValue], 
+    [vwItemDetails].[TypeName] AS [TypeName], 
+    [vwItemDetails].[SubTypeName] AS [SubTypeName], 
+    [vwItemDetails].[BrandName] AS [BrandName], 
+    [vwItemDetails].[UserFirstName] AS [UserFirstName], 
+    [vwItemDetails].[UserLastName] AS [UserLastName]
+    FROM [dbo].[vwItemDetails] AS [vwItemDetails]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwItemLogs" EntityType="Self.vwItemLogs" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -450,21 +561,32 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
     [vwItemLogs].[ItemId] AS [ItemId]
     FROM [dbo].[vwItemLogs] AS [vwItemLogs]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="vwItemSubTypeCount" EntityType="Self.vwItemSubTypeCount" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwItemSubTypeCount].[SubTypeId] AS [SubTypeId], 
+    [vwItemSubTypeCount].[SubTypeName] AS [SubTypeName], 
+    [vwItemSubTypeCount].[TypeId] AS [TypeId], 
+    [vwItemSubTypeCount].[SubTypeItemCount] AS [SubTypeItemCount], 
+    [vwItemSubTypeCount].[Picture] AS [Picture]
+    FROM [dbo].[vwItemSubTypeCount] AS [vwItemSubTypeCount]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="vwItemSubTypeSummary" EntityType="Self.vwItemSubTypeSummary" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [vwItemSubTypeSummary].[ISTType] AS [ISTType], 
+    [vwItemSubTypeSummary].[ISTSubTypeID] AS [ISTSubTypeID], 
     [vwItemSubTypeSummary].[ISTSubType] AS [ISTSubType], 
-    [vwItemSubTypeSummary].[ISTTotalAvailable] AS [ISTTotalAvailable], 
     [vwItemSubTypeSummary].[ISTTypeId] AS [ISTTypeId], 
-    [vwItemSubTypeSummary].[ISTSubTypeID] AS [ISTSubTypeID]
+    [vwItemSubTypeSummary].[ISTType] AS [ISTType], 
+    [vwItemSubTypeSummary].[ISTTotalAvailable] AS [ISTTotalAvailable], 
+    [vwItemSubTypeSummary].[ITemTypePicture] AS [ITemTypePicture]
     FROM [dbo].[vwItemSubTypeSummary] AS [vwItemSubTypeSummary]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="vwItemTypeSummarySub" EntityType="Self.vwItemTypeSummarySub" store:Type="Views" store:Schema="dbo">
+          <EntitySet Name="vwItemTypeSummary" EntityType="Self.vwItemTypeSummary" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [vwItemTypeSummarySub].[TypeId] AS [TypeId], 
-    [vwItemTypeSummarySub].[ITTypeName] AS [ITTypeName], 
-    [vwItemTypeSummarySub].[ITTotalAvailable] AS [ITTotalAvailable]
-    FROM [dbo].[vwItemTypeSummarySub] AS [vwItemTypeSummarySub]</DefiningQuery>
+    [vwItemTypeSummary].[ITTypeId] AS [ITTypeId], 
+    [vwItemTypeSummary].[ITTypeName] AS [ITTypeName], 
+    [vwItemTypeSummary].[ITTotalAvailable] AS [ITTotalAvailable], 
+    [vwItemTypeSummary].[Picture] AS [Picture]
+    FROM [dbo].[vwItemTypeSummary] AS [vwItemTypeSummary]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwTransactionLogs" EntityType="Self.vwTransactionLogs" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -474,7 +596,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
     [vwTransactionLogs].[request_item_primary_type] AS [request_item_primary_type], 
     [vwTransactionLogs].[type] AS [type], 
     [vwTransactionLogs].[request_item_secondary_type] AS [request_item_secondary_type], 
-    [vwTransactionLogs].[subtype] AS [subtype], 
+    [vwTransactionLogs].[Expr1] AS [Expr1], 
     [vwTransactionLogs].[request_date] AS [request_date], 
     [vwTransactionLogs].[process_date] AS [process_date], 
     [vwTransactionLogs].[request_status] AS [request_status], 
@@ -507,9 +629,13 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
             <End Role="ItemType" EntitySet="ItemType" />
             <End Role="ItemSubtype" EntitySet="ItemSubtype" />
           </AssociationSet>
-          <AssociationSet Name="FK_OperatingSystem_ItemSubType" Association="Self.FK_OperatingSystem_ItemSubType">
+          <AssociationSet Name="FK_ItemSubTypeImage_Item" Association="Self.FK_ItemSubTypeImage_Item">
             <End Role="ItemSubtype" EntitySet="ItemSubtype" />
-            <End Role="OperatingSystem" EntitySet="OperatingSystem" />
+            <End Role="ItemSubTypeImage" EntitySet="ItemSubTypeImage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemTypeImage_Item" Association="Self.FK_ItemTypeImage_Item">
+            <End Role="ItemType" EntitySet="ItemType" />
+            <End Role="ItemTypeImage" EntitySet="ItemTypeImage" />
           </AssociationSet>
           <AssociationSet Name="FK_Request_User" Association="Self.FK_Request_User">
             <End Role="User" EntitySet="User" />
@@ -562,19 +688,27 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
           <EntitySet Name="Brands" EntityType="InventoryMangementModel.Brand" />
           <EntitySet Name="Companies" EntityType="InventoryMangementModel.Company" />
           <EntitySet Name="Departments" EntityType="InventoryMangementModel.Department" />
+          <EntitySet Name="HDDs" EntityType="InventoryMangementModel.HDD" />
           <EntitySet Name="Items" EntityType="InventoryMangementModel.Item" />
           <EntitySet Name="ItemImages" EntityType="InventoryMangementModel.ItemImage" />
           <EntitySet Name="ItemSubtypes" EntityType="InventoryMangementModel.ItemSubtype" />
+          <EntitySet Name="ItemSubTypeImages" EntityType="InventoryMangementModel.ItemSubTypeImage" />
           <EntitySet Name="ItemTypes" EntityType="InventoryMangementModel.ItemType" />
+          <EntitySet Name="ItemTypeImages" EntityType="InventoryMangementModel.ItemTypeImage" />
+          <EntitySet Name="Memories" EntityType="InventoryMangementModel.Memory" />
           <EntitySet Name="OperatingSystems" EntityType="InventoryMangementModel.OperatingSystem" />
+          <EntitySet Name="Processors" EntityType="InventoryMangementModel.Processor" />
           <EntitySet Name="Requests" EntityType="InventoryMangementModel.Request" />
           <EntitySet Name="sysdiagrams" EntityType="InventoryMangementModel.sysdiagram" />
           <EntitySet Name="Transactions" EntityType="InventoryMangementModel.Transaction" />
           <EntitySet Name="TransactionTypes" EntityType="InventoryMangementModel.TransactionType" />
           <EntitySet Name="Users" EntityType="InventoryMangementModel.User" />
+          <EntitySet Name="vwBrandSummaries" EntityType="InventoryMangementModel.vwBrandSummary" />
+          <EntitySet Name="vwItemDetails" EntityType="InventoryMangementModel.vwItemDetail" />
           <EntitySet Name="vwItemLogs" EntityType="InventoryMangementModel.vwItemLog" />
+          <EntitySet Name="vwItemSubTypeCounts" EntityType="InventoryMangementModel.vwItemSubTypeCount" />
           <EntitySet Name="vwItemSubTypeSummaries" EntityType="InventoryMangementModel.vwItemSubTypeSummary" />
-          <EntitySet Name="vwItemTypeSummarySubs" EntityType="InventoryMangementModel.vwItemTypeSummarySub" />
+          <EntitySet Name="vwItemTypeSummaries" EntityType="InventoryMangementModel.vwItemTypeSummary" />
           <EntitySet Name="vwTransactionLogs" EntityType="InventoryMangementModel.vwTransactionLog" />
           <AssociationSet Name="FK_Brand_ItmeSubType" Association="InventoryMangementModel.FK_Brand_ItmeSubType">
             <End Role="ItemSubtype" EntitySet="ItemSubtypes" />
@@ -608,15 +742,18 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
             <End Role="ItemType" EntitySet="ItemTypes" />
             <End Role="ItemSubtype" EntitySet="ItemSubtypes" />
           </AssociationSet>
-          <AssociationSet Name="FK_OperatingSystem_ItemSubType" Association="InventoryMangementModel.FK_OperatingSystem_ItemSubType">
+          <AssociationSet Name="FK_ItemSubTypeImage_Item" Association="InventoryMangementModel.FK_ItemSubTypeImage_Item">
             <End Role="ItemSubtype" EntitySet="ItemSubtypes" />
-            <End Role="OperatingSystem" EntitySet="OperatingSystems" />
+            <End Role="ItemSubTypeImage" EntitySet="ItemSubTypeImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemTypeImage_Item" Association="InventoryMangementModel.FK_ItemTypeImage_Item">
+            <End Role="ItemType" EntitySet="ItemTypes" />
+            <End Role="ItemTypeImage" EntitySet="ItemTypeImages" />
           </AssociationSet>
           <AssociationSet Name="FK_Request_User" Association="InventoryMangementModel.FK_Request_User">
             <End Role="User" EntitySet="Users" />
             <End Role="Request" EntitySet="Requests" />
           </AssociationSet>
-          <EntitySet Name="vwItemDepeciationReports" EntityType="InventoryMangementModel.vwItemDepeciationReport" />
           </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -636,6 +773,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="subtype_id" Type="Int32" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="ItemSubtype" Relationship="InventoryMangementModel.FK_Brand_ItmeSubType" FromRole="Brand" ToRole="ItemSubtype" />
           <NavigationProperty Name="Items" Relationship="InventoryMangementModel.FK_Item_Brand" FromRole="Brand" ToRole="Item" />
         </EntityType>
@@ -656,6 +794,13 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
           <Property Name="company_id" Type="Int32" Nullable="false" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Users" Relationship="InventoryMangementModel.FK_User_Department" FromRole="Department" ToRole="User" />
+        </EntityType>
+        <EntityType Name="HDD">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Item">
           <Key>
@@ -704,12 +849,21 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="type_id" Type="Int32" Nullable="false" />
-          <Property Name="subtype" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="icon" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Brands" Relationship="InventoryMangementModel.FK_Brand_ItmeSubType" FromRole="ItemSubtype" ToRole="Brand" />
           <NavigationProperty Name="Items" Relationship="InventoryMangementModel.FK_Item_ItemSubtype" FromRole="ItemSubtype" ToRole="Item" />
           <NavigationProperty Name="ItemType" Relationship="InventoryMangementModel.FK_ItemSubtype_ItemType" FromRole="ItemSubtype" ToRole="ItemType" />
-          <NavigationProperty Name="OperatingSystems" Relationship="InventoryMangementModel.FK_OperatingSystem_ItemSubType" FromRole="ItemSubtype" ToRole="OperatingSystem" />
+          <NavigationProperty Name="ItemSubTypeImages" Relationship="InventoryMangementModel.FK_ItemSubTypeImage_Item" FromRole="ItemSubtype" ToRole="ItemSubTypeImage" />
+        </EntityType>
+        <EntityType Name="ItemSubTypeImage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="subtype_id" Type="Int32" Nullable="false" />
+          <Property Name="picture" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="ItemSubtype" Relationship="InventoryMangementModel.FK_ItemSubTypeImage_Item" FromRole="ItemSubTypeImage" ToRole="ItemSubtype" />
         </EntityType>
         <EntityType Name="ItemType">
           <Key>
@@ -720,15 +874,37 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
           <Property Name="icon" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Items" Relationship="InventoryMangementModel.FK_Item_ItemType" FromRole="ItemType" ToRole="Item" />
           <NavigationProperty Name="ItemSubtypes" Relationship="InventoryMangementModel.FK_ItemSubtype_ItemType" FromRole="ItemType" ToRole="ItemSubtype" />
+          <NavigationProperty Name="ItemTypeImages" Relationship="InventoryMangementModel.FK_ItemTypeImage_Item" FromRole="ItemType" ToRole="ItemTypeImage" />
+        </EntityType>
+        <EntityType Name="ItemTypeImage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type_id" Type="Int32" Nullable="false" />
+          <Property Name="picture" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="ItemType" Relationship="InventoryMangementModel.FK_ItemTypeImage_Item" FromRole="ItemTypeImage" ToRole="ItemType" />
+        </EntityType>
+        <EntityType Name="Memory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="OperatingSystem">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="subtype_id" Type="Int32" Nullable="false" />
-          <Property Name="OS" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="ItemSubtype" Relationship="InventoryMangementModel.FK_OperatingSystem_ItemSubType" FromRole="OperatingSystem" ToRole="ItemSubtype" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Processor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Request">
           <Key>
@@ -797,6 +973,54 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
           <NavigationProperty Name="Department1" Relationship="InventoryMangementModel.FK_User_Department" FromRole="User" ToRole="Department" />
           <NavigationProperty Name="Requests" Relationship="InventoryMangementModel.FK_Request_User" FromRole="User" ToRole="Request" />
         </EntityType>
+        <EntityType Name="vwBrandSummary">
+          <Key>
+            <PropertyRef Name="BrandId" />
+          </Key>
+          <Property Name="BrandId" Type="Int32" Nullable="false" />
+          <Property Name="ItemSubTypeId" Type="Int32" />
+          <Property Name="BrandName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ItemCount" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vwItemDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="ItemTypeId" />
+            <PropertyRef Name="ItemSubTypeId" />
+            <PropertyRef Name="PurchasePrice" />
+            <PropertyRef Name="CurrentValue" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="AssetTag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ItemTypeId" Type="Int32" Nullable="false" />
+          <Property Name="ItemSubTypeId" Type="Int32" Nullable="false" />
+          <Property Name="PurchasePrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="CurrentValue" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="PurchaseDate" Type="DateTime" Precision="0" />
+          <Property Name="LifeSpan" Type="Int32" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdatedUser" Type="Int32" />
+          <Property Name="BrandId" Type="Int32" />
+          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Serial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentOwner" Type="Int32" />
+          <Property Name="OsId" Type="Int32" />
+          <Property Name="ProcessorId" Type="Int32" />
+          <Property Name="MemoryId" Type="Int32" />
+          <Property Name="HddId" Type="Int32" />
+          <Property Name="Hdd2Id" Type="Int32" />
+          <Property Name="SalvageValue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SubTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BrandName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserFirstName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="UserLastName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="vwItemLog">
           <Key>
             <PropertyRef Name="TransactionId" />
@@ -814,23 +1038,36 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
           <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ItemId" Type="Int32" />
         </EntityType>
+        <EntityType Name="vwItemSubTypeCount">
+          <Key>
+            <PropertyRef Name="SubTypeId" />
+          </Key>
+          <Property Name="SubTypeId" Type="Int32" Nullable="false" />
+          <Property Name="SubTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TypeId" Type="Int32" />
+          <Property Name="SubTypeItemCount" Type="Int32" />
+          <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         <EntityType Name="vwItemSubTypeSummary">
           <Key>
             <PropertyRef Name="ISTSubTypeID" />
+            <PropertyRef Name="ISTTypeId" />
           </Key>
-          <Property Name="ISTType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ISTSubType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ISTTotalAvailable" Type="Int32" />
-          <Property Name="ISTTypeId" Type="Int32" />
           <Property Name="ISTSubTypeID" Type="Int32" Nullable="false" />
+          <Property Name="ISTSubType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ISTTypeId" Type="Int32" Nullable="false" />
+          <Property Name="ISTType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ISTTotalAvailable" Type="Int32" />
+          <Property Name="ITemTypePicture" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <EntityType Name="vwItemTypeSummarySub">
+        <EntityType Name="vwItemTypeSummary">
           <Key>
-            <PropertyRef Name="TypeId" />
+            <PropertyRef Name="ITTypeId" />
           </Key>
-          <Property Name="TypeId" Type="Int32" Nullable="false" />
+          <Property Name="ITTypeId" Type="Int32" Nullable="false" />
           <Property Name="ITTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ITTotalAvailable" Type="Int32" />
+          <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="vwTransactionLog">
           <Key>
@@ -839,7 +1076,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
             <PropertyRef Name="request_type" />
             <PropertyRef Name="request_item_primary_type" />
             <PropertyRef Name="request_item_secondary_type" />
-            <PropertyRef Name="subtype" />
+            <PropertyRef Name="Expr1" />
             <PropertyRef Name="request_date" />
             <PropertyRef Name="request_status" />
           </Key>
@@ -849,7 +1086,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
           <Property Name="request_item_primary_type" Type="Int32" Nullable="false" />
           <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="request_item_secondary_type" Type="Int32" Nullable="false" />
-          <Property Name="subtype" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Expr1" Type="Int32" Nullable="false" />
           <Property Name="request_date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="process_date" Type="DateTime" Precision="3" />
           <Property Name="request_status" Type="Int32" Nullable="false" />
@@ -953,15 +1190,27 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_OperatingSystem_ItemSubType">
+        <Association Name="FK_ItemSubTypeImage_Item">
           <End Type="InventoryMangementModel.ItemSubtype" Role="ItemSubtype" Multiplicity="1" />
-          <End Type="InventoryMangementModel.OperatingSystem" Role="OperatingSystem" Multiplicity="*" />
+          <End Type="InventoryMangementModel.ItemSubTypeImage" Role="ItemSubTypeImage" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ItemSubtype">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="OperatingSystem">
+            <Dependent Role="ItemSubTypeImage">
               <PropertyRef Name="subtype_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemTypeImage_Item">
+          <End Type="InventoryMangementModel.ItemType" Role="ItemType" Multiplicity="1" />
+          <End Type="InventoryMangementModel.ItemTypeImage" Role="ItemTypeImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ItemTypeImage">
+              <PropertyRef Name="type_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -977,35 +1226,6 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="vwItemDepeciationReport">
-          <Key>
-            <PropertyRef Name="subtype" />
-            <PropertyRef Name="name" />
-            <PropertyRef Name="description" />
-            <PropertyRef Name="item_type_id" />
-            <PropertyRef Name="item_sub_type_id" />
-            <PropertyRef Name="purchase_price" />
-            <PropertyRef Name="current_value" />
-            <PropertyRef Name="id" />
-            <PropertyRef Name="Expr1" />
-            <PropertyRef Name="Expr2" />
-          </Key>
-          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="subtype" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="asset_tag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="item_type_id" Type="Int32" Nullable="false" />
-          <Property Name="item_sub_type_id" Type="Int32" Nullable="false" />
-          <Property Name="purchase_price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="current_value" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="purchase_date" Type="DateTime" Precision="0" />
-          <Property Name="life_span" Type="Int32" />
-          <Property Name="salvage_value" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="Expr1" Type="Int32" Nullable="false" />
-          <Property Name="Expr2" Type="Int32" Nullable="false" />
-        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1039,6 +1259,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
           <EntitySetMapping Name="Brands">
             <EntityTypeMapping TypeName="InventoryMangementModel.Brand">
               <MappingFragment StoreEntitySet="Brand">
+                <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="subtype_id" ColumnName="subtype_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -1059,6 +1280,14 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
               <MappingFragment StoreEntitySet="Department">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="company_id" ColumnName="company_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HDDs">
+            <EntityTypeMapping TypeName="InventoryMangementModel.HDD">
+              <MappingFragment StoreEntitySet="HDD">
+                <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1105,8 +1334,17 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
             <EntityTypeMapping TypeName="InventoryMangementModel.ItemSubtype">
               <MappingFragment StoreEntitySet="ItemSubtype">
                 <ScalarProperty Name="icon" ColumnName="icon" />
-                <ScalarProperty Name="subtype" ColumnName="subtype" />
+                <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="type_id" ColumnName="type_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemSubTypeImages">
+            <EntityTypeMapping TypeName="InventoryMangementModel.ItemSubTypeImage">
+              <MappingFragment StoreEntitySet="ItemSubTypeImage">
+                <ScalarProperty Name="picture" ColumnName="picture" />
+                <ScalarProperty Name="subtype_id" ColumnName="subtype_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1120,11 +1358,35 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ItemTypeImages">
+            <EntityTypeMapping TypeName="InventoryMangementModel.ItemTypeImage">
+              <MappingFragment StoreEntitySet="ItemTypeImage">
+                <ScalarProperty Name="picture" ColumnName="picture" />
+                <ScalarProperty Name="type_id" ColumnName="type_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Memories">
+            <EntityTypeMapping TypeName="InventoryMangementModel.Memory">
+              <MappingFragment StoreEntitySet="Memory">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="OperatingSystems">
             <EntityTypeMapping TypeName="InventoryMangementModel.OperatingSystem">
               <MappingFragment StoreEntitySet="OperatingSystem">
-                <ScalarProperty Name="OS" ColumnName="OS" />
-                <ScalarProperty Name="subtype_id" ColumnName="subtype_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Processors">
+            <EntityTypeMapping TypeName="InventoryMangementModel.Processor">
+              <MappingFragment StoreEntitySet="Processor">
+                <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1197,6 +1459,50 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="vwBrandSummaries">
+            <EntityTypeMapping TypeName="InventoryMangementModel.vwBrandSummary">
+              <MappingFragment StoreEntitySet="vwBrandSummary">
+                <ScalarProperty Name="ItemCount" ColumnName="ItemCount" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="ItemSubTypeId" ColumnName="ItemSubTypeId" />
+                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwItemDetails">
+            <EntityTypeMapping TypeName="InventoryMangementModel.vwItemDetail">
+              <MappingFragment StoreEntitySet="vwItemDetails">
+                <ScalarProperty Name="UserLastName" ColumnName="UserLastName" />
+                <ScalarProperty Name="UserFirstName" ColumnName="UserFirstName" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="SubTypeName" ColumnName="SubTypeName" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="SalvageValue" ColumnName="SalvageValue" />
+                <ScalarProperty Name="Hdd2Id" ColumnName="Hdd2Id" />
+                <ScalarProperty Name="HddId" ColumnName="HddId" />
+                <ScalarProperty Name="MemoryId" ColumnName="MemoryId" />
+                <ScalarProperty Name="ProcessorId" ColumnName="ProcessorId" />
+                <ScalarProperty Name="OsId" ColumnName="OsId" />
+                <ScalarProperty Name="CurrentOwner" ColumnName="CurrentOwner" />
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+                <ScalarProperty Name="LastUpdatedUser" ColumnName="LastUpdatedUser" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="LifeSpan" ColumnName="LifeSpan" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="CurrentValue" ColumnName="CurrentValue" />
+                <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
+                <ScalarProperty Name="ItemSubTypeId" ColumnName="ItemSubTypeId" />
+                <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AssetTag" ColumnName="AssetTag" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="vwItemLogs">
             <EntityTypeMapping TypeName="InventoryMangementModel.vwItemLog">
               <MappingFragment StoreEntitySet="vwItemLogs">
@@ -1213,23 +1519,36 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="vwItemSubTypeSummaries">
-            <EntityTypeMapping TypeName="InventoryMangementModel.vwItemSubTypeSummary">
-              <MappingFragment StoreEntitySet="vwItemSubTypeSummary">
-                <ScalarProperty Name="ISTSubTypeID" ColumnName="ISTSubTypeID" />
-                <ScalarProperty Name="ISTTypeId" ColumnName="ISTTypeId" />
-                <ScalarProperty Name="ISTTotalAvailable" ColumnName="ISTTotalAvailable" />
-                <ScalarProperty Name="ISTSubType" ColumnName="ISTSubType" />
-                <ScalarProperty Name="ISTType" ColumnName="ISTType" />
+          <EntitySetMapping Name="vwItemSubTypeCounts">
+            <EntityTypeMapping TypeName="InventoryMangementModel.vwItemSubTypeCount">
+              <MappingFragment StoreEntitySet="vwItemSubTypeCount">
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="SubTypeItemCount" ColumnName="SubTypeItemCount" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="SubTypeName" ColumnName="SubTypeName" />
+                <ScalarProperty Name="SubTypeId" ColumnName="SubTypeId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="vwItemTypeSummarySubs">
-            <EntityTypeMapping TypeName="InventoryMangementModel.vwItemTypeSummarySub">
-              <MappingFragment StoreEntitySet="vwItemTypeSummarySub">
+          <EntitySetMapping Name="vwItemSubTypeSummaries">
+            <EntityTypeMapping TypeName="InventoryMangementModel.vwItemSubTypeSummary">
+              <MappingFragment StoreEntitySet="vwItemSubTypeSummary">
+                <ScalarProperty Name="ITemTypePicture" ColumnName="ITemTypePicture" />
+                <ScalarProperty Name="ISTTotalAvailable" ColumnName="ISTTotalAvailable" />
+                <ScalarProperty Name="ISTType" ColumnName="ISTType" />
+                <ScalarProperty Name="ISTTypeId" ColumnName="ISTTypeId" />
+                <ScalarProperty Name="ISTSubType" ColumnName="ISTSubType" />
+                <ScalarProperty Name="ISTSubTypeID" ColumnName="ISTSubTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwItemTypeSummaries">
+            <EntityTypeMapping TypeName="InventoryMangementModel.vwItemTypeSummary">
+              <MappingFragment StoreEntitySet="vwItemTypeSummary">
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
                 <ScalarProperty Name="ITTotalAvailable" ColumnName="ITTotalAvailable" />
                 <ScalarProperty Name="ITTypeName" ColumnName="ITTypeName" />
-                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="ITTypeId" ColumnName="ITTypeId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1242,34 +1561,13 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
                 <ScalarProperty Name="request_status" ColumnName="request_status" />
                 <ScalarProperty Name="process_date" ColumnName="process_date" />
                 <ScalarProperty Name="request_date" ColumnName="request_date" />
-                <ScalarProperty Name="subtype" ColumnName="subtype" />
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
                 <ScalarProperty Name="request_item_secondary_type" ColumnName="request_item_secondary_type" />
                 <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="request_item_primary_type" ColumnName="request_item_primary_type" />
                 <ScalarProperty Name="request_type" ColumnName="request_type" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vwItemDepeciationReports">
-            <EntityTypeMapping TypeName="InventoryMangementModel.vwItemDepeciationReport">
-              <MappingFragment StoreEntitySet="vwItemDepeciationReport">
-                <ScalarProperty Name="Expr2" ColumnName="Expr2" />
-                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="salvage_value" ColumnName="salvage_value" />
-                <ScalarProperty Name="life_span" ColumnName="life_span" />
-                <ScalarProperty Name="purchase_date" ColumnName="purchase_date" />
-                <ScalarProperty Name="current_value" ColumnName="current_value" />
-                <ScalarProperty Name="purchase_price" ColumnName="purchase_price" />
-                <ScalarProperty Name="item_sub_type_id" ColumnName="item_sub_type_id" />
-                <ScalarProperty Name="item_type_id" ColumnName="item_type_id" />
-                <ScalarProperty Name="asset_tag" ColumnName="asset_tag" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="subtype" ColumnName="subtype" />
-                <ScalarProperty Name="type" ColumnName="type" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

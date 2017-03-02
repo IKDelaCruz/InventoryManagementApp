@@ -80,12 +80,12 @@ namespace InventoryManagement
 
             cbxType.DisplayMember = "Name";
             cbxType.ValueMember = "Id";
-            cbxType.DataSource = Singleton.Instance.CategoryModel.GetCategories();
+            cbxType.DataSource = Singleton.Instance.ItemTypeModel.GetTypes();
 
 
             cbxSubType.DisplayMember = "Name";
             cbxSubType.ValueMember = "Sub_Id";
-            cbxSubType.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategoriesByType((int)cbxType.SelectedValue);
+            cbxSubType.DataSource = Singleton.Instance.ItemSubTypeModel.GetSubTypesByType((int)cbxType.SelectedValue);
 
             cbxUsers.ValueMember = "Id";
             cbxUsers.DisplayMember = "LastnameFirstNameUsername";
@@ -154,7 +154,7 @@ namespace InventoryManagement
         {
             cbxSubType.DisplayMember = "Name";
             cbxSubType.ValueMember = "Sub_Id";
-            cbxSubType.DataSource = Singleton.Instance.CategorySubcategoryModel.GetSubcategoriesByType((int)cbxType.SelectedValue);
+            cbxSubType.DataSource = Singleton.Instance.ItemSubTypeModel.GetSubTypesByType((int)cbxType.SelectedValue);
         }
 
         private void tbMain_Click(object sender, EventArgs e)

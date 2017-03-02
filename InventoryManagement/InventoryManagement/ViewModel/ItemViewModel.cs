@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,24 +41,24 @@ namespace InventoryManagement.ViewModel
        // Disposed,
        // Unknown
     }
-    public enum ItemOperatingSystem
-    {
-        Unknown,
-        WindowsNT,
-        WindowsXP,
-        Windows7,
-        Windows8,
-        Windows10,
-        OSX,
-        Windows2003,
-        Windows2008,
-        Windows2012,
-        Ubuntu,
-        Centos,
-        EXSI,
-        IOS,
-        Android
-    }
+    //public enum ItemOperatingSystem
+    //{
+    //    Unknown,
+    //    WindowsNT,
+    //    WindowsXP,
+    //    Windows7,
+    //    Windows8,
+    //    Windows10,
+    //    OSX,
+    //    Windows2003,
+    //    Windows2008,
+    //    Windows2012,
+    //    Ubuntu,
+    //    Centos,
+    //    EXSI,
+    //    IOS,
+    //    Android
+    //}
     public enum ItemProcessors
     {
         Unknown,
@@ -96,17 +97,11 @@ namespace InventoryManagement.ViewModel
 
     }
 
-    public class OSViewModel
+    public class OSViewModel : ParentChildViewModel
     {
-        public int id { get; set;}
-        public int subtype_id { get; set; }
-        public string OS { get; set; }
     }
-    public class BrandViewModel
+    public class BrandViewModel : ParentChildViewModel
     {
-        public int Brand_Id { get; set; }
-        public int SubId { get; set; }
-        public string Name { get; set; }
     }
 
 
@@ -142,5 +137,7 @@ namespace InventoryManagement.ViewModel
         public ItemMemory Memory { get; set; }
         public ItemHDDCapacity HDD1 { get; set; }
         public ItemHDDCapacity HDD2 { get; set; }
+
+        public Image Picture { get; set; }
     }
 }

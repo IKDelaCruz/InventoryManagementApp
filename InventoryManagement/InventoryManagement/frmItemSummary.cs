@@ -21,8 +21,7 @@ namespace InventoryManagement
             IsInitializing = true;
 
             InitializeComponent();
-            ListViewExtension.LoadImageList(typeImageList, 1);
-            ListViewExtension.LoadImageList(subTypeImageList,  2);
+           
 
             IsInitializing = false;
         }

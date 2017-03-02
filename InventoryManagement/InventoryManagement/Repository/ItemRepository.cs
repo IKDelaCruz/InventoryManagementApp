@@ -220,7 +220,7 @@ namespace InventoryManagement.Repository
             //var os = InventoryDatabase.OperatingSystems.FirstOrDefault(b => b.OS == name);
             //if (os == null)
             //{
-                var newOs = new OperatingSystem() { subtype_id = id, OS = name };
+                var newOs = new OperatingSystem() { id = id, name = name };
                 InventoryDatabase.OperatingSystems.Add(newOs);
                 if (InventoryDatabase.SaveChanges() > 0)
                     return newOs.id;
@@ -235,14 +235,14 @@ namespace InventoryManagement.Repository
 
         public OSViewModel GetOSbyName(int id, string os)
         {
-            var OS = InventoryDatabase.OperatingSystems.FirstOrDefault(h => h.subtype_id == id && h.OS == os);
+            var OS = InventoryDatabase.OperatingSystems.FirstOrDefault(h => h.id == id && h.name == os);
             if (OS != null)
             {
                 return new OSViewModel
                 {
-                    id = OS.id,
-                    subtype_id = OS.subtype_id,
-                    OS = OS.OS,
+                    Id = OS.id,
+                    ParentId = OS.id,
+                    Name = OS.name,
 
                 };
             }
@@ -253,11 +253,11 @@ namespace InventoryManagement.Repository
 
         public int UpdateOS(int id, string name)
         {
-            var os = InventoryDatabase.OperatingSystems.FirstOrDefault(b => b.subtype_id == id);
+            var os = InventoryDatabase.OperatingSystems.FirstOrDefault(b => b.id == id);
 
             if (os != null)
             {
-                var osExists = InventoryDatabase.OperatingSystems.FirstOrDefault(b => b.OS == name);
+                var osExists = InventoryDatabase.OperatingSystems.FirstOrDefault(b => b.name == name);
 
 
                 //Name already exist
@@ -270,7 +270,7 @@ namespace InventoryManagement.Repository
                     return -2;
                 }
 
-                os.OS = name;
+                os.name = name;
             }
             InventoryDatabase.SaveChanges();
             return 1;
@@ -282,7 +282,7 @@ namespace InventoryManagement.Repository
 
             foreach (Brand b in brands)
             {
-                bList.Add(new BrandViewModel { Brand_Id = b.id, SubId = b.subtype_id, Name = b.name });
+                bList.Add(new BrandViewModel { Id = b.id, ParentId = b.subtype_id, Name = b.name });
             }
             return bList;
         }
@@ -300,8 +300,8 @@ namespace InventoryManagement.Repository
             {
                 brandslist.Add(new ViewModel.BrandViewModel
                 {
-                    Brand_Id = b.id,
-                    SubId = b.subtype_id,
+                    Id = b.id,
+                    ParentId = b.subtype_id,
                     Name = b.name,
                 });
             }
@@ -316,26 +316,26 @@ namespace InventoryManagement.Repository
             {
                 return new BrandViewModel
                 {
-                    Brand_Id = brands.id,
-                    SubId = brands.subtype_id,
+                    Id = brands.id,
+                    ParentId = brands.subtype_id,
                     Name = brands.name
                 };
             }
             return null;
         }
 
-        public List<OSViewModel> QueryOSBySubtype(int subtypeId)
+        public List<OSViewModel> QueryOSBySubtype()
         {
             var OSList = new List<OSViewModel>();
 
-            var operatingsystems = InventoryDatabase.OperatingSystems.Where(x => x.subtype_id == subtypeId).ToList();
+            var operatingsystems = InventoryDatabase.OperatingSystems.ToList();
             foreach (OperatingSystem o in operatingsystems)
             {
                 OSList.Add(new ViewModel.OSViewModel
                 {
-                    id = o.id,
-                    subtype_id = o.subtype_id,
-                    OS = o.OS,
+                    Id = o.id,
+                    ParentId = o.id,
+                    Name = o.name,
                 });
             }
 
@@ -408,19 +408,20 @@ namespace InventoryManagement.Repository
 
         public List<ItemViewModel> QueryItemTypeSummary()
         {
-            var items = InventoryDatabase.vwItemTypeSummarySubs.ToList();
+            var items = InventoryDatabase.vwItemTypeSummaries.ToList();
             List<ItemViewModel> iList = new List<ItemViewModel>();
 
-            foreach (vwItemTypeSummarySub s in items)
+            foreach (vwItemTypeSummary s in items)
             {
                 iList.Add(new ItemViewModel
                 {
-                    Id = s.TypeId,
-                    TypeId = s.TypeId,
-                    SubTypeId = s.TypeId,
+                    Id = s.ITTypeId,
+                    TypeId = s.ITTypeId,
+                    SubTypeId = s.ITTypeId,
                     Name = s.ITTypeName,
                     SummaryCount = s.ITTotalAvailable ?? 0,
-                    IsSummary = true
+                    IsSummary = true,
+                    Picture = Utils.ImageCon.byteArrayToImage(s.Picture)
                 });
             }
             return iList;
@@ -436,11 +437,12 @@ namespace InventoryManagement.Repository
                 iList.Add(new ItemViewModel
                 {
                     Id = s.ISTSubTypeID,
-                    TypeId = s.ISTTypeId ?? 0,
+                    TypeId = s.ISTTypeId,
                     SubTypeId = s.ISTSubTypeID,
                     Name = s.ISTSubType,
                     SummaryCount = s.ISTTotalAvailable ?? 0,
-                    IsSummary = true
+                    IsSummary = true,
+                    Picture = Utils.ImageCon.byteArrayToImage(s.ITemTypePicture)
                 });
             }
             return iList;
@@ -474,34 +476,38 @@ namespace InventoryManagement.Repository
         }
         public ItemViewModel QueryItem(int id)
         {
-            var i = InventoryDatabase.Items.FirstOrDefault(h => h.id == id);
+            var i = InventoryDatabase.vwItemDetails.FirstOrDefault(h => h.Id == id);
 
             return new ItemViewModel
             {
-                Id = i.id,
-                AssetTag = i.asset_tag,
-                Name = i.name,
-                Description = i.description,
-                TypeId = i.item_type_id,
+                Id = i.Id,
+                AssetTag = i.AssetTag,
+                Name = i.Name,
+                Description = i.Description,
+                TypeId = i.ItemTypeId,
                 //Type = i.ItemType.type,
-                SubTypeId = i.item_sub_type_id,
+                SubTypeId = i.ItemSubTypeId,
                 //SubType = i.ItemSubtype.subtype,
-                BrandId = i.brand_id ?? 13,
-                Model = i.model,
-                Serial = i.serial,
-                Status = (ItemStatus)i.status,
-                CurrentOwner = i.current_owner ?? 0,
-                LastUpdatedDate = i.last_updated ?? DateTime.MinValue,
-                PurchaseDate = i.purchase_date ?? DateTime.MinValue,
-                PurchasePrice = i.purchase_price,
-                LifeSpan = i.life_span ?? 5,
-                Currentvalue = i.current_value,
-                OS = (int)(i.os_id ?? 0),
-                Processor = (ItemProcessors)(i.processor_id ?? 0),
-                Memory = (ItemMemory)(i.memory_id ?? 0),
-                HDD1 = (ItemHDDCapacity)(i.hdd1_id ?? 0),
-                HDD2 = (ItemHDDCapacity)(i.hdd2_id ?? 0),
-                SalvageValue = i.salvage_value ?? 0
+                BrandId = i.BrandId ?? 13,
+                Model = i.Model,
+                Serial = i.Serial,
+                Status = (ItemStatus)i.Status,
+                CurrentOwner = i.CurrentOwner ?? 0,
+                LastUpdatedDate = i.LastUpdated ?? DateTime.MinValue,
+                PurchaseDate = i.PurchaseDate ?? DateTime.MinValue,
+                PurchasePrice = i.PurchasePrice,
+                LifeSpan = i.LifeSpan ?? 5,
+                Currentvalue = i.CurrentValue,
+                OS = (int)(i.OsId ?? 0),
+                Processor = (ItemProcessors)(i.ProcessorId ?? 0),
+                Memory = (ItemMemory)(i.MemoryId ?? 0),
+                HDD1 = (ItemHDDCapacity)(i.HddId ?? 0),
+                HDD2 = (ItemHDDCapacity)(i.Hdd2Id ?? 0),
+                SalvageValue = i.SalvageValue ?? 0,
+                Type = i.TypeName,
+                SubType = i.SubTypeName,
+                Brand = i.BrandName,
+                CurrentOwnerName = i.UserLastName + ", " + i.UserFirstName
             };
         }
         public string QueryOwner(int id)

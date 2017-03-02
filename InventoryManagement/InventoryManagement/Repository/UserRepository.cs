@@ -28,7 +28,6 @@ namespace InventoryManagement.Repository
             }
             return null;
         }
-
         public int CreateNewUser(string username, string password, int type, string firstname, string lastname, int departmentId)
         {
 
@@ -54,7 +53,6 @@ namespace InventoryManagement.Repository
 
             
         }
-
         public bool UpdateUser(int userId, string firstName, string lastName, int companyId, int departmentId, int userType = 3)
         {
             var user = InventoryDatabase.Users.FirstOrDefault(h => h.id == userId);
@@ -172,8 +170,5 @@ namespace InventoryManagement.Repository
 
             return list;
         }
-
-
-        
     }
 }

@@ -30,21 +30,28 @@ namespace InventoryManagement.Repository
         public virtual DbSet<Brand> Brands { get; set; }
         public virtual DbSet<Company> Companies { get; set; }
         public virtual DbSet<Department> Departments { get; set; }
+        public virtual DbSet<HDD> HDDs { get; set; }
         public virtual DbSet<Item> Items { get; set; }
         public virtual DbSet<ItemImage> ItemImages { get; set; }
         public virtual DbSet<ItemSubtype> ItemSubtypes { get; set; }
+        public virtual DbSet<ItemSubTypeImage> ItemSubTypeImages { get; set; }
         public virtual DbSet<ItemType> ItemTypes { get; set; }
+        public virtual DbSet<ItemTypeImage> ItemTypeImages { get; set; }
+        public virtual DbSet<Memory> Memories { get; set; }
         public virtual DbSet<OperatingSystem> OperatingSystems { get; set; }
+        public virtual DbSet<Processor> Processors { get; set; }
         public virtual DbSet<Request> Requests { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
         public virtual DbSet<TransactionType> TransactionTypes { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<vwBrandSummary> vwBrandSummaries { get; set; }
+        public virtual DbSet<vwItemDetail> vwItemDetails { get; set; }
         public virtual DbSet<vwItemLog> vwItemLogs { get; set; }
+        public virtual DbSet<vwItemSubTypeCount> vwItemSubTypeCounts { get; set; }
         public virtual DbSet<vwItemSubTypeSummary> vwItemSubTypeSummaries { get; set; }
-        public virtual DbSet<vwItemTypeSummarySub> vwItemTypeSummarySubs { get; set; }
+        public virtual DbSet<vwItemTypeSummary> vwItemTypeSummaries { get; set; }
         public virtual DbSet<vwTransactionLog> vwTransactionLogs { get; set; }
-        public virtual DbSet<vwItemDepeciationReport> vwItemDepeciationReports { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
