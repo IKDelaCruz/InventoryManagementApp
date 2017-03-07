@@ -14,22 +14,22 @@ namespace InventoryManagement.Repository
     
     public partial class vwItemDetail
     {
-        public int Id { get; set; }
+        public int id { get; set; }
         public string AssetTag { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public string name { get; set; }
+        public string description { get; set; }
         public int ItemTypeId { get; set; }
         public int ItemSubTypeId { get; set; }
         public decimal PurchasePrice { get; set; }
         public decimal CurrentValue { get; set; }
         public Nullable<System.DateTime> PurchaseDate { get; set; }
         public Nullable<int> LifeSpan { get; set; }
-        public Nullable<int> Status { get; set; }
+        public Nullable<int> status { get; set; }
         public Nullable<System.DateTime> LastUpdated { get; set; }
         public Nullable<int> LastUpdatedUser { get; set; }
         public Nullable<int> BrandId { get; set; }
-        public string Model { get; set; }
-        public string Serial { get; set; }
+        public string model { get; set; }
+        public string serial { get; set; }
         public Nullable<int> CurrentOwner { get; set; }
         public Nullable<int> OsId { get; set; }
         public Nullable<int> ProcessorId { get; set; }
@@ -42,5 +42,6 @@ namespace InventoryManagement.Repository
         public string BrandName { get; set; }
         public string UserFirstName { get; set; }
         public string UserLastName { get; set; }
+        public string Username { get; set; }
     }
 }

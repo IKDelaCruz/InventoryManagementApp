@@ -35,11 +35,11 @@
             this.SystemUserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TransactionTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OtherUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.inventoryDataSet = new InventoryManagement.Report.InventoryManagementData.InventoryDataSet();
+           
             this.inventoryDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvLogs)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.inventoryDataSet)).BeginInit();
+         
             ((System.ComponentModel.ISupportInitialize)(this.inventoryDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -112,13 +112,11 @@
             // 
             // inventoryDataSet
             // 
-            this.inventoryDataSet.DataSetName = "InventoryDataSet";
-            this.inventoryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+           
             // 
             // inventoryDataSetBindingSource
             // 
-            this.inventoryDataSetBindingSource.DataSource = this.inventoryDataSet;
-            this.inventoryDataSetBindingSource.Position = 0;
+      
             // 
             // frmUserLogs
             // 
@@ -132,7 +130,7 @@
             this.Load += new System.EventHandler(this.frmUserLogs_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dvLogs)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.inventoryDataSet)).EndInit();
+           
             ((System.ComponentModel.ISupportInitialize)(this.inventoryDataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -147,6 +145,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TransactionTypeId;
         private System.Windows.Forms.DataGridViewTextBoxColumn OtherUserName;
         private System.Windows.Forms.BindingSource inventoryDataSetBindingSource;
-        private Report.InventoryManagementData.InventoryDataSet inventoryDataSet;
+        
     }
 }

@@ -50,7 +50,8 @@ namespace InventoryManagement.Utils
             foreach (ItemViewModel item in items)
             {
                
-                var itemName = item.Name + " [" + item.Status.ToString() + "]";
+                var itemName = string.Format("{0} ({2})", item.Name, item.Status.ToString().Substring(0,1), item.CurrentOwnerName);
+                //var itemName = item.Name + " [" + item.Status.ToString() + "]";
 
                 if (summary)
                 {

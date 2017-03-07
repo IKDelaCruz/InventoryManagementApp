@@ -104,16 +104,12 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addItemTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manageBrandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.requestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.processedRequestsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.depreciationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.borrowedReservedBrokenItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.manageBrandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlMain.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlTop.SuspendLayout();
@@ -235,7 +231,7 @@
             this.chkShowAllSubType.TabIndex = 45;
             this.chkShowAllSubType.Text = "Show All";
             this.chkShowAllSubType.UseVisualStyleBackColor = true;
-            this.chkShowAllSubType.CheckedChanged += new System.EventHandler(this.chkShowAllSubType_CheckedChanged);
+            this.chkShowAllSubType.CheckedChanged += new System.EventHandler(this.UpdateView);
             // 
             // chkShowAllType
             // 
@@ -819,8 +815,7 @@
             this.fileToolStripMenuItem,
             this.inventoryToolStripMenuItem,
             this.usersToolStripMenuItem,
-            this.requestToolStripMenuItem,
-            this.reportsToolStripMenuItem});
+            this.requestToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
@@ -841,14 +836,14 @@
             // loginToolStripMenuItem
             // 
             this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            this.loginToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
+            this.loginToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.loginToolStripMenuItem.Text = "Login";
             this.loginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Visible = false;
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
@@ -868,28 +863,35 @@
             // summaryToolStripMenuItem
             // 
             this.summaryToolStripMenuItem.Name = "summaryToolStripMenuItem";
-            this.summaryToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.summaryToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.summaryToolStripMenuItem.Text = "Summary";
             this.summaryToolStripMenuItem.Click += new System.EventHandler(this.summaryToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(180, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(148, 6);
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.addToolStripMenuItem.Text = "Add Item";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // addItemTypeToolStripMenuItem
             // 
             this.addItemTypeToolStripMenuItem.Name = "addItemTypeToolStripMenuItem";
-            this.addItemTypeToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.addItemTypeToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.addItemTypeToolStripMenuItem.Text = "Manage Types";
             this.addItemTypeToolStripMenuItem.Click += new System.EventHandler(this.addItemTypeToolStripMenuItem_Click);
+            // 
+            // manageBrandToolStripMenuItem
+            // 
+            this.manageBrandToolStripMenuItem.Name = "manageBrandToolStripMenuItem";
+            this.manageBrandToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.manageBrandToolStripMenuItem.Text = "Manage Brand";
+            this.manageBrandToolStripMenuItem.Click += new System.EventHandler(this.manageBrandToolStripMenuItem_Click);
             // 
             // usersToolStripMenuItem
             // 
@@ -903,14 +905,14 @@
             // manageToolStripMenuItem
             // 
             this.manageToolStripMenuItem.Name = "manageToolStripMenuItem";
-            this.manageToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.manageToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.manageToolStripMenuItem.Text = "Manage";
             this.manageToolStripMenuItem.Click += new System.EventHandler(this.manageToolStripMenuItem_Click);
             // 
             // logsToolStripMenuItem
             // 
             this.logsToolStripMenuItem.Name = "logsToolStripMenuItem";
-            this.logsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.logsToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.logsToolStripMenuItem.Text = "Logs";
             this.logsToolStripMenuItem.Click += new System.EventHandler(this.logsToolStripMenuItem_Click);
             // 
@@ -925,47 +927,9 @@
             // manageToolStripMenuItem1
             // 
             this.manageToolStripMenuItem1.Name = "manageToolStripMenuItem1";
-            this.manageToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.manageToolStripMenuItem1.Size = new System.Drawing.Size(117, 22);
             this.manageToolStripMenuItem1.Text = "Manage";
             this.manageToolStripMenuItem1.Click += new System.EventHandler(this.manageToolStripMenuItem1_Click);
-            // 
-            // reportsToolStripMenuItem
-            // 
-            this.reportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.processedRequestsToolStripMenuItem,
-            this.depreciationToolStripMenuItem,
-            this.borrowedReservedBrokenItemsToolStripMenuItem});
-            this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
-            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
-            this.reportsToolStripMenuItem.Text = "Reports";
-            // 
-            // processedRequestsToolStripMenuItem
-            // 
-            this.processedRequestsToolStripMenuItem.Name = "processedRequestsToolStripMenuItem";
-            this.processedRequestsToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
-            this.processedRequestsToolStripMenuItem.Text = "Processed Requests";
-            this.processedRequestsToolStripMenuItem.Click += new System.EventHandler(this.processedRequestsToolStripMenuItem_Click);
-            // 
-            // depreciationToolStripMenuItem
-            // 
-            this.depreciationToolStripMenuItem.Name = "depreciationToolStripMenuItem";
-            this.depreciationToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
-            this.depreciationToolStripMenuItem.Text = "Depreciation";
-            this.depreciationToolStripMenuItem.Click += new System.EventHandler(this.depreciationToolStripMenuItem_Click);
-            // 
-            // borrowedReservedBrokenItemsToolStripMenuItem
-            // 
-            this.borrowedReservedBrokenItemsToolStripMenuItem.Name = "borrowedReservedBrokenItemsToolStripMenuItem";
-            this.borrowedReservedBrokenItemsToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
-            this.borrowedReservedBrokenItemsToolStripMenuItem.Text = "Borrowed/Reserved/Broken Items";
-            this.borrowedReservedBrokenItemsToolStripMenuItem.Click += new System.EventHandler(this.borrowedReservedBrokenItemsToolStripMenuItem_Click);
-            // 
-            // manageBrandToolStripMenuItem
-            // 
-            this.manageBrandToolStripMenuItem.Name = "manageBrandToolStripMenuItem";
-            this.manageBrandToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.manageBrandToolStripMenuItem.Text = "Manage Brand";
-            this.manageBrandToolStripMenuItem.Click += new System.EventHandler(this.manageBrandToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -1073,7 +1037,6 @@
         private System.Windows.Forms.Button btnCheckin;
         private System.Windows.Forms.Button btnCheckout;
         private System.Windows.Forms.Button btnReserve;
-        private System.Windows.Forms.ToolStripMenuItem reportsToolStripMenuItem;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox cbxUsers;
@@ -1082,12 +1045,9 @@
         private System.Windows.Forms.ToolStripMenuItem addItemTypeToolStripMenuItem;
         private System.Windows.Forms.TextBox txtScan;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ToolStripMenuItem processedRequestsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem summaryToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem depreciationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem borrowedReservedBrokenItemsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manageBrandToolStripMenuItem;
     }
 }

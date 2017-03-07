@@ -58,11 +58,11 @@ namespace InventoryManagement.Model
 
             return rv;
         }
-        public ReturnValueModel UpdateItemStatus(int itemId, int userId, ItemStatus itemStatus)
+        public ReturnValueModel UpdateItemStatus(int itemId, int userId, ItemStatus currentStatus, ItemStatus newStatus)
         {
             var result = new ReturnValueModel();
 
-            var success = itemRepostory.UpdateItemStatus(itemId, userId, (int)itemStatus);
+            var success = itemRepostory.UpdateItemStatus(itemId, userId, (int)newStatus);
 
             result.Success = success;
             //result.Param1 = itemStatus.ToString();

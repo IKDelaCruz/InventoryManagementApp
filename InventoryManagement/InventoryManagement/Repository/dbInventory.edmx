@@ -205,30 +205,30 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwBrandSummary' does not h
 warning 6002: The table/view 'InventoryManagement.dbo.vwItemDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwItemDetails">
           <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="Description" />
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="description" />
             <PropertyRef Name="ItemTypeId" />
             <PropertyRef Name="ItemSubTypeId" />
             <PropertyRef Name="PurchasePrice" />
             <PropertyRef Name="CurrentValue" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
           <Property Name="AssetTag" Type="varchar" MaxLength="50" />
-          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ItemTypeId" Type="int" Nullable="false" />
           <Property Name="ItemSubTypeId" Type="int" Nullable="false" />
           <Property Name="PurchasePrice" Type="money" Nullable="false" />
           <Property Name="CurrentValue" Type="money" Nullable="false" />
           <Property Name="PurchaseDate" Type="date" />
           <Property Name="LifeSpan" Type="int" />
-          <Property Name="Status" Type="int" />
+          <Property Name="status" Type="int" />
           <Property Name="LastUpdated" Type="datetime" />
           <Property Name="LastUpdatedUser" Type="int" />
           <Property Name="BrandId" Type="int" />
-          <Property Name="Model" Type="varchar" MaxLength="50" />
-          <Property Name="Serial" Type="varchar" MaxLength="50" />
+          <Property Name="model" Type="varchar" MaxLength="50" />
+          <Property Name="serial" Type="varchar" MaxLength="50" />
           <Property Name="CurrentOwner" Type="int" />
           <Property Name="OsId" Type="int" />
           <Property Name="ProcessorId" Type="int" />
@@ -241,6 +241,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwItemDetails' does not ha
           <Property Name="BrandName" Type="varchar" MaxLength="50" />
           <Property Name="UserFirstName" Type="varchar" MaxLength="150" />
           <Property Name="UserLastName" Type="varchar" MaxLength="150" />
+          <Property Name="Username" Type="varchar" MaxLength="150" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'InventoryManagement.dbo.vwItemLogs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -286,6 +287,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwItemSubTypeSummary' does
           <Property Name="ISTType" Type="varchar" MaxLength="50" />
           <Property Name="ISTTotalAvailable" Type="int" />
           <Property Name="ITemTypePicture" Type="varbinary(max)" />
+          <Property Name="ITemTypePictureId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'InventoryManagement.dbo.vwItemTypeSummary' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -517,22 +519,22 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
           </EntitySet>
           <EntitySet Name="vwItemDetails" EntityType="Self.vwItemDetails" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [vwItemDetails].[Id] AS [Id], 
+    [vwItemDetails].[id] AS [id], 
     [vwItemDetails].[AssetTag] AS [AssetTag], 
-    [vwItemDetails].[Name] AS [Name], 
-    [vwItemDetails].[Description] AS [Description], 
+    [vwItemDetails].[name] AS [name], 
+    [vwItemDetails].[description] AS [description], 
     [vwItemDetails].[ItemTypeId] AS [ItemTypeId], 
     [vwItemDetails].[ItemSubTypeId] AS [ItemSubTypeId], 
     [vwItemDetails].[PurchasePrice] AS [PurchasePrice], 
     [vwItemDetails].[CurrentValue] AS [CurrentValue], 
     [vwItemDetails].[PurchaseDate] AS [PurchaseDate], 
     [vwItemDetails].[LifeSpan] AS [LifeSpan], 
-    [vwItemDetails].[Status] AS [Status], 
+    [vwItemDetails].[status] AS [status], 
     [vwItemDetails].[LastUpdated] AS [LastUpdated], 
     [vwItemDetails].[LastUpdatedUser] AS [LastUpdatedUser], 
     [vwItemDetails].[BrandId] AS [BrandId], 
-    [vwItemDetails].[Model] AS [Model], 
-    [vwItemDetails].[Serial] AS [Serial], 
+    [vwItemDetails].[model] AS [model], 
+    [vwItemDetails].[serial] AS [serial], 
     [vwItemDetails].[CurrentOwner] AS [CurrentOwner], 
     [vwItemDetails].[OsId] AS [OsId], 
     [vwItemDetails].[ProcessorId] AS [ProcessorId], 
@@ -544,7 +546,8 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
     [vwItemDetails].[SubTypeName] AS [SubTypeName], 
     [vwItemDetails].[BrandName] AS [BrandName], 
     [vwItemDetails].[UserFirstName] AS [UserFirstName], 
-    [vwItemDetails].[UserLastName] AS [UserLastName]
+    [vwItemDetails].[UserLastName] AS [UserLastName], 
+    [vwItemDetails].[Username] AS [Username]
     FROM [dbo].[vwItemDetails] AS [vwItemDetails]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwItemLogs" EntityType="Self.vwItemLogs" store:Type="Views" store:Schema="dbo">
@@ -577,7 +580,8 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
     [vwItemSubTypeSummary].[ISTTypeId] AS [ISTTypeId], 
     [vwItemSubTypeSummary].[ISTType] AS [ISTType], 
     [vwItemSubTypeSummary].[ISTTotalAvailable] AS [ISTTotalAvailable], 
-    [vwItemSubTypeSummary].[ITemTypePicture] AS [ITemTypePicture]
+    [vwItemSubTypeSummary].[ITemTypePicture] AS [ITemTypePicture], 
+    [vwItemSubTypeSummary].[ITemTypePictureId] AS [ITemTypePictureId]
     FROM [dbo].[vwItemSubTypeSummary] AS [vwItemSubTypeSummary]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwItemTypeSummary" EntityType="Self.vwItemTypeSummary" store:Type="Views" store:Schema="dbo">
@@ -984,30 +988,30 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
         </EntityType>
         <EntityType Name="vwItemDetail">
           <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="Description" />
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="description" />
             <PropertyRef Name="ItemTypeId" />
             <PropertyRef Name="ItemSubTypeId" />
             <PropertyRef Name="PurchasePrice" />
             <PropertyRef Name="CurrentValue" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="AssetTag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ItemTypeId" Type="Int32" Nullable="false" />
           <Property Name="ItemSubTypeId" Type="Int32" Nullable="false" />
           <Property Name="PurchasePrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="CurrentValue" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="PurchaseDate" Type="DateTime" Precision="0" />
           <Property Name="LifeSpan" Type="Int32" />
-          <Property Name="Status" Type="Int32" />
+          <Property Name="status" Type="Int32" />
           <Property Name="LastUpdated" Type="DateTime" Precision="3" />
           <Property Name="LastUpdatedUser" Type="Int32" />
           <Property Name="BrandId" Type="Int32" />
-          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Serial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="serial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CurrentOwner" Type="Int32" />
           <Property Name="OsId" Type="Int32" />
           <Property Name="ProcessorId" Type="Int32" />
@@ -1020,6 +1024,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
           <Property Name="BrandName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UserFirstName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="UserLastName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="vwItemLog">
           <Key>
@@ -1059,6 +1064,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
           <Property Name="ISTType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ISTTotalAvailable" Type="Int32" />
           <Property Name="ITemTypePicture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ITemTypePictureId" Type="Int32" />
         </EntityType>
         <EntityType Name="vwItemTypeSummary">
           <Key>
@@ -1472,6 +1478,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
           <EntitySetMapping Name="vwItemDetails">
             <EntityTypeMapping TypeName="InventoryMangementModel.vwItemDetail">
               <MappingFragment StoreEntitySet="vwItemDetails">
+                <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="UserLastName" ColumnName="UserLastName" />
                 <ScalarProperty Name="UserFirstName" ColumnName="UserFirstName" />
                 <ScalarProperty Name="BrandName" ColumnName="BrandName" />
@@ -1484,22 +1491,22 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
                 <ScalarProperty Name="ProcessorId" ColumnName="ProcessorId" />
                 <ScalarProperty Name="OsId" ColumnName="OsId" />
                 <ScalarProperty Name="CurrentOwner" ColumnName="CurrentOwner" />
-                <ScalarProperty Name="Serial" ColumnName="Serial" />
-                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="serial" ColumnName="serial" />
+                <ScalarProperty Name="model" ColumnName="model" />
                 <ScalarProperty Name="BrandId" ColumnName="BrandId" />
                 <ScalarProperty Name="LastUpdatedUser" ColumnName="LastUpdatedUser" />
                 <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="LifeSpan" ColumnName="LifeSpan" />
                 <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
                 <ScalarProperty Name="CurrentValue" ColumnName="CurrentValue" />
                 <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
                 <ScalarProperty Name="ItemSubTypeId" ColumnName="ItemSubTypeId" />
                 <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="AssetTag" ColumnName="AssetTag" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1533,6 +1540,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vwTransactionLogs' does no
           <EntitySetMapping Name="vwItemSubTypeSummaries">
             <EntityTypeMapping TypeName="InventoryMangementModel.vwItemSubTypeSummary">
               <MappingFragment StoreEntitySet="vwItemSubTypeSummary">
+                <ScalarProperty Name="ITemTypePictureId" ColumnName="ITemTypePictureId" />
                 <ScalarProperty Name="ITemTypePicture" ColumnName="ITemTypePicture" />
                 <ScalarProperty Name="ISTTotalAvailable" ColumnName="ISTTotalAvailable" />
                 <ScalarProperty Name="ISTType" ColumnName="ISTType" />

@@ -171,6 +171,7 @@ namespace InventoryManagement.Repository
 
             if (item != null)
             {
+
                 item.status = itemStatus;
                 item.current_owner = userId;
                 InventoryDatabase.SaveChanges();
@@ -344,32 +345,33 @@ namespace InventoryManagement.Repository
 
         public List<ItemViewModel> QueryItems()
         {
-            var items = InventoryDatabase.Items.ToList();
+            var items = InventoryDatabase.vwItemDetails.AsNoTracking().ToList();
             List<ItemViewModel> iList = new List<ItemViewModel>();
 
-            foreach (Item i in items)
+            foreach (vwItemDetail i in items)
             {
                 iList.Add(new ItemViewModel
                 {
                     Id = i.id,
-                    AssetTag = i.asset_tag,
+                    AssetTag = i.AssetTag,
                     Name = i.name,
                     Description = i.description,
-                    TypeId = Convert.ToInt32(i.item_type_id),
+                    TypeId = Convert.ToInt32(i.ItemTypeId),
                     //Type = i.ItemType.type,
-                    SubTypeId = Convert.ToInt32(i.item_sub_type_id),
+                    SubTypeId = Convert.ToInt32(i.ItemSubTypeId),
                     //SubType = subtype,
-                    BrandId = i.brand_id ?? 13,
+                    BrandId = i.BrandId ?? 13,
                     Model = i.model,
                     Serial = i.serial,
                     Status = (ItemStatus)i.status,
-                    CurrentOwner = i.current_owner ?? 0,
-                    LastUpdatedDate = i.last_updated ?? DateTime.MinValue,
-                    PurchaseDate = i.purchase_date ?? DateTime.MinValue,
-                    PurchasePrice = i.purchase_price,
-                    LifeSpan = i.life_span ?? 5,
-                    Currentvalue = i.current_value,
-                    SalvageValue = i.salvage_value ?? 0
+                    CurrentOwner = i.CurrentOwner ?? 0,
+                    CurrentOwnerName = i.Username,
+                    LastUpdatedDate = i.LastUpdated ?? DateTime.MinValue,
+                    PurchaseDate = i.PurchaseDate ?? DateTime.MinValue,
+                    PurchasePrice = i.PurchasePrice,
+                    LifeSpan = i.LifeSpan ?? 5,
+                    Currentvalue = i.CurrentValue,
+                    SalvageValue = i.SalvageValue ?? 0
                 });
             }
             return iList;
@@ -408,7 +410,7 @@ namespace InventoryManagement.Repository
 
         public List<ItemViewModel> QueryItemTypeSummary()
         {
-            var items = InventoryDatabase.vwItemTypeSummaries.ToList();
+            var items = InventoryDatabase.vwItemTypeSummaries.AsNoTracking().ToList();
             List<ItemViewModel> iList = new List<ItemViewModel>();
 
             foreach (vwItemTypeSummary s in items)
@@ -476,23 +478,24 @@ namespace InventoryManagement.Repository
         }
         public ItemViewModel QueryItem(int id)
         {
-            var i = InventoryDatabase.vwItemDetails.FirstOrDefault(h => h.Id == id);
+            var i = InventoryDatabase.vwItemDetails.AsNoTracking().FirstOrDefault(h => h.id == id);
 
             return new ItemViewModel
             {
-                Id = i.Id,
+                Id = i.id,
                 AssetTag = i.AssetTag,
-                Name = i.Name,
-                Description = i.Description,
+                Name = i.name,
+                Description = i.description,
                 TypeId = i.ItemTypeId,
                 //Type = i.ItemType.type,
                 SubTypeId = i.ItemSubTypeId,
                 //SubType = i.ItemSubtype.subtype,
                 BrandId = i.BrandId ?? 13,
-                Model = i.Model,
-                Serial = i.Serial,
-                Status = (ItemStatus)i.Status,
+                Model = i.model,
+                Serial = i.serial,
+                Status = (ItemStatus)i.status,
                 CurrentOwner = i.CurrentOwner ?? 0,
+                
                 LastUpdatedDate = i.LastUpdated ?? DateTime.MinValue,
                 PurchaseDate = i.PurchaseDate ?? DateTime.MinValue,
                 PurchasePrice = i.PurchasePrice,
@@ -507,7 +510,7 @@ namespace InventoryManagement.Repository
                 Type = i.TypeName,
                 SubType = i.SubTypeName,
                 Brand = i.BrandName,
-                CurrentOwnerName = i.UserLastName + ", " + i.UserFirstName
+                CurrentOwnerName = i.Username
             };
         }
         public string QueryOwner(int id)

@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using InventoryManagement.Utils;
 using InventoryManagement.ViewModel;
 using BarcodeLib;
-using InventoryManagement.Report;
+
 using InventoryManagement.Manage;
 
 namespace InventoryManagement
@@ -57,7 +57,7 @@ namespace InventoryManagement
         private void frmMain_Load(object sender, EventArgs e)
         {
             txtScan.Select();
-            DoUpdateView(false);
+            DoUpdateView(false, false);
             ShowSummary();
 
         }
@@ -78,7 +78,7 @@ namespace InventoryManagement
                 var frm = new frmLogin();
                 var result = frm.ShowDialog();
                 if (result == DialogResult.OK)
-                    DoUpdateView(false);
+                    DoUpdateView(false, false);
 
             }
             else
@@ -145,7 +145,7 @@ namespace InventoryManagement
 
         #region --- Methods --- 
 
-        private void DoUpdateView(bool useCache)
+        private void DoUpdateView(bool useCache, bool rememberIndex)
         {
             if (IsInitializing)
                 return;
@@ -176,25 +176,31 @@ namespace InventoryManagement
             var images = Singleton.Instance.ItemSubTypeModel.GetItemSubTypeImages();
             foreach (ItemSubTypeViewModel x in images)
                 imgMainImage.Images.Add(x.Id.ToString(), x.Picture);
+            int index = 0;
+            if (lvMain.SelectedIndices.Count > 0)
+                index = lvMain.SelectedIndices[0];
 
             lvMain.LoadData(itms, imgMainImage);
+
+            if (lvMain.Items.Count > 0 && rememberIndex)
+            {
+                lvMain.Items[index].Selected = true;
+                lvMain.Focus();
+            }
 
             tssUsername.Text = string.Format("Current User [{0}]", Singleton.Instance.UserModel.CurrentUser == null ? "" :
                 Singleton.Instance.UserModel.CurrentUser.Username);
 
             loginToolStripMenuItem.Text = Singleton.Instance.UserModel.CurrentUser == null ? "Login" : "Logout";
 
-            if (Singleton.Instance.UserModel.CurrentUser == null)
-            {
-                new frmLogin().ShowDialog();
-            }
+            
         }
         #endregion
 
         private void UpdateView(object sender, EventArgs e)
         {
-            if(!IsInitializing)
-                DoUpdateView(true);
+            if (!IsInitializing)
+                DoUpdateView(true, false);
         }
 
         private void DoUpdateItemDetails()
@@ -216,7 +222,7 @@ namespace InventoryManagement
                 lblSerial.Text = item.Serial;
 
                 lblStatus.Text = item.Status.ToString();
-                lblOwner.Text = item.CurrentOwnerName.ToString();
+                lblOwner.Text = (item.CurrentOwnerName ?? "").ToString();
                 lblLastUpdate.Text = item.LastUpdatedDate.ToString();
 
                 lblDatePurchase.Text = item.PurchaseDate.ToShortDateString();
@@ -232,33 +238,35 @@ namespace InventoryManagement
             }
         }
 
-        private void UpdateItemStatus(ItemStatus status, int userId)
+        private void UpdateItemStatus(ItemStatus currentStatus, ItemStatus newStatus, int userId)
         {
             if (_selectedItem != null)
             {
                 ItemModel itm = new ItemModel();
-                Singleton.Instance.ItemModel.UpdateItemStatus(_selectedItem.Id, userId, status);
+                Singleton.Instance.ItemModel.UpdateItemStatus(_selectedItem.Id, userId, currentStatus, newStatus);
 
-                DoUpdateView(false);
+                DoUpdateView(false, true);
                 DoUpdateItemDetails();
+                
+                
             }
         }
 
         private void btnCheckout_Click(object sender, EventArgs e)
         {
-            UpdateItemStatus(ItemStatus.Borrowed, (int)cbxUsers.SelectedValue);
+            UpdateItemStatus(_selectedItem.Status, ItemStatus.Borrowed,  (int)cbxUsers.SelectedValue);
             Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, (int)cbxUsers.SelectedValue, ViewModel.TransactionType.BorrowItem, "", _selectedItem.Id);
         }
 
         private void btnCheckin_Click(object sender, EventArgs e)
         {
-            UpdateItemStatus(ItemStatus.Available, 0);
+            UpdateItemStatus(_selectedItem.Status, ItemStatus.Available, 0);
             Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, 0, ViewModel.TransactionType.ReturnItem, "", _selectedItem.Id);
         }
 
         private void btnReserve_Click(object sender, EventArgs e)
         {
-            UpdateItemStatus(ItemStatus.Reserved, (int)cbxUsers.SelectedValue);
+            UpdateItemStatus(_selectedItem.Status, ItemStatus.Reserved, (int)cbxUsers.SelectedValue);
             Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, (int)cbxUsers.SelectedValue, ViewModel.TransactionType.ReserveItem, "", _selectedItem.Id);
         }
 
@@ -312,10 +320,7 @@ namespace InventoryManagement
         }
 
 
-        private void chkShowAllSubType_CheckedChanged(object sender, EventArgs e)
-        {
-            DoUpdateView(true);
-        }
+       
 
         private void lvMain_Click(object sender, EventArgs e)
         {
@@ -324,7 +329,7 @@ namespace InventoryManagement
 
         private void processedRequestsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new ReportViewer().ShowDialog();
+
         }
 
         private void logsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -351,7 +356,7 @@ namespace InventoryManagement
         private void cbxType_SelectedIndexChanged(object sender, EventArgs e)
         {
             cbxSubtype.DisplayMember = "Name";
-            cbxSubtype.ValueMember = "Sub_Id";
+            cbxSubtype.ValueMember = "Id";
             cbxSubtype.DataSource = Singleton.Instance.ItemSubTypeModel.GetSubTypesByType((int)cbxType.SelectedValue);
         }
 
@@ -367,13 +372,10 @@ namespace InventoryManagement
 
         private void depreciationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new ReportViewer2().ShowDialog();
+
         }
 
-        private void borrowedReservedBrokenItemsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new ReportViewer3().ShowDialog();
-        }
+
 
         private void manageBrandToolStripMenuItem_Click(object sender, EventArgs e)
         {

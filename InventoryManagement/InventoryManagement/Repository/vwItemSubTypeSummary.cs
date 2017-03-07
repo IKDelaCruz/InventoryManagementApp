@@ -20,5 +20,6 @@ namespace InventoryManagement.Repository
         public string ISTType { get; set; }
         public Nullable<int> ISTTotalAvailable { get; set; }
         public byte[] ITemTypePicture { get; set; }
+        public Nullable<int> ITemTypePictureId { get; set; }
     }
 }
