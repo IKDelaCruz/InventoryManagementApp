@@ -16,9 +16,9 @@ namespace InventoryManagement.Model
         {
             brandRepository = new BrandRepository();
         }
-        public ReturnValueRepo CreateNewBrand(int id, string name)
+        public ReturnValueRepo CreateNewBrand(int id, string name, string description)
         {
-            return brandRepository.CreateBrand(id, name);
+            return brandRepository.CreateBrand(id, name, description);
         }
         public ReturnValueRepo Delete(int id)
         {

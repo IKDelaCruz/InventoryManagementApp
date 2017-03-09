@@ -1,6 +1,9 @@
-﻿using InventoryManagement.ViewModel;
+﻿using InventoryManagement.Repository;
+using InventoryManagement.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Objects;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +12,7 @@ namespace InventoryManagement.Repository
 {
     public class BrandRepository : BaseRepository
     {
-        public ReturnValueRepo CreateBrand(int itemSubType, string brandName)
+        public ReturnValueRepo CreateBrand(int itemSubType, string brandName, string description)
         {
             var result = new
                 ReturnValueRepo();
@@ -17,13 +20,25 @@ namespace InventoryManagement.Repository
             var newBrand = new brand
             {
                 brand_parent_id = itemSubType,
-                brand_name = brandName
+                brand_name = brandName,
+                brand_description = description
             };
 
-            InventoryDatabase.brands.Add(newBrand);
+            int commandResult = InventoryDatabase.Database.ExecuteSqlCommand(
+                @"INSERT INTO [dbo].[brand]
+                   ([brand_name]
+                   ,[brand_parent_id]
+                   ,[brand_description])
+                VALUES
+                   ({0}
+                   ,{1}
+                   ,{2})", brandName, itemSubType, description);
 
-            if (InventoryDatabase.SaveChanges() > 0)
+            //InventoryDatabase.brands.Add(newBrand);
+            //if (InventoryDatabase.SaveChanges() > 0)
+            if (commandResult > 0)
             {
+
                 result.Success = true;
                 result.Param1 = newBrand.brand_id.ToString();
             }
@@ -34,6 +49,8 @@ namespace InventoryManagement.Repository
 
         public BrandViewModel GetBrandbyName(int id, string brandName)
         {
+          
+
             var brand = InventoryDatabase.brands.FirstOrDefault(h => h.brand_parent_id == id && h.brand_name == brandName);
             if (brand != null)
             {
@@ -55,12 +72,14 @@ namespace InventoryManagement.Repository
             var brand = InventoryDatabase.brands.FirstOrDefault(b => b.brand_id == id);
             if (brand != null)
             {
-                InventoryDatabase.brands.Remove(brand);
+                //InventoryDatabase.brands.Remove(brand);
                 try
                 {
-                    result.Success = (InventoryDatabase.SaveChanges() > 0);
+                    //result.Success = (InventoryDatabase.SaveChanges() > 0);
+                    int commandResult = InventoryDatabase.Database.ExecuteSqlCommand(@"DELETE FROM BRAND WHERE BRAND_ID = {0}", id);
+                    result.Success = commandResult > 0;
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     result.Message = ex.Message;
                     result.Param1 = ex.InnerException.Message;
@@ -120,6 +139,7 @@ namespace InventoryManagement.Repository
 
         public List<BrandViewModel> GetBrandSummaryBySubType(int subTypeId)
         {
+          
             var list = new List<BrandViewModel>();
 
             var brands = InventoryDatabase.vw_brand_summary.Where(h => h.ItemSubTypeId == subTypeId).ToList();

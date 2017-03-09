@@ -93,6 +93,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReport.Designer.cs">
+      <DependentUpon>frmReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmUserLogs.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -297,6 +303,7 @@
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
     <Compile Include="Utils\BarcodeGenerator.cs" />
+    <Compile Include="Utils\CSVExporter.cs" />
     <Compile Include="Utils\EmailSender.cs" />
     <Compile Include="Utils\ErrorLogger.cs" />
     <Compile Include="Utils\Helper.cs" />
@@ -304,6 +311,7 @@
     <Compile Include="Utils\LDAPAuth.cs" />
     <Compile Include="Utils\LDAPUserImporter.cs" />
     <Compile Include="Utils\ListViewExtension.cs" />
+    <Compile Include="Utils\SortableList.cs" />
     <Compile Include="ViewModel\ItemTypeViewModel.cs" />
     <Compile Include="ViewModel\CompanyViewModel.cs" />
     <Compile Include="ViewModel\DepartmentViewModel.cs" />
@@ -345,6 +353,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrinter.resx">
       <DependentUpon>frmPrinter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReport.resx">
+      <DependentUpon>frmReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmUserLogs.resx">
       <DependentUpon>frmUserLogs.cs</DependentUpon>

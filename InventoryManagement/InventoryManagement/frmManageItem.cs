@@ -74,6 +74,7 @@ namespace InventoryManagement
             cbxOS.DisplayMember = "Name";
             cbxOS.ValueMember = "Id";
             cbxOS.DataSource = Singleton.Instance.ItemModel.GetOSBySubtype();
+            cbxOS.SelectedIndex = 0;
 
             cbxStatus.DataSource = Enum.GetValues(typeof(ItemStatus));
             cbxProcessor.DataSource = Enum.GetValues(typeof(ItemProcessors));
@@ -88,6 +89,7 @@ namespace InventoryManagement
             cbxCurrentOwner.DisplayMember = "LastnameFirstName";
             cbxCurrentOwner.ValueMember = "Id";
             cbxCurrentOwner.DataSource = Singleton.Instance.UserModel.GetUsers();
+            cbxCurrentOwner.SelectedIndex = 0;
         }
         private void DoSaveItem()
         {
@@ -102,25 +104,10 @@ namespace InventoryManagement
             }
 
             var os = cbxOS.SelectedValue;
-            if (os == null)
-            {
-                os = 0;
-
-            }
-            else
-            {
-                os = cbxOS.SelectedValue;
-            }
+         
 
             var curowner = cbxCurrentOwner.SelectedValue;
-            if (curowner == null)
-            {
-                curowner = 0;
-            }
-            else
-            {
-                curowner = cbxCurrentOwner.SelectedValue;
-            }
+           
 
 
             var itm = new ItemViewModel
@@ -129,9 +116,9 @@ namespace InventoryManagement
                 Name = txtName.Text,
                 Description = txtDescription.Text,
                 TypeId = Convert.ToInt32(cbxType.SelectedValue),
-                Type = cbxType.SelectedText,
+                Type = cbxType.Text,
                 SubTypeId = Convert.ToInt32(cbxSubType.SelectedValue),
-                SubType = cbxSubType.SelectedText,
+                SubType = cbxSubType.Text,
                 BrandId = (int)brand,
                 Model = txtModel.Text,
                 Serial = txtSerial.Text,
@@ -258,18 +245,17 @@ namespace InventoryManagement
             cbxSubType.ValueMember = "Id";
             cbxSubType.DataSource = Singleton.Instance.ItemSubTypeModel.GetSubTypesByType((int)cbxType.SelectedValue);
         }
-        private void LoadBrands(int subtypeId)
+        private void LoadBrands()
         {
+            cbxBrand.DataSource = null;
+
             cbxBrand.DisplayMember = "Name";
-            cbxBrand.ValueMember = "Brand_Id";
+            cbxBrand.ValueMember = "Id";
             cbxBrand.DataSource = Singleton.Instance.ItemModel.GetBrandsBySubtype((int)cbxSubType.SelectedValue);
         }
         private void cbxSubType_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-           
-
-
+            LoadBrands();
         }
         private void frmManageItem_Load(object sender, EventArgs e)
         {

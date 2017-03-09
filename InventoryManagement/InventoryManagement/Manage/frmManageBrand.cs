@@ -10,23 +10,30 @@ using System.Windows.Forms;
 
 namespace InventoryManagement.Manage
 {
-    public partial class frmManageBrand : Form
+    public partial class frmManageBrand : frmBase
     {
         int selectedId = 0;
         public frmManageBrand()
         {
+            IsLoading = true;
             InitializeComponent();
 
             dvBrands.AutoGenerateColumns = false;
+            IsLoading = false;
         }
 
         private void cbxFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (IsLoading)
+                return;
+
             LoadSubType();
         }
 
         private void cbxSubType_SelectedIndexChanged(object sender, EventArgs e)
         {
+       
+
             LoadBrands();
         }
 
@@ -69,7 +76,7 @@ namespace InventoryManagement.Manage
         private void btnAddType_Click(object sender, EventArgs e)
         {
             var filterParentId = Convert.ToInt32(cbxSubType.SelectedValue);
-            var result = Model.Singleton.Instance.BrandModel.CreateNewBrand(filterParentId, txtName.Text);
+            var result = Model.Singleton.Instance.BrandModel.CreateNewBrand(filterParentId, txtName.Text, txtDescription.Text);
             if(result.Success)
             {
                 MessageBox.Show("Item successfully created!");
@@ -96,6 +103,11 @@ namespace InventoryManagement.Manage
             var brands = Model.Singleton.Instance.BrandModel.GetBrandSummaryBySubType(filterParentId);
 
             dvBrands.DataSource = brands;
+        }
+
+        private void dvBrands_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
         }
     }
 }

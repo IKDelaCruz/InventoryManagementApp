@@ -31,5 +31,6 @@ namespace InventoryManagement
         {
 
         }
+        public bool IsLoading { get; set; }
     }
 }

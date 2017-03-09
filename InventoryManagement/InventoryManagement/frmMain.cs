@@ -99,7 +99,11 @@ namespace InventoryManagement
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new frmManageItem().ShowDialog();
+            var result = new frmManageItem().ShowDialog();
+            if(result == DialogResult.OK)
+            {
+                DoUpdateView(false, false);
+            }
         }
 
         private void addToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -120,6 +124,7 @@ namespace InventoryManagement
         {
             var br = new BarcodeGenerator();
             var barcodeImage = br.DrawBarcode(lblId.Text.ToString().PadLeft(7, '0'));
+
             var dlg = new frmPrinter(barcodeImage);
             dlg.ShowDialog();
         }
@@ -143,33 +148,39 @@ namespace InventoryManagement
 
         #region --- Methods --- 
 
-        private void DoUpdateView(bool useCache, bool rememberIndex)
+        private void DoUpdateView(bool useCache, bool rememberIndex, bool barcodeScanner = false)
         {
             if (IsInitializing)
                 return;
+          
+              var itms = Singleton.Instance.ItemModel.GetItems(useCache).OrderBy(h => h.SubTypeId).ToList();
 
-            var itms = Singleton.Instance.ItemModel.GetItems(useCache);
+                #region --- FILTER LOGIC ---
 
-            #region --- FILTER LOGIC ---
+                if (!chkShowAllStatus.Checked)
+                    itms = itms.Where(h => h.Status == (ItemStatus)cbxStatus.SelectedItem).ToList();
+                if (!chkShowAllType.Checked)
+                    itms = itms.Where(h => h.TypeId == Convert.ToInt32(cbxType.SelectedValue)).ToList();
+                if (!chkShowAllSubType.Checked)
+                    itms = itms.Where(h => h.SubTypeId == Convert.ToInt32(cbxSubtype.SelectedValue)).ToList();
 
-            if (!chkShowAllStatus.Checked)
-                itms = itms.Where(h => h.Status == (ItemStatus)cbxStatus.SelectedItem).ToList();
-            if (!chkShowAllType.Checked)
-                itms = itms.Where(h => h.TypeId == Convert.ToInt32(cbxType.SelectedValue)).ToList();
-            if (!chkShowAllSubType.Checked)
-                itms = itms.Where(h => h.SubTypeId == Convert.ToInt32(cbxSubtype.SelectedValue)).ToList();
+                if (!chkShowAllLocation.Checked)
+                {
+                    var departmentId = (int)cbxLocation.SelectedValue;
+                    var usersIds = Singleton.Instance.UserModel.GetUsersByDepartmentId(departmentId).Select(h => h.Id).ToList(); ;
 
-            if (!chkShowAllLocation.Checked)
-            {
-                var departmentId = (int)cbxLocation.SelectedValue;
-                var usersIds = Singleton.Instance.UserModel.GetUsersByDepartmentId(departmentId).Select(h => h.Id).ToList(); ;
-
-                itms = (from i in itms
-                        where usersIds.Contains(i.CurrentOwner)
-                        select i).ToList();
-            }
+                    itms = (from i in itms
+                            where usersIds.Contains(i.CurrentOwner)
+                            select i).ToList();
+                }
 
             #endregion
+
+            if (barcodeScanner)
+            {
+                var id = (Convert.ToInt32(txtScan.Text.Substring(0, txtScan.Text.Length - 1)));
+                itms = itms.Where(h => h.Id == id).ToList();
+            }
 
             imgMainImage.Images.Clear();
             var images = Singleton.Instance.ItemSubTypeModel.GetItemSubTypeImages();
@@ -375,6 +386,19 @@ namespace InventoryManagement
         {
             var dlg = new frmManageBrand();
             dlg.ShowDialog();
+        }
+
+        private void itemSummaryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new frmReport().ShowDialog();
+        }
+
+        private void txtScan_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == (char)Keys.Enter)
+            {
+                DoUpdateView(false, false, true);
+            }
         }
     }
 

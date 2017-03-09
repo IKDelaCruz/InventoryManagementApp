@@ -150,6 +150,7 @@
             this.dvBrands.ShowEditingIcon = false;
             this.dvBrands.Size = new System.Drawing.Size(413, 312);
             this.dvBrands.TabIndex = 61;
+            this.dvBrands.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvBrands_CellContentClick);
             this.dvBrands.SelectionChanged += new System.EventHandler(this.dvBrands_SelectionChanged);
             // 
             // pnlMain
@@ -213,7 +214,7 @@
             // 
             // clnId
             // 
-            this.clnId.DataPropertyName = "BrandId";
+            this.clnId.DataPropertyName = "Id";
             this.clnId.HeaderText = "Id";
             this.clnId.Name = "clnId";
             this.clnId.ReadOnly = true;
@@ -229,7 +230,7 @@
             // 
             // Usage
             // 
-            this.Usage.DataPropertyName = "ItemCount";
+            this.Usage.DataPropertyName = "Count";
             this.Usage.HeaderText = "Usage";
             this.Usage.Name = "Usage";
             this.Usage.ReadOnly = true;

@@ -38,6 +38,7 @@
             this.SystemUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnExport = new System.Windows.Forms.Button();
             this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvLogs)).BeginInit();
             this.SuspendLayout();
@@ -57,7 +58,7 @@
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlMain.Location = new System.Drawing.Point(10, 10);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(727, 325);
+            this.pnlMain.Size = new System.Drawing.Size(764, 325);
             this.pnlMain.TabIndex = 11;
             // 
             // dvLogs
@@ -82,7 +83,7 @@
             this.dvLogs.ShowCellToolTips = false;
             this.dvLogs.ShowEditingIcon = false;
             this.dvLogs.ShowRowErrors = false;
-            this.dvLogs.Size = new System.Drawing.Size(727, 325);
+            this.dvLogs.Size = new System.Drawing.Size(764, 325);
             this.dvLogs.TabIndex = 0;
             // 
             // TransactionDate
@@ -119,11 +120,23 @@
             this.ItemName.Name = "ItemName";
             this.ItemName.Width = 150;
             // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(10, 341);
+            this.btnExport.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(100, 30);
+            this.btnExport.TabIndex = 14;
+            this.btnExport.Text = "Export To CSV";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
             // frmUserLogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(747, 348);
+            this.ClientSize = new System.Drawing.Size(784, 381);
+            this.Controls.Add(this.btnExport);
             this.Controls.Add(this.pnlMain);
             this.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmUserLogs";
@@ -147,5 +160,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SystemUser;
         private System.Windows.Forms.DataGridViewTextBoxColumn CustomerName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
+        private System.Windows.Forms.Button btnExport;
     }
 }

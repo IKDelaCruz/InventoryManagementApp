@@ -40,7 +40,7 @@
             // 
             this.pbBarcode.Location = new System.Drawing.Point(12, 40);
             this.pbBarcode.Name = "pbBarcode";
-            this.pbBarcode.Size = new System.Drawing.Size(300, 72);
+            this.pbBarcode.Size = new System.Drawing.Size(300, 106);
             this.pbBarcode.TabIndex = 0;
             this.pbBarcode.TabStop = false;
             // 
@@ -58,7 +58,7 @@
             // lblDatePrinted
             // 
             this.lblDatePrinted.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDatePrinted.Location = new System.Drawing.Point(12, 115);
+            this.lblDatePrinted.Location = new System.Drawing.Point(12, 149);
             this.lblDatePrinted.Name = "lblDatePrinted";
             this.lblDatePrinted.Size = new System.Drawing.Size(300, 29);
             this.lblDatePrinted.TabIndex = 5;
@@ -75,7 +75,7 @@
             // 
             // frmPrinter
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(324, 223);
             this.Controls.Add(this.lblDatePrinted);
