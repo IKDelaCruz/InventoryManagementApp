@@ -12,9 +12,9 @@ namespace InventoryManagement.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class HDD
+    public partial class hdd
     {
-        public int id { get; set; }
-        public string name { get; set; }
+        public int hdd_id { get; set; }
+        public string hdd_name { get; set; }
     }
 }

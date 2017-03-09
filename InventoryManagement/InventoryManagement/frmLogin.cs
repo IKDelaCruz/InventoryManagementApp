@@ -25,21 +25,8 @@ namespace InventoryManagement
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            var pass = txtPassord.Text;
-            var username = txtUsername.Text;
-            if (pass.Contains(" "))
-            {
-                MessageBox.Show("Invalid credentials, please try again.", "User Login", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else if (username.Contains(" "))
-            {
-                MessageBox.Show("Invalid credentials, please try again.", "User Login", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                DoAuth();
-            }
-            
+            DoAuth();
+
             //Singleton.Instance.RequestModel.SendEmail();
         }
 

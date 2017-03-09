@@ -47,12 +47,12 @@ namespace InventoryManagement
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-
+            DoSaveUser();
         }
         private void DoSaveUser()
         {
             var username = txtUsername.Text;
-            var password = txtPassord.Text;
+            var password = txtPassword.Text;
 
             if (string.IsNullOrWhiteSpace(username))
             {
@@ -68,8 +68,8 @@ namespace InventoryManagement
             {
                 if (isUpdate)
                 {
-                    if (Singleton.Instance.UserModel.UpdateUser(currentUSer.Id, txtFirstname.Text, txtLastname.Text, (int)cbxCompany.SelectedValue, (int)cbxDepartment.SelectedValue,
-                        (UserType)cbxUserType.SelectedItem))
+
+                    if (Singleton.Instance.UserModel.UpdateUser(currentUSer.Id, txtFirstname.Text, txtLastname.Text, (int)cbxCompany.SelectedValue, (int)cbxDepartment.SelectedValue, (UserType)cbxUserType.SelectedItem, txtPassword.Text))
                     {
                         MessageBox.Show("User successfully updated!");
                         this.DialogResult = DialogResult.OK;
@@ -86,7 +86,7 @@ namespace InventoryManagement
                     }
                     else
                     {
-                        var id = Singleton.Instance.UserModel.CreateNewUser(txtUsername.Text, txtPassord.Text, (UserType)cbxUserType.SelectedItem, txtFirstname.Text, txtLastname.Text, (int)cbxDepartment.SelectedValue);
+                        var id = Singleton.Instance.UserModel.CreateNewUser(txtUsername.Text, txtPassword.Text, (UserType)cbxUserType.SelectedItem, txtFirstname.Text, txtLastname.Text, (int)cbxDepartment.SelectedValue);
 
                         {
                             MessageBox.Show("User successfully created!");
@@ -118,8 +118,8 @@ namespace InventoryManagement
                 txtUsername.Text = info.Username;
                 txtUsername.Enabled = false;
 
-                txtPassord.Text = info.Password;
-                txtPassord.Enabled = false;
+                txtPassword.Text = info.Password;
+                //txtPassord.Enabled = false;
                 cbxUserType.SelectedItem = info.UserType;
                 cbxCompany.SelectedItem = info.Company;
                 cbxDepartment.SelectedItem = info.Department;
@@ -132,4 +132,3 @@ namespace InventoryManagement
         }
     }
 }
- 

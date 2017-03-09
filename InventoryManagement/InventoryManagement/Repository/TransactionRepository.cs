@@ -13,14 +13,14 @@ namespace InventoryManagement.Repository
         {
             var list = new List<TransactionViewModel>();
 
-            var trans= InventoryDatabase.Transactions.Where(x=> x.system_user_id == id).ToList();
-            foreach(Transaction t in trans)
+            var trans= InventoryDatabase.transacitons.Where(x=> x.transaction_system_user_id == id).ToList();
+            foreach(transaciton t in trans)
             {
                 list.Add(new ViewModel.TransactionViewModel {
-                    Id = t.id,
-                    OtherUserId = t.other_user_id,
-                    Remarks = t.remarks,
-                    SystemUserId = t.system_user_id,
+                    Id = t.transaction_id,
+                    OtherUserId = t.transaction_other_user_id,
+                    Remarks = t.transaction_remarks,
+                    SystemUserId = t.transaction_system_user_id,
                     TransactionDate = t.transaction_date,
                     TransactionTypeId = t.transaction_type_id
                 });
@@ -33,8 +33,8 @@ namespace InventoryManagement.Repository
         {
             var list = new List<TransactionViewModel>();
 
-            var trans = InventoryDatabase.vwItemLogs.Where(x => x.ItemId == id).OrderBy(x=> x.TransactionDate).ToList();
-            foreach (vwItemLog t in trans)
+            var trans = InventoryDatabase.vw_item_log.Where(x => x.ItemId == id).OrderBy(x=> x.TransactionDate).ToList();
+            foreach (vw_item_log t in trans)
             {
                 list.Add(new ViewModel.TransactionViewModel
                 {
@@ -57,19 +57,20 @@ namespace InventoryManagement.Repository
         {
             var list = new List<TransactionViewModel>();
 
-            var trans = InventoryDatabase.Transactions.ToList();
-            foreach (Transaction t in trans)
+            var trans = InventoryDatabase.vw_transaction_summary.ToList();
+            foreach (vw_transaction_summary t in trans)
             {
                 list.Add(new ViewModel.TransactionViewModel
                 {
-                    //Id = t.id,
-                    //OtherUserId = t.other_user_id,
-                    //Remarks = t.remarks,
-                    SystemUserId = t.system_user_id,
-                    TransactionDate = t.transaction_date,
-                    TransactionTypeId = t.transaction_type_id
-
-
+                    SystemUserName = t.SystemUser,
+                    SystemUserId = t.SystemUserId,
+                    TransactionDate = t.TranscationDate,
+                    TransactionTypeId = t.TransactionTypeId,
+                    TransactionType = t.TransactionType,
+                    OtherUserId = t.CustomerUserId,
+                    OtherUserName = t.CustomerUser,
+                    ItemName = t.ItemName,
+                    Id = t.TransactionId
                 });
             }
 
@@ -78,14 +79,14 @@ namespace InventoryManagement.Repository
 
         public bool InsertTransaction(int systemUserIdm, int otherUserId, int transactionType, string remarks, int itemId = 0)
         {
-             InventoryDatabase.Transactions.Add(new Repository.Transaction {
-                other_user_id = otherUserId,
-                remarks = remarks,
-                system_user_id = systemUserIdm,
+             InventoryDatabase.transacitons.Add(new Repository.transaciton {
+                transaction_other_user_id = otherUserId,
+                transaction_remarks = remarks,
+                transaction_system_user_id = systemUserIdm,
                 transaction_date = DateTime.Now,
                 transaction_type_id = (int)transactionType,
-                item_id = itemId,
-                request_id = 0
+                transaction_item_id = itemId,
+                transaction_request_id = 0
                 
                 
              });

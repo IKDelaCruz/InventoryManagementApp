@@ -13,14 +13,14 @@ namespace InventoryManagement.Repository
         {
             var list = new List<CompanyViewModel>();
 
-            var comp = InventoryDatabase.Companies.ToList();
+            var comp = InventoryDatabase.companies.ToList();
 
-            foreach (Company c in comp)
+            foreach (company c in comp)
             {
                 list.Add(new ViewModel.CompanyViewModel
                 {
-                    Id = c.id,
-                    Name = c.name
+                    Id = c.company_id,
+                    Name = c.company_name
                 });
             }
 
@@ -29,12 +29,12 @@ namespace InventoryManagement.Repository
 
         public CompanyViewModel QueryCompany(int id)
         {
-            var comp = InventoryDatabase.Companies.FirstOrDefault(h => h.id == id);
+            var comp = InventoryDatabase.companies.FirstOrDefault(h => h.company_id == id);
             if (comp != null)
                 return new CompanyViewModel
                 {
-                    Id = comp.id,
-                    Name = comp.name
+                    Id = comp.company_id,
+                    Name = comp.company_name
                 };
             else
                 return null;
@@ -43,15 +43,15 @@ namespace InventoryManagement.Repository
         {
             var list = new List<CompanyViewModel>();
 
-            var deps = InventoryDatabase.Departments.Where(h => h.company_id == companyId).ToList();
+            var deps = InventoryDatabase.departments.Where(h => h.department_company_id == companyId).ToList();
 
-            foreach (Department d in deps)
+            foreach (department d in deps)
             {
                 list.Add(new CompanyViewModel
                 {
-                    Id = d.id,
-                    Name = d.name,
-                    ParentId = d.company_id
+                    Id = d. department_id,
+                    Name = d.department_name,
+                    ParentId = d.department_company_id
                 });
             }
 
@@ -59,12 +59,12 @@ namespace InventoryManagement.Repository
         }
         public CompanyViewModel QueryDepartment(int id)
         {
-            var dep = InventoryDatabase.Departments.FirstOrDefault(h => h.id == id);
+            var dep = InventoryDatabase.departments.FirstOrDefault(h => h.department_id == id);
             if (dep != null)
                 return new CompanyViewModel
                 {
-                    Id = dep.id,
-                    Name = dep.name
+                    Id = dep.department_company_id,
+                    Name = dep.department_name
                 };
             else
                 return null;
@@ -72,12 +72,12 @@ namespace InventoryManagement.Repository
 
         public int CreateDepartment(string name)
         {
-            var d = new Department { name = name, company_id = 0 };
+            var d = new department { department_name = name, department_company_id = 0 };
 
-            InventoryDatabase.Departments.Add(d);
+            InventoryDatabase.departments.Add(d);
 
             if (InventoryDatabase.SaveChanges() > 0)
-                return d.id;
+                return d.department_id;
             return 0;
         }
     }

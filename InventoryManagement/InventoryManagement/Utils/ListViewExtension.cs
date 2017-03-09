@@ -16,28 +16,7 @@ namespace InventoryManagement.Utils
         {
             return (source.EndsWith(".png") || source.EndsWith(".jpg"));
         }
-        public static void LoadImageList(ImageList iml, int type)
-        {
-            
-            var dir = "";
-            if (type == 1)
-            {
-                dir = Helper.GetImageDirectory(@"\icons\type");
-            }
-            else
-            {
-                dir = Helper.GetImageDirectory(@"\icons\subtype");
-            }
-            string[] fileEntries = Directory.GetFiles(dir);
-
-            foreach (string fileName in fileEntries)
-            {
-                if (HasImageExtension(fileName))
-                    iml.Images.Add(Path.GetFileName(fileName), Image.FromFile(fileName));
-            }
-
-
-        }
+       
         public static void LoadData(this ListView lv, List<ItemViewModel> items, ImageList imgList, bool summary = false)
         {
             var defaultImage = Image.FromFile(Utils.Helper.GetImageDirectory(@"\items\default.jpg"));
@@ -51,18 +30,19 @@ namespace InventoryManagement.Utils
             {
                
                 var itemName = string.Format("{0} ({2})", item.Name, item.Status.ToString().Substring(0,1), item.CurrentOwnerName);
-                //var itemName = item.Name + " [" + item.Status.ToString() + "]";
-
+             
+                imgList.Images.Add(item.Picture ?? defaultImage);
                 if (summary)
                 {
-                    imgList.Images.Add(item.Picture ?? defaultImage);
+                  
                     itemName = item.Name + " (" + item.SummaryCount.ToString() + ")";
                 }
 
                 var newItem = new ListViewItem(itemName);
 
-                
+
                 newItem.ImageIndex = summary ? x : imgList.Images.IndexOfKey(item.SubTypeId.ToString());
+                //newItem.ImageIndex = x;
 
                 newItem.SubItems.Add(item.Id.ToString());
                 newItem.SubItems.Add(item.TypeId.ToString());
@@ -86,3 +66,4 @@ namespace InventoryManagement.Utils
         }
     }
 }
+

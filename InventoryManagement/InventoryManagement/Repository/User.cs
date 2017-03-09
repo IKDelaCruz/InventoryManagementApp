@@ -12,26 +12,26 @@ namespace InventoryManagement.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class user
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public user()
         {
-            this.Requests = new HashSet<Request>();
+            this.requests = new HashSet<request>();
         }
     
-        public int id { get; set; }
-        public string username { get; set; }
-        public string password { get; set; }
-        public int type { get; set; }
-        public string first_name { get; set; }
-        public string last_name { get; set; }
-        public Nullable<int> department { get; set; }
-        public Nullable<int> company { get; set; }
+        public int user_id { get; set; }
+        public string user_username { get; set; }
+        public string user_password { get; set; }
+        public int user_type { get; set; }
+        public string user_first_name { get; set; }
+        public string user_last_name { get; set; }
+        public Nullable<int> user_department { get; set; }
+        public Nullable<int> user_company { get; set; }
     
-        public virtual Company Company1 { get; set; }
-        public virtual Department Department1 { get; set; }
+        public virtual company company { get; set; }
+        public virtual department department { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Request> Requests { get; set; }
+        public virtual ICollection<request> requests { get; set; }
     }
 }

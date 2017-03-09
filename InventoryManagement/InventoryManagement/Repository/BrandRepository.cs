@@ -14,18 +14,18 @@ namespace InventoryManagement.Repository
             var result = new
                 ReturnValueRepo();
 
-            var newBrand = new Brand
+            var newBrand = new brand
             {
-                subtype_id = itemSubType,
-                name = brandName
+                brand_parent_id = itemSubType,
+                brand_name = brandName
             };
 
-            InventoryDatabase.Brands.Add(newBrand);
+            InventoryDatabase.brands.Add(newBrand);
 
             if (InventoryDatabase.SaveChanges() > 0)
             {
                 result.Success = true;
-                result.Param1 = newBrand.id.ToString();
+                result.Param1 = newBrand.brand_id.ToString();
             }
             return result;
 
@@ -34,14 +34,14 @@ namespace InventoryManagement.Repository
 
         public BrandViewModel GetBrandbyName(int id, string brandName)
         {
-            var brand = InventoryDatabase.Brands.FirstOrDefault(h => h.subtype_id == id && h.name == brandName);
+            var brand = InventoryDatabase.brands.FirstOrDefault(h => h.brand_parent_id == id && h.brand_name == brandName);
             if (brand != null)
             {
                 return new BrandViewModel
                 {
-                    Id = brand.id,
-                    ParentId = brand.subtype_id,
-                    Name = brand.name,
+                    Id = brand.brand_id,
+                    ParentId = brand.brand_parent_id,
+                    Name = brand.brand_name,
 
                 };
             }
@@ -52,10 +52,10 @@ namespace InventoryManagement.Repository
         {
             var result = new ReturnValueRepo();
 
-            var brand = InventoryDatabase.Brands.FirstOrDefault(b => b.id == id);
+            var brand = InventoryDatabase.brands.FirstOrDefault(b => b.brand_id == id);
             if (brand != null)
             {
-                InventoryDatabase.Brands.Remove(brand);
+                InventoryDatabase.brands.Remove(brand);
                 try
                 {
                     result.Success = (InventoryDatabase.SaveChanges() > 0);
@@ -75,24 +75,24 @@ namespace InventoryManagement.Repository
 
         public int UpdateBrand(int id, string name)
         {
-            var brand = InventoryDatabase.Brands.FirstOrDefault(b => b.subtype_id == id);
+            var brand = InventoryDatabase.brands.FirstOrDefault(b => b.brand_parent_id == id);
 
             if (brand != null)
             {
-                var brandExists = InventoryDatabase.Brands.FirstOrDefault(b => b.name == name);
+                var brandExists = InventoryDatabase.brands.FirstOrDefault(b => b.brand_name == name);
 
 
                 //Name already exist
                 if (brandExists != null)
                 {
-                    if (brandExists.id == id)
+                    if (brandExists.brand_id == id)
                     {
                         return -1;
                     }
                     return -2;
                 }
 
-                brand.name = name;
+                brand.brand_name = name;
             }
             InventoryDatabase.SaveChanges();
             return 1;
@@ -102,9 +102,9 @@ namespace InventoryManagement.Repository
         {
             var list = new List<BrandViewModel>();
 
-            var brands = InventoryDatabase.vwBrandSummaries.ToList();
+            var brands = InventoryDatabase.vw_brand_summary.ToList();
 
-            foreach (vwBrandSummary br in brands)
+            foreach (vw_brand_summary br in brands)
             {
                 list.Add(new ViewModel.BrandViewModel
                 {
@@ -122,9 +122,9 @@ namespace InventoryManagement.Repository
         {
             var list = new List<BrandViewModel>();
 
-            var brands = InventoryDatabase.vwBrandSummaries.Where(h => h.ItemSubTypeId == subTypeId).ToList();
+            var brands = InventoryDatabase.vw_brand_summary.Where(h => h.ItemSubTypeId == subTypeId).ToList();
 
-            foreach (vwBrandSummary br in brands)
+            foreach (vw_brand_summary br in brands)
             {
                 list.Add(new ViewModel.BrandViewModel
                 {

@@ -41,7 +41,7 @@
             this.grpUser = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtPassord = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtLastname = new System.Windows.Forms.TextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -163,7 +163,7 @@
             // 
             this.grpUser.Controls.Add(this.label1);
             this.grpUser.Controls.Add(this.label7);
-            this.grpUser.Controls.Add(this.txtPassord);
+            this.grpUser.Controls.Add(this.txtPassword);
             this.grpUser.Controls.Add(this.txtLastname);
             this.grpUser.Controls.Add(this.txtUsername);
             this.grpUser.Controls.Add(this.label6);
@@ -197,11 +197,11 @@
             // 
             // txtPassord
             // 
-            this.txtPassord.Location = new System.Drawing.Point(152, 51);
-            this.txtPassord.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
-            this.txtPassord.Name = "txtPassord";
-            this.txtPassord.Size = new System.Drawing.Size(196, 31);
-            this.txtPassord.TabIndex = 2;
+            this.txtPassword.Location = new System.Drawing.Point(152, 51);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
+            this.txtPassword.Name = "txtPassord";
+            this.txtPassword.Size = new System.Drawing.Size(196, 31);
+            this.txtPassword.TabIndex = 2;
             // 
             // txtLastname
             // 
@@ -280,7 +280,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtUsername;
-        private System.Windows.Forms.TextBox txtPassord;
+        private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbxUserType;

@@ -25,8 +25,8 @@ namespace InventoryManagement
 
             InitializeComponent();
             fillcombo();
-            ListViewExtension.LoadImageList(imgMainImage, 2);
 
+         
             IsInitializing = false;
         }
 
@@ -66,8 +66,6 @@ namespace InventoryManagement
         {
 
         }
-
-
 
         #region --- Click Events ---
 
@@ -173,9 +171,10 @@ namespace InventoryManagement
 
             #endregion
 
+            imgMainImage.Images.Clear();
             var images = Singleton.Instance.ItemSubTypeModel.GetItemSubTypeImages();
             foreach (ItemSubTypeViewModel x in images)
-                imgMainImage.Images.Add(x.Id.ToString(), x.Picture);
+                imgMainImage.Images.Add(x.ParentId.ToString(), x.Picture);
             int index = 0;
             if (lvMain.SelectedIndices.Count > 0)
                 index = lvMain.SelectedIndices[0];
@@ -193,7 +192,7 @@ namespace InventoryManagement
 
             loginToolStripMenuItem.Text = Singleton.Instance.UserModel.CurrentUser == null ? "Login" : "Logout";
 
-            
+
         }
         #endregion
 
@@ -247,14 +246,14 @@ namespace InventoryManagement
 
                 DoUpdateView(false, true);
                 DoUpdateItemDetails();
-                
-                
+
+
             }
         }
 
         private void btnCheckout_Click(object sender, EventArgs e)
         {
-            UpdateItemStatus(_selectedItem.Status, ItemStatus.Borrowed,  (int)cbxUsers.SelectedValue);
+            UpdateItemStatus(_selectedItem.Status, ItemStatus.Borrowed, (int)cbxUsers.SelectedValue);
             Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, (int)cbxUsers.SelectedValue, ViewModel.TransactionType.BorrowItem, "", _selectedItem.Id);
         }
 
@@ -319,9 +318,6 @@ namespace InventoryManagement
 
         }
 
-
-       
-
         private void lvMain_Click(object sender, EventArgs e)
         {
             //DoUpdateView();
@@ -374,8 +370,6 @@ namespace InventoryManagement
         {
 
         }
-
-
 
         private void manageBrandToolStripMenuItem_Click(object sender, EventArgs e)
         {

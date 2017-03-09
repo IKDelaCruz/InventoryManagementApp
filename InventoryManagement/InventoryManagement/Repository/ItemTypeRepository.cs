@@ -11,16 +11,16 @@ namespace InventoryManagement.Repository
         public List<ItemTypeViewModel> QueryItemTypes()
         {
             var list = new List<ItemTypeViewModel>();
-            var categ = InventoryDatabase.ItemTypes.OrderBy(h => h.type).ToList();
+            var categ = InventoryDatabase.item_type.OrderBy(h => h.item_type_name).ToList();
 
-            foreach (ItemType c in categ)
+            foreach (item_type c in categ)
             {
 
                 list.Add(new ItemTypeViewModel
 
                 {
-                    Id = c.id,
-                    Name = c.type
+                    Id = c.item_type_id,
+                    Name = c.item_type_name
                 });
              
 
@@ -31,13 +31,13 @@ namespace InventoryManagement.Repository
 
         public ItemTypeViewModel QueryItemTypeByName(string name)
         {
-            var type = InventoryDatabase.ItemTypes.FirstOrDefault(h => h.type == name);
+            var type = InventoryDatabase.item_type.FirstOrDefault(h => h.item_type_name == name);
             if (type != null)
             {
                 return new ItemTypeViewModel
                 {
-                    Id = type.id,
-                    Name = type.type,
+                    Id = type.item_type_id,
+                    Name = type.item_type_name,
 
                 };
             }
@@ -48,12 +48,12 @@ namespace InventoryManagement.Repository
 
         public ItemTypeViewModel QueryItemType(int id)
         {
-            var categ = InventoryDatabase.ItemTypes.FirstOrDefault(h => h.id == id);
+            var categ = InventoryDatabase.item_type.FirstOrDefault(h => h.item_type_id == id);
             if (categ != null)
                 return new ItemTypeViewModel
                 {
-                    Id = categ.id,
-                    Name = categ.type,
+                    Id = categ.item_type_id,
+                    Name = categ.item_type_name,
 
                 };
             else
@@ -64,15 +64,15 @@ namespace InventoryManagement.Repository
         public ReturnValueRepo Create(string name)
         {
             var result = new ReturnValueRepo();
-            var cat = InventoryDatabase.ItemTypes.FirstOrDefault(s => s.type.Equals(name));
+            var cat = InventoryDatabase.item_type.FirstOrDefault(s => s.item_type_name.Equals(name));
             if (cat == null)
             {
-                var newCat = new ItemType() { type = name };
-                InventoryDatabase.ItemTypes.Add(newCat);
+                var newCat = new item_type() { item_type_name = name };
+                InventoryDatabase.item_type.Add(newCat);
                 if (InventoryDatabase.SaveChanges() > 0)
                 {
                     result.Success = true;
-                    result.Param1 = newCat.id.ToString();
+                    result.Param1 = newCat.item_type_id.ToString();
                 }
             }
             else
@@ -86,24 +86,24 @@ namespace InventoryManagement.Repository
 
         public int Update(int id, string name)
         {
-            var cat = InventoryDatabase.ItemTypes.FirstOrDefault(s => s.id == id);
+            var cat = InventoryDatabase.item_type.FirstOrDefault(s => s.item_type_id == id);
 
             if (cat != null)
             {
-                var catExist = InventoryDatabase.ItemTypes.FirstOrDefault(s => s.type == name);
+                var catExist = InventoryDatabase.item_type.FirstOrDefault(s => s.item_type_name == name);
 
 
                 //Name already exist
                 if (catExist != null)
                 {
-                    if (catExist.id == id)
+                    if (catExist.item_type_id == id)
                     {
                         return -1;
                     }
                     return -2;
                 }
 
-                cat.type = name;
+                cat.item_type_name = name;
             }
 
             InventoryDatabase.SaveChanges();
@@ -112,11 +112,11 @@ namespace InventoryManagement.Repository
 
         public int Delete(int id)
         {
-            var cat = InventoryDatabase.ItemTypes.FirstOrDefault(s => s.id == id);
+            var cat = InventoryDatabase.item_type.FirstOrDefault(s => s.item_type_id == id);
 
             if (cat != null)
             {
-                InventoryDatabase.ItemTypes.Remove(cat);
+                InventoryDatabase.item_type.Remove(cat);
             }
 
             InventoryDatabase.SaveChanges();
@@ -126,22 +126,22 @@ namespace InventoryManagement.Repository
         public bool UpdateItemTypeImage(int typeId, byte[] bArr)
         {
             //var item = InventoryDatabase.Items.FirstOrDefault(h => h.id == itemId);
-            var item = InventoryDatabase.ItemTypeImages.FirstOrDefault(x => x.type_id == typeId);
+            var item = InventoryDatabase.item_type_image.FirstOrDefault(x => x.item_type_image_type_id == typeId);
 
             if (item != null)
             {
 
-                item.picture = bArr;
+                item.item_type_image_picture = bArr;
                 InventoryDatabase.SaveChanges();
 
                 return true;
             }
             else
             {
-                InventoryDatabase.ItemTypeImages.Add(new ItemTypeImage
+                InventoryDatabase.item_type_image.Add(new item_type_image
                 {
-                    type_id = typeId,
-                    picture = bArr
+                    item_type_image_type_id = typeId,
+                    item_type_image_picture = bArr
                 });
                 InventoryDatabase.SaveChanges();
                 return true;
@@ -151,10 +151,10 @@ namespace InventoryManagement.Repository
 
         public byte[] GetItemIage(int typeId)
         {
-            var item = InventoryDatabase.ItemTypeImages.FirstOrDefault(x => x.type_id == typeId);
+            var item = InventoryDatabase.item_type_image.FirstOrDefault(x => x.item_type_image_type_id == typeId);
             if (item != null)
             {
-                return item.picture;
+                return item.item_type_image_picture;
             }
             return null;
         }

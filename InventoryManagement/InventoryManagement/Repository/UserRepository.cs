@@ -13,17 +13,17 @@ namespace InventoryManagement.Repository
         public UserViewModel ValidateUsernameAndPassword(string username, string password)
         {
 
-            var user = InventoryDatabase.Users.FirstOrDefault(x => x.username == username && x.password == password);
+            var user = InventoryDatabase.users.FirstOrDefault(x => x.user_username == username && x.user_password == password);
             if (user != null)
             {
                 return new UserViewModel
                 {
-                    Id = user.id,
-                    Password = user.password,
-                    Username = user.username,
-                    UserType = user.type,
-                    Firstname = user.first_name,
-                    Lastname = user.last_name
+                    Id = user.user_id,
+                    Password = user.user_password,
+                    Username = user.user_username,
+                    UserType = user.user_type,
+                    Firstname = user.user_first_name,
+                    Lastname = user.user_last_name
                 };
             }
             return null;
@@ -31,20 +31,20 @@ namespace InventoryManagement.Repository
         public int CreateNewUser(string username, string password, int type, string firstname, string lastname, int departmentId)
         {
 
-            var newUser = new User
+            var newUser = new user
             {
-                username = username,
-                password = password,
-                type = type,
-                first_name = firstname,
-                last_name = lastname,
-                department = departmentId
+                user_username = username,
+                user_password = password,
+                user_type = type,
+                user_first_name = firstname,
+                user_last_name = lastname,
+                user_department = departmentId
             };
-            InventoryDatabase.Users.Add(newUser);
+            InventoryDatabase.users.Add(newUser);
             try
             {
                 InventoryDatabase.SaveChanges();
-                return newUser.id;
+                return newUser.user_id;
             }
             catch
             {
@@ -53,16 +53,20 @@ namespace InventoryManagement.Repository
 
             
         }
-        public bool UpdateUser(int userId, string firstName, string lastName, int companyId, int departmentId, int userType = 3)
+        public bool UpdateUser(int userId, string firstName, string lastName, int companyId, int departmentId, int userType = 3, string password = "")
         {
-            var user = InventoryDatabase.Users.FirstOrDefault(h => h.id == userId);
+            var user = InventoryDatabase.users.FirstOrDefault(h => h.user_id == userId);
             if (user != null)
             {
-                user.first_name = firstName;
-                user.last_name = lastName;
-                user.company = companyId;
-                user.department = departmentId;
-                user.type = userType;
+                user.user_first_name = firstName;
+                user.user_last_name = lastName;
+                user.user_company = companyId;
+                user.user_department = departmentId;
+                user.user_type = userType;
+                if(password != "")
+                {
+                    user.user_password = password;
+                }
 
                 InventoryDatabase.SaveChanges();
 
@@ -73,15 +77,15 @@ namespace InventoryManagement.Repository
         }
         public UserViewModel GetUser(string username)
         {
-            var user = InventoryDatabase.Users.FirstOrDefault(h => h.username == username);
+            var user = InventoryDatabase.users.FirstOrDefault(h => h.user_username == username);
             if (user != null)
             {
                 return new UserViewModel
                 {
-                    Id = user.id,
-                    Password = user.password,
-                    Username = user.username,
-                    UserType = user.type
+                    Id = user.user_id,
+                    Password = user.user_password,
+                    Username = user.user_username,
+                    UserType = user.user_type
                 };
             }
 
@@ -89,19 +93,19 @@ namespace InventoryManagement.Repository
         }
         public UserViewModel GetUserById(int id)
         {
-            var user = InventoryDatabase.Users.FirstOrDefault(h => h.id == id);
+            var user = InventoryDatabase.users.FirstOrDefault(h => h.user_id == id);
             if (user != null)
             {
                 return new UserViewModel
                 {
-                    Id = user.id,
-                    Password = user.password,
-                    Username = user.username,
-                    UserType = user.type,
-                    Firstname = user.first_name,
-                    Lastname = user.last_name,
-                    LastnameFirstName = user.last_name + ", " + user.first_name,
-                    LastnameFirstNameUsername = user.last_name + ", " + user.first_name + " (" + user.username + ")"
+                    Id = user.user_id,
+                    Password = user.user_password,
+                    Username = user.user_username,
+                    UserType = user.user_type,
+                    Firstname = user.user_first_name,
+                    Lastname = user.user_last_name,
+                    LastnameFirstName = user.user_last_name + ", " + user.user_first_name,
+                    LastnameFirstNameUsername = user.user_last_name + ", " + user.user_first_name + " (" + user.user_username + ")"
                 };
             }
 
@@ -109,19 +113,19 @@ namespace InventoryManagement.Repository
         }
         public UserViewModel GetUserByUsername(string username)
         {
-            var user = InventoryDatabase.Users.FirstOrDefault(h => h.username == username);
+            var user = InventoryDatabase.users.FirstOrDefault(h => h.user_username == username);
             if (user != null)
             {
                 return new UserViewModel
                 {
-                    Id = user.id,
-                    Password = user.password,
-                    Username = user.username,
-                    UserType = user.type,
-                    Firstname = user.first_name,
-                    Lastname = user.last_name,
-                    LastnameFirstName = user.last_name + ", " + user.first_name,
-                    LastnameFirstNameUsername = user.last_name + ", " + user.first_name + " (" + user.username + ")"
+                    Id = user.user_id,
+                    Password = user.user_password,
+                    Username = user.user_username,
+                    UserType = user.user_type,
+                    Firstname = user.user_first_name,
+                    Lastname = user.user_last_name,
+                    LastnameFirstName = user.user_last_name + ", " + user.user_first_name,
+                    LastnameFirstNameUsername = user.user_last_name + ", " + user.user_first_name + " (" + user.user_username + ")"
                 };
             }
 
@@ -130,20 +134,20 @@ namespace InventoryManagement.Repository
         public List<UserViewModel> GetUsers()
         {
             var list = new List<UserViewModel>();
-            var user = InventoryDatabase.Users.ToList();
-            foreach (User u in user)
+            var users = InventoryDatabase.users.ToList();
+            foreach (user u in users)
             {
                 list.Add(new UserViewModel
                 {
                     
-                    Id = u.id,
-                    Password = u.password,
-                    Username = u.username,
-                    UserType = u.type,
-                    Firstname = u.first_name,
-                    Lastname = u.last_name,
-                    LastnameFirstName = u.last_name + ", " + u.first_name,
-                    LastnameFirstNameUsername = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(u.last_name) + ", " + CultureInfo.CurrentCulture.TextInfo.ToTitleCase(u.first_name) + " (" + u.username + ")"
+                    Id = u.user_id,
+                    Password = u.user_password,
+                    Username = u.user_username,
+                    UserType = u.user_type,
+                    Firstname = u.user_first_name,
+                    Lastname = u.user_last_name,
+                    LastnameFirstName = u.user_last_name + ", " + u.user_first_name,
+                    LastnameFirstNameUsername = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(u.user_last_name) + ", " + CultureInfo.CurrentCulture.TextInfo.ToTitleCase(u.user_first_name) + " (" + u.user_username + ")"
                     
                 });
             }
@@ -153,18 +157,18 @@ namespace InventoryManagement.Repository
         public List<UserViewModel> GetUsersByDepartmentId(int departmentId)
         {
             var list = new List<UserViewModel>();
-            var user = InventoryDatabase.Users.Where(h => h.department == departmentId).ToList();
-            foreach (User u in user)
+            var users = InventoryDatabase.users.Where(h => h.user_department == departmentId).ToList();
+            foreach (user u in users)
             {
                 list.Add(new UserViewModel
                 {
-                    Id = u.id,
-                    Password = u.password,
-                    Username = u.username,
-                    UserType = u.type,
-                    Firstname = u.first_name,
-                    Lastname = u.last_name,
-                    LastnameFirstName = u.last_name + ", " + u.first_name
+                    Id = u.user_id,
+                    Password = u.user_password,
+                    Username = u.user_username,
+                    UserType = u.user_type,
+                    Firstname = u.user_first_name,
+                    Lastname = u.user_last_name,
+                    LastnameFirstName = u.user_last_name + ", " + u.user_first_name
                 });
             }
 

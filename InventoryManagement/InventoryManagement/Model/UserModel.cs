@@ -38,9 +38,9 @@ namespace InventoryManagement.Model
         {
             return userRepository.CreateNewUser(username, password, (int)userType, firstname, lastname, departmentId);
         }
-        public bool UpdateUser(int userId, string firstName, string lastName, int companyId, int departmentId, UserType userType)
+        public bool UpdateUser(int userId, string firstName, string lastName, int companyId, int departmentId, UserType userType, string password = "")
         {
-            return userRepository.UpdateUser(userId, firstName, lastName, companyId, departmentId, (int)userType);
+            return userRepository.UpdateUser(userId, firstName, lastName, companyId, departmentId, (int)userType, password);
         }
         //public void CheckDefaultUser()
         //{

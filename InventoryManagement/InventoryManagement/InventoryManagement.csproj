@@ -93,6 +93,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmUserLogs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserLogs.Designer.cs">
+      <DependentUpon>frmUserLogs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Manage\frmManageBrand.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,12 +128,6 @@
     </Compile>
     <Compile Include="frmLauncher.Designer.cs">
       <DependentUpon>frmLauncher.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmManageItemType.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmManageItemType.Designer.cs">
-      <DependentUpon>frmManageItemType.cs</DependentUpon>
     </Compile>
     <Compile Include="frmManageRequest.cs">
       <SubType>Form</SubType>
@@ -174,12 +174,6 @@
     <Compile Include="frmPrinter.Designer.cs">
       <DependentUpon>frmPrinter.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmUserLogs.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmUserLogs.Designer.cs">
-      <DependentUpon>frmUserLogs.cs</DependentUpon>
-    </Compile>
     <Compile Include="Model\BrandModel.cs" />
     <Compile Include="Model\BaseModel.cs" />
     <Compile Include="Model\ItemTypeModel.cs" />
@@ -194,48 +188,48 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\BaseRepository.cs" />
-    <Compile Include="Repository\Brand.cs">
+    <Compile Include="Repository\brand.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\BrandRepository.cs" />
-    <Compile Include="Repository\Company.cs">
+    <Compile Include="Repository\company.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repository\Department.cs">
+    <Compile Include="Repository\department.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repository\HDD.cs">
+    <Compile Include="Repository\hdd.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repository\Item.cs">
-      <DependentUpon>dbInventory.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Repository\ItemImage.cs">
-      <DependentUpon>dbInventory.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Repository\ItemSubtype.cs">
-      <DependentUpon>dbInventory.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Repository\ItemSubTypeImage.cs">
-      <DependentUpon>dbInventory.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Repository\ItemType.cs">
-      <DependentUpon>dbInventory.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Repository\ItemTypeImage.cs">
+    <Compile Include="Repository\item.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\ItemTypeRepository.cs" />
-    <Compile Include="Repository\Memory.cs">
+    <Compile Include="Repository\item_image.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repository\OperatingSystem.cs">
+    <Compile Include="Repository\item_subtype.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repository\Processor.cs">
+    <Compile Include="Repository\item_subtype_image.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repository\Request.cs">
+    <Compile Include="Repository\item_type.cs">
+      <DependentUpon>dbInventory.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\item_type_image.cs">
+      <DependentUpon>dbInventory.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\memory.cs">
+      <DependentUpon>dbInventory.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\operation_system.cs">
+      <DependentUpon>dbInventory.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\processor.cs">
+      <DependentUpon>dbInventory.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\request.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\ReturnValuerepo.cs" />
@@ -267,36 +261,39 @@
     <Compile Include="Repository\sysdiagram.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repository\Transaction.cs">
+    <Compile Include="Repository\transaciton.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\TransactionRepository.cs" />
-    <Compile Include="Repository\TransactionType.cs">
+    <Compile Include="Repository\transaction_type.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repository\User.cs">
+    <Compile Include="Repository\user.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\UserRepository.cs" />
-    <Compile Include="Repository\vwBrandSummary.cs">
+    <Compile Include="Repository\vw_brand_summary.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repository\vwItemDetail.cs">
+    <Compile Include="Repository\vw_item_detail.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repository\vwItemLog.cs">
+    <Compile Include="Repository\vw_item_log.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repository\vwItemSubTypeCount.cs">
+    <Compile Include="Repository\vw_item_subtype_count.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repository\vwItemSubTypeSummary.cs">
+    <Compile Include="Repository\vw_item_subtype_summary.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repository\vwItemTypeSummary.cs">
+    <Compile Include="Repository\vw_item_type_summary.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repository\vwTransactionLog.cs">
+    <Compile Include="Repository\vw_transaction_log.cs">
+      <DependentUpon>dbInventory.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\vw_transaction_summary.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
     <Compile Include="Utils\BarcodeGenerator.cs" />
@@ -324,9 +321,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLauncher.resx">
       <DependentUpon>frmLauncher.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmManageItemType.resx">
-      <DependentUpon>frmManageItemType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmManageRequest.resx">
       <DependentUpon>frmManageRequest.cs</DependentUpon>

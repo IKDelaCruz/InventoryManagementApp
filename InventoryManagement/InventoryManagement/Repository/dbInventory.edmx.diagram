@@ -28,33 +28,40 @@
         
         
         
-        <EntityTypeShape EntityType="InventoryMangementModel.Brand" Width="1.5" PointX="6.8384970700547552" PointY="7.3808539693154644" />
-        <EntityTypeShape EntityType="InventoryMangementModel.Company" Width="1.5" PointX="6.0021834829832343" PointY="28.298646224801729" />
-        <EntityTypeShape EntityType="InventoryMangementModel.Department" Width="1.5" PointX="10.032181563802148" PointY="10.830416878140726" />
-        <EntityTypeShape EntityType="InventoryMangementModel.HDD" Width="1.5" PointX="8.4167229646894732" PointY="14.108330762995561" />
-        <EntityTypeShape EntityType="InventoryMangementModel.Item" Width="1.5" PointX="8.7895223297129963" PointY="1.7794190951527185" />
-        <EntityTypeShape EntityType="InventoryMangementModel.ItemImage" Width="1.5" PointX="5.8542368402025833" PointY="29.921032621488457" />
-        <EntityTypeShape EntityType="InventoryMangementModel.ItemSubtype" Width="1.5" PointX="9.9793678903856176" PointY="16.540873356415364" />
-        <EntityTypeShape EntityType="InventoryMangementModel.ItemSubTypeImage" Width="1.5" PointX="4.5537458102003416" PointY="20.251642236603256" />
-        <EntityTypeShape EntityType="InventoryMangementModel.ItemType" Width="1.5" PointX="10.033150539748906" PointY="8.189538199542806" />
-        <EntityTypeShape EntityType="InventoryMangementModel.ItemTypeImage" Width="1.5" PointX="7.8429795745029018" PointY="12.512723049387672" />
-        <EntityTypeShape EntityType="InventoryMangementModel.Memory" Width="1.5" PointX="11.872437883109058" PointY="5.9764063535148306" />
-        <EntityTypeShape EntityType="InventoryMangementModel.OperatingSystem" Width="1.5" PointX="3.491381553696181" PointY="27.173281905787661" />
-        <EntityTypeShape EntityType="InventoryMangementModel.Processor" Width="1.5" PointX="7.9916125945707837" PointY="30.978617563368108" />
-        <EntityTypeShape EntityType="InventoryMangementModel.Request" Width="1.5" PointX="0.69118949989377965" PointY="12.157226538358827" />
-        <EntityTypeShape EntityType="InventoryMangementModel.sysdiagram" Width="1.5" PointX="0.39327753912344454" PointY="18.591993280962107" />
-        <EntityTypeShape EntityType="InventoryMangementModel.Transaction" Width="1.5" PointX="7.4465327707335973" PointY="24.60814393712587" />
-        <EntityTypeShape EntityType="InventoryMangementModel.TransactionType" Width="1.5" PointX="9.8770639569857455" PointY="4.1942238529185873" />
-        <EntityTypeShape EntityType="InventoryMangementModel.User" Width="1.5" PointX="6.1926030452328753" PointY="29.016114278238319" />
-        <EntityTypeShape EntityType="InventoryMangementModel.vwBrandSummary" Width="1.5" PointX="0.94188019863417383" PointY="25.381643575328237" />
-        <EntityTypeShape EntityType="InventoryMangementModel.vwItemDetail" Width="1.5" PointX="0.91348476377943766" PointY="29.611779897292973" />
-        <EntityTypeShape EntityType="InventoryMangementModel.vwItemLog" Width="1.5" PointX="1.0890422841017331" PointY="12.605873680024349" />
-        <EntityTypeShape EntityType="InventoryMangementModel.vwItemSubTypeCount" Width="1.5" PointX="7.1725096642843029" PointY="0.894410536109661" />
-        <EntityTypeShape EntityType="InventoryMangementModel.vwItemSubTypeSummary" Width="1.5" PointX="3.2258618824304373" PointY="17.317492403703504" />
-        <EntityTypeShape EntityType="InventoryMangementModel.vwItemTypeSummary" Width="1.5" PointX="10.005327449182666" PointY="19.190895640845827" />
-        <EntityTypeShape EntityType="InventoryMangementModel.vwTransactionLog" Width="1.5" PointX="9.669573559271905" PointY="10.045315419344844" />
+        
+        
+        
+        
+        
+        
+        <EntityTypeShape EntityType="InventoryMangementModel.brand" Width="1.5" PointX="5.25" PointY="7.5" />
+        <EntityTypeShape EntityType="InventoryMangementModel.company" Width="1.5" PointX="5.75" PointY="2.125" />
+        <EntityTypeShape EntityType="InventoryMangementModel.department" Width="1.5" PointX="8" PointY="2.125" />
+        <EntityTypeShape EntityType="InventoryMangementModel.hdd" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="InventoryMangementModel.item" Width="1.5" PointX="7.5" PointY="6.25" />
+        <EntityTypeShape EntityType="InventoryMangementModel.item_image" Width="1.5" PointX="9.75" PointY="8.5" />
+        <EntityTypeShape EntityType="InventoryMangementModel.item_subtype" Width="1.5" PointX="3" PointY="8.625" />
+        <EntityTypeShape EntityType="InventoryMangementModel.item_subtype_image" Width="1.5" PointX="5.25" PointY="10.5" />
+        <EntityTypeShape EntityType="InventoryMangementModel.item_type" Width="1.5" PointX="0.75" PointY="7.5" />
+        <EntityTypeShape EntityType="InventoryMangementModel.item_type_image" Width="1.5" PointX="3" PointY="5" />
+        <EntityTypeShape EntityType="InventoryMangementModel.memory" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="InventoryMangementModel.operation_system" Width="1.5" PointX="9.75" PointY="11.75" />
+        <EntityTypeShape EntityType="InventoryMangementModel.processor" Width="1.5" PointX="11.75" PointY="10.75" />
+        <EntityTypeShape EntityType="InventoryMangementModel.request" Width="1.5" PointX="12.5" PointY="1" />
+        <EntityTypeShape EntityType="InventoryMangementModel.sysdiagram" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="InventoryMangementModel.transaciton" Width="1.5" PointX="14" PointY="7" />
+        <EntityTypeShape EntityType="InventoryMangementModel.transaction_type" Width="1.5" PointX="11.75" PointY="7.5" />
+        <EntityTypeShape EntityType="InventoryMangementModel.user" Width="1.5" PointX="10.25" PointY="1.5" />
+        <EntityTypeShape EntityType="InventoryMangementModel.vw_brand_summary" Width="1.5" PointX="2.75" PointY="13.75" />
+        <EntityTypeShape EntityType="InventoryMangementModel.vw_item_detail" Width="1.5" PointX="4.75" PointY="13.75" />
+        <EntityTypeShape EntityType="InventoryMangementModel.vw_item_log" Width="1.5" PointX="6.75" PointY="13.75" />
+        <EntityTypeShape EntityType="InventoryMangementModel.vw_item_subtype_count" Width="1.5" PointX="13.75" PointY="10.75" />
+        <EntityTypeShape EntityType="InventoryMangementModel.vw_item_subtype_summary" Width="1.5" PointX="11.75" PointY="13.75" />
+        <EntityTypeShape EntityType="InventoryMangementModel.vw_item_type_summary" Width="1.5" PointX="13.75" PointY="13.75" />
+        <EntityTypeShape EntityType="InventoryMangementModel.vw_transaction_log" Width="1.5" PointX="14.75" PointY="0.75" />
         <AssociationConnector Association="InventoryMangementModel.FK_Brand_ItmeSubType" />
         <AssociationConnector Association="InventoryMangementModel.FK_Item_Brand" />
+        <AssociationConnector Association="InventoryMangementModel.FK_Department_Company" />
         <AssociationConnector Association="InventoryMangementModel.FK_User_Company1" />
         <AssociationConnector Association="InventoryMangementModel.FK_User_Department" />
         <AssociationConnector Association="InventoryMangementModel.FK_Item_ItemSubtype" />
@@ -64,6 +71,224 @@
         <AssociationConnector Association="InventoryMangementModel.FK_ItemSubTypeImage_Item" />
         <AssociationConnector Association="InventoryMangementModel.FK_ItemTypeImage_Item" />
         <AssociationConnector Association="InventoryMangementModel.FK_Request_User" />
+        <AssociationConnector Association="InventoryMangementModel.FK_transaciton_transaction_type" />
+        <EntityTypeShape EntityType="InventoryMangementModel.vw_transaction_summary" Width="1.5" PointX="8.43128808607873" PointY="28.311259282897812" />
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         

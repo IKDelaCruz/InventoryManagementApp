@@ -12,9 +12,9 @@ namespace InventoryManagement.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class Memory
+    public partial class memory
     {
-        public int id { get; set; }
-        public string name { get; set; }
+        public int memory_id { get; set; }
+        public string memory_name { get; set; }
     }
 }

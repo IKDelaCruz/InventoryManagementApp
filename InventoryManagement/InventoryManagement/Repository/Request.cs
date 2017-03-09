@@ -12,24 +12,24 @@ namespace InventoryManagement.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class Request
+    public partial class request
     {
-        public int id { get; set; }
-        public int user_id { get; set; }
+        public int request_id { get; set; }
+        public int request_user_id { get; set; }
         public int request_type { get; set; }
         public int request_item_primary_type { get; set; }
         public int request_item_secondary_type { get; set; }
-        public string subtype { get; set; }
+        public string request_subtype { get; set; }
         public System.DateTime request_date { get; set; }
-        public Nullable<System.DateTime> process_date { get; set; }
+        public Nullable<System.DateTime> request_process_date { get; set; }
         public int request_status { get; set; }
-        public int requested_by_id { get; set; }
-        public Nullable<int> process_by_id { get; set; }
-        public string remarks { get; set; }
-        public Nullable<System.DateTime> need_date { get; set; }
-        public Nullable<System.DateTime> expected_return_date { get; set; }
-        public string admin_remarks { get; set; }
+        public int request_requested_by_id { get; set; }
+        public Nullable<int> request_process_by_id { get; set; }
+        public string request_remarks { get; set; }
+        public Nullable<System.DateTime> request_need_date { get; set; }
+        public Nullable<System.DateTime> request_expected_return_date { get; set; }
+        public string request_admin_remarks { get; set; }
     
-        public virtual User User { get; set; }
+        public virtual user user { get; set; }
     }
 }

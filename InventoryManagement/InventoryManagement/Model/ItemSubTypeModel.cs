@@ -63,6 +63,7 @@ namespace InventoryManagement.Model
         {
             return subTypeRepository.GetItemImage();
         }
+
     }
 
 }

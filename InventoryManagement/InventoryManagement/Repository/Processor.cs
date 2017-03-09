@@ -12,9 +12,9 @@ namespace InventoryManagement.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class Processor
+    public partial class processor
     {
-        public int id { get; set; }
-        public string name { get; set; }
+        public int processor_id { get; set; }
+        public string processor_name { get; set; }
     }
 }

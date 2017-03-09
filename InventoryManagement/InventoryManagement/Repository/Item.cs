@@ -12,42 +12,42 @@ namespace InventoryManagement.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class Item
+    public partial class item
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Item()
+        public item()
         {
-            this.ItemImages = new HashSet<ItemImage>();
+            this.item_image = new HashSet<item_image>();
         }
     
-        public int id { get; set; }
-        public string asset_tag { get; set; }
-        public string name { get; set; }
-        public string description { get; set; }
+        public int item_id { get; set; }
+        public string item_asset_tag { get; set; }
+        public string item_name { get; set; }
+        public string item_description { get; set; }
         public int item_type_id { get; set; }
-        public int item_sub_type_id { get; set; }
-        public decimal purchase_price { get; set; }
-        public decimal current_value { get; set; }
-        public Nullable<System.DateTime> purchase_date { get; set; }
-        public Nullable<int> life_span { get; set; }
-        public Nullable<int> status { get; set; }
-        public Nullable<System.DateTime> last_updated { get; set; }
-        public Nullable<int> last_updated_user { get; set; }
-        public Nullable<int> brand_id { get; set; }
-        public string model { get; set; }
-        public string serial { get; set; }
-        public Nullable<int> current_owner { get; set; }
-        public Nullable<int> os_id { get; set; }
-        public Nullable<int> processor_id { get; set; }
-        public Nullable<int> memory_id { get; set; }
-        public Nullable<int> hdd1_id { get; set; }
-        public Nullable<int> hdd2_id { get; set; }
-        public Nullable<decimal> salvage_value { get; set; }
+        public int item_subtype_id { get; set; }
+        public decimal item_purchase_price { get; set; }
+        public decimal item_current_value { get; set; }
+        public Nullable<System.DateTime> item_purchase_date { get; set; }
+        public Nullable<int> item_lifespan { get; set; }
+        public Nullable<int> item_status { get; set; }
+        public Nullable<System.DateTime> item_last_updated { get; set; }
+        public Nullable<int> item_last_updated_user { get; set; }
+        public Nullable<int> item_brand_id { get; set; }
+        public string item_model { get; set; }
+        public string item_serial { get; set; }
+        public Nullable<int> item_current_owner { get; set; }
+        public Nullable<int> item_os_id { get; set; }
+        public Nullable<int> item_processor_id { get; set; }
+        public Nullable<int> item_memory_id { get; set; }
+        public Nullable<int> item_hdd1_id { get; set; }
+        public Nullable<int> item_hdd2_id { get; set; }
+        public Nullable<decimal> item_salvage_value { get; set; }
     
-        public virtual Brand Brand { get; set; }
-        public virtual ItemSubtype ItemSubtype { get; set; }
-        public virtual ItemType ItemType { get; set; }
+        public virtual brand brand { get; set; }
+        public virtual item_subtype item_subtype { get; set; }
+        public virtual item_type item_type { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ItemImage> ItemImages { get; set; }
+        public virtual ICollection<item_image> item_image { get; set; }
     }
 }

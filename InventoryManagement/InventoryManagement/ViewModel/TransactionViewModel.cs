@@ -8,7 +8,7 @@ namespace InventoryManagement.ViewModel
 {
     public enum TransactionType
     {
-        Login,
+        Login = 1,
         Logout,
         CreateItem,
         EditItem,
@@ -32,6 +32,7 @@ namespace InventoryManagement.ViewModel
         public int OtherUserId { get; set; }
         public string OtherUserName { get; set; }
         public int TransactionTypeId { get; set; }
+        public string TransactionType { get; set; }
         public int ItemId { get; set; }
         public string ItemName { get; set; }
         public string Remarks { get; set; }

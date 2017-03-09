@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using InventoryManagement.ViewModel;
-
+using System.Drawing;
 
 namespace InventoryManagement.Repository
 {
@@ -15,8 +15,8 @@ namespace InventoryManagement.Repository
         {
             var list = new List<ItemSubTypeViewModel>();
 
-            var sub = InventoryDatabase.vwItemSubTypeCounts.AsNoTracking().Where(x => x.TypeId == categoryId).ToList();
-            foreach (vwItemSubTypeCount s in sub)
+            var sub = InventoryDatabase.vw_item_subtype_count.AsNoTracking().Where(x => x.TypeId == categoryId).ToList();
+            foreach (vw_item_subtype_count s in sub)
             {
                 list.Add(new ViewModel.ItemSubTypeViewModel
                 {
@@ -32,24 +32,24 @@ namespace InventoryManagement.Repository
 
         public List<ItemSubTypeViewModel> QuerySubTypes()
         {
-            var subtypes = InventoryDatabase.ItemSubtypes.ToList();
+            var subtypes = InventoryDatabase.item_subtype.ToList();
             List<ItemSubTypeViewModel> bList = new List<ItemSubTypeViewModel>();
 
-            foreach (ItemSubtype s in subtypes)
+            foreach (item_subtype s in subtypes)
             {
-                bList.Add(new ItemSubTypeViewModel { Id = s.id, Name = s.name });
+                bList.Add(new ItemSubTypeViewModel { Id = s.subtype_id, Name = s.subtype_name });
             }
             return bList;
         }
 
         public ItemSubTypeViewModel QuerySubTypeById(int id)
         {
-            var categ = InventoryDatabase.ItemSubtypes.FirstOrDefault(h => h.id == id);
+            var categ = InventoryDatabase.item_subtype.FirstOrDefault(h => h.subtype_id == id);
             if (categ != null)
                 return new ViewModel.ItemSubTypeViewModel
                 {
-                    Id = categ.id,
-                    Name = categ.name,
+                    Id = categ.subtype_id,
+                    Name = categ.subtype_name,
 
 
                 };
@@ -59,10 +59,10 @@ namespace InventoryManagement.Repository
         public ReturnValueRepo DeleteSubType(int id)
         {
             var result = new ReturnValueRepo();
-            var subType = InventoryDatabase.ItemSubtypes.FirstOrDefault(h => h.id == id);
+            var subType = InventoryDatabase.item_subtype.FirstOrDefault(h => h.subtype_id == id);
             if (subType != null)
             {
-                InventoryDatabase.ItemSubtypes.Remove(subType);
+                InventoryDatabase.item_subtype.Remove(subType);
                 try
                 {
                     InventoryDatabase.SaveChanges();
@@ -81,13 +81,13 @@ namespace InventoryManagement.Repository
 
         public ItemSubTypeViewModel GetSubtypeByName(string name)
         {
-            var subtype = InventoryDatabase.ItemSubtypes.FirstOrDefault(h => h.name == name);
+            var subtype = InventoryDatabase.item_subtype.FirstOrDefault(h => h.subtype_name == name);
             if (subtype != null)
             {
                 return new ItemSubTypeViewModel
                 {
-                    Id = subtype.id,
-                    Name = subtype.name,
+                    Id = subtype.subtype_id,
+                    Name = subtype.subtype_name,
 
                 };
             }
@@ -99,15 +99,16 @@ namespace InventoryManagement.Repository
         public ReturnValueRepo Create(int parentId, string name)
         {
             var result = new ReturnValueRepo();
-            var cat = InventoryDatabase.ItemSubtypes.FirstOrDefault(s => s.name.Equals(name));
+            var cat = InventoryDatabase.item_subtype.FirstOrDefault(s => s.subtype_name.Equals(name));
+
             if (cat == null)
             {
-                var newItemSubtype = new ItemSubtype { type_id = parentId, name = name };
+                var newItemSubtype = new item_subtype { subtype_parent_id = parentId, subtype_name = name };
 
-                InventoryDatabase.ItemSubtypes.Add(newItemSubtype);
+                InventoryDatabase.item_subtype.Add(newItemSubtype);
                 if (InventoryDatabase.SaveChanges() > 0)
                 {
-                    result.Param1 = newItemSubtype.id.ToString();
+                    result.Param1 = newItemSubtype.subtype_id.ToString();
                     result.Success = true;
                 }
                 else
@@ -128,22 +129,22 @@ namespace InventoryManagement.Repository
         public bool UpdateItemTypeImage(int typeId, byte[] bArr)
         {
             //var item = InventoryDatabase.Items.FirstOrDefault(h => h.id == itemId);
-            var item = InventoryDatabase.ItemSubTypeImages.FirstOrDefault(x => x.subtype_id == typeId);
+            var item = InventoryDatabase.item_subtype_image.FirstOrDefault(x => x.subtype_image_id == typeId);
 
             if (item != null)
             {
 
-                item.picture = bArr;
+                item.subtype_image_picture = bArr;
                 InventoryDatabase.SaveChanges();
 
                 return true;
             }
             else
             {
-                InventoryDatabase.ItemSubTypeImages.Add(new ItemSubTypeImage
+                InventoryDatabase.item_subtype_image.Add(new item_subtype_image
                 {
-                    subtype_id = typeId,
-                    picture = bArr
+                    subtype_image_subtype_id = typeId,
+                    subtype_image_picture = bArr
                 });
                 InventoryDatabase.SaveChanges();
                 return true;
@@ -153,10 +154,10 @@ namespace InventoryManagement.Repository
 
         public byte[] GetItemImage(int typeId)
         {
-            var item = InventoryDatabase.ItemSubTypeImages.FirstOrDefault(x => x.subtype_id == typeId);
+            var item = InventoryDatabase.item_subtype_image.FirstOrDefault(x => x.subtype_image_id == typeId);
             if (item != null)
             {
-                return item.picture;
+                return item.subtype_image_picture;
             }
             return null;
         }
@@ -164,18 +165,21 @@ namespace InventoryManagement.Repository
         public List<ItemSubTypeViewModel> GetItemImage()
         {
             var list = new List<ItemSubTypeViewModel>();
-            var item = InventoryDatabase.ItemSubTypeImages.ToList();
-           foreach(ItemSubTypeImage it in item)
+            var item = InventoryDatabase.item_subtype_image.ToList();
+           foreach(item_subtype_image it in item)
             {
                 list.Add(new ItemSubTypeViewModel {
-                    Id = it.subtype_id,
-                    Picture = Utils.ImageCon.byteArrayToImage(it.picture)
+                    Id = it.subtype_image_id,
+                    Picture = Utils.ImageCon.byteArrayToImage(it.subtype_image_picture),
+                    ParentId = it.subtype_image_subtype_id
                 });
 
 
             }
             return list;
         }
+        
+       
     }
 
 }

@@ -12,19 +12,22 @@ namespace InventoryManagement.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class Company
+    public partial class company
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Company()
+        public company()
         {
-            this.Users = new HashSet<User>();
+            this.departments = new HashSet<department>();
+            this.users = new HashSet<user>();
         }
     
-        public int id { get; set; }
-        public string name { get; set; }
-        public string address { get; set; }
+        public int company_id { get; set; }
+        public string company_name { get; set; }
+        public string company_address { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<department> departments { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<user> users { get; set; }
     }
 }

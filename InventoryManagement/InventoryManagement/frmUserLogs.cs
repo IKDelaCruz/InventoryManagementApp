@@ -1,5 +1,4 @@
-﻿using InventoryManagement.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,16 +15,17 @@ namespace InventoryManagement
         public frmUserLogs()
         {
             InitializeComponent();
+
+            dvLogs.AutoGenerateColumns = false;
         }
 
         private void frmUserLogs_Load(object sender, EventArgs e)
         {
-            LoadTransactions();
+            LoadLogs();
         }
-
-        private void LoadTransactions()
+         private void LoadLogs()
         {
-            dvLogs.DataSource = Singleton.Instance.TransactionModel.GetTransactions();
+            dvLogs.DataSource = Model.Singleton.Instance.TransactionModel.GetTransactions();
         }
     }
 }

@@ -27,31 +27,32 @@ namespace InventoryManagement.Repository
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Brand> Brands { get; set; }
-        public virtual DbSet<Company> Companies { get; set; }
-        public virtual DbSet<Department> Departments { get; set; }
-        public virtual DbSet<HDD> HDDs { get; set; }
-        public virtual DbSet<Item> Items { get; set; }
-        public virtual DbSet<ItemImage> ItemImages { get; set; }
-        public virtual DbSet<ItemSubtype> ItemSubtypes { get; set; }
-        public virtual DbSet<ItemSubTypeImage> ItemSubTypeImages { get; set; }
-        public virtual DbSet<ItemType> ItemTypes { get; set; }
-        public virtual DbSet<ItemTypeImage> ItemTypeImages { get; set; }
-        public virtual DbSet<Memory> Memories { get; set; }
-        public virtual DbSet<OperatingSystem> OperatingSystems { get; set; }
-        public virtual DbSet<Processor> Processors { get; set; }
-        public virtual DbSet<Request> Requests { get; set; }
+        public virtual DbSet<brand> brands { get; set; }
+        public virtual DbSet<company> companies { get; set; }
+        public virtual DbSet<department> departments { get; set; }
+        public virtual DbSet<hdd> hdds { get; set; }
+        public virtual DbSet<item> items { get; set; }
+        public virtual DbSet<item_image> item_image { get; set; }
+        public virtual DbSet<item_subtype> item_subtype { get; set; }
+        public virtual DbSet<item_subtype_image> item_subtype_image { get; set; }
+        public virtual DbSet<item_type> item_type { get; set; }
+        public virtual DbSet<item_type_image> item_type_image { get; set; }
+        public virtual DbSet<memory> memories { get; set; }
+        public virtual DbSet<operation_system> operation_system { get; set; }
+        public virtual DbSet<processor> processors { get; set; }
+        public virtual DbSet<request> requests { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<Transaction> Transactions { get; set; }
-        public virtual DbSet<TransactionType> TransactionTypes { get; set; }
-        public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<vwBrandSummary> vwBrandSummaries { get; set; }
-        public virtual DbSet<vwItemDetail> vwItemDetails { get; set; }
-        public virtual DbSet<vwItemLog> vwItemLogs { get; set; }
-        public virtual DbSet<vwItemSubTypeCount> vwItemSubTypeCounts { get; set; }
-        public virtual DbSet<vwItemSubTypeSummary> vwItemSubTypeSummaries { get; set; }
-        public virtual DbSet<vwItemTypeSummary> vwItemTypeSummaries { get; set; }
-        public virtual DbSet<vwTransactionLog> vwTransactionLogs { get; set; }
+        public virtual DbSet<transaciton> transacitons { get; set; }
+        public virtual DbSet<transaction_type> transaction_type { get; set; }
+        public virtual DbSet<user> users { get; set; }
+        public virtual DbSet<vw_brand_summary> vw_brand_summary { get; set; }
+        public virtual DbSet<vw_item_detail> vw_item_detail { get; set; }
+        public virtual DbSet<vw_item_log> vw_item_log { get; set; }
+        public virtual DbSet<vw_item_subtype_count> vw_item_subtype_count { get; set; }
+        public virtual DbSet<vw_item_subtype_summary> vw_item_subtype_summary { get; set; }
+        public virtual DbSet<vw_item_type_summary> vw_item_type_summary { get; set; }
+        public virtual DbSet<vw_transaction_log> vw_transaction_log { get; set; }
+        public virtual DbSet<vw_transaction_summary> vw_transaction_summary { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
