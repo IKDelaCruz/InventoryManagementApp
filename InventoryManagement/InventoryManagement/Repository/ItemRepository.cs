@@ -428,7 +428,7 @@ namespace InventoryManagement.Repository
 
         public List<ItemViewModel> QueryItemSubTypeSummary(int typeId)
         {
-            var items = InventoryDatabase.vw_item_subtype_summary.Where(x => x.ISTType == typeId).ToList();
+            var items = InventoryDatabase.vw_item_subtype_summary.Where(x => x.ISTTypeId == typeId).ToList();
             List<ItemViewModel> iList = new List<ItemViewModel>();
 
             foreach (vw_item_subtype_summary s in items)

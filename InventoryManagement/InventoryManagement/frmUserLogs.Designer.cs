@@ -39,6 +39,7 @@
             this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnExport = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvLogs)).BeginInit();
             this.SuspendLayout();
@@ -54,6 +55,7 @@
             // pnlMain
             // 
             this.pnlMain.BackColor = System.Drawing.Color.White;
+            this.pnlMain.Controls.Add(this.label3);
             this.pnlMain.Controls.Add(this.dvLogs);
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlMain.Location = new System.Drawing.Point(10, 10);
@@ -73,9 +75,8 @@
             this.SystemUser,
             this.CustomerName,
             this.ItemName});
-            this.dvLogs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dvLogs.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dvLogs.Location = new System.Drawing.Point(0, 0);
+            this.dvLogs.Location = new System.Drawing.Point(0, 56);
             this.dvLogs.Name = "dvLogs";
             this.dvLogs.RowHeadersVisible = false;
             this.dvLogs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -83,7 +84,7 @@
             this.dvLogs.ShowCellToolTips = false;
             this.dvLogs.ShowEditingIcon = false;
             this.dvLogs.ShowRowErrors = false;
-            this.dvLogs.Size = new System.Drawing.Size(764, 325);
+            this.dvLogs.Size = new System.Drawing.Size(764, 269);
             this.dvLogs.TabIndex = 0;
             // 
             // TransactionDate
@@ -131,6 +132,18 @@
             this.btnExport.UseVisualStyleBackColor = true;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(10, 10);
+            this.label3.Margin = new System.Windows.Forms.Padding(10);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(120, 33);
+            this.label3.TabIndex = 57;
+            this.label3.Text = "User Logs";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // frmUserLogs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -145,6 +158,7 @@
             this.Text = "frmUserLogs";
             this.Load += new System.EventHandler(this.frmUserLogs_Load);
             this.pnlMain.ResumeLayout(false);
+            this.pnlMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvLogs)).EndInit();
             this.ResumeLayout(false);
 
@@ -161,5 +175,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CustomerName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
         private System.Windows.Forms.Button btnExport;
+        private System.Windows.Forms.Label label3;
     }
 }

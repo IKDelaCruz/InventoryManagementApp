@@ -35,6 +35,11 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.dvTypes = new System.Windows.Forms.DataGridView();
+            this.clnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Usage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Picture = new System.Windows.Forms.DataGridViewImageColumn();
+            this.clnDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -44,11 +49,6 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.btnAddType = new System.Windows.Forms.Button();
-            this.clnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Usage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Picture = new System.Windows.Forms.DataGridViewImageColumn();
-            this.clnDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvTypes)).BeginInit();
             this.SuspendLayout();
@@ -147,11 +147,13 @@
             this.Usage,
             this.Picture,
             this.clnDescription});
+            this.dvTypes.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dvTypes.Location = new System.Drawing.Point(304, 71);
             this.dvTypes.MultiSelect = false;
             this.dvTypes.Name = "dvTypes";
             this.dvTypes.ReadOnly = true;
             this.dvTypes.RowHeadersVisible = false;
+            this.dvTypes.RowTemplate.Height = 60;
             this.dvTypes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dvTypes.ShowEditingIcon = false;
             this.dvTypes.Size = new System.Drawing.Size(413, 312);
@@ -159,6 +161,45 @@
             this.dvTypes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvTypes_CellClick);
             this.dvTypes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvTypes_CellContentClick);
             this.dvTypes.SelectionChanged += new System.EventHandler(this.dvTypes_SelectionChanged);
+            // 
+            // clnId
+            // 
+            this.clnId.DataPropertyName = "Id";
+            this.clnId.HeaderText = "Id";
+            this.clnId.Name = "clnId";
+            this.clnId.ReadOnly = true;
+            this.clnId.Width = 50;
+            // 
+            // clnName
+            // 
+            this.clnName.DataPropertyName = "Name";
+            this.clnName.HeaderText = "Name";
+            this.clnName.Name = "clnName";
+            this.clnName.ReadOnly = true;
+            this.clnName.Width = 150;
+            // 
+            // Usage
+            // 
+            this.Usage.DataPropertyName = "Count";
+            this.Usage.HeaderText = "Usage";
+            this.Usage.Name = "Usage";
+            this.Usage.ReadOnly = true;
+            this.Usage.Width = 50;
+            // 
+            // Picture
+            // 
+            this.Picture.DataPropertyName = "Picture";
+            this.Picture.HeaderText = "Picture";
+            this.Picture.Name = "Picture";
+            this.Picture.ReadOnly = true;
+            // 
+            // clnDescription
+            // 
+            this.clnDescription.DataPropertyName = "Description";
+            this.clnDescription.HeaderText = "Description";
+            this.clnDescription.Name = "clnDescription";
+            this.clnDescription.ReadOnly = true;
+            this.clnDescription.Width = 200;
             // 
             // label2
             // 
@@ -247,45 +288,6 @@
             this.btnAddType.Text = "Add Type";
             this.btnAddType.UseVisualStyleBackColor = true;
             this.btnAddType.Click += new System.EventHandler(this.btnAddType_Click);
-            // 
-            // clnId
-            // 
-            this.clnId.DataPropertyName = "Id";
-            this.clnId.HeaderText = "Id";
-            this.clnId.Name = "clnId";
-            this.clnId.ReadOnly = true;
-            this.clnId.Width = 50;
-            // 
-            // clnName
-            // 
-            this.clnName.DataPropertyName = "Name";
-            this.clnName.HeaderText = "Name";
-            this.clnName.Name = "clnName";
-            this.clnName.ReadOnly = true;
-            this.clnName.Width = 150;
-            // 
-            // Usage
-            // 
-            this.Usage.DataPropertyName = "Count";
-            this.Usage.HeaderText = "Usage";
-            this.Usage.Name = "Usage";
-            this.Usage.ReadOnly = true;
-            this.Usage.Width = 50;
-            // 
-            // Picture
-            // 
-            this.Picture.DataPropertyName = "Picture";
-            this.Picture.HeaderText = "Picture";
-            this.Picture.Name = "Picture";
-            this.Picture.ReadOnly = true;
-            // 
-            // clnDescription
-            // 
-            this.clnDescription.DataPropertyName = "Description";
-            this.clnDescription.HeaderText = "Description";
-            this.clnDescription.Name = "clnDescription";
-            this.clnDescription.ReadOnly = true;
-            this.clnDescription.Width = 200;
             // 
             // frmManageType
             // 

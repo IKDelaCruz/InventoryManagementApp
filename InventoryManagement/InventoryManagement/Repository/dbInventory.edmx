@@ -283,8 +283,8 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_item_subtype_summary' d
           </Key>
           <Property Name="ISTSubTypeID" Type="int" Nullable="false" />
           <Property Name="ISTSubType" Type="varchar" MaxLength="50" />
-          <Property Name="ISTTypeId" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ISTType" Type="int" />
+          <Property Name="ISTTypeId" Type="int" Nullable="false" />
+          <Property Name="ISTType" Type="varchar" MaxLength="50" />
           <Property Name="ISTTotalAvailable" Type="int" />
           <Property Name="ITemTypePicture" Type="varbinary(max)" />
           <Property Name="ITemTypePictureId" Type="int" />
@@ -464,6 +464,18 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_transaction_summary' do
             </Principal>
             <Dependent Role="request">
               <PropertyRef Name="request_user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_transaciton_system_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="transaciton" Type="Self.transaciton" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="transaciton">
+              <PropertyRef Name="transaction_system_user_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -706,6 +718,10 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_transaction_summary' do
             <End Role="user" EntitySet="user" />
             <End Role="request" EntitySet="request" />
           </AssociationSet>
+          <AssociationSet Name="FK_transaciton_system_user" Association="Self.FK_transaciton_system_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="transaciton" EntitySet="transaciton" />
+          </AssociationSet>
           <AssociationSet Name="FK_transaciton_transaction_type" Association="Self.FK_transaciton_transaction_type">
             <End Role="transaction_type" EntitySet="transaction_type" />
             <End Role="transaciton" EntitySet="transaciton" />
@@ -779,6 +795,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_transaction_summary' do
           <EntitySet Name="vw_item_subtype_summary" EntityType="InventoryMangementModel.vw_item_subtype_summary" />
           <EntitySet Name="vw_item_type_summary" EntityType="InventoryMangementModel.vw_item_type_summary" />
           <EntitySet Name="vw_transaction_log" EntityType="InventoryMangementModel.vw_transaction_log" />
+          <EntitySet Name="vw_transaction_summary" EntityType="InventoryMangementModel.vw_transaction_summary" />
           <AssociationSet Name="FK_Brand_ItmeSubType" Association="InventoryMangementModel.FK_Brand_ItmeSubType">
             <End Role="item_subtype" EntitySet="item_subtype" />
             <End Role="brand" EntitySet="brands" />
@@ -827,11 +844,14 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_transaction_summary' do
             <End Role="user" EntitySet="users" />
             <End Role="request" EntitySet="requests" />
           </AssociationSet>
+          <AssociationSet Name="FK_transaciton_system_user" Association="InventoryMangementModel.FK_transaciton_system_user">
+            <End Role="user" EntitySet="users" />
+            <End Role="transaciton" EntitySet="transacitons" />
+          </AssociationSet>
           <AssociationSet Name="FK_transaciton_transaction_type" Association="InventoryMangementModel.FK_transaciton_transaction_type">
             <End Role="transaction_type" EntitySet="transaction_type" />
             <End Role="transaciton" EntitySet="transacitons" />
           </AssociationSet>
-          <EntitySet Name="vw_transaction_summary" EntityType="InventoryMangementModel.vw_transaction_summary" />
           </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1029,6 +1049,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_transaction_summary' do
           <Property Name="transaction_remarks" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="transaction_item_id" Type="Int32" />
           <Property Name="transaction_request_id" Type="Int32" />
+          <NavigationProperty Name="user" Relationship="InventoryMangementModel.FK_transaciton_system_user" FromRole="transaciton" ToRole="user" />
           <NavigationProperty Name="transaction_type" Relationship="InventoryMangementModel.FK_transaciton_transaction_type" FromRole="transaciton" ToRole="transaction_type" />
         </EntityType>
         <EntityType Name="transaction_type">
@@ -1054,6 +1075,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_transaction_summary' do
           <NavigationProperty Name="company" Relationship="InventoryMangementModel.FK_User_Company1" FromRole="user" ToRole="company" />
           <NavigationProperty Name="department" Relationship="InventoryMangementModel.FK_User_Department" FromRole="user" ToRole="department" />
           <NavigationProperty Name="requests" Relationship="InventoryMangementModel.FK_Request_User" FromRole="user" ToRole="request" />
+          <NavigationProperty Name="transacitons" Relationship="InventoryMangementModel.FK_transaciton_system_user" FromRole="user" ToRole="transaciton" />
         </EntityType>
         <EntityType Name="vw_brand_summary">
           <Key>
@@ -1138,8 +1160,8 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_transaction_summary' do
           </Key>
           <Property Name="ISTSubTypeID" Type="Int32" Nullable="false" />
           <Property Name="ISTSubType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ISTTypeId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ISTType" Type="Int32" />
+          <Property Name="ISTTypeId" Type="Int32" Nullable="false" />
+          <Property Name="ISTType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ISTTotalAvailable" Type="Int32" />
           <Property Name="ITemTypePicture" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="ITemTypePictureId" Type="Int32" />
@@ -1177,6 +1199,24 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_transaction_summary' do
           <Property Name="request_need_date" Type="DateTime" Precision="3" />
           <Property Name="request_remarks" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="request_admin_remarks" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vw_transaction_summary">
+          <Key>
+            <PropertyRef Name="TransactionId" />
+            <PropertyRef Name="TranscationDate" />
+            <PropertyRef Name="SystemUserId" />
+            <PropertyRef Name="CustomerUserId" />
+            <PropertyRef Name="TransactionTypeId" />
+          </Key>
+          <Property Name="TransactionId" Type="Int32" Nullable="false" />
+          <Property Name="TranscationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SystemUser" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerUser" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="TransactionType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SystemUserId" Type="Int32" Nullable="false" />
+          <Property Name="CustomerUserId" Type="Int32" Nullable="false" />
+          <Property Name="TransactionTypeId" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK_Brand_ItmeSubType">
           <End Type="InventoryMangementModel.item_subtype" Role="item_subtype" Multiplicity="1" />
@@ -1322,6 +1362,18 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_transaction_summary' do
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_transaciton_system_user">
+          <End Type="InventoryMangementModel.user" Role="user" Multiplicity="1" />
+          <End Type="InventoryMangementModel.transaciton" Role="transaciton" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="transaciton">
+              <PropertyRef Name="transaction_system_user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_transaciton_transaction_type">
           <End Type="InventoryMangementModel.transaction_type" Role="transaction_type" Multiplicity="1" />
           <End Type="InventoryMangementModel.transaciton" Role="transaciton" Multiplicity="*" />
@@ -1334,24 +1386,6 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_transaction_summary' do
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="vw_transaction_summary">
-          <Key>
-            <PropertyRef Name="TransactionId" />
-            <PropertyRef Name="TranscationDate" />
-            <PropertyRef Name="SystemUserId" />
-            <PropertyRef Name="CustomerUserId" />
-            <PropertyRef Name="TransactionTypeId" />
-          </Key>
-          <Property Name="TransactionId" Type="Int32" Nullable="false" />
-          <Property Name="TranscationDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="SystemUser" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="CustomerUser" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="TransactionType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SystemUserId" Type="Int32" Nullable="false" />
-          <Property Name="CustomerUserId" Type="Int32" Nullable="false" />
-          <Property Name="TransactionTypeId" Type="Int32" Nullable="false" />
-        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

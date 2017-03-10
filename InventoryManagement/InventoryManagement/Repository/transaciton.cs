@@ -23,6 +23,7 @@ namespace InventoryManagement.Repository
         public Nullable<int> transaction_item_id { get; set; }
         public Nullable<int> transaction_request_id { get; set; }
     
+        public virtual user user { get; set; }
         public virtual transaction_type transaction_type { get; set; }
     }
 }

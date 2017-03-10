@@ -178,8 +178,12 @@ namespace InventoryManagement
 
             if (barcodeScanner)
             {
-                var id = (Convert.ToInt32(txtScan.Text.Substring(0, txtScan.Text.Length - 1)));
-                itms = itms.Where(h => h.Id == id).ToList();
+                if(txtScan.Text.Length == 8)
+                {
+                    var id = (Convert.ToInt32(txtScan.Text.Substring(0, txtScan.Text.Length - 1)));
+                    itms = itms.Where(h => h.Id == id).ToList();
+                }
+              
             }
 
             imgMainImage.Images.Clear();

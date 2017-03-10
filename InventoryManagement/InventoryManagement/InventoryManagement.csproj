@@ -459,6 +459,7 @@
     <Content Include="images\icons\type\3.png" />
     <Content Include="images\icons\type\4.png" />
     <Content Include="images\items\default.jpg" />
+    <None Include="Resources\logo.jpg" />
     <None Include="images\jakalogo.jpg" />
     <Content Include="images\Login.png" />
     <Content Include="images\Login3.png" />

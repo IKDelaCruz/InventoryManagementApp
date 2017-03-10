@@ -18,6 +18,7 @@ namespace InventoryManagement.Repository
         public user()
         {
             this.requests = new HashSet<request>();
+            this.transacitons = new HashSet<transaciton>();
         }
     
         public int user_id { get; set; }
@@ -33,5 +34,7 @@ namespace InventoryManagement.Repository
         public virtual department department { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<request> requests { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<transaciton> transacitons { get; set; }
     }
 }

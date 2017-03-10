@@ -15,16 +15,16 @@ namespace InventoryManagement.Repository
         {
             var list = new List<ItemSubTypeViewModel>();
 
-            var sub = InventoryDatabase.vw_item_subtype_count.AsNoTracking().Where(x => x.TypeId == categoryId).ToList();
-            foreach (vw_item_subtype_count s in sub)
+            var sub = InventoryDatabase.vw_item_subtype_summary.AsNoTracking().Where(x => x.ISTTypeId == categoryId).ToList();
+            foreach (vw_item_subtype_summary s in sub)
             {
                 list.Add(new ViewModel.ItemSubTypeViewModel
                 {
-                    Id = s.SubTypeId,
-                    ParentId = s.TypeId ?? 0,
-                    Name = s.SubTypeName,
-                    Count = s.SubTypeItemCount ?? 0,
-                    Picture = Utils.ImageCon.byteArrayToImage(s.Picture)
+                    Id = s.ISTSubTypeID,
+                    ParentId = s.ISTTypeId,
+                    Name = s.ISTSubType,
+                    Count = s.ISTTotalAvailable ?? 0,
+                    Picture = Utils.ImageCon.byteArrayToImage(s.ITemTypePicture)
                 });
             }
             return list;

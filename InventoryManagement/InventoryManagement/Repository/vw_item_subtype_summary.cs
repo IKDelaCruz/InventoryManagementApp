@@ -16,8 +16,8 @@ namespace InventoryManagement.Repository
     {
         public int ISTSubTypeID { get; set; }
         public string ISTSubType { get; set; }
-        public string ISTTypeId { get; set; }
-        public Nullable<int> ISTType { get; set; }
+        public int ISTTypeId { get; set; }
+        public string ISTType { get; set; }
         public Nullable<int> ISTTotalAvailable { get; set; }
         public byte[] ITemTypePicture { get; set; }
         public Nullable<int> ITemTypePictureId { get; set; }

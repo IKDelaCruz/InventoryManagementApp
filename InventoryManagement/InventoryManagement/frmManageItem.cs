@@ -107,7 +107,8 @@ namespace InventoryManagement
          
 
             var curowner = cbxCurrentOwner.SelectedValue;
-           
+            if (curowner == null)
+                curowner = 0;
 
 
             var itm = new ItemViewModel
