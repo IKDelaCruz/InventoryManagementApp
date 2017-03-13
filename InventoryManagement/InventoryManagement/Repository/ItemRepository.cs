@@ -362,7 +362,7 @@ namespace InventoryManagement.Repository
                     Serial = i.item_serial,
                     Status = (ItemStatus)i.item_status,
                     CurrentOwner = i.CurrentOwner ?? 0,
-                    CurrentOwnerName = i.user_username,
+                    CurrentOwnerName = i.Username,
                     LastUpdatedDate = i.LastUpdated ?? DateTime.MinValue,
                     PurchaseDate = i.PurchaseDate ?? DateTime.MinValue,
                     PurchasePrice = i.PurchasePrice,
@@ -492,7 +492,7 @@ namespace InventoryManagement.Repository
                 Serial = i.item_serial,
                 Status = (ItemStatus)i.item_status,
                 CurrentOwner = i.CurrentOwner ?? 0,
-
+                CurrentDepartment = i.UserDepartment ?? 0,
                 LastUpdatedDate = i.LastUpdated ?? DateTime.MinValue,
                 PurchaseDate = i.PurchaseDate ?? DateTime.MinValue,
                 PurchasePrice = i.PurchasePrice,
@@ -507,7 +507,7 @@ namespace InventoryManagement.Repository
                 Type = i.TypeName,
                 SubType = i.SubTypeName,
                 Brand = i.BrandName,
-                CurrentOwnerName = i.user_username
+                CurrentOwnerName = i.Username
             };
         }
         public string QueryOwner(int id)

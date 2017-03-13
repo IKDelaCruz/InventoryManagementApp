@@ -37,8 +37,8 @@ namespace InventoryManagement.ViewModel
         Available = 0,
         Borrowed,
         Reserved,
-        Broken
-       // Disposed,
+        Broken,
+        Disposed,
        // Unknown
     }
     //public enum ItemOperatingSystem
@@ -128,6 +128,7 @@ namespace InventoryManagement.ViewModel
         public int LifeSpan { get; set; }
         public ItemStatus Status { get; set; }
         public int CurrentOwner { get; set; }
+        public int CurrentDepartment { get; set; }
         public string CurrentOwnerName { get; set; }
         public DateTime LastUpdatedDate { get; set; }
         public string LastUpdatedUser { get; set; }

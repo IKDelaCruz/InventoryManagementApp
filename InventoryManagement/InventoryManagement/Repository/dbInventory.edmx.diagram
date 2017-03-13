@@ -950,15 +950,15 @@
         
         
 
-        <EntityTypeShape EntityType="InventoryMangementModel.brand" Width="1.5" PointX="5.25" PointY="18.5" />
+        <EntityTypeShape EntityType="InventoryMangementModel.brand" Width="1.5" PointX="5.25" PointY="18.625" />
         <EntityTypeShape EntityType="InventoryMangementModel.company" Width="1.5" PointX="0.75" PointY="4.5" />
         <EntityTypeShape EntityType="InventoryMangementModel.department" Width="1.5" PointX="3" PointY="4.5" />
         <EntityTypeShape EntityType="InventoryMangementModel.hdd" Width="1.5" PointX="0.75" PointY="1.25" />
         <EntityTypeShape EntityType="InventoryMangementModel.item" Width="1.5" PointX="7.5" PointY="15.25" />
         <EntityTypeShape EntityType="InventoryMangementModel.item_image" Width="1.5" PointX="9.75" PointY="17.5" />
         <EntityTypeShape EntityType="InventoryMangementModel.item_subtype" Width="1.5" PointX="3" PointY="17.125" />
-        <EntityTypeShape EntityType="InventoryMangementModel.item_subtype_image" Width="1.5" PointX="5.25" PointY="16" />
-        <EntityTypeShape EntityType="InventoryMangementModel.item_type" Width="1.5" PointX="0.75" PointY="16" />
+        <EntityTypeShape EntityType="InventoryMangementModel.item_subtype_image" Width="1.5" PointX="5.25" PointY="16.125" />
+        <EntityTypeShape EntityType="InventoryMangementModel.item_type" Width="1.5" PointX="0.75" PointY="16.125" />
         <EntityTypeShape EntityType="InventoryMangementModel.item_type_image" Width="1.5" PointX="3" PointY="13.5" />
         <EntityTypeShape EntityType="InventoryMangementModel.memory" Width="1.5" PointX="2.75" PointY="1.25" />
         <EntityTypeShape EntityType="InventoryMangementModel.operation_system" Width="1.5" PointX="4.75" PointY="1.25" />
@@ -969,13 +969,12 @@
         <EntityTypeShape EntityType="InventoryMangementModel.transaction_type" Width="1.5" PointX="8.25" PointY="0.75" />
         <EntityTypeShape EntityType="InventoryMangementModel.user" Width="1.5" PointX="5.25" PointY="3.875" />
         <EntityTypeShape EntityType="InventoryMangementModel.vw_brand_summary" Width="1.5" PointX="4.75" PointY="8.25" />
-        <EntityTypeShape EntityType="InventoryMangementModel.vw_item_detail" Width="1.5" PointX="9.75" PointY="8.25" />
         <EntityTypeShape EntityType="InventoryMangementModel.vw_item_log" Width="1.5" PointX="6.75" PointY="9.25" />
-        <EntityTypeShape EntityType="InventoryMangementModel.vw_item_subtype_count" Width="1.5" PointX="10.75" PointY="1.25" />
-        <EntityTypeShape EntityType="InventoryMangementModel.vw_item_subtype_summary" Width="1.5" PointX="11.75" PointY="8.25" />
-        <EntityTypeShape EntityType="InventoryMangementModel.vw_item_type_summary" Width="1.5" PointX="11.75" PointY="12.25" />
-        <EntityTypeShape EntityType="InventoryMangementModel.vw_transaction_log" Width="1.5" PointX="12.75" PointY="1.25" />
-        <EntityTypeShape EntityType="InventoryMangementModel.vw_transaction_summary" Width="1.5" PointX="13.75" PointY="6.25" />
+        <EntityTypeShape EntityType="InventoryMangementModel.vw_item_subtype_count" Width="1.5" PointX="8.75" PointY="9.25" />
+        <EntityTypeShape EntityType="InventoryMangementModel.vw_item_subtype_summary" Width="1.5" PointX="10.75" PointY="8.25" />
+        <EntityTypeShape EntityType="InventoryMangementModel.vw_item_type_summary" Width="1.5" PointX="10.75" PointY="1.25" />
+        <EntityTypeShape EntityType="InventoryMangementModel.vw_transaction_log" Width="1.5" PointX="9.75" PointY="12.25" />
+        <EntityTypeShape EntityType="InventoryMangementModel.vw_transaction_summary" Width="1.5" PointX="11.75" PointY="12.25" />
         <AssociationConnector Association="InventoryMangementModel.FK_Brand_ItmeSubType" />
         <AssociationConnector Association="InventoryMangementModel.FK_Item_Brand" />
         <AssociationConnector Association="InventoryMangementModel.FK_Department_Company" />
@@ -989,7 +988,8 @@
         <AssociationConnector Association="InventoryMangementModel.FK_ItemTypeImage_Item" />
         <AssociationConnector Association="InventoryMangementModel.FK_Request_User" />
         <AssociationConnector Association="InventoryMangementModel.FK_transaciton_system_user" />
-        <AssociationConnector Association="InventoryMangementModel.FK_transaciton_transaction_type" />&gt;&gt;&gt;&gt;&gt;&gt;&gt; origin/master
+        <AssociationConnector Association="InventoryMangementModel.FK_transaciton_transaction_type" />
+        <EntityTypeShape EntityType="InventoryMangementModel.vw_item_detail" Width="1.5" PointX="3.8551419190387906" PointY="27.625826654781505" />&gt;&gt;&gt;&gt;&gt;&gt;&gt; origin/master
         
         
         

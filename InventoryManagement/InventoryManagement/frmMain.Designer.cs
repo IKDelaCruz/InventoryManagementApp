@@ -30,6 +30,20 @@
         {
             this.components = new System.ComponentModel.Container();
             this.imgMainImage = new System.Windows.Forms.ImageList(this.components);
+            this.cntxtMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.sortByToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsAction = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsBorrow = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsReserve = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsReturn = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsBroken = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsRetire = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsBarcode = new System.Windows.Forms.ToolStripMenuItem();
+            this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lvMain = new System.Windows.Forms.ListView();
@@ -50,13 +64,9 @@
             this.cbxStatus = new System.Windows.Forms.ComboBox();
             this.pnlRightInfo = new System.Windows.Forms.Panel();
             this.pnlRightContent = new System.Windows.Forms.Panel();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.cbxUsers = new System.Windows.Forms.ComboBox();
-            this.btnReserve = new System.Windows.Forms.Button();
-            this.btnCheckin = new System.Windows.Forms.Button();
-            this.btnCheckout = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pbId = new System.Windows.Forms.PictureBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.btnPrintBarcode = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -110,13 +120,17 @@
             this.logsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.itemSummaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.requestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cntxtMenuStrip.SuspendLayout();
             this.pnlMain.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlTop.SuspendLayout();
             this.pnlRightInfo.SuspendLayout();
             this.pnlRightContent.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbId)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -127,6 +141,116 @@
             this.imgMainImage.ImageSize = new System.Drawing.Size(48, 48);
             this.imgMainImage.TransparentColor = System.Drawing.Color.Transparent;
             // 
+            // cntxtMenuStrip
+            // 
+            this.cntxtMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sortByToolStripMenuItem,
+            this.tsAction,
+            this.tsBarcode});
+            this.cntxtMenuStrip.Name = "cntxtMenuStrip";
+            this.cntxtMenuStrip.Size = new System.Drawing.Size(118, 70);
+            this.cntxtMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.cntxtMenuStrip_Opening);
+            // 
+            // sortByToolStripMenuItem
+            // 
+            this.sortByToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nameToolStripMenuItem,
+            this.dateToolStripMenuItem,
+            this.statusToolStripMenuItem});
+            this.sortByToolStripMenuItem.Name = "sortByToolStripMenuItem";
+            this.sortByToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sortByToolStripMenuItem.Text = "Sort By";
+            // 
+            // nameToolStripMenuItem
+            // 
+            this.nameToolStripMenuItem.Name = "nameToolStripMenuItem";
+            this.nameToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
+            this.nameToolStripMenuItem.Text = "Name";
+            this.nameToolStripMenuItem.Click += new System.EventHandler(this.nameToolStripMenuItem_Click);
+            // 
+            // dateToolStripMenuItem
+            // 
+            this.dateToolStripMenuItem.Name = "dateToolStripMenuItem";
+            this.dateToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
+            this.dateToolStripMenuItem.Text = "Date";
+            this.dateToolStripMenuItem.Click += new System.EventHandler(this.dateToolStripMenuItem_Click);
+            // 
+            // statusToolStripMenuItem
+            // 
+            this.statusToolStripMenuItem.Name = "statusToolStripMenuItem";
+            this.statusToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
+            this.statusToolStripMenuItem.Text = "Status";
+            this.statusToolStripMenuItem.Click += new System.EventHandler(this.statusToolStripMenuItem_Click);
+            // 
+            // tsAction
+            // 
+            this.tsAction.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsBorrow,
+            this.tsReserve,
+            this.tsReturn,
+            this.toolStripSeparator2,
+            this.tsBroken,
+            this.tsRetire,
+            this.viewDetailsToolStripMenuItem});
+            this.tsAction.Name = "tsAction";
+            this.tsAction.Size = new System.Drawing.Size(152, 22);
+            this.tsAction.Text = "Action";
+            // 
+            // tsBorrow
+            // 
+            this.tsBorrow.Name = "tsBorrow";
+            this.tsBorrow.Size = new System.Drawing.Size(152, 22);
+            this.tsBorrow.Text = "Borrow";
+            this.tsBorrow.Click += new System.EventHandler(this.tsBorrow_Click);
+            // 
+            // tsReserve
+            // 
+            this.tsReserve.Name = "tsReserve";
+            this.tsReserve.Size = new System.Drawing.Size(152, 22);
+            this.tsReserve.Text = "Reserve";
+            this.tsReserve.Click += new System.EventHandler(this.tsReserve_Click);
+            // 
+            // tsReturn
+            // 
+            this.tsReturn.Name = "tsReturn";
+            this.tsReturn.Size = new System.Drawing.Size(152, 22);
+            this.tsReturn.Text = "Return";
+            this.tsReturn.Click += new System.EventHandler(this.tsReturn_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            // 
+            // tsBroken
+            // 
+            this.tsBroken.Name = "tsBroken";
+            this.tsBroken.Size = new System.Drawing.Size(152, 22);
+            this.tsBroken.Text = "Repair";
+            this.tsBroken.Click += new System.EventHandler(this.tsBroken_Click_1);
+            // 
+            // tsRetire
+            // 
+            this.tsRetire.Name = "tsRetire";
+            this.tsRetire.Size = new System.Drawing.Size(152, 22);
+            this.tsRetire.Text = "Dispose";
+            this.tsRetire.Click += new System.EventHandler(this.tsRetire_Click_1);
+            // 
+            // tsBarcode
+            // 
+            this.tsBarcode.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.printToolStripMenuItem});
+            this.tsBarcode.Name = "tsBarcode";
+            this.tsBarcode.Size = new System.Drawing.Size(117, 22);
+            this.tsBarcode.Text = "Barcode";
+            // 
+            // printToolStripMenuItem
+            // 
+            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.printToolStripMenuItem.Text = "Print";
+            this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
+            // 
             // pnlMain
             // 
             this.pnlMain.Controls.Add(this.panel1);
@@ -135,7 +259,7 @@
             this.pnlMain.Location = new System.Drawing.Point(0, 24);
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Padding = new System.Windows.Forms.Padding(5);
-            this.pnlMain.Size = new System.Drawing.Size(816, 598);
+            this.pnlMain.Size = new System.Drawing.Size(1035, 683);
             this.pnlMain.TabIndex = 3;
             // 
             // panel1
@@ -145,18 +269,19 @@
             this.panel1.Location = new System.Drawing.Point(5, 93);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.panel1.Size = new System.Drawing.Size(806, 500);
+            this.panel1.Size = new System.Drawing.Size(1025, 585);
             this.panel1.TabIndex = 2;
             // 
             // lvMain
             // 
             this.lvMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lvMain.ContextMenuStrip = this.cntxtMenuStrip;
             this.lvMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvMain.LargeImageList = this.imgMainImage;
             this.lvMain.Location = new System.Drawing.Point(0, 5);
             this.lvMain.MultiSelect = false;
             this.lvMain.Name = "lvMain";
-            this.lvMain.Size = new System.Drawing.Size(806, 495);
+            this.lvMain.Size = new System.Drawing.Size(1025, 580);
             this.lvMain.SmallImageList = this.imgMainImage;
             this.lvMain.TabIndex = 0;
             this.lvMain.UseCompatibleStateImageBehavior = false;
@@ -185,7 +310,7 @@
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop.Location = new System.Drawing.Point(5, 5);
             this.pnlTop.Name = "pnlTop";
-            this.pnlTop.Size = new System.Drawing.Size(806, 88);
+            this.pnlTop.Size = new System.Drawing.Size(1025, 88);
             this.pnlTop.TabIndex = 1;
             this.pnlTop.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlTop_Paint);
             // 
@@ -345,93 +470,27 @@
             // 
             this.pnlRightInfo.Controls.Add(this.pnlRightContent);
             this.pnlRightInfo.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlRightInfo.Location = new System.Drawing.Point(816, 24);
+            this.pnlRightInfo.Location = new System.Drawing.Point(1035, 24);
             this.pnlRightInfo.Name = "pnlRightInfo";
             this.pnlRightInfo.Padding = new System.Windows.Forms.Padding(0, 5, 5, 5);
-            this.pnlRightInfo.Size = new System.Drawing.Size(315, 598);
+            this.pnlRightInfo.Size = new System.Drawing.Size(315, 683);
             this.pnlRightInfo.TabIndex = 2;
             // 
             // pnlRightContent
             // 
             this.pnlRightContent.BackColor = System.Drawing.Color.White;
             this.pnlRightContent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlRightContent.Controls.Add(this.groupBox2);
             this.pnlRightContent.Controls.Add(this.groupBox1);
             this.pnlRightContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlRightContent.Location = new System.Drawing.Point(0, 5);
             this.pnlRightContent.Name = "pnlRightContent";
-            this.pnlRightContent.Size = new System.Drawing.Size(310, 588);
+            this.pnlRightContent.Size = new System.Drawing.Size(310, 673);
             this.pnlRightContent.TabIndex = 0;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.cbxUsers);
-            this.groupBox2.Controls.Add(this.btnReserve);
-            this.groupBox2.Controls.Add(this.btnCheckin);
-            this.groupBox2.Controls.Add(this.btnCheckout);
-            this.groupBox2.Location = new System.Drawing.Point(12, 455);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(290, 112);
-            this.groupBox2.TabIndex = 37;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Transaction";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(26, 18);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(58, 15);
-            this.label11.TabIndex = 48;
-            this.label11.Text = "Borrower";
-            // 
-            // cbxUsers
-            // 
-            this.cbxUsers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxUsers.FormattingEnabled = true;
-            this.cbxUsers.Location = new System.Drawing.Point(29, 36);
-            this.cbxUsers.Name = "cbxUsers";
-            this.cbxUsers.Size = new System.Drawing.Size(232, 23);
-            this.cbxUsers.TabIndex = 47;
-            // 
-            // btnReserve
-            // 
-            this.btnReserve.Enabled = false;
-            this.btnReserve.Location = new System.Drawing.Point(109, 65);
-            this.btnReserve.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnReserve.Name = "btnReserve";
-            this.btnReserve.Size = new System.Drawing.Size(72, 29);
-            this.btnReserve.TabIndex = 38;
-            this.btnReserve.Text = "RESERVE";
-            this.btnReserve.UseVisualStyleBackColor = true;
-            this.btnReserve.Click += new System.EventHandler(this.btnReserve_Click);
-            // 
-            // btnCheckin
-            // 
-            this.btnCheckin.Enabled = false;
-            this.btnCheckin.Location = new System.Drawing.Point(189, 65);
-            this.btnCheckin.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnCheckin.Name = "btnCheckin";
-            this.btnCheckin.Size = new System.Drawing.Size(72, 29);
-            this.btnCheckin.TabIndex = 37;
-            this.btnCheckin.Text = "RETURN";
-            this.btnCheckin.UseVisualStyleBackColor = true;
-            this.btnCheckin.Click += new System.EventHandler(this.btnCheckin_Click);
-            // 
-            // btnCheckout
-            // 
-            this.btnCheckout.Location = new System.Drawing.Point(29, 65);
-            this.btnCheckout.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnCheckout.Name = "btnCheckout";
-            this.btnCheckout.Size = new System.Drawing.Size(72, 29);
-            this.btnCheckout.TabIndex = 36;
-            this.btnCheckout.Text = "BORROW";
-            this.btnCheckout.UseVisualStyleBackColor = true;
-            this.btnCheckout.Click += new System.EventHandler(this.btnCheckout_Click);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.pbId);
+            this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.btnPrintBarcode);
             this.groupBox1.Controls.Add(this.label1);
@@ -468,12 +527,33 @@
             this.groupBox1.Controls.Add(this.label20);
             this.groupBox1.Controls.Add(this.label18);
             this.groupBox1.Controls.Add(this.lblSerial);
-            this.groupBox1.Location = new System.Drawing.Point(12, 14);
+            this.groupBox1.Location = new System.Drawing.Point(9, 11);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(290, 435);
+            this.groupBox1.Size = new System.Drawing.Size(290, 646);
             this.groupBox1.TabIndex = 36;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Item Details";
+            // 
+            // pbId
+            // 
+            this.pbId.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbId.Location = new System.Drawing.Point(18, 413);
+            this.pbId.Name = "pbId";
+            this.pbId.Size = new System.Drawing.Size(263, 140);
+            this.pbId.TabIndex = 48;
+            this.pbId.TabStop = false;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(15, 375);
+            this.label11.Name = "label11";
+            this.label11.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.label11.Size = new System.Drawing.Size(72, 35);
+            this.label11.TabIndex = 37;
+            this.label11.Text = "ITEM IMAGE";
             // 
             // label9
             // 
@@ -489,10 +569,10 @@
             // btnPrintBarcode
             // 
             this.btnPrintBarcode.Enabled = false;
-            this.btnPrintBarcode.Location = new System.Drawing.Point(65, 399);
+            this.btnPrintBarcode.Location = new System.Drawing.Point(18, 569);
             this.btnPrintBarcode.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnPrintBarcode.Name = "btnPrintBarcode";
-            this.btnPrintBarcode.Size = new System.Drawing.Size(159, 27);
+            this.btnPrintBarcode.Size = new System.Drawing.Size(263, 55);
             this.btnPrintBarcode.TabIndex = 35;
             this.btnPrintBarcode.Text = "Print Barcode Label";
             this.btnPrintBarcode.UseVisualStyleBackColor = true;
@@ -797,10 +877,10 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tssUsername});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 622);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 707);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(1131, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1350, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -817,11 +897,12 @@
             this.fileToolStripMenuItem,
             this.inventoryToolStripMenuItem,
             this.usersToolStripMenuItem,
-            this.reportsToolStripMenuItem});
+            this.reportsToolStripMenuItem,
+            this.requestToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1131, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1350, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -865,33 +946,33 @@
             // summaryToolStripMenuItem
             // 
             this.summaryToolStripMenuItem.Name = "summaryToolStripMenuItem";
-            this.summaryToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.summaryToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.summaryToolStripMenuItem.Text = "Summary";
             this.summaryToolStripMenuItem.Click += new System.EventHandler(this.summaryToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(148, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.addToolStripMenuItem.Text = "Add Item";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // addItemTypeToolStripMenuItem
             // 
             this.addItemTypeToolStripMenuItem.Name = "addItemTypeToolStripMenuItem";
-            this.addItemTypeToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.addItemTypeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.addItemTypeToolStripMenuItem.Text = "Manage Types";
             this.addItemTypeToolStripMenuItem.Click += new System.EventHandler(this.addItemTypeToolStripMenuItem_Click);
             // 
             // manageBrandToolStripMenuItem
             // 
             this.manageBrandToolStripMenuItem.Name = "manageBrandToolStripMenuItem";
-            this.manageBrandToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.manageBrandToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.manageBrandToolStripMenuItem.Text = "Manage Brand";
             this.manageBrandToolStripMenuItem.Click += new System.EventHandler(this.manageBrandToolStripMenuItem_Click);
             // 
@@ -933,12 +1014,34 @@
             this.itemSummaryToolStripMenuItem.Text = "Item Summary";
             this.itemSummaryToolStripMenuItem.Click += new System.EventHandler(this.itemSummaryToolStripMenuItem_Click);
             // 
+            // viewDetailsToolStripMenuItem
+            // 
+            this.viewDetailsToolStripMenuItem.Name = "viewDetailsToolStripMenuItem";
+            this.viewDetailsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.viewDetailsToolStripMenuItem.Text = "View Details";
+            this.viewDetailsToolStripMenuItem.Click += new System.EventHandler(this.viewDetailsToolStripMenuItem_Click);
+            // 
+            // requestToolStripMenuItem
+            // 
+            this.requestToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.manageToolStripMenuItem1});
+            this.requestToolStripMenuItem.Name = "requestToolStripMenuItem";
+            this.requestToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.requestToolStripMenuItem.Text = "Request";
+            // 
+            // manageToolStripMenuItem1
+            // 
+            this.manageToolStripMenuItem1.Name = "manageToolStripMenuItem1";
+            this.manageToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.manageToolStripMenuItem1.Text = "Manage";
+            this.manageToolStripMenuItem1.Click += new System.EventHandler(this.manageToolStripMenuItem1_Click_1);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            this.ClientSize = new System.Drawing.Size(1131, 644);
+            this.ClientSize = new System.Drawing.Size(1350, 729);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.pnlRightInfo);
             this.Controls.Add(this.statusStrip1);
@@ -950,16 +1053,16 @@
             this.Text = "Asset Management";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
+            this.cntxtMenuStrip.ResumeLayout(false);
             this.pnlMain.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();
             this.pnlRightInfo.ResumeLayout(false);
             this.pnlRightContent.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbId)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -999,7 +1102,6 @@
         private System.Windows.Forms.Panel pnlMain;
         private System.Windows.Forms.Panel pnlRightInfo;
         private System.Windows.Forms.Panel pnlRightContent;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnPrintBarcode;
         private System.Windows.Forms.Label label1;
@@ -1036,12 +1138,7 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label lblSerial;
-        private System.Windows.Forms.Button btnCheckin;
-        private System.Windows.Forms.Button btnCheckout;
-        private System.Windows.Forms.Button btnReserve;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox cbxUsers;
         private System.Windows.Forms.ToolStripMenuItem addItemTypeToolStripMenuItem;
         private System.Windows.Forms.TextBox txtScan;
         private System.Windows.Forms.Label label13;
@@ -1051,6 +1148,25 @@
         private System.Windows.Forms.ToolStripMenuItem logsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem itemSummaryToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip cntxtMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem sortByToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem statusToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsAction;
+        private System.Windows.Forms.ToolStripMenuItem tsBorrow;
+        private System.Windows.Forms.ToolStripMenuItem tsReserve;
+        private System.Windows.Forms.ToolStripMenuItem tsReturn;
+        private System.Windows.Forms.ToolStripMenuItem tsRetire;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem tsBroken;
+        private System.Windows.Forms.ToolStripMenuItem tsBarcode;
+        private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.PictureBox pbId;
+        private System.Windows.Forms.ToolStripMenuItem viewDetailsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem requestToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem manageToolStripMenuItem1;
     }
 }
 

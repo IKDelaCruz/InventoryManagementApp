@@ -93,6 +93,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmQuickTransaction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQuickTransaction.Designer.cs">
+      <DependentUpon>frmQuickTransaction.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -353,6 +359,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrinter.resx">
       <DependentUpon>frmPrinter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQuickTransaction.resx">
+      <DependentUpon>frmQuickTransaction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmReport.resx">
       <DependentUpon>frmReport.cs</DependentUpon>

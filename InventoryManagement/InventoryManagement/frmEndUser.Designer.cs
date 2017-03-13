@@ -33,10 +33,11 @@
             this.pnlMain = new System.Windows.Forms.Panel();
             this.tbMain = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.pnlTab1 = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.btnSubmit = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.cbxType = new System.Windows.Forms.ComboBox();
             this.label22 = new System.Windows.Forms.Label();
             this.cbxUsers = new System.Windows.Forms.ComboBox();
@@ -48,34 +49,35 @@
             this.dtpNeededDate = new System.Windows.Forms.DateTimePicker();
             this.cbxSubType = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
+            this.btnSubmit = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.lblAdminRemarks = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.lblHandedBy = new System.Windows.Forms.Label();
-            this.lblStatus = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.pnlTab2 = new System.Windows.Forms.Panel();
+            this.label19 = new System.Windows.Forms.Label();
+            this.txtAdminRemarks = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtRequestStatus = new System.Windows.Forms.TextBox();
+            this.txtRequestHandledBy = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtUserRemarks = new System.Windows.Forms.TextBox();
+            this.txtDateRequested = new System.Windows.Forms.TextBox();
+            this.txtDateNeeded = new System.Windows.Forms.TextBox();
+            this.txtItemType = new System.Windows.Forms.TextBox();
+            this.txtRequestType = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.lblDateRequested = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.lblRequestType = new System.Windows.Forms.Label();
-            this.lblItemType = new System.Windows.Forms.Label();
-            this.lblDateNeeded = new System.Windows.Forms.Label();
-            this.lblUserRemarks = new System.Windows.Forms.Label();
-            this.lbRequest = new System.Windows.Forms.ListBox();
+            this.trMain = new System.Windows.Forms.TreeView();
             this.pnlMain.SuspendLayout();
             this.tbMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.pnlTab1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.pnlTab2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tmrRefresh
@@ -86,11 +88,12 @@
             // 
             // pnlMain
             // 
+            this.pnlMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlMain.Controls.Add(this.tbMain);
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMain.Location = new System.Drawing.Point(12, 12);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(560, 457);
+            this.pnlMain.Size = new System.Drawing.Size(553, 537);
             this.pnlMain.TabIndex = 2;
             // 
             // tbMain
@@ -103,28 +106,61 @@
             this.tbMain.Name = "tbMain";
             this.tbMain.Padding = new System.Drawing.Point(20, 5);
             this.tbMain.SelectedIndex = 0;
-            this.tbMain.Size = new System.Drawing.Size(560, 457);
+            this.tbMain.Size = new System.Drawing.Size(551, 535);
             this.tbMain.TabIndex = 1;
             this.tbMain.SelectedIndexChanged += new System.EventHandler(this.tbMain_SelectedIndexChanged);
             this.tbMain.Click += new System.EventHandler(this.tbMain_Click);
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.Controls.Add(this.label21);
+            this.tabPage1.Controls.Add(this.pnlTab1);
             this.tabPage1.Location = new System.Drawing.Point(4, 39);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(23);
-            this.tabPage1.Size = new System.Drawing.Size(552, 414);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(543, 492);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Create new Request";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // pnlTab1
+            // 
+            this.pnlTab1.Controls.Add(this.label11);
+            this.pnlTab1.Controls.Add(this.label21);
+            this.pnlTab1.Controls.Add(this.groupBox1);
+            this.pnlTab1.Controls.Add(this.btnSubmit);
+            this.pnlTab1.Controls.Add(this.btnCancel);
+            this.pnlTab1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlTab1.Location = new System.Drawing.Point(3, 3);
+            this.pnlTab1.Name = "pnlTab1";
+            this.pnlTab1.Size = new System.Drawing.Size(537, 486);
+            this.pnlTab1.TabIndex = 61;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(7, 10);
+            this.label11.Margin = new System.Windows.Forms.Padding(10);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(184, 26);
+            this.label11.TabIndex = 99;
+            this.label11.Text = "Create New Request";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label21
+            // 
+            this.label21.Location = new System.Drawing.Point(9, 46);
+            this.label21.Margin = new System.Windows.Forms.Padding(3, 0, 3, 23);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(414, 52);
+            this.label21.TabIndex = 50;
+            this.label21.Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean maximus turpis to" +
+    "rtor, vitae mollis arcu pellentesque sit amet. Curabitur dapibus ipsum tortor, s" +
+    "ed fringilla tortor tempor eu. ";
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label23);
-            this.groupBox1.Controls.Add(this.btnSubmit);
-            this.groupBox1.Controls.Add(this.btnCancel);
             this.groupBox1.Controls.Add(this.cbxType);
             this.groupBox1.Controls.Add(this.label22);
             this.groupBox1.Controls.Add(this.cbxUsers);
@@ -136,9 +172,9 @@
             this.groupBox1.Controls.Add(this.dtpNeededDate);
             this.groupBox1.Controls.Add(this.cbxSubType);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(26, 80);
+            this.groupBox1.Location = new System.Drawing.Point(9, 103);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(499, 308);
+            this.groupBox1.Size = new System.Drawing.Size(509, 289);
             this.groupBox1.TabIndex = 60;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Request Details";
@@ -146,48 +182,26 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(203, 24);
+            this.label23.Location = new System.Drawing.Point(161, 24);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(58, 15);
             this.label23.TabIndex = 61;
             this.label23.Text = "Item Type";
             // 
-            // btnSubmit
-            // 
-            this.btnSubmit.Location = new System.Drawing.Point(383, 265);
-            this.btnSubmit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(100, 30);
-            this.btnSubmit.TabIndex = 58;
-            this.btnSubmit.Text = "Submit Request";
-            this.btnSubmit.UseVisualStyleBackColor = true;
-            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(275, 265);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(100, 30);
-            this.btnCancel.TabIndex = 59;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
             // cbxType
             // 
             this.cbxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxType.FormattingEnabled = true;
-            this.cbxType.Location = new System.Drawing.Point(206, 42);
+            this.cbxType.Location = new System.Drawing.Point(164, 42);
             this.cbxType.Name = "cbxType";
-            this.cbxType.Size = new System.Drawing.Size(182, 23);
+            this.cbxType.Size = new System.Drawing.Size(140, 23);
             this.cbxType.TabIndex = 60;
             this.cbxType.SelectedIndexChanged += new System.EventHandler(this.cbxType_SelectedIndexChanged);
             // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(17, 112);
+            this.label22.Location = new System.Drawing.Point(164, 68);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(79, 15);
             this.label22.TabIndex = 59;
@@ -197,9 +211,9 @@
             // 
             this.cbxUsers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxUsers.FormattingEnabled = true;
-            this.cbxUsers.Location = new System.Drawing.Point(18, 130);
+            this.cbxUsers.Location = new System.Drawing.Point(165, 86);
             this.cbxUsers.Name = "cbxUsers";
-            this.cbxUsers.Size = new System.Drawing.Size(370, 23);
+            this.cbxUsers.Size = new System.Drawing.Size(285, 23);
             this.cbxUsers.TabIndex = 58;
             // 
             // label3
@@ -213,16 +227,16 @@
             // 
             // txtRemarks
             // 
-            this.txtRemarks.Location = new System.Drawing.Point(18, 174);
+            this.txtRemarks.Location = new System.Drawing.Point(18, 130);
             this.txtRemarks.Multiline = true;
             this.txtRemarks.Name = "txtRemarks";
-            this.txtRemarks.Size = new System.Drawing.Size(465, 85);
+            this.txtRemarks.Size = new System.Drawing.Size(474, 140);
             this.txtRemarks.TabIndex = 48;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(17, 156);
+            this.label10.Location = new System.Drawing.Point(17, 112);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(48, 15);
             this.label10.TabIndex = 49;
@@ -243,7 +257,7 @@
             this.cbxRequestType.FormattingEnabled = true;
             this.cbxRequestType.Location = new System.Drawing.Point(18, 42);
             this.cbxRequestType.Name = "cbxRequestType";
-            this.cbxRequestType.Size = new System.Drawing.Size(182, 23);
+            this.cbxRequestType.Size = new System.Drawing.Size(140, 23);
             this.cbxRequestType.TabIndex = 51;
             // 
             // dtpNeededDate
@@ -251,271 +265,276 @@
             this.dtpNeededDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpNeededDate.Location = new System.Drawing.Point(18, 86);
             this.dtpNeededDate.Name = "dtpNeededDate";
-            this.dtpNeededDate.Size = new System.Drawing.Size(182, 23);
+            this.dtpNeededDate.Size = new System.Drawing.Size(140, 23);
             this.dtpNeededDate.TabIndex = 56;
             // 
             // cbxSubType
             // 
             this.cbxSubType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxSubType.FormattingEnabled = true;
-            this.cbxSubType.Location = new System.Drawing.Point(206, 86);
+            this.cbxSubType.Location = new System.Drawing.Point(310, 42);
             this.cbxSubType.Name = "cbxSubType";
-            this.cbxSubType.Size = new System.Drawing.Size(182, 23);
+            this.cbxSubType.Size = new System.Drawing.Size(140, 23);
             this.cbxSubType.TabIndex = 53;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(203, 68);
+            this.label1.Location = new System.Drawing.Point(307, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 15);
             this.label1.TabIndex = 54;
             this.label1.Text = "Sub Type";
             // 
-            // label21
+            // btnSubmit
             // 
-            this.label21.Location = new System.Drawing.Point(26, 23);
-            this.label21.Margin = new System.Windows.Forms.Padding(3, 0, 3, 23);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(499, 52);
-            this.label21.TabIndex = 50;
-            this.label21.Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean maximus turpis to" +
-    "rtor, vitae mollis arcu pellentesque sit amet. Curabitur dapibus ipsum tortor, s" +
-    "ed fringilla tortor tempor eu. ";
+            this.btnSubmit.Location = new System.Drawing.Point(418, 398);
+            this.btnSubmit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(100, 30);
+            this.btnSubmit.TabIndex = 58;
+            this.btnSubmit.Text = "Submit Request";
+            this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(310, 398);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(100, 30);
+            this.btnCancel.TabIndex = 59;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.groupBox3);
-            this.tabPage2.Controls.Add(this.groupBox2);
-            this.tabPage2.Controls.Add(this.lbRequest);
+            this.tabPage2.Controls.Add(this.pnlTab2);
             this.tabPage2.Location = new System.Drawing.Point(4, 39);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(20);
-            this.tabPage2.Size = new System.Drawing.Size(552, 414);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(543, 492);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Manage Request";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // groupBox3
+            // pnlTab2
             // 
-            this.groupBox3.Controls.Add(this.label18);
-            this.groupBox3.Controls.Add(this.label17);
-            this.groupBox3.Controls.Add(this.lblAdminRemarks);
-            this.groupBox3.Controls.Add(this.label16);
-            this.groupBox3.Controls.Add(this.lblHandedBy);
-            this.groupBox3.Controls.Add(this.lblStatus);
-            this.groupBox3.Location = new System.Drawing.Point(145, 229);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(379, 158);
-            this.groupBox3.TabIndex = 75;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Request Status";
+            this.pnlTab2.Controls.Add(this.label19);
+            this.pnlTab2.Controls.Add(this.txtAdminRemarks);
+            this.pnlTab2.Controls.Add(this.label9);
+            this.pnlTab2.Controls.Add(this.txtRequestStatus);
+            this.pnlTab2.Controls.Add(this.txtRequestHandledBy);
+            this.pnlTab2.Controls.Add(this.label7);
+            this.pnlTab2.Controls.Add(this.label8);
+            this.pnlTab2.Controls.Add(this.txtUserRemarks);
+            this.pnlTab2.Controls.Add(this.txtDateRequested);
+            this.pnlTab2.Controls.Add(this.txtDateNeeded);
+            this.pnlTab2.Controls.Add(this.txtItemType);
+            this.pnlTab2.Controls.Add(this.txtRequestType);
+            this.pnlTab2.Controls.Add(this.label5);
+            this.pnlTab2.Controls.Add(this.label6);
+            this.pnlTab2.Controls.Add(this.label20);
+            this.pnlTab2.Controls.Add(this.label4);
+            this.pnlTab2.Controls.Add(this.label2);
+            this.pnlTab2.Controls.Add(this.trMain);
+            this.pnlTab2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlTab2.Location = new System.Drawing.Point(3, 3);
+            this.pnlTab2.Name = "pnlTab2";
+            this.pnlTab2.Size = new System.Drawing.Size(537, 486);
+            this.pnlTab2.TabIndex = 77;
             // 
-            // label18
+            // label19
             // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(20, 21);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(41, 15);
-            this.label18.TabIndex = 66;
-            this.label18.Text = "Status";
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(7, 10);
+            this.label19.Margin = new System.Windows.Forms.Padding(10);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(125, 26);
+            this.label19.TabIndex = 98;
+            this.label19.Text = "Ticket Details";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label19.Click += new System.EventHandler(this.label19_Click);
             // 
-            // label17
+            // txtAdminRemarks
             // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(20, 48);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(69, 15);
-            this.label17.TabIndex = 67;
-            this.label17.Text = "Handled By";
+            this.txtAdminRemarks.Location = new System.Drawing.Point(316, 300);
+            this.txtAdminRemarks.Multiline = true;
+            this.txtAdminRemarks.Name = "txtAdminRemarks";
+            this.txtAdminRemarks.ReadOnly = true;
+            this.txtAdminRemarks.Size = new System.Drawing.Size(176, 74);
+            this.txtAdminRemarks.TabIndex = 97;
             // 
-            // lblAdminRemarks
+            // label9
             // 
-            this.lblAdminRemarks.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdminRemarks.Location = new System.Drawing.Point(130, 73);
-            this.lblAdminRemarks.Name = "lblAdminRemarks";
-            this.lblAdminRemarks.Size = new System.Drawing.Size(228, 65);
-            this.lblAdminRemarks.TabIndex = 71;
-            this.lblAdminRemarks.Text = "-";
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(205, 294);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(54, 15);
+            this.label9.TabIndex = 96;
+            this.label9.Text = "Remarks";
             // 
-            // label16
+            // txtRequestStatus
             // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(20, 74);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(54, 15);
-            this.label16.TabIndex = 68;
-            this.label16.Text = "Remarks";
+            this.txtRequestStatus.Location = new System.Drawing.Point(316, 271);
+            this.txtRequestStatus.Name = "txtRequestStatus";
+            this.txtRequestStatus.ReadOnly = true;
+            this.txtRequestStatus.Size = new System.Drawing.Size(176, 23);
+            this.txtRequestStatus.TabIndex = 95;
             // 
-            // lblHandedBy
+            // txtRequestHandledBy
             // 
-            this.lblHandedBy.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHandedBy.Location = new System.Drawing.Point(130, 48);
-            this.lblHandedBy.Name = "lblHandedBy";
-            this.lblHandedBy.Size = new System.Drawing.Size(176, 27);
-            this.lblHandedBy.TabIndex = 70;
-            this.lblHandedBy.Text = "-";
+            this.txtRequestHandledBy.Location = new System.Drawing.Point(316, 242);
+            this.txtRequestHandledBy.Name = "txtRequestHandledBy";
+            this.txtRequestHandledBy.ReadOnly = true;
+            this.txtRequestHandledBy.Size = new System.Drawing.Size(176, 23);
+            this.txtRequestHandledBy.TabIndex = 94;
             // 
-            // lblStatus
+            // label7
             // 
-            this.lblStatus.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatus.Location = new System.Drawing.Point(130, 21);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(176, 27);
-            this.lblStatus.TabIndex = 69;
-            this.lblStatus.Text = "-";
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(205, 245);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(69, 15);
+            this.label7.TabIndex = 92;
+            this.label7.Text = "Handled By";
             // 
-            // groupBox2
+            // label8
             // 
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.lblDateRequested);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.label20);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.lblRequestType);
-            this.groupBox2.Controls.Add(this.lblItemType);
-            this.groupBox2.Controls.Add(this.lblDateNeeded);
-            this.groupBox2.Controls.Add(this.lblUserRemarks);
-            this.groupBox2.Location = new System.Drawing.Point(145, 23);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(379, 200);
-            this.groupBox2.TabIndex = 74;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Request Deails";
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(205, 272);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(41, 15);
+            this.label8.TabIndex = 93;
+            this.label8.Text = "Status";
+            // 
+            // txtUserRemarks
+            // 
+            this.txtUserRemarks.Location = new System.Drawing.Point(316, 162);
+            this.txtUserRemarks.Multiline = true;
+            this.txtUserRemarks.Name = "txtUserRemarks";
+            this.txtUserRemarks.ReadOnly = true;
+            this.txtUserRemarks.Size = new System.Drawing.Size(176, 74);
+            this.txtUserRemarks.TabIndex = 91;
+            // 
+            // txtDateRequested
+            // 
+            this.txtDateRequested.Location = new System.Drawing.Point(316, 133);
+            this.txtDateRequested.Name = "txtDateRequested";
+            this.txtDateRequested.ReadOnly = true;
+            this.txtDateRequested.Size = new System.Drawing.Size(176, 23);
+            this.txtDateRequested.TabIndex = 90;
+            // 
+            // txtDateNeeded
+            // 
+            this.txtDateNeeded.Location = new System.Drawing.Point(316, 104);
+            this.txtDateNeeded.Name = "txtDateNeeded";
+            this.txtDateNeeded.ReadOnly = true;
+            this.txtDateNeeded.Size = new System.Drawing.Size(176, 23);
+            this.txtDateNeeded.TabIndex = 89;
+            // 
+            // txtItemType
+            // 
+            this.txtItemType.Location = new System.Drawing.Point(316, 75);
+            this.txtItemType.Name = "txtItemType";
+            this.txtItemType.ReadOnly = true;
+            this.txtItemType.Size = new System.Drawing.Size(176, 23);
+            this.txtItemType.TabIndex = 88;
+            // 
+            // txtRequestType
+            // 
+            this.txtRequestType.Location = new System.Drawing.Point(316, 46);
+            this.txtRequestType.Name = "txtRequestType";
+            this.txtRequestType.ReadOnly = true;
+            this.txtRequestType.Size = new System.Drawing.Size(176, 23);
+            this.txtRequestType.TabIndex = 87;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(20, 20);
+            this.label5.Location = new System.Drawing.Point(205, 49);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(31, 15);
-            this.label5.TabIndex = 59;
+            this.label5.TabIndex = 78;
             this.label5.Text = "Type";
-            // 
-            // lblDateRequested
-            // 
-            this.lblDateRequested.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateRequested.Location = new System.Drawing.Point(130, 100);
-            this.lblDateRequested.Name = "lblDateRequested";
-            this.lblDateRequested.Size = new System.Drawing.Size(176, 27);
-            this.lblDateRequested.TabIndex = 73;
-            this.lblDateRequested.Text = "-";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(20, 127);
+            this.label6.Location = new System.Drawing.Point(205, 156);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(54, 15);
-            this.label6.TabIndex = 58;
+            this.label6.TabIndex = 77;
             this.label6.Text = "Remarks";
             // 
             // label20
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(20, 100);
+            this.label20.Location = new System.Drawing.Point(205, 129);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(91, 15);
-            this.label20.TabIndex = 72;
+            this.label20.TabIndex = 85;
             this.label20.Text = "Date Requested";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(20, 47);
+            this.label4.Location = new System.Drawing.Point(205, 76);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 15);
-            this.label4.TabIndex = 60;
+            this.label4.TabIndex = 79;
             this.label4.Text = "ItemType";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(20, 73);
+            this.label2.Location = new System.Drawing.Point(205, 102);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 15);
-            this.label2.TabIndex = 61;
+            this.label2.TabIndex = 80;
             this.label2.Text = "Date Needed";
             // 
-            // lblRequestType
+            // trMain
             // 
-            this.lblRequestType.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRequestType.Location = new System.Drawing.Point(130, 20);
-            this.lblRequestType.Name = "lblRequestType";
-            this.lblRequestType.Size = new System.Drawing.Size(176, 27);
-            this.lblRequestType.TabIndex = 62;
-            this.lblRequestType.Text = "-";
-            // 
-            // lblItemType
-            // 
-            this.lblItemType.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblItemType.Location = new System.Drawing.Point(130, 47);
-            this.lblItemType.Name = "lblItemType";
-            this.lblItemType.Size = new System.Drawing.Size(176, 27);
-            this.lblItemType.TabIndex = 63;
-            this.lblItemType.Text = "-";
-            // 
-            // lblDateNeeded
-            // 
-            this.lblDateNeeded.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateNeeded.Location = new System.Drawing.Point(130, 73);
-            this.lblDateNeeded.Name = "lblDateNeeded";
-            this.lblDateNeeded.Size = new System.Drawing.Size(176, 27);
-            this.lblDateNeeded.TabIndex = 64;
-            this.lblDateNeeded.Text = "-";
-            // 
-            // lblUserRemarks
-            // 
-            this.lblUserRemarks.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserRemarks.Location = new System.Drawing.Point(130, 127);
-            this.lblUserRemarks.Name = "lblUserRemarks";
-            this.lblUserRemarks.Size = new System.Drawing.Size(228, 65);
-            this.lblUserRemarks.TabIndex = 65;
-            this.lblUserRemarks.Text = "-";
-            // 
-            // lbRequest
-            // 
-            this.lbRequest.FormattingEnabled = true;
-            this.lbRequest.ItemHeight = 15;
-            this.lbRequest.Location = new System.Drawing.Point(23, 23);
-            this.lbRequest.Name = "lbRequest";
-            this.lbRequest.Size = new System.Drawing.Size(110, 364);
-            this.lbRequest.TabIndex = 0;
-            this.lbRequest.SelectedIndexChanged += new System.EventHandler(this.lbRequest_SelectedIndexChanged);
+            this.trMain.Location = new System.Drawing.Point(12, 49);
+            this.trMain.Name = "trMain";
+            this.trMain.Size = new System.Drawing.Size(183, 325);
+            this.trMain.TabIndex = 76;
+            this.trMain.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.trMain_AfterSelect);
             // 
             // frmEndUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 481);
+            this.ClientSize = new System.Drawing.Size(577, 561);
             this.Controls.Add(this.pnlMain);
             this.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MaximumSize = new System.Drawing.Size(600, 520);
             this.Name = "frmEndUser";
             this.Padding = new System.Windows.Forms.Padding(12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "User";
+            this.Text = "End User";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmEndUser_FormClosing);
             this.Load += new System.EventHandler(this.frmEndUser_Load);
             this.pnlMain.ResumeLayout(false);
             this.tbMain.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.pnlTab1.ResumeLayout(false);
+            this.pnlTab1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.pnlTab2.ResumeLayout(false);
+            this.pnlTab2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -535,31 +554,33 @@
         private System.Windows.Forms.DateTimePicker dtpNeededDate;
         private System.Windows.Forms.Panel pnlMain;
         private System.Windows.Forms.Button btnSubmit;
-        private System.Windows.Forms.ListBox lbRequest;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label lblUserRemarks;
-        private System.Windows.Forms.Label lblDateNeeded;
-        private System.Windows.Forms.Label lblItemType;
-        private System.Windows.Forms.Label lblRequestType;
-        private System.Windows.Forms.Label lblAdminRemarks;
-        private System.Windows.Forms.Label lblHandedBy;
-        private System.Windows.Forms.Label lblStatus;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Label lblDateRequested;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.ComboBox cbxUsers;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.ComboBox cbxType;
         private System.Windows.Forms.Timer tmrRefresh;
+        private System.Windows.Forms.TreeView trMain;
+        private System.Windows.Forms.Panel pnlTab1;
+        private System.Windows.Forms.Panel pnlTab2;
+        private System.Windows.Forms.TextBox txtDateRequested;
+        private System.Windows.Forms.TextBox txtDateNeeded;
+        private System.Windows.Forms.TextBox txtItemType;
+        private System.Windows.Forms.TextBox txtRequestType;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtAdminRemarks;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtRequestStatus;
+        private System.Windows.Forms.TextBox txtRequestHandledBy;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtUserRemarks;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label11;
     }
 }

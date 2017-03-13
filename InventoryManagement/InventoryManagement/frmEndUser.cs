@@ -22,7 +22,7 @@ namespace InventoryManagement
 
             var user = Singleton.Instance.UserModel.CurrentUser.Id;
             cbxUsers.SelectedValue = user;
-
+            
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -84,7 +84,7 @@ namespace InventoryManagement
 
 
             cbxSubType.DisplayMember = "Name";
-            cbxSubType.ValueMember = "Sub_Id";
+            cbxSubType.ValueMember = "Id";
             cbxSubType.DataSource = Singleton.Instance.ItemSubTypeModel.GetSubTypesByType((int)cbxType.SelectedValue);
 
             cbxUsers.ValueMember = "Id";
@@ -100,13 +100,30 @@ namespace InventoryManagement
         private void DisplayRequest()
         {
             var user = Singleton.Instance.UserModel.CurrentUser;
-            var requests = Singleton.Instance.RequestModel.GetRequestByUserId(user.Id);
-            lbRequest.Items.Clear();
+            var newRequest = Singleton.Instance.RequestModel.GetRequestByUserId(user.Id).Where(h=>h.RequestedStatus == RequestStatus.New);
+            var oldRequest = Singleton.Instance.RequestModel.GetRequestByUserId(user.Id).Where(h => h.RequestedStatus != RequestStatus.New);
 
-            foreach (RequestViewModel rv in requests)
+           
+
+            trMain.Nodes.Clear();
+            var tNew = new TreeNode("New Request");
+            var tOld = new TreeNode("Old Request");
+
+            foreach (RequestViewModel rv in newRequest)
             {
-                lbRequest.Items.Add("REQ#" + rv.Id.ToString().PadLeft(7, '0'));
+                tNew.Nodes.Add(rv.Id.ToString(), rv.RequestedDate.ToString());
+                //lbRequest.Items.Add("REQ#" + rv.Id.ToString().PadLeft(7, '0'));
             }
+
+            foreach (RequestViewModel rv in oldRequest)
+            {
+                tOld.Nodes.Add(rv.Id.ToString(), rv.RequestedDate.ToString());
+                //lbRequest.Items.Add("REQ#" + rv.Id.ToString().PadLeft(7, '0'));
+            }
+            trMain.Nodes.Add(tNew);
+            trMain.Nodes.Add(tOld);
+
+            trMain.ExpandAll();
         }
 
         private void tbMain_TabIndexChanged(object sender, EventArgs e)
@@ -126,24 +143,26 @@ namespace InventoryManagement
         }
         private void UpdateInfo()
         {
-            if (lbRequest.SelectedItem == null)
+            if (trMain.SelectedNode == null)
+                return;
+            if (trMain.SelectedNode.Name == "")
                 return;
 
-            var item = lbRequest.SelectedItem.ToString();
-            var id = Convert.ToInt32(item.Replace("REQ#", ""));
+            var item = trMain.SelectedNode.Name;
+            var id = Convert.ToInt32(item);
 
             var requestInfo = Singleton.Instance.RequestModel.GetRequestById(id);
 
             if (requestInfo != null)
             {
-                lblRequestType.Text = requestInfo.RequestType.ToString();
-                lblItemType.Text = requestInfo.Subtype.ToString();
-                lblDateNeeded.Text = requestInfo.NeededDate.ToString();
-                lblDateRequested.Text = requestInfo.RequestedDate.ToString();
-                lblUserRemarks.Text = requestInfo.Remarks;
-                lblStatus.Text = requestInfo.RequestedStatus.ToString();
-                lblHandedBy.Text = requestInfo.ProcessedById != 0 ? Singleton.Instance.UserModel.GetUsersById(requestInfo.ProcessedById).LastnameFirstName : "System";
-                lblAdminRemarks.Text = requestInfo.AdminRemarks;
+                txtRequestType.Text = requestInfo.RequestType.ToString();
+                txtItemType.Text = requestInfo.Subtype.ToString();
+                txtDateNeeded.Text = requestInfo.NeededDate.ToString();
+                txtDateRequested.Text = requestInfo.RequestedDate.ToString();
+                txtUserRemarks.Text = requestInfo.Remarks;
+                txtRequestStatus.Text = requestInfo.RequestedStatus.ToString();
+                txtRequestHandledBy.Text = requestInfo.ProcessedById != 0 ? Singleton.Instance.UserModel.GetUsersById(requestInfo.ProcessedById).LastnameFirstName : "System";
+                txtAdminRemarks.Text = requestInfo.AdminRemarks;
 
             }
         }
@@ -179,6 +198,17 @@ namespace InventoryManagement
             if(tbMain.SelectedIndex == 1)
                 UpdateInfo();
         }
+
+        private void trMain_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            UpdateInfo();
+        }
+
+        private void label19_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
+
 

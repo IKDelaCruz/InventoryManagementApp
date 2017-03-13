@@ -30,7 +30,7 @@ namespace InventoryManagement
 
 
             Application.Run(new frmLauncher());
-            //Application.Run(new frmManageBrand());
+            //Application.Run(new frmMain());
         }
     }
 }

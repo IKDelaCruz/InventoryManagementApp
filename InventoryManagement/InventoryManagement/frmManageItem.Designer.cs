@@ -31,6 +31,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.cbxHDD2 = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -59,6 +60,7 @@
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label20 = new System.Windows.Forms.Label();
             this.txtSalvageValue = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.txtPurchasePrice = new System.Windows.Forms.TextBox();
@@ -71,6 +73,11 @@
             this.label13 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cbxCompany = new System.Windows.Forms.ComboBox();
+            this.lblCompany = new System.Windows.Forms.Label();
+            this.cbxDepartment = new System.Windows.Forms.ComboBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.lblLastUpdatedBy = new System.Windows.Forms.Label();
             this.cbxStatus = new System.Windows.Forms.ComboBox();
@@ -80,15 +87,13 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtLastUpdate = new System.Windows.Forms.TextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label23 = new System.Windows.Forms.Label();
             this.pbId = new System.Windows.Forms.PictureBox();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.label24 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.pnlMain.SuspendLayout();
@@ -98,6 +103,7 @@
             this.panel2.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbId)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -161,6 +167,18 @@
             this.pnlMain.Padding = new System.Windows.Forms.Padding(20);
             this.pnlMain.Size = new System.Drawing.Size(716, 356);
             this.pnlMain.TabIndex = 1;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(9, 9);
+            this.label19.Margin = new System.Windows.Forms.Padding(10);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(157, 26);
+            this.label19.TabIndex = 58;
+            this.label19.Text = "Item Information";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label18
             // 
@@ -422,6 +440,18 @@
             this.panel1.Size = new System.Drawing.Size(716, 356);
             this.panel1.TabIndex = 43;
             // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(9, 9);
+            this.label20.Margin = new System.Windows.Forms.Padding(10);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(114, 26);
+            this.label20.TabIndex = 60;
+            this.label20.Text = "Item Details";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // txtSalvageValue
             // 
             this.txtSalvageValue.Location = new System.Drawing.Point(148, 141);
@@ -525,6 +555,10 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.cbxCompany);
+            this.panel2.Controls.Add(this.lblCompany);
+            this.panel2.Controls.Add(this.cbxDepartment);
+            this.panel2.Controls.Add(this.label25);
             this.panel2.Controls.Add(this.label21);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.lblLastUpdatedBy);
@@ -541,6 +575,55 @@
             this.panel2.Size = new System.Drawing.Size(716, 356);
             this.panel2.TabIndex = 35;
             // 
+            // cbxCompany
+            // 
+            this.cbxCompany.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxCompany.FormattingEnabled = true;
+            this.cbxCompany.Location = new System.Drawing.Point(146, 107);
+            this.cbxCompany.Name = "cbxCompany";
+            this.cbxCompany.Size = new System.Drawing.Size(169, 23);
+            this.cbxCompany.TabIndex = 63;
+            // 
+            // lblCompany
+            // 
+            this.lblCompany.AutoSize = true;
+            this.lblCompany.Location = new System.Drawing.Point(23, 110);
+            this.lblCompany.Name = "lblCompany";
+            this.lblCompany.Size = new System.Drawing.Size(58, 15);
+            this.lblCompany.TabIndex = 64;
+            this.lblCompany.Text = "Company";
+            // 
+            // cbxDepartment
+            // 
+            this.cbxDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxDepartment.FormattingEnabled = true;
+            this.cbxDepartment.Location = new System.Drawing.Point(146, 136);
+            this.cbxDepartment.Name = "cbxDepartment";
+            this.cbxDepartment.Size = new System.Drawing.Size(169, 23);
+            this.cbxDepartment.TabIndex = 61;
+            this.cbxDepartment.SelectedIndexChanged += new System.EventHandler(this.cbxDepartment_SelectedIndexChanged);
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(23, 139);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(71, 15);
+            this.label25.TabIndex = 62;
+            this.label25.Text = "Department";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(9, 9);
+            this.label21.Margin = new System.Windows.Forms.Padding(10);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(113, 26);
+            this.label21.TabIndex = 60;
+            this.label21.Text = "Item Owner";
+            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -553,7 +636,7 @@
             // lblLastUpdatedBy
             // 
             this.lblLastUpdatedBy.AutoSize = true;
-            this.lblLastUpdatedBy.Location = new System.Drawing.Point(23, 145);
+            this.lblLastUpdatedBy.Location = new System.Drawing.Point(23, 247);
             this.lblLastUpdatedBy.Name = "lblLastUpdatedBy";
             this.lblLastUpdatedBy.Size = new System.Drawing.Size(69, 15);
             this.lblLastUpdatedBy.TabIndex = 34;
@@ -570,7 +653,7 @@
             // 
             // txtLastUpdatedUser
             // 
-            this.txtLastUpdatedUser.Location = new System.Drawing.Point(146, 142);
+            this.txtLastUpdatedUser.Location = new System.Drawing.Point(146, 244);
             this.txtLastUpdatedUser.Name = "txtLastUpdatedUser";
             this.txtLastUpdatedUser.ReadOnly = true;
             this.txtLastUpdatedUser.Size = new System.Drawing.Size(169, 23);
@@ -580,7 +663,7 @@
             // 
             this.cbxCurrentOwner.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCurrentOwner.FormattingEnabled = true;
-            this.cbxCurrentOwner.Location = new System.Drawing.Point(146, 84);
+            this.cbxCurrentOwner.Location = new System.Drawing.Point(146, 165);
             this.cbxCurrentOwner.Name = "cbxCurrentOwner";
             this.cbxCurrentOwner.Size = new System.Drawing.Size(169, 23);
             this.cbxCurrentOwner.TabIndex = 29;
@@ -588,7 +671,7 @@
             // lblLastUpdated
             // 
             this.lblLastUpdated.AutoSize = true;
-            this.lblLastUpdated.Location = new System.Drawing.Point(23, 116);
+            this.lblLastUpdated.Location = new System.Drawing.Point(23, 218);
             this.lblLastUpdated.Name = "lblLastUpdated";
             this.lblLastUpdated.Size = new System.Drawing.Size(78, 15);
             this.lblLastUpdated.TabIndex = 32;
@@ -597,15 +680,15 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(23, 87);
+            this.label9.Location = new System.Drawing.Point(23, 168);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(87, 15);
+            this.label9.Size = new System.Drawing.Size(59, 15);
             this.label9.TabIndex = 30;
-            this.label9.Text = "Current Owner";
+            this.label9.Text = "Employee";
             // 
             // txtLastUpdate
             // 
-            this.txtLastUpdate.Location = new System.Drawing.Point(146, 113);
+            this.txtLastUpdate.Location = new System.Drawing.Point(146, 215);
             this.txtLastUpdate.Name = "txtLastUpdate";
             this.txtLastUpdate.ReadOnly = true;
             this.txtLastUpdate.Size = new System.Drawing.Size(169, 23);
@@ -613,10 +696,8 @@
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.label23);
-            this.tabPage4.Controls.Add(this.pbId);
-            this.tabPage4.Controls.Add(this.btnBrowse);
-            this.tabPage4.Controls.Add(this.label24);
+            this.tabPage4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPage4.Controls.Add(this.panel3);
             this.tabPage4.Location = new System.Drawing.Point(4, 24);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
@@ -625,11 +706,23 @@
             this.tabPage4.Text = "Images";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(10, 10);
+            this.label23.Margin = new System.Windows.Forms.Padding(10);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(108, 26);
+            this.label23.TabIndex = 60;
+            this.label23.Text = "Item Image";
+            this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // pbId
             // 
             this.pbId.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbId.Location = new System.Drawing.Point(30, 48);
+            this.pbId.Location = new System.Drawing.Point(30, 45);
             this.pbId.Name = "pbId";
             this.pbId.Size = new System.Drawing.Size(322, 215);
             this.pbId.TabIndex = 47;
@@ -637,7 +730,7 @@
             // 
             // btnBrowse
             // 
-            this.btnBrowse.Location = new System.Drawing.Point(30, 284);
+            this.btnBrowse.Location = new System.Drawing.Point(30, 281);
             this.btnBrowse.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnBrowse.Name = "btnBrowse";
             this.btnBrowse.Size = new System.Drawing.Size(100, 30);
@@ -649,7 +742,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(27, 266);
+            this.label24.Location = new System.Drawing.Point(27, 263);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(83, 15);
             this.label24.TabIndex = 46;
@@ -678,53 +771,17 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // label19
+            // panel3
             // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(9, 9);
-            this.label19.Margin = new System.Windows.Forms.Padding(10);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(114, 26);
-            this.label19.TabIndex = 58;
-            this.label19.Text = "Item Details";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(9, 9);
-            this.label20.Margin = new System.Windows.Forms.Padding(10);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(103, 26);
-            this.label20.TabIndex = 60;
-            this.label20.Text = "Item Value";
-            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(9, 9);
-            this.label21.Margin = new System.Windows.Forms.Padding(10);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(113, 26);
-            this.label21.TabIndex = 60;
-            this.label21.Text = "Item Owner";
-            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(10, 13);
-            this.label23.Margin = new System.Windows.Forms.Padding(10);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(108, 26);
-            this.label23.TabIndex = 60;
-            this.label23.Text = "Item Image";
-            this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.panel3.Controls.Add(this.label23);
+            this.panel3.Controls.Add(this.label24);
+            this.panel3.Controls.Add(this.pbId);
+            this.panel3.Controls.Add(this.btnBrowse);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(3, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(714, 354);
+            this.panel3.TabIndex = 61;
             // 
             // frmManageItem
             // 
@@ -751,8 +808,9 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.tabPage4.ResumeLayout(false);
-            this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbId)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -819,5 +877,10 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.ComboBox cbxDepartment;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.ComboBox cbxCompany;
+        private System.Windows.Forms.Label lblCompany;
+        private System.Windows.Forms.Panel panel3;
     }
 }

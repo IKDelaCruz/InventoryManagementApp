@@ -46,13 +46,13 @@ namespace InventoryManagement.Repository
         public virtual DbSet<transaction_type> transaction_type { get; set; }
         public virtual DbSet<user> users { get; set; }
         public virtual DbSet<vw_brand_summary> vw_brand_summary { get; set; }
-        public virtual DbSet<vw_item_detail> vw_item_detail { get; set; }
         public virtual DbSet<vw_item_log> vw_item_log { get; set; }
         public virtual DbSet<vw_item_subtype_count> vw_item_subtype_count { get; set; }
         public virtual DbSet<vw_item_subtype_summary> vw_item_subtype_summary { get; set; }
         public virtual DbSet<vw_item_type_summary> vw_item_type_summary { get; set; }
         public virtual DbSet<vw_transaction_log> vw_transaction_log { get; set; }
         public virtual DbSet<vw_transaction_summary> vw_transaction_summary { get; set; }
+        public virtual DbSet<vw_item_detail> vw_item_detail { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

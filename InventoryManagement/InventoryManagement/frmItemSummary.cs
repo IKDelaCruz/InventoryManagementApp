@@ -66,12 +66,12 @@ namespace InventoryManagement
         private void homeToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            LoadCategory();
+           
         }
 
         private void mainToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+           
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -82,6 +82,16 @@ namespace InventoryManagement
         private void tmrRefresh_Tick(object sender, EventArgs e)
         {
          
+        }
+
+        private void mainToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void homeToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            LoadCategory();
         }
     }
 }

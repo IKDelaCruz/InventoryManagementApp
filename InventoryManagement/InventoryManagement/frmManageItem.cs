@@ -18,7 +18,7 @@ namespace InventoryManagement
     public partial class frmManageItem : frmBase
     {
         private bool isAddNewItem;
-        private ItemViewModel loadedItem;
+        private ItemViewModel _loadedItem;
        
         public frmManageItem(int itemId = 0, bool AddItem = true)
         {
@@ -86,10 +86,11 @@ namespace InventoryManagement
             cbxBrand.ValueMember = "Id";
             cbxBrand.DataSource = Singleton.Instance.ItemModel.GetBrandsBySubtype((int)cbxSubType.SelectedValue);
 
-            cbxCurrentOwner.DisplayMember = "LastnameFirstName";
-            cbxCurrentOwner.ValueMember = "Id";
-            cbxCurrentOwner.DataSource = Singleton.Instance.UserModel.GetUsers();
-            cbxCurrentOwner.SelectedIndex = 0;
+            LoadUsers();
+
+            cbxDepartment.ValueMember = "Id";
+            cbxDepartment.DisplayMember = "Name";
+            cbxDepartment.DataSource = Singleton.Instance.CompanyDepartmentModel.GetCompaniesWithDepartments();
         }
         private void DoSaveItem()
         {
@@ -160,12 +161,12 @@ namespace InventoryManagement
             }
             else
             {
-                itm.Id = loadedItem.Id;
+                itm.Id = _loadedItem.Id;
                 result = Singleton.Instance.ItemModel.UpdateItem(itm, Singleton.Instance.UserModel.CurrentUser.Id);
               
                 var img = new Bitmap(pbId.BackgroundImage);
 
-                Singleton.Instance.ItemModel.UpdateItemImage(loadedItem.Id, img);
+                Singleton.Instance.ItemModel.UpdateItemImage(_loadedItem.Id, img);
                 Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, 0, ViewModel.TransactionType.EditItem, "", itm.Id);
             }
 
@@ -182,34 +183,36 @@ namespace InventoryManagement
         }
         public void DoLoadItem(int itemId)
         {
-            loadedItem = Singleton.Instance.ItemModel.GetItem(itemId);
+            _loadedItem = Singleton.Instance.ItemModel.GetItem(itemId);
 
-            txtAssetTag.Text = loadedItem.AssetTag;
-            txtName.Text = loadedItem.Name;
-            txtDescription.Text = loadedItem.Description;
-            cbxType.SelectedValue = loadedItem.TypeId;
-            cbxSubType.SelectedValue = loadedItem.SubTypeId;
-            cbxBrand.SelectedValue = loadedItem.BrandId;
-            txtModel.Text = loadedItem.Model;
-            txtSerial.Text = loadedItem.Serial;
-            txtSalvageValue.Text = loadedItem.SalvageValue.ToString();
+            txtAssetTag.Text = _loadedItem.AssetTag;
+            txtName.Text = _loadedItem.Name;
+            txtDescription.Text = _loadedItem.Description;
+            cbxType.SelectedValue = _loadedItem.TypeId;
+            cbxSubType.SelectedValue = _loadedItem.SubTypeId;
+            cbxBrand.SelectedValue = _loadedItem.BrandId;
+            txtModel.Text = _loadedItem.Model;
+            txtSerial.Text = _loadedItem.Serial;
+            txtSalvageValue.Text = _loadedItem.SalvageValue.ToString();
 
-            cbxOS.SelectedValue = loadedItem.OS;
-            cbxProcessor.Text = loadedItem.Processor.ToString();
-            cbxMemory.Text = loadedItem.Memory.ToString();
-            cbxHDD1.Text = loadedItem.HDD1.ToString();
-            cbxHDD2.Text = loadedItem.HDD2.ToString();
+            cbxOS.SelectedValue = _loadedItem.OS;
+            cbxProcessor.Text = _loadedItem.Processor.ToString();
+            cbxMemory.Text = _loadedItem.Memory.ToString();
+            cbxHDD1.Text = _loadedItem.HDD1.ToString();
+            cbxHDD2.Text = _loadedItem.HDD2.ToString();
 
-            dtpPurchaseDate.Value = loadedItem.PurchaseDate;
-            txtPurchasePrice.Text = ((decimal)loadedItem.PurchasePrice).ToString("n2");
-            txtLifetime.Text = loadedItem.LifeSpan.ToString();
-            txtCurrentValue.Text = ((decimal)loadedItem.Currentvalue).ToString("n2");
-            txtSalvageValue.Text = ((decimal)loadedItem.SalvageValue).ToString("n2");
+            dtpPurchaseDate.Value = _loadedItem.PurchaseDate;
+            txtPurchasePrice.Text = ((decimal)_loadedItem.PurchasePrice).ToString("n2");
+            txtLifetime.Text = _loadedItem.LifeSpan.ToString();
+            txtCurrentValue.Text = ((decimal)_loadedItem.Currentvalue).ToString("n2");
+            txtSalvageValue.Text = ((decimal)_loadedItem.SalvageValue).ToString("n2");
 
-            txtLastUpdate.Text = loadedItem.LastUpdatedDate.ToString();
+            txtLastUpdate.Text = _loadedItem.LastUpdatedDate.ToString();
 
-            cbxCurrentOwner.SelectedValue = loadedItem.CurrentOwner;
-            cbxStatus.Text = ((ItemStatus)loadedItem.Status).ToString();
+            cbxDepartment.SelectedValue = _loadedItem.CurrentDepartment;
+            cbxCurrentOwner.SelectedValue = _loadedItem.CurrentOwner;
+
+            cbxStatus.Text = ((ItemStatus)_loadedItem.Status).ToString();
 
             if (Singleton.Instance.ItemModel.GetItemImage(itemId) != null)
             {
@@ -220,20 +223,16 @@ namespace InventoryManagement
                           
             }
 
-            var owner = Singleton.Instance.UserModel.GetUsersById(loadedItem.LastUpdatedUserId);
+            var owner = Singleton.Instance.UserModel.GetUsersById(_loadedItem.LastUpdatedUserId);
 
             txtLastUpdatedUser.Text = owner == null ? "SYSTEM" : owner.LastnameFirstName;
 
           
-            //LoadTransactions(itemId);
+           
 
         }
 
-        //private void LoadTransactions(int itemId)
-        //{
-        //    dvLogs.DataSource = Singleton.Instance.TransactionModel.GetTransactionsByItemId(itemId);
-        //}
-
+     
 
         private void cbxType_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -307,6 +306,24 @@ namespace InventoryManagement
         }
         private void txtSalvageValue_TextChanged(object sender, EventArgs e)
         {
+        }
+
+        private void cbxDepartment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadUsers();
+        }
+        private void LoadUsers()
+        {
+            if (cbxDepartment.SelectedValue == null)
+                return;
+
+            cbxCurrentOwner.DataSource = null;
+            cbxCurrentOwner.DisplayMember = "LastnameFirstName";
+            cbxCurrentOwner.ValueMember = "Id";
+
+            cbxCurrentOwner.DataSource = Singleton.Instance.UserModel.GetUsersByDepartmentId((int)cbxDepartment.SelectedValue);
+
+            cbxCurrentOwner.SelectedIndex = 0;
         }
     }
 }

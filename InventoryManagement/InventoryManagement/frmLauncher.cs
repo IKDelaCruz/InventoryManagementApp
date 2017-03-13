@@ -95,17 +95,27 @@ namespace InventoryManagement
 
         private void btnExit_Click_1(object sender, EventArgs e)
         {
-            this.Close();
+           
         }
 
         private void btnLogin_Click_1(object sender, EventArgs e)
         {
-            LoadLogin();
+            
         }
 
         private void btnAbout_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void loginToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            LoadLogin();
+        }
+
+        private void exitToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

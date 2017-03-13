@@ -58,6 +58,7 @@
           <Property Name="item_model" Type="varchar" MaxLength="50" />
           <Property Name="item_serial" Type="varchar" MaxLength="50" />
           <Property Name="item_current_owner" Type="int" />
+          <Property Name="item_current_department" Type="int" />
           <Property Name="item_os_id" Type="int" />
           <Property Name="item_processor_id" Type="int" />
           <Property Name="item_memory_id" Type="int" />
@@ -241,7 +242,8 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_item_detail' does not h
           <Property Name="BrandName" Type="varchar" MaxLength="50" />
           <Property Name="UserFirstName" Type="varchar" MaxLength="150" />
           <Property Name="UserLastName" Type="varchar" MaxLength="150" />
-          <Property Name="user_username" Type="varchar" MaxLength="150" />
+          <Property Name="Username" Type="varchar" MaxLength="150" />
+          <Property Name="UserDepartment" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'InventoryManagement.dbo.vw_item_log' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -603,7 +605,8 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_transaction_summary' do
     [vw_item_detail].[BrandName] AS [BrandName], 
     [vw_item_detail].[UserFirstName] AS [UserFirstName], 
     [vw_item_detail].[UserLastName] AS [UserLastName], 
-    [vw_item_detail].[user_username] AS [user_username]
+    [vw_item_detail].[Username] AS [Username], 
+    [vw_item_detail].[UserDepartment] AS [UserDepartment]
     FROM [dbo].[vw_item_detail] AS [vw_item_detail]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vw_item_log" EntityType="Self.vw_item_log" store:Type="Views" store:Schema="dbo">
@@ -789,7 +792,6 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_transaction_summary' do
           <EntitySet Name="transaction_type" EntityType="InventoryMangementModel.transaction_type" />
           <EntitySet Name="users" EntityType="InventoryMangementModel.user" />
           <EntitySet Name="vw_brand_summary" EntityType="InventoryMangementModel.vw_brand_summary" />
-          <EntitySet Name="vw_item_detail" EntityType="InventoryMangementModel.vw_item_detail" />
           <EntitySet Name="vw_item_log" EntityType="InventoryMangementModel.vw_item_log" />
           <EntitySet Name="vw_item_subtype_count" EntityType="InventoryMangementModel.vw_item_subtype_count" />
           <EntitySet Name="vw_item_subtype_summary" EntityType="InventoryMangementModel.vw_item_subtype_summary" />
@@ -852,6 +854,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_transaction_summary' do
             <End Role="transaction_type" EntitySet="transaction_type" />
             <End Role="transaciton" EntitySet="transacitons" />
           </AssociationSet>
+          <EntitySet Name="vw_item_detail" EntityType="InventoryMangementModel.vw_item_detail" />
           </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -933,6 +936,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_transaction_summary' do
           <NavigationProperty Name="item_subtype" Relationship="InventoryMangementModel.FK_Item_ItemSubtype" FromRole="item" ToRole="item_subtype" />
           <NavigationProperty Name="item_type" Relationship="InventoryMangementModel.FK_Item_ItemType" FromRole="item" ToRole="item_type" />
           <NavigationProperty Name="item_image" Relationship="InventoryMangementModel.FK_ItemImage_Item" FromRole="item" ToRole="item_image" />
+          <Property Name="item_current_department" Type="Int32" />
         </EntityType>
         <EntityType Name="item_image">
           <Key>
@@ -1085,46 +1089,6 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_transaction_summary' do
           <Property Name="ItemSubTypeId" Type="Int32" />
           <Property Name="BrandName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ItemCount" Type="Int32" />
-        </EntityType>
-        <EntityType Name="vw_item_detail">
-          <Key>
-            <PropertyRef Name="item_id" />
-            <PropertyRef Name="item_name" />
-            <PropertyRef Name="item_description" />
-            <PropertyRef Name="ItemTypeId" />
-            <PropertyRef Name="ItemSubTypeId" />
-            <PropertyRef Name="PurchasePrice" />
-            <PropertyRef Name="CurrentValue" />
-          </Key>
-          <Property Name="item_id" Type="Int32" Nullable="false" />
-          <Property Name="AssetTag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="item_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="item_description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ItemTypeId" Type="Int32" Nullable="false" />
-          <Property Name="ItemSubTypeId" Type="Int32" Nullable="false" />
-          <Property Name="PurchasePrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="CurrentValue" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="PurchaseDate" Type="DateTime" Precision="0" />
-          <Property Name="LifeSpan" Type="Int32" />
-          <Property Name="item_status" Type="Int32" />
-          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
-          <Property Name="LastUpdatedUser" Type="Int32" />
-          <Property Name="BrandId" Type="Int32" />
-          <Property Name="item_model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="item_serial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CurrentOwner" Type="Int32" />
-          <Property Name="OsId" Type="Int32" />
-          <Property Name="ProcessorId" Type="Int32" />
-          <Property Name="MemoryId" Type="Int32" />
-          <Property Name="HddId" Type="Int32" />
-          <Property Name="Hdd2Id" Type="Int32" />
-          <Property Name="SalvageValue" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SubTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BrandName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UserFirstName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="UserLastName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="user_username" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="vw_item_log">
           <Key>
@@ -1386,6 +1350,47 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_transaction_summary' do
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="vw_item_detail">
+          <Key>
+            <PropertyRef Name="item_id" />
+            <PropertyRef Name="item_name" />
+            <PropertyRef Name="item_description" />
+            <PropertyRef Name="ItemTypeId" />
+            <PropertyRef Name="ItemSubTypeId" />
+            <PropertyRef Name="PurchasePrice" />
+            <PropertyRef Name="CurrentValue" />
+          </Key>
+          <Property Name="item_id" Type="Int32" Nullable="false" />
+          <Property Name="AssetTag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="item_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="item_description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ItemTypeId" Type="Int32" Nullable="false" />
+          <Property Name="ItemSubTypeId" Type="Int32" Nullable="false" />
+          <Property Name="PurchasePrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="CurrentValue" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="PurchaseDate" Type="DateTime" Precision="0" />
+          <Property Name="LifeSpan" Type="Int32" />
+          <Property Name="item_status" Type="Int32" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdatedUser" Type="Int32" />
+          <Property Name="BrandId" Type="Int32" />
+          <Property Name="item_model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="item_serial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentOwner" Type="Int32" />
+          <Property Name="OsId" Type="Int32" />
+          <Property Name="ProcessorId" Type="Int32" />
+          <Property Name="MemoryId" Type="Int32" />
+          <Property Name="HddId" Type="Int32" />
+          <Property Name="Hdd2Id" Type="Int32" />
+          <Property Name="SalvageValue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SubTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BrandName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserFirstName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="UserLastName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="UserDepartment" Type="Int32" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1455,6 +1460,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_transaction_summary' do
           <EntitySetMapping Name="items">
             <EntityTypeMapping TypeName="InventoryMangementModel.item">
               <MappingFragment StoreEntitySet="item">
+                <ScalarProperty Name="item_current_department" ColumnName="item_current_department" />
                 <ScalarProperty Name="item_salvage_value" ColumnName="item_salvage_value" />
                 <ScalarProperty Name="item_hdd2_id" ColumnName="item_hdd2_id" />
                 <ScalarProperty Name="item_hdd1_id" ColumnName="item_hdd1_id" />
@@ -1629,41 +1635,6 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_transaction_summary' do
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="vw_item_detail">
-            <EntityTypeMapping TypeName="InventoryMangementModel.vw_item_detail">
-              <MappingFragment StoreEntitySet="vw_item_detail">
-                <ScalarProperty Name="user_username" ColumnName="user_username" />
-                <ScalarProperty Name="UserLastName" ColumnName="UserLastName" />
-                <ScalarProperty Name="UserFirstName" ColumnName="UserFirstName" />
-                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
-                <ScalarProperty Name="SubTypeName" ColumnName="SubTypeName" />
-                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
-                <ScalarProperty Name="SalvageValue" ColumnName="SalvageValue" />
-                <ScalarProperty Name="Hdd2Id" ColumnName="Hdd2Id" />
-                <ScalarProperty Name="HddId" ColumnName="HddId" />
-                <ScalarProperty Name="MemoryId" ColumnName="MemoryId" />
-                <ScalarProperty Name="ProcessorId" ColumnName="ProcessorId" />
-                <ScalarProperty Name="OsId" ColumnName="OsId" />
-                <ScalarProperty Name="CurrentOwner" ColumnName="CurrentOwner" />
-                <ScalarProperty Name="item_serial" ColumnName="item_serial" />
-                <ScalarProperty Name="item_model" ColumnName="item_model" />
-                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
-                <ScalarProperty Name="LastUpdatedUser" ColumnName="LastUpdatedUser" />
-                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
-                <ScalarProperty Name="item_status" ColumnName="item_status" />
-                <ScalarProperty Name="LifeSpan" ColumnName="LifeSpan" />
-                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
-                <ScalarProperty Name="CurrentValue" ColumnName="CurrentValue" />
-                <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
-                <ScalarProperty Name="ItemSubTypeId" ColumnName="ItemSubTypeId" />
-                <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
-                <ScalarProperty Name="item_description" ColumnName="item_description" />
-                <ScalarProperty Name="item_name" ColumnName="item_name" />
-                <ScalarProperty Name="AssetTag" ColumnName="AssetTag" />
-                <ScalarProperty Name="item_id" ColumnName="item_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="vw_item_log">
             <EntityTypeMapping TypeName="InventoryMangementModel.vw_item_log">
               <MappingFragment StoreEntitySet="vw_item_log">
@@ -1745,6 +1716,42 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_transaction_summary' do
                 <ScalarProperty Name="SystemUser" ColumnName="SystemUser" />
                 <ScalarProperty Name="TranscationDate" ColumnName="TranscationDate" />
                 <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_item_detail">
+            <EntityTypeMapping TypeName="InventoryMangementModel.vw_item_detail">
+              <MappingFragment StoreEntitySet="vw_item_detail">
+                <ScalarProperty Name="UserDepartment" ColumnName="UserDepartment" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="UserLastName" ColumnName="UserLastName" />
+                <ScalarProperty Name="UserFirstName" ColumnName="UserFirstName" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="SubTypeName" ColumnName="SubTypeName" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="SalvageValue" ColumnName="SalvageValue" />
+                <ScalarProperty Name="Hdd2Id" ColumnName="Hdd2Id" />
+                <ScalarProperty Name="HddId" ColumnName="HddId" />
+                <ScalarProperty Name="MemoryId" ColumnName="MemoryId" />
+                <ScalarProperty Name="ProcessorId" ColumnName="ProcessorId" />
+                <ScalarProperty Name="OsId" ColumnName="OsId" />
+                <ScalarProperty Name="CurrentOwner" ColumnName="CurrentOwner" />
+                <ScalarProperty Name="item_serial" ColumnName="item_serial" />
+                <ScalarProperty Name="item_model" ColumnName="item_model" />
+                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+                <ScalarProperty Name="LastUpdatedUser" ColumnName="LastUpdatedUser" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="item_status" ColumnName="item_status" />
+                <ScalarProperty Name="LifeSpan" ColumnName="LifeSpan" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="CurrentValue" ColumnName="CurrentValue" />
+                <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
+                <ScalarProperty Name="ItemSubTypeId" ColumnName="ItemSubTypeId" />
+                <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
+                <ScalarProperty Name="item_description" ColumnName="item_description" />
+                <ScalarProperty Name="item_name" ColumnName="item_name" />
+                <ScalarProperty Name="AssetTag" ColumnName="AssetTag" />
+                <ScalarProperty Name="item_id" ColumnName="item_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

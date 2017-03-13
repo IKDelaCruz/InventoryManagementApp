@@ -28,29 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.pnlMain = new System.Windows.Forms.Panel();
-            this.pbox = new System.Windows.Forms.PictureBox();
             this.btnLogin = new System.Windows.Forms.Button();
+            this.pnlMain = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.txtPassord = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.pbox = new System.Windows.Forms.PictureBox();
             this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbox)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnCancel
+            // btnLogin
             // 
-            this.btnCancel.AutoEllipsis = true;
-            this.btnCancel.Location = new System.Drawing.Point(17, 217);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(100, 30);
-            this.btnCancel.TabIndex = 4;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnLogin.Location = new System.Drawing.Point(128, 176);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(100, 30);
+            this.btnLogin.TabIndex = 3;
+            this.btnLogin.Text = "Login";
+            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // pnlMain
             // 
@@ -66,34 +65,13 @@
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMain.Location = new System.Drawing.Point(10, 10);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(240, 261);
+            this.pnlMain.Size = new System.Drawing.Size(247, 225);
             this.pnlMain.TabIndex = 5;
-            // 
-            // pbox
-            // 
-            this.pbox.BackgroundImage = global::InventoryManagement.Properties.Resources.jakalogo;
-            this.pbox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbox.Location = new System.Drawing.Point(18, 12);
-            this.pbox.Name = "pbox";
-            this.pbox.Size = new System.Drawing.Size(207, 98);
-            this.pbox.TabIndex = 51;
-            this.pbox.TabStop = false;
-            // 
-            // btnLogin
-            // 
-            this.btnLogin.Location = new System.Drawing.Point(125, 217);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(100, 30);
-            this.btnLogin.TabIndex = 3;
-            this.btnLogin.Text = "Login";
-            this.btnLogin.UseVisualStyleBackColor = true;
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 126);
+            this.label1.Location = new System.Drawing.Point(17, 85);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 15);
             this.label1.TabIndex = 54;
@@ -101,7 +79,7 @@
             // 
             // txtPassord
             // 
-            this.txtPassord.Location = new System.Drawing.Point(18, 188);
+            this.txtPassord.Location = new System.Drawing.Point(21, 147);
             this.txtPassord.Name = "txtPassord";
             this.txtPassord.Size = new System.Drawing.Size(207, 23);
             this.txtPassord.TabIndex = 53;
@@ -110,7 +88,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 170);
+            this.label2.Location = new System.Drawing.Point(18, 129);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 15);
             this.label2.TabIndex = 55;
@@ -118,17 +96,40 @@
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(17, 144);
+            this.txtUsername.Location = new System.Drawing.Point(20, 103);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(208, 23);
             this.txtUsername.TabIndex = 52;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.AutoEllipsis = true;
+            this.btnCancel.Location = new System.Drawing.Point(20, 176);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(100, 30);
+            this.btnCancel.TabIndex = 4;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // pbox
+            // 
+            this.pbox.BackgroundImage = global::InventoryManagement.Properties.Resources.jakalogo;
+            this.pbox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbox.Image = global::InventoryManagement.Properties.Resources.logo;
+            this.pbox.Location = new System.Drawing.Point(54, 5);
+            this.pbox.Name = "pbox";
+            this.pbox.Size = new System.Drawing.Size(137, 80);
+            this.pbox.TabIndex = 51;
+            this.pbox.TabStop = false;
             // 
             // frmLogin
             // 
             this.AcceptButton = this.btnLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(260, 281);
+            this.ClientSize = new System.Drawing.Size(267, 245);
             this.Controls.Add(this.pnlMain);
             this.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);

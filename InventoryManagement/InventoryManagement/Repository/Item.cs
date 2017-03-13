@@ -43,6 +43,7 @@ namespace InventoryManagement.Repository
         public Nullable<int> item_hdd1_id { get; set; }
         public Nullable<int> item_hdd2_id { get; set; }
         public Nullable<decimal> item_salvage_value { get; set; }
+        public Nullable<int> item_current_department { get; set; }
     
         public virtual brand brand { get; set; }
         public virtual item_subtype item_subtype { get; set; }
