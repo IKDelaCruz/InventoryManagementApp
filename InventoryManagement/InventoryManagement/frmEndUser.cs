@@ -106,8 +106,8 @@ namespace InventoryManagement
            
 
             trMain.Nodes.Clear();
-            var tNew = new TreeNode("New Request");
-            var tOld = new TreeNode("Old Request");
+            var tNew = new TreeNode("Pending Request");
+            var tOld = new TreeNode("Process Request");
 
             foreach (RequestViewModel rv in newRequest)
             {
@@ -172,7 +172,7 @@ namespace InventoryManagement
         private void cbxType_SelectedIndexChanged(object sender, EventArgs e)
         {
             cbxSubType.DisplayMember = "Name";
-            cbxSubType.ValueMember = "Sub_Id";
+            cbxSubType.ValueMember = "Id";
             cbxSubType.DataSource = Singleton.Instance.ItemSubTypeModel.GetSubTypesByType((int)cbxType.SelectedValue);
         }
 
@@ -205,6 +205,11 @@ namespace InventoryManagement
         }
 
         private void label19_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlTab2_Paint(object sender, PaintEventArgs e)
         {
 
         }

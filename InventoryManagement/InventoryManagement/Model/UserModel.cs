@@ -19,7 +19,9 @@ namespace InventoryManagement.Model
         public enum UserType
         {
             Admin = 1,
-            User
+            Custodian,
+            User,
+            
         }
         public UserViewModel CurrentUser { get;private set; }
 
@@ -34,9 +36,9 @@ namespace InventoryManagement.Model
             CurrentUser = null;
             return true;
         }
-        public int CreateNewUser(string username, string password, UserType userType, string firstname, string lastname, int departmentId)
+        public int CreateNewUser(string username, string password, UserType userType, string firstname, string lastname, int departmentId, bool isMale = true)
         {
-            return userRepository.CreateNewUser(username, password, (int)userType, firstname, lastname, departmentId);
+            return userRepository.CreateNewUser(username, password, (int)userType, firstname, lastname, departmentId, isMale);
         }
         public bool UpdateUser(int userId, string firstName, string lastName, int companyId, int departmentId, UserType userType, string password = "")
         {

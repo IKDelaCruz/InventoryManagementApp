@@ -44,5 +44,9 @@ namespace InventoryManagement.Repository
         public string UserLastName { get; set; }
         public string Username { get; set; }
         public Nullable<int> UserDepartment { get; set; }
+        public Nullable<int> UserCompany { get; set; }
+        public Nullable<int> ItemLoginType { get; set; }
+        public string UserDepartmentName { get; set; }
+        public string UserCompanyName { get; set; }
     }
 }

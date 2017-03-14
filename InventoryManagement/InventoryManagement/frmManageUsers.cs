@@ -1,5 +1,6 @@
 ﻿using InventoryManagement.Model;
 using InventoryManagement.Utils;
+using InventoryManagement.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,7 @@ namespace InventoryManagement
 {
     public partial class frmManageUsers : frmBase
     {
+        List<UserViewModel> _users;
         public frmManageUsers()
         {
             InitializeComponent();
@@ -32,12 +34,11 @@ namespace InventoryManagement
         }
         public void DisplayUsers()
         {
-            var users = Singleton.Instance.UserModel.GetUsers();
+            _users = Singleton.Instance.UserModel.GetUsers();
             lvUsers.Items.Clear();
+            lvUsers.LoadData(_users);
 
-            lvUsers.LoadData(users);
 
-         
 
         }
 
@@ -66,5 +67,15 @@ namespace InventoryManagement
             //DisplayUsers();
         }
 
+        private void txtUsername_TextChanged(object sender, EventArgs e)
+        {
+            var key = txtFilter.Text;
+            var matches = from m in _users
+                          where m.LastnameFirstNameUsername.ToUpper().Contains(key.ToUpper())
+
+                          select m;
+          
+            lvUsers.LoadData(matches.ToList());
+        }
     }
 }

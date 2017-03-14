@@ -40,8 +40,37 @@ namespace InventoryManagement
             cbxCompany.ValueMember = "Id";
             cbxCompany.DisplayMember = "Name";
             cbxCompany.DataSource = Singleton.Instance.CompanyDepartmentModel.GetCompanies();
+
+            cbxCompany.Enabled = false;
+            cbxDepartment.Enabled = false;
+            cbxUser.Enabled = false;
+
+            if (_transType == TransactionType.ReturnItem)
+            {
+                cbxCompany.SelectedValue = _selectedItem.CurrentCompany == 0 ? 1 : _selectedItem.CurrentCompany;
+                cbxDepartment.SelectedValue = _selectedItem.CurrentDepartment == 0 ? 1 : _selectedItem.CurrentDepartment;
+                cbxUser.SelectedValue = _selectedItem.CurrentOwner == 0 ? 1 : _selectedItem.CurrentOwner;
+            }
+            else if (_transType == TransactionType.RepairItem)
+            {
+                cbxCompany.SelectedValue = 1;
+                cbxDepartment.SelectedValue = 1;
+                cbxUser.SelectedValue = 432;
+            }
+            else if (_transType == TransactionType.DisposeItem)
+            {
+                cbxCompany.SelectedValue = 1;
+                cbxDepartment.SelectedValue = 1;
+                cbxUser.SelectedValue = 433;
+            }
+            else
+            {
+                cbxCompany.Enabled = true;
+                cbxDepartment.Enabled = true;
+                cbxUser.Enabled = true;
+            }
         }
-       
+
         private void UpdateItemStatus(ItemStatus currentStatus, ItemStatus newStatus, int userId)
         {
             if (_selectedItem != null)
@@ -91,7 +120,7 @@ namespace InventoryManagement
                 UpdateItemStatus(_selectedItem.Status, ItemStatus.Borrowed, (int)cbxUser.SelectedValue);
                 Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, (int)cbxUser.SelectedValue, ViewModel.TransactionType.BorrowItem, "", _selectedItem.Id);
             }
-           else if (_transType == TransactionType.ReserveItem)
+            else if (_transType == TransactionType.ReserveItem)
             {
                 UpdateItemStatus(_selectedItem.Status, ItemStatus.Reserved, (int)cbxUser.SelectedValue);
                 Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, (int)cbxUser.SelectedValue, ViewModel.TransactionType.ReserveItem, "", _selectedItem.Id);
@@ -103,12 +132,14 @@ namespace InventoryManagement
             }
             else if (_transType == TransactionType.DisposeItem)
             {
-                UpdateItemStatus(_selectedItem.Status, ItemStatus.Disposed, 0);
+                //433 - disposed username
+                UpdateItemStatus(_selectedItem.Status, ItemStatus.Disposed, 433);
                 Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, (int)cbxUser.SelectedValue, ViewModel.TransactionType.DisposeItem, "", _selectedItem.Id);
             }
             else if (_transType == TransactionType.RepairItem)
             {
-                UpdateItemStatus(_selectedItem.Status, ItemStatus.Broken, 0);
+                //432 - repairman username
+                UpdateItemStatus(_selectedItem.Status, ItemStatus.Broken, 432);
                 Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, (int)cbxUser.SelectedValue, ViewModel.TransactionType.RepairItem, "", _selectedItem.Id);
             }
 

@@ -53,11 +53,14 @@ namespace InventoryManagement.Repository
             return list;
         }
 
-        public List<TransactionViewModel> GetTransactions()
+        public List<TransactionViewModel> GetTransactions(DateTime from, DateTime to, int itemId = 0)
         {
             var list = new List<TransactionViewModel>();
 
-            var trans = InventoryDatabase.vw_transaction_summary.ToList();
+            var trans = InventoryDatabase.vw_transaction_summary.Where(h=> h.TranscationDate > from && h.TranscationDate < to).ToList();
+            if (itemId != 0)
+                trans = trans.Where(h => h.ItemId == itemId).ToList();
+
             foreach (vw_transaction_summary t in trans)
             {
                 list.Add(new ViewModel.TransactionViewModel
@@ -70,7 +73,8 @@ namespace InventoryManagement.Repository
                     OtherUserId = t.CustomerUserId,
                     OtherUserName = t.CustomerUser,
                     ItemName = t.ItemName,
-                    Id = t.TransactionId
+                    Id = t.TransactionId,
+                    ItemId = t.ItemId ?? 0
                 });
             }
 

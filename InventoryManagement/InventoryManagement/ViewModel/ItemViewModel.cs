@@ -41,6 +41,12 @@ namespace InventoryManagement.ViewModel
         Disposed,
        // Unknown
     }
+    public enum ItemLoginType
+    {
+        Unknown = 0,
+        Local,
+        ActiveDirectory,
+    }
     //public enum ItemOperatingSystem
     //{
     //    Unknown,
@@ -129,6 +135,9 @@ namespace InventoryManagement.ViewModel
         public ItemStatus Status { get; set; }
         public int CurrentOwner { get; set; }
         public int CurrentDepartment { get; set; }
+        public int CurrentCompany { get; set; }
+        public string CurrentDepartmentName { get; set; }
+        public string CurrentCompanyName { get; set; }
         public string CurrentOwnerName { get; set; }
         public DateTime LastUpdatedDate { get; set; }
         public string LastUpdatedUser { get; set; }
@@ -140,5 +149,7 @@ namespace InventoryManagement.ViewModel
         public ItemHDDCapacity HDD2 { get; set; }
 
         public Image Picture { get; set; }
+
+        public ItemLoginType LoginType { get; set; }
     }
 }

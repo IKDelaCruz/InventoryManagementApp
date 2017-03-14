@@ -14,6 +14,8 @@ namespace AuthenticationLibrary
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public string Department { get; set; }
+
+        public string Gender { get; set; }
     }
     public class LDAPGroupInformation
     {
@@ -44,7 +46,8 @@ namespace AuthenticationLibrary
                             Firstname = (de.Properties["givenName"].Value) == null ? "" : (de.Properties["givenName"].Value).ToString(),
                             Lastname = de.Properties["sn"].Value == null ? "" : (de.Properties["sn"].Value).ToString(),
                             Username = de.Properties["samAccountName"].Value == null ? "" : (de.Properties["samAccountName"].Value).ToString(),
-                            Department = OU
+                            Department = OU,
+                            Gender = "M" //default gender - no gender in AD
                         };
                       
                         list.Add(item);

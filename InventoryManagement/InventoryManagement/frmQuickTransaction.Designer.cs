@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQuickTransaction));
             this.label11 = new System.Windows.Forms.Label();
             this.cbxCompany = new System.Windows.Forms.ComboBox();
             this.btnReserve = new System.Windows.Forms.Button();
@@ -157,6 +158,7 @@
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnReserve);
             this.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmQuickTransaction";
             this.Padding = new System.Windows.Forms.Padding(10, 10, 10, 50);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

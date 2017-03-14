@@ -65,6 +65,10 @@
           <Property Name="item_hdd1_id" Type="int" />
           <Property Name="item_hdd2_id" Type="int" />
           <Property Name="item_salvage_value" Type="money" />
+          <Property Name="item_ip_address" Type="varchar" MaxLength="50" />
+          <Property Name="item_ip_subnet_mask" Type="varchar" MaxLength="50" />
+          <Property Name="item_ip_dns" Type="varchar" MaxLength="50" />
+          <Property Name="item_login_type" Type="int" />
         </EntityType>
         <EntityType Name="item_image">
           <Key>
@@ -190,6 +194,7 @@
           <Property Name="user_last_name" Type="varchar" MaxLength="150" />
           <Property Name="user_department" Type="int" />
           <Property Name="user_company" Type="int" />
+          <Property Name="is_male" Type="bit" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'InventoryManagement.dbo.vw_brand_summary' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -244,6 +249,10 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_item_detail' does not h
           <Property Name="UserLastName" Type="varchar" MaxLength="150" />
           <Property Name="Username" Type="varchar" MaxLength="150" />
           <Property Name="UserDepartment" Type="int" />
+          <Property Name="UserCompany" Type="int" />
+          <Property Name="ItemLoginType" Type="int" />
+          <Property Name="UserDepartmentName" Type="varchar" MaxLength="500" />
+          <Property Name="UserCompanyName" Type="varchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'InventoryManagement.dbo.vw_item_log' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -348,6 +357,28 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_transaction_summary' do
           <Property Name="SystemUserId" Type="int" Nullable="false" />
           <Property Name="CustomerUserId" Type="int" Nullable="false" />
           <Property Name="TransactionTypeId" Type="int" Nullable="false" />
+          <Property Name="ItemId" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_user_membership_detail">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="UserTyp" />
+            <PropertyRef Name="UserPassword" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="UserTyp" Type="int" Nullable="false" />
+          <Property Name="UserFirstName" Type="varchar" MaxLength="150" />
+          <Property Name="UserLastName" Type="varchar" MaxLength="150" />
+          <Property Name="UserDeparmentId" Type="int" />
+          <Property Name="UserDepartment" Type="varchar" MaxLength="500" />
+          <Property Name="UserCompanyId" Type="int" />
+          <Property Name="UserCompany" Type="varchar" MaxLength="50" />
+          <Property Name="UserPassword" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserIsMale" Type="bit" />
         </EntityType>
         <Association Name="FK_Brand_ItmeSubType">
           <End Role="item_subtype" Type="Self.item_subtype" Multiplicity="1" />
@@ -606,7 +637,11 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_transaction_summary' do
     [vw_item_detail].[UserFirstName] AS [UserFirstName], 
     [vw_item_detail].[UserLastName] AS [UserLastName], 
     [vw_item_detail].[Username] AS [Username], 
-    [vw_item_detail].[UserDepartment] AS [UserDepartment]
+    [vw_item_detail].[UserDepartment] AS [UserDepartment], 
+    [vw_item_detail].[UserCompany] AS [UserCompany], 
+    [vw_item_detail].[ItemLoginType] AS [ItemLoginType], 
+    [vw_item_detail].[UserDepartmentName] AS [UserDepartmentName], 
+    [vw_item_detail].[UserCompanyName] AS [UserCompanyName]
     FROM [dbo].[vw_item_detail] AS [vw_item_detail]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vw_item_log" EntityType="Self.vw_item_log" store:Type="Views" store:Schema="dbo">
@@ -678,8 +713,24 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_transaction_summary' do
     [vw_transaction_summary].[ItemName] AS [ItemName], 
     [vw_transaction_summary].[SystemUserId] AS [SystemUserId], 
     [vw_transaction_summary].[CustomerUserId] AS [CustomerUserId], 
-    [vw_transaction_summary].[TransactionTypeId] AS [TransactionTypeId]
+    [vw_transaction_summary].[TransactionTypeId] AS [TransactionTypeId], 
+    [vw_transaction_summary].[ItemId] AS [ItemId]
     FROM [dbo].[vw_transaction_summary] AS [vw_transaction_summary]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_user_membership_detail" EntityType="Self.vw_user_membership_detail" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_user_membership_detail].[UserId] AS [UserId], 
+    [vw_user_membership_detail].[UserName] AS [UserName], 
+    [vw_user_membership_detail].[UserTyp] AS [UserTyp], 
+    [vw_user_membership_detail].[UserFirstName] AS [UserFirstName], 
+    [vw_user_membership_detail].[UserLastName] AS [UserLastName], 
+    [vw_user_membership_detail].[UserDeparmentId] AS [UserDeparmentId], 
+    [vw_user_membership_detail].[UserDepartment] AS [UserDepartment], 
+    [vw_user_membership_detail].[UserCompanyId] AS [UserCompanyId], 
+    [vw_user_membership_detail].[UserCompany] AS [UserCompany], 
+    [vw_user_membership_detail].[UserPassword] AS [UserPassword], 
+    [vw_user_membership_detail].[UserIsMale] AS [UserIsMale]
+    FROM [dbo].[vw_user_membership_detail] AS [vw_user_membership_detail]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_Brand_ItmeSubType" Association="Self.FK_Brand_ItmeSubType">
             <End Role="item_subtype" EntitySet="item_subtype" />
@@ -855,6 +906,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_transaction_summary' do
             <End Role="transaciton" EntitySet="transacitons" />
           </AssociationSet>
           <EntitySet Name="vw_item_detail" EntityType="InventoryMangementModel.vw_item_detail" />
+          <EntitySet Name="vw_user_membership_detail" EntityType="InventoryMangementModel.vw_user_membership_detail" />
           </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -937,6 +989,10 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_transaction_summary' do
           <NavigationProperty Name="item_type" Relationship="InventoryMangementModel.FK_Item_ItemType" FromRole="item" ToRole="item_type" />
           <NavigationProperty Name="item_image" Relationship="InventoryMangementModel.FK_ItemImage_Item" FromRole="item" ToRole="item_image" />
           <Property Name="item_current_department" Type="Int32" />
+          <Property Name="item_ip_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="item_ip_subnet_mask" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="item_ip_dns" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="item_login_type" Type="Int32" />
         </EntityType>
         <EntityType Name="item_image">
           <Key>
@@ -1080,6 +1136,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_transaction_summary' do
           <NavigationProperty Name="department" Relationship="InventoryMangementModel.FK_User_Department" FromRole="user" ToRole="department" />
           <NavigationProperty Name="requests" Relationship="InventoryMangementModel.FK_Request_User" FromRole="user" ToRole="request" />
           <NavigationProperty Name="transacitons" Relationship="InventoryMangementModel.FK_transaciton_system_user" FromRole="user" ToRole="transaciton" />
+          <Property Name="is_male" Type="Boolean" />
         </EntityType>
         <EntityType Name="vw_brand_summary">
           <Key>
@@ -1181,6 +1238,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_transaction_summary' do
           <Property Name="SystemUserId" Type="Int32" Nullable="false" />
           <Property Name="CustomerUserId" Type="Int32" Nullable="false" />
           <Property Name="TransactionTypeId" Type="Int32" Nullable="false" />
+          <Property Name="ItemId" Type="Int32" />
         </EntityType>
         <Association Name="FK_Brand_ItmeSubType">
           <End Type="InventoryMangementModel.item_subtype" Role="item_subtype" Multiplicity="1" />
@@ -1390,6 +1448,29 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_transaction_summary' do
           <Property Name="UserLastName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="Username" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="UserDepartment" Type="Int32" />
+          <Property Name="UserCompany" Type="Int32" />
+          <Property Name="ItemLoginType" Type="Int32" />
+          <Property Name="UserDepartmentName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="UserCompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vw_user_membership_detail">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="UserTyp" />
+            <PropertyRef Name="UserPassword" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="UserTyp" Type="Int32" Nullable="false" />
+          <Property Name="UserFirstName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="UserLastName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="UserDeparmentId" Type="Int32" />
+          <Property Name="UserDepartment" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="UserCompanyId" Type="Int32" />
+          <Property Name="UserCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserPassword" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserIsMale" Type="Boolean" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1460,6 +1541,10 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_transaction_summary' do
           <EntitySetMapping Name="items">
             <EntityTypeMapping TypeName="InventoryMangementModel.item">
               <MappingFragment StoreEntitySet="item">
+                <ScalarProperty Name="item_login_type" ColumnName="item_login_type" />
+                <ScalarProperty Name="item_ip_dns" ColumnName="item_ip_dns" />
+                <ScalarProperty Name="item_ip_subnet_mask" ColumnName="item_ip_subnet_mask" />
+                <ScalarProperty Name="item_ip_address" ColumnName="item_ip_address" />
                 <ScalarProperty Name="item_current_department" ColumnName="item_current_department" />
                 <ScalarProperty Name="item_salvage_value" ColumnName="item_salvage_value" />
                 <ScalarProperty Name="item_hdd2_id" ColumnName="item_hdd2_id" />
@@ -1614,6 +1699,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_transaction_summary' do
           <EntitySetMapping Name="users">
             <EntityTypeMapping TypeName="InventoryMangementModel.user">
               <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="is_male" ColumnName="is_male" />
                 <ScalarProperty Name="user_company" ColumnName="user_company" />
                 <ScalarProperty Name="user_department" ColumnName="user_department" />
                 <ScalarProperty Name="user_last_name" ColumnName="user_last_name" />
@@ -1707,6 +1793,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_transaction_summary' do
           <EntitySetMapping Name="vw_transaction_summary">
             <EntityTypeMapping TypeName="InventoryMangementModel.vw_transaction_summary">
               <MappingFragment StoreEntitySet="vw_transaction_summary">
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
                 <ScalarProperty Name="TransactionTypeId" ColumnName="TransactionTypeId" />
                 <ScalarProperty Name="CustomerUserId" ColumnName="CustomerUserId" />
                 <ScalarProperty Name="SystemUserId" ColumnName="SystemUserId" />
@@ -1722,6 +1809,10 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_transaction_summary' do
           <EntitySetMapping Name="vw_item_detail">
             <EntityTypeMapping TypeName="InventoryMangementModel.vw_item_detail">
               <MappingFragment StoreEntitySet="vw_item_detail">
+                <ScalarProperty Name="UserCompanyName" ColumnName="UserCompanyName" />
+                <ScalarProperty Name="UserDepartmentName" ColumnName="UserDepartmentName" />
+                <ScalarProperty Name="ItemLoginType" ColumnName="ItemLoginType" />
+                <ScalarProperty Name="UserCompany" ColumnName="UserCompany" />
                 <ScalarProperty Name="UserDepartment" ColumnName="UserDepartment" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="UserLastName" ColumnName="UserLastName" />
@@ -1752,6 +1843,23 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_transaction_summary' do
                 <ScalarProperty Name="item_name" ColumnName="item_name" />
                 <ScalarProperty Name="AssetTag" ColumnName="AssetTag" />
                 <ScalarProperty Name="item_id" ColumnName="item_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_user_membership_detail">
+            <EntityTypeMapping TypeName="InventoryMangementModel.vw_user_membership_detail">
+              <MappingFragment StoreEntitySet="vw_user_membership_detail">
+                <ScalarProperty Name="UserIsMale" ColumnName="UserIsMale" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="UserCompany" ColumnName="UserCompany" />
+                <ScalarProperty Name="UserCompanyId" ColumnName="UserCompanyId" />
+                <ScalarProperty Name="UserDepartment" ColumnName="UserDepartment" />
+                <ScalarProperty Name="UserDeparmentId" ColumnName="UserDeparmentId" />
+                <ScalarProperty Name="UserLastName" ColumnName="UserLastName" />
+                <ScalarProperty Name="UserFirstName" ColumnName="UserFirstName" />
+                <ScalarProperty Name="UserTyp" ColumnName="UserTyp" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

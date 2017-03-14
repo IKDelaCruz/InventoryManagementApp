@@ -308,6 +308,9 @@
     <Compile Include="Repository\vw_transaction_summary.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repository\vw_user_membership_detail.cs">
+      <DependentUpon>dbInventory.tt</DependentUpon>
+    </Compile>
     <Compile Include="Utils\BarcodeGenerator.cs" />
     <Compile Include="Utils\CSVExporter.cs" />
     <Compile Include="Utils\EmailSender.cs" />

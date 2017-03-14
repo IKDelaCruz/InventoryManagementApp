@@ -27,6 +27,12 @@ namespace InventoryManagement.Model
         {
             return cdR.QueryDepartment(id);
         }
+
+        public CompanyViewModel GetDepartment(string name)
+        {
+            return cdR.QueryDepartment(name);
+        }
+
         public List<CompanyViewModel> GetDepartments(int companyId)
         {
             return cdR.QueryDepartments(companyId);

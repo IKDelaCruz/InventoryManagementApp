@@ -150,10 +150,13 @@ namespace InventoryManagement
 
             DoUpdateItemDetails();
         }
+
         #region --- Methods --- 
 
         private void DoUpdateView(bool useCache, bool rememberIndex, int orderBy, bool barcodeScanner = false)
         {
+            SuspendLayout();
+
             if (IsInitializing)
                 return;
 
@@ -163,6 +166,8 @@ namespace InventoryManagement
                 itms = Singleton.Instance.ItemModel.GetItems(useCache).OrderBy(h => h.Name).ToList();
             else if (orderBy == 2)
                 itms = Singleton.Instance.ItemModel.GetItems(useCache).OrderByDescending(h => h.Status).ToList();
+            else if (orderBy == 3)
+                itms = Singleton.Instance.ItemModel.GetItems(useCache).OrderByDescending(h => h.CurrentOwner).ToList();
             else
                 itms = Singleton.Instance.ItemModel.GetItems(useCache).OrderByDescending(h => h.PurchaseDate).ToList();
 
@@ -175,6 +180,8 @@ namespace InventoryManagement
                 itms = itms.Where(h => h.TypeId == Convert.ToInt32(cbxType.SelectedValue)).ToList();
             if (!chkShowAllSubType.Checked)
                 itms = itms.Where(h => h.SubTypeId == Convert.ToInt32(cbxSubtype.SelectedValue)).ToList();
+            if (!chkShowAllUser.Checked)
+                itms = itms.Where(h => h.CurrentOwner == Convert.ToInt32(cbxUser.SelectedValue)).ToList();
 
             if (!chkShowAllLocation.Checked)
             {
@@ -220,16 +227,27 @@ namespace InventoryManagement
 
             loginToolStripMenuItem.Text = Singleton.Instance.UserModel.CurrentUser == null ? "Login" : "Logout";
 
-
+            ResumeLayout();
         }
         #endregion
 
         private void UpdateView(object sender, EventArgs e)
         {
             if (!IsInitializing)
+            {
                 DoUpdateView(true, false, 1);
+                //
+            }
         }
+        private void LoadUsers()
+        {
+            cbxUser.DataSource = null;
+            cbxUser.DisplayMember = "LastnameFirstName";
+            cbxUser.ValueMember = "Id";
 
+            cbxUser.DataSource = Singleton.Instance.UserModel.GetUsersByDepartmentId((int)cbxLocation.SelectedValue);
+           // cbxUser.SelectedIndex = 0;
+        }
         private void DoUpdateItemDetails()
         {
             var item = _selectedItem;
@@ -480,6 +498,17 @@ namespace InventoryManagement
         private void manageToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
             new frmManageRequest().ShowDialog();
+        }
+
+        private void cbxLocation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadUsers();
+            UpdateView(null, null);
+        }
+
+        private void ownerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DoUpdateView(false, false, 3, false);
         }
     }
 

@@ -30,6 +30,7 @@ namespace InventoryManagement
             isType = true;
             var itms = Singleton.Instance.ItemModel.GetItemTypeSummary();
             lvMain.LoadData(itms, typeImageList, true);
+            lnkNavigation.Text = "Home / ";
         }
         private void LoadSubCategory(int categoryId)
         {
@@ -48,7 +49,7 @@ namespace InventoryManagement
 
             if (isType)
             {
-               
+                lnkNavigation.Text += selected.SubItems[0].Text;
                 LoadSubCategory(id);
 
                 isType = false;
@@ -90,6 +91,16 @@ namespace InventoryManagement
         }
 
         private void homeToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            LoadCategory();
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            LoadCategory();
+        }
+
+        private void lnkNavigation_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             LoadCategory();
         }

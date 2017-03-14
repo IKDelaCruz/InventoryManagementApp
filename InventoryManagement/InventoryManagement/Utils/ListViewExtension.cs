@@ -19,8 +19,11 @@ namespace InventoryManagement.Utils
        
         public static void LoadData(this ListView lv, List<ItemViewModel> items, ImageList imgList, bool summary = false)
         {
+            lv.BeginUpdate();
+            lv.ListViewItemSorter = null;
+
             var defaultImage = Image.FromFile(Utils.Helper.GetImageDirectory(@"\items\default.jpg"));
-            
+            var tempListView = new List<ListViewItem>();
             lv.Items.Clear();
             lv.LargeImageList = imgList;
             if(summary)
@@ -39,22 +42,35 @@ namespace InventoryManagement.Utils
                 }
 
                 var newItem = new ListViewItem(itemName);
-
-
                 newItem.ImageIndex = summary ? x : imgList.Images.IndexOfKey(item.SubTypeId.ToString());
                 //newItem.ImageIndex = x;
-
                 newItem.SubItems.Add(item.Id.ToString());
                 newItem.SubItems.Add(item.TypeId.ToString());
+                if(!summary)
+                {
+                    if (item.Status == ItemStatus.Available)
+                        newItem.ForeColor = Color.Green;
+                    else if (item.Status == ItemStatus.Borrowed || item.Status == ItemStatus.Broken)
+                        newItem.ForeColor = Color.Red;
+                    else if (item.Status == ItemStatus.Reserved )
+                        newItem.ForeColor = Color.Blue;
+                    else
+                        newItem.ForeColor = Color.Gray;
+                }
 
-                lv.Items.Add(newItem);
+
+                //lv.Items.Add(newItem);
+                tempListView.Add(newItem);
                 x++;
+               
             }
+            lv.Items.AddRange(tempListView.ToArray());
+            lv.EndUpdate();
         }
         public static void LoadData(this ListView lv, List<UserViewModel> items)
         {
             lv.Items.Clear();
-
+            lv.BeginUpdate();
             foreach (UserViewModel iVL in items)
             {
                 var newItem = new ListViewItem(iVL.Lastname + ", " + iVL.Firstname);
@@ -63,6 +79,7 @@ namespace InventoryManagement.Utils
                 newItem.SubItems.Add(iVL.Username.ToString());
                 lv.Items.Add(newItem);
             }
+            lv.EndUpdate();
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrinter));
             this.pbBarcode = new System.Windows.Forms.PictureBox();
             this.btnPrintBarcode = new System.Windows.Forms.Button();
             this.lblDatePrinted = new System.Windows.Forms.Label();
@@ -82,6 +83,7 @@
             this.Controls.Add(this.btnPrintBarcode);
             this.Controls.Add(this.pbBarcode);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmPrinter";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Barcode Sticker Printer";

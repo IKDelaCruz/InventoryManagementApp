@@ -20,6 +20,9 @@ namespace InventoryManagement
 
             dvLogs.AutoGenerateColumns = false;
             _reportData = new List<TransactionViewModel>();
+
+            dtpFrom.Value = DateTime.Now.AddDays(-30);
+            dtpTo.Value = DateTime.Now.AddDays(1);
         }
 
         private void frmUserLogs_Load(object sender, EventArgs e)
@@ -28,7 +31,10 @@ namespace InventoryManagement
         }
          private void LoadLogs()
         {
-            var data = Model.Singleton.Instance.TransactionModel.GetTransactions();
+            var from = dtpFrom.Value.Date;
+            var to = dtpTo.Value.Date.AddDays(1);
+
+            var data = Model.Singleton.Instance.TransactionModel.GetTransactions(from, to);
             _reportData = data;
             var list = new Utils.MySortableBindingList<TransactionViewModel>(data);
 
@@ -58,6 +64,11 @@ namespace InventoryManagement
             file.Close();
 
             return true;
+        }
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            LoadLogs();
         }
     }
 }

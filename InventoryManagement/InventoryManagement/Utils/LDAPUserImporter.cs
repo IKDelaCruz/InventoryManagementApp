@@ -17,14 +17,21 @@ namespace InventoryManagement.Utils
 
             foreach(LDAPGroupInformation l in s)
             {
-                int departmentId = Singleton.Instance.CompanyDepartmentModel.CreateDepartment(l.Name);
-                if(departmentId > 0)
+                int departmentId = 0;
+                var existingDept = Singleton.Instance.CompanyDepartmentModel.GetDepartment(l.Name);
+                if (existingDept != null)
+                    departmentId = existingDept.Id;
+                else
+                    departmentId = Singleton.Instance.CompanyDepartmentModel.CreateDepartment(l.Name);
+
+                if (departmentId > 0)
                 {
                     foreach(LDAPUserInformation ui in l.Members)
                     {
                         var existing = Singleton.Instance.UserModel.GetUsersByUsername(ui.Username);
                         if(existing == null)
-                            Singleton.Instance.UserModel.CreateNewUser(ui.Username, "", UserModel.UserType.User, ui.Firstname, ui.Lastname, departmentId);
+                            Singleton.Instance.UserModel.CreateNewUser(ui.Username, "", UserModel.UserType.User, ui.Firstname, ui.Lastname, departmentId,
+                                ui.Gender == "M");
                     }
                 }
             }

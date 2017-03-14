@@ -120,15 +120,20 @@ namespace InventoryManagement
 
                 txtPassword.Text = info.Password;
                 //txtPassord.Enabled = false;
-                cbxUserType.SelectedItem = info.UserType;
-                cbxCompany.SelectedItem = info.Company;
-                cbxDepartment.SelectedItem = info.Department;
+                cbxUserType.SelectedItem = (UserType)info.UserType;
+                cbxCompany.SelectedValue = info.CompanyId;
+                cbxDepartment.SelectedValue = info.DepartmentId;
             }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void grpUser_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -38,6 +38,7 @@ namespace InventoryManagement.Repository
                 item_memory_id = (int)newItem.Memory,
                 item_hdd1_id = (int)newItem.HDD1,
                 item_hdd2_id = (int)newItem.HDD2,
+                item_login_type = (int)newItem.LoginType,
 
             };
             InventoryDatabase.items.Add(itm);
@@ -68,7 +69,7 @@ namespace InventoryManagement.Repository
                 item.item_purchase_price = newItem.PurchasePrice;
                 item.item_current_value = newItem.Currentvalue;
                 item.item_salvage_value = newItem.SalvageValue;
-                item.item_current_owner = newItem.CurrentOwner;
+                //item.item_current_owner = newItem.CurrentOwner;
                 item.item_serial = newItem.Serial;
                 item.item_status = (int)newItem.Status;
                 item.item_os_id = (int)newItem.OS;
@@ -77,6 +78,7 @@ namespace InventoryManagement.Repository
                 item.item_hdd1_id = (int)newItem.HDD1;
                 item.item_hdd2_id = (int)newItem.HDD2;
                 item.item_salvage_value = newItem.SalvageValue;
+                item.item_login_type = (int)newItem.LoginType;
                 InventoryDatabase.SaveChanges();
 
                 return true;
@@ -507,7 +509,11 @@ namespace InventoryManagement.Repository
                 Type = i.TypeName,
                 SubType = i.SubTypeName,
                 Brand = i.BrandName,
-                CurrentOwnerName = i.Username
+                CurrentOwnerName = i.Username,
+                CurrentCompany = i.UserCompany ?? 0,
+                LoginType = (ItemLoginType)(i.ItemLoginType ?? 0),
+                CurrentCompanyName = i.UserCompanyName,
+                CurrentDepartmentName = i.UserDepartmentName
             };
         }
         public string QueryOwner(int id)

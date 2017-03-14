@@ -69,7 +69,18 @@ namespace InventoryManagement.Repository
             else
                 return null;
         }
-
+        public CompanyViewModel QueryDepartment(string name)
+        {
+            var dep = InventoryDatabase.departments.FirstOrDefault(h => h.department_name == name);
+            if (dep != null)
+                return new CompanyViewModel
+                {
+                    Id = dep.department_company_id,
+                    Name = dep.department_name
+                };
+            else
+                return null;
+        }
         public int CreateDepartment(string name)
         {
             var d = new department { department_name = name, department_company_id = 0 };

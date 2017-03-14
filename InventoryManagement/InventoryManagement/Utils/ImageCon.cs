@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace InventoryManagement.Utils
 {
-    class ImageCon
+    public class ImageCon
     {
         //convert bytearray to image
         public static Image byteArrayToImage(byte[] byteArrayIn)
@@ -27,6 +27,22 @@ namespace InventoryManagement.Utils
         {
             ImageConverter imgCon = new ImageConverter();
             return (byte[])imgCon.ConvertTo(inImg, typeof(byte[]));
+        }
+        public static Image ScaleImage(Image image, int maxWidth, int maxHeight)
+        {
+            var ratioX = (double)maxWidth / image.Width;
+            var ratioY = (double)maxHeight / image.Height;
+            var ratio = Math.Min(ratioX, ratioY);
+
+            var newWidth = (int)(image.Width * ratio);
+            var newHeight = (int)(image.Height * ratio);
+
+            var newImage = new Bitmap(newWidth, newHeight);
+
+            using (var graphics = Graphics.FromImage(newImage))
+                graphics.DrawImage(image, 0, 0, newWidth, newHeight);
+
+            return newImage;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using BarcodeLib;
 using InventoryManagement.Model;
 using InventoryManagement.Repository;
+using InventoryManagement.Utils;
 using InventoryManagement.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace InventoryManagement
         {
             InitializeComponent();
 
+            dvLogs.AutoGenerateColumns = false;
             isAddNewItem = AddItem;
 
             LoadComboBox();
@@ -36,10 +38,12 @@ namespace InventoryManagement
             lblCurrentValue.Visible = !isAddNewItem;
 
             cbxStatus.SelectedItem = "Available";
-            cbxCurrentOwner.SelectedValue = 0;
 
             if (!isAddNewItem)
                 DoLoadItem(itemId);
+
+            dtpFrom.Value = DateTime.Now.AddDays(-30);
+            dtpTo.Value = DateTime.Now.AddDays(1);
 
         }
         
@@ -81,6 +85,7 @@ namespace InventoryManagement
             cbxMemory.DataSource = Enum.GetValues(typeof(ItemMemory));
             cbxHDD1.DataSource = Enum.GetValues(typeof(ItemHDDCapacity));
             cbxHDD2.DataSource = Enum.GetValues(typeof(ItemHDDCapacity));
+            cbxLoginType.DataSource = Enum.GetValues(typeof(ItemLoginType));
 
             cbxBrand.DisplayMember = "Name";
             cbxBrand.ValueMember = "Id";
@@ -88,9 +93,8 @@ namespace InventoryManagement
 
             LoadUsers();
 
-            cbxDepartment.ValueMember = "Id";
-            cbxDepartment.DisplayMember = "Name";
-            cbxDepartment.DataSource = Singleton.Instance.CompanyDepartmentModel.GetCompaniesWithDepartments();
+
+            
         }
         private void DoSaveItem()
         {
@@ -107,9 +111,7 @@ namespace InventoryManagement
             var os = cbxOS.SelectedValue;
          
 
-            var curowner = cbxCurrentOwner.SelectedValue;
-            if (curowner == null)
-                curowner = 0;
+           
 
 
             var itm = new ItemViewModel
@@ -125,7 +127,7 @@ namespace InventoryManagement
                 Model = txtModel.Text,
                 Serial = txtSerial.Text,
                 Status = (ItemStatus)cbxStatus.SelectedItem,
-                CurrentOwner = (int)curowner,
+              
                 SalvageValue = Convert.ToDecimal(txtSalvageValue.Text),
                 LastUpdatedDate = DateTime.Now,
                 LastUpdatedUserId = Singleton.Instance.UserModel.CurrentUser.Id,
@@ -138,12 +140,17 @@ namespace InventoryManagement
                 Memory = (ItemMemory)cbxMemory.SelectedItem,
                 HDD1 = (ItemHDDCapacity)cbxHDD1.SelectedItem,
                 HDD2 = (ItemHDDCapacity)cbxHDD2.SelectedItem,
+                LoginType = (ItemLoginType)cbxLoginType.SelectedItem,
             };
             var result = new ReturnValueModel();
 
             if (isAddNewItem)
             {
-                result = Singleton.Instance.ItemModel.CreateNewItem(itm, Singleton.Instance.UserModel.CurrentUser.Id);
+                for( int x = 0; x < 200; x++)
+                {
+                    result = Singleton.Instance.ItemModel.CreateNewItem(itm, Singleton.Instance.UserModel.CurrentUser.Id);
+                }
+                
                 if (result.Success)
                     if (pbId.BackgroundImage == null) {
                         pbId.BackgroundImage = Image.FromFile(Utils.Helper.GetImageDirectory(@"\items\default.jpg"));
@@ -195,7 +202,7 @@ namespace InventoryManagement
             txtSerial.Text = _loadedItem.Serial;
             txtSalvageValue.Text = _loadedItem.SalvageValue.ToString();
 
-            cbxOS.SelectedValue = _loadedItem.OS;
+            cbxOS.SelectedValue = (_loadedItem.OS == 0) ? 1 : _loadedItem.OS;
             cbxProcessor.Text = _loadedItem.Processor.ToString();
             cbxMemory.Text = _loadedItem.Memory.ToString();
             cbxHDD1.Text = _loadedItem.HDD1.ToString();
@@ -209,11 +216,12 @@ namespace InventoryManagement
 
             txtLastUpdate.Text = _loadedItem.LastUpdatedDate.ToString();
 
-            cbxDepartment.SelectedValue = _loadedItem.CurrentDepartment;
-            cbxCurrentOwner.SelectedValue = _loadedItem.CurrentOwner;
+            txtCompany.Text = _loadedItem.CurrentCompanyName ?? "";
+            txtDepartment.Text = _loadedItem.CurrentDepartmentName ?? "";
+            txtEmployee.Text = _loadedItem.CurrentOwnerName;
 
             cbxStatus.Text = ((ItemStatus)_loadedItem.Status).ToString();
-
+            cbxLoginType.Text = _loadedItem.LoginType.ToString();
             if (Singleton.Instance.ItemModel.GetItemImage(itemId) != null)
             {
                 var img = Singleton.Instance.ItemModel.GetItemImage(itemId);
@@ -283,7 +291,7 @@ namespace InventoryManagement
             {
                 OpenFileDialog openDlg = new OpenFileDialog();
 
-                openDlg.InitialDirectory = "c:\\";
+                //openDlg.InitialDirectory = "c:\\";
                 openDlg.Filter = "image files |*.jpg; *.jpeg; *.png";
                 openDlg.FilterIndex = 1;
                 //openFileDialog1.RestoreDirectory = true;
@@ -293,7 +301,10 @@ namespace InventoryManagement
                 if (res == DialogResult.OK)
                 {
                     Image img = Image.FromFile(openDlg.FileName);
-                    pbId.BackgroundImage = img;
+
+                    var newImage = ImageCon.ScaleImage(img, 500, 500);
+
+                    pbId.BackgroundImage = newImage;
 
                     
                 }
@@ -314,16 +325,27 @@ namespace InventoryManagement
         }
         private void LoadUsers()
         {
-            if (cbxDepartment.SelectedValue == null)
-                return;
+           
+        }
+        private void LoadHistory()
+        {
+            var from = dtpFrom.Value.Date;
+            var to = dtpTo.Value.Date.AddDays(1);
 
-            cbxCurrentOwner.DataSource = null;
-            cbxCurrentOwner.DisplayMember = "LastnameFirstName";
-            cbxCurrentOwner.ValueMember = "Id";
+            var data = Model.Singleton.Instance.TransactionModel.GetTransactions(from, to,_loadedItem.Id);
+            var list = new Utils.MySortableBindingList<TransactionViewModel>(data);
 
-            cbxCurrentOwner.DataSource = Singleton.Instance.UserModel.GetUsersByDepartmentId((int)cbxDepartment.SelectedValue);
+            dvLogs.DataSource = list;
+        }
 
-            cbxCurrentOwner.SelectedIndex = 0;
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            LoadHistory();
+        }
+
+        private void cbxCompany_SelectedIndexChanged(object sender, EventArgs e)
+        {
+         
         }
     }
 }

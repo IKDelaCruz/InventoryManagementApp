@@ -28,7 +28,7 @@ namespace InventoryManagement.Repository
             }
             return null;
         }
-        public int CreateNewUser(string username, string password, int type, string firstname, string lastname, int departmentId)
+        public int CreateNewUser(string username, string password, int type, string firstname, string lastname, int departmentId, bool isMale = true)
         {
 
             var newUser = new user
@@ -38,7 +38,9 @@ namespace InventoryManagement.Repository
                 user_type = type,
                 user_first_name = firstname,
                 user_last_name = lastname,
-                user_department = departmentId
+                user_department = departmentId,
+                is_male = isMale
+
             };
             InventoryDatabase.users.Add(newUser);
             try
@@ -93,19 +95,23 @@ namespace InventoryManagement.Repository
         }
         public UserViewModel GetUserById(int id)
         {
-            var user = InventoryDatabase.users.FirstOrDefault(h => h.user_id == id);
+            var user = InventoryDatabase.vw_user_membership_detail.FirstOrDefault(h => h.UserId == id);
             if (user != null)
             {
                 return new UserViewModel
                 {
-                    Id = user.user_id,
-                    Password = user.user_password,
-                    Username = user.user_username,
-                    UserType = user.user_type,
-                    Firstname = user.user_first_name,
-                    Lastname = user.user_last_name,
-                    LastnameFirstName = user.user_last_name + ", " + user.user_first_name,
-                    LastnameFirstNameUsername = user.user_last_name + ", " + user.user_first_name + " (" + user.user_username + ")"
+                    Id = user.UserId,
+                    Password = user.UserPassword,
+                    Username = user.UserName,
+                    UserType = user.UserTyp,
+                    Firstname = user.UserFirstName,
+                    Lastname = user.UserLastName,
+                    LastnameFirstName = user.UserLastName + ", " + user.UserFirstName,
+                    LastnameFirstNameUsername = user.UserLastName + ", " + user.UserFirstName + " (" + user.UserName + ")",
+                    Department = user.UserDepartment,
+                    Company = user.UserCompany,
+                    DepartmentId = user.UserDeparmentId ?? 0,
+                    CompanyId = user.UserCompanyId ?? 0
                 };
             }
 
