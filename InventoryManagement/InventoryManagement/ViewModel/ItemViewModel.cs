@@ -47,6 +47,12 @@ namespace InventoryManagement.ViewModel
         Local,
         ActiveDirectory,
     }
+    public enum PrinterType
+    {
+        Unknown = 0,
+        Local,
+        Network,
+    }
     //public enum ItemOperatingSystem
     //{
     //    Unknown,

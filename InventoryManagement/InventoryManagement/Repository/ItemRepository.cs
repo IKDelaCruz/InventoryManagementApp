@@ -412,31 +412,32 @@ namespace InventoryManagement.Repository
 
         public List<ItemViewModel> QueryItemsBySubType(int subtypeId)
         {
-            var items = InventoryDatabase.items.Where(h => h.item_subtype_id == subtypeId).ToList();
+            var items = InventoryDatabase.vw_item_detail.Where(h => h.ItemSubTypeId == subtypeId).ToList();
             List<ItemViewModel> iList = new List<ItemViewModel>();
 
-            foreach (item i in items)
+            foreach (vw_item_detail i in items)
             {
                 iList.Add(new ItemViewModel
                 {
                     Id = i.item_id,
-                    AssetTag = i.item_asset_tag,
+                    AssetTag = i.AssetTag,
                     Name = i.item_name,
                     Description = i.item_description,
-                    TypeId = Convert.ToInt32(i.item_type_id),
+                    TypeId = Convert.ToInt32(i.ItemTypeId),
                     //Type = i.ItemType.type,
-                    SubTypeId = Convert.ToInt32(i.item_subtype_id),
+                    SubTypeId = Convert.ToInt32(i.ItemSubTypeId),
                     //SubType = i.ItemSubtype.subtype,
-                    BrandId = i.item_brand_id ?? 13,
+                    BrandId = i.BrandId ?? 13,
                     Model = i.item_model,
                     Serial = i.item_serial,
                     Status = (ItemStatus)i.item_status,
-                    CurrentOwner = i.item_current_owner ?? 0,
-                    LastUpdatedDate = i.item_last_updated ?? DateTime.MinValue,
-                    PurchaseDate = i.item_purchase_date ?? DateTime.MinValue,
-                    PurchasePrice = i.item_purchase_price,
-                    LifeSpan = i.item_lifespan ?? 5,
-                    Currentvalue = i.item_current_value
+                    CurrentOwner = i.CurrentOwner ?? 0,
+                    CurrentOwnerName = i.Username,
+                    LastUpdatedDate = i.LastUpdated ?? DateTime.MinValue,
+                    PurchaseDate = i.PurchaseDate ?? DateTime.MinValue,
+                    PurchasePrice = i.PurchasePrice,
+                    LifeSpan = i.LifeSpan ?? 5,
+                    Currentvalue = i.CurrentValue
                 });
             }
             return iList;

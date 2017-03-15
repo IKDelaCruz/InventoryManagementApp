@@ -119,7 +119,7 @@ namespace InventoryManagement.Repository
         }
         public UserViewModel GetUserByUsername(string username)
         {
-            var user = InventoryDatabase.users.FirstOrDefault(h => h.user_username == username);
+            var user = InventoryDatabase.users.AsNoTracking().FirstOrDefault(h => h.user_username == username);
             if (user != null)
             {
                 return new UserViewModel

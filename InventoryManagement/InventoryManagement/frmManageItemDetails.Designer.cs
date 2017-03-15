@@ -77,8 +77,6 @@
             this.txtEmployee = new System.Windows.Forms.TextBox();
             this.txtDepartment = new System.Windows.Forms.TextBox();
             this.txtCompany = new System.Windows.Forms.TextBox();
-            this.cbxLoginType = new System.Windows.Forms.ComboBox();
-            this.label28 = new System.Windows.Forms.Label();
             this.lblCompany = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
@@ -110,6 +108,19 @@
             this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.cbxPrinterType = new System.Windows.Forms.ComboBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.cbxLoginType = new System.Windows.Forms.ComboBox();
+            this.label29 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.pnlMain.SuspendLayout();
@@ -123,12 +134,15 @@
             this.tabPage5.SuspendLayout();
             this.pnlHistory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvLogs)).BeginInit();
+            this.tabPage6.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
@@ -436,7 +450,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(722, 362);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Item Details";
+            this.tabPage2.Text = "Price";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // panel1
@@ -579,8 +593,6 @@
             this.panel2.Controls.Add(this.txtEmployee);
             this.panel2.Controls.Add(this.txtDepartment);
             this.panel2.Controls.Add(this.txtCompany);
-            this.panel2.Controls.Add(this.cbxLoginType);
-            this.panel2.Controls.Add(this.label28);
             this.panel2.Controls.Add(this.lblCompany);
             this.panel2.Controls.Add(this.label25);
             this.panel2.Controls.Add(this.label21);
@@ -625,24 +637,6 @@
             this.txtCompany.Size = new System.Drawing.Size(169, 23);
             this.txtCompany.TabIndex = 67;
             // 
-            // cbxLoginType
-            // 
-            this.cbxLoginType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxLoginType.FormattingEnabled = true;
-            this.cbxLoginType.Location = new System.Drawing.Point(146, 188);
-            this.cbxLoginType.Name = "cbxLoginType";
-            this.cbxLoginType.Size = new System.Drawing.Size(169, 23);
-            this.cbxLoginType.TabIndex = 65;
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(23, 191);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(63, 15);
-            this.label28.TabIndex = 66;
-            this.label28.Text = "Login Type";
-            // 
             // lblCompany
             // 
             this.lblCompany.AutoSize = true;
@@ -685,7 +679,7 @@
             // lblLastUpdatedBy
             // 
             this.lblLastUpdatedBy.AutoSize = true;
-            this.lblLastUpdatedBy.Location = new System.Drawing.Point(23, 266);
+            this.lblLastUpdatedBy.Location = new System.Drawing.Point(23, 237);
             this.lblLastUpdatedBy.Name = "lblLastUpdatedBy";
             this.lblLastUpdatedBy.Size = new System.Drawing.Size(69, 15);
             this.lblLastUpdatedBy.TabIndex = 34;
@@ -702,7 +696,7 @@
             // 
             // txtLastUpdatedUser
             // 
-            this.txtLastUpdatedUser.Location = new System.Drawing.Point(146, 263);
+            this.txtLastUpdatedUser.Location = new System.Drawing.Point(146, 234);
             this.txtLastUpdatedUser.Name = "txtLastUpdatedUser";
             this.txtLastUpdatedUser.ReadOnly = true;
             this.txtLastUpdatedUser.Size = new System.Drawing.Size(169, 23);
@@ -711,7 +705,7 @@
             // lblLastUpdated
             // 
             this.lblLastUpdated.AutoSize = true;
-            this.lblLastUpdated.Location = new System.Drawing.Point(23, 237);
+            this.lblLastUpdated.Location = new System.Drawing.Point(23, 208);
             this.lblLastUpdated.Name = "lblLastUpdated";
             this.lblLastUpdated.Size = new System.Drawing.Size(78, 15);
             this.lblLastUpdated.TabIndex = 32;
@@ -728,7 +722,7 @@
             // 
             // txtLastUpdate
             // 
-            this.txtLastUpdate.Location = new System.Drawing.Point(146, 234);
+            this.txtLastUpdate.Location = new System.Drawing.Point(146, 205);
             this.txtLastUpdate.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
             this.txtLastUpdate.Name = "txtLastUpdate";
             this.txtLastUpdate.ReadOnly = true;
@@ -956,7 +950,141 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // frmManageItem
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.panel4);
+            this.tabPage6.Location = new System.Drawing.Point(4, 24);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(722, 362);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "Config";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // panel4
+            // 
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.cbxLoginType);
+            this.panel4.Controls.Add(this.label29);
+            this.panel4.Controls.Add(this.textBox1);
+            this.panel4.Controls.Add(this.textBox2);
+            this.panel4.Controls.Add(this.textBox3);
+            this.panel4.Controls.Add(this.label30);
+            this.panel4.Controls.Add(this.label31);
+            this.panel4.Controls.Add(this.label32);
+            this.panel4.Controls.Add(this.label33);
+            this.panel4.Controls.Add(this.cbxPrinterType);
+            this.panel4.Controls.Add(this.label36);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(3, 3);
+            this.panel4.Name = "panel4";
+            this.panel4.Padding = new System.Windows.Forms.Padding(20);
+            this.panel4.Size = new System.Drawing.Size(716, 356);
+            this.panel4.TabIndex = 36;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(146, 188);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(169, 23);
+            this.textBox1.TabIndex = 69;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(146, 159);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(169, 23);
+            this.textBox2.TabIndex = 68;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(146, 130);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(169, 23);
+            this.textBox3.TabIndex = 67;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(23, 133);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(18, 15);
+            this.label30.TabIndex = 64;
+            this.label30.Text = "IP";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(23, 162);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(44, 15);
+            this.label31.TabIndex = 62;
+            this.label31.Text = "Subnet";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.Location = new System.Drawing.Point(9, 9);
+            this.label32.Margin = new System.Windows.Forms.Padding(10);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(191, 26);
+            this.label32.TabIndex = 60;
+            this.label32.Text = "Configuration Details";
+            this.label32.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(23, 58);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(72, 15);
+            this.label33.TabIndex = 28;
+            this.label33.Text = "Printer Type";
+            // 
+            // cbxPrinterType
+            // 
+            this.cbxPrinterType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxPrinterType.FormattingEnabled = true;
+            this.cbxPrinterType.Location = new System.Drawing.Point(146, 55);
+            this.cbxPrinterType.Name = "cbxPrinterType";
+            this.cbxPrinterType.Size = new System.Drawing.Size(169, 23);
+            this.cbxPrinterType.TabIndex = 27;
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(23, 191);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(54, 15);
+            this.label36.TabIndex = 30;
+            this.label36.Text = "Gateway";
+            // 
+            // cbxLoginType
+            // 
+            this.cbxLoginType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxLoginType.FormattingEnabled = true;
+            this.cbxLoginType.Location = new System.Drawing.Point(146, 84);
+            this.cbxLoginType.Name = "cbxLoginType";
+            this.cbxLoginType.Size = new System.Drawing.Size(169, 23);
+            this.cbxLoginType.TabIndex = 70;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(23, 87);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(63, 15);
+            this.label29.TabIndex = 71;
+            this.label29.Text = "Login Type";
+            // 
+            // frmManageItemDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -966,7 +1094,7 @@
             this.Controls.Add(this.btnSave);
             this.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "frmManageItem";
+            this.Name = "frmManageItemDetails";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create New Item";
@@ -989,6 +1117,9 @@
             this.pnlHistory.ResumeLayout(false);
             this.pnlHistory.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvLogs)).EndInit();
+            this.tabPage6.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1070,10 +1201,21 @@
         private System.Windows.Forms.DateTimePicker dtpTo;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.DateTimePicker dtpFrom;
-        private System.Windows.Forms.ComboBox cbxLoginType;
-        private System.Windows.Forms.Label label28;
         private System.Windows.Forms.TextBox txtEmployee;
         private System.Windows.Forms.TextBox txtDepartment;
         private System.Windows.Forms.TextBox txtCompany;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.ComboBox cbxPrinterType;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.ComboBox cbxLoginType;
+        private System.Windows.Forms.Label label29;
     }
 }

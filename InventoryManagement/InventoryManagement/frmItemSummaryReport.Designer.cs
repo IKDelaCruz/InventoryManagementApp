@@ -63,7 +63,7 @@
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlMain.Location = new System.Drawing.Point(10, 10);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(764, 325);
+            this.pnlMain.Size = new System.Drawing.Size(816, 395);
             this.pnlMain.TabIndex = 12;
             // 
             // label3
@@ -102,7 +102,7 @@
             this.dvLogs.ShowCellToolTips = false;
             this.dvLogs.ShowEditingIcon = false;
             this.dvLogs.ShowRowErrors = false;
-            this.dvLogs.Size = new System.Drawing.Size(764, 269);
+            this.dvLogs.Size = new System.Drawing.Size(813, 336);
             this.dvLogs.TabIndex = 0;
             // 
             // AssetTag
@@ -155,7 +155,7 @@
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(10, 341);
+            this.btnExport.Location = new System.Drawing.Point(10, 411);
             this.btnExport.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(100, 30);
@@ -164,16 +164,16 @@
             this.btnExport.UseVisualStyleBackColor = true;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
-            // frmReport
+            // frmItemSummaryReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 381);
+            this.ClientSize = new System.Drawing.Size(836, 454);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.pnlMain);
             this.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "frmReport";
+            this.Name = "frmItemSummaryReport";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmReport";

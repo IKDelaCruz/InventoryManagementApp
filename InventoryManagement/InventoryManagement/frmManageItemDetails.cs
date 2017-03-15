@@ -42,6 +42,9 @@ namespace InventoryManagement
             if (!isAddNewItem)
                 DoLoadItem(itemId);
 
+            if (isAddNewItem)
+                tabControl1.TabPages.RemoveAt(5);
+
             dtpFrom.Value = DateTime.Now.AddDays(-30);
             dtpTo.Value = DateTime.Now.AddDays(1);
 
@@ -86,6 +89,8 @@ namespace InventoryManagement
             cbxHDD1.DataSource = Enum.GetValues(typeof(ItemHDDCapacity));
             cbxHDD2.DataSource = Enum.GetValues(typeof(ItemHDDCapacity));
             cbxLoginType.DataSource = Enum.GetValues(typeof(ItemLoginType));
+            cbxPrinterType.DataSource = Enum.GetValues(typeof(PrinterType));
+
 
             cbxBrand.DisplayMember = "Name";
             cbxBrand.ValueMember = "Id";

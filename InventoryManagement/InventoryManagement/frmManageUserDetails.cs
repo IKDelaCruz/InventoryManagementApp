@@ -60,7 +60,7 @@ namespace InventoryManagement
                 MessageBox.Show("Invalid Username", "Invalid",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (string.IsNullOrWhiteSpace(password))
+            else if (string.IsNullOrWhiteSpace(password) && !isUpdate)
             {
                 MessageBox.Show("Invalid Password", "Invalid",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
