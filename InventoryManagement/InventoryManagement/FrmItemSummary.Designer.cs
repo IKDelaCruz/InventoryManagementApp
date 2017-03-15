@@ -82,11 +82,11 @@
             // lnkNavigation
             // 
             this.lnkNavigation.AutoSize = true;
-            this.lnkNavigation.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lnkNavigation.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lnkNavigation.LinkColor = System.Drawing.Color.Black;
             this.lnkNavigation.Location = new System.Drawing.Point(3, 5);
             this.lnkNavigation.Name = "lnkNavigation";
-            this.lnkNavigation.Size = new System.Drawing.Size(61, 19);
+            this.lnkNavigation.Size = new System.Drawing.Size(64, 19);
             this.lnkNavigation.TabIndex = 0;
             this.lnkNavigation.TabStop = true;
             this.lnkNavigation.Text = "Home / ";

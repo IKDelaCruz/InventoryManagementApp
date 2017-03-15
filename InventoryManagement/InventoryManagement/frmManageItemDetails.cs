@@ -18,38 +18,43 @@ namespace InventoryManagement
 {
     public partial class frmManageItemDetails : frmBase
     {
-        private bool isAddNewItem;
+        private bool _isAddNewItem;
         private ItemViewModel _loadedItem;
-       
-        public frmManageItemDetails(int itemId = 0, bool AddItem = true)
+
+        public frmManageItemDetails(int itemId = 0, bool addNewItem = true)
         {
             InitializeComponent();
 
             dvLogs.AutoGenerateColumns = false;
-            isAddNewItem = AddItem;
+            _isAddNewItem = addNewItem;
 
             LoadComboBox();
 
-            txtLastUpdate.Visible = !isAddNewItem;
-            txtLastUpdatedUser.Visible = !isAddNewItem;
-            txtCurrentValue.Visible = !isAddNewItem;
-            lblLastUpdated.Visible = !isAddNewItem;
-            lblLastUpdatedBy.Visible = !isAddNewItem;
-            lblCurrentValue.Visible = !isAddNewItem;
+            txtLastUpdate.Visible = !_isAddNewItem;
+            txtLastUpdatedUser.Visible = !_isAddNewItem;
+            txtCurrentValue.Visible = !_isAddNewItem;
+            lblLastUpdated.Visible = !_isAddNewItem;
+            lblLastUpdatedBy.Visible = !_isAddNewItem;
+            lblCurrentValue.Visible = !_isAddNewItem;
 
             cbxStatus.SelectedItem = "Available";
 
-            if (!isAddNewItem)
+            if (!_isAddNewItem)
+            {
                 DoLoadItem(itemId);
 
-            if (isAddNewItem)
+            }
+
+            if (_isAddNewItem)
+            {
                 tabControl1.TabPages.RemoveAt(5);
+            }
 
             dtpFrom.Value = DateTime.Now.AddDays(-30);
             dtpTo.Value = DateTime.Now.AddDays(1);
 
         }
-        
+
 
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -99,7 +104,7 @@ namespace InventoryManagement
             LoadUsers();
 
 
-            
+
         }
         private void DoSaveItem()
         {
@@ -114,9 +119,9 @@ namespace InventoryManagement
             }
 
             var os = cbxOS.SelectedValue;
-         
 
-           
+
+
 
 
             var itm = new ItemViewModel
@@ -132,7 +137,7 @@ namespace InventoryManagement
                 Model = txtModel.Text,
                 Serial = txtSerial.Text,
                 Status = (ItemStatus)cbxStatus.SelectedItem,
-              
+
                 SalvageValue = Convert.ToDecimal(txtSalvageValue.Text),
                 LastUpdatedDate = DateTime.Now,
                 LastUpdatedUserId = Singleton.Instance.UserModel.CurrentUser.Id,
@@ -149,33 +154,35 @@ namespace InventoryManagement
             };
             var result = new ReturnValueModel();
 
-            if (isAddNewItem)
+            if (_isAddNewItem)
             {
-                for( int x = 0; x < 200; x++)
+                for (int x = 0; x < 200; x++)
                 {
                     result = Singleton.Instance.ItemModel.CreateNewItem(itm, Singleton.Instance.UserModel.CurrentUser.Id);
                 }
-                
+
                 if (result.Success)
-                    if (pbId.BackgroundImage == null) {
+                    if (pbId.BackgroundImage == null)
+                    {
                         pbId.BackgroundImage = Image.FromFile(Utils.Helper.GetImageDirectory(@"\items\default.jpg"));
                         var img = pbId.BackgroundImage;
                         Singleton.Instance.ItemModel.UpdateItemImage(Convert.ToInt32(result.Param1), img);
                     }
-                    else {
+                    else
+                    {
                         var img = pbId.BackgroundImage;
                         Singleton.Instance.ItemModel.UpdateItemImage(Convert.ToInt32(result.Param1), img);
 
                     }
-            
-                
+
+
                 Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, 0, ViewModel.TransactionType.CreateItem, "", itm.Id);
             }
             else
             {
                 itm.Id = _loadedItem.Id;
                 result = Singleton.Instance.ItemModel.UpdateItem(itm, Singleton.Instance.UserModel.CurrentUser.Id);
-              
+
                 var img = new Bitmap(pbId.BackgroundImage);
 
                 Singleton.Instance.ItemModel.UpdateItemImage(_loadedItem.Id, img);
@@ -187,7 +194,7 @@ namespace InventoryManagement
             {
                 txtAssetTag.Text = result.Param2;
                 this.DialogResult = DialogResult.OK;
-                if (isAddNewItem)
+                if (_isAddNewItem)
                     MessageBox.Show("Item successfully created.");
                 else
                     MessageBox.Show("Item successfully updated.");
@@ -195,7 +202,10 @@ namespace InventoryManagement
         }
         public void DoLoadItem(int itemId)
         {
+
             _loadedItem = Singleton.Instance.ItemModel.GetItem(itemId);
+
+            Text = string.Format("Manage Item :: {0}({1})", _loadedItem.Name, _loadedItem.CurrentOwnerName);
 
             txtAssetTag.Text = _loadedItem.AssetTag;
             txtName.Text = _loadedItem.Name;
@@ -230,22 +240,23 @@ namespace InventoryManagement
             if (Singleton.Instance.ItemModel.GetItemImage(itemId) != null)
             {
                 var img = Singleton.Instance.ItemModel.GetItemImage(itemId);
-                if (img != null) {
+                if (img != null)
+                {
                     pbId.BackgroundImage = img;
                 }
-                          
+
             }
 
             var owner = Singleton.Instance.UserModel.GetUsersById(_loadedItem.LastUpdatedUserId);
 
             txtLastUpdatedUser.Text = owner == null ? "SYSTEM" : owner.LastnameFirstName;
 
-          
-           
+
+
 
         }
 
-     
+
 
         private void cbxType_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -306,12 +317,12 @@ namespace InventoryManagement
                 if (res == DialogResult.OK)
                 {
                     Image img = Image.FromFile(openDlg.FileName);
-
+                    txtFilename.Text = openDlg.FileName;
                     var newImage = ImageCon.ScaleImage(img, 500, 500);
 
                     pbId.BackgroundImage = newImage;
 
-                    
+
                 }
 
             }
@@ -330,14 +341,14 @@ namespace InventoryManagement
         }
         private void LoadUsers()
         {
-           
+
         }
         private void LoadHistory()
         {
             var from = dtpFrom.Value.Date;
             var to = dtpTo.Value.Date.AddDays(1);
 
-            var data = Model.Singleton.Instance.TransactionModel.GetTransactions(from, to,_loadedItem.Id);
+            var data = Model.Singleton.Instance.TransactionModel.GetTransactions(from, to, _loadedItem.Id);
             var list = new Utils.MySortableBindingList<TransactionViewModel>(data);
 
             dvLogs.DataSource = list;
@@ -350,7 +361,7 @@ namespace InventoryManagement
 
         private void cbxCompany_SelectedIndexChanged(object sender, EventArgs e)
         {
-         
+
         }
     }
 }

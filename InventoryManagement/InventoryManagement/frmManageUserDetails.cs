@@ -109,6 +109,9 @@ namespace InventoryManagement
         private void LoadUserInfo(int userId)
         {
             var info = Singleton.Instance.UserModel.GetUsersById(userId);
+
+            Text = string.Format("Manage User :: {0} | {1}/{2}", info.LastnameFirstName,info.Company, info.Department);
+
             currentUSer = info;
 
             if (info != null)

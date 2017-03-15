@@ -21,7 +21,7 @@ namespace InventoryManagement
             IsInitializing = true;
 
             InitializeComponent();
-           
+
 
             IsInitializing = false;
         }
@@ -35,7 +35,7 @@ namespace InventoryManagement
         private void LoadSubCategory(int categoryId)
         {
             var itms = Singleton.Instance.ItemModel.GetItemSubTypeSummary(categoryId);
-            lvMain.LoadData(itms, subTypeImageList,  true);
+            lvMain.LoadData(itms, subTypeImageList, true);
         }
         private void FrmItemSummary_Load(object sender, EventArgs e)
         {
@@ -51,28 +51,29 @@ namespace InventoryManagement
             {
                 lnkNavigation.Text += selected.SubItems[0].Text;
                 LoadSubCategory(id);
-
+                this.ReturnParentInt = id;
                 isType = false;
             }
             else
             {
                 this.ReturnInt = id;
+
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
-            
+
 
         }
 
         private void homeToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-           
+
         }
 
         private void mainToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -82,7 +83,7 @@ namespace InventoryManagement
 
         private void tmrRefresh_Tick(object sender, EventArgs e)
         {
-         
+
         }
 
         private void mainToolStripMenuItem_Click_1(object sender, EventArgs e)

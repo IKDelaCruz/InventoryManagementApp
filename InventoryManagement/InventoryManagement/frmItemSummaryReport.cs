@@ -1,4 +1,5 @@
-﻿using InventoryManagement.Utils;
+﻿using InventoryManagement.Model;
+using InventoryManagement.Utils;
 using InventoryManagement.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,30 @@ namespace InventoryManagement
             var data = Model.Singleton.Instance.ItemModel.GetItems(false);
             _reportData = data;
 
+
+            #region --- FILTER LOGIC ---
+
+            if (!chkShowAllStatus.Checked)
+                data = data.Where(h => h.Status == (ItemStatus)cbxStatus.SelectedItem).ToList();
+            if (!chkShowAllType.Checked)
+                data = data.Where(h => h.TypeId == Convert.ToInt32(cbxType.SelectedValue)).ToList();
+            if (!chkShowAllSubType.Checked)
+                data = data.Where(h => h.SubTypeId == Convert.ToInt32(cbxSubtype.SelectedValue)).ToList();
+        
+
+            if (!chkShowAllLocation.Checked)
+            {
+                var departmentId = (int)cbxLocation.SelectedValue;
+                var usersIds = Singleton.Instance.UserModel.GetUsersByDepartmentId(departmentId).Select(h => h.Id).ToList(); ;
+
+                data = (from i in data
+                        where usersIds.Contains(i.CurrentOwner)
+                        select i).ToList();
+            }
+
+            #endregion
+
+
             var list = new MySortableBindingList<ItemViewModel>(data);
 
             dvLogs.DataSource = list;
@@ -34,6 +59,8 @@ namespace InventoryManagement
 
         private void frmReport_Load(object sender, EventArgs e)
         {
+            FillCombo();
+
             LoadItems();
         }
 
@@ -61,6 +88,54 @@ namespace InventoryManagement
 
             return true;
         }
+        private void FillCombo()
+        {
+            cbxStatus.DataSource = Enum.GetValues(typeof(ItemStatus));
 
+            cbxType.DisplayMember = "Name";
+            cbxType.ValueMember = "Id";
+            cbxType.DataSource = Singleton.Instance.ItemTypeModel.GetTypes();
+
+            cbxSubtype.DisplayMember = "Name";
+            cbxSubtype.ValueMember = "Id";
+            cbxSubtype.DataSource = Singleton.Instance.ItemSubTypeModel.GetSubTypesByType((int)cbxType.SelectedValue);
+
+            cbxLocation.ValueMember = "Id";
+            cbxLocation.DisplayMember = "Name";
+            cbxLocation.DataSource = Singleton.Instance.CompanyDepartmentModel.GetCompaniesWithDepartments();
+        }
+
+        private void cbxStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbxType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbxSubtype.DisplayMember = "Name";
+            cbxSubtype.ValueMember = "Id";
+            cbxSubtype.DataSource = Singleton.Instance.ItemSubTypeModel.GetSubTypesByType((int)cbxType.SelectedValue);
+        }
+
+        private void cbxSubtype_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadItems();
+        }
+
+        private void cbxLocation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadItems();
+        }
+
+        private void LoadItems(object sender, EventArgs e)
+        {
+            LoadItems();
+        }
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+
+            LoadItems();
+        }
     }
 }

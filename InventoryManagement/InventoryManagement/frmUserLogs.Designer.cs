@@ -32,6 +32,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUserLogs));
             this.imgMain = new System.Windows.Forms.ImageList(this.components);
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.btnFilter = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dtpTo = new System.Windows.Forms.DateTimePicker();
+            this.label15 = new System.Windows.Forms.Label();
+            this.dtpFrom = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.dvLogs = new System.Windows.Forms.DataGridView();
             this.TransactionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,11 +45,6 @@
             this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnExport = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
-            this.dtpFrom = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dtpTo = new System.Windows.Forms.DateTimePicker();
-            this.btnFilter = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvLogs)).BeginInit();
@@ -61,6 +61,9 @@
             // pnlMain
             // 
             this.pnlMain.BackColor = System.Drawing.Color.White;
+            this.pnlMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlMain.Controls.Add(this.btnClose);
+            this.pnlMain.Controls.Add(this.btnExport);
             this.pnlMain.Controls.Add(this.btnFilter);
             this.pnlMain.Controls.Add(this.label1);
             this.pnlMain.Controls.Add(this.dtpTo);
@@ -68,20 +71,69 @@
             this.pnlMain.Controls.Add(this.dtpFrom);
             this.pnlMain.Controls.Add(this.label3);
             this.pnlMain.Controls.Add(this.dvLogs);
-            this.pnlMain.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMain.Location = new System.Drawing.Point(10, 10);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(764, 444);
+            this.pnlMain.Size = new System.Drawing.Size(764, 483);
             this.pnlMain.TabIndex = 11;
+            // 
+            // btnFilter
+            // 
+            this.btnFilter.Location = new System.Drawing.Point(648, 54);
+            this.btnFilter.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(100, 30);
+            this.btnFilter.TabIndex = 62;
+            this.btnFilter.Text = "Filter";
+            this.btnFilter.UseVisualStyleBackColor = true;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(388, 62);
+            this.label1.Margin = new System.Windows.Forms.Padding(5);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 15);
+            this.label1.TabIndex = 61;
+            this.label1.Text = "End Date";
+            // 
+            // dtpTo
+            // 
+            this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpTo.Location = new System.Drawing.Point(453, 56);
+            this.dtpTo.Margin = new System.Windows.Forms.Padding(5);
+            this.dtpTo.Name = "dtpTo";
+            this.dtpTo.Size = new System.Drawing.Size(186, 23);
+            this.dtpTo.TabIndex = 60;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(117, 62);
+            this.label15.Margin = new System.Windows.Forms.Padding(5);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(65, 15);
+            this.label15.TabIndex = 59;
+            this.label15.Text = "Begin Date";
+            // 
+            // dtpFrom
+            // 
+            this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFrom.Location = new System.Drawing.Point(192, 56);
+            this.dtpFrom.Margin = new System.Windows.Forms.Padding(5);
+            this.dtpFrom.Name = "dtpFrom";
+            this.dtpFrom.Size = new System.Drawing.Size(186, 23);
+            this.dtpFrom.TabIndex = 58;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(10, 10);
+            this.label3.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(9, 10);
             this.label3.Margin = new System.Windows.Forms.Padding(10);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(120, 33);
+            this.label3.Size = new System.Drawing.Size(95, 26);
             this.label3.TabIndex = 57;
             this.label3.Text = "User Logs";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -99,7 +151,7 @@
             this.CustomerName,
             this.ItemName});
             this.dvLogs.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dvLogs.Location = new System.Drawing.Point(16, 103);
+            this.dvLogs.Location = new System.Drawing.Point(16, 90);
             this.dvLogs.Name = "dvLogs";
             this.dvLogs.RowHeadersVisible = false;
             this.dvLogs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -107,7 +159,7 @@
             this.dvLogs.ShowCellToolTips = false;
             this.dvLogs.ShowEditingIcon = false;
             this.dvLogs.ShowRowErrors = false;
-            this.dvLogs.Size = new System.Drawing.Size(732, 325);
+            this.dvLogs.Size = new System.Drawing.Size(732, 335);
             this.dvLogs.TabIndex = 0;
             // 
             // TransactionDate
@@ -146,7 +198,7 @@
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(566, 460);
+            this.btnExport.Location = new System.Drawing.Point(540, 431);
             this.btnExport.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(100, 30);
@@ -155,58 +207,9 @@
             this.btnExport.UseVisualStyleBackColor = true;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(117, 75);
-            this.label15.Margin = new System.Windows.Forms.Padding(5);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(65, 15);
-            this.label15.TabIndex = 59;
-            this.label15.Text = "Begin Date";
-            // 
-            // dtpFrom
-            // 
-            this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFrom.Location = new System.Drawing.Point(192, 69);
-            this.dtpFrom.Margin = new System.Windows.Forms.Padding(5);
-            this.dtpFrom.Name = "dtpFrom";
-            this.dtpFrom.Size = new System.Drawing.Size(186, 23);
-            this.dtpFrom.TabIndex = 58;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(388, 75);
-            this.label1.Margin = new System.Windows.Forms.Padding(5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 15);
-            this.label1.TabIndex = 61;
-            this.label1.Text = "End Date";
-            // 
-            // dtpTo
-            // 
-            this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpTo.Location = new System.Drawing.Point(453, 69);
-            this.dtpTo.Margin = new System.Windows.Forms.Padding(5);
-            this.dtpTo.Name = "dtpTo";
-            this.dtpTo.Size = new System.Drawing.Size(186, 23);
-            this.dtpTo.TabIndex = 60;
-            // 
-            // btnFilter
-            // 
-            this.btnFilter.Location = new System.Drawing.Point(648, 67);
-            this.btnFilter.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(100, 30);
-            this.btnFilter.TabIndex = 62;
-            this.btnFilter.Text = "Filter";
-            this.btnFilter.UseVisualStyleBackColor = true;
-            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
-            // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(674, 460);
+            this.btnClose.Location = new System.Drawing.Point(648, 431);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(100, 30);
@@ -219,8 +222,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 503);
-            this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.btnExport);
             this.Controls.Add(this.pnlMain);
             this.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

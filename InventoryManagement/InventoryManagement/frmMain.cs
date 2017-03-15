@@ -374,9 +374,18 @@ namespace InventoryManagement
             var result = dlg.ShowDialog();
             if (result == DialogResult.OK)
             {
+                int itemType = dlg.ReturnParentInt;
                 int itemSubTypeId = dlg.ReturnInt;
 
+              
+
                 var itms = Singleton.Instance.ItemModel.GetItemsBySubType(itemSubTypeId);
+
+                chkShowAllSubType.Checked = false;
+
+                cbxType.SelectedValue = itemType;
+                cbxSubtype.SelectedValue = itemSubTypeId;
+
                 lvMain.LoadData(itms, imgMainImage);
             }
         }

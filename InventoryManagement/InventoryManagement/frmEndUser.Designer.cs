@@ -141,11 +141,13 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.BackColor = System.Drawing.Color.White;
+            this.label11.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Black;
             this.label11.Location = new System.Drawing.Point(10, 10);
             this.label11.Margin = new System.Windows.Forms.Padding(10);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(184, 26);
+            this.label11.Size = new System.Drawing.Size(191, 26);
             this.label11.TabIndex = 99;
             this.label11.Text = "Create New Request";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -329,7 +331,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 34);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(543, 454);
+            this.tabPage2.Size = new System.Drawing.Size(543, 465);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Manage Request";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -342,7 +344,7 @@
             this.pnlTab2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlTab2.Location = new System.Drawing.Point(3, 3);
             this.pnlTab2.Name = "pnlTab2";
-            this.pnlTab2.Size = new System.Drawing.Size(537, 448);
+            this.pnlTab2.Size = new System.Drawing.Size(537, 459);
             this.pnlTab2.TabIndex = 77;
             this.pnlTab2.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlTab2_Paint);
             // 
@@ -519,11 +521,13 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(7, 10);
+            this.label19.BackColor = System.Drawing.Color.White;
+            this.label19.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.Black;
+            this.label19.Location = new System.Drawing.Point(10, 10);
             this.label19.Margin = new System.Windows.Forms.Padding(10);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(125, 26);
+            this.label19.Size = new System.Drawing.Size(127, 26);
             this.label19.TabIndex = 98;
             this.label19.Text = "Ticket Details";
             this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -531,7 +535,7 @@
             // 
             // trMain
             // 
-            this.trMain.Location = new System.Drawing.Point(12, 49);
+            this.trMain.Location = new System.Drawing.Point(10, 49);
             this.trMain.Name = "trMain";
             this.trMain.Size = new System.Drawing.Size(183, 365);
             this.trMain.TabIndex = 76;

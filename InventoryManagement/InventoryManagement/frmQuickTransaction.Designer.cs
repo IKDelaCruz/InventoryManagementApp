@@ -123,11 +123,11 @@
             // lblHeader
             // 
             this.lblHeader.AutoSize = true;
-            this.lblHeader.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHeader.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHeader.Location = new System.Drawing.Point(10, 10);
             this.lblHeader.Margin = new System.Windows.Forms.Padding(10);
             this.lblHeader.Name = "lblHeader";
-            this.lblHeader.Size = new System.Drawing.Size(118, 26);
+            this.lblHeader.Size = new System.Drawing.Size(122, 26);
             this.lblHeader.TabIndex = 61;
             this.lblHeader.Text = "Borrow Item";
             this.lblHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

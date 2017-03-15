@@ -36,6 +36,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.txtFilter = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,12 +50,12 @@
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(6, 6);
+            this.btnNew.Location = new System.Drawing.Point(14, 43);
             this.btnNew.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(100, 30);
             this.btnNew.TabIndex = 10;
-            this.btnNew.Text = "New";
+            this.btnNew.Text = "New User";
             this.btnNew.UseVisualStyleBackColor = true;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
@@ -62,9 +63,9 @@
             // 
             this.lvUsers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lvUsers.LargeImageList = this.imgMain;
-            this.lvUsers.Location = new System.Drawing.Point(6, 42);
+            this.lvUsers.Location = new System.Drawing.Point(14, 79);
             this.lvUsers.Name = "lvUsers";
-            this.lvUsers.Size = new System.Drawing.Size(712, 376);
+            this.lvUsers.Size = new System.Drawing.Size(704, 305);
             this.lvUsers.TabIndex = 0;
             this.lvUsers.UseCompatibleStateImageBehavior = false;
             this.lvUsers.SelectedIndexChanged += new System.EventHandler(this.lvUsers_SelectedIndexChanged);
@@ -74,6 +75,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtFilter);
             this.panel1.Controls.Add(this.btnNew);
@@ -87,19 +89,31 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(480, 12);
+            this.label1.Location = new System.Drawing.Point(517, 51);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(36, 15);
+            this.label1.Size = new System.Drawing.Size(44, 15);
             this.label1.TabIndex = 12;
-            this.label1.Text = "Filter";
+            this.label1.Text = "Search";
             // 
             // txtFilter
             // 
-            this.txtFilter.Location = new System.Drawing.Point(522, 9);
+            this.txtFilter.Location = new System.Drawing.Point(567, 48);
             this.txtFilter.Name = "txtFilter";
-            this.txtFilter.Size = new System.Drawing.Size(196, 23);
+            this.txtFilter.Size = new System.Drawing.Size(151, 23);
             this.txtFilter.TabIndex = 11;
             this.txtFilter.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(9, 9);
+            this.label11.Margin = new System.Windows.Forms.Padding(10);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(135, 26);
+            this.label11.TabIndex = 102;
+            this.label11.Text = "Manage Users";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmManageUsers
             // 
@@ -126,5 +140,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtFilter;
+        private System.Windows.Forms.Label label11;
     }
 }

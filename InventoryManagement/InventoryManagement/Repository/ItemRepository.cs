@@ -412,7 +412,7 @@ namespace InventoryManagement.Repository
 
         public List<ItemViewModel> QueryItemsBySubType(int subtypeId)
         {
-            var items = InventoryDatabase.vw_item_detail.Where(h => h.ItemSubTypeId == subtypeId).ToList();
+            var items = InventoryDatabase.vw_item_detail.AsNoTracking().Where(h => h.ItemSubTypeId == subtypeId).ToList();
             List<ItemViewModel> iList = new List<ItemViewModel>();
 
             foreach (vw_item_detail i in items)

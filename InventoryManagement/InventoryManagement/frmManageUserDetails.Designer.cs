@@ -31,11 +31,13 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManageUserDetails));
             this.imgMainImage = new System.Windows.Forms.ImageList(this.components);
+            this.pnlMain = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.pnlUserInformation = new System.Windows.Forms.Panel();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
+            this.pnlUserInformation = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cbxUserType = new System.Windows.Forms.ComboBox();
@@ -53,21 +55,21 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtFirstname = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label9 = new System.Windows.Forms.Label();
             this.lvMain = new System.Windows.Forms.ListView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label10 = new System.Windows.Forms.Label();
             this.btnFilter = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.dtpTo = new System.Windows.Forms.DateTimePicker();
             this.label15 = new System.Windows.Forms.Label();
             this.dtpFrom = new System.Windows.Forms.DateTimePicker();
             this.dvLogs = new System.Windows.Forms.DataGridView();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.TransactionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TransactionType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SystemUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnlMain.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.pnlUserInformation.SuspendLayout();
@@ -84,16 +86,26 @@
             this.imgMainImage.ImageSize = new System.Drawing.Size(48, 48);
             this.imgMainImage.TransparentColor = System.Drawing.Color.Transparent;
             // 
+            // pnlMain
+            // 
+            this.pnlMain.BackColor = System.Drawing.Color.White;
+            this.pnlMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlMain.Controls.Add(this.tabControl1);
+            this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlMain.Location = new System.Drawing.Point(12, 12);
+            this.pnlMain.Name = "pnlMain";
+            this.pnlMain.Size = new System.Drawing.Size(555, 484);
+            this.pnlMain.TabIndex = 9;
+            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Location = new System.Drawing.Point(3, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(555, 484);
+            this.tabControl1.Size = new System.Drawing.Size(547, 478);
             this.tabControl1.TabIndex = 8;
             // 
             // tabPage1
@@ -105,26 +117,14 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(547, 456);
+            this.tabPage1.Size = new System.Drawing.Size(539, 450);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "User Information";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // pnlUserInformation
-            // 
-            this.pnlUserInformation.BackColor = System.Drawing.Color.White;
-            this.pnlUserInformation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlUserInformation.Controls.Add(this.groupBox1);
-            this.pnlUserInformation.Controls.Add(this.grpUser);
-            this.pnlUserInformation.Location = new System.Drawing.Point(15, 52);
-            this.pnlUserInformation.Name = "pnlUserInformation";
-            this.pnlUserInformation.Padding = new System.Windows.Forms.Padding(20);
-            this.pnlUserInformation.Size = new System.Drawing.Size(400, 350);
-            this.pnlUserInformation.TabIndex = 7;
-            // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(205, 408);
+            this.btnCancel.Location = new System.Drawing.Point(207, 408);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(100, 30);
@@ -133,9 +133,21 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(15, 13);
+            this.label11.Margin = new System.Windows.Forms.Padding(10);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(191, 26);
+            this.label11.TabIndex = 101;
+            this.label11.Text = "Account Information";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(315, 408);
+            this.btnSave.Location = new System.Drawing.Point(317, 408);
             this.btnSave.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(100, 30);
@@ -143,6 +155,18 @@
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // pnlUserInformation
+            // 
+            this.pnlUserInformation.BackColor = System.Drawing.Color.White;
+            this.pnlUserInformation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlUserInformation.Controls.Add(this.groupBox1);
+            this.pnlUserInformation.Controls.Add(this.grpUser);
+            this.pnlUserInformation.Location = new System.Drawing.Point(17, 52);
+            this.pnlUserInformation.Name = "pnlUserInformation";
+            this.pnlUserInformation.Padding = new System.Windows.Forms.Padding(20);
+            this.pnlUserInformation.Size = new System.Drawing.Size(400, 350);
+            this.pnlUserInformation.TabIndex = 7;
             // 
             // groupBox1
             // 
@@ -306,10 +330,22 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(547, 456);
+            this.tabPage2.Size = new System.Drawing.Size(545, 454);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "User Items";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(13, 13);
+            this.label9.Margin = new System.Windows.Forms.Padding(10);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(106, 26);
+            this.label9.TabIndex = 102;
+            this.label9.Text = "User Items";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lvMain
             // 
@@ -333,10 +369,22 @@
             this.tabPage3.Controls.Add(this.dvLogs);
             this.tabPage3.Location = new System.Drawing.Point(4, 24);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(547, 456);
+            this.tabPage3.Size = new System.Drawing.Size(545, 454);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "User Logs";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(13, 13);
+            this.label10.Margin = new System.Windows.Forms.Padding(10);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(95, 26);
+            this.label10.TabIndex = 103;
+            this.label10.Text = "User Logs";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnFilter
             // 
@@ -407,44 +455,8 @@
             this.dvLogs.ShowCellToolTips = false;
             this.dvLogs.ShowEditingIcon = false;
             this.dvLogs.ShowRowErrors = false;
-            this.dvLogs.Size = new System.Drawing.Size(510, 325);
+            this.dvLogs.Size = new System.Drawing.Size(510, 337);
             this.dvLogs.TabIndex = 63;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(13, 13);
-            this.label11.Margin = new System.Windows.Forms.Padding(10);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(154, 26);
-            this.label11.TabIndex = 101;
-            this.label11.Text = "Create New User";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(13, 13);
-            this.label9.Margin = new System.Windows.Forms.Padding(10);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(154, 26);
-            this.label9.TabIndex = 102;
-            this.label9.Text = "Create New User";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(13, 13);
-            this.label10.Margin = new System.Windows.Forms.Padding(10);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(154, 26);
-            this.label10.TabIndex = 103;
-            this.label10.Text = "Create New User";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TransactionDate
             // 
@@ -473,19 +485,20 @@
             this.ItemName.Name = "ItemName";
             this.ItemName.Width = 150;
             // 
-            // frmManageUserInfo
+            // frmManageUserDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(579, 508);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.pnlMain);
             this.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "frmManageUserInfo";
+            this.Name = "frmManageUserDetails";
             this.Padding = new System.Windows.Forms.Padding(12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage User";
             this.Load += new System.EventHandler(this.frmManageUserInfo_Load);
+            this.pnlMain.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -543,5 +556,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TransactionType;
         private System.Windows.Forms.DataGridViewTextBoxColumn SystemUser;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
+        private System.Windows.Forms.Panel pnlMain;
     }
 }
