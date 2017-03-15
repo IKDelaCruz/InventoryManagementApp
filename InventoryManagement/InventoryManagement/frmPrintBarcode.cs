@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace InventoryManagement
 {
-    public partial class frmPrinter : Form
+    public partial class frmPrintBarcode : Form
     {
-        public frmPrinter(Image img)
+        public frmPrintBarcode(Image img)
         {
             InitializeComponent();
 

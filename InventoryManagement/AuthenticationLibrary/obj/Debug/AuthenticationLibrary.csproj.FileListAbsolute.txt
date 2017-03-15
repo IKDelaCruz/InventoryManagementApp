@@ -25,4 +25,3 @@ E:\Projects\InventoryManagementApp\InventoryManagement\AuthenticationLibrary\bin
 E:\Projects\InventoryManagementApp\InventoryManagement\AuthenticationLibrary\bin\Debug\AuthenticationLibrary.pdb
 E:\Projects\InventoryManagementApp\InventoryManagement\AuthenticationLibrary\obj\Debug\AuthenticationLibrary.dll
 E:\Projects\InventoryManagementApp\InventoryManagement\AuthenticationLibrary\obj\Debug\AuthenticationLibrary.pdb
-C:\Users\ian.delacruz.JAKAGROUP\Documents\GitHub\InventoryManagementApp\InventoryManagementApp\InventoryManagement\AuthenticationLibrary\obj\Debug\AuthenticationLibrary.csprojResolveAssemblyReference.cache

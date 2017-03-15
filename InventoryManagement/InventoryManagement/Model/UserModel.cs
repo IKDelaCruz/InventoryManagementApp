@@ -1,4 +1,5 @@
 ﻿
+using AuthenticationLibrary;
 using InventoryManagement.Repository;
 using InventoryManagement.ViewModel;
 using System;
@@ -25,10 +26,21 @@ namespace InventoryManagement.Model
         }
         public UserViewModel CurrentUser { get;private set; }
 
-        public UserViewModel AuthenticateUser(string username, string password)
+        public UserViewModel AuthenticateUser(string username, string password, bool useLDAP)
         {
-            
-            CurrentUser = userRepository.ValidateUsernameAndPassword(username, password);
+            if(useLDAP)
+            {
+                var ldap = new LDAPManager();
+                var result = ldap.AuthenticateLDAP(username, password);
+                if (result)
+                    CurrentUser = userRepository.GetUserByUsername(username);
+            }
+            else
+            {
+                CurrentUser = userRepository.ValidateUsernameAndPassword(username, password);
+            }
+       
+
             return CurrentUser;
         }
         public bool LogoutUser()
@@ -66,7 +78,7 @@ namespace InventoryManagement.Model
         }
         public List<UserViewModel> GetUsersByDepartmentId(int departmentId)
         {
-            return userRepository.GetUsersByDepartmentId(departmentId);
+            return userRepository.GetUsersByDepartmentId(departmentId).OrderBy(h => h.LastnameFirstName).ToList();
         }
     }
 }

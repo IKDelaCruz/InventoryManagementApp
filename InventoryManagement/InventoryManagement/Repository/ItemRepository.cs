@@ -375,6 +375,41 @@ namespace InventoryManagement.Repository
             }
             return iList;
         }
+
+        public List<ItemViewModel> QueryItemsByOwner(int ownerId)
+        {
+            var items = InventoryDatabase.vw_item_detail.AsNoTracking().Where(h=>h.CurrentOwner == ownerId).ToList();
+            List<ItemViewModel> iList = new List<ItemViewModel>();
+
+            foreach (vw_item_detail i in items)
+            {
+                iList.Add(new ItemViewModel
+                {
+                    Id = i.item_id,
+                    AssetTag = i.AssetTag,
+                    Name = i.item_name,
+                    Description = i.item_description,
+                    TypeId = Convert.ToInt32(i.ItemTypeId),
+                    Type = i.TypeName,
+                    SubTypeId = Convert.ToInt32(i.ItemSubTypeId),
+                    SubType = i.SubTypeName,
+                    BrandId = i.BrandId ?? 13,
+                    Model = i.item_model,
+                    Serial = i.item_serial,
+                    Status = (ItemStatus)i.item_status,
+                    CurrentOwner = i.CurrentOwner ?? 0,
+                    CurrentOwnerName = i.Username,
+                    LastUpdatedDate = i.LastUpdated ?? DateTime.MinValue,
+                    PurchaseDate = i.PurchaseDate ?? DateTime.MinValue,
+                    PurchasePrice = i.PurchasePrice,
+                    LifeSpan = i.LifeSpan ?? 5,
+                    Currentvalue = i.CurrentValue,
+                    SalvageValue = i.SalvageValue ?? 0
+                });
+            }
+            return iList;
+        }
+
         public List<ItemViewModel> QueryItemsBySubType(int subtypeId)
         {
             var items = InventoryDatabase.items.Where(h => h.item_subtype_id == subtypeId).ToList();

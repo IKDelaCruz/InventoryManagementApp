@@ -53,13 +53,15 @@ namespace InventoryManagement.Repository
             return list;
         }
 
-        public List<TransactionViewModel> GetTransactions(DateTime from, DateTime to, int itemId = 0)
+        public List<TransactionViewModel> GetTransactions(DateTime from, DateTime to, int itemId = 0, int customerId = 0)
         {
             var list = new List<TransactionViewModel>();
 
             var trans = InventoryDatabase.vw_transaction_summary.Where(h=> h.TranscationDate > from && h.TranscationDate < to).ToList();
             if (itemId != 0)
                 trans = trans.Where(h => h.ItemId == itemId).ToList();
+            if (customerId != 0)
+                trans = trans.Where(h => h.CustomerUserId == customerId).ToList();
 
             foreach (vw_transaction_summary t in trans)
             {
@@ -80,7 +82,7 @@ namespace InventoryManagement.Repository
 
             return list;
         }
-
+       
         public bool InsertTransaction(int systemUserIdm, int otherUserId, int transactionType, string remarks, int itemId = 0)
         {
              InventoryDatabase.transacitons.Add(new Repository.transaciton {

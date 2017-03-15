@@ -26,7 +26,11 @@ namespace AuthenticationLibrary
     {
         public bool AuthenticateLDAP(string username, string password)
         {
-            return true;
+            using (var context = new PrincipalContext(ContextType.Domain, "jakagroup.com", "OU=Users", "ian.delacruz", "1qa2ws3ed!!!"))
+            {
+                return context.ValidateCredentials(username, password);
+            }
+            
         }
         public List<LDAPUserInformation> GetLDAPUsers(string OU)
         {

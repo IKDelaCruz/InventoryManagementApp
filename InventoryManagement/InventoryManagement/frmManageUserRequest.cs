@@ -13,10 +13,10 @@ using System.Windows.Forms;
 
 namespace InventoryManagement
 {
-    public partial class frmManageRequest : frmBase
+    public partial class frmManageUserRequest : frmBase
     {
      
-        public frmManageRequest(int itemId = 0, bool AddItem = true)
+        public frmManageUserRequest(int itemId = 0, bool AddItem = true)
         {
             InitializeComponent();
             dvLogs.AutoGenerateColumns = false;

@@ -16,12 +16,12 @@ using System.Windows.Forms;
 
 namespace InventoryManagement
 {
-    public partial class frmManageItem : frmBase
+    public partial class frmManageItemDetails : frmBase
     {
         private bool isAddNewItem;
         private ItemViewModel _loadedItem;
        
-        public frmManageItem(int itemId = 0, bool AddItem = true)
+        public frmManageItemDetails(int itemId = 0, bool AddItem = true)
         {
             InitializeComponent();
 

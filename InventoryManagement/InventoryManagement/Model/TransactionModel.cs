@@ -25,9 +25,9 @@ namespace InventoryManagement.Model
         {
             return tRepository.GetTransactionsByItemId(id);
         }
-        public List<TransactionViewModel> GetTransactions(DateTime from, DateTime to, int itemId = 0)
+        public List<TransactionViewModel> GetTransactions(DateTime from, DateTime to, int itemId = 0, int customerId= 0)
         {
-            return tRepository.GetTransactions(from, to, itemId);
+            return tRepository.GetTransactions(from, to, itemId, customerId).OrderByDescending(h=>h.TransactionDate).ToList();
         }
     }
 }

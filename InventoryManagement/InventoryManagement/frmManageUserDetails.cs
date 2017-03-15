@@ -1,4 +1,5 @@
 ﻿using InventoryManagement.Model;
+using InventoryManagement.Utils;
 using InventoryManagement.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -13,12 +14,12 @@ using static InventoryManagement.Model.UserModel;
 
 namespace InventoryManagement
 {
-    public partial class frmManageUserInfo : frmBase
+    public partial class frmManageUserDetails : frmBase
     {
         bool isUpdate;
         UserViewModel currentUSer;
 
-        public frmManageUserInfo(int userId = 0)
+        public frmManageUserDetails(int userId = 0)
         {
             InitializeComponent();
             this.DialogResult = DialogResult.Cancel;
@@ -28,9 +29,9 @@ namespace InventoryManagement
             {
                 LoadUserInfo(userId);
                 isUpdate = true;
-
             }
             //load existing values to update/edit
+            dvLogs.AutoGenerateColumns = false;
         }
         private void LoadComboValues()
         {
@@ -134,6 +135,57 @@ namespace InventoryManagement
         private void grpUser_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void frmManageUserInfo_Load(object sender, EventArgs e)
+        {
+            var itms = Singleton.Instance.ItemModel.GetItemsByOwner(currentUSer.Id).OrderBy(h => h.Name).ToList();
+
+            imgMainImage.Images.Clear();
+            var images = Singleton.Instance.ItemSubTypeModel.GetItemSubTypeImages();
+            foreach (ItemSubTypeViewModel x in images)
+                imgMainImage.Images.Add(x.ParentId.ToString(), x.Picture);
+
+            int index = 0;
+            if (lvMain.SelectedIndices.Count > 0)
+                index = lvMain.SelectedIndices[0];
+
+            lvMain.LoadData(itms, imgMainImage);
+
+            if (lvMain.Items.Count > 0 && false)
+            {
+                lvMain.Items[index].Selected = true;
+                lvMain.Focus();
+            }
+        }
+        private void lvMain_DoubleClick(object sender, EventArgs e)
+        {
+            DoManageItem();
+        }
+        private void DoManageItem()
+        {
+            var selected = lvMain.SelectedItems[0];
+            var id = Convert.ToInt32(selected.SubItems[1].Text);
+
+
+            var dlg = new frmManageItemDetails(id, false);
+            dlg.ShowDialog();
+        }
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            LoadLogs();
+        }
+        private void LoadLogs()
+        {
+            var from = dtpFrom.Value.Date;
+            var to = dtpTo.Value.Date.AddDays(1);
+
+            var data = Model.Singleton.Instance.TransactionModel.GetTransactions(from, to, 0, currentUSer.Id);
+            
+            var list = new Utils.MySortableBindingList<TransactionViewModel>(data);
+
+            dvLogs.DataSource = list;
         }
     }
 }

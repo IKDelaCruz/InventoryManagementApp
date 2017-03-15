@@ -25,7 +25,7 @@ namespace InventoryManagement
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            new frmManageUserInfo().ShowDialog();
+            new frmManageUserDetails().ShowDialog();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -48,7 +48,7 @@ namespace InventoryManagement
             var id = Convert.ToInt32(selected.SubItems[1].Text);
 
 
-            var dlg = new frmManageUserInfo(id);
+            var dlg = new frmManageUserDetails(id);
             dlg.ShowDialog();
         }
 

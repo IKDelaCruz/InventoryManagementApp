@@ -141,6 +141,11 @@ namespace InventoryManagement.Model
 
             return itemCache;
         }
+        public List<ItemViewModel> GetItemsByOwner(int userId)
+        {
+            return itemRepostory.QueryItemsByOwner(userId);
+        }
+        
         public List<ItemViewModel> GetItemsBySubType(int subTypeId)
         {
             return itemRepostory.QueryItemsBySubType(subTypeId);

@@ -96,7 +96,7 @@
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMain.Location = new System.Drawing.Point(12, 12);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(553, 537);
+            this.pnlMain.Size = new System.Drawing.Size(553, 505);
             this.pnlMain.TabIndex = 2;
             // 
             // tbMain
@@ -104,12 +104,12 @@
             this.tbMain.Controls.Add(this.tabPage1);
             this.tbMain.Controls.Add(this.tabPage2);
             this.tbMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbMain.ItemSize = new System.Drawing.Size(30, 35);
+            this.tbMain.ItemSize = new System.Drawing.Size(30, 30);
             this.tbMain.Location = new System.Drawing.Point(0, 0);
             this.tbMain.Name = "tbMain";
-            this.tbMain.Padding = new System.Drawing.Point(20, 5);
+            this.tbMain.Padding = new System.Drawing.Point(10, 5);
             this.tbMain.SelectedIndex = 0;
-            this.tbMain.Size = new System.Drawing.Size(551, 535);
+            this.tbMain.Size = new System.Drawing.Size(551, 503);
             this.tbMain.TabIndex = 1;
             this.tbMain.SelectedIndexChanged += new System.EventHandler(this.tbMain_SelectedIndexChanged);
             this.tbMain.Click += new System.EventHandler(this.tbMain_Click);
@@ -117,10 +117,10 @@
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.pnlTab1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 39);
+            this.tabPage1.Location = new System.Drawing.Point(4, 34);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(543, 492);
+            this.tabPage1.Size = new System.Drawing.Size(543, 465);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Create new Request";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -135,7 +135,7 @@
             this.pnlTab1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlTab1.Location = new System.Drawing.Point(3, 3);
             this.pnlTab1.Name = "pnlTab1";
-            this.pnlTab1.Size = new System.Drawing.Size(537, 486);
+            this.pnlTab1.Size = new System.Drawing.Size(537, 459);
             this.pnlTab1.TabIndex = 61;
             // 
             // label11
@@ -326,10 +326,10 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.pnlTab2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 39);
+            this.tabPage2.Location = new System.Drawing.Point(4, 34);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(543, 492);
+            this.tabPage2.Size = new System.Drawing.Size(543, 454);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Manage Request";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -342,7 +342,7 @@
             this.pnlTab2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlTab2.Location = new System.Drawing.Point(3, 3);
             this.pnlTab2.Name = "pnlTab2";
-            this.pnlTab2.Size = new System.Drawing.Size(537, 486);
+            this.pnlTab2.Size = new System.Drawing.Size(537, 448);
             this.pnlTab2.TabIndex = 77;
             this.pnlTab2.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlTab2_Paint);
             // 
@@ -541,7 +541,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(577, 561);
+            this.ClientSize = new System.Drawing.Size(577, 529);
             this.Controls.Add(this.pnlMain);
             this.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

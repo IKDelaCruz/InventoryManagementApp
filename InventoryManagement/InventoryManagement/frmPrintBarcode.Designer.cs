@@ -1,6 +1,6 @@
 ﻿namespace InventoryManagement
 {
-    partial class frmPrinter
+    partial class frmPrintBarcode
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrinter));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrintBarcode));
             this.pbBarcode = new System.Windows.Forms.PictureBox();
             this.btnPrintBarcode = new System.Windows.Forms.Button();
             this.lblDatePrinted = new System.Windows.Forms.Label();

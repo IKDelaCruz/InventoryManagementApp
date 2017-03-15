@@ -99,11 +99,11 @@
     <Compile Include="frmQuickTransaction.Designer.cs">
       <DependentUpon>frmQuickTransaction.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmReport.cs">
+    <Compile Include="frmItemSummaryReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmReport.Designer.cs">
-      <DependentUpon>frmReport.cs</DependentUpon>
+    <Compile Include="frmItemSummaryReport.Designer.cs">
+      <DependentUpon>frmItemSummaryReport.cs</DependentUpon>
     </Compile>
     <Compile Include="frmUserLogs.cs">
       <SubType>Form</SubType>
@@ -141,17 +141,17 @@
     <Compile Include="frmLauncher.Designer.cs">
       <DependentUpon>frmLauncher.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmManageRequest.cs">
+    <Compile Include="frmManageUserRequest.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmManageRequest.Designer.cs">
-      <DependentUpon>frmManageRequest.cs</DependentUpon>
+    <Compile Include="frmManageUserRequest.Designer.cs">
+      <DependentUpon>frmManageUserRequest.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmManageItem.cs">
+    <Compile Include="frmManageItemDetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmManageItem.Designer.cs">
-      <DependentUpon>frmManageItem.cs</DependentUpon>
+    <Compile Include="frmManageItemDetails.Designer.cs">
+      <DependentUpon>frmManageItemDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -168,11 +168,11 @@
     <Compile Include="frmBase.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmManageUserInfo.cs">
+    <Compile Include="frmManageUserDetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmManageUserInfo.Designer.cs">
-      <DependentUpon>frmManageUserInfo.cs</DependentUpon>
+    <Compile Include="frmManageUserDetails.Designer.cs">
+      <DependentUpon>frmManageUserDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="frmManageUsers.cs">
       <SubType>Form</SubType>
@@ -180,11 +180,11 @@
     <Compile Include="frmManageUsers.Designer.cs">
       <DependentUpon>frmManageUsers.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPrinter.cs">
+    <Compile Include="frmPrintBarcode.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPrinter.Designer.cs">
-      <DependentUpon>frmPrinter.cs</DependentUpon>
+    <Compile Include="frmPrintBarcode.Designer.cs">
+      <DependentUpon>frmPrintBarcode.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\BrandModel.cs" />
     <Compile Include="Model\BaseModel.cs" />
@@ -339,11 +339,11 @@
     <EmbeddedResource Include="frmLauncher.resx">
       <DependentUpon>frmLauncher.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmManageRequest.resx">
-      <DependentUpon>frmManageRequest.cs</DependentUpon>
+    <EmbeddedResource Include="frmManageUserRequest.resx">
+      <DependentUpon>frmManageUserRequest.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmManageItem.resx">
-      <DependentUpon>frmManageItem.cs</DependentUpon>
+    <EmbeddedResource Include="frmManageItemDetails.resx">
+      <DependentUpon>frmManageItemDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -354,20 +354,20 @@
     <EmbeddedResource Include="frmBase.resx">
       <DependentUpon>frmBase.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmManageUserInfo.resx">
-      <DependentUpon>frmManageUserInfo.cs</DependentUpon>
+    <EmbeddedResource Include="frmManageUserDetails.resx">
+      <DependentUpon>frmManageUserDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmManageUsers.resx">
       <DependentUpon>frmManageUsers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPrinter.resx">
-      <DependentUpon>frmPrinter.cs</DependentUpon>
+    <EmbeddedResource Include="frmPrintBarcode.resx">
+      <DependentUpon>frmPrintBarcode.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmQuickTransaction.resx">
       <DependentUpon>frmQuickTransaction.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmReport.resx">
-      <DependentUpon>frmReport.cs</DependentUpon>
+    <EmbeddedResource Include="frmItemSummaryReport.resx">
+      <DependentUpon>frmItemSummaryReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmUserLogs.resx">
       <DependentUpon>frmUserLogs.cs</DependentUpon>

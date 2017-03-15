@@ -33,7 +33,9 @@ namespace InventoryManagement
 
         private void DoAuth()
         {
-            var result = Singleton.Instance.UserModel.AuthenticateUser(txtUsername.Text.Trim(), txtPassord.Text.Trim());
+            var userLDAP = true;
+
+            var result = Singleton.Instance.UserModel.AuthenticateUser(txtUsername.Text.Trim(), txtPassord.Text.Trim(), userLDAP);
             if (result != null)
             {
                 //= result;

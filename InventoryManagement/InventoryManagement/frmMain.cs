@@ -1,4 +1,8 @@
-﻿using InventoryManagement.Model;
+﻿using BarcodeLib;
+using InventoryManagement.Manage;
+using InventoryManagement.Model;
+using InventoryManagement.Utils;
+using InventoryManagement.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,11 +12,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using InventoryManagement.Utils;
-using InventoryManagement.ViewModel;
-using BarcodeLib;
-
-using InventoryManagement.Manage;
 
 namespace InventoryManagement
 {
@@ -97,7 +96,7 @@ namespace InventoryManagement
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var result = new frmManageItem().ShowDialog();
+            var result = new frmManageItemDetails().ShowDialog();
             if (result == DialogResult.OK)
             {
                 DoUpdateView(false, false, 1);
@@ -106,7 +105,7 @@ namespace InventoryManagement
 
         private void addToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            var result = new frmManageUserInfo().ShowDialog();
+            var result = new frmManageUserDetails().ShowDialog();
             if (result == DialogResult.OK)
             {
 
@@ -127,7 +126,7 @@ namespace InventoryManagement
             var br = new BarcodeGenerator();
             var barcodeImage = br.DrawBarcode(lblId.Text.ToString().PadLeft(7, '0'));
 
-            var dlg = new frmPrinter(barcodeImage);
+            var dlg = new frmPrintBarcode(barcodeImage);
             dlg.ShowDialog();
         }
 
@@ -135,7 +134,6 @@ namespace InventoryManagement
 
         private void lvMain_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             ViewItemDetails();
         }
         private void ViewItemDetails()
@@ -155,7 +153,7 @@ namespace InventoryManagement
 
         private void DoUpdateView(bool useCache, bool rememberIndex, int orderBy, bool barcodeScanner = false)
         {
-            SuspendLayout();
+          
 
             if (IsInitializing)
                 return;
@@ -227,7 +225,7 @@ namespace InventoryManagement
 
             loginToolStripMenuItem.Text = Singleton.Instance.UserModel.CurrentUser == null ? "Login" : "Logout";
 
-            ResumeLayout();
+           
         }
         #endregion
 
@@ -314,12 +312,12 @@ namespace InventoryManagement
             var id = Convert.ToInt32(selected.SubItems[1].Text);
 
 
-            var dlg = new frmManageItem(id, false);
+            var dlg = new frmManageItemDetails(id, false);
             dlg.ShowDialog();
         }
         private void manageToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            new frmManageRequest().ShowDialog();
+            new frmManageUserRequest().ShowDialog();
         }
 
         private void addItemTypeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -412,7 +410,7 @@ namespace InventoryManagement
 
         private void itemSummaryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new frmReport().ShowDialog();
+            new frmItemSummaryReport().ShowDialog();
         }
 
         private void txtScan_KeyPress(object sender, KeyPressEventArgs e)
@@ -462,6 +460,7 @@ namespace InventoryManagement
         {
             LaunchQuickTransaction(TransactionType.ReturnItem);
         }
+
         private void LaunchQuickTransaction(TransactionType type)
         {
             var dlg = new frmQuickTransaction(_selectedItem, type);
@@ -497,7 +496,7 @@ namespace InventoryManagement
 
         private void manageToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
-            new frmManageRequest().ShowDialog();
+            new frmManageUserRequest().ShowDialog();
         }
 
         private void cbxLocation_SelectedIndexChanged(object sender, EventArgs e)

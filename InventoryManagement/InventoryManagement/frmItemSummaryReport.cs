@@ -12,10 +12,10 @@ using System.Windows.Forms;
 
 namespace InventoryManagement
 {
-    public partial class frmReport : Form
+    public partial class frmItemSummaryReport : Form
     {
         List<ItemViewModel> _reportData;
-        public frmReport()
+        public frmItemSummaryReport()
         {
             InitializeComponent();
             dvLogs.AutoGenerateColumns = false;
