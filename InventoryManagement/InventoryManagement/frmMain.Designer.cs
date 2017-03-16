@@ -128,6 +128,7 @@
             this.itemSummaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.requestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsSelectedItem = new System.Windows.Forms.ToolStripStatusLabel();
             this.cntxtMenuStrip.SuspendLayout();
             this.pnlMain.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -208,6 +209,7 @@
             this.tsAction.Name = "tsAction";
             this.tsAction.Size = new System.Drawing.Size(117, 22);
             this.tsAction.Text = "Action";
+            this.tsAction.Click += new System.EventHandler(this.tsAction_Click);
             // 
             // tsBorrow
             // 
@@ -299,7 +301,6 @@
             this.lvMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvMain.LargeImageList = this.imgMainImage;
             this.lvMain.Location = new System.Drawing.Point(0, 5);
-            this.lvMain.MultiSelect = false;
             this.lvMain.Name = "lvMain";
             this.lvMain.Size = new System.Drawing.Size(1025, 580);
             this.lvMain.SmallImageList = this.imgMainImage;
@@ -932,7 +933,8 @@
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tssUsername});
+            this.tssUsername,
+            this.tsSelectedItem});
             this.statusStrip1.Location = new System.Drawing.Point(0, 707);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
@@ -1085,6 +1087,12 @@
             this.manageToolStripMenuItem1.Text = "Manage";
             this.manageToolStripMenuItem1.Click += new System.EventHandler(this.manageToolStripMenuItem1_Click_1);
             // 
+            // tsSelectedItem
+            // 
+            this.tsSelectedItem.Name = "tsSelectedItem";
+            this.tsSelectedItem.Size = new System.Drawing.Size(81, 17);
+            this.tsSelectedItem.Text = "Selected Item:";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1221,6 +1229,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox cbxUser;
         private System.Windows.Forms.ToolStripMenuItem ownerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripStatusLabel tsSelectedItem;
     }
 }
 

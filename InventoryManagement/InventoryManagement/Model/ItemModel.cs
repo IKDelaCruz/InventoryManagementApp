@@ -58,14 +58,26 @@ namespace InventoryManagement.Model
 
             return rv;
         }
-        public ReturnValueModel UpdateItemStatus(int itemId, int userId, ItemStatus currentStatus, ItemStatus newStatus)
+        private bool AllowChange(ItemStatus oldStatus, ItemStatus newStatus)
+        {
+            if (oldStatus == ItemStatus.Available)
+                return true;
+            if (oldStatus == ItemStatus.Borrowed && newStatus != ItemStatus.Available)
+                return false;
+            if (oldStatus == ItemStatus.Broken && newStatus != ItemStatus.Available)
+                return false;
+            if (oldStatus == ItemStatus.Reserved && (newStatus != ItemStatus.Borrowed && newStatus != ItemStatus.Available))
+                return false;
+            if (oldStatus == ItemStatus.Disposed)
+                return false;
+
+            return true;
+        }
+        public ReturnValueModel UpdateItemStatus(int itemId, int userId, ItemStatus oldStatus, ItemStatus newStatus)
         {
             var result = new ReturnValueModel();
-
-            var success = itemRepostory.UpdateItemStatus(itemId, userId, (int)newStatus);
-
-            result.Success = success;
-            //result.Param1 = itemStatus.ToString();
+            if(AllowChange(oldStatus, newStatus))
+                result.Success = itemRepostory.UpdateItemStatus(itemId, userId, (int)newStatus);
 
             return result;
         }

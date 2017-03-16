@@ -46,7 +46,8 @@ namespace InventoryManagement.Utils
                 //newItem.ImageIndex = x;
                 newItem.SubItems.Add(item.Id.ToString());
                 newItem.SubItems.Add(item.TypeId.ToString());
-                if(!summary)
+                newItem.SubItems.Add(item.Status.ToString());
+                if (!summary)
                 {
                     if (item.Status == ItemStatus.Available)
                         newItem.ForeColor = Color.Green;

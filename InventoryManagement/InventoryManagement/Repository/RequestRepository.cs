@@ -36,7 +36,7 @@ namespace InventoryManagement.Repository
                 request_type = (int)req.RequestType,
                 request_need_date = req.NeededDate,
                 request_remarks = req.Remarks,
-                request_admin_remarks =req.AdminRemarks
+                request_admin_remarks = req.AdminRemarks
             };
             InventoryDatabase.requests.Add(newReq);
             if (InventoryDatabase.SaveChanges() > 0)
@@ -45,7 +45,7 @@ namespace InventoryManagement.Repository
                 return 0;
         }
         public List<RequestViewModel> GetRequestByUserId(int userId)
-        {        
+        {
             var result = new List<RequestViewModel>();
             var reqs = InventoryDatabase.requests.Where(x => x.request_user_id == userId);
             foreach (request r in reqs)
@@ -73,7 +73,7 @@ namespace InventoryManagement.Repository
             var result = new List<RequestViewModel>();
             var reqs = InventoryDatabase.requests.Where(x => x.request_status == (int)status);
 
-            
+
             foreach (request r in reqs)
             {
                 result.Add(new RequestViewModel
@@ -93,7 +93,7 @@ namespace InventoryManagement.Repository
                     UserId = r.request_user_id,
                     AdminRemarks = r.request_admin_remarks,
                     ExpectedReturnDate = r.request_expected_return_date ?? DateTime.MinValue,
-                    NeededDate = r.request_need_date?? DateTime.MinValue,
+                    NeededDate = r.request_need_date ?? DateTime.MinValue,
 
                 });
             }
@@ -122,7 +122,7 @@ namespace InventoryManagement.Repository
 
             return result;
         }
-       
+
         public bool UpdateRequest(RequestViewModel req)
         {
             var oldRequest = InventoryDatabase.requests.FirstOrDefault(x => x.request_id == req.Id);
@@ -140,24 +140,17 @@ namespace InventoryManagement.Repository
 
         }
 
-        public bool UpdateRequestStatus(int id, string remark, int user, DateTime need_date, RequestStatus status)
+        public bool UpdateRequestStatus(int id, string remark, int user, RequestStatus status)
         {
-            
+
             var oldRequest = InventoryDatabase.requests.FirstOrDefault(x => x.request_id == id);
             if (oldRequest != null)
             {
                 oldRequest.request_status = (int)status;
                 oldRequest.request_process_date = DateTime.Now;
                 oldRequest.request_process_by_id = user;
-                oldRequest.request_requested_by_id = oldRequest.request_user_id;
                 oldRequest.request_admin_remarks = remark;
 
-                //DateTime need = Convert.ToDateTime(need_date);
-                if (oldRequest.request_type == 0)
-                {
-                    DateTime expected_return = need_date.AddDays(2);
-                    oldRequest.request_expected_return_date = expected_return;
-                }
 
                 InventoryDatabase.SaveChanges();
 
@@ -190,7 +183,7 @@ namespace InventoryManagement.Repository
                     UserId = r.request_user_id,
                     AdminRemarks = r.request_admin_remarks,
                     ExpectedReturnDate = r.request_expected_return_date ?? DateTime.MinValue,
-                    NeededDate = r.request_need_date?? DateTime.MinValue,
+                    NeededDate = r.request_need_date ?? DateTime.MinValue,
 
                 });
             }
@@ -282,7 +275,7 @@ namespace InventoryManagement.Repository
                                  where u.request_expected_return_date == expectedreturn
                                  select u.request_user_id).FirstOrDefault();
 
-                    
+
                     EmailSender.SendMail(query);
 
                 }

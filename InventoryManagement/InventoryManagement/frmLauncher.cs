@@ -20,7 +20,7 @@ namespace InventoryManagement
 
         private void frmLauncher_Load(object sender, EventArgs e)
         {
-            
+            LoadLogin();
         }
         private void LoadLogin()
         {

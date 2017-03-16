@@ -17,7 +17,7 @@ namespace InventoryManagement
 {
     public partial class frmMain : frmBase
     {
-        ItemViewModel _selectedItem;
+        List<ItemViewModel> _selectedItem;
         public frmMain()
         {
             IsInitializing = true;
@@ -27,6 +27,7 @@ namespace InventoryManagement
 
 
             IsInitializing = false;
+            _selectedItem = new List<ItemViewModel>();
         }
 
         private void fillcombo()
@@ -138,13 +139,27 @@ namespace InventoryManagement
         }
         private void ViewItemDetails()
         {
+            _selectedItem.Clear();
             if (lvMain.SelectedItems.Count == 0)
                 return;
 
-            var selected = lvMain.SelectedItems[0];
-            var id = Convert.ToInt32(selected.SubItems[1].Text);
-            _selectedItem = Singleton.Instance.ItemModel.GetItem(id);
+            var selected = lvMain.SelectedItems;
+            foreach(ListViewItem li in selected)
+            {
+                var id = Convert.ToInt32(li.SubItems[1].Text);
+                var type = Convert.ToInt32(li.SubItems[2].Text);
 
+                ItemStatus itemStatus = (ItemStatus)Enum.Parse(typeof(ItemStatus), li.SubItems[3].Text, true);
+
+                _selectedItem.Add(new ItemViewModel
+                {
+                    Id = id,
+                    TypeId = type,
+                    Status = (ItemStatus)itemStatus
+                });
+               
+            }
+            tsSelectedItem.Text = "Selected Item: " + _selectedItem.Count();
 
             DoUpdateItemDetails();
         }
@@ -159,21 +174,28 @@ namespace InventoryManagement
                 return;
 
             var itms = new List<ItemViewModel>();
+            itms = Singleton.Instance.ItemModel.GetItems(useCache);
 
             if (orderBy == 1)
-                itms = Singleton.Instance.ItemModel.GetItems(useCache).OrderBy(h => h.Name).ToList();
+                itms = itms.OrderBy(h => h.Name).ToList();
             else if (orderBy == 2)
-                itms = Singleton.Instance.ItemModel.GetItems(useCache).OrderByDescending(h => h.Status).ToList();
+                itms = itms.OrderByDescending(h => h.Status).ToList();
             else if (orderBy == 3)
-                itms = Singleton.Instance.ItemModel.GetItems(useCache).OrderByDescending(h => h.CurrentOwner).ToList();
+                itms = itms.OrderByDescending(h => h.CurrentOwner).ToList();
             else
-                itms = Singleton.Instance.ItemModel.GetItems(useCache).OrderByDescending(h => h.PurchaseDate).ToList();
+                itms = itms.OrderByDescending(h => h.PurchaseDate).ToList();
 
 
             #region --- FILTER LOGIC ---
 
             if (!chkShowAllStatus.Checked)
+            {
                 itms = itms.Where(h => h.Status == (ItemStatus)cbxStatus.SelectedItem).ToList();
+            }
+            else
+            {
+                itms = itms.Where(h => h.Status != (ItemStatus.Disposed)).ToList();
+            }
             if (!chkShowAllType.Checked)
                 itms = itms.Where(h => h.TypeId == Convert.ToInt32(cbxType.SelectedValue)).ToList();
             if (!chkShowAllSubType.Checked)
@@ -248,7 +270,8 @@ namespace InventoryManagement
         }
         private void DoUpdateItemDetails()
         {
-            var item = _selectedItem;
+            var item = Singleton.Instance.ItemModel.GetItem(_selectedItem[0].Id);
+
             if (item != null)
             {
 
@@ -517,6 +540,11 @@ namespace InventoryManagement
         private void ownerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DoUpdateView(false, false, 3, false);
+        }
+
+        private void tsAction_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

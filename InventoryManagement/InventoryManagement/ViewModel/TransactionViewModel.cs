@@ -20,7 +20,8 @@ namespace InventoryManagement.ViewModel
         DisposeItem,
         CreateUser,
         EditUser,
-        DeleteUser
+        DeleteUser,
+        DeliverRequest
     }
 
     public class TransactionViewModel

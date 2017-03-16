@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUserLogs));
             this.imgMain = new System.Windows.Forms.ImageList(this.components);
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnExport = new System.Windows.Forms.Button();
             this.btnFilter = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dtpTo = new System.Windows.Forms.DateTimePicker();
@@ -44,8 +46,6 @@
             this.SystemUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnExport = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
             this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvLogs)).BeginInit();
             this.SuspendLayout();
@@ -77,6 +77,27 @@
             this.pnlMain.Size = new System.Drawing.Size(764, 483);
             this.pnlMain.TabIndex = 11;
             // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(648, 431);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(100, 30);
+            this.btnClose.TabIndex = 63;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(540, 431);
+            this.btnExport.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(100, 30);
+            this.btnExport.TabIndex = 14;
+            this.btnExport.Text = "Export To CSV";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
             // btnFilter
             // 
             this.btnFilter.Location = new System.Drawing.Point(648, 54);
@@ -91,7 +112,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(388, 62);
+            this.label1.Location = new System.Drawing.Point(475, 62);
             this.label1.Margin = new System.Windows.Forms.Padding(5);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 15);
@@ -101,16 +122,16 @@
             // dtpTo
             // 
             this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpTo.Location = new System.Drawing.Point(453, 56);
+            this.dtpTo.Location = new System.Drawing.Point(540, 56);
             this.dtpTo.Margin = new System.Windows.Forms.Padding(5);
             this.dtpTo.Name = "dtpTo";
-            this.dtpTo.Size = new System.Drawing.Size(186, 23);
+            this.dtpTo.Size = new System.Drawing.Size(99, 23);
             this.dtpTo.TabIndex = 60;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(117, 62);
+            this.label15.Location = new System.Drawing.Point(290, 62);
             this.label15.Margin = new System.Windows.Forms.Padding(5);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(65, 15);
@@ -120,10 +141,10 @@
             // dtpFrom
             // 
             this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFrom.Location = new System.Drawing.Point(192, 56);
+            this.dtpFrom.Location = new System.Drawing.Point(365, 56);
             this.dtpFrom.Margin = new System.Windows.Forms.Padding(5);
             this.dtpFrom.Name = "dtpFrom";
-            this.dtpFrom.Size = new System.Drawing.Size(186, 23);
+            this.dtpFrom.Size = new System.Drawing.Size(100, 23);
             this.dtpFrom.TabIndex = 58;
             // 
             // label3
@@ -195,27 +216,6 @@
             this.ItemName.HeaderText = "ItemName";
             this.ItemName.Name = "ItemName";
             this.ItemName.Width = 150;
-            // 
-            // btnExport
-            // 
-            this.btnExport.Location = new System.Drawing.Point(540, 431);
-            this.btnExport.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(100, 30);
-            this.btnExport.TabIndex = 14;
-            this.btnExport.Text = "Export To CSV";
-            this.btnExport.UseVisualStyleBackColor = true;
-            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.Location = new System.Drawing.Point(648, 431);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(100, 30);
-            this.btnClose.TabIndex = 63;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
             // 
             // frmUserLogs
             // 
