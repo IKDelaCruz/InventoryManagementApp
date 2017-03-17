@@ -111,6 +111,7 @@
             this.lblSerial = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tssUsername = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsSelectedItem = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -128,7 +129,7 @@
             this.itemSummaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.requestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsSelectedItem = new System.Windows.Forms.ToolStripStatusLabel();
+            this.uploadItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cntxtMenuStrip.SuspendLayout();
             this.pnlMain.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -948,6 +949,12 @@
             this.tssUsername.Size = new System.Drawing.Size(84, 17);
             this.tssUsername.Text = "Current User []";
             // 
+            // tsSelectedItem
+            // 
+            this.tsSelectedItem.Name = "tsSelectedItem";
+            this.tsSelectedItem.Size = new System.Drawing.Size(81, 17);
+            this.tsSelectedItem.Text = "Selected Item:";
+            // 
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
@@ -996,7 +1003,8 @@
             this.toolStripSeparator1,
             this.addToolStripMenuItem,
             this.addItemTypeToolStripMenuItem,
-            this.manageBrandToolStripMenuItem});
+            this.manageBrandToolStripMenuItem,
+            this.uploadItemsToolStripMenuItem});
             this.inventoryToolStripMenuItem.Name = "inventoryToolStripMenuItem";
             this.inventoryToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.inventoryToolStripMenuItem.Text = "Inventory";
@@ -1004,33 +1012,33 @@
             // summaryToolStripMenuItem
             // 
             this.summaryToolStripMenuItem.Name = "summaryToolStripMenuItem";
-            this.summaryToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.summaryToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.summaryToolStripMenuItem.Text = "Summary";
             this.summaryToolStripMenuItem.Click += new System.EventHandler(this.summaryToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(148, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.addToolStripMenuItem.Text = "Add Item";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // addItemTypeToolStripMenuItem
             // 
             this.addItemTypeToolStripMenuItem.Name = "addItemTypeToolStripMenuItem";
-            this.addItemTypeToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.addItemTypeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.addItemTypeToolStripMenuItem.Text = "Manage Types";
             this.addItemTypeToolStripMenuItem.Click += new System.EventHandler(this.addItemTypeToolStripMenuItem_Click);
             // 
             // manageBrandToolStripMenuItem
             // 
             this.manageBrandToolStripMenuItem.Name = "manageBrandToolStripMenuItem";
-            this.manageBrandToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.manageBrandToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.manageBrandToolStripMenuItem.Text = "Manage Brand";
             this.manageBrandToolStripMenuItem.Click += new System.EventHandler(this.manageBrandToolStripMenuItem_Click);
             // 
@@ -1087,11 +1095,12 @@
             this.manageToolStripMenuItem1.Text = "Manage";
             this.manageToolStripMenuItem1.Click += new System.EventHandler(this.manageToolStripMenuItem1_Click_1);
             // 
-            // tsSelectedItem
+            // uploadItemsToolStripMenuItem
             // 
-            this.tsSelectedItem.Name = "tsSelectedItem";
-            this.tsSelectedItem.Size = new System.Drawing.Size(81, 17);
-            this.tsSelectedItem.Text = "Selected Item:";
+            this.uploadItemsToolStripMenuItem.Name = "uploadItemsToolStripMenuItem";
+            this.uploadItemsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.uploadItemsToolStripMenuItem.Text = "Upload Items";
+            this.uploadItemsToolStripMenuItem.Click += new System.EventHandler(this.uploadItemsToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -1230,6 +1239,7 @@
         private System.Windows.Forms.ComboBox cbxUser;
         private System.Windows.Forms.ToolStripMenuItem ownerToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel tsSelectedItem;
+        private System.Windows.Forms.ToolStripMenuItem uploadItemsToolStripMenuItem;
     }
 }
 

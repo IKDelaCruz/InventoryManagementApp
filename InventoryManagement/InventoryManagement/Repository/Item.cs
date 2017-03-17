@@ -50,6 +50,7 @@ namespace InventoryManagement.Repository
         public Nullable<int> item_login_type { get; set; }
         public Nullable<int> item_printer_type { get; set; }
         public string item_ip_gateway { get; set; }
+        public Nullable<int> item_parent { get; set; }
     
         public virtual brand brand { get; set; }
         public virtual item_subtype item_subtype { get; set; }

@@ -119,9 +119,9 @@ namespace InventoryManagement.Model
         }
 
 
-        public OSViewModel GetOSname(int id, string os)
+        public OSViewModel GetOSname(string os)
         {
-            return itemRepostory.GetOSbyName(id, os);
+            return itemRepostory.GetOSbyName(os);
         }
 
 

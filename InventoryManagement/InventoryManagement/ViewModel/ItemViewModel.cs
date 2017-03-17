@@ -77,11 +77,14 @@ namespace InventoryManagement.ViewModel
         PentiumI,
         PentiumII,
         PentiumIII,
+        Pentium4,
         DualCore,
+        QuadCore,
         Core2Duo,
-        I3,
-        I5,
-        I7,
+        Core2Quad,
+        CoreI3,
+        CoreI5,
+        CoreI7,
         Xeon,
         AMD
     }
@@ -92,6 +95,7 @@ namespace InventoryManagement.ViewModel
         DDRII512,
         DDRII1024,
         DDRIII2GB,
+        DDRIII3GB,
         DDRIII4GB,
         DDRIII6GB,
         DDRIII8GB,
@@ -100,9 +104,14 @@ namespace InventoryManagement.ViewModel
     public enum ItemHDDCapacity
     {
         Unknown,
+        IDE80,
+        IDE120,
+        IDE160,
         IDE256,
+        IDE320,
         IDE500,
         SATA500,
+        SATA600,
         SATA1TB,
         SATA2TB,
         SATA4TB,
@@ -120,6 +129,7 @@ namespace InventoryManagement.ViewModel
     public class ItemViewModel
     {
         public int Id { get; set; }
+        public int ParentId { get; set; }
         public bool IsSummary { get; set; }
         public int SummaryCount { get; set; }
         public string AssetTag { get; set; }
@@ -160,6 +170,14 @@ namespace InventoryManagement.ViewModel
         public string NetworkIP { get; set; }
         public string NetworkSubnet { get; set; }
         public string NetworkGateway { get; set; }
+
+        public ItemViewModel()
+        {
+            PurchaseDate = DateTime.Now;
+            LastUpdatedDate = DateTime.Now;
+            BrandId = 13;
+            Description = "";
+        }
     }
 }
 

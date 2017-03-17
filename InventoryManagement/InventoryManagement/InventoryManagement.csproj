@@ -86,6 +86,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -117,6 +118,12 @@
     </Compile>
     <Compile Include="frmItemSummaryReport.Designer.cs">
       <DependentUpon>frmItemSummaryReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUploadItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUploadItems.Designer.cs">
+      <DependentUpon>frmUploadItems.cs</DependentUpon>
     </Compile>
     <Compile Include="frmUserLogs.cs">
       <SubType>Form</SubType>
@@ -384,6 +391,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmItemSummaryReport.resx">
       <DependentUpon>frmItemSummaryReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUploadItems.resx">
+      <DependentUpon>frmUploadItems.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmUserLogs.resx">
       <DependentUpon>frmUserLogs.cs</DependentUpon>

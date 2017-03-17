@@ -21,7 +21,7 @@ namespace InventoryManagement.Repository
                 item_description = newItem.Description,
                 item_subtype_id = (int)newItem.SubTypeId,
                 item_type_id = (int)newItem.TypeId,
-                item_last_updated = newItem.LastUpdatedDate,
+           
                 item_last_updated_user = newItem.LastUpdatedUserId,
                 item_lifespan = newItem.LifeSpan,
                 item_model = newItem.Model,
@@ -43,7 +43,14 @@ namespace InventoryManagement.Repository
             };
             InventoryDatabase.items.Add(itm);
 
-            InventoryDatabase.SaveChanges();
+            try
+            {
+                InventoryDatabase.SaveChanges();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
             return itm.item_id;
         }
@@ -237,9 +244,9 @@ namespace InventoryManagement.Repository
 
         }
 
-        public OSViewModel GetOSbyName(int id, string os)
+        public OSViewModel GetOSbyName(string os)
         {
-            var OS = InventoryDatabase.operation_system.FirstOrDefault(h => h.os_id == id && h.os_name == os);
+            var OS = InventoryDatabase.operation_system.FirstOrDefault(h =>  h.os_name == os);
             if (OS != null)
             {
                 return new OSViewModel
@@ -251,7 +258,13 @@ namespace InventoryManagement.Repository
                 };
             }
 
-            return null;
+              return new OSViewModel
+            {
+                Id = 1,
+                ParentId = 1,
+                Name = "Unknown",
+
+            }; ;
         }
 
 
@@ -333,7 +346,7 @@ namespace InventoryManagement.Repository
         {
             var OSList = new List<OSViewModel>();
 
-            var operatingsystems = InventoryDatabase.operation_system.ToList();
+            var operatingsystems = InventoryDatabase.operation_system.OrderBy(h=> h.os_name).ToList();
             foreach (operation_system o in operatingsystems)
             {
                 OSList.Add(new ViewModel.OSViewModel

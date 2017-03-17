@@ -546,6 +546,11 @@ namespace InventoryManagement
         {
 
         }
+
+        private void uploadItemsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new frmUploadItems().ShowDialog();
+        }
     }
 
 }

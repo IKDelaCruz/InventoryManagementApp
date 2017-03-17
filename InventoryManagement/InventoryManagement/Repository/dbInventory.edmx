@@ -71,6 +71,7 @@
           <Property Name="item_ip_dns" Type="varchar" MaxLength="50" />
           <Property Name="item_login_type" Type="int" />
           <Property Name="item_printer_type" Type="int" />
+          <Property Name="item_parent" Type="int" />
         </EntityType>
         <EntityType Name="item_image">
           <Key>
@@ -396,13 +397,6 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_transaction_summary' do
           <Property Name="TransactionTypeId" Type="int" Nullable="false" />
           <Property Name="ItemId" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'InventoryManagement.dbo.vw_user_item_summary' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vw_user_item_summary">
-          <Property Name="CurrentOwnerUsername" Type="varchar" MaxLength="150" />
-          <Property Name="ItemCount" Type="int" />
-          <Property Name="CurrentOwner" Type="int" />
-        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vw_user_membership_detail">
@@ -1065,6 +1059,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
           <Property Name="item_login_type" Type="Int32" />
           <Property Name="item_printer_type" Type="Int32" />
           <Property Name="item_ip_gateway" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="item_parent" Type="Int32" />
         </EntityType>
         <EntityType Name="item_image">
           <Key>
@@ -1646,6 +1641,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
           <EntitySetMapping Name="items">
             <EntityTypeMapping TypeName="InventoryMangementModel.item">
               <MappingFragment StoreEntitySet="item">
+                <ScalarProperty Name="item_parent" ColumnName="item_parent" />
                 <ScalarProperty Name="item_ip_gateway" ColumnName="item_ip_gateway" />
                 <ScalarProperty Name="item_printer_type" ColumnName="item_printer_type" />
                 <ScalarProperty Name="item_login_type" ColumnName="item_login_type" />
