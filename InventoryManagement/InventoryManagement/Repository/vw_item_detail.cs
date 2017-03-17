@@ -48,5 +48,9 @@ namespace InventoryManagement.Repository
         public Nullable<int> ItemLoginType { get; set; }
         public string UserDepartmentName { get; set; }
         public string UserCompanyName { get; set; }
+        public Nullable<int> PrinterType { get; set; }
+        public string NetworkIP { get; set; }
+        public string NetworkSubnet { get; set; }
+        public string NetworkGateway { get; set; }
     }
 }

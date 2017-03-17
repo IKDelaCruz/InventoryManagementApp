@@ -31,8 +31,13 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManageUserRequest));
             this.tmrRefresh = new System.Windows.Forms.Timer(this.components);
+            this.pnlMain = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dtpTo = new System.Windows.Forms.DateTimePicker();
+            this.label15 = new System.Windows.Forms.Label();
+            this.dtpFrom = new System.Windows.Forms.DateTimePicker();
             this.label23 = new System.Windows.Forms.Label();
             this.cbxStatus = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -43,7 +48,7 @@
             this.dvLogs = new System.Windows.Forms.DataGridView();
             this.btnDecline = new System.Windows.Forms.Button();
             this.btnApproved = new System.Windows.Forms.Button();
-            this.pnlMain = new System.Windows.Forms.Panel();
+            this.btnFilter = new System.Windows.Forms.Button();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TransactionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SystemUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,11 +58,11 @@
             this.Remarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AdminRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnlMain.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvLogs)).BeginInit();
-            this.pnlMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // tmrRefresh
@@ -65,6 +70,16 @@
             this.tmrRefresh.Enabled = true;
             this.tmrRefresh.Interval = 10000;
             this.tmrRefresh.Tick += new System.EventHandler(this.tmrRefresh_Tick);
+            // 
+            // pnlMain
+            // 
+            this.pnlMain.BackColor = System.Drawing.Color.White;
+            this.pnlMain.Controls.Add(this.tabControl1);
+            this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlMain.Location = new System.Drawing.Point(10, 10);
+            this.pnlMain.Name = "pnlMain";
+            this.pnlMain.Size = new System.Drawing.Size(730, 482);
+            this.pnlMain.TabIndex = 4;
             // 
             // tabControl1
             // 
@@ -77,6 +92,11 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnFilter);
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.dtpTo);
+            this.tabPage1.Controls.Add(this.label15);
+            this.tabPage1.Controls.Add(this.dtpFrom);
             this.tabPage1.Controls.Add(this.label23);
             this.tabPage1.Controls.Add(this.cbxStatus);
             this.tabPage1.Controls.Add(this.groupBox1);
@@ -91,10 +111,48 @@
             this.tabPage1.Text = "Pending Requests";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(193, 13);
+            this.label2.Margin = new System.Windows.Forms.Padding(5);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(55, 15);
+            this.label2.TabIndex = 67;
+            this.label2.Text = "End Date";
+            // 
+            // dtpTo
+            // 
+            this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpTo.Location = new System.Drawing.Point(258, 10);
+            this.dtpTo.Margin = new System.Windows.Forms.Padding(5);
+            this.dtpTo.Name = "dtpTo";
+            this.dtpTo.Size = new System.Drawing.Size(99, 23);
+            this.dtpTo.TabIndex = 66;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(12, 13);
+            this.label15.Margin = new System.Windows.Forms.Padding(5);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(65, 15);
+            this.label15.TabIndex = 65;
+            this.label15.Text = "Begin Date";
+            // 
+            // dtpFrom
+            // 
+            this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFrom.Location = new System.Drawing.Point(83, 10);
+            this.dtpFrom.Margin = new System.Windows.Forms.Padding(5);
+            this.dtpFrom.Name = "dtpFrom";
+            this.dtpFrom.Size = new System.Drawing.Size(100, 23);
+            this.dtpFrom.TabIndex = 64;
+            // 
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(539, 11);
+            this.label23.Location = new System.Drawing.Point(367, 13);
             this.label23.Margin = new System.Windows.Forms.Padding(5);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(41, 15);
@@ -105,7 +163,7 @@
             // 
             this.cbxStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxStatus.FormattingEnabled = true;
-            this.cbxStatus.Location = new System.Drawing.Point(590, 8);
+            this.cbxStatus.Location = new System.Drawing.Point(418, 10);
             this.cbxStatus.Margin = new System.Windows.Forms.Padding(5);
             this.cbxStatus.Name = "cbxStatus";
             this.cbxStatus.Size = new System.Drawing.Size(121, 23);
@@ -186,6 +244,7 @@
             this.dvLogs.Size = new System.Drawing.Size(704, 191);
             this.dvLogs.TabIndex = 1;
             this.dvLogs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvLogs_CellClick);
+            this.dvLogs.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvLogs_CellContentClick);
             // 
             // btnDecline
             // 
@@ -209,15 +268,16 @@
             this.btnApproved.UseVisualStyleBackColor = true;
             this.btnApproved.Click += new System.EventHandler(this.btnApproved_Click);
             // 
-            // pnlMain
+            // btnFilter
             // 
-            this.pnlMain.BackColor = System.Drawing.Color.White;
-            this.pnlMain.Controls.Add(this.tabControl1);
-            this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMain.Location = new System.Drawing.Point(10, 10);
-            this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(730, 482);
-            this.pnlMain.TabIndex = 4;
+            this.btnFilter.Location = new System.Drawing.Point(610, 5);
+            this.btnFilter.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(100, 30);
+            this.btnFilter.TabIndex = 69;
+            this.btnFilter.Text = "Filter";
+            this.btnFilter.UseVisualStyleBackColor = true;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // Id
             // 
@@ -231,6 +291,7 @@
             this.TransactionDate.DataPropertyName = "RequestedDate";
             this.TransactionDate.HeaderText = "Date";
             this.TransactionDate.Name = "TransactionDate";
+            this.TransactionDate.Width = 130;
             // 
             // SystemUserName
             // 
@@ -256,6 +317,7 @@
             this.NeededDate.DataPropertyName = "NeededDate";
             this.NeededDate.HeaderText = "Date Needed";
             this.NeededDate.Name = "NeededDate";
+            this.NeededDate.Width = 130;
             // 
             // Remarks
             // 
@@ -290,13 +352,13 @@
             this.Padding = new System.Windows.Forms.Padding(10);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage Request";
+            this.pnlMain.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvLogs)).EndInit();
-            this.pnlMain.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -316,6 +378,11 @@
         private System.Windows.Forms.Panel pnlMain;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.ComboBox cbxStatus;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker dtpTo;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.DateTimePicker dtpFrom;
+        private System.Windows.Forms.Button btnFilter;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn TransactionDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn SystemUserName;

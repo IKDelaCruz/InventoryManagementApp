@@ -68,13 +68,13 @@ namespace InventoryManagement.Repository
             }
             return result;
         }
-        public List<RequestViewModel> GetRequestByStatus(RequestStatus status)
+        public List<RequestViewModel> GetRequestByStatus(RequestStatus status, DateTime from, DateTime to)
         {
             var result = new List<RequestViewModel>();
-            var reqs = InventoryDatabase.requests.Where(x => x.request_status == (int)status);
+            var reqs = InventoryDatabase.vw_request_details.Where(x => x.request_date > from && x.request_date < to && x.request_status == (int)status);
 
 
-            foreach (request r in reqs)
+            foreach (vw_request_details r in reqs)
             {
                 result.Add(new RequestViewModel
                 {
@@ -94,7 +94,7 @@ namespace InventoryManagement.Repository
                     AdminRemarks = r.request_admin_remarks,
                     ExpectedReturnDate = r.request_expected_return_date ?? DateTime.MinValue,
                     NeededDate = r.request_need_date ?? DateTime.MinValue,
-
+                    UserFullnameEmail = r.user_last_name + ", " + r.user_first_name
                 });
             }
             return result;

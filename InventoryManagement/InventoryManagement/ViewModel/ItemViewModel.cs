@@ -155,7 +155,12 @@ namespace InventoryManagement.ViewModel
         public ItemHDDCapacity HDD2 { get; set; }
 
         public Image Picture { get; set; }
-
         public ItemLoginType LoginType { get; set; }
+        public PrinterType PrinterType { get; set; }
+        public string NetworkIP { get; set; }
+        public string NetworkSubnet { get; set; }
+        public string NetworkGateway { get; set; }
     }
 }
+
+

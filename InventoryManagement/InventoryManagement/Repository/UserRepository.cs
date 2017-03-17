@@ -174,7 +174,8 @@ namespace InventoryManagement.Repository
                     UserType = u.user_type,
                     Firstname = u.user_first_name,
                     Lastname = u.user_last_name,
-                    LastnameFirstName = u.user_last_name + ", " + u.user_first_name
+                    LastnameFirstName = u.user_last_name + ", " + u.user_first_name,
+                    LastnameFirstNameUsername = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(u.user_last_name) + ", " + CultureInfo.CurrentCulture.TextInfo.ToTitleCase(u.user_first_name) + " (" + u.user_username + ")"
                 });
             }
 

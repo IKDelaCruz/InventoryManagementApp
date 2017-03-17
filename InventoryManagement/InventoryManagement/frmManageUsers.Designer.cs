@@ -34,13 +34,13 @@
             this.btnNew = new System.Windows.Forms.Button();
             this.lvUsers = new System.Windows.Forms.ListView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtFilter = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cbxCompany = new System.Windows.Forms.ComboBox();
             this.cbxDepartment = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtFilter = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -94,6 +94,44 @@
             this.panel1.Size = new System.Drawing.Size(736, 428);
             this.panel1.TabIndex = 11;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(398, 30);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(71, 15);
+            this.label5.TabIndex = 106;
+            this.label5.Text = "Department";
+            // 
+            // cbxCompany
+            // 
+            this.cbxCompany.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxCompany.FormattingEnabled = true;
+            this.cbxCompany.Location = new System.Drawing.Point(243, 48);
+            this.cbxCompany.Name = "cbxCompany";
+            this.cbxCompany.Size = new System.Drawing.Size(152, 23);
+            this.cbxCompany.TabIndex = 103;
+            this.cbxCompany.SelectedIndexChanged += new System.EventHandler(this.cbxCompany_SelectedIndexChanged);
+            // 
+            // cbxDepartment
+            // 
+            this.cbxDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxDepartment.FormattingEnabled = true;
+            this.cbxDepartment.Location = new System.Drawing.Point(401, 48);
+            this.cbxDepartment.Name = "cbxDepartment";
+            this.cbxDepartment.Size = new System.Drawing.Size(152, 23);
+            this.cbxDepartment.TabIndex = 105;
+            this.cbxDepartment.SelectedIndexChanged += new System.EventHandler(this.cbxDepartment_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(240, 30);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(58, 15);
+            this.label4.TabIndex = 104;
+            this.label4.Text = "Company";
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -122,42 +160,6 @@
             this.txtFilter.Size = new System.Drawing.Size(109, 23);
             this.txtFilter.TabIndex = 11;
             this.txtFilter.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(398, 30);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(71, 15);
-            this.label5.TabIndex = 106;
-            this.label5.Text = "Department";
-            // 
-            // cbxCompany
-            // 
-            this.cbxCompany.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxCompany.FormattingEnabled = true;
-            this.cbxCompany.Location = new System.Drawing.Point(243, 48);
-            this.cbxCompany.Name = "cbxCompany";
-            this.cbxCompany.Size = new System.Drawing.Size(152, 23);
-            this.cbxCompany.TabIndex = 103;
-            // 
-            // cbxDepartment
-            // 
-            this.cbxDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxDepartment.FormattingEnabled = true;
-            this.cbxDepartment.Location = new System.Drawing.Point(401, 48);
-            this.cbxDepartment.Name = "cbxDepartment";
-            this.cbxDepartment.Size = new System.Drawing.Size(152, 23);
-            this.cbxDepartment.TabIndex = 105;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(240, 30);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(58, 15);
-            this.label4.TabIndex = 104;
-            this.label4.Text = "Company";
             // 
             // frmManageUsers
             // 

@@ -67,8 +67,10 @@
           <Property Name="item_salvage_value" Type="money" />
           <Property Name="item_ip_address" Type="varchar" MaxLength="50" />
           <Property Name="item_ip_subnet_mask" Type="varchar" MaxLength="50" />
+          <Property Name="item_ip_gateway" Type="varchar" MaxLength="50" />
           <Property Name="item_ip_dns" Type="varchar" MaxLength="50" />
           <Property Name="item_login_type" Type="int" />
+          <Property Name="item_printer_type" Type="int" />
         </EntityType>
         <EntityType Name="item_image">
           <Key>
@@ -253,6 +255,10 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_item_detail' does not h
           <Property Name="ItemLoginType" Type="int" />
           <Property Name="UserDepartmentName" Type="varchar" MaxLength="500" />
           <Property Name="UserCompanyName" Type="varchar" MaxLength="50" />
+          <Property Name="PrinterType" Type="int" />
+          <Property Name="NetworkIP" Type="varchar" MaxLength="50" />
+          <Property Name="NetworkSubnet" Type="varchar" MaxLength="50" />
+          <Property Name="NetworkGateway" Type="varchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'InventoryManagement.dbo.vw_item_log' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -312,6 +318,37 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_item_type_summary' does
           <Property Name="Picture" Type="varbinary(max)" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'InventoryManagement.dbo.vw_request_details' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_request_details">
+          <Key>
+            <PropertyRef Name="request_id" />
+            <PropertyRef Name="request_user_id" />
+            <PropertyRef Name="request_type" />
+            <PropertyRef Name="request_item_primary_type" />
+            <PropertyRef Name="request_item_secondary_type" />
+            <PropertyRef Name="request_date" />
+            <PropertyRef Name="request_status" />
+            <PropertyRef Name="request_requested_by_id" />
+          </Key>
+          <Property Name="request_id" Type="int" Nullable="false" />
+          <Property Name="request_user_id" Type="int" Nullable="false" />
+          <Property Name="request_type" Type="int" Nullable="false" />
+          <Property Name="request_item_primary_type" Type="int" Nullable="false" />
+          <Property Name="request_item_secondary_type" Type="int" Nullable="false" />
+          <Property Name="request_subtype" Type="varchar" MaxLength="50" />
+          <Property Name="request_date" Type="datetime" Nullable="false" />
+          <Property Name="request_process_date" Type="datetime" />
+          <Property Name="request_status" Type="int" Nullable="false" />
+          <Property Name="request_requested_by_id" Type="int" Nullable="false" />
+          <Property Name="request_process_by_id" Type="int" />
+          <Property Name="request_remarks" Type="varchar" MaxLength="150" />
+          <Property Name="request_need_date" Type="datetime" />
+          <Property Name="request_expected_return_date" Type="datetime" />
+          <Property Name="request_admin_remarks" Type="varchar" MaxLength="150" />
+          <Property Name="user_first_name" Type="varchar" MaxLength="150" />
+          <Property Name="user_last_name" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'InventoryManagement.dbo.vw_transaction_log' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vw_transaction_log">
           <Key>
@@ -359,6 +396,13 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_transaction_summary' do
           <Property Name="TransactionTypeId" Type="int" Nullable="false" />
           <Property Name="ItemId" Type="int" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'InventoryManagement.dbo.vw_user_item_summary' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="vw_user_item_summary">
+          <Property Name="CurrentOwnerUsername" Type="varchar" MaxLength="150" />
+          <Property Name="ItemCount" Type="int" />
+          <Property Name="CurrentOwner" Type="int" />
+        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vw_user_membership_detail">
@@ -641,7 +685,11 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
     [vw_item_detail].[UserCompany] AS [UserCompany], 
     [vw_item_detail].[ItemLoginType] AS [ItemLoginType], 
     [vw_item_detail].[UserDepartmentName] AS [UserDepartmentName], 
-    [vw_item_detail].[UserCompanyName] AS [UserCompanyName]
+    [vw_item_detail].[UserCompanyName] AS [UserCompanyName], 
+    [vw_item_detail].[PrinterType] AS [PrinterType], 
+    [vw_item_detail].[NetworkIP] AS [NetworkIP], 
+    [vw_item_detail].[NetworkSubnet] AS [NetworkSubnet], 
+    [vw_item_detail].[NetworkGateway] AS [NetworkGateway]
     FROM [dbo].[vw_item_detail] AS [vw_item_detail]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vw_item_log" EntityType="Self.vw_item_log" store:Type="Views" store:Schema="dbo">
@@ -685,6 +733,27 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
     [vw_item_type_summary].[ITTotalAvailable] AS [ITTotalAvailable], 
     [vw_item_type_summary].[Picture] AS [Picture]
     FROM [dbo].[vw_item_type_summary] AS [vw_item_type_summary]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_request_details" EntityType="Self.vw_request_details" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_request_details].[request_id] AS [request_id], 
+    [vw_request_details].[request_user_id] AS [request_user_id], 
+    [vw_request_details].[request_type] AS [request_type], 
+    [vw_request_details].[request_item_primary_type] AS [request_item_primary_type], 
+    [vw_request_details].[request_item_secondary_type] AS [request_item_secondary_type], 
+    [vw_request_details].[request_subtype] AS [request_subtype], 
+    [vw_request_details].[request_date] AS [request_date], 
+    [vw_request_details].[request_process_date] AS [request_process_date], 
+    [vw_request_details].[request_status] AS [request_status], 
+    [vw_request_details].[request_requested_by_id] AS [request_requested_by_id], 
+    [vw_request_details].[request_process_by_id] AS [request_process_by_id], 
+    [vw_request_details].[request_remarks] AS [request_remarks], 
+    [vw_request_details].[request_need_date] AS [request_need_date], 
+    [vw_request_details].[request_expected_return_date] AS [request_expected_return_date], 
+    [vw_request_details].[request_admin_remarks] AS [request_admin_remarks], 
+    [vw_request_details].[user_first_name] AS [user_first_name], 
+    [vw_request_details].[user_last_name] AS [user_last_name]
+    FROM [dbo].[vw_request_details] AS [vw_request_details]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vw_transaction_log" EntityType="Self.vw_transaction_log" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -907,6 +976,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
           </AssociationSet>
           <EntitySet Name="vw_item_detail" EntityType="InventoryMangementModel.vw_item_detail" />
           <EntitySet Name="vw_user_membership_detail" EntityType="InventoryMangementModel.vw_user_membership_detail" />
+          <EntitySet Name="vw_request_details" EntityType="InventoryMangementModel.vw_request_details" />
           </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -993,6 +1063,8 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
           <Property Name="item_ip_subnet_mask" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="item_ip_dns" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="item_login_type" Type="Int32" />
+          <Property Name="item_printer_type" Type="Int32" />
+          <Property Name="item_ip_gateway" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="item_image">
           <Key>
@@ -1452,6 +1524,10 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
           <Property Name="ItemLoginType" Type="Int32" />
           <Property Name="UserDepartmentName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="UserCompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PrinterType" Type="Int32" />
+          <Property Name="NetworkIP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NetworkSubnet" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NetworkGateway" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="vw_user_membership_detail">
           <Key>
@@ -1471,6 +1547,35 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
           <Property Name="UserCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UserPassword" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UserIsMale" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="vw_request_details">
+          <Key>
+            <PropertyRef Name="request_id" />
+            <PropertyRef Name="request_user_id" />
+            <PropertyRef Name="request_type" />
+            <PropertyRef Name="request_item_primary_type" />
+            <PropertyRef Name="request_item_secondary_type" />
+            <PropertyRef Name="request_date" />
+            <PropertyRef Name="request_status" />
+            <PropertyRef Name="request_requested_by_id" />
+          </Key>
+          <Property Name="request_id" Type="Int32" Nullable="false" />
+          <Property Name="request_user_id" Type="Int32" Nullable="false" />
+          <Property Name="request_type" Type="Int32" Nullable="false" />
+          <Property Name="request_item_primary_type" Type="Int32" Nullable="false" />
+          <Property Name="request_item_secondary_type" Type="Int32" Nullable="false" />
+          <Property Name="request_subtype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="request_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="request_process_date" Type="DateTime" Precision="3" />
+          <Property Name="request_status" Type="Int32" Nullable="false" />
+          <Property Name="request_requested_by_id" Type="Int32" Nullable="false" />
+          <Property Name="request_process_by_id" Type="Int32" />
+          <Property Name="request_remarks" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="request_need_date" Type="DateTime" Precision="3" />
+          <Property Name="request_expected_return_date" Type="DateTime" Precision="3" />
+          <Property Name="request_admin_remarks" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="user_first_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="user_last_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1541,6 +1646,8 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
           <EntitySetMapping Name="items">
             <EntityTypeMapping TypeName="InventoryMangementModel.item">
               <MappingFragment StoreEntitySet="item">
+                <ScalarProperty Name="item_ip_gateway" ColumnName="item_ip_gateway" />
+                <ScalarProperty Name="item_printer_type" ColumnName="item_printer_type" />
                 <ScalarProperty Name="item_login_type" ColumnName="item_login_type" />
                 <ScalarProperty Name="item_ip_dns" ColumnName="item_ip_dns" />
                 <ScalarProperty Name="item_ip_subnet_mask" ColumnName="item_ip_subnet_mask" />
@@ -1809,6 +1916,10 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
           <EntitySetMapping Name="vw_item_detail">
             <EntityTypeMapping TypeName="InventoryMangementModel.vw_item_detail">
               <MappingFragment StoreEntitySet="vw_item_detail">
+                <ScalarProperty Name="NetworkGateway" ColumnName="NetworkGateway" />
+                <ScalarProperty Name="NetworkSubnet" ColumnName="NetworkSubnet" />
+                <ScalarProperty Name="NetworkIP" ColumnName="NetworkIP" />
+                <ScalarProperty Name="PrinterType" ColumnName="PrinterType" />
                 <ScalarProperty Name="UserCompanyName" ColumnName="UserCompanyName" />
                 <ScalarProperty Name="UserDepartmentName" ColumnName="UserDepartmentName" />
                 <ScalarProperty Name="ItemLoginType" ColumnName="ItemLoginType" />
@@ -1860,6 +1971,29 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
                 <ScalarProperty Name="UserTyp" ColumnName="UserTyp" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_request_details">
+            <EntityTypeMapping TypeName="InventoryMangementModel.vw_request_details">
+              <MappingFragment StoreEntitySet="vw_request_details">
+                <ScalarProperty Name="user_last_name" ColumnName="user_last_name" />
+                <ScalarProperty Name="user_first_name" ColumnName="user_first_name" />
+                <ScalarProperty Name="request_admin_remarks" ColumnName="request_admin_remarks" />
+                <ScalarProperty Name="request_expected_return_date" ColumnName="request_expected_return_date" />
+                <ScalarProperty Name="request_need_date" ColumnName="request_need_date" />
+                <ScalarProperty Name="request_remarks" ColumnName="request_remarks" />
+                <ScalarProperty Name="request_process_by_id" ColumnName="request_process_by_id" />
+                <ScalarProperty Name="request_requested_by_id" ColumnName="request_requested_by_id" />
+                <ScalarProperty Name="request_status" ColumnName="request_status" />
+                <ScalarProperty Name="request_process_date" ColumnName="request_process_date" />
+                <ScalarProperty Name="request_date" ColumnName="request_date" />
+                <ScalarProperty Name="request_subtype" ColumnName="request_subtype" />
+                <ScalarProperty Name="request_item_secondary_type" ColumnName="request_item_secondary_type" />
+                <ScalarProperty Name="request_item_primary_type" ColumnName="request_item_primary_type" />
+                <ScalarProperty Name="request_type" ColumnName="request_type" />
+                <ScalarProperty Name="request_user_id" ColumnName="request_user_id" />
+                <ScalarProperty Name="request_id" ColumnName="request_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

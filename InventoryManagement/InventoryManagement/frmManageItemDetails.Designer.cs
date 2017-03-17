@@ -76,9 +76,9 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.cbxLoginType = new System.Windows.Forms.ComboBox();
             this.label29 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtGateway = new System.Windows.Forms.TextBox();
+            this.txtSubnet = new System.Windows.Forms.TextBox();
+            this.txtNetworkIp = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
@@ -102,12 +102,15 @@
             this.txtLastUpdate = new System.Windows.Forms.TextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label34 = new System.Windows.Forms.Label();
+            this.txtFilename = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.pbId = new System.Windows.Forms.PictureBox();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.pnlHistory = new System.Windows.Forms.Panel();
+            this.label28 = new System.Windows.Forms.Label();
             this.btnFilter = new System.Windows.Forms.Button();
             this.label26 = new System.Windows.Forms.Label();
             this.dtpTo = new System.Windows.Forms.DateTimePicker();
@@ -122,9 +125,6 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.pnlMain = new System.Windows.Forms.Panel();
-            this.label28 = new System.Windows.Forms.Label();
-            this.txtFilename = new System.Windows.Forms.TextBox();
-            this.label34 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.pnlInformation.SuspendLayout();
@@ -593,9 +593,9 @@
             // 
             this.panel4.Controls.Add(this.cbxLoginType);
             this.panel4.Controls.Add(this.label29);
-            this.panel4.Controls.Add(this.textBox1);
-            this.panel4.Controls.Add(this.textBox2);
-            this.panel4.Controls.Add(this.textBox3);
+            this.panel4.Controls.Add(this.txtGateway);
+            this.panel4.Controls.Add(this.txtSubnet);
+            this.panel4.Controls.Add(this.txtNetworkIp);
             this.panel4.Controls.Add(this.label30);
             this.panel4.Controls.Add(this.label31);
             this.panel4.Controls.Add(this.label32);
@@ -627,32 +627,29 @@
             this.label29.TabIndex = 71;
             this.label29.Text = "Login Type";
             // 
-            // textBox1
+            // txtGateway
             // 
-            this.textBox1.Location = new System.Drawing.Point(146, 188);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(169, 23);
-            this.textBox1.TabIndex = 69;
+            this.txtGateway.Location = new System.Drawing.Point(146, 188);
+            this.txtGateway.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.txtGateway.Name = "txtGateway";
+            this.txtGateway.Size = new System.Drawing.Size(169, 23);
+            this.txtGateway.TabIndex = 69;
             // 
-            // textBox2
+            // txtSubnet
             // 
-            this.textBox2.Location = new System.Drawing.Point(146, 159);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(169, 23);
-            this.textBox2.TabIndex = 68;
+            this.txtSubnet.Location = new System.Drawing.Point(146, 159);
+            this.txtSubnet.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.txtSubnet.Name = "txtSubnet";
+            this.txtSubnet.Size = new System.Drawing.Size(169, 23);
+            this.txtSubnet.TabIndex = 68;
             // 
-            // textBox3
+            // txtNetworkIp
             // 
-            this.textBox3.Location = new System.Drawing.Point(146, 130);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(169, 23);
-            this.textBox3.TabIndex = 67;
+            this.txtNetworkIp.Location = new System.Drawing.Point(146, 130);
+            this.txtNetworkIp.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.txtNetworkIp.Name = "txtNetworkIp";
+            this.txtNetworkIp.Size = new System.Drawing.Size(169, 23);
+            this.txtNetworkIp.TabIndex = 67;
             // 
             // label30
             // 
@@ -888,6 +885,23 @@
             this.panel3.Size = new System.Drawing.Size(708, 335);
             this.panel3.TabIndex = 61;
             // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(361, 55);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(72, 15);
+            this.label34.TabIndex = 69;
+            this.label34.Text = "Main Image";
+            // 
+            // txtFilename
+            // 
+            this.txtFilename.Location = new System.Drawing.Point(15, 73);
+            this.txtFilename.Name = "txtFilename";
+            this.txtFilename.ReadOnly = true;
+            this.txtFilename.Size = new System.Drawing.Size(243, 23);
+            this.txtFilename.TabIndex = 68;
+            // 
             // label23
             // 
             this.label23.AutoSize = true;
@@ -956,6 +970,18 @@
             this.pnlHistory.Name = "pnlHistory";
             this.pnlHistory.Size = new System.Drawing.Size(708, 335);
             this.pnlHistory.TabIndex = 0;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Location = new System.Drawing.Point(10, 10);
+            this.label28.Margin = new System.Windows.Forms.Padding(10);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(119, 26);
+            this.label28.TabIndex = 68;
+            this.label28.Text = "Item History";
+            this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnFilter
             // 
@@ -1099,35 +1125,6 @@
             this.pnlMain.Size = new System.Drawing.Size(730, 426);
             this.pnlMain.TabIndex = 4;
             // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(10, 10);
-            this.label28.Margin = new System.Windows.Forms.Padding(10);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(119, 26);
-            this.label28.TabIndex = 68;
-            this.label28.Text = "Item History";
-            this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtFilename
-            // 
-            this.txtFilename.Location = new System.Drawing.Point(15, 73);
-            this.txtFilename.Name = "txtFilename";
-            this.txtFilename.ReadOnly = true;
-            this.txtFilename.Size = new System.Drawing.Size(243, 23);
-            this.txtFilename.TabIndex = 68;
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(361, 55);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(72, 15);
-            this.label34.TabIndex = 69;
-            this.label34.Text = "Main Image";
-            // 
             // frmManageItemDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1249,9 +1246,9 @@
         private System.Windows.Forms.TextBox txtCompany;
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtGateway;
+        private System.Windows.Forms.TextBox txtSubnet;
+        private System.Windows.Forms.TextBox txtNetworkIp;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label32;

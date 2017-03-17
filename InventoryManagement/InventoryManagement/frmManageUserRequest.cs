@@ -29,14 +29,48 @@ namespace InventoryManagement
        
         private void LoadRequest()
         {
-            var request = Singleton.Instance.RequestModel.GetRequestByStatus((RequestStatus)cbxStatus.SelectedValue);
+            var from = dtpFrom.Value.Date;
+            var to = dtpTo.Value.Date.AddDays(1);
+
+            var request = Singleton.Instance.RequestModel.GetRequestByStatus((RequestStatus)cbxStatus.SelectedValue,
+               from, to);
 
             dvLogs.DataSource = request;
+
+            txtAdminRemarks.Text = "";
+            txtUserRemarks.Text = "";
+
+            UpdateComment();
+
+            if ((RequestStatus)cbxStatus.SelectedValue == RequestStatus.Approved)
+            {
+                btnApproved.Visible = true;
+                btnDecline.Visible = false;
+                txtAdminRemarks.ReadOnly = true;
+                btnApproved.Text = "Delivered";
+            }
+            else if ((RequestStatus)cbxStatus.SelectedValue == RequestStatus.New)
+            {
+                btnApproved.Visible = true;
+                btnDecline.Visible = true;
+                btnApproved.Text = "Approve";
+                txtAdminRemarks.ReadOnly = false;
+            }
+            else
+            {
+                btnApproved.Visible = false;
+                btnDecline.Visible = false;
+                txtAdminRemarks.ReadOnly = true;
+            }
         }
 
       
 
         private void dvLogs_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            UpdateComment();
+        }
+        private void UpdateComment()
         {
             if (dvLogs.SelectedRows.Count == 0)
                 return;
@@ -44,7 +78,6 @@ namespace InventoryManagement
             txtUserRemarks.Text = (dvLogs.SelectedRows[0].Cells[6].Value ?? "").ToString();
             txtAdminRemarks.Text = (dvLogs.SelectedRows[0].Cells[7].Value ?? "").ToString();
         }
-
         private void btnApproved_Click(object sender, EventArgs e)
         {
             if (dvLogs.SelectedRows.Count == 0)
@@ -92,26 +125,17 @@ namespace InventoryManagement
         private void cbxStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadRequest();
-            if((RequestStatus)cbxStatus.SelectedValue == RequestStatus.Approved)
-            {
-                btnApproved.Visible = true;
-                btnDecline.Visible = false;
-                txtAdminRemarks.ReadOnly = true;
-                btnApproved.Text = "Delivered";
-            }
-            else if ((RequestStatus)cbxStatus.SelectedValue == RequestStatus.New)
-            {
-                btnApproved.Visible = true;
-                btnDecline.Visible = true;
-                btnApproved.Text = "Approve";
-                txtAdminRemarks.ReadOnly = false;
-            }
-            else
-            {
-                btnApproved.Visible = false;
-                btnDecline.Visible = false;
-                txtAdminRemarks.ReadOnly = true;
-            }
+          
+        }
+
+        private void dvLogs_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            LoadRequest();
         }
     }
 }

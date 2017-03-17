@@ -151,15 +151,19 @@ namespace InventoryManagement
                 HDD1 = (ItemHDDCapacity)cbxHDD1.SelectedItem,
                 HDD2 = (ItemHDDCapacity)cbxHDD2.SelectedItem,
                 LoginType = (ItemLoginType)cbxLoginType.SelectedItem,
+                PrinterType = (PrinterType)cbxPrinterType.SelectedItem,
+                NetworkIP = txtNetworkIp.Text,
+                NetworkSubnet = txtSubnet.Text,
+                NetworkGateway = txtGateway.Text
+
             };
             var result = new ReturnValueModel();
 
             if (_isAddNewItem)
             {
-                for (int x = 0; x < 200; x++)
-                {
-                    result = Singleton.Instance.ItemModel.CreateNewItem(itm, Singleton.Instance.UserModel.CurrentUser.Id);
-                }
+
+                result = Singleton.Instance.ItemModel.CreateNewItem(itm, Singleton.Instance.UserModel.CurrentUser.Id);
+
 
                 if (result.Success)
                     if (pbId.BackgroundImage == null)
@@ -250,7 +254,12 @@ namespace InventoryManagement
             var owner = Singleton.Instance.UserModel.GetUsersById(_loadedItem.LastUpdatedUserId);
 
             txtLastUpdatedUser.Text = owner == null ? "SYSTEM" : owner.LastnameFirstName;
+            cbxPrinterType.Text = ((PrinterType)_loadedItem.PrinterType).ToString();
+            cbxLoginType.Text = ((ItemLoginType)_loadedItem.LoginType).ToString();
 
+            txtNetworkIp.Text = _loadedItem.NetworkIP;
+            txtSubnet.Text = _loadedItem.NetworkSubnet;
+            txtGateway.Text = _loadedItem.NetworkGateway;
 
 
 

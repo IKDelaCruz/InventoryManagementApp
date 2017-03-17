@@ -57,16 +57,16 @@ namespace InventoryManagement.Model
             return repo.GetRequestById(requestId);
         }
 
-        public List<RequestViewModel> GetRequestByStatus(RequestStatus status)
+        public List<RequestViewModel> GetRequestByStatus(RequestStatus status, DateTime from, DateTime to)
         {
-            var result = repo.GetRequestByStatus(status);
+            var result = repo.GetRequestByStatus(status, from, to);
 
 
-            foreach (RequestViewModel r in result)
-            {
-                r.UserFullnameEmail = Singleton.Instance.UserModel.GetUsersById(r.UserId).LastnameFirstNameUsername;
+            //foreach (RequestViewModel r in result)
+            //{
+            //    r.UserFullnameEmail = Singleton.Instance.UserModel.GetUsersById(r.UserId).LastnameFirstNameUsername;
 
-            }
+            //}
 
             return result;
         }

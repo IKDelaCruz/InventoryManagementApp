@@ -79,6 +79,11 @@ namespace InventoryManagement.Repository
                 item.item_hdd2_id = (int)newItem.HDD2;
                 item.item_salvage_value = newItem.SalvageValue;
                 item.item_login_type = (int)newItem.LoginType;
+                item.item_printer_type = (int)newItem.PrinterType;
+                item.item_ip_address = newItem.NetworkIP;
+                item.item_ip_subnet_mask = newItem.NetworkSubnet;
+                item.item_ip_gateway = newItem.NetworkGateway;
+
                 InventoryDatabase.SaveChanges();
 
                 return true;
@@ -220,15 +225,15 @@ namespace InventoryManagement.Repository
 
         public int CreateOS(int id, string name)
         {
-         
+
             var newOs = new operation_system() { os_id = id, os_name = name };
             InventoryDatabase.operation_system.Add(newOs);
             if (InventoryDatabase.SaveChanges() > 0)
                 return newOs.os_id;
 
-           
+
             return -1;
-           
+
 
         }
 
@@ -378,7 +383,7 @@ namespace InventoryManagement.Repository
 
         public List<ItemViewModel> QueryItemsByOwner(int ownerId)
         {
-            var items = InventoryDatabase.vw_item_detail.AsNoTracking().Where(h=>h.CurrentOwner == ownerId).ToList();
+            var items = InventoryDatabase.vw_item_detail.AsNoTracking().Where(h => h.CurrentOwner == ownerId).ToList();
             List<ItemViewModel> iList = new List<ItemViewModel>();
 
             foreach (vw_item_detail i in items)
@@ -548,8 +553,12 @@ namespace InventoryManagement.Repository
                 CurrentOwnerName = i.Username,
                 CurrentCompany = i.UserCompany ?? 0,
                 LoginType = (ItemLoginType)(i.ItemLoginType ?? 0),
+                PrinterType = (PrinterType)(i.PrinterType ?? 0),
                 CurrentCompanyName = i.UserCompanyName,
-                CurrentDepartmentName = i.UserDepartmentName
+                CurrentDepartmentName = i.UserDepartmentName,
+                NetworkIP = i.NetworkIP,
+                NetworkSubnet = i.NetworkSubnet,
+                NetworkGateway = i.NetworkGateway
             };
         }
         public string QueryOwner(int id)

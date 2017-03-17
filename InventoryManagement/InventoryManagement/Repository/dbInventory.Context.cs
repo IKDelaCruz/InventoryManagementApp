@@ -54,6 +54,7 @@ namespace InventoryManagement.Repository
         public virtual DbSet<vw_transaction_summary> vw_transaction_summary { get; set; }
         public virtual DbSet<vw_item_detail> vw_item_detail { get; set; }
         public virtual DbSet<vw_user_membership_detail> vw_user_membership_detail { get; set; }
+        public virtual DbSet<vw_request_details> vw_request_details { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

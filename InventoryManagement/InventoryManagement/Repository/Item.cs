@@ -48,6 +48,8 @@ namespace InventoryManagement.Repository
         public string item_ip_subnet_mask { get; set; }
         public string item_ip_dns { get; set; }
         public Nullable<int> item_login_type { get; set; }
+        public Nullable<int> item_printer_type { get; set; }
+        public string item_ip_gateway { get; set; }
     
         public virtual brand brand { get; set; }
         public virtual item_subtype item_subtype { get; set; }
