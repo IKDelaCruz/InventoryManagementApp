@@ -39,6 +39,8 @@
             this.cbxUser = new System.Windows.Forms.ComboBox();
             this.lblHeader = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dtpExpected = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,7 +65,7 @@
             // 
             // btnReserve
             // 
-            this.btnReserve.Location = new System.Drawing.Point(150, 235);
+            this.btnReserve.Location = new System.Drawing.Point(150, 258);
             this.btnReserve.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnReserve.Name = "btnReserve";
             this.btnReserve.Size = new System.Drawing.Size(72, 29);
@@ -74,7 +76,7 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(230, 235);
+            this.btnOK.Location = new System.Drawing.Point(230, 258);
             this.btnOK.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(72, 29);
@@ -136,6 +138,8 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.dtpExpected);
             this.panel1.Controls.Add(this.lblHeader);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.cbxUser);
@@ -146,14 +150,32 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(10, 10);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(292, 219);
+            this.panel1.Size = new System.Drawing.Size(292, 242);
             this.panel1.TabIndex = 39;
+            // 
+            // dtpExpected
+            // 
+            this.dtpExpected.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpExpected.Location = new System.Drawing.Point(29, 198);
+            this.dtpExpected.Margin = new System.Windows.Forms.Padding(5);
+            this.dtpExpected.Name = "dtpExpected";
+            this.dtpExpected.Size = new System.Drawing.Size(100, 23);
+            this.dtpExpected.TabIndex = 65;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(26, 178);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(94, 15);
+            this.label3.TabIndex = 66;
+            this.label3.Text = "Expected Return";
             // 
             // frmQuickTransaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(312, 279);
+            this.ClientSize = new System.Drawing.Size(312, 302);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnReserve);
@@ -181,5 +203,7 @@
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Label lblHeader;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker dtpExpected;
     }
 }

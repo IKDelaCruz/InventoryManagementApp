@@ -34,6 +34,7 @@
             this.pnlMain = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnFilter = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.dtpTo = new System.Windows.Forms.DateTimePicker();
             this.label15 = new System.Windows.Forms.Label();
@@ -41,6 +42,8 @@
             this.label23 = new System.Windows.Forms.Label();
             this.cbxStatus = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbxItems = new System.Windows.Forms.ComboBox();
             this.txtUserRemarks = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtAdminRemarks = new System.Windows.Forms.TextBox();
@@ -48,11 +51,11 @@
             this.dvLogs = new System.Windows.Forms.DataGridView();
             this.btnDecline = new System.Windows.Forms.Button();
             this.btnApproved = new System.Windows.Forms.Button();
-            this.btnFilter = new System.Windows.Forms.Button();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TransactionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SystemUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TransactionTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OtherUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NeededDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Remarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -78,7 +81,7 @@
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMain.Location = new System.Drawing.Point(10, 10);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(730, 482);
+            this.pnlMain.Size = new System.Drawing.Size(730, 520);
             this.pnlMain.TabIndex = 4;
             // 
             // tabControl1
@@ -87,7 +90,7 @@
             this.tabControl1.Location = new System.Drawing.Point(3, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(724, 476);
+            this.tabControl1.Size = new System.Drawing.Size(724, 514);
             this.tabControl1.TabIndex = 3;
             // 
             // tabPage1
@@ -106,10 +109,21 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(716, 448);
+            this.tabPage1.Size = new System.Drawing.Size(716, 486);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Pending Requests";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnFilter
+            // 
+            this.btnFilter.Location = new System.Drawing.Point(610, 5);
+            this.btnFilter.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(100, 30);
+            this.btnFilter.TabIndex = 69;
+            this.btnFilter.Text = "Filter";
+            this.btnFilter.UseVisualStyleBackColor = true;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // label2
             // 
@@ -172,15 +186,36 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.cbxItems);
             this.groupBox1.Controls.Add(this.txtUserRemarks);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtAdminRemarks);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Location = new System.Drawing.Point(6, 236);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(704, 170);
+            this.groupBox1.Size = new System.Drawing.Size(704, 208);
             this.groupBox1.TabIndex = 61;
             this.groupBox1.TabStop = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 88);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(92, 15);
+            this.label4.TabIndex = 57;
+            this.label4.Text = "Available Items";
+            // 
+            // cbxItems
+            // 
+            this.cbxItems.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxItems.FormattingEnabled = true;
+            this.cbxItems.Location = new System.Drawing.Point(9, 106);
+            this.cbxItems.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.cbxItems.Name = "cbxItems";
+            this.cbxItems.Size = new System.Drawing.Size(256, 23);
+            this.cbxItems.TabIndex = 56;
             // 
             // txtUserRemarks
             // 
@@ -188,7 +223,7 @@
             this.txtUserRemarks.Multiline = true;
             this.txtUserRemarks.Name = "txtUserRemarks";
             this.txtUserRemarks.ReadOnly = true;
-            this.txtUserRemarks.Size = new System.Drawing.Size(689, 48);
+            this.txtUserRemarks.Size = new System.Drawing.Size(689, 30);
             this.txtUserRemarks.TabIndex = 51;
             // 
             // label1
@@ -202,16 +237,16 @@
             // 
             // txtAdminRemarks
             // 
-            this.txtAdminRemarks.Location = new System.Drawing.Point(9, 106);
+            this.txtAdminRemarks.Location = new System.Drawing.Point(9, 150);
             this.txtAdminRemarks.Multiline = true;
             this.txtAdminRemarks.Name = "txtAdminRemarks";
-            this.txtAdminRemarks.Size = new System.Drawing.Size(689, 48);
+            this.txtAdminRemarks.Size = new System.Drawing.Size(689, 30);
             this.txtAdminRemarks.TabIndex = 48;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 88);
+            this.label10.Location = new System.Drawing.Point(6, 132);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(92, 15);
             this.label10.TabIndex = 49;
@@ -228,6 +263,7 @@
             this.TransactionDate,
             this.SystemUserName,
             this.TransactionTypeId,
+            this.SubTypeId,
             this.OtherUserName,
             this.NeededDate,
             this.Remarks,
@@ -248,7 +284,7 @@
             // 
             // btnDecline
             // 
-            this.btnDecline.Location = new System.Drawing.Point(502, 412);
+            this.btnDecline.Location = new System.Drawing.Point(496, 450);
             this.btnDecline.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnDecline.Name = "btnDecline";
             this.btnDecline.Size = new System.Drawing.Size(100, 30);
@@ -259,7 +295,7 @@
             // 
             // btnApproved
             // 
-            this.btnApproved.Location = new System.Drawing.Point(610, 412);
+            this.btnApproved.Location = new System.Drawing.Point(604, 450);
             this.btnApproved.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnApproved.Name = "btnApproved";
             this.btnApproved.Size = new System.Drawing.Size(100, 30);
@@ -267,17 +303,6 @@
             this.btnApproved.Text = "Approve";
             this.btnApproved.UseVisualStyleBackColor = true;
             this.btnApproved.Click += new System.EventHandler(this.btnApproved_Click);
-            // 
-            // btnFilter
-            // 
-            this.btnFilter.Location = new System.Drawing.Point(610, 5);
-            this.btnFilter.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(100, 30);
-            this.btnFilter.TabIndex = 69;
-            this.btnFilter.Text = "Filter";
-            this.btnFilter.UseVisualStyleBackColor = true;
-            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // Id
             // 
@@ -304,6 +329,13 @@
             this.TransactionTypeId.DataPropertyName = "Subtype";
             this.TransactionTypeId.HeaderText = "Sub Type";
             this.TransactionTypeId.Name = "TransactionTypeId";
+            // 
+            // SubTypeId
+            // 
+            this.SubTypeId.DataPropertyName = "RequestSecondaryItemType";
+            this.SubTypeId.HeaderText = "SubTypeId";
+            this.SubTypeId.Name = "SubTypeId";
+            this.SubTypeId.Visible = false;
             // 
             // OtherUserName
             // 
@@ -344,7 +376,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(750, 502);
+            this.ClientSize = new System.Drawing.Size(750, 540);
             this.Controls.Add(this.pnlMain);
             this.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -383,10 +415,13 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.DateTimePicker dtpFrom;
         private System.Windows.Forms.Button btnFilter;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cbxItems;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn TransactionDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn SystemUserName;
         private System.Windows.Forms.DataGridViewTextBoxColumn TransactionTypeId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SubTypeId;
         private System.Windows.Forms.DataGridViewTextBoxColumn OtherUserName;
         private System.Windows.Forms.DataGridViewTextBoxColumn NeededDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn Remarks;

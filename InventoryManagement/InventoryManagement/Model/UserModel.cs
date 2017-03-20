@@ -22,13 +22,13 @@ namespace InventoryManagement.Model
             Admin = 1,
             Custodian,
             User,
-            
+
         }
-        public UserViewModel CurrentUser { get;private set; }
+        public UserViewModel CurrentUser { get; private set; }
 
         public UserViewModel AuthenticateUser(string username, string password, bool useLDAP)
         {
-            if(useLDAP)
+            if (useLDAP)
             {
                 var ldap = new LDAPManager();
                 var result = ldap.AuthenticateLDAP(username, password);
@@ -39,7 +39,7 @@ namespace InventoryManagement.Model
             {
                 CurrentUser = userRepository.ValidateUsernameAndPassword(username, password);
             }
-       
+
 
             return CurrentUser;
         }
@@ -48,13 +48,13 @@ namespace InventoryManagement.Model
             CurrentUser = null;
             return true;
         }
-        public int CreateNewUser(string username, string password, UserType userType, string firstname, string lastname, int departmentId, bool isMale = true)
+        public int CreateNewUser(string username, string password, UserType userType, string firstname, string lastname, int departmentId, bool isMale = true, bool disabled = false)
         {
-            return userRepository.CreateNewUser(username, password, (int)userType, firstname, lastname, departmentId, isMale);
+            return userRepository.CreateNewUser(username, password, (int)userType, firstname, lastname, departmentId, isMale, disabled);
         }
-        public bool UpdateUser(int userId, string firstName, string lastName, int companyId, int departmentId, UserType userType, string password = "")
+        public bool UpdateUser(int userId, string firstName, string lastName, int departmentId, UserType userType, string password = "", bool disabled = false)
         {
-            return userRepository.UpdateUser(userId, firstName, lastName, companyId, departmentId, (int)userType, password);
+            return userRepository.UpdateUser(userId, firstName, lastName, departmentId, (int)userType, password, disabled);
         }
         //public void CheckDefaultUser()
         //{
@@ -66,7 +66,7 @@ namespace InventoryManagement.Model
         //}
         public List<UserViewModel> GetUsers()
         {
-            return userRepository.GetUsers();
+            return userRepository.GetUsers(false);
         }
         public UserViewModel GetUsersById(int id)
         {

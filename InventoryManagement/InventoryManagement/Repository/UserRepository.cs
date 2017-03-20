@@ -28,7 +28,7 @@ namespace InventoryManagement.Repository
             }
             return null;
         }
-        public int CreateNewUser(string username, string password, int type, string firstname, string lastname, int departmentId, bool isMale = true)
+        public int CreateNewUser(string username, string password, int type, string firstname, string lastname, int departmentId, bool isMale = true, bool isDisabled = false)
         {
 
             var newUser = new user
@@ -39,7 +39,8 @@ namespace InventoryManagement.Repository
                 user_first_name = firstname,
                 user_last_name = lastname,
                 user_department = departmentId,
-                is_male = isMale
+                is_male = isMale,
+                is_disabled = isDisabled
 
             };
             InventoryDatabase.users.Add(newUser);
@@ -55,16 +56,17 @@ namespace InventoryManagement.Repository
 
             
         }
-        public bool UpdateUser(int userId, string firstName, string lastName, int companyId, int departmentId, int userType = 3, string password = "")
+        public bool UpdateUser(int userId, string firstName, string lastName,  int departmentId, int userType = 3, string password = "", bool disabled = false)
         {
             var user = InventoryDatabase.users.FirstOrDefault(h => h.user_id == userId);
             if (user != null)
             {
                 user.user_first_name = firstName;
                 user.user_last_name = lastName;
-                user.user_company = companyId;
+           
                 user.user_department = departmentId;
                 user.user_type = userType;
+                user.is_disabled = disabled;
                 if(password != "")
                 {
                     user.user_password = password;
@@ -137,10 +139,12 @@ namespace InventoryManagement.Repository
 
             return null;
         }
-        public List<UserViewModel> GetUsers()
+        public List<UserViewModel> GetUsers(bool includeDisabled =false)
         {
             var list = new List<UserViewModel>();
             var users = InventoryDatabase.users.ToList();
+            if (!includeDisabled)
+                users = users.Where(h => h.is_disabled == false).ToList();
             foreach (user u in users)
             {
                 list.Add(new UserViewModel
@@ -160,10 +164,12 @@ namespace InventoryManagement.Repository
 
             return list.OrderBy(x=> x.LastnameFirstNameUsername).ToList();
         }
-        public List<UserViewModel> GetUsersByDepartmentId(int departmentId)
+        public List<UserViewModel> GetUsersByDepartmentId(int departmentId, bool includeDisabled = false)
         {
             var list = new List<UserViewModel>();
-            var users = InventoryDatabase.users.Where(h => h.user_department == departmentId).ToList();
+            var users = InventoryDatabase.users.Where(h => h.user_department == departmentId ).ToList();
+            if (!includeDisabled)
+                users = users.Where(h => h.is_disabled == false).ToList();
             foreach (user u in users)
             {
                 list.Add(new UserViewModel

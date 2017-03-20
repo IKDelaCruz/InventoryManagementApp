@@ -38,20 +38,31 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.dtpExpectedReturnDate = new System.Windows.Forms.DateTimePicker();
             this.label23 = new System.Windows.Forms.Label();
             this.cbxType = new System.Windows.Forms.ComboBox();
             this.label22 = new System.Windows.Forms.Label();
             this.cbxUsers = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.txtRemarks = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.cbxRequestType = new System.Windows.Forms.ComboBox();
             this.dtpNeededDate = new System.Windows.Forms.DateTimePicker();
             this.cbxSubType = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnSubmit = new System.Windows.Forms.Button();
+            this.btnSubmitReserve = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.pnlRepair = new System.Windows.Forms.Panel();
+            this.btnSubmitRepair = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.cbxUserItem = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.pnlTab2 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -73,11 +84,16 @@
             this.txtDateRequested = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.trMain = new System.Windows.Forms.TreeView();
+            this.label17 = new System.Windows.Forms.Label();
+            this.cbxUsersRepair = new System.Windows.Forms.ComboBox();
             this.pnlMain.SuspendLayout();
             this.tbMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.pnlTab1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.pnlRepair.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.pnlTab2.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -96,12 +112,13 @@
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMain.Location = new System.Drawing.Point(12, 12);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(553, 505);
+            this.pnlMain.Size = new System.Drawing.Size(553, 484);
             this.pnlMain.TabIndex = 2;
             // 
             // tbMain
             // 
             this.tbMain.Controls.Add(this.tabPage1);
+            this.tbMain.Controls.Add(this.tabPage3);
             this.tbMain.Controls.Add(this.tabPage2);
             this.tbMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbMain.ItemSize = new System.Drawing.Size(30, 30);
@@ -109,7 +126,7 @@
             this.tbMain.Name = "tbMain";
             this.tbMain.Padding = new System.Drawing.Point(10, 5);
             this.tbMain.SelectedIndex = 0;
-            this.tbMain.Size = new System.Drawing.Size(551, 503);
+            this.tbMain.Size = new System.Drawing.Size(551, 482);
             this.tbMain.TabIndex = 1;
             this.tbMain.SelectedIndexChanged += new System.EventHandler(this.tbMain_SelectedIndexChanged);
             this.tbMain.Click += new System.EventHandler(this.tbMain_Click);
@@ -120,9 +137,9 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 34);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(543, 465);
+            this.tabPage1.Size = new System.Drawing.Size(543, 444);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Create new Request";
+            this.tabPage1.Text = "Reserve";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // pnlTab1
@@ -130,12 +147,12 @@
             this.pnlTab1.Controls.Add(this.label11);
             this.pnlTab1.Controls.Add(this.label21);
             this.pnlTab1.Controls.Add(this.groupBox1);
-            this.pnlTab1.Controls.Add(this.btnSubmit);
+            this.pnlTab1.Controls.Add(this.btnSubmitReserve);
             this.pnlTab1.Controls.Add(this.btnCancel);
             this.pnlTab1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlTab1.Location = new System.Drawing.Point(3, 3);
             this.pnlTab1.Name = "pnlTab1";
-            this.pnlTab1.Size = new System.Drawing.Size(537, 459);
+            this.pnlTab1.Size = new System.Drawing.Size(537, 438);
             this.pnlTab1.TabIndex = 61;
             // 
             // label11
@@ -147,9 +164,9 @@
             this.label11.Location = new System.Drawing.Point(10, 10);
             this.label11.Margin = new System.Windows.Forms.Padding(10);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(191, 26);
+            this.label11.Size = new System.Drawing.Size(128, 26);
             this.label11.TabIndex = 99;
-            this.label11.Text = "Create New Request";
+            this.label11.Text = "Reserve Item";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label21
@@ -165,29 +182,48 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.dtpExpectedReturnDate);
             this.groupBox1.Controls.Add(this.label23);
             this.groupBox1.Controls.Add(this.cbxType);
             this.groupBox1.Controls.Add(this.label22);
             this.groupBox1.Controls.Add(this.cbxUsers);
-            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtRemarks);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label15);
-            this.groupBox1.Controls.Add(this.cbxRequestType);
             this.groupBox1.Controls.Add(this.dtpNeededDate);
             this.groupBox1.Controls.Add(this.cbxSubType);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(9, 95);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(509, 285);
+            this.groupBox1.Size = new System.Drawing.Size(509, 282);
             this.groupBox1.TabIndex = 60;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Request Details";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(237, 23);
+            this.label12.Margin = new System.Windows.Forms.Padding(5);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(122, 15);
+            this.label12.TabIndex = 63;
+            this.label12.Text = "Expected Return Date";
+            // 
+            // dtpExpectedReturnDate
+            // 
+            this.dtpExpectedReturnDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpExpectedReturnDate.Location = new System.Drawing.Point(237, 41);
+            this.dtpExpectedReturnDate.Margin = new System.Windows.Forms.Padding(5);
+            this.dtpExpectedReturnDate.Name = "dtpExpectedReturnDate";
+            this.dtpExpectedReturnDate.Size = new System.Drawing.Size(186, 23);
+            this.dtpExpectedReturnDate.TabIndex = 62;
+            // 
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(18, 75);
+            this.label23.Location = new System.Drawing.Point(15, 74);
             this.label23.Margin = new System.Windows.Forms.Padding(5);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(58, 15);
@@ -198,7 +234,7 @@
             // 
             this.cbxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxType.FormattingEnabled = true;
-            this.cbxType.Location = new System.Drawing.Point(18, 93);
+            this.cbxType.Location = new System.Drawing.Point(15, 92);
             this.cbxType.Margin = new System.Windows.Forms.Padding(5);
             this.cbxType.Name = "cbxType";
             this.cbxType.Size = new System.Drawing.Size(185, 23);
@@ -208,7 +244,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(18, 126);
+            this.label22.Location = new System.Drawing.Point(15, 125);
             this.label22.Margin = new System.Windows.Forms.Padding(5);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(79, 15);
@@ -219,35 +255,25 @@
             // 
             this.cbxUsers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxUsers.FormattingEnabled = true;
-            this.cbxUsers.Location = new System.Drawing.Point(18, 144);
+            this.cbxUsers.Location = new System.Drawing.Point(15, 143);
             this.cbxUsers.Margin = new System.Windows.Forms.Padding(5);
             this.cbxUsers.Name = "cbxUsers";
             this.cbxUsers.Size = new System.Drawing.Size(411, 23);
             this.cbxUsers.TabIndex = 58;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(18, 24);
-            this.label3.Margin = new System.Windows.Forms.Padding(5);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 15);
-            this.label3.TabIndex = 52;
-            this.label3.Text = "Request Type";
-            // 
             // txtRemarks
             // 
-            this.txtRemarks.Location = new System.Drawing.Point(19, 195);
+            this.txtRemarks.Location = new System.Drawing.Point(16, 194);
             this.txtRemarks.Margin = new System.Windows.Forms.Padding(5);
             this.txtRemarks.Multiline = true;
             this.txtRemarks.Name = "txtRemarks";
-            this.txtRemarks.Size = new System.Drawing.Size(474, 67);
+            this.txtRemarks.Size = new System.Drawing.Size(474, 68);
             this.txtRemarks.TabIndex = 48;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(18, 177);
+            this.label10.Location = new System.Drawing.Point(15, 176);
             this.label10.Margin = new System.Windows.Forms.Padding(5);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(48, 15);
@@ -257,27 +283,17 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(240, 24);
+            this.label15.Location = new System.Drawing.Point(15, 23);
             this.label15.Margin = new System.Windows.Forms.Padding(5);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(75, 15);
             this.label15.TabIndex = 57;
             this.label15.Text = "Date Needed";
             // 
-            // cbxRequestType
-            // 
-            this.cbxRequestType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxRequestType.FormattingEnabled = true;
-            this.cbxRequestType.Location = new System.Drawing.Point(18, 42);
-            this.cbxRequestType.Margin = new System.Windows.Forms.Padding(5);
-            this.cbxRequestType.Name = "cbxRequestType";
-            this.cbxRequestType.Size = new System.Drawing.Size(185, 23);
-            this.cbxRequestType.TabIndex = 51;
-            // 
             // dtpNeededDate
             // 
             this.dtpNeededDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpNeededDate.Location = new System.Drawing.Point(243, 42);
+            this.dtpNeededDate.Location = new System.Drawing.Point(15, 41);
             this.dtpNeededDate.Margin = new System.Windows.Forms.Padding(5);
             this.dtpNeededDate.Name = "dtpNeededDate";
             this.dtpNeededDate.Size = new System.Drawing.Size(186, 23);
@@ -287,7 +303,7 @@
             // 
             this.cbxSubType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxSubType.FormattingEnabled = true;
-            this.cbxSubType.Location = new System.Drawing.Point(243, 93);
+            this.cbxSubType.Location = new System.Drawing.Point(237, 92);
             this.cbxSubType.Margin = new System.Windows.Forms.Padding(5);
             this.cbxSubType.Name = "cbxSubType";
             this.cbxSubType.Size = new System.Drawing.Size(186, 23);
@@ -296,27 +312,27 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(240, 75);
+            this.label1.Location = new System.Drawing.Point(237, 74);
             this.label1.Margin = new System.Windows.Forms.Padding(5);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 15);
             this.label1.TabIndex = 54;
             this.label1.Text = "Sub Type";
             // 
-            // btnSubmit
+            // btnSubmitReserve
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(418, 386);
-            this.btnSubmit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(100, 30);
-            this.btnSubmit.TabIndex = 58;
-            this.btnSubmit.Text = "Submit Request";
-            this.btnSubmit.UseVisualStyleBackColor = true;
-            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            this.btnSubmitReserve.Location = new System.Drawing.Point(418, 383);
+            this.btnSubmitReserve.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnSubmitReserve.Name = "btnSubmitReserve";
+            this.btnSubmitReserve.Size = new System.Drawing.Size(100, 30);
+            this.btnSubmitReserve.TabIndex = 58;
+            this.btnSubmitReserve.Text = "Submit Request";
+            this.btnSubmitReserve.UseVisualStyleBackColor = true;
+            this.btnSubmitReserve.Click += new System.EventHandler(this.btnSubmitReserve_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(310, 386);
+            this.btnCancel.Location = new System.Drawing.Point(310, 383);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(100, 30);
@@ -325,13 +341,137 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.pnlRepair);
+            this.tabPage3.Location = new System.Drawing.Point(4, 34);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(543, 444);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Repair";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // pnlRepair
+            // 
+            this.pnlRepair.Controls.Add(this.btnSubmitRepair);
+            this.pnlRepair.Controls.Add(this.button2);
+            this.pnlRepair.Controls.Add(this.label14);
+            this.pnlRepair.Controls.Add(this.groupBox3);
+            this.pnlRepair.Controls.Add(this.label16);
+            this.pnlRepair.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlRepair.Location = new System.Drawing.Point(3, 3);
+            this.pnlRepair.Name = "pnlRepair";
+            this.pnlRepair.Size = new System.Drawing.Size(537, 438);
+            this.pnlRepair.TabIndex = 103;
+            // 
+            // btnSubmitRepair
+            // 
+            this.btnSubmitRepair.Location = new System.Drawing.Point(418, 383);
+            this.btnSubmitRepair.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnSubmitRepair.Name = "btnSubmitRepair";
+            this.btnSubmitRepair.Size = new System.Drawing.Size(100, 30);
+            this.btnSubmitRepair.TabIndex = 103;
+            this.btnSubmitRepair.Text = "Submit Request";
+            this.btnSubmitRepair.UseVisualStyleBackColor = true;
+            this.btnSubmitRepair.Click += new System.EventHandler(this.btnSubmitRepair_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(310, 383);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(100, 30);
+            this.button2.TabIndex = 104;
+            this.button2.Text = "Cancel";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.White;
+            this.label14.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.Black;
+            this.label14.Location = new System.Drawing.Point(10, 10);
+            this.label14.Margin = new System.Windows.Forms.Padding(10);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(114, 26);
+            this.label14.TabIndex = 101;
+            this.label14.Text = "Repair Item";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label17);
+            this.groupBox3.Controls.Add(this.cbxUsersRepair);
+            this.groupBox3.Controls.Add(this.label13);
+            this.groupBox3.Controls.Add(this.cbxUserItem);
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Location = new System.Drawing.Point(9, 95);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(509, 282);
+            this.groupBox3.TabIndex = 102;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Request Details";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(18, 75);
+            this.label13.Margin = new System.Windows.Forms.Padding(5);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(132, 15);
+            this.label13.TabIndex = 58;
+            this.label13.Text = "Select which user item:";
+            // 
+            // cbxUserItem
+            // 
+            this.cbxUserItem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxUserItem.FormattingEnabled = true;
+            this.cbxUserItem.Location = new System.Drawing.Point(18, 93);
+            this.cbxUserItem.Margin = new System.Windows.Forms.Padding(5);
+            this.cbxUserItem.Name = "cbxUserItem";
+            this.cbxUserItem.Size = new System.Drawing.Size(411, 23);
+            this.cbxUserItem.TabIndex = 57;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(17, 126);
+            this.label3.Margin = new System.Windows.Forms.Padding(5);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(48, 15);
+            this.label3.TabIndex = 56;
+            this.label3.Text = "Remark";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(18, 144);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(5);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(474, 68);
+            this.textBox1.TabIndex = 55;
+            // 
+            // label16
+            // 
+            this.label16.Location = new System.Drawing.Point(9, 46);
+            this.label16.Margin = new System.Windows.Forms.Padding(3, 0, 3, 23);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(509, 44);
+            this.label16.TabIndex = 100;
+            this.label16.Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean maximus turpis to" +
+    "rtor, vitae mollis arcu pellentesque sit amet. Curabitur dapibus ipsum tortor, s" +
+    "ed fringilla tortor tempor eu. ";
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.pnlTab2);
             this.tabPage2.Location = new System.Drawing.Point(4, 34);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(543, 465);
+            this.tabPage2.Size = new System.Drawing.Size(543, 444);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Manage Request";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -344,7 +484,7 @@
             this.pnlTab2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlTab2.Location = new System.Drawing.Point(3, 3);
             this.pnlTab2.Name = "pnlTab2";
-            this.pnlTab2.Size = new System.Drawing.Size(537, 459);
+            this.pnlTab2.Size = new System.Drawing.Size(537, 438);
             this.pnlTab2.TabIndex = 77;
             this.pnlTab2.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlTab2_Paint);
             // 
@@ -541,11 +681,32 @@
             this.trMain.TabIndex = 76;
             this.trMain.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.trMain_AfterSelect);
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(18, 24);
+            this.label17.Margin = new System.Windows.Forms.Padding(5);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(79, 15);
+            this.label17.TabIndex = 61;
+            this.label17.Text = "Requested By";
+            // 
+            // cbxUsersRepair
+            // 
+            this.cbxUsersRepair.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxUsersRepair.FormattingEnabled = true;
+            this.cbxUsersRepair.Location = new System.Drawing.Point(18, 42);
+            this.cbxUsersRepair.Margin = new System.Windows.Forms.Padding(5);
+            this.cbxUsersRepair.Name = "cbxUsersRepair";
+            this.cbxUsersRepair.Size = new System.Drawing.Size(411, 23);
+            this.cbxUsersRepair.TabIndex = 60;
+            this.cbxUsersRepair.SelectedIndexChanged += new System.EventHandler(this.cbxUsersRepair_SelectedIndexChanged);
+            // 
             // frmEndUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(577, 529);
+            this.ClientSize = new System.Drawing.Size(577, 508);
             this.Controls.Add(this.pnlMain);
             this.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -562,6 +723,11 @@
             this.pnlTab1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.pnlRepair.ResumeLayout(false);
+            this.pnlRepair.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.pnlTab2.ResumeLayout(false);
             this.pnlTab2.PerformLayout();
@@ -580,12 +746,10 @@
         private System.Windows.Forms.TextBox txtRemarks;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbxSubType;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cbxRequestType;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.DateTimePicker dtpNeededDate;
         private System.Windows.Forms.Panel pnlMain;
-        private System.Windows.Forms.Button btnSubmit;
+        private System.Windows.Forms.Button btnSubmitReserve;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label label22;
@@ -615,5 +779,20 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.DateTimePicker dtpExpectedReturnDate;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cbxUserItem;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Panel pnlRepair;
+        private System.Windows.Forms.Button btnSubmitRepair;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.ComboBox cbxUsersRepair;
     }
 }

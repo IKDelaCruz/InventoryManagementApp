@@ -32,6 +32,8 @@ namespace InventoryManagement.ViewModel
         public int RequestItemPrimaryType { get; set; }
         public int RequestSecondaryItemType { get; set; }
         public string Subtype { get; set; }
+        public int ItemId { get; set; }
+
         public int RequestedById { get; set; }
         public int ProcessedById { get; set; }
         public DateTime NeededDate { get; set; }

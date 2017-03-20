@@ -16,6 +16,8 @@ namespace InventoryManagement
         public frmLauncher()
         {
             InitializeComponent();
+
+            //System.Threading.Thread.Sleep(2000);
         }
 
         private void frmLauncher_Load(object sender, EventArgs e)

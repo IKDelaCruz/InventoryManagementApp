@@ -16,6 +16,8 @@ namespace AuthenticationLibrary
         public string Department { get; set; }
 
         public string Gender { get; set; }
+        public bool Disabled { get; set; }
+        public bool IsAdministrator { get; set; }
     }
     public class LDAPGroupInformation
     {
@@ -53,11 +55,9 @@ namespace AuthenticationLibrary
                             Department = OU,
                             Gender = "M" //default gender - no gender in AD
                         };
-                      
+                        item.Disabled = !IsActive(de);
+                        item.IsAdministrator = (OU.IndexOf("ADMINISTRATOR-MIS") > -1);
                         list.Add(item);
-
-
-
                     }
                 }
             }
@@ -65,9 +65,16 @@ namespace AuthenticationLibrary
 
             return list;
         }
+        private bool IsActive(DirectoryEntry de)
+        {
+            if (de.NativeGuid == null) return false;
 
+            int flags = (int)de.Properties["userAccountControl"].Value;
 
-        public List<LDAPGroupInformation> GetOrganizationalUnits()
+            return !Convert.ToBoolean(flags & 0x0002);
+        }
+
+        public List<LDAPGroupInformation> SyncOrganizationalUnits()
         {
             List<LDAPGroupInformation> orgUnits = new List<LDAPGroupInformation>();
 
@@ -89,6 +96,8 @@ namespace AuthenticationLibrary
             return orgUnits.OrderBy(x => x.Name).ToList();
         }
 
+
         
     }
 }
+

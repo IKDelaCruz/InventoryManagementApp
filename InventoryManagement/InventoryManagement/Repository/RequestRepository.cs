@@ -87,6 +87,7 @@ namespace InventoryManagement.Repository
                     RequestItemPrimaryType = (int)r.request_item_primary_type,
                     RequestSecondaryItemType = (int)r.request_item_secondary_type,
                     Subtype = r.request_subtype,
+                    
                     RequestType = (RequestType)r.request_type,
                     RequestTypeInt = r.request_type,
                     Remarks = r.request_remarks,

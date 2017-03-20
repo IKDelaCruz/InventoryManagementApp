@@ -30,6 +30,7 @@ namespace InventoryManagement.Repository
         public Nullable<int> user_department { get; set; }
         public Nullable<int> user_company { get; set; }
         public Nullable<bool> is_male { get; set; }
+        public Nullable<bool> is_disabled { get; set; }
     
         public virtual company company { get; set; }
         public virtual department department { get; set; }

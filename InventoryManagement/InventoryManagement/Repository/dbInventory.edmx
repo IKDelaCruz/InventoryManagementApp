@@ -59,6 +59,7 @@
           <Property Name="item_serial" Type="varchar" MaxLength="50" />
           <Property Name="item_current_owner" Type="int" />
           <Property Name="item_current_department" Type="int" />
+          <Property Name="item_expected_return" Type="datetime" />
           <Property Name="item_os_id" Type="int" />
           <Property Name="item_processor_id" Type="int" />
           <Property Name="item_memory_id" Type="int" />
@@ -154,6 +155,7 @@
           <Property Name="request_need_date" Type="datetime" />
           <Property Name="request_expected_return_date" Type="datetime" />
           <Property Name="request_admin_remarks" Type="varchar" MaxLength="150" />
+          <Property Name="request_item_id" Type="int" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -198,6 +200,7 @@
           <Property Name="user_department" Type="int" />
           <Property Name="user_company" Type="int" />
           <Property Name="is_male" Type="bit" />
+          <Property Name="is_disabled" Type="bit" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'InventoryManagement.dbo.vw_brand_summary' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -1060,6 +1063,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
           <Property Name="item_printer_type" Type="Int32" />
           <Property Name="item_ip_gateway" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="item_parent" Type="Int32" />
+          <Property Name="item_expected_return" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="item_image">
           <Key>
@@ -1153,6 +1157,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
           <Property Name="request_expected_return_date" Type="DateTime" Precision="3" />
           <Property Name="request_admin_remarks" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="user" Relationship="InventoryMangementModel.FK_Request_User" FromRole="request" ToRole="user" />
+          <Property Name="request_item_id" Type="Int32" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -1204,6 +1209,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
           <NavigationProperty Name="requests" Relationship="InventoryMangementModel.FK_Request_User" FromRole="user" ToRole="request" />
           <NavigationProperty Name="transacitons" Relationship="InventoryMangementModel.FK_transaciton_system_user" FromRole="user" ToRole="transaciton" />
           <Property Name="is_male" Type="Boolean" />
+          <Property Name="is_disabled" Type="Boolean" />
         </EntityType>
         <EntityType Name="vw_brand_summary">
           <Key>
@@ -1641,6 +1647,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
           <EntitySetMapping Name="items">
             <EntityTypeMapping TypeName="InventoryMangementModel.item">
               <MappingFragment StoreEntitySet="item">
+                <ScalarProperty Name="item_expected_return" ColumnName="item_expected_return" />
                 <ScalarProperty Name="item_parent" ColumnName="item_parent" />
                 <ScalarProperty Name="item_ip_gateway" ColumnName="item_ip_gateway" />
                 <ScalarProperty Name="item_printer_type" ColumnName="item_printer_type" />
@@ -1748,6 +1755,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
           <EntitySetMapping Name="requests">
             <EntityTypeMapping TypeName="InventoryMangementModel.request">
               <MappingFragment StoreEntitySet="request">
+                <ScalarProperty Name="request_item_id" ColumnName="request_item_id" />
                 <ScalarProperty Name="request_admin_remarks" ColumnName="request_admin_remarks" />
                 <ScalarProperty Name="request_expected_return_date" ColumnName="request_expected_return_date" />
                 <ScalarProperty Name="request_need_date" ColumnName="request_need_date" />
@@ -1802,6 +1810,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
           <EntitySetMapping Name="users">
             <EntityTypeMapping TypeName="InventoryMangementModel.user">
               <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="is_disabled" ColumnName="is_disabled" />
                 <ScalarProperty Name="is_male" ColumnName="is_male" />
                 <ScalarProperty Name="user_company" ColumnName="user_company" />
                 <ScalarProperty Name="user_department" ColumnName="user_department" />

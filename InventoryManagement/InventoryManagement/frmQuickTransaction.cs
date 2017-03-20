@@ -22,16 +22,27 @@ namespace InventoryManagement
             _selectedItem = selectedItem;
             _transType = transType;
 
+
             if (transType == TransactionType.BorrowItem)
+            {
                 lblHeader.Text = "Borrow Item";
+                dtpExpected.Value = DateTime.Now.AddDays(30);
+            }
             else if (transType == TransactionType.ReserveItem)
                 lblHeader.Text = "Reserve Item";
             else if (transType == TransactionType.ReturnItem)
+            {
                 lblHeader.Text = "Return Item";
+            }
             else if (transType == TransactionType.DisposeItem)
                 lblHeader.Text = "Retire Item";
             else if (transType == TransactionType.RepairItem)
                 lblHeader.Text = "Repair Item";
+            else if (transType == TransactionType.AssignItem)
+            {
+                lblHeader.Text = "Assign Item";
+                dtpExpected.Value = DateTime.Now.AddYears(5);
+            }
 
         }
 
@@ -74,16 +85,8 @@ namespace InventoryManagement
 
         private void UpdateItemStatus(int itemId, ItemStatus currentStatus, ItemStatus newStatus, int userId)
         {
-
-
             ItemModel itm = new ItemModel();
-            Singleton.Instance.ItemModel.UpdateItemStatus(itemId, userId, currentStatus, newStatus);
-
-            //this.DialogResult = DialogResult.OK;
-            //this.Close();
-
-
-
+            Singleton.Instance.ItemModel.UpdateItemStatus(itemId, userId, currentStatus, newStatus, dtpExpected.Value);
         }
 
         private void cbxCompany_SelectedIndexChanged(object sender, EventArgs e)
@@ -120,6 +123,11 @@ namespace InventoryManagement
         {
             foreach (ItemViewModel lvi in _selectedItem)
             {
+                if (_transType == TransactionType.AssignItem)
+                {
+                    UpdateItemStatus(lvi.Id, lvi.Status, ItemStatus.Assigned, (int)cbxUser.SelectedValue);
+
+                }
                 if (_transType == TransactionType.BorrowItem)
                 {
                     UpdateItemStatus(lvi.Id, lvi.Status, ItemStatus.Borrowed, (int)cbxUser.SelectedValue);
@@ -147,7 +155,7 @@ namespace InventoryManagement
                     UpdateItemStatus(lvi.Id, lvi.Status, ItemStatus.Broken, 432);
                   
                 }
-                Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, (int)cbxUser.SelectedValue, _transType, "", lvi.Id);
+                Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, (int)(cbxUser.SelectedValue ?? 0), _transType, "", lvi.Id);
             }
 
             this.DialogResult = DialogResult.OK;

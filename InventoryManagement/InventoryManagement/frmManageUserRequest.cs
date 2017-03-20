@@ -15,7 +15,7 @@ namespace InventoryManagement
 {
     public partial class frmManageUserRequest : frmBase
     {
-     
+
         public frmManageUserRequest(int itemId = 0, bool AddItem = true)
         {
             InitializeComponent();
@@ -24,9 +24,9 @@ namespace InventoryManagement
             cbxStatus.DataSource = Enum.GetValues(typeof(RequestStatus));
 
             LoadRequest();
-          
+
         }
-       
+
         private void LoadRequest()
         {
             var from = dtpFrom.Value.Date;
@@ -64,7 +64,7 @@ namespace InventoryManagement
             }
         }
 
-      
+
 
         private void dvLogs_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -88,7 +88,7 @@ namespace InventoryManagement
             var requestedby = dvLogs.SelectedRows[0].Cells[8].Value;
             var requestType = dvLogs.SelectedRows[0].Cells[2].Value.ToString();
 
-            if(btnApproved.Text == "Delivered")
+            if (btnApproved.Text == "Delivered")
             {
                 Singleton.Instance.RequestModel.DeliverRequest(Convert.ToInt32(id), txtAdminRemarks.Text, user);
                 Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, (int)requestedby, ViewModel.TransactionType.DeliverRequest, "", 0);
@@ -98,7 +98,7 @@ namespace InventoryManagement
                 Singleton.Instance.RequestModel.ApproveRequest(Convert.ToInt32(id), txtAdminRemarks.Text, user);
                 Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, (int)requestedby, ViewModel.TransactionType.ReserveItem, "", 0);
             }
-            
+
             LoadRequest();
         }
 
@@ -109,12 +109,12 @@ namespace InventoryManagement
 
             var user = Singleton.Instance.UserModel.CurrentUser.Id;
             var id = dvLogs.SelectedRows[0].Cells[0].Value;
-        
+
             Singleton.Instance.RequestModel.DeclineRequest(Convert.ToInt32(id), txtAdminRemarks.Text, user);
             LoadRequest();
         }
 
-        
+
 
 
         private void tmrRefresh_Tick(object sender, EventArgs e)
@@ -125,12 +125,28 @@ namespace InventoryManagement
         private void cbxStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadRequest();
-          
+
         }
 
         private void dvLogs_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (dvLogs.SelectedRows.Count == 0)
+                return;
+            var transType = dvLogs.SelectedRows[0].Cells[2].Value;
+            if ((TransactionType)transType == TransactionType.RepairItem)
+            {
+                cbxItems.Enabled = false;
+            }
+            else
+            {
+                var subtype = dvLogs.SelectedRows[0].Cells[4].Value;
+                var items = Singleton.Instance.ItemModel.GetItemsBySubType((int)subtype, true);
 
+                cbxItems.DisplayMember = "Name";
+                cbxItems.ValueMember = "Id";
+
+                cbxItems.DataSource = items;
+            }
         }
 
         private void btnFilter_Click(object sender, EventArgs e)

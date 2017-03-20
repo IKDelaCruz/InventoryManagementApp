@@ -21,7 +21,7 @@ namespace InventoryManagement.Repository
                 item_description = newItem.Description,
                 item_subtype_id = (int)newItem.SubTypeId,
                 item_type_id = (int)newItem.TypeId,
-           
+
                 item_last_updated_user = newItem.LastUpdatedUserId,
                 item_lifespan = newItem.LifeSpan,
                 item_model = newItem.Model,
@@ -47,7 +47,7 @@ namespace InventoryManagement.Repository
             {
                 InventoryDatabase.SaveChanges();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
@@ -178,7 +178,7 @@ namespace InventoryManagement.Repository
             }
             return false;
         }
-        public bool UpdateItemStatus(int itemId, int userId, int itemStatus)
+        public bool UpdateItemStatus(int itemId, int userId, int itemStatus, DateTime expectedReturn)
         {
             //var item = InventoryDatabase.Items.FirstOrDefault(h => h.id == itemId);
             var item = InventoryDatabase.items.FirstOrDefault(x => x.item_id == itemId);
@@ -188,6 +188,9 @@ namespace InventoryManagement.Repository
 
                 item.item_status = itemStatus;
                 item.item_current_owner = userId;
+                item.item_last_updated = DateTime.Now;
+                item.item_last_updated_user = userId;
+                item.item_expected_return = expectedReturn;
                 InventoryDatabase.SaveChanges();
 
                 return true;
@@ -246,7 +249,7 @@ namespace InventoryManagement.Repository
 
         public OSViewModel GetOSbyName(string os)
         {
-            var OS = InventoryDatabase.operation_system.FirstOrDefault(h =>  h.os_name == os);
+            var OS = InventoryDatabase.operation_system.FirstOrDefault(h => h.os_name == os);
             if (OS != null)
             {
                 return new OSViewModel
@@ -258,7 +261,7 @@ namespace InventoryManagement.Repository
                 };
             }
 
-              return new OSViewModel
+            return new OSViewModel
             {
                 Id = 1,
                 ParentId = 1,
@@ -346,7 +349,7 @@ namespace InventoryManagement.Repository
         {
             var OSList = new List<OSViewModel>();
 
-            var operatingsystems = InventoryDatabase.operation_system.OrderBy(h=> h.os_name).ToList();
+            var operatingsystems = InventoryDatabase.operation_system.OrderBy(h => h.os_name).ToList();
             foreach (operation_system o in operatingsystems)
             {
                 OSList.Add(new ViewModel.OSViewModel
@@ -428,9 +431,11 @@ namespace InventoryManagement.Repository
             return iList;
         }
 
-        public List<ItemViewModel> QueryItemsBySubType(int subtypeId)
+        public List<ItemViewModel> QueryItemsBySubType(int subtypeId, bool isAvailable = false)
         {
             var items = InventoryDatabase.vw_item_detail.AsNoTracking().Where(h => h.ItemSubTypeId == subtypeId).ToList();
+            if (isAvailable)
+                items = items.Where(h => h.item_status == (int)ItemStatus.Available).ToList();
             List<ItemViewModel> iList = new List<ItemViewModel>();
 
             foreach (vw_item_detail i in items)

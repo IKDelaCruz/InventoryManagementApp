@@ -75,7 +75,7 @@ namespace InventoryManagement.Repository
             if (dep != null)
                 return new CompanyViewModel
                 {
-                    Id = dep.department_company_id,
+                    Id = dep.department_id,
                     Name = dep.department_name
                 };
             else

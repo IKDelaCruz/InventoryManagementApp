@@ -73,11 +73,12 @@ namespace InventoryManagement.Model
 
             return true;
         }
-        public ReturnValueModel UpdateItemStatus(int itemId, int userId, ItemStatus oldStatus, ItemStatus newStatus)
+        
+        public ReturnValueModel UpdateItemStatus(int itemId, int userId, ItemStatus oldStatus, ItemStatus newStatus, DateTime expectedReturn)
         {
             var result = new ReturnValueModel();
             if(AllowChange(oldStatus, newStatus))
-                result.Success = itemRepostory.UpdateItemStatus(itemId, userId, (int)newStatus);
+                result.Success = itemRepostory.UpdateItemStatus(itemId, userId, (int)newStatus, expectedReturn);
 
             return result;
         }
@@ -158,9 +159,9 @@ namespace InventoryManagement.Model
             return itemRepostory.QueryItemsByOwner(userId);
         }
         
-        public List<ItemViewModel> GetItemsBySubType(int subTypeId)
+        public List<ItemViewModel> GetItemsBySubType(int subTypeId, bool isAvailable =false)
         {
-            return itemRepostory.QueryItemsBySubType(subTypeId);
+            return itemRepostory.QueryItemsBySubType(subTypeId, isAvailable);
         }
         public List<ItemViewModel> GetItemTypeSummary()
         {

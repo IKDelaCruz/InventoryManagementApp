@@ -119,6 +119,12 @@
     <Compile Include="frmItemSummaryReport.Designer.cs">
       <DependentUpon>frmItemSummaryReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSyncLDAPUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSyncLDAPUsers.Designer.cs">
+      <DependentUpon>frmSyncLDAPUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmUploadItems.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -334,6 +340,12 @@
     <Compile Include="Repository\vw_user_membership_detail.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
+    <Compile Include="SplashForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplashForm.Designer.cs">
+      <DependentUpon>SplashForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utils\BarcodeGenerator.cs" />
     <Compile Include="Utils\CSVExporter.cs" />
     <Compile Include="Utils\EmailSender.cs" />
@@ -392,6 +404,9 @@
     <EmbeddedResource Include="frmItemSummaryReport.resx">
       <DependentUpon>frmItemSummaryReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmSyncLDAPUsers.resx">
+      <DependentUpon>frmSyncLDAPUsers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmUploadItems.resx">
       <DependentUpon>frmUploadItems.cs</DependentUpon>
     </EmbeddedResource>
@@ -414,6 +429,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SplashForm.resx">
+      <DependentUpon>SplashForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="InventoryManagement_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -502,6 +520,7 @@
     <Content Include="images\items\default.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Loading_icon.gif" />
     <None Include="Resources\logo.jpg" />
     <None Include="images\jakalogo.jpg" />
     <Content Include="images\Login.png" />

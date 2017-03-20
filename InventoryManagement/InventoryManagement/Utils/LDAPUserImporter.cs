@@ -12,7 +12,7 @@ namespace InventoryManagement.Utils
     {
          public void ImportLDAPUser()
         {
-            var s = new LDAPManager().GetOrganizationalUnits();
+            var s = new LDAPManager().SyncOrganizationalUnits();
             
 
             foreach(LDAPGroupInformation l in s)
@@ -29,9 +29,15 @@ namespace InventoryManagement.Utils
                     foreach(LDAPUserInformation ui in l.Members)
                     {
                         var existing = Singleton.Instance.UserModel.GetUsersByUsername(ui.Username);
-                        if(existing == null)
-                            Singleton.Instance.UserModel.CreateNewUser(ui.Username, "", UserModel.UserType.User, ui.Firstname, ui.Lastname, departmentId,
-                                ui.Gender == "M");
+                        var userType = ui.IsAdministrator ? UserModel.UserType.Admin : UserModel.UserType.User;
+                        if (existing == null)
+                        {
+                            Singleton.Instance.UserModel.CreateNewUser(ui.Username, "", userType, ui.Firstname, ui.Lastname, departmentId, ui.Gender == "M", ui.Disabled);
+                        }
+                        else
+                        {
+                            Singleton.Instance.UserModel.UpdateUser(existing.Id,  ui.Firstname, ui.Lastname, departmentId, userType, "", ui.Disabled);
+                        }
                     }
                 }
             }

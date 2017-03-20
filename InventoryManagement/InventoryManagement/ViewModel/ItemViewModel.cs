@@ -39,6 +39,7 @@ namespace InventoryManagement.ViewModel
         Reserved,
         Broken,
         Disposed,
+        Assigned
        // Unknown
     }
     public enum ItemLoginType

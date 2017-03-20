@@ -22,14 +22,18 @@ namespace InventoryManagement
             //new LDAPUserImporter().ImportLDAPUser();
             //Singleton.Instance.UserModel.CheckDefaultUser();
 
-      
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            SplashForm.ShowSplashScreen();
 
+            frmLauncher mainForm = new frmLauncher(); //this takes ages
 
-            Application.Run(new frmLauncher());
+            SplashForm.CloseForm();
+
+            Application.Run(mainForm);
+
+            //Application.Run();
             //Application.Run(new frmMain());
         }
     }

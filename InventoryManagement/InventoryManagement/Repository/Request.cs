@@ -29,6 +29,7 @@ namespace InventoryManagement.Repository
         public Nullable<System.DateTime> request_need_date { get; set; }
         public Nullable<System.DateTime> request_expected_return_date { get; set; }
         public string request_admin_remarks { get; set; }
+        public Nullable<int> request_item_id { get; set; }
     
         public virtual user user { get; set; }
     }

@@ -55,6 +55,8 @@ namespace InventoryManagement.Utils
                         newItem.ForeColor = Color.Red;
                     else if (item.Status == ItemStatus.Reserved )
                         newItem.ForeColor = Color.Blue;
+                    else if (item.Status == ItemStatus.Assigned)
+                        newItem.ForeColor = Color.Brown;
                     else
                         newItem.ForeColor = Color.Gray;
                 }

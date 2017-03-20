@@ -70,7 +70,7 @@ namespace InventoryManagement
                 if (isUpdate)
                 {
 
-                    if (Singleton.Instance.UserModel.UpdateUser(currentUSer.Id, txtFirstname.Text, txtLastname.Text, (int)cbxCompany.SelectedValue, (int)cbxDepartment.SelectedValue, (UserType)cbxUserType.SelectedItem, txtPassword.Text))
+                    if (Singleton.Instance.UserModel.UpdateUser(currentUSer.Id, txtFirstname.Text, txtLastname.Text, (int)cbxDepartment.SelectedValue, (UserType)cbxUserType.SelectedItem, txtPassword.Text))
                     {
                         MessageBox.Show("User successfully updated!");
                         this.DialogResult = DialogResult.OK;
@@ -142,6 +142,9 @@ namespace InventoryManagement
 
         private void frmManageUserInfo_Load(object sender, EventArgs e)
         {
+            if (currentUSer == null)
+                return;
+
             var itms = Singleton.Instance.ItemModel.GetItemsByOwner(currentUSer.Id).OrderBy(h => h.Name).ToList();
 
             imgMainImage.Images.Clear();
@@ -181,6 +184,9 @@ namespace InventoryManagement
         }
         private void LoadLogs()
         {
+            if (currentUSer == null)
+                return;
+
             var from = dtpFrom.Value.Date;
             var to = dtpTo.Value.Date.AddDays(1);
 

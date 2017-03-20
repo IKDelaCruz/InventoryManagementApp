@@ -549,7 +549,23 @@ namespace InventoryManagement
 
         private void uploadItemsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new frmUploadItems().ShowDialog();
+            if(Singleton.Instance.UserModel.CurrentUser.Username == "ian.delacruz")
+                new frmUploadItems().ShowDialog();
+        }
+
+        private void syncToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new frmSyncLDAPUsers().ShowDialog();
+        }
+
+        private void createNewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new frmEndUser().ShowDialog();
+        }
+
+        private void assignToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LaunchQuickTransaction(TransactionType.AssignItem);
         }
     }
 

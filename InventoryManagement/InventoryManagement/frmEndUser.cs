@@ -22,7 +22,7 @@ namespace InventoryManagement
 
             var user = Singleton.Instance.UserModel.CurrentUser.Id;
             cbxUsers.SelectedValue = user;
-            
+
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -30,16 +30,21 @@ namespace InventoryManagement
             this.Close();
         }
 
-        private void btnSubmit_Click(object sender, EventArgs e)
+        private void btnSubmitReserve_Click(object sender, EventArgs e)
         {
             var request = new RequestViewModel();
             request.RequestedDate = DateTime.Now;
-            request.RequestType = (RequestType)cbxRequestType.SelectedItem;
+
+
+            request.RequestType = (RequestType.Reserve);
             request.RequestedStatus = RequestStatus.New;
             request.RequestItemPrimaryType = (int)cbxType.SelectedValue;
             request.RequestSecondaryItemType = (int)cbxSubType.SelectedValue;
             request.Subtype = cbxSubType.Text;
+
             request.NeededDate = dtpNeededDate.Value;
+            request.ExpectedReturnDate = dtpExpectedReturnDate.Value;
+
             request.UserId = (int)cbxUsers.SelectedValue;
             request.Remarks = txtRemarks.Text.ToString();
 
@@ -57,7 +62,7 @@ namespace InventoryManagement
         }
         private void ClearDisplay()
         {
-            cbxRequestType.SelectedIndex = 0;
+
             cbxType.SelectedIndex = 0;
             cbxSubType.SelectedIndex = 0;
             dtpNeededDate.Value = DateTime.Now;
@@ -74,9 +79,7 @@ namespace InventoryManagement
         }
         private void LoadComboBox()
         {
-            cbxRequestType.Items.Add(RequestType.Reserve);
-            cbxRequestType.Items.Add(RequestType.Repair);
-            cbxRequestType.SelectedIndex = 0;
+
 
             cbxType.DisplayMember = "Name";
             cbxType.ValueMember = "Id";
@@ -91,6 +94,12 @@ namespace InventoryManagement
             cbxUsers.DisplayMember = "LastnameFirstNameUsername";
 
             cbxUsers.DataSource = Singleton.Instance.UserModel.GetUsers();
+
+            cbxUsersRepair.ValueMember = "Id";
+            cbxUsersRepair.DisplayMember = "LastnameFirstNameUsername";
+
+            cbxUsersRepair.DataSource = Singleton.Instance.UserModel.GetUsers();
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -100,10 +109,10 @@ namespace InventoryManagement
         private void DisplayRequest()
         {
             var user = Singleton.Instance.UserModel.CurrentUser;
-            var newRequest = Singleton.Instance.RequestModel.GetRequestByUserId(user.Id).Where(h=>h.RequestedStatus == RequestStatus.New);
+            var newRequest = Singleton.Instance.RequestModel.GetRequestByUserId(user.Id).Where(h => h.RequestedStatus == RequestStatus.New);
             var oldRequest = Singleton.Instance.RequestModel.GetRequestByUserId(user.Id).Where(h => h.RequestedStatus != RequestStatus.New);
 
-           
+
 
             trMain.Nodes.Clear();
             var tNew = new TreeNode("Pending Request");
@@ -167,7 +176,7 @@ namespace InventoryManagement
             }
         }
 
-       
+
 
         private void cbxType_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -181,21 +190,21 @@ namespace InventoryManagement
 
         }
 
-      
+
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-          
+
         }
 
         private void frmEndUser_FormClosing(object sender, FormClosingEventArgs e)
         {
-            
+
         }
 
         private void tmrRefresh_Tick(object sender, EventArgs e)
         {
-            if(tbMain.SelectedIndex == 1)
+            if (tbMain.SelectedIndex == 1)
                 UpdateInfo();
         }
 
@@ -212,6 +221,48 @@ namespace InventoryManagement
         private void pnlTab2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnSubmitRepair_Click(object sender, EventArgs e)
+        {
+            if (cbxUserItem.SelectedValue == null)
+                return;
+
+            var request = new RequestViewModel();
+            request.RequestedDate = DateTime.Now;
+
+
+            request.RequestType = (RequestType.Repair);
+            request.RequestedStatus = RequestStatus.New;
+            request.RequestItemPrimaryType = (int)cbxType.SelectedValue;
+            request.RequestSecondaryItemType = (int)cbxSubType.SelectedValue;
+            request.Subtype = cbxSubType.Text;
+            request.ItemId = (int)cbxUserItem.SelectedValue;
+            request.NeededDate = dtpNeededDate.Value;
+            request.ExpectedReturnDate = dtpExpectedReturnDate.Value;
+
+            request.UserId = (int)cbxUsers.SelectedValue;
+            request.Remarks = txtRemarks.Text.ToString();
+
+            var result = Singleton.Instance.RequestModel.CreateNewRequest(request);
+
+            if (result > 0)
+            {
+                MessageBox.Show("Request successfully submitted!");
+                //ClearDisplay();
+                //var user = Singleton.Instance.UserModel.CurrentUser.Id;
+                //cbxUsers.SelectedValue = user;
+
+            }
+        }
+
+        private void cbxUsersRepair_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var itms = Singleton.Instance.ItemModel.GetItemsByOwner((int)cbxUsersRepair.SelectedValue).OrderBy(h => h.Name).ToList();
+
+            cbxUserItem.DisplayMember = "Name";
+            cbxUserItem.ValueMember = "Id";
+            cbxUserItem.DataSource = itms;
         }
     }
 }
