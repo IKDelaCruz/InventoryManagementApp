@@ -29,6 +29,7 @@ namespace InventoryManagement.ViewModel
     {
         public int Id { get; set; }
         public DateTime TransactionDate { get; set; }
+        public string TransactionDateString { get; set; }
         public int SystemUserId { get; set; }
         public string SystemUserName { get; set; }
         public int OtherUserId { get; set; }

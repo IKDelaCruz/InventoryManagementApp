@@ -204,6 +204,9 @@ namespace InventoryManagement.Model
             return itemRepostory.QueryOSBySubtype();
         }
 
-
+        public bool IsItemAvailable(int itemId, DateTime from, DateTime to)
+        {
+            return itemRepostory.IsItemAvailable(itemId, from, to);
+        }
     }
 }

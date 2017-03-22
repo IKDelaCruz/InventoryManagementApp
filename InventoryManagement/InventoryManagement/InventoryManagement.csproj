@@ -319,6 +319,9 @@
     <Compile Include="Repository\vw_item_log.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repository\vw_item_schedule_summary.cs">
+      <DependentUpon>dbInventory.tt</DependentUpon>
+    </Compile>
     <Compile Include="Repository\vw_item_subtype_count.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
@@ -348,6 +351,7 @@
     </Compile>
     <Compile Include="Utils\BarcodeGenerator.cs" />
     <Compile Include="Utils\CSVExporter.cs" />
+    <Compile Include="Utils\DateTimeExtension.cs" />
     <Compile Include="Utils\EmailSender.cs" />
     <Compile Include="Utils\ErrorLogger.cs" />
     <Compile Include="Utils\Helper.cs" />

@@ -26,10 +26,9 @@ namespace InventoryManagement
             if (transType == TransactionType.BorrowItem)
             {
                 lblHeader.Text = "Borrow Item";
-                dtpExpected.Value = DateTime.Now.AddDays(30);
+                dtpTo.Value = DateTime.Now.AddDays(30);
             }
-            else if (transType == TransactionType.ReserveItem)
-                lblHeader.Text = "Reserve Item";
+          
             else if (transType == TransactionType.ReturnItem)
             {
                 lblHeader.Text = "Return Item";
@@ -41,7 +40,7 @@ namespace InventoryManagement
             else if (transType == TransactionType.AssignItem)
             {
                 lblHeader.Text = "Assign Item";
-                dtpExpected.Value = DateTime.Now.AddYears(5);
+                dtpTo.Value = DateTime.Now.AddYears(5);
             }
 
         }
@@ -86,7 +85,7 @@ namespace InventoryManagement
         private void UpdateItemStatus(int itemId, ItemStatus currentStatus, ItemStatus newStatus, int userId)
         {
             ItemModel itm = new ItemModel();
-            Singleton.Instance.ItemModel.UpdateItemStatus(itemId, userId, currentStatus, newStatus, dtpExpected.Value);
+            Singleton.Instance.ItemModel.UpdateItemStatus(itemId, userId, currentStatus, newStatus, dtpTo.Value);
         }
 
         private void cbxCompany_SelectedIndexChanged(object sender, EventArgs e)
@@ -130,8 +129,9 @@ namespace InventoryManagement
                 }
                 if (_transType == TransactionType.BorrowItem)
                 {
+
                     UpdateItemStatus(lvi.Id, lvi.Status, ItemStatus.Borrowed, (int)cbxUser.SelectedValue);
-           
+
                 }
                 else if (_transType == TransactionType.ReserveItem)
                 {
@@ -155,11 +155,12 @@ namespace InventoryManagement
                     UpdateItemStatus(lvi.Id, lvi.Status, ItemStatus.Broken, 432);
                   
                 }
-                Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, (int)(cbxUser.SelectedValue ?? 0), _transType, "", lvi.Id);
+                Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, (int)(cbxUser.SelectedValue ?? 0), _transType, txtRemarks.Text, lvi.Id);
             }
 
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
+
     }
 }

@@ -75,8 +75,8 @@ namespace InventoryManagement
             if (dvLogs.SelectedRows.Count == 0)
                 return;
 
-            txtUserRemarks.Text = (dvLogs.SelectedRows[0].Cells[6].Value ?? "").ToString();
-            txtAdminRemarks.Text = (dvLogs.SelectedRows[0].Cells[7].Value ?? "").ToString();
+            txtUserRemarks.Text = (dvLogs.SelectedRows[0].Cells[8].Value ?? "").ToString();
+            txtAdminRemarks.Text = (dvLogs.SelectedRows[0].Cells[9].Value ?? "").ToString();
         }
         private void btnApproved_Click(object sender, EventArgs e)
         {
@@ -85,7 +85,7 @@ namespace InventoryManagement
 
             var user = Singleton.Instance.UserModel.CurrentUser.Id;
             var id = dvLogs.SelectedRows[0].Cells[0].Value;
-            var requestedby = dvLogs.SelectedRows[0].Cells[8].Value;
+            var requestedby = dvLogs.SelectedRows[0].Cells[10].Value;
             var requestType = dvLogs.SelectedRows[0].Cells[2].Value.ToString();
 
             if (btnApproved.Text == "Delivered")
@@ -95,7 +95,10 @@ namespace InventoryManagement
             }
             else
             {
-                Singleton.Instance.RequestModel.ApproveRequest(Convert.ToInt32(id), txtAdminRemarks.Text, user);
+                int itemId = 0;
+                if (cbxItems.SelectedValue != null)
+                    itemId = (int)cbxItems.SelectedValue;
+                Singleton.Instance.RequestModel.ApproveRequest(Convert.ToInt32(id), txtAdminRemarks.Text, user, itemId);
                 Singleton.Instance.TransactionModel.InsertLog(Singleton.Instance.UserModel.CurrentUser.Id, (int)requestedby, ViewModel.TransactionType.ReserveItem, "", 0);
             }
 
@@ -152,6 +155,11 @@ namespace InventoryManagement
         private void btnFilter_Click(object sender, EventArgs e)
         {
             LoadRequest();
+        }
+
+        private void cbxItems_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

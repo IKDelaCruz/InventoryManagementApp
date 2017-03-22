@@ -52,5 +52,7 @@ namespace InventoryManagement.Repository
         public string NetworkIP { get; set; }
         public string NetworkSubnet { get; set; }
         public string NetworkGateway { get; set; }
+        public Nullable<System.DateTime> BorrowDate { get; set; }
+        public Nullable<System.DateTime> ReturnDate { get; set; }
     }
 }

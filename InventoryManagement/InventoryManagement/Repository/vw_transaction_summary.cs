@@ -24,5 +24,6 @@ namespace InventoryManagement.Repository
         public int CustomerUserId { get; set; }
         public int TransactionTypeId { get; set; }
         public Nullable<int> ItemId { get; set; }
+        public string Remarks { get; set; }
     }
 }

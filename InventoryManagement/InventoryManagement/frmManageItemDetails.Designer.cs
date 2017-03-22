@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManageItemDetails));
+            this.pnlMain = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.pnlInformation = new System.Windows.Forms.Panel();
@@ -87,6 +88,10 @@
             this.label36 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtReturnDate = new System.Windows.Forms.TextBox();
+            this.txtBorrowDate = new System.Windows.Forms.TextBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
             this.txtEmployee = new System.Windows.Forms.TextBox();
             this.txtDepartment = new System.Windows.Forms.TextBox();
             this.txtCompany = new System.Windows.Forms.TextBox();
@@ -117,14 +122,15 @@
             this.label27 = new System.Windows.Forms.Label();
             this.dtpFrom = new System.Windows.Forms.DateTimePicker();
             this.dvLogs = new System.Windows.Forms.DataGridView();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.TransactionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TransactionType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SystemUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.pnlMain = new System.Windows.Forms.Panel();
+            this.Remarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnlMain.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.pnlInformation.SuspendLayout();
@@ -140,8 +146,20 @@
             this.tabPage5.SuspendLayout();
             this.pnlHistory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvLogs)).BeginInit();
-            this.pnlMain.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // pnlMain
+            // 
+            this.pnlMain.BackColor = System.Drawing.Color.White;
+            this.pnlMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlMain.Controls.Add(this.tabControl1);
+            this.pnlMain.Controls.Add(this.btnClose);
+            this.pnlMain.Controls.Add(this.btnSave);
+            this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlMain.Location = new System.Drawing.Point(10, 10);
+            this.pnlMain.Name = "pnlMain";
+            this.pnlMain.Size = new System.Drawing.Size(730, 426);
+            this.pnlMain.TabIndex = 4;
             // 
             // tabControl1
             // 
@@ -721,6 +739,10 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.txtReturnDate);
+            this.panel2.Controls.Add(this.txtBorrowDate);
+            this.panel2.Controls.Add(this.label35);
+            this.panel2.Controls.Add(this.label37);
             this.panel2.Controls.Add(this.txtEmployee);
             this.panel2.Controls.Add(this.txtDepartment);
             this.panel2.Controls.Add(this.txtCompany);
@@ -741,9 +763,45 @@
             this.panel2.Size = new System.Drawing.Size(708, 335);
             this.panel2.TabIndex = 35;
             // 
+            // txtReturnDate
+            // 
+            this.txtReturnDate.Location = new System.Drawing.Point(146, 113);
+            this.txtReturnDate.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.txtReturnDate.Name = "txtReturnDate";
+            this.txtReturnDate.ReadOnly = true;
+            this.txtReturnDate.Size = new System.Drawing.Size(169, 23);
+            this.txtReturnDate.TabIndex = 73;
+            // 
+            // txtBorrowDate
+            // 
+            this.txtBorrowDate.Location = new System.Drawing.Point(146, 84);
+            this.txtBorrowDate.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.txtBorrowDate.Name = "txtBorrowDate";
+            this.txtBorrowDate.ReadOnly = true;
+            this.txtBorrowDate.Size = new System.Drawing.Size(169, 23);
+            this.txtBorrowDate.TabIndex = 72;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(23, 87);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(75, 15);
+            this.label35.TabIndex = 71;
+            this.label35.Text = "Borrow Date";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(23, 116);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(71, 15);
+            this.label37.TabIndex = 70;
+            this.label37.Text = "Return Date";
+            // 
             // txtEmployee
             // 
-            this.txtEmployee.Location = new System.Drawing.Point(146, 159);
+            this.txtEmployee.Location = new System.Drawing.Point(146, 217);
             this.txtEmployee.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
             this.txtEmployee.Name = "txtEmployee";
             this.txtEmployee.ReadOnly = true;
@@ -752,7 +810,7 @@
             // 
             // txtDepartment
             // 
-            this.txtDepartment.Location = new System.Drawing.Point(146, 130);
+            this.txtDepartment.Location = new System.Drawing.Point(146, 188);
             this.txtDepartment.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
             this.txtDepartment.Name = "txtDepartment";
             this.txtDepartment.ReadOnly = true;
@@ -761,7 +819,7 @@
             // 
             // txtCompany
             // 
-            this.txtCompany.Location = new System.Drawing.Point(146, 101);
+            this.txtCompany.Location = new System.Drawing.Point(146, 159);
             this.txtCompany.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
             this.txtCompany.Name = "txtCompany";
             this.txtCompany.ReadOnly = true;
@@ -771,7 +829,7 @@
             // lblCompany
             // 
             this.lblCompany.AutoSize = true;
-            this.lblCompany.Location = new System.Drawing.Point(23, 104);
+            this.lblCompany.Location = new System.Drawing.Point(23, 162);
             this.lblCompany.Name = "lblCompany";
             this.lblCompany.Size = new System.Drawing.Size(58, 15);
             this.lblCompany.TabIndex = 64;
@@ -780,7 +838,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(23, 133);
+            this.label25.Location = new System.Drawing.Point(23, 191);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(71, 15);
             this.label25.TabIndex = 62;
@@ -810,7 +868,7 @@
             // lblLastUpdatedBy
             // 
             this.lblLastUpdatedBy.AutoSize = true;
-            this.lblLastUpdatedBy.Location = new System.Drawing.Point(23, 237);
+            this.lblLastUpdatedBy.Location = new System.Drawing.Point(374, 87);
             this.lblLastUpdatedBy.Name = "lblLastUpdatedBy";
             this.lblLastUpdatedBy.Size = new System.Drawing.Size(69, 15);
             this.lblLastUpdatedBy.TabIndex = 34;
@@ -827,7 +885,7 @@
             // 
             // txtLastUpdatedUser
             // 
-            this.txtLastUpdatedUser.Location = new System.Drawing.Point(146, 234);
+            this.txtLastUpdatedUser.Location = new System.Drawing.Point(497, 84);
             this.txtLastUpdatedUser.Name = "txtLastUpdatedUser";
             this.txtLastUpdatedUser.ReadOnly = true;
             this.txtLastUpdatedUser.Size = new System.Drawing.Size(169, 23);
@@ -836,7 +894,7 @@
             // lblLastUpdated
             // 
             this.lblLastUpdated.AutoSize = true;
-            this.lblLastUpdated.Location = new System.Drawing.Point(23, 208);
+            this.lblLastUpdated.Location = new System.Drawing.Point(374, 58);
             this.lblLastUpdated.Name = "lblLastUpdated";
             this.lblLastUpdated.Size = new System.Drawing.Size(78, 15);
             this.lblLastUpdated.TabIndex = 32;
@@ -845,7 +903,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(23, 162);
+            this.label9.Location = new System.Drawing.Point(23, 220);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(59, 15);
             this.label9.TabIndex = 30;
@@ -853,7 +911,7 @@
             // 
             // txtLastUpdate
             // 
-            this.txtLastUpdate.Location = new System.Drawing.Point(146, 205);
+            this.txtLastUpdate.Location = new System.Drawing.Point(497, 55);
             this.txtLastUpdate.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
             this.txtLastUpdate.Name = "txtLastUpdate";
             this.txtLastUpdate.ReadOnly = true;
@@ -1043,7 +1101,8 @@
             this.TransactionType,
             this.SystemUser,
             this.CustomerName,
-            this.ItemName});
+            this.ItemName,
+            this.Remarks});
             this.dvLogs.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dvLogs.Location = new System.Drawing.Point(14, 84);
             this.dvLogs.Name = "dvLogs";
@@ -1056,9 +1115,31 @@
             this.dvLogs.Size = new System.Drawing.Size(691, 248);
             this.dvLogs.TabIndex = 1;
             // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(507, 378);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(100, 30);
+            this.btnClose.TabIndex = 2;
+            this.btnClose.Text = "Cancel";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(615, 378);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(100, 30);
+            this.btnSave.TabIndex = 1;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // TransactionDate
             // 
-            this.TransactionDate.DataPropertyName = "TransactionDate";
+            this.TransactionDate.DataPropertyName = "TransactionDateString";
             this.TransactionDate.HeaderText = "TransactionDate";
             this.TransactionDate.Name = "TransactionDate";
             this.TransactionDate.Width = 120;
@@ -1090,40 +1171,11 @@
             this.ItemName.Name = "ItemName";
             this.ItemName.Width = 150;
             // 
-            // btnClose
+            // Remarks
             // 
-            this.btnClose.Location = new System.Drawing.Point(507, 378);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(100, 30);
-            this.btnClose.TabIndex = 2;
-            this.btnClose.Text = "Cancel";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(615, 378);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(100, 30);
-            this.btnSave.TabIndex = 1;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // pnlMain
-            // 
-            this.pnlMain.BackColor = System.Drawing.Color.White;
-            this.pnlMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlMain.Controls.Add(this.tabControl1);
-            this.pnlMain.Controls.Add(this.btnClose);
-            this.pnlMain.Controls.Add(this.btnSave);
-            this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMain.Location = new System.Drawing.Point(10, 10);
-            this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(730, 426);
-            this.pnlMain.TabIndex = 4;
+            this.Remarks.DataPropertyName = "Remarks";
+            this.Remarks.HeaderText = "Remarks";
+            this.Remarks.Name = "Remarks";
             // 
             // frmManageItemDetails
             // 
@@ -1138,6 +1190,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create New Item";
             this.Load += new System.EventHandler(this.frmManageItem_Load);
+            this.pnlMain.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.pnlInformation.ResumeLayout(false);
@@ -1159,7 +1212,6 @@
             this.pnlHistory.ResumeLayout(false);
             this.pnlHistory.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvLogs)).EndInit();
-            this.pnlMain.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1231,11 +1283,6 @@
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.Panel pnlHistory;
         private System.Windows.Forms.DataGridView dvLogs;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TransactionDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TransactionType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SystemUser;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
         private System.Windows.Forms.Button btnFilter;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.DateTimePicker dtpTo;
@@ -1261,5 +1308,15 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.TextBox txtFilename;
         private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.TextBox txtReturnDate;
+        private System.Windows.Forms.TextBox txtBorrowDate;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TransactionDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TransactionType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SystemUser;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Remarks;
     }
 }

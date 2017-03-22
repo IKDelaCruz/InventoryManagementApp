@@ -39,8 +39,10 @@
             this.cbxUser = new System.Windows.Forms.ComboBox();
             this.lblHeader = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dtpExpected = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
+            this.dtpTo = new System.Windows.Forms.DateTimePicker();
+            this.txtRemarks = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,7 +67,8 @@
             // 
             // btnReserve
             // 
-            this.btnReserve.Location = new System.Drawing.Point(150, 258);
+            this.btnReserve.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReserve.Location = new System.Drawing.Point(416, 275);
             this.btnReserve.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnReserve.Name = "btnReserve";
             this.btnReserve.Size = new System.Drawing.Size(72, 29);
@@ -76,7 +79,8 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(230, 258);
+            this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOK.Location = new System.Drawing.Point(496, 275);
             this.btnOK.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(72, 29);
@@ -88,7 +92,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 90);
+            this.label1.Location = new System.Drawing.Point(290, 46);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 15);
             this.label1.TabIndex = 50;
@@ -98,7 +102,7 @@
             // 
             this.cbxDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxDepartment.FormattingEnabled = true;
-            this.cbxDepartment.Location = new System.Drawing.Point(29, 108);
+            this.cbxDepartment.Location = new System.Drawing.Point(292, 64);
             this.cbxDepartment.Name = "cbxDepartment";
             this.cbxDepartment.Size = new System.Drawing.Size(232, 23);
             this.cbxDepartment.TabIndex = 49;
@@ -107,7 +111,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(26, 134);
+            this.label2.Location = new System.Drawing.Point(26, 94);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(32, 15);
             this.label2.TabIndex = 52;
@@ -117,7 +121,7 @@
             // 
             this.cbxUser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxUser.FormattingEnabled = true;
-            this.cbxUser.Location = new System.Drawing.Point(29, 152);
+            this.cbxUser.Location = new System.Drawing.Point(29, 112);
             this.cbxUser.Name = "cbxUser";
             this.cbxUser.Size = new System.Drawing.Size(232, 23);
             this.cbxUser.TabIndex = 51;
@@ -138,8 +142,10 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.txtRemarks);
+            this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.dtpExpected);
+            this.panel1.Controls.Add(this.dtpTo);
             this.panel1.Controls.Add(this.lblHeader);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.cbxUser);
@@ -150,32 +156,51 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(10, 10);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(292, 242);
+            this.panel1.Size = new System.Drawing.Size(558, 259);
             this.panel1.TabIndex = 39;
-            // 
-            // dtpExpected
-            // 
-            this.dtpExpected.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpExpected.Location = new System.Drawing.Point(29, 198);
-            this.dtpExpected.Margin = new System.Windows.Forms.Padding(5);
-            this.dtpExpected.Name = "dtpExpected";
-            this.dtpExpected.Size = new System.Drawing.Size(100, 23);
-            this.dtpExpected.TabIndex = 65;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(26, 178);
+            this.label3.Location = new System.Drawing.Point(290, 94);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(94, 15);
+            this.label3.Size = new System.Drawing.Size(122, 15);
             this.label3.TabIndex = 66;
-            this.label3.Text = "Expected Return";
+            this.label3.Text = "Expected Return Date";
+            // 
+            // dtpTo
+            // 
+            this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpTo.Location = new System.Drawing.Point(293, 112);
+            this.dtpTo.Margin = new System.Windows.Forms.Padding(5);
+            this.dtpTo.Name = "dtpTo";
+            this.dtpTo.Size = new System.Drawing.Size(231, 23);
+            this.dtpTo.TabIndex = 65;
+            // 
+            // txtRemarks
+            // 
+            this.txtRemarks.Location = new System.Drawing.Point(27, 161);
+            this.txtRemarks.Margin = new System.Windows.Forms.Padding(5);
+            this.txtRemarks.Multiline = true;
+            this.txtRemarks.Name = "txtRemarks";
+            this.txtRemarks.Size = new System.Drawing.Size(497, 68);
+            this.txtRemarks.TabIndex = 69;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(26, 143);
+            this.label10.Margin = new System.Windows.Forms.Padding(5);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(48, 15);
+            this.label10.TabIndex = 70;
+            this.label10.Text = "Remark";
             // 
             // frmQuickTransaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(312, 302);
+            this.ClientSize = new System.Drawing.Size(578, 319);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnReserve);
@@ -204,6 +229,8 @@
         private System.Windows.Forms.Label lblHeader;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker dtpExpected;
+        private System.Windows.Forms.DateTimePicker dtpTo;
+        private System.Windows.Forms.TextBox txtRemarks;
+        private System.Windows.Forms.Label label10;
     }
 }

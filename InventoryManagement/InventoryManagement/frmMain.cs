@@ -299,8 +299,10 @@ namespace InventoryManagement
                 btnPrintBarcode.Enabled = true;
 
                 tsBorrow.Visible = item.Status ==(ItemStatus.Available) || (item.Status == ItemStatus.Reserved);
-                tsReserve.Visible = item.Status == ItemStatus.Available; 
-                tsReturn.Visible = item.Status == ItemStatus.Borrowed || item.Status == ItemStatus.Reserved || item.Status == ItemStatus.Broken;
+
+                tsAssign.Visible = item.Status == (ItemStatus.Available);
+
+                tsReturn.Visible = item.Status == ItemStatus.Borrowed || item.Status == ItemStatus.Reserved || item.Status == ItemStatus.Broken || item.Status == ItemStatus.Assigned;
 
                 tsBroken.Visible = item.Status == ItemStatus.Available;
                 tsRetire.Visible = item.Status == ItemStatus.Available;
@@ -312,13 +314,9 @@ namespace InventoryManagement
                     {
                         pbId.BackgroundImage = img;
                     }
-
                 }
             }
         }
-
-
-
 
         private void btnShowLogs_Click(object sender, EventArgs e)
         {

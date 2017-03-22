@@ -49,8 +49,6 @@
             this.txtAdminRemarks = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.dvLogs = new System.Windows.Forms.DataGridView();
-            this.btnDecline = new System.Windows.Forms.Button();
-            this.btnApproved = new System.Windows.Forms.Button();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TransactionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SystemUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,9 +56,12 @@
             this.SubTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OtherUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NeededDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateReturn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Remarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AdminRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnDecline = new System.Windows.Forms.Button();
+            this.btnApproved = new System.Windows.Forms.Button();
             this.pnlMain.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -201,35 +202,36 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 88);
+            this.label4.Location = new System.Drawing.Point(6, 145);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(92, 15);
+            this.label4.Size = new System.Drawing.Size(70, 15);
             this.label4.TabIndex = 57;
-            this.label4.Text = "Available Items";
+            this.label4.Text = "Assign Item";
             // 
             // cbxItems
             // 
             this.cbxItems.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxItems.FormattingEnabled = true;
-            this.cbxItems.Location = new System.Drawing.Point(9, 106);
+            this.cbxItems.Location = new System.Drawing.Point(9, 163);
             this.cbxItems.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.cbxItems.Name = "cbxItems";
             this.cbxItems.Size = new System.Drawing.Size(256, 23);
             this.cbxItems.TabIndex = 56;
+            this.cbxItems.SelectedIndexChanged += new System.EventHandler(this.cbxItems_SelectedIndexChanged);
             // 
             // txtUserRemarks
             // 
-            this.txtUserRemarks.Location = new System.Drawing.Point(9, 37);
+            this.txtUserRemarks.Location = new System.Drawing.Point(9, 41);
             this.txtUserRemarks.Multiline = true;
             this.txtUserRemarks.Name = "txtUserRemarks";
             this.txtUserRemarks.ReadOnly = true;
-            this.txtUserRemarks.Size = new System.Drawing.Size(689, 30);
+            this.txtUserRemarks.Size = new System.Drawing.Size(689, 40);
             this.txtUserRemarks.TabIndex = 51;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 19);
+            this.label1.Location = new System.Drawing.Point(6, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 15);
             this.label1.TabIndex = 50;
@@ -237,16 +239,16 @@
             // 
             // txtAdminRemarks
             // 
-            this.txtAdminRemarks.Location = new System.Drawing.Point(9, 150);
+            this.txtAdminRemarks.Location = new System.Drawing.Point(9, 102);
             this.txtAdminRemarks.Multiline = true;
             this.txtAdminRemarks.Name = "txtAdminRemarks";
-            this.txtAdminRemarks.Size = new System.Drawing.Size(689, 30);
+            this.txtAdminRemarks.Size = new System.Drawing.Size(689, 40);
             this.txtAdminRemarks.TabIndex = 48;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 132);
+            this.label10.Location = new System.Drawing.Point(6, 84);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(92, 15);
             this.label10.TabIndex = 49;
@@ -266,6 +268,7 @@
             this.SubTypeId,
             this.OtherUserName,
             this.NeededDate,
+            this.DateReturn,
             this.Remarks,
             this.AdminRemarks,
             this.CustomerId});
@@ -282,33 +285,12 @@
             this.dvLogs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvLogs_CellClick);
             this.dvLogs.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvLogs_CellContentClick);
             // 
-            // btnDecline
-            // 
-            this.btnDecline.Location = new System.Drawing.Point(496, 450);
-            this.btnDecline.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnDecline.Name = "btnDecline";
-            this.btnDecline.Size = new System.Drawing.Size(100, 30);
-            this.btnDecline.TabIndex = 5;
-            this.btnDecline.Text = "Decline";
-            this.btnDecline.UseVisualStyleBackColor = true;
-            this.btnDecline.Click += new System.EventHandler(this.btnDecline_Click);
-            // 
-            // btnApproved
-            // 
-            this.btnApproved.Location = new System.Drawing.Point(604, 450);
-            this.btnApproved.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnApproved.Name = "btnApproved";
-            this.btnApproved.Size = new System.Drawing.Size(100, 30);
-            this.btnApproved.TabIndex = 4;
-            this.btnApproved.Text = "Approve";
-            this.btnApproved.UseVisualStyleBackColor = true;
-            this.btnApproved.Click += new System.EventHandler(this.btnApproved_Click);
-            // 
             // Id
             // 
             this.Id.DataPropertyName = "Id";
             this.Id.HeaderText = "Id";
             this.Id.Name = "Id";
+            this.Id.Visible = false;
             this.Id.Width = 50;
             // 
             // TransactionDate
@@ -342,7 +324,7 @@
             this.OtherUserName.DataPropertyName = "UserFullnameEmail";
             this.OtherUserName.HeaderText = "User";
             this.OtherUserName.Name = "OtherUserName";
-            this.OtherUserName.Width = 200;
+            this.OtherUserName.Width = 150;
             // 
             // NeededDate
             // 
@@ -350,6 +332,12 @@
             this.NeededDate.HeaderText = "Date Needed";
             this.NeededDate.Name = "NeededDate";
             this.NeededDate.Width = 130;
+            // 
+            // DateReturn
+            // 
+            this.DateReturn.DataPropertyName = "ExpectedReturnDate";
+            this.DateReturn.HeaderText = "DateReturn";
+            this.DateReturn.Name = "DateReturn";
             // 
             // Remarks
             // 
@@ -371,6 +359,28 @@
             this.CustomerId.HeaderText = "CustomerId";
             this.CustomerId.Name = "CustomerId";
             this.CustomerId.Visible = false;
+            // 
+            // btnDecline
+            // 
+            this.btnDecline.Location = new System.Drawing.Point(496, 450);
+            this.btnDecline.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnDecline.Name = "btnDecline";
+            this.btnDecline.Size = new System.Drawing.Size(100, 30);
+            this.btnDecline.TabIndex = 5;
+            this.btnDecline.Text = "Decline";
+            this.btnDecline.UseVisualStyleBackColor = true;
+            this.btnDecline.Click += new System.EventHandler(this.btnDecline_Click);
+            // 
+            // btnApproved
+            // 
+            this.btnApproved.Location = new System.Drawing.Point(604, 450);
+            this.btnApproved.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnApproved.Name = "btnApproved";
+            this.btnApproved.Size = new System.Drawing.Size(100, 30);
+            this.btnApproved.TabIndex = 4;
+            this.btnApproved.Text = "Approve";
+            this.btnApproved.UseVisualStyleBackColor = true;
+            this.btnApproved.Click += new System.EventHandler(this.btnApproved_Click);
             // 
             // frmManageUserRequest
             // 
@@ -424,6 +434,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SubTypeId;
         private System.Windows.Forms.DataGridViewTextBoxColumn OtherUserName;
         private System.Windows.Forms.DataGridViewTextBoxColumn NeededDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DateReturn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Remarks;
         private System.Windows.Forms.DataGridViewTextBoxColumn AdminRemarks;
         private System.Windows.Forms.DataGridViewTextBoxColumn CustomerId;

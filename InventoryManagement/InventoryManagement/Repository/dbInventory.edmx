@@ -59,6 +59,7 @@
           <Property Name="item_serial" Type="varchar" MaxLength="50" />
           <Property Name="item_current_owner" Type="int" />
           <Property Name="item_current_department" Type="int" />
+          <Property Name="item_borrow_date" Type="datetime" />
           <Property Name="item_expected_return" Type="datetime" />
           <Property Name="item_os_id" Type="int" />
           <Property Name="item_processor_id" Type="int" />
@@ -263,6 +264,8 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_item_detail' does not h
           <Property Name="NetworkIP" Type="varchar" MaxLength="50" />
           <Property Name="NetworkSubnet" Type="varchar" MaxLength="50" />
           <Property Name="NetworkGateway" Type="varchar" MaxLength="50" />
+          <Property Name="BorrowDate" Type="datetime" />
+          <Property Name="ReturnDate" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'InventoryManagement.dbo.vw_item_log' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -282,6 +285,17 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_item_log' does not have
           <Property Name="OtherUserId" Type="int" />
           <Property Name="ItemName" Type="varchar" MaxLength="50" />
           <Property Name="ItemId" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'InventoryManagement.dbo.vw_item_schedule_summary' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_item_schedule_summary">
+          <Key>
+            <PropertyRef Name="request_id" />
+          </Key>
+          <Property Name="request_id" Type="int" Nullable="false" />
+          <Property Name="request_need_date" Type="datetime" />
+          <Property Name="request_expected_return_date" Type="datetime" />
+          <Property Name="request_item_id" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'InventoryManagement.dbo.vw_item_subtype_count' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -388,6 +402,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_transaction_summary' do
             <PropertyRef Name="SystemUserId" />
             <PropertyRef Name="CustomerUserId" />
             <PropertyRef Name="TransactionTypeId" />
+            <PropertyRef Name="Remarks" />
           </Key>
           <Property Name="TransactionId" Type="int" Nullable="false" />
           <Property Name="TranscationDate" Type="datetime" Nullable="false" />
@@ -399,6 +414,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_transaction_summary' do
           <Property Name="CustomerUserId" Type="int" Nullable="false" />
           <Property Name="TransactionTypeId" Type="int" Nullable="false" />
           <Property Name="ItemId" Type="int" />
+          <Property Name="Remarks" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -686,7 +702,9 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
     [vw_item_detail].[PrinterType] AS [PrinterType], 
     [vw_item_detail].[NetworkIP] AS [NetworkIP], 
     [vw_item_detail].[NetworkSubnet] AS [NetworkSubnet], 
-    [vw_item_detail].[NetworkGateway] AS [NetworkGateway]
+    [vw_item_detail].[NetworkGateway] AS [NetworkGateway], 
+    [vw_item_detail].[BorrowDate] AS [BorrowDate], 
+    [vw_item_detail].[ReturnDate] AS [ReturnDate]
     FROM [dbo].[vw_item_detail] AS [vw_item_detail]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vw_item_log" EntityType="Self.vw_item_log" store:Type="Views" store:Schema="dbo">
@@ -702,6 +720,14 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
     [vw_item_log].[ItemName] AS [ItemName], 
     [vw_item_log].[ItemId] AS [ItemId]
     FROM [dbo].[vw_item_log] AS [vw_item_log]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_item_schedule_summary" EntityType="Self.vw_item_schedule_summary" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_item_schedule_summary].[request_id] AS [request_id], 
+    [vw_item_schedule_summary].[request_need_date] AS [request_need_date], 
+    [vw_item_schedule_summary].[request_expected_return_date] AS [request_expected_return_date], 
+    [vw_item_schedule_summary].[request_item_id] AS [request_item_id]
+    FROM [dbo].[vw_item_schedule_summary] AS [vw_item_schedule_summary]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vw_item_subtype_count" EntityType="Self.vw_item_subtype_count" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -780,7 +806,8 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
     [vw_transaction_summary].[SystemUserId] AS [SystemUserId], 
     [vw_transaction_summary].[CustomerUserId] AS [CustomerUserId], 
     [vw_transaction_summary].[TransactionTypeId] AS [TransactionTypeId], 
-    [vw_transaction_summary].[ItemId] AS [ItemId]
+    [vw_transaction_summary].[ItemId] AS [ItemId], 
+    [vw_transaction_summary].[Remarks] AS [Remarks]
     FROM [dbo].[vw_transaction_summary] AS [vw_transaction_summary]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vw_user_membership_detail" EntityType="Self.vw_user_membership_detail" store:Type="Views" store:Schema="dbo">
@@ -974,6 +1001,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
           <EntitySet Name="vw_item_detail" EntityType="InventoryMangementModel.vw_item_detail" />
           <EntitySet Name="vw_user_membership_detail" EntityType="InventoryMangementModel.vw_user_membership_detail" />
           <EntitySet Name="vw_request_details" EntityType="InventoryMangementModel.vw_request_details" />
+          <EntitySet Name="vw_item_schedule_summary" EntityType="InventoryMangementModel.vw_item_schedule_summary" />
           </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1064,6 +1092,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
           <Property Name="item_ip_gateway" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="item_parent" Type="Int32" />
           <Property Name="item_expected_return" Type="DateTime" Precision="3" />
+          <Property Name="item_borrow_date" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="item_image">
           <Key>
@@ -1301,6 +1330,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
             <PropertyRef Name="SystemUserId" />
             <PropertyRef Name="CustomerUserId" />
             <PropertyRef Name="TransactionTypeId" />
+            <PropertyRef Name="Remarks" />
           </Key>
           <Property Name="TransactionId" Type="Int32" Nullable="false" />
           <Property Name="TranscationDate" Type="DateTime" Nullable="false" Precision="3" />
@@ -1312,6 +1342,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
           <Property Name="CustomerUserId" Type="Int32" Nullable="false" />
           <Property Name="TransactionTypeId" Type="Int32" Nullable="false" />
           <Property Name="ItemId" Type="Int32" />
+          <Property Name="Remarks" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_Brand_ItmeSubType">
           <End Type="InventoryMangementModel.item_subtype" Role="item_subtype" Multiplicity="1" />
@@ -1529,6 +1560,8 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
           <Property Name="NetworkIP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="NetworkSubnet" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="NetworkGateway" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BorrowDate" Type="DateTime" Precision="3" />
+          <Property Name="ReturnDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="vw_user_membership_detail">
           <Key>
@@ -1577,6 +1610,15 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
           <Property Name="request_admin_remarks" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="user_first_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="user_last_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vw_item_schedule_summary">
+          <Key>
+            <PropertyRef Name="request_id" />
+          </Key>
+          <Property Name="request_id" Type="Int32" Nullable="false" />
+          <Property Name="request_need_date" Type="DateTime" Precision="3" />
+          <Property Name="request_expected_return_date" Type="DateTime" Precision="3" />
+          <Property Name="request_item_id" Type="Int32" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1647,6 +1689,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
           <EntitySetMapping Name="items">
             <EntityTypeMapping TypeName="InventoryMangementModel.item">
               <MappingFragment StoreEntitySet="item">
+                <ScalarProperty Name="item_borrow_date" ColumnName="item_borrow_date" />
                 <ScalarProperty Name="item_expected_return" ColumnName="item_expected_return" />
                 <ScalarProperty Name="item_parent" ColumnName="item_parent" />
                 <ScalarProperty Name="item_ip_gateway" ColumnName="item_ip_gateway" />
@@ -1905,6 +1948,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
           <EntitySetMapping Name="vw_transaction_summary">
             <EntityTypeMapping TypeName="InventoryMangementModel.vw_transaction_summary">
               <MappingFragment StoreEntitySet="vw_transaction_summary">
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
                 <ScalarProperty Name="ItemId" ColumnName="ItemId" />
                 <ScalarProperty Name="TransactionTypeId" ColumnName="TransactionTypeId" />
                 <ScalarProperty Name="CustomerUserId" ColumnName="CustomerUserId" />
@@ -1921,6 +1965,8 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
           <EntitySetMapping Name="vw_item_detail">
             <EntityTypeMapping TypeName="InventoryMangementModel.vw_item_detail">
               <MappingFragment StoreEntitySet="vw_item_detail">
+                <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
+                <ScalarProperty Name="BorrowDate" ColumnName="BorrowDate" />
                 <ScalarProperty Name="NetworkGateway" ColumnName="NetworkGateway" />
                 <ScalarProperty Name="NetworkSubnet" ColumnName="NetworkSubnet" />
                 <ScalarProperty Name="NetworkIP" ColumnName="NetworkIP" />
@@ -1998,6 +2044,16 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
                 <ScalarProperty Name="request_item_primary_type" ColumnName="request_item_primary_type" />
                 <ScalarProperty Name="request_type" ColumnName="request_type" />
                 <ScalarProperty Name="request_user_id" ColumnName="request_user_id" />
+                <ScalarProperty Name="request_id" ColumnName="request_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_item_schedule_summary">
+            <EntityTypeMapping TypeName="InventoryMangementModel.vw_item_schedule_summary">
+              <MappingFragment StoreEntitySet="vw_item_schedule_summary">
+                <ScalarProperty Name="request_item_id" ColumnName="request_item_id" />
+                <ScalarProperty Name="request_expected_return_date" ColumnName="request_expected_return_date" />
+                <ScalarProperty Name="request_need_date" ColumnName="request_need_date" />
                 <ScalarProperty Name="request_id" ColumnName="request_id" />
               </MappingFragment>
             </EntityTypeMapping>

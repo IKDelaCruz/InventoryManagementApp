@@ -47,6 +47,8 @@ namespace InventoryManagement.Utils
                 newItem.SubItems.Add(item.Id.ToString());
                 newItem.SubItems.Add(item.TypeId.ToString());
                 newItem.SubItems.Add(item.Status.ToString());
+                newItem.SubItems.Add(item.BorrowDate.DateOnly());
+                newItem.SubItems.Add(item.ExpectedReturnDate.DateOnly());
                 if (!summary)
                 {
                     if (item.Status == ItemStatus.Available)
@@ -65,7 +67,7 @@ namespace InventoryManagement.Utils
                 //lv.Items.Add(newItem);
                 tempListView.Add(newItem);
                 x++;
-               
+                
             }
             lv.Items.AddRange(tempListView.ToArray());
             lv.EndUpdate();
@@ -86,4 +88,5 @@ namespace InventoryManagement.Utils
         }
     }
 }
+
 

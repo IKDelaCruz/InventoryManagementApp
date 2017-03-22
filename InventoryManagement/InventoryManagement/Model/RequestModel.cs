@@ -40,9 +40,9 @@ namespace InventoryManagement.Model
         {
             return repo.UpdateRequest(req);
         }
-        public bool ApproveRequest(int id, string remark, int user)
+        public bool ApproveRequest(int id, string remark, int user, int itemId = 0)
         {
-            return repo.UpdateRequestStatus(id, remark, user, RequestStatus.Approved);
+            return repo.UpdateRequestStatus(id, remark, user, RequestStatus.Approved, itemId);
         }
         public bool DeliverRequest(int id, string remark, int user)
         {

@@ -233,7 +233,13 @@ namespace InventoryManagement
             txtCurrentValue.Text = ((decimal)_loadedItem.Currentvalue).ToString("n2");
             txtSalvageValue.Text = ((decimal)_loadedItem.SalvageValue).ToString("n2");
 
-            txtLastUpdate.Text = _loadedItem.LastUpdatedDate.ToString();
+            txtLastUpdate.Text = _loadedItem.LastUpdatedDate.DateAndTime();
+            if(_loadedItem.Status != ItemStatus.Available)
+            {
+                txtBorrowDate.Text = _loadedItem.BorrowDate.DateOnly();
+                txtReturnDate.Text = _loadedItem.ExpectedReturnDate.DateOnly();
+            }
+         
 
             txtCompany.Text = _loadedItem.CurrentCompanyName ?? "";
             txtDepartment.Text = _loadedItem.CurrentDepartmentName ?? "";
@@ -248,7 +254,6 @@ namespace InventoryManagement
                 {
                     pbId.BackgroundImage = img;
                 }
-
             }
 
             var owner = Singleton.Instance.UserModel.GetUsersById(_loadedItem.LastUpdatedUserId);

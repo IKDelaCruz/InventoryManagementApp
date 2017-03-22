@@ -38,8 +38,8 @@
             this.statusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ownerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsAction = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsAssign = new System.Windows.Forms.ToolStripMenuItem();
             this.tsBorrow = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsReserve = new System.Windows.Forms.ToolStripMenuItem();
             this.tsReturn = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsBroken = new System.Windows.Forms.ToolStripMenuItem();
@@ -129,10 +129,12 @@
             this.syncToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.itemSummaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.requestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.manageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.createNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.assignToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cntxtMenuStrip.SuspendLayout();
             this.pnlMain.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -175,37 +177,36 @@
             // nameToolStripMenuItem
             // 
             this.nameToolStripMenuItem.Name = "nameToolStripMenuItem";
-            this.nameToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.nameToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.nameToolStripMenuItem.Text = "Name";
             this.nameToolStripMenuItem.Click += new System.EventHandler(this.nameToolStripMenuItem_Click);
             // 
             // dateToolStripMenuItem
             // 
             this.dateToolStripMenuItem.Name = "dateToolStripMenuItem";
-            this.dateToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.dateToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.dateToolStripMenuItem.Text = "Date";
             this.dateToolStripMenuItem.Click += new System.EventHandler(this.dateToolStripMenuItem_Click);
             // 
             // statusToolStripMenuItem
             // 
             this.statusToolStripMenuItem.Name = "statusToolStripMenuItem";
-            this.statusToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.statusToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.statusToolStripMenuItem.Text = "Status";
             this.statusToolStripMenuItem.Click += new System.EventHandler(this.statusToolStripMenuItem_Click);
             // 
             // ownerToolStripMenuItem
             // 
             this.ownerToolStripMenuItem.Name = "ownerToolStripMenuItem";
-            this.ownerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ownerToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.ownerToolStripMenuItem.Text = "Owner";
             this.ownerToolStripMenuItem.Click += new System.EventHandler(this.ownerToolStripMenuItem_Click);
             // 
             // tsAction
             // 
             this.tsAction.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.assignToolStripMenuItem,
+            this.tsAssign,
             this.tsBorrow,
-            this.tsReserve,
             this.tsReturn,
             this.toolStripSeparator2,
             this.tsBroken,
@@ -216,19 +217,19 @@
             this.tsAction.Text = "Action";
             this.tsAction.Click += new System.EventHandler(this.tsAction_Click);
             // 
+            // tsAssign
+            // 
+            this.tsAssign.Name = "tsAssign";
+            this.tsAssign.Size = new System.Drawing.Size(152, 22);
+            this.tsAssign.Text = "Assign";
+            this.tsAssign.Click += new System.EventHandler(this.assignToolStripMenuItem_Click);
+            // 
             // tsBorrow
             // 
             this.tsBorrow.Name = "tsBorrow";
             this.tsBorrow.Size = new System.Drawing.Size(152, 22);
             this.tsBorrow.Text = "Borrow";
             this.tsBorrow.Click += new System.EventHandler(this.tsBorrow_Click);
-            // 
-            // tsReserve
-            // 
-            this.tsReserve.Name = "tsReserve";
-            this.tsReserve.Size = new System.Drawing.Size(152, 22);
-            this.tsReserve.Text = "Reserve";
-            this.tsReserve.Click += new System.EventHandler(this.tsReserve_Click);
             // 
             // tsReturn
             // 
@@ -302,6 +303,13 @@
             // lvMain
             // 
             this.lvMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lvMain.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6});
             this.lvMain.ContextMenuStrip = this.cntxtMenuStrip;
             this.lvMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvMain.LargeImageList = this.imgMainImage;
@@ -966,8 +974,7 @@
             this.fileToolStripMenuItem,
             this.inventoryToolStripMenuItem,
             this.usersToolStripMenuItem,
-            this.reportsToolStripMenuItem,
-            this.requestToolStripMenuItem});
+            this.reportsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
@@ -1016,40 +1023,40 @@
             // summaryToolStripMenuItem
             // 
             this.summaryToolStripMenuItem.Name = "summaryToolStripMenuItem";
-            this.summaryToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.summaryToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.summaryToolStripMenuItem.Text = "Summary";
             this.summaryToolStripMenuItem.Click += new System.EventHandler(this.summaryToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(148, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.addToolStripMenuItem.Text = "Add Item";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // addItemTypeToolStripMenuItem
             // 
             this.addItemTypeToolStripMenuItem.Name = "addItemTypeToolStripMenuItem";
-            this.addItemTypeToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.addItemTypeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.addItemTypeToolStripMenuItem.Text = "Manage Types";
             this.addItemTypeToolStripMenuItem.Click += new System.EventHandler(this.addItemTypeToolStripMenuItem_Click);
             // 
             // manageBrandToolStripMenuItem
             // 
             this.manageBrandToolStripMenuItem.Name = "manageBrandToolStripMenuItem";
-            this.manageBrandToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.manageBrandToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.manageBrandToolStripMenuItem.Text = "Manage Brand";
             this.manageBrandToolStripMenuItem.Click += new System.EventHandler(this.manageBrandToolStripMenuItem_Click);
             // 
             // uploadItemsToolStripMenuItem
             // 
             this.uploadItemsToolStripMenuItem.Name = "uploadItemsToolStripMenuItem";
-            this.uploadItemsToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.uploadItemsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.uploadItemsToolStripMenuItem.Text = "Upload Items";
             this.uploadItemsToolStripMenuItem.Click += new System.EventHandler(this.uploadItemsToolStripMenuItem_Click);
             // 
@@ -1099,35 +1106,35 @@
             this.itemSummaryToolStripMenuItem.Text = "Item Summary";
             this.itemSummaryToolStripMenuItem.Click += new System.EventHandler(this.itemSummaryToolStripMenuItem_Click);
             // 
-            // requestToolStripMenuItem
+            // columnHeader1
             // 
-            this.requestToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.manageToolStripMenuItem1,
-            this.createNewToolStripMenuItem});
-            this.requestToolStripMenuItem.Name = "requestToolStripMenuItem";
-            this.requestToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.requestToolStripMenuItem.Text = "Request";
+            this.columnHeader1.Text = "Name";
+            this.columnHeader1.Width = 250;
             // 
-            // manageToolStripMenuItem1
+            // columnHeader2
             // 
-            this.manageToolStripMenuItem1.Name = "manageToolStripMenuItem1";
-            this.manageToolStripMenuItem1.Size = new System.Drawing.Size(135, 22);
-            this.manageToolStripMenuItem1.Text = "Manage";
-            this.manageToolStripMenuItem1.Click += new System.EventHandler(this.manageToolStripMenuItem1_Click_1);
+            this.columnHeader2.Text = "Id";
+            this.columnHeader2.Width = 0;
             // 
-            // createNewToolStripMenuItem
+            // columnHeader3
             // 
-            this.createNewToolStripMenuItem.Name = "createNewToolStripMenuItem";
-            this.createNewToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
-            this.createNewToolStripMenuItem.Text = "Create New";
-            this.createNewToolStripMenuItem.Click += new System.EventHandler(this.createNewToolStripMenuItem_Click);
+            this.columnHeader3.Text = "Type Id";
+            this.columnHeader3.Width = 0;
             // 
-            // assignToolStripMenuItem
+            // columnHeader4
             // 
-            this.assignToolStripMenuItem.Name = "assignToolStripMenuItem";
-            this.assignToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.assignToolStripMenuItem.Text = "Assign";
-            this.assignToolStripMenuItem.Click += new System.EventHandler(this.assignToolStripMenuItem_Click);
+            this.columnHeader4.Text = "Status";
+            this.columnHeader4.Width = 100;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Borrow Date";
+            this.columnHeader5.Width = 100;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Return Date";
+            this.columnHeader6.Width = 100;
             // 
             // frmMain
             // 
@@ -1249,7 +1256,6 @@
         private System.Windows.Forms.ToolStripMenuItem statusToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsAction;
         private System.Windows.Forms.ToolStripMenuItem tsBorrow;
-        private System.Windows.Forms.ToolStripMenuItem tsReserve;
         private System.Windows.Forms.ToolStripMenuItem tsReturn;
         private System.Windows.Forms.ToolStripMenuItem tsRetire;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
@@ -1259,8 +1265,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.PictureBox pbId;
         private System.Windows.Forms.ToolStripMenuItem viewDetailsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem requestToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem manageToolStripMenuItem1;
         private System.Windows.Forms.CheckBox chkShowAllUser;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox cbxUser;
@@ -1268,8 +1272,13 @@
         private System.Windows.Forms.ToolStripStatusLabel tsSelectedItem;
         private System.Windows.Forms.ToolStripMenuItem uploadItemsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem syncToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem createNewToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem assignToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsAssign;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
     }
 }
 

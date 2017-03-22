@@ -191,6 +191,7 @@ namespace InventoryManagement.Repository
                 item.item_last_updated = DateTime.Now;
                 item.item_last_updated_user = userId;
                 item.item_expected_return = expectedReturn;
+                item.item_borrow_date = DateTime.Now;
                 InventoryDatabase.SaveChanges();
 
                 return true;
@@ -391,7 +392,9 @@ namespace InventoryManagement.Repository
                     PurchasePrice = i.PurchasePrice,
                     LifeSpan = i.LifeSpan ?? 5,
                     Currentvalue = i.CurrentValue,
-                    SalvageValue = i.SalvageValue ?? 0
+                    SalvageValue = i.SalvageValue ?? 0,
+                    BorrowDate = i.BorrowDate ?? DateTime.MinValue,
+                    ExpectedReturnDate = i.ReturnDate ?? DateTime.MinValue
                 });
             }
             return iList;
@@ -435,7 +438,9 @@ namespace InventoryManagement.Repository
         {
             var items = InventoryDatabase.vw_item_detail.AsNoTracking().Where(h => h.ItemSubTypeId == subtypeId).ToList();
             if (isAvailable)
+            {
                 items = items.Where(h => h.item_status == (int)ItemStatus.Available).ToList();
+            }
             List<ItemViewModel> iList = new List<ItemViewModel>();
 
             foreach (vw_item_detail i in items)
@@ -576,7 +581,9 @@ namespace InventoryManagement.Repository
                 CurrentDepartmentName = i.UserDepartmentName,
                 NetworkIP = i.NetworkIP,
                 NetworkSubnet = i.NetworkSubnet,
-                NetworkGateway = i.NetworkGateway
+                NetworkGateway = i.NetworkGateway,
+                BorrowDate = i.BorrowDate ?? DateTime.MinValue,
+                ExpectedReturnDate = i.ReturnDate ?? DateTime.MinValue
             };
         }
         public string QueryOwner(int id)
@@ -592,7 +599,10 @@ namespace InventoryManagement.Repository
             }
         }
         #endregion
-
+        public bool IsItemAvailable(int itemId, DateTime from, DateTime to)
+        {
+            return true;
+        }
     }
 }
 

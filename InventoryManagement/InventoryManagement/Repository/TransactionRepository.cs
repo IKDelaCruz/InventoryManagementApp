@@ -1,4 +1,5 @@
-﻿using InventoryManagement.ViewModel;
+﻿using InventoryManagement.Utils;
+using InventoryManagement.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -70,13 +71,15 @@ namespace InventoryManagement.Repository
                     SystemUserName = t.SystemUser,
                     SystemUserId = t.SystemUserId,
                     TransactionDate = t.TranscationDate,
+                    TransactionDateString = t.TranscationDate.DateAndTime(),
                     TransactionTypeId = t.TransactionTypeId,
                     TransactionType = t.TransactionType,
                     OtherUserId = t.CustomerUserId,
                     OtherUserName = t.CustomerUser,
                     ItemName = t.ItemName,
                     Id = t.TransactionId,
-                    ItemId = t.ItemId ?? 0
+                    ItemId = t.ItemId ?? 0,
+                    Remarks = t.Remarks
                 });
             }
 

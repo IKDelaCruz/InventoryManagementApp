@@ -172,6 +172,9 @@ namespace InventoryManagement.ViewModel
         public string NetworkSubnet { get; set; }
         public string NetworkGateway { get; set; }
 
+        public DateTime BorrowDate { get; set; }
+        public DateTime ExpectedReturnDate { get; set; }
+
         public ItemViewModel()
         {
             PurchaseDate = DateTime.Now;
