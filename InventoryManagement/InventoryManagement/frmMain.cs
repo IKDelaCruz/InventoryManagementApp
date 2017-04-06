@@ -54,7 +54,7 @@ namespace InventoryManagement
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            txtScan.Select();
+            
             DoUpdateView(false, false, 1);
             ShowSummary();
 
@@ -97,13 +97,16 @@ namespace InventoryManagement
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            DoAddItem();
+        }
+        private void DoAddItem()
+        {
             var result = new frmManageItemDetails().ShowDialog();
             if (result == DialogResult.OK)
             {
                 DoUpdateView(false, false, 1);
             }
         }
-
         private void addToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             var result = new frmManageUserDetails().ShowDialog();
@@ -135,7 +138,8 @@ namespace InventoryManagement
 
         private void lvMain_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ViewItemDetails();
+           
+                ViewItemDetails();
         }
         private void ViewItemDetails()
         {
@@ -161,7 +165,8 @@ namespace InventoryManagement
             }
             tsSelectedItem.Text = "Selected Item: " + _selectedItem.Count();
 
-            DoUpdateItemDetails();
+            if (lvMain.SelectedItems.Count == 1)
+                DoUpdateItemDetails();
         }
 
         #region --- Methods --- 
@@ -215,15 +220,7 @@ namespace InventoryManagement
 
             #endregion
 
-            if (barcodeScanner)
-            {
-                if (txtScan.Text.Length == 8)
-                {
-                    var id = (Convert.ToInt32(txtScan.Text.Substring(0, txtScan.Text.Length - 1)));
-                    itms = itms.Where(h => h.Id == id).ToList();
-                }
-
-            }
+           
 
             imgMainImage.Images.Clear();
             var images = Singleton.Instance.ItemSubTypeModel.GetItemSubTypeImages();
@@ -255,8 +252,8 @@ namespace InventoryManagement
         {
             if (!IsInitializing)
             {
-                DoUpdateView(true, false, 1);
-                //
+                //DoUpdateView(true, false, 1);
+                
             }
         }
         private void LoadUsers()
@@ -302,7 +299,7 @@ namespace InventoryManagement
 
                 tsAssign.Visible = item.Status == (ItemStatus.Available);
 
-                tsReturn.Visible = item.Status == ItemStatus.Borrowed || item.Status == ItemStatus.Reserved || item.Status == ItemStatus.Broken || item.Status == ItemStatus.Assigned;
+                tsReturn.Visible = item.Status == ItemStatus.Borrowed || item.Status == ItemStatus.Reserved || item.Status == ItemStatus.Broken || item.Status == ItemStatus.Assigned || item.Status == ItemStatus.Disposed;
 
                 tsBroken.Visible = item.Status == ItemStatus.Available;
                 tsRetire.Visible = item.Status == ItemStatus.Available;
@@ -332,7 +329,6 @@ namespace InventoryManagement
             var selected = lvMain.SelectedItems[0];
             var id = Convert.ToInt32(selected.SubItems[1].Text);
 
-
             var dlg = new frmManageItemDetails(id, false);
             dlg.ShowDialog();
         }
@@ -354,16 +350,9 @@ namespace InventoryManagement
         private void txtScan_TextChanged(object sender, EventArgs e)
         {
 
-
-
-
         }
 
-        private void txtScan_Click(object sender, EventArgs e)
-        {
-            txtScan.Clear();
-
-        }
+      
 
         private void cbxSubtype_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -398,12 +387,9 @@ namespace InventoryManagement
                 int itemType = dlg.ReturnParentInt;
                 int itemSubTypeId = dlg.ReturnInt;
 
-              
-
                 var itms = Singleton.Instance.ItemModel.GetItemsBySubType(itemSubTypeId);
 
                 chkShowAllSubType.Checked = false;
-
                 cbxType.SelectedValue = itemType;
                 cbxSubtype.SelectedValue = itemSubTypeId;
 
@@ -415,6 +401,8 @@ namespace InventoryManagement
             cbxSubtype.DisplayMember = "Name";
             cbxSubtype.ValueMember = "Id";
             cbxSubtype.DataSource = Singleton.Instance.ItemSubTypeModel.GetSubTypesByType((int)cbxType.SelectedValue);
+
+            chkShowAllType.Checked = false;
         }
 
         private void pnlTop_Paint(object sender, PaintEventArgs e)
@@ -483,7 +471,6 @@ namespace InventoryManagement
         private void tsReserve_Click(object sender, EventArgs e)
         {
             LaunchQuickTransaction(TransactionType.ReserveItem);
-
         }
 
         private void tsReturn_Click(object sender, EventArgs e)
@@ -516,7 +503,6 @@ namespace InventoryManagement
         private void tsRetire_Click_1(object sender, EventArgs e)
         {
             LaunchQuickTransaction(TransactionType.DisposeItem);
-
         }
 
         private void viewDetailsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -532,7 +518,7 @@ namespace InventoryManagement
         private void cbxLocation_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadUsers();
-            UpdateView(null, null);
+            chkShowAllLocation.Checked = false;
         }
 
         private void ownerToolStripMenuItem_Click(object sender, EventArgs e)
@@ -564,6 +550,31 @@ namespace InventoryManagement
         private void assignToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LaunchQuickTransaction(TransactionType.AssignItem);
+        }
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            DoUpdateView(true, false, 1);
+        }
+
+        private void cbxStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            chkShowAllStatus.Checked = false;
+        }
+
+        private void cbxSubtype_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            chkShowAllSubType.Checked = false;
+        }
+
+        private void cbxUser_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            chkShowAllUser.Checked = false;
+        }
+
+        private void transmittalFormToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new frmTrasmittal().ShowDialog();
         }
     }
 

@@ -84,7 +84,6 @@
             this.txtPassord.Name = "txtPassord";
             this.txtPassord.Size = new System.Drawing.Size(207, 23);
             this.txtPassord.TabIndex = 53;
-            this.txtPassord.Text = "1qa2ws3ed!!!";
             this.txtPassord.UseSystemPasswordChar = true;
             // 
             // label2
@@ -102,7 +101,6 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(208, 23);
             this.txtUsername.TabIndex = 52;
-            this.txtUsername.Text = "ian.delacruz";
             // 
             // btnCancel
             // 

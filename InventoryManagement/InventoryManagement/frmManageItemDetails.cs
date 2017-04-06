@@ -32,10 +32,10 @@ namespace InventoryManagement
 
             txtLastUpdate.Visible = !_isAddNewItem;
             txtLastUpdatedUser.Visible = !_isAddNewItem;
-            txtCurrentValue.Visible = !_isAddNewItem;
+            //txtCurrentValue.Visible = !_isAddNewItem;
             lblLastUpdated.Visible = !_isAddNewItem;
             lblLastUpdatedBy.Visible = !_isAddNewItem;
-            lblCurrentValue.Visible = !_isAddNewItem;
+            //lblCurrentValue.Visible = !_isAddNewItem;
 
             cbxStatus.SelectedItem = "Available";
 
@@ -142,7 +142,7 @@ namespace InventoryManagement
                 LastUpdatedDate = DateTime.Now,
                 LastUpdatedUserId = Singleton.Instance.UserModel.CurrentUser.Id,
                 PurchaseDate = dtpPurchaseDate.Value,
-                PurchasePrice = Convert.ToDecimal(txtPurchasePrice.Text),
+                PurchasePrice = Convert.ToDecimal(txtSalesInvocie.Text),
                 LifeSpan = Convert.ToInt32(txtLifetime.Text),
                 Currentvalue = Convert.ToDecimal(txtCurrentValue.Text),
                 OS = (int)os,
@@ -228,7 +228,7 @@ namespace InventoryManagement
             cbxHDD2.Text = _loadedItem.HDD2.ToString();
 
             dtpPurchaseDate.Value = _loadedItem.PurchaseDate;
-            txtPurchasePrice.Text = ((decimal)_loadedItem.PurchasePrice).ToString("n2");
+            txtSalesInvocie.Text = ((decimal)_loadedItem.PurchasePrice).ToString("n2");
             txtLifetime.Text = _loadedItem.LifeSpan.ToString();
             txtCurrentValue.Text = ((decimal)_loadedItem.Currentvalue).ToString("n2");
             txtSalvageValue.Text = ((decimal)_loadedItem.SalvageValue).ToString("n2");
@@ -376,6 +376,11 @@ namespace InventoryManagement
         private void cbxCompany_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtPurchasePrice_TextChanged(object sender, EventArgs e)
+        {
+            txtCurrentValue.Text = txtPurchasePrice.Text;
         }
     }
 }

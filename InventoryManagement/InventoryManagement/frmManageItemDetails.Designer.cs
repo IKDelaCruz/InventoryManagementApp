@@ -62,10 +62,16 @@
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label40 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.txtPurchasePrice = new System.Windows.Forms.TextBox();
+            this.label39 = new System.Windows.Forms.Label();
+            this.txtPurchaseOrder = new System.Windows.Forms.TextBox();
+            this.label38 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.txtSalvageValue = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.txtPurchasePrice = new System.Windows.Forms.TextBox();
+            this.txtSalesInvocie = new System.Windows.Forms.TextBox();
             this.dtpPurchaseDate = new System.Windows.Forms.DateTimePicker();
             this.label12 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
@@ -107,11 +113,9 @@
             this.txtLastUpdate = new System.Windows.Forms.TextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label34 = new System.Windows.Forms.Label();
             this.txtFilename = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.pbId = new System.Windows.Forms.PictureBox();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.pnlHistory = new System.Windows.Forms.Panel();
@@ -122,14 +126,25 @@
             this.label27 = new System.Windows.Forms.Label();
             this.dtpFrom = new System.Windows.Forms.DateTimePicker();
             this.dvLogs = new System.Windows.Forms.DataGridView();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
             this.TransactionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TransactionType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SystemUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Remarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label41 = new System.Windows.Forms.Label();
+            this.lnkDoc1 = new System.Windows.Forms.LinkLabel();
+            this.lnkDoc2 = new System.Windows.Forms.LinkLabel();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.lnkDoc3 = new System.Windows.Forms.LinkLabel();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.pbId = new System.Windows.Forms.PictureBox();
             this.pnlMain.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -142,10 +157,10 @@
             this.panel2.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbId)).BeginInit();
             this.tabPage5.SuspendLayout();
             this.pnlHistory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvLogs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbId)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlMain
@@ -158,7 +173,7 @@
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMain.Location = new System.Drawing.Point(10, 10);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(730, 426);
+            this.pnlMain.Size = new System.Drawing.Size(764, 426);
             this.pnlMain.TabIndex = 4;
             // 
             // tabControl1
@@ -172,7 +187,7 @@
             this.tabControl1.Location = new System.Drawing.Point(3, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(722, 369);
+            this.tabControl1.Size = new System.Drawing.Size(756, 369);
             this.tabControl1.TabIndex = 3;
             // 
             // tabPage1
@@ -181,7 +196,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(714, 341);
+            this.tabPage1.Size = new System.Drawing.Size(748, 341);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Information";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -220,7 +235,7 @@
             this.pnlInformation.Location = new System.Drawing.Point(3, 3);
             this.pnlInformation.Name = "pnlInformation";
             this.pnlInformation.Padding = new System.Windows.Forms.Padding(20);
-            this.pnlInformation.Size = new System.Drawing.Size(708, 335);
+            this.pnlInformation.Size = new System.Drawing.Size(742, 335);
             this.pnlInformation.TabIndex = 1;
             // 
             // label19
@@ -469,17 +484,23 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(714, 341);
+            this.tabPage2.Size = new System.Drawing.Size(748, 341);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Price";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label40);
+            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.txtPurchasePrice);
+            this.panel1.Controls.Add(this.label39);
+            this.panel1.Controls.Add(this.txtPurchaseOrder);
+            this.panel1.Controls.Add(this.label38);
             this.panel1.Controls.Add(this.label20);
             this.panel1.Controls.Add(this.txtSalvageValue);
             this.panel1.Controls.Add(this.label15);
-            this.panel1.Controls.Add(this.txtPurchasePrice);
+            this.panel1.Controls.Add(this.txtSalesInvocie);
             this.panel1.Controls.Add(this.dtpPurchaseDate);
             this.panel1.Controls.Add(this.label12);
             this.panel1.Controls.Add(this.label22);
@@ -491,8 +512,62 @@
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(20);
-            this.panel1.Size = new System.Drawing.Size(708, 335);
+            this.panel1.Size = new System.Drawing.Size(742, 335);
             this.panel1.TabIndex = 43;
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(23, 191);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(53, 15);
+            this.label40.TabIndex = 66;
+            this.label40.Text = "Supplier";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(148, 188);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(169, 23);
+            this.comboBox1.TabIndex = 65;
+            // 
+            // txtPurchasePrice
+            // 
+            this.txtPurchasePrice.Location = new System.Drawing.Point(148, 130);
+            this.txtPurchasePrice.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.txtPurchasePrice.Name = "txtPurchasePrice";
+            this.txtPurchasePrice.Size = new System.Drawing.Size(169, 23);
+            this.txtPurchasePrice.TabIndex = 63;
+            this.txtPurchasePrice.Text = "0";
+            this.txtPurchasePrice.TextChanged += new System.EventHandler(this.txtPurchasePrice_TextChanged);
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(23, 133);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(89, 15);
+            this.label39.TabIndex = 64;
+            this.label39.Text = "Purchase Price";
+            // 
+            // txtPurchaseOrder
+            // 
+            this.txtPurchaseOrder.Location = new System.Drawing.Point(148, 84);
+            this.txtPurchaseOrder.Name = "txtPurchaseOrder";
+            this.txtPurchaseOrder.Size = new System.Drawing.Size(169, 23);
+            this.txtPurchaseOrder.TabIndex = 61;
+            this.txtPurchaseOrder.Text = "0";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(23, 87);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(114, 15);
+            this.label38.TabIndex = 62;
+            this.label38.Text = "Purchase Order No.";
             // 
             // label20
             // 
@@ -508,7 +583,7 @@
             // 
             // txtSalvageValue
             // 
-            this.txtSalvageValue.Location = new System.Drawing.Point(148, 159);
+            this.txtSalvageValue.Location = new System.Drawing.Point(497, 84);
             this.txtSalvageValue.Name = "txtSalvageValue";
             this.txtSalvageValue.Size = new System.Drawing.Size(169, 23);
             this.txtSalvageValue.TabIndex = 44;
@@ -518,25 +593,25 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(23, 90);
+            this.label15.Location = new System.Drawing.Point(23, 165);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(86, 15);
             this.label15.TabIndex = 42;
             this.label15.Text = "Purchase Date";
             // 
-            // txtPurchasePrice
+            // txtSalesInvocie
             // 
-            this.txtPurchasePrice.Location = new System.Drawing.Point(148, 55);
-            this.txtPurchasePrice.Name = "txtPurchasePrice";
-            this.txtPurchasePrice.Size = new System.Drawing.Size(169, 23);
-            this.txtPurchasePrice.TabIndex = 35;
-            this.txtPurchasePrice.Text = "0";
-            this.txtPurchasePrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPurchasePrice_KeyPress);
+            this.txtSalesInvocie.Location = new System.Drawing.Point(148, 55);
+            this.txtSalesInvocie.Name = "txtSalesInvocie";
+            this.txtSalesInvocie.Size = new System.Drawing.Size(169, 23);
+            this.txtSalesInvocie.TabIndex = 35;
+            this.txtSalesInvocie.Text = "0";
+            this.txtSalesInvocie.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPurchasePrice_KeyPress);
             // 
             // dtpPurchaseDate
             // 
             this.dtpPurchaseDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpPurchaseDate.Location = new System.Drawing.Point(148, 84);
+            this.dtpPurchaseDate.Location = new System.Drawing.Point(148, 159);
             this.dtpPurchaseDate.Name = "dtpPurchaseDate";
             this.dtpPurchaseDate.Size = new System.Drawing.Size(169, 23);
             this.dtpPurchaseDate.TabIndex = 41;
@@ -546,14 +621,14 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(23, 58);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(89, 15);
+            this.label12.Size = new System.Drawing.Size(100, 15);
             this.label12.TabIndex = 36;
-            this.label12.Text = "Purchase Price";
+            this.label12.Text = "Sales Invoice No.";
             // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(24, 159);
+            this.label22.Location = new System.Drawing.Point(373, 84);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(82, 15);
             this.label22.TabIndex = 40;
@@ -562,7 +637,7 @@
             // lblCurrentValue
             // 
             this.lblCurrentValue.AutoSize = true;
-            this.lblCurrentValue.Location = new System.Drawing.Point(23, 133);
+            this.lblCurrentValue.Location = new System.Drawing.Point(372, 58);
             this.lblCurrentValue.Name = "lblCurrentValue";
             this.lblCurrentValue.Size = new System.Drawing.Size(81, 15);
             this.lblCurrentValue.TabIndex = 40;
@@ -570,7 +645,7 @@
             // 
             // txtLifetime
             // 
-            this.txtLifetime.Location = new System.Drawing.Point(148, 188);
+            this.txtLifetime.Location = new System.Drawing.Point(497, 113);
             this.txtLifetime.Name = "txtLifetime";
             this.txtLifetime.Size = new System.Drawing.Size(169, 23);
             this.txtLifetime.TabIndex = 37;
@@ -580,7 +655,7 @@
             // txtCurrentValue
             // 
             this.txtCurrentValue.Enabled = false;
-            this.txtCurrentValue.Location = new System.Drawing.Point(148, 130);
+            this.txtCurrentValue.Location = new System.Drawing.Point(497, 55);
             this.txtCurrentValue.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
             this.txtCurrentValue.Name = "txtCurrentValue";
             this.txtCurrentValue.Size = new System.Drawing.Size(169, 23);
@@ -590,7 +665,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(23, 191);
+            this.label13.Location = new System.Drawing.Point(372, 116);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(49, 15);
             this.label13.TabIndex = 38;
@@ -602,7 +677,7 @@
             this.tabPage6.Location = new System.Drawing.Point(4, 24);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(714, 341);
+            this.tabPage6.Size = new System.Drawing.Size(748, 341);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "Config";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -624,7 +699,7 @@
             this.panel4.Location = new System.Drawing.Point(3, 3);
             this.panel4.Name = "panel4";
             this.panel4.Padding = new System.Windows.Forms.Padding(20);
-            this.panel4.Size = new System.Drawing.Size(708, 335);
+            this.panel4.Size = new System.Drawing.Size(742, 335);
             this.panel4.TabIndex = 36;
             // 
             // cbxLoginType
@@ -732,7 +807,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 24);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(714, 341);
+            this.tabPage3.Size = new System.Drawing.Size(748, 341);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Ownership";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -760,7 +835,7 @@
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(20);
-            this.panel2.Size = new System.Drawing.Size(708, 335);
+            this.panel2.Size = new System.Drawing.Size(742, 335);
             this.panel2.TabIndex = 35;
             // 
             // txtReturnDate
@@ -924,14 +999,23 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 24);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(714, 341);
+            this.tabPage4.Size = new System.Drawing.Size(748, 341);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Images";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.label34);
+            this.panel3.Controls.Add(this.lnkDoc3);
+            this.panel3.Controls.Add(this.textBox3);
+            this.panel3.Controls.Add(this.button3);
+            this.panel3.Controls.Add(this.lnkDoc2);
+            this.panel3.Controls.Add(this.textBox2);
+            this.panel3.Controls.Add(this.button2);
+            this.panel3.Controls.Add(this.lnkDoc1);
+            this.panel3.Controls.Add(this.label41);
+            this.panel3.Controls.Add(this.textBox1);
+            this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.txtFilename);
             this.panel3.Controls.Add(this.label23);
             this.panel3.Controls.Add(this.label24);
@@ -940,21 +1024,12 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(3, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(708, 335);
+            this.panel3.Size = new System.Drawing.Size(742, 335);
             this.panel3.TabIndex = 61;
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(361, 55);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(72, 15);
-            this.label34.TabIndex = 69;
-            this.label34.Text = "Main Image";
             // 
             // txtFilename
             // 
-            this.txtFilename.Location = new System.Drawing.Point(15, 73);
+            this.txtFilename.Location = new System.Drawing.Point(15, 214);
             this.txtFilename.Name = "txtFilename";
             this.txtFilename.ReadOnly = true;
             this.txtFilename.Size = new System.Drawing.Size(243, 23);
@@ -975,26 +1050,16 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(12, 55);
+            this.label24.Location = new System.Drawing.Point(12, 196);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(134, 15);
             this.label24.TabIndex = 46;
             this.label24.Text = "Select a file to upload...";
             this.label24.Click += new System.EventHandler(this.label24_Click);
             // 
-            // pbId
-            // 
-            this.pbId.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbId.Location = new System.Drawing.Point(364, 73);
-            this.pbId.Name = "pbId";
-            this.pbId.Size = new System.Drawing.Size(320, 240);
-            this.pbId.TabIndex = 47;
-            this.pbId.TabStop = false;
-            // 
             // btnBrowse
             // 
-            this.btnBrowse.Location = new System.Drawing.Point(15, 102);
+            this.btnBrowse.Location = new System.Drawing.Point(15, 243);
             this.btnBrowse.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnBrowse.Name = "btnBrowse";
             this.btnBrowse.Size = new System.Drawing.Size(100, 30);
@@ -1009,7 +1074,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 24);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(714, 341);
+            this.tabPage5.Size = new System.Drawing.Size(748, 341);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "History";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1026,7 +1091,7 @@
             this.pnlHistory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlHistory.Location = new System.Drawing.Point(3, 3);
             this.pnlHistory.Name = "pnlHistory";
-            this.pnlHistory.Size = new System.Drawing.Size(708, 335);
+            this.pnlHistory.Size = new System.Drawing.Size(742, 335);
             this.pnlHistory.TabIndex = 0;
             // 
             // label28
@@ -1043,7 +1108,7 @@
             // 
             // btnFilter
             // 
-            this.btnFilter.Location = new System.Drawing.Point(605, 48);
+            this.btnFilter.Location = new System.Drawing.Point(630, 48);
             this.btnFilter.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(100, 30);
@@ -1055,7 +1120,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(345, 56);
+            this.label26.Location = new System.Drawing.Point(461, 53);
             this.label26.Margin = new System.Windows.Forms.Padding(5);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(55, 15);
@@ -1065,16 +1130,16 @@
             // dtpTo
             // 
             this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpTo.Location = new System.Drawing.Point(410, 50);
+            this.dtpTo.Location = new System.Drawing.Point(526, 50);
             this.dtpTo.Margin = new System.Windows.Forms.Padding(5);
             this.dtpTo.Name = "dtpTo";
-            this.dtpTo.Size = new System.Drawing.Size(186, 23);
+            this.dtpTo.Size = new System.Drawing.Size(95, 23);
             this.dtpTo.TabIndex = 65;
             // 
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(74, 56);
+            this.label27.Location = new System.Drawing.Point(281, 56);
             this.label27.Margin = new System.Windows.Forms.Padding(5);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(65, 15);
@@ -1084,10 +1149,10 @@
             // dtpFrom
             // 
             this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFrom.Location = new System.Drawing.Point(149, 50);
+            this.dtpFrom.Location = new System.Drawing.Point(356, 50);
             this.dtpFrom.Margin = new System.Windows.Forms.Padding(5);
             this.dtpFrom.Name = "dtpFrom";
-            this.dtpFrom.Size = new System.Drawing.Size(186, 23);
+            this.dtpFrom.Size = new System.Drawing.Size(95, 23);
             this.dtpFrom.TabIndex = 63;
             // 
             // dvLogs
@@ -1112,30 +1177,8 @@
             this.dvLogs.ShowCellToolTips = false;
             this.dvLogs.ShowEditingIcon = false;
             this.dvLogs.ShowRowErrors = false;
-            this.dvLogs.Size = new System.Drawing.Size(691, 248);
+            this.dvLogs.Size = new System.Drawing.Size(716, 248);
             this.dvLogs.TabIndex = 1;
-            // 
-            // btnClose
-            // 
-            this.btnClose.Location = new System.Drawing.Point(507, 378);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(100, 30);
-            this.btnClose.TabIndex = 2;
-            this.btnClose.Text = "Cancel";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(615, 378);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(100, 30);
-            this.btnSave.TabIndex = 1;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // TransactionDate
             // 
@@ -1177,11 +1220,142 @@
             this.Remarks.HeaderText = "Remarks";
             this.Remarks.Name = "Remarks";
             // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(547, 378);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(100, 30);
+            this.btnClose.TabIndex = 2;
+            this.btnClose.Text = "Cancel";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(655, 378);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(100, 30);
+            this.btnSave.TabIndex = 1;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(364, 68);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(243, 23);
+            this.textBox1.TabIndex = 71;
+            this.textBox1.Text = "Select a file to upload...";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(364, 97);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 30);
+            this.button1.TabIndex = 69;
+            this.button1.Text = "Browse";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label41.Location = new System.Drawing.Point(362, 10);
+            this.label41.Margin = new System.Windows.Forms.Padding(10);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(177, 26);
+            this.label41.TabIndex = 72;
+            this.label41.Text = "Other Attachments";
+            this.label41.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lnkDoc1
+            // 
+            this.lnkDoc1.AutoSize = true;
+            this.lnkDoc1.Location = new System.Drawing.Point(364, 50);
+            this.lnkDoc1.Name = "lnkDoc1";
+            this.lnkDoc1.Size = new System.Drawing.Size(72, 15);
+            this.lnkDoc1.TabIndex = 73;
+            this.lnkDoc1.TabStop = true;
+            this.lnkDoc1.Text = "Document 1";
+            // 
+            // lnkDoc2
+            // 
+            this.lnkDoc2.AutoSize = true;
+            this.lnkDoc2.Location = new System.Drawing.Point(364, 130);
+            this.lnkDoc2.Name = "lnkDoc2";
+            this.lnkDoc2.Size = new System.Drawing.Size(72, 15);
+            this.lnkDoc2.TabIndex = 76;
+            this.lnkDoc2.TabStop = true;
+            this.lnkDoc2.Text = "Document 2";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(364, 148);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(243, 23);
+            this.textBox2.TabIndex = 75;
+            this.textBox2.Text = "Select a file to upload...";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(364, 177);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(100, 30);
+            this.button2.TabIndex = 74;
+            this.button2.Text = "Browse";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // lnkDoc3
+            // 
+            this.lnkDoc3.AutoSize = true;
+            this.lnkDoc3.Location = new System.Drawing.Point(364, 210);
+            this.lnkDoc3.Name = "lnkDoc3";
+            this.lnkDoc3.Size = new System.Drawing.Size(72, 15);
+            this.lnkDoc3.TabIndex = 79;
+            this.lnkDoc3.TabStop = true;
+            this.lnkDoc3.Text = "Document 3";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(364, 228);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(243, 23);
+            this.textBox3.TabIndex = 78;
+            this.textBox3.Text = "Select a file to upload...";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(364, 257);
+            this.button3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(100, 30);
+            this.button3.TabIndex = 77;
+            this.button3.Text = "Browse";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // pbId
+            // 
+            this.pbId.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbId.Location = new System.Drawing.Point(15, 49);
+            this.pbId.Name = "pbId";
+            this.pbId.Size = new System.Drawing.Size(210, 144);
+            this.pbId.TabIndex = 47;
+            this.pbId.TabStop = false;
+            // 
             // frmManageItemDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(750, 446);
+            this.ClientSize = new System.Drawing.Size(784, 446);
             this.Controls.Add(this.pnlMain);
             this.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1207,11 +1381,11 @@
             this.tabPage4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbId)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.pnlHistory.ResumeLayout(false);
             this.pnlHistory.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvLogs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbId)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1246,7 +1420,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtLifetime;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox txtPurchasePrice;
+        private System.Windows.Forms.TextBox txtSalesInvocie;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Label lblLastUpdatedBy;
         private System.Windows.Forms.TextBox txtLastUpdatedUser;
@@ -1307,7 +1481,6 @@
         private System.Windows.Forms.Panel pnlMain;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.TextBox txtFilename;
-        private System.Windows.Forms.Label label34;
         private System.Windows.Forms.TextBox txtReturnDate;
         private System.Windows.Forms.TextBox txtBorrowDate;
         private System.Windows.Forms.Label label35;
@@ -1318,5 +1491,21 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CustomerName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Remarks;
+        private System.Windows.Forms.TextBox txtPurchasePrice;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.TextBox txtPurchaseOrder;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.LinkLabel lnkDoc3;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.LinkLabel lnkDoc2;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.LinkLabel lnkDoc1;
     }
 }

@@ -25,11 +25,11 @@ namespace InventoryManagement
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            SplashForm.ShowSplashScreen();
+            //SplashForm.ShowSplashScreen();
 
             frmLauncher mainForm = new frmLauncher(); //this takes ages
 
-            SplashForm.CloseForm();
+            //SplashForm.CloseForm();
 
             Application.Run(mainForm);
 

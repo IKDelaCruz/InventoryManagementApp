@@ -42,7 +42,15 @@ namespace InventoryManagement
 
         static public void CloseForm()
         {
-            splashForm.Invoke(new CloseDelegate(SplashForm.CloseFormInternal));
+            try
+            {
+                splashForm.Invoke(new CloseDelegate(SplashForm.CloseFormInternal));
+            }
+            catch(Exception ex)
+            {
+
+            }
+            
         }
 
         static private void CloseFormInternal()

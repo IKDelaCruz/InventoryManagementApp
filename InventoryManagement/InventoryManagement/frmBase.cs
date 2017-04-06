@@ -23,10 +23,12 @@ namespace InventoryManagement
             this.Load += new System.EventHandler(this.frmBase_Load);
             this.ResumeLayout(false);
 
+   
+
         }
         public int ReturnInt { get; set; }
         public int ReturnParentInt { get; set; }
-
+        public List<int> ReturnIntList { get; set; }
         public bool IsInitializing { get; set; }
 
         private void frmBase_Load(object sender, EventArgs e)

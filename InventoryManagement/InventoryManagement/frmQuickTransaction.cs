@@ -21,22 +21,30 @@ namespace InventoryManagement
             InitializeComponent();
             _selectedItem = selectedItem;
             _transType = transType;
-
+            dtpTo.Enabled = false;
 
             if (transType == TransactionType.BorrowItem)
             {
                 lblHeader.Text = "Borrow Item";
-                dtpTo.Value = DateTime.Now.AddDays(30);
+                dtpTo.Value = DateTime.Now.AddDays(1);
+                dtpTo.Enabled = true;
             }
-          
+
             else if (transType == TransactionType.ReturnItem)
             {
                 lblHeader.Text = "Return Item";
+
             }
             else if (transType == TransactionType.DisposeItem)
+            {
                 lblHeader.Text = "Retire Item";
+            }
+
             else if (transType == TransactionType.RepairItem)
+            {
                 lblHeader.Text = "Repair Item";
+                dtpTo.Enabled = true;
+            }
             else if (transType == TransactionType.AssignItem)
             {
                 lblHeader.Text = "Assign Item";

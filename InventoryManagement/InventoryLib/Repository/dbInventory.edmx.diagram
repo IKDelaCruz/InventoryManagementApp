@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a62ac1eb52a34d67a48e38ebdea7c1af" Name="Diagram1">
+        <EntityTypeShape EntityType="InventoryManagementModel.brand" Width="1.5" PointX="14.25" PointY="11.5" />
+        <EntityTypeShape EntityType="InventoryManagementModel.company" Width="1.5" PointX="0.75" PointY="4.5" />
+        <EntityTypeShape EntityType="InventoryManagementModel.department" Width="1.5" PointX="3" PointY="4.5" />
+        <EntityTypeShape EntityType="InventoryManagementModel.hdd" Width="1.5" PointX="0.75" PointY="1.125" />
+        <EntityTypeShape EntityType="InventoryManagementModel.item" Width="1.5" PointX="16.5" PointY="7.25" />
+        <EntityTypeShape EntityType="InventoryManagementModel.item_image" Width="1.5" PointX="18.75" PointY="10.375" />
+        <EntityTypeShape EntityType="InventoryManagementModel.item_subtype" Width="1.5" PointX="12" PointY="10" />
+        <EntityTypeShape EntityType="InventoryManagementModel.item_subtype_image" Width="1.5" PointX="14.25" PointY="9" />
+        <EntityTypeShape EntityType="InventoryManagementModel.item_type" Width="1.5" PointX="9.75" PointY="9" />
+        <EntityTypeShape EntityType="InventoryManagementModel.item_type_image" Width="1.5" PointX="12" PointY="6.375" />
+        <EntityTypeShape EntityType="InventoryManagementModel.memory" Width="1.5" PointX="0.75" PointY="8.125" />
+        <EntityTypeShape EntityType="InventoryManagementModel.operation_system" Width="1.5" PointX="2.75" PointY="9.125" />
+        <EntityTypeShape EntityType="InventoryManagementModel.processor" Width="1.5" PointX="4.75" PointY="9.125" />
+        <EntityTypeShape EntityType="InventoryManagementModel.request" Width="1.5" PointX="7.5" PointY="7.125" />
+        <EntityTypeShape EntityType="InventoryManagementModel.sysdiagram" Width="1.5" PointX="9.75" PointY="1.125" />
+        <EntityTypeShape EntityType="InventoryManagementModel.transaciton" Width="1.5" PointX="7.5" PointY="3.125" />
+        <EntityTypeShape EntityType="InventoryManagementModel.transaction_type" Width="1.5" PointX="5.25" PointY="0.75" />
+        <EntityTypeShape EntityType="InventoryManagementModel.transmital" Width="1.5" PointX="11.75" PointY="1.125" />
+        <EntityTypeShape EntityType="InventoryManagementModel.user" Width="1.5" PointX="5.25" PointY="3.75" />
+        <EntityTypeShape EntityType="InventoryManagementModel.transmittal_items" Width="1.5" PointX="0.75" PointY="12.125" />
+        <EntityTypeShape EntityType="InventoryManagementModel.vw_brand_summary" Width="1.5" PointX="2.75" PointY="12.125" />
+        <EntityTypeShape EntityType="InventoryManagementModel.vw_item_detail" Width="1.5" PointX="4.75" PointY="12.125" />
+        <EntityTypeShape EntityType="InventoryManagementModel.vw_item_log" Width="1.5" PointX="6.75" PointY="13.125" />
+        <EntityTypeShape EntityType="InventoryManagementModel.vw_item_schedule_summary" Width="1.5" PointX="8.75" PointY="13.125" />
+        <EntityTypeShape EntityType="InventoryManagementModel.vw_item_subtype_count" Width="1.5" PointX="13.75" PointY="1.125" />
+        <EntityTypeShape EntityType="InventoryManagementModel.vw_item_subtype_summary" Width="1.5" PointX="10.75" PointY="14.125" />
+        <EntityTypeShape EntityType="InventoryManagementModel.vw_item_type_summary" Width="1.5" PointX="0.75" PointY="15.125" />
+        <EntityTypeShape EntityType="InventoryManagementModel.vw_request_details" Width="1.5" PointX="12.75" PointY="15.125" />
+        <EntityTypeShape EntityType="InventoryManagementModel.vw_transaction_log" Width="1.5" PointX="15.75" PointY="1.125" />
+        <EntityTypeShape EntityType="InventoryManagementModel.vw_transaction_summary" Width="1.5" PointX="6.75" PointY="17.125" />
+        <EntityTypeShape EntityType="InventoryManagementModel.vw_user_membership_detail" Width="1.5" PointX="14.75" PointY="17.125" />
+        <AssociationConnector Association="InventoryManagementModel.FK_Brand_ItmeSubType" />
+        <AssociationConnector Association="InventoryManagementModel.FK_Item_Brand" />
+        <AssociationConnector Association="InventoryManagementModel.FK_Department_Company" />
+        <AssociationConnector Association="InventoryManagementModel.FK_User_Company1" />
+        <AssociationConnector Association="InventoryManagementModel.FK_User_Department" />
+        <AssociationConnector Association="InventoryManagementModel.FK_Item_ItemSubtype" />
+        <AssociationConnector Association="InventoryManagementModel.FK_Item_ItemType" />
+        <AssociationConnector Association="InventoryManagementModel.FK_ItemImage_Item" />
+        <AssociationConnector Association="InventoryManagementModel.FK_ItemSubtype_ItemType" />
+        <AssociationConnector Association="InventoryManagementModel.FK_ItemSubTypeImage_Item" />
+        <AssociationConnector Association="InventoryManagementModel.FK_ItemTypeImage_Item" />
+        <AssociationConnector Association="InventoryManagementModel.FK_Request_User" />
+        <AssociationConnector Association="InventoryManagementModel.FK_transaciton_system_user" />
+        <AssociationConnector Association="InventoryManagementModel.FK_transaciton_transaction_type" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

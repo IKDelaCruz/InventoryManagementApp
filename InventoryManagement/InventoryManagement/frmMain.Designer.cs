@@ -38,6 +38,8 @@
             this.statusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ownerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsAction = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsAssign = new System.Windows.Forms.ToolStripMenuItem();
             this.tsBorrow = new System.Windows.Forms.ToolStripMenuItem();
             this.tsReturn = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,12 +52,17 @@
             this.pnlMain = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lvMain = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pnlTop = new System.Windows.Forms.Panel();
+            this.btnFilter = new System.Windows.Forms.Button();
             this.chkShowAllUser = new System.Windows.Forms.CheckBox();
             this.label15 = new System.Windows.Forms.Label();
             this.cbxUser = new System.Windows.Forms.ComboBox();
-            this.txtScan = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.chkShowAllLocation = new System.Windows.Forms.CheckBox();
             this.chkShowAllSubType = new System.Windows.Forms.CheckBox();
             this.chkShowAllType = new System.Windows.Forms.CheckBox();
@@ -129,12 +136,10 @@
             this.syncToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.itemSummaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.formsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.transmittalFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gatePassToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.insuranceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cntxtMenuStrip.SuspendLayout();
             this.pnlMain.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -160,7 +165,7 @@
             this.tsAction,
             this.tsBarcode});
             this.cntxtMenuStrip.Name = "cntxtMenuStrip";
-            this.cntxtMenuStrip.Size = new System.Drawing.Size(153, 92);
+            this.cntxtMenuStrip.Size = new System.Drawing.Size(118, 70);
             this.cntxtMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.cntxtMenuStrip_Opening);
             // 
             // sortByToolStripMenuItem
@@ -171,7 +176,7 @@
             this.statusToolStripMenuItem,
             this.ownerToolStripMenuItem});
             this.sortByToolStripMenuItem.Name = "sortByToolStripMenuItem";
-            this.sortByToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sortByToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.sortByToolStripMenuItem.Text = "Sort By";
             // 
             // nameToolStripMenuItem
@@ -205,6 +210,8 @@
             // tsAction
             // 
             this.tsAction.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addNewItemToolStripMenuItem,
+            this.toolStripSeparator3,
             this.tsAssign,
             this.tsBorrow,
             this.tsReturn,
@@ -213,54 +220,65 @@
             this.tsRetire,
             this.viewDetailsToolStripMenuItem});
             this.tsAction.Name = "tsAction";
-            this.tsAction.Size = new System.Drawing.Size(152, 22);
+            this.tsAction.Size = new System.Drawing.Size(117, 22);
             this.tsAction.Text = "Action";
             this.tsAction.Click += new System.EventHandler(this.tsAction_Click);
+            // 
+            // addNewItemToolStripMenuItem
+            // 
+            this.addNewItemToolStripMenuItem.Name = "addNewItemToolStripMenuItem";
+            this.addNewItemToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.addNewItemToolStripMenuItem.Text = "Add New Item";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(147, 6);
             // 
             // tsAssign
             // 
             this.tsAssign.Name = "tsAssign";
-            this.tsAssign.Size = new System.Drawing.Size(152, 22);
+            this.tsAssign.Size = new System.Drawing.Size(150, 22);
             this.tsAssign.Text = "Assign";
             this.tsAssign.Click += new System.EventHandler(this.assignToolStripMenuItem_Click);
             // 
             // tsBorrow
             // 
             this.tsBorrow.Name = "tsBorrow";
-            this.tsBorrow.Size = new System.Drawing.Size(152, 22);
+            this.tsBorrow.Size = new System.Drawing.Size(150, 22);
             this.tsBorrow.Text = "Borrow";
             this.tsBorrow.Click += new System.EventHandler(this.tsBorrow_Click);
             // 
             // tsReturn
             // 
             this.tsReturn.Name = "tsReturn";
-            this.tsReturn.Size = new System.Drawing.Size(152, 22);
+            this.tsReturn.Size = new System.Drawing.Size(150, 22);
             this.tsReturn.Text = "Return";
             this.tsReturn.Click += new System.EventHandler(this.tsReturn_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(147, 6);
             // 
             // tsBroken
             // 
             this.tsBroken.Name = "tsBroken";
-            this.tsBroken.Size = new System.Drawing.Size(152, 22);
+            this.tsBroken.Size = new System.Drawing.Size(150, 22);
             this.tsBroken.Text = "Repair";
             this.tsBroken.Click += new System.EventHandler(this.tsBroken_Click_1);
             // 
             // tsRetire
             // 
             this.tsRetire.Name = "tsRetire";
-            this.tsRetire.Size = new System.Drawing.Size(152, 22);
+            this.tsRetire.Size = new System.Drawing.Size(150, 22);
             this.tsRetire.Text = "Dispose";
             this.tsRetire.Click += new System.EventHandler(this.tsRetire_Click_1);
             // 
             // viewDetailsToolStripMenuItem
             // 
             this.viewDetailsToolStripMenuItem.Name = "viewDetailsToolStripMenuItem";
-            this.viewDetailsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.viewDetailsToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.viewDetailsToolStripMenuItem.Text = "View Details";
             this.viewDetailsToolStripMenuItem.Click += new System.EventHandler(this.viewDetailsToolStripMenuItem_Click);
             // 
@@ -269,7 +287,7 @@
             this.tsBarcode.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.printToolStripMenuItem});
             this.tsBarcode.Name = "tsBarcode";
-            this.tsBarcode.Size = new System.Drawing.Size(152, 22);
+            this.tsBarcode.Size = new System.Drawing.Size(117, 22);
             this.tsBarcode.Text = "Barcode";
             // 
             // printToolStripMenuItem
@@ -323,15 +341,44 @@
             this.lvMain.Click += new System.EventHandler(this.lvMain_Click);
             this.lvMain.DoubleClick += new System.EventHandler(this.lvMain_DoubleClick);
             // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Name";
+            this.columnHeader1.Width = 250;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Id";
+            this.columnHeader2.Width = 0;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Type Id";
+            this.columnHeader3.Width = 0;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Status";
+            this.columnHeader4.Width = 100;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Borrow Date";
+            this.columnHeader5.Width = 100;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Return Date";
+            this.columnHeader6.Width = 100;
+            // 
             // pnlTop
             // 
             this.pnlTop.BackColor = System.Drawing.Color.White;
             this.pnlTop.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlTop.Controls.Add(this.btnFilter);
             this.pnlTop.Controls.Add(this.chkShowAllUser);
             this.pnlTop.Controls.Add(this.label15);
             this.pnlTop.Controls.Add(this.cbxUser);
-            this.pnlTop.Controls.Add(this.txtScan);
-            this.pnlTop.Controls.Add(this.label13);
             this.pnlTop.Controls.Add(this.chkShowAllLocation);
             this.pnlTop.Controls.Add(this.chkShowAllSubType);
             this.pnlTop.Controls.Add(this.chkShowAllType);
@@ -351,12 +398,23 @@
             this.pnlTop.TabIndex = 1;
             this.pnlTop.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlTop_Paint);
             // 
+            // btnFilter
+            // 
+            this.btnFilter.Location = new System.Drawing.Point(848, 24);
+            this.btnFilter.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(150, 40);
+            this.btnFilter.TabIndex = 49;
+            this.btnFilter.Text = "Apply Filter";
+            this.btnFilter.UseVisualStyleBackColor = true;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
+            // 
             // chkShowAllUser
             // 
             this.chkShowAllUser.AutoSize = true;
             this.chkShowAllUser.Checked = true;
             this.chkShowAllUser.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkShowAllUser.Location = new System.Drawing.Point(805, 61);
+            this.chkShowAllUser.Location = new System.Drawing.Point(632, 60);
             this.chkShowAllUser.Name = "chkShowAllUser";
             this.chkShowAllUser.Size = new System.Drawing.Size(73, 19);
             this.chkShowAllUser.TabIndex = 51;
@@ -367,7 +425,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(802, 14);
+            this.label15.Location = new System.Drawing.Point(629, 13);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(32, 15);
             this.label15.TabIndex = 50;
@@ -377,39 +435,19 @@
             // 
             this.cbxUser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxUser.FormattingEnabled = true;
-            this.cbxUser.Location = new System.Drawing.Point(805, 32);
+            this.cbxUser.Location = new System.Drawing.Point(632, 31);
             this.cbxUser.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.cbxUser.Name = "cbxUser";
             this.cbxUser.Size = new System.Drawing.Size(184, 23);
             this.cbxUser.TabIndex = 49;
-            this.cbxUser.SelectedIndexChanged += new System.EventHandler(this.UpdateView);
-            // 
-            // txtScan
-            // 
-            this.txtScan.BackColor = System.Drawing.Color.Gainsboro;
-            this.txtScan.Location = new System.Drawing.Point(35, 32);
-            this.txtScan.Name = "txtScan";
-            this.txtScan.Size = new System.Drawing.Size(121, 23);
-            this.txtScan.TabIndex = 48;
-            this.txtScan.Click += new System.EventHandler(this.txtScan_Click);
-            this.txtScan.TextChanged += new System.EventHandler(this.txtScan_TextChanged);
-            this.txtScan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtScan_KeyPress);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(32, 14);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(84, 15);
-            this.label13.TabIndex = 47;
-            this.label13.Text = "&Scan Barcode:";
+            this.cbxUser.SelectedIndexChanged += new System.EventHandler(this.cbxUser_SelectedIndexChanged);
             // 
             // chkShowAllLocation
             // 
             this.chkShowAllLocation.AutoSize = true;
             this.chkShowAllLocation.Checked = true;
             this.chkShowAllLocation.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkShowAllLocation.Location = new System.Drawing.Point(651, 61);
+            this.chkShowAllLocation.Location = new System.Drawing.Point(478, 60);
             this.chkShowAllLocation.Name = "chkShowAllLocation";
             this.chkShowAllLocation.Size = new System.Drawing.Size(73, 19);
             this.chkShowAllLocation.TabIndex = 46;
@@ -422,7 +460,7 @@
             this.chkShowAllSubType.AutoSize = true;
             this.chkShowAllSubType.Checked = true;
             this.chkShowAllSubType.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkShowAllSubType.Location = new System.Drawing.Point(497, 61);
+            this.chkShowAllSubType.Location = new System.Drawing.Point(324, 60);
             this.chkShowAllSubType.Name = "chkShowAllSubType";
             this.chkShowAllSubType.Size = new System.Drawing.Size(73, 19);
             this.chkShowAllSubType.TabIndex = 45;
@@ -435,7 +473,7 @@
             this.chkShowAllType.AutoSize = true;
             this.chkShowAllType.Checked = true;
             this.chkShowAllType.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkShowAllType.Location = new System.Drawing.Point(343, 61);
+            this.chkShowAllType.Location = new System.Drawing.Point(170, 60);
             this.chkShowAllType.Name = "chkShowAllType";
             this.chkShowAllType.Size = new System.Drawing.Size(73, 19);
             this.chkShowAllType.TabIndex = 44;
@@ -448,7 +486,7 @@
             this.chkShowAllStatus.AutoSize = true;
             this.chkShowAllStatus.Checked = true;
             this.chkShowAllStatus.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkShowAllStatus.Location = new System.Drawing.Point(189, 61);
+            this.chkShowAllStatus.Location = new System.Drawing.Point(16, 60);
             this.chkShowAllStatus.Name = "chkShowAllStatus";
             this.chkShowAllStatus.Size = new System.Drawing.Size(73, 19);
             this.chkShowAllStatus.TabIndex = 43;
@@ -459,7 +497,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(648, 14);
+            this.label7.Location = new System.Drawing.Point(475, 13);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(53, 15);
             this.label7.TabIndex = 42;
@@ -469,7 +507,7 @@
             // 
             this.cbxLocation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxLocation.FormattingEnabled = true;
-            this.cbxLocation.Location = new System.Drawing.Point(651, 32);
+            this.cbxLocation.Location = new System.Drawing.Point(478, 31);
             this.cbxLocation.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.cbxLocation.Name = "cbxLocation";
             this.cbxLocation.Size = new System.Drawing.Size(121, 23);
@@ -479,7 +517,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(494, 14);
+            this.label5.Location = new System.Drawing.Point(321, 13);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(55, 15);
             this.label5.TabIndex = 40;
@@ -489,17 +527,17 @@
             // 
             this.cbxSubtype.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxSubtype.FormattingEnabled = true;
-            this.cbxSubtype.Location = new System.Drawing.Point(497, 32);
+            this.cbxSubtype.Location = new System.Drawing.Point(324, 31);
             this.cbxSubtype.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.cbxSubtype.Name = "cbxSubtype";
             this.cbxSubtype.Size = new System.Drawing.Size(121, 23);
             this.cbxSubtype.TabIndex = 39;
-            this.cbxSubtype.SelectedIndexChanged += new System.EventHandler(this.UpdateView);
+            this.cbxSubtype.SelectedIndexChanged += new System.EventHandler(this.cbxSubtype_SelectedIndexChanged_1);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(340, 14);
+            this.label3.Location = new System.Drawing.Point(167, 13);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(31, 15);
             this.label3.TabIndex = 38;
@@ -509,7 +547,7 @@
             // 
             this.cbxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxType.FormattingEnabled = true;
-            this.cbxType.Location = new System.Drawing.Point(343, 32);
+            this.cbxType.Location = new System.Drawing.Point(170, 31);
             this.cbxType.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.cbxType.Name = "cbxType";
             this.cbxType.Size = new System.Drawing.Size(121, 23);
@@ -519,7 +557,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(186, 14);
+            this.label2.Location = new System.Drawing.Point(13, 13);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 15);
             this.label2.TabIndex = 35;
@@ -529,12 +567,12 @@
             // 
             this.cbxStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxStatus.FormattingEnabled = true;
-            this.cbxStatus.Location = new System.Drawing.Point(189, 32);
+            this.cbxStatus.Location = new System.Drawing.Point(16, 31);
             this.cbxStatus.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.cbxStatus.Name = "cbxStatus";
             this.cbxStatus.Size = new System.Drawing.Size(121, 23);
             this.cbxStatus.TabIndex = 0;
-            this.cbxStatus.SelectedIndexChanged += new System.EventHandler(this.UpdateView);
+            this.cbxStatus.SelectedIndexChanged += new System.EventHandler(this.cbxStatus_SelectedIndexChanged);
             // 
             // pnlRightInfo
             // 
@@ -974,7 +1012,8 @@
             this.fileToolStripMenuItem,
             this.inventoryToolStripMenuItem,
             this.usersToolStripMenuItem,
-            this.reportsToolStripMenuItem});
+            this.reportsToolStripMenuItem,
+            this.formsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
@@ -1023,40 +1062,40 @@
             // summaryToolStripMenuItem
             // 
             this.summaryToolStripMenuItem.Name = "summaryToolStripMenuItem";
-            this.summaryToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.summaryToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.summaryToolStripMenuItem.Text = "Summary";
             this.summaryToolStripMenuItem.Click += new System.EventHandler(this.summaryToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(148, 6);
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.addToolStripMenuItem.Text = "Add Item";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // addItemTypeToolStripMenuItem
             // 
             this.addItemTypeToolStripMenuItem.Name = "addItemTypeToolStripMenuItem";
-            this.addItemTypeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addItemTypeToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.addItemTypeToolStripMenuItem.Text = "Manage Types";
             this.addItemTypeToolStripMenuItem.Click += new System.EventHandler(this.addItemTypeToolStripMenuItem_Click);
             // 
             // manageBrandToolStripMenuItem
             // 
             this.manageBrandToolStripMenuItem.Name = "manageBrandToolStripMenuItem";
-            this.manageBrandToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.manageBrandToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.manageBrandToolStripMenuItem.Text = "Manage Brand";
             this.manageBrandToolStripMenuItem.Click += new System.EventHandler(this.manageBrandToolStripMenuItem_Click);
             // 
             // uploadItemsToolStripMenuItem
             // 
             this.uploadItemsToolStripMenuItem.Name = "uploadItemsToolStripMenuItem";
-            this.uploadItemsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.uploadItemsToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.uploadItemsToolStripMenuItem.Text = "Upload Items";
             this.uploadItemsToolStripMenuItem.Click += new System.EventHandler(this.uploadItemsToolStripMenuItem_Click);
             // 
@@ -1106,35 +1145,34 @@
             this.itemSummaryToolStripMenuItem.Text = "Item Summary";
             this.itemSummaryToolStripMenuItem.Click += new System.EventHandler(this.itemSummaryToolStripMenuItem_Click);
             // 
-            // columnHeader1
+            // formsToolStripMenuItem
             // 
-            this.columnHeader1.Text = "Name";
-            this.columnHeader1.Width = 250;
+            this.formsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.transmittalFormToolStripMenuItem,
+            this.gatePassToolStripMenuItem,
+            this.insuranceToolStripMenuItem});
+            this.formsToolStripMenuItem.Name = "formsToolStripMenuItem";
+            this.formsToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.formsToolStripMenuItem.Text = "Forms";
             // 
-            // columnHeader2
+            // transmittalFormToolStripMenuItem
             // 
-            this.columnHeader2.Text = "Id";
-            this.columnHeader2.Width = 0;
+            this.transmittalFormToolStripMenuItem.Name = "transmittalFormToolStripMenuItem";
+            this.transmittalFormToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.transmittalFormToolStripMenuItem.Text = "Transmittal Form";
+            this.transmittalFormToolStripMenuItem.Click += new System.EventHandler(this.transmittalFormToolStripMenuItem_Click);
             // 
-            // columnHeader3
+            // gatePassToolStripMenuItem
             // 
-            this.columnHeader3.Text = "Type Id";
-            this.columnHeader3.Width = 0;
+            this.gatePassToolStripMenuItem.Name = "gatePassToolStripMenuItem";
+            this.gatePassToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.gatePassToolStripMenuItem.Text = "Gate Pass";
             // 
-            // columnHeader4
+            // insuranceToolStripMenuItem
             // 
-            this.columnHeader4.Text = "Status";
-            this.columnHeader4.Width = 100;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Borrow Date";
-            this.columnHeader5.Width = 100;
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "Return Date";
-            this.columnHeader6.Width = 100;
+            this.insuranceToolStripMenuItem.Name = "insuranceToolStripMenuItem";
+            this.insuranceToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.insuranceToolStripMenuItem.Text = "Insurance";
             // 
             // frmMain
             // 
@@ -1241,8 +1279,6 @@
         private System.Windows.Forms.Label lblSerial;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ToolStripMenuItem addItemTypeToolStripMenuItem;
-        private System.Windows.Forms.TextBox txtScan;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ToolStripMenuItem summaryToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem manageBrandToolStripMenuItem;
@@ -1279,6 +1315,13 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.Button btnFilter;
+        private System.Windows.Forms.ToolStripMenuItem addNewItemToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem formsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem transmittalFormToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gatePassToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem insuranceToolStripMenuItem;
     }
 }
 
