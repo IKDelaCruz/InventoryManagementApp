@@ -140,6 +140,7 @@
             this.transmittalFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gatePassToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.insuranceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.webToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cntxtMenuStrip.SuspendLayout();
             this.pnlMain.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -1150,7 +1151,8 @@
             this.formsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.transmittalFormToolStripMenuItem,
             this.gatePassToolStripMenuItem,
-            this.insuranceToolStripMenuItem});
+            this.insuranceToolStripMenuItem,
+            this.webToolStripMenuItem});
             this.formsToolStripMenuItem.Name = "formsToolStripMenuItem";
             this.formsToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.formsToolStripMenuItem.Text = "Forms";
@@ -1173,6 +1175,13 @@
             this.insuranceToolStripMenuItem.Name = "insuranceToolStripMenuItem";
             this.insuranceToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.insuranceToolStripMenuItem.Text = "Insurance";
+            // 
+            // webToolStripMenuItem
+            // 
+            this.webToolStripMenuItem.Name = "webToolStripMenuItem";
+            this.webToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.webToolStripMenuItem.Text = "Web";
+            this.webToolStripMenuItem.Click += new System.EventHandler(this.webToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -1322,6 +1331,7 @@
         private System.Windows.Forms.ToolStripMenuItem transmittalFormToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gatePassToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem insuranceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem webToolStripMenuItem;
     }
 }
 

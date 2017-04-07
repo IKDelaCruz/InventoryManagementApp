@@ -576,6 +576,11 @@ namespace InventoryManagement
         {
             new frmTrasmittal().ShowDialog();
         }
+
+        private void webToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new frmWebBrowser().ShowDialog();
+        }
     }
 
 }
