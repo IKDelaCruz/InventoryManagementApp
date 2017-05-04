@@ -40,6 +40,8 @@ namespace InventoryManagement.Repository
                 item_hdd1_id = (int)newItem.HDD1,
                 item_hdd2_id = (int)newItem.HDD2,
                 item_login_type = (int)newItem.LoginType,
+                purchase_order_no = newItem.PurchaseOrderNo,
+                sales_invoice_no = newItem.SalesInvoiceNo
 
             };
             InventoryDatabase.items.Add(itm);
@@ -75,6 +77,9 @@ namespace InventoryManagement.Repository
                 item.item_model = newItem.Model;
                 item.item_purchase_date = newItem.PurchaseDate;
                 item.item_purchase_price = newItem.PurchasePrice;
+                item.sales_invoice_no = newItem.SalesInvoiceNo;
+                item.purchase_order_no = newItem.PurchaseOrderNo;
+
                 item.item_current_value = newItem.Currentvalue;
                 item.item_salvage_value = newItem.SalvageValue;
                 //item.item_current_owner = newItem.CurrentOwner;
@@ -202,7 +207,7 @@ namespace InventoryManagement.Repository
         public bool UpdateItemImage(int itemId, byte[] bArr)
         {
             //var item = InventoryDatabase.Items.FirstOrDefault(h => h.id == itemId);
-            var item = InventoryDatabase.item_image.FirstOrDefault(x => x.item_image_parent == itemId);
+            var item = InventoryDatabase.item_image.FirstOrDefault(x => x.item_image_parent == itemId && x.type == (int)AttachmentType.Image);
 
             if (item != null)
             {
@@ -217,16 +222,17 @@ namespace InventoryManagement.Repository
                 InventoryDatabase.item_image.Add(new item_image
                 {
                     item_image_parent = itemId,
-                    item_image_picture = bArr
+                    item_image_picture = bArr,
+                    type = (int)AttachmentType.Image
                 });
                 InventoryDatabase.SaveChanges();
                 return true;
             }
 
         }
-        public byte[] GetItemIage(int itemId)
+        public byte[] GetItemIage(int itemId, int type)
         {
-            var item = InventoryDatabase.item_image.FirstOrDefault(x => x.item_image_parent == itemId);
+            var item = InventoryDatabase.item_image.FirstOrDefault(x => x.item_image_parent == itemId && x.type == type);
             if (item != null)
             {
                 return item.item_image_picture;
@@ -402,7 +408,7 @@ namespace InventoryManagement.Repository
         }
         public List<ItemViewModel> QueryItems(string searchText)
         {
-            var items = InventoryDatabase.vw_item_detail.AsNoTracking().Where(h=> h.item_name.Contains(searchText) || h.AssetTag.Contains(searchText) || h.item_description.Contains(searchText)).ToList();
+            var items = InventoryDatabase.vw_item_detail.AsNoTracking().Where(h => h.item_name.Contains(searchText) || h.AssetTag.Contains(searchText) || h.item_description.Contains(searchText)).ToList();
             List<ItemViewModel> iList = new List<ItemViewModel>();
 
             foreach (vw_item_detail i in items)
@@ -438,7 +444,7 @@ namespace InventoryManagement.Repository
 
         public List<ItemViewModel> QueryAvailableItems()
         {
-            var items = InventoryDatabase.vw_item_detail.AsNoTracking().Where(h=>h.item_status == (int)ItemStatus.Available).ToList();
+            var items = InventoryDatabase.vw_item_detail.AsNoTracking().Where(h => h.item_status == (int)ItemStatus.Available).ToList();
             List<ItemViewModel> iList = new List<ItemViewModel>();
 
             foreach (vw_item_detail i in items)
@@ -621,7 +627,7 @@ namespace InventoryManagement.Repository
                 AssetTag = i.AssetTag,
                 Name = i.item_name,
                 Description = i.item_description,
-                LongDescription =  string.Format("{0} | {1} | {2}", i.TypeName, i.SubTypeName, i.item_name),
+                LongDescription = string.Format("{0} | {1} | {2}", i.TypeName, i.SubTypeName, i.item_name),
                 TypeId = i.ItemTypeId,
                 //Type = i.ItemType.type,
                 SubTypeId = i.ItemSubTypeId,
@@ -635,6 +641,8 @@ namespace InventoryManagement.Repository
                 LastUpdatedDate = i.LastUpdated ?? DateTime.MinValue,
                 PurchaseDate = i.PurchaseDate ?? DateTime.MinValue,
                 PurchasePrice = i.PurchasePrice,
+                PurchaseOrderNo = i.PurchaseOrderNo,
+                SalesInvoiceNo = i.SalesInvoiceNo,
                 LifeSpan = i.LifeSpan ?? 5,
                 Currentvalue = i.CurrentValue,
                 OS = (int)(i.OsId ?? 0),
@@ -675,6 +683,53 @@ namespace InventoryManagement.Repository
         public bool IsItemAvailable(int itemId, DateTime from, DateTime to)
         {
             return true;
+        }
+        public bool InsertNewAttachment(int itemId, byte[] bArr, string filename)
+        {
+            InventoryDatabase.item_image.Add(new item_image
+            {
+                item_image_parent = itemId,
+                item_image_picture = bArr,
+                type = (int)AttachmentType.Document,
+                filename = filename
+            });
+            InventoryDatabase.SaveChanges();
+            return true;
+        }
+        public List<AttachmentViewModel> GetItemAttachments(int itemId)
+        {
+            var result = new List<AttachmentViewModel>();
+            var items = InventoryDatabase.item_image.Where(x => x.item_image_parent == itemId && x.type == (int)AttachmentType.Document).ToList();
+
+            foreach (item_image im in items)
+            {
+                result.Add(new AttachmentViewModel
+                {
+                    Id = im.item_image_id,
+                    Name = im.filename,
+                    ParentId = im.item_image_parent,
+                });
+            }
+
+            return result;
+        }
+        public byte[] GetFileContent(int attachmentId)
+        {
+            var file = InventoryDatabase.item_image.FirstOrDefault(h => h.item_image_id == attachmentId);
+            if (file != null)
+                return file.item_image_picture;
+            return null;
+        }
+        public bool DeleteAttachment(int attachmentId)
+        {
+            var file = InventoryDatabase.item_image.FirstOrDefault(h => h.item_image_id == attachmentId);
+            if (file != null)
+            {
+                InventoryDatabase.item_image.Remove(file);
+                InventoryDatabase.SaveChanges();
+                return true;
+            }
+            return false;
         }
     }
 }

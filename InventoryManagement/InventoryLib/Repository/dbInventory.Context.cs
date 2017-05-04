@@ -43,8 +43,8 @@ namespace InventoryLib.Repository
         public virtual DbSet<transaciton> transacitons { get; set; }
         public virtual DbSet<transaction_type> transaction_type { get; set; }
         public virtual DbSet<transmital> transmitals { get; set; }
-        public virtual DbSet<user> users { get; set; }
         public virtual DbSet<transmittal_items> transmittal_items { get; set; }
+        public virtual DbSet<user> users { get; set; }
         public virtual DbSet<vw_brand_summary> vw_brand_summary { get; set; }
         public virtual DbSet<vw_item_detail> vw_item_detail { get; set; }
         public virtual DbSet<vw_item_log> vw_item_log { get; set; }
@@ -55,6 +55,8 @@ namespace InventoryLib.Repository
         public virtual DbSet<vw_request_details> vw_request_details { get; set; }
         public virtual DbSet<vw_transaction_log> vw_transaction_log { get; set; }
         public virtual DbSet<vw_transaction_summary> vw_transaction_summary { get; set; }
+        public virtual DbSet<vw_transmittal_details> vw_transmittal_details { get; set; }
+        public virtual DbSet<vw_transmittal_items_details> vw_transmittal_items_details { get; set; }
         public virtual DbSet<vw_user_membership_detail> vw_user_membership_detail { get; set; }
     }
 }

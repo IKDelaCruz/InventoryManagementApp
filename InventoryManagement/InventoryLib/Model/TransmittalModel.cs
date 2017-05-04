@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace InventoryLib.Model
 {
-    class TransmittalModel : BaseModel
+    public class TransmittalModel : BaseModel
     {
         TransmittalRepository repo;
         public TransmittalModel()
@@ -23,6 +23,10 @@ namespace InventoryLib.Model
         public TransmittalViewModel GetTransmittalById(int id)
         {
             return repo.GetTransmittalById(id);
+        }
+        public List<TransmittalViewModel> GetTransmittals()
+        {
+            return repo.GetTransmittals();
         }
     }
 }

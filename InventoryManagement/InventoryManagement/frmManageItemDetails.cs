@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -120,10 +121,6 @@ namespace InventoryManagement
 
             var os = cbxOS.SelectedValue;
 
-
-
-
-
             var itm = new ItemViewModel
             {
 
@@ -138,12 +135,17 @@ namespace InventoryManagement
                 Serial = txtSerial.Text,
                 Status = (ItemStatus)cbxStatus.SelectedItem,
 
+
                 SalvageValue = Convert.ToDecimal(txtSalvageValue.Text),
                 LastUpdatedDate = DateTime.Now,
                 LastUpdatedUserId = Singleton.Instance.UserModel.CurrentUser.Id,
+
                 PurchaseDate = dtpPurchaseDate.Value,
-                PurchasePrice = Convert.ToDecimal(txtSalesInvocie.Text),
-                LifeSpan = Convert.ToInt32(txtLifetime.Text),
+                PurchasePrice = Convert.ToDecimal(txtPurchasePrice.Text),
+                SalesInvoiceNo = txtSalesInvocie.Text,
+                PurchaseOrderNo = txtPurchaseOrder.Text,
+
+                LifeSpan = Convert.ToInt32(txtLifetime.Text == "" ? "0" : txtLifetime.Text),
                 Currentvalue = Convert.ToDecimal(txtCurrentValue.Text),
                 OS = (int)os,
                 Processor = (ItemProcessors)cbxProcessor.SelectedItem,
@@ -228,18 +230,20 @@ namespace InventoryManagement
             cbxHDD2.Text = _loadedItem.HDD2.ToString();
 
             dtpPurchaseDate.Value = _loadedItem.PurchaseDate;
-            txtSalesInvocie.Text = ((decimal)_loadedItem.PurchasePrice).ToString("n2");
+            txtPurchasePrice.Text = ((decimal)_loadedItem.PurchasePrice).ToString("n2");
+            txtSalesInvocie.Text = _loadedItem.SalesInvoiceNo;
+            txtPurchaseOrder.Text = _loadedItem.PurchaseOrderNo;
             txtLifetime.Text = _loadedItem.LifeSpan.ToString();
             txtCurrentValue.Text = ((decimal)_loadedItem.Currentvalue).ToString("n2");
             txtSalvageValue.Text = ((decimal)_loadedItem.SalvageValue).ToString("n2");
 
             txtLastUpdate.Text = _loadedItem.LastUpdatedDate.DateAndTime();
-            if(_loadedItem.Status != ItemStatus.Available)
+            if (_loadedItem.Status != ItemStatus.Available)
             {
                 txtBorrowDate.Text = _loadedItem.BorrowDate.DateOnly();
                 txtReturnDate.Text = _loadedItem.ExpectedReturnDate.DateOnly();
             }
-         
+
 
             txtCompany.Text = _loadedItem.CurrentCompanyName ?? "";
             txtDepartment.Text = _loadedItem.CurrentDepartmentName ?? "";
@@ -266,11 +270,24 @@ namespace InventoryManagement
             txtSubnet.Text = _loadedItem.NetworkSubnet;
             txtGateway.Text = _loadedItem.NetworkGateway;
 
-
+            LoadFileAttachments();
 
         }
 
+        private void LoadFileAttachments()
+        {
+            lvAttachments.Items.Clear();
+            var files = Singleton.Instance.ItemModel.GetItemAttachments(_loadedItem.Id);
 
+            foreach (AttachmentViewModel av in files)
+            {
+                var lvItem = new ListViewItem { Text = av.Name };
+                lvItem.SubItems.Add(av.Id.ToString());
+                lvItem.ImageIndex = 0;
+
+                lvAttachments.Items.Add(lvItem);
+            }
+        }
 
         private void cbxType_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -307,39 +324,11 @@ namespace InventoryManagement
         }
         private void txtPurchasePrice_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //disable space
-            e.Handled = (e.KeyChar == (char)Keys.Space);
-            //allows only numerical characters 
-            var regex = new Regex(@"[^0-9\s]");
-            if (!char.IsControl(e.KeyChar) && regex.IsMatch(e.KeyChar.ToString()))
-            {
-                e.Handled = true;
-            }
+
         }
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            {
-                OpenFileDialog openDlg = new OpenFileDialog();
-
-                //openDlg.InitialDirectory = "c:\\";
-                openDlg.Filter = "image files |*.jpg; *.jpeg; *.png";
-                openDlg.FilterIndex = 1;
-                //openFileDialog1.RestoreDirectory = true;
-
-                var res = openDlg.ShowDialog();
-
-                if (res == DialogResult.OK)
-                {
-                    Image img = Image.FromFile(openDlg.FileName);
-                    txtFilename.Text = openDlg.FileName;
-                    var newImage = ImageCon.ScaleImage(img, 500, 500);
-
-                    pbId.BackgroundImage = newImage;
-
-
-                }
-
-            }
+            new frmAttachFile(pbId).ShowDialog();
         }
         private void label24_Click(object sender, EventArgs e)
         {
@@ -381,6 +370,70 @@ namespace InventoryManagement
         private void txtPurchasePrice_TextChanged(object sender, EventArgs e)
         {
             txtCurrentValue.Text = txtPurchasePrice.Text;
+        }
+
+        private void txtPurchasePrice_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            //disable space
+            e.Handled = (e.KeyChar == (char)Keys.Space);
+            //allows only numerical characters 
+            var regex = new Regex(@"[^0-9\s]");
+            if (!char.IsControl(e.KeyChar) && regex.IsMatch(e.KeyChar.ToString()))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            new frmAttachFile(_loadedItem.Id).ShowDialog();
+            LoadFileAttachments();
+
+        }
+
+        private void lvAttachments_DoubleClick(object sender, EventArgs e)
+        {
+            if (lvAttachments.SelectedItems.Count > 0)
+            {
+                var id = lvAttachments.SelectedItems[0].SubItems[1].Text;
+                var filename = lvAttachments.SelectedItems[0].SubItems[0].Text;
+
+                var filepath = "";
+                SaveFileDialog dg = new SaveFileDialog();
+
+                var ext = Path.GetExtension(filename);
+
+                dg.Filter = string.Format("{0} | *.{0}", ext);
+                dg.FileName = filename;
+
+                var result = dg.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    filepath = dg.FileName;
+                    var bArr = Model.Singleton.Instance.ItemModel.GetFileContent(Convert.ToInt32(id));
+                    File.WriteAllBytes(filepath, bArr);
+                    
+                    System.Diagnostics.Process.Start(filepath);
+
+                }
+            }
+            LoadFileAttachments();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            var id = lvAttachments.SelectedItems[0].SubItems[1].Text;
+            if(lvAttachments.SelectedItems.Count > 0)
+            {
+    
+                Singleton.Instance.ItemModel.DeleteAttachment(Convert.ToInt32(id));
+                LoadFileAttachments();
+            }
+        }
+
+        private void lvAttachments_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

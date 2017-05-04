@@ -17,6 +17,8 @@ namespace InventoryLib.Repository
         public int item_image_id { get; set; }
         public int item_image_parent { get; set; }
         public byte[] item_image_picture { get; set; }
+        public Nullable<int> type { get; set; }
+        public string filename { get; set; }
     
         public virtual item item { get; set; }
     }

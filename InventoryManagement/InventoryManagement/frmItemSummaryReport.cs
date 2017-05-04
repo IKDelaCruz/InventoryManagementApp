@@ -28,7 +28,6 @@ namespace InventoryManagement
             var data = Model.Singleton.Instance.ItemModel.GetItems(false);
             _reportData = data;
 
-
             #region --- FILTER LOGIC ---
 
             if (!chkShowAllStatus.Checked)
@@ -37,7 +36,7 @@ namespace InventoryManagement
                 data = data.Where(h => h.TypeId == Convert.ToInt32(cbxType.SelectedValue)).ToList();
             if (!chkShowAllSubType.Checked)
                 data = data.Where(h => h.SubTypeId == Convert.ToInt32(cbxSubtype.SelectedValue)).ToList();
-        
+
 
             if (!chkShowAllLocation.Checked)
             {
@@ -50,7 +49,6 @@ namespace InventoryManagement
             }
 
             #endregion
-
 
             var list = new MySortableBindingList<ItemViewModel>(data);
 
@@ -73,7 +71,8 @@ namespace InventoryManagement
 
         private bool ExportToCsv<T>(List<T> data)
         {
-            var csv = CsvExporter.CreateCsvTextFile(data);
+            //var csv = CsvExporter.CreateCsvTextFile(data);
+            var csv = CsvExporter.CreateCsvFromDataGridView(dvLogs);
             var save = new SaveFileDialog();
             save.Filter = "CSV | *.csv";
             if (save.ShowDialog() != DialogResult.OK) return false;

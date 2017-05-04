@@ -187,6 +187,12 @@
     <Compile Include="Repository\vw_transaction_summary.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repository\vw_transmittal_details.cs">
+      <DependentUpon>dbInventory.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\vw_transmittal_items_details.cs">
+      <DependentUpon>dbInventory.tt</DependentUpon>
+    </Compile>
     <Compile Include="Repository\vw_user_membership_detail.cs">
       <DependentUpon>dbInventory.tt</DependentUpon>
     </Compile>

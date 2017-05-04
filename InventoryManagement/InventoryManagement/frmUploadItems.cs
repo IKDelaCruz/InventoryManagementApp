@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,8 +35,6 @@ namespace InventoryManagement
 
                 if (res == DialogResult.OK)
                 {
-
-
                     var filename = openDlg.FileName;
                     txtFilename.Text = filename;
 
@@ -48,7 +47,7 @@ namespace InventoryManagement
                             //Processing row
                             string[] fields = parser.ReadFields();
 
-                            //EMPLOYEE	PCNAME	DEPARTMENT	OFFICE	CPU	OS	HDD HDD	RAM	UPS	PRINTER	LOG-IN	OS	OFFICE
+                            //EMPLOYEE	PCNAME	DEPARTMENT	OFFICE	CPU	OS	HDD HDD	RAM	UPS	PRINTER	LOG-IN	OS	OFFICE IP SUBNET GATEWAY AV
                             //Create CPU
 
                             fields[5] = (fields[5] == "") ? "Unknown" : fields[5];
@@ -60,8 +59,6 @@ namespace InventoryManagement
                             fields[7] = (fields[7] == "") ? "Unknown" : fields[7].Replace(" ", "");
                             fields[10] = (fields[10] == "") ? "Unknown" : fields[10].Replace(" ", "");
                             fields[12] = (fields[12] == "") ? "Unknown" : fields[12].Replace(" ", "");
-
-
 
                             var iCPU = new ItemViewModel();
                             iCPU.Name = fields[1];
@@ -76,6 +73,9 @@ namespace InventoryManagement
                             iCPU.SubTypeId = 1;
                             iCPU.Description = fields[0];
 
+                            iCPU.NetworkIP = fields[15];
+                            iCPU.NetworkSubnet = fields[16];
+                            iCPU.NetworkGateway = fields[17];
 
                             var result = Singleton.Instance.ItemModel.CreateNewItem(iCPU, Singleton.Instance.UserModel.CurrentUser.Id);
 
@@ -101,6 +101,15 @@ namespace InventoryManagement
 
                             result = Singleton.Instance.ItemModel.CreateNewItem(iOffice, Singleton.Instance.UserModel.CurrentUser.Id);
 
+                            //Symantec - 36
+                            var iAV = new ItemViewModel();
+                            iAV.Name = "Symantec";
+                            iAV.Serial = fields[18];
+                            iAV.SubTypeId = 36;
+                            iAV.TypeId = 5;
+                            iAV.Description = fields[0];
+
+                            result = Singleton.Instance.ItemModel.CreateNewItem(iAV, Singleton.Instance.UserModel.CurrentUser.Id);
 
                             //Create Printer - 39
                             if (fields[11] != "" && fields[11] != "network")
@@ -118,6 +127,14 @@ namespace InventoryManagement
                     }
                 }
             }
+        }
+
+        private void lnkSampleFormat_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var filename = "Inventory Management Sample Format.xlsx";
+            var filepath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+
+            System.Diagnostics.Process.Start(filepath + "\\" + filename);
         }
     }
 }

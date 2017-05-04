@@ -3,6 +3,7 @@ using InventoryManagement.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -53,7 +54,7 @@ namespace InventoryManagement.Model
 
             if (rv.Success)
             {
-               
+
             }
 
             return rv;
@@ -73,11 +74,11 @@ namespace InventoryManagement.Model
 
             return true;
         }
-        
+
         public ReturnValueModel UpdateItemStatus(int itemId, int userId, ItemStatus oldStatus, ItemStatus newStatus, DateTime expectedReturn)
         {
             var result = new ReturnValueModel();
-            if(AllowChange(oldStatus, newStatus))
+            if (AllowChange(oldStatus, newStatus))
                 result.Success = itemRepostory.UpdateItemStatus(itemId, userId, (int)newStatus, expectedReturn);
 
             return result;
@@ -89,7 +90,7 @@ namespace InventoryManagement.Model
             byte[] bArr = Utils.ImageCon.imgToByteConverter(img);
             var success = itemRepostory.UpdateItemImage(itemId, bArr);
             result.Success = success;
-            
+
             return result;
         }
         public bool UpdateItemStatusBySubtype(int id, int requestedby, ItemStatus status)
@@ -156,14 +157,14 @@ namespace InventoryManagement.Model
         }
         public List<ItemViewModel> GetItems(string searchText)
         {
-            return  itemRepostory.QueryItems(searchText); ;
+            return itemRepostory.QueryItems(searchText); ;
         }
         public List<ItemViewModel> GetItemsByOwner(int userId)
         {
             return itemRepostory.QueryItemsByOwner(userId);
         }
-        
-        public List<ItemViewModel> GetItemsBySubType(int subTypeId, bool isAvailable =false)
+
+        public List<ItemViewModel> GetItemsBySubType(int subTypeId, bool isAvailable = false)
         {
             return itemRepostory.QueryItemsBySubType(subTypeId, isAvailable);
         }
@@ -178,7 +179,7 @@ namespace InventoryManagement.Model
         public ItemViewModel GetItem(int id)
         {
             //get value from two tables
-            
+
             var item = itemRepostory.QueryItem(id);
             return item;
         }
@@ -189,7 +190,7 @@ namespace InventoryManagement.Model
         }
         public Image GetItemImage(int id)
         {
-            var raw = itemRepostory.GetItemIage(id);
+            var raw = itemRepostory.GetItemIage(id, (int)AttachmentType.Image);
             if (raw != null)
                 return Utils.ImageCon.byteArrayToImage(raw);
             else
@@ -205,5 +206,26 @@ namespace InventoryManagement.Model
         {
             return itemRepostory.IsItemAvailable(itemId, from, to);
         }
+
+        public bool CreateAttachment(int itemId, string filename)
+        {
+            byte[] bArr = File.ReadAllBytes(filename);
+            itemRepostory.InsertNewAttachment(itemId, bArr, Path.GetFileName(filename));
+
+            return true;
+        }
+        public List<AttachmentViewModel> GetItemAttachments(int itemId)
+        {
+            return itemRepostory.GetItemAttachments(itemId);
+        }
+        public byte[] GetFileContent(int attachmentId)
+        {
+            return itemRepostory.GetFileContent(attachmentId);
+        }
+        public bool DeleteAttachment(int attachmentID)
+        {
+            return itemRepostory.DeleteAttachment(attachmentID);
+        }
+
     }
 }

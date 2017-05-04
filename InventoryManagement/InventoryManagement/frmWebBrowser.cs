@@ -9,29 +9,52 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using InventoryManagement.Model;
+using InventoryLib.ViewModel;
+
 namespace InventoryManagement
 {
     public partial class frmWebBrowser : Form
     {
-        public frmWebBrowser()
+        int _transmittalId = 0;
+        public frmWebBrowser(int tranmisttalId)
         {
             InitializeComponent();
+            _transmittalId = tranmisttalId;
         }
 
         private void frmWebBrowser_Load(object sender, EventArgs e)
         {
-            var templateFile = Utils.Helper.GetWorkingDirectory() + @"\Report\Transmittal.html";
-            var updatedText = File.ReadAllText(templateFile);
-            updatedText = updatedText.Replace("#Purpose", "SAMPLE PURPOSE");
+            var transmittal = Singleton.Instance.TransmittalModel.GetTransmittalById(_transmittalId);
 
-            File.WriteAllText(Utils.Helper.GetWorkingDirectory() + @"\Report\1.html", updatedText);
-            var filepath2 = Utils.Helper.GetWorkingDirectory() + @"\Report\1.html";
+            var templateFile = Utils.Helper.GetWorkingDirectory() + @"\Report\template.html";
+            var updatedText = File.ReadAllText(templateFile);
+
+            updatedText = updatedText.Replace("TransmittalFormNumber", _transmittalId.ToString());
+            updatedText = updatedText.Replace("TransmittedToName", transmittal.TransmittedToUser);
+            updatedText = updatedText.Replace("TransmittedToDept", transmittal.TransmittedToDepartment);
+            updatedText = updatedText.Replace("TransmittedToDate", transmittal.TransmittedDate.ToString());
+            updatedText = updatedText.Replace("PreparedByName", transmittal.PreparedBy);
+            updatedText = updatedText.Replace("ApprovedByName", transmittal.ApprovedBy);
+            updatedText = updatedText.Replace("ReceivedByName", transmittal.TransmittedToUser);
+
+            var itemHtml = "";
+            foreach (TransmittalItemViewModel it in transmittal.TransmittalItems)
+            {
+                itemHtml += HtmlGenerator.GenerateItemHtml(string.Format("{0} | {1} | {2}",
+                    it.Type,
+                    it.SubType,
+                    it.Description),
+                    it.AssetTag + " [ " + it.Serial + " ]", "1", "Unit");
+            }
+            updatedText = updatedText.Replace("ItemDetailTable", itemHtml);
+            var filename = _transmittalId + ".html";
+
+            File.WriteAllText(Utils.Helper.GetWorkingDirectory() + @"\Report\" + filename, updatedText);
+            var filepath2 = Utils.Helper.GetWorkingDirectory() + @"\Report\" + filename;
+
             Uri uri = new Uri(filepath2);
             wbMain.Navigate(uri);
-
-
-
-
         }
 
         private void btnPrintBarcode_Click(object sender, EventArgs e)

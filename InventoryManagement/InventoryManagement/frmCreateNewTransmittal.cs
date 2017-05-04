@@ -1,4 +1,5 @@
-﻿using InventoryManagement.Model;
+﻿using InventoryLib.ViewModel;
+using InventoryManagement.Model;
 using InventoryManagement.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -12,10 +13,10 @@ using System.Windows.Forms;
 
 namespace InventoryManagement
 {
-    public partial class frmTrasmittal : Form
+    public partial class frmCreateNewTransmittal : Form
     {
         List<ItemViewModel> _items;
-        public frmTrasmittal()
+        public frmCreateNewTransmittal()
         {
             _items = new List<ItemViewModel>();
             InitializeComponent();
@@ -82,6 +83,42 @@ namespace InventoryManagement
             cbxUsers.DisplayMember = "LastnameFirstNameUsername";
             var id = (int)cbxDepartment.SelectedValue;
             cbxUsers.DataSource = Singleton.Instance.UserModel.GetUsersByDepartmentId(id);
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            var transmittal = new TransmittalViewModel();
+
+            transmittal.ApprovedById = (int)cbxApproved.SelectedValue;
+            transmittal.ApprovedDate = dtpApprovedDate.Value;
+            transmittal.CreatedDate = DateTime.Now;
+            transmittal.PreparedById = (int)cbxPrepared.SelectedValue;
+            transmittal.TransmittedToCompanyId = (int)cbxCompany.SelectedValue;
+            transmittal.TransmittedToDepartmentId = (int)cbxDepartment.SelectedValue;
+            transmittal.TransmittedToUserId = (int)cbxUsers.SelectedValue;
+
+            foreach(DataGridViewRow dr in dvItems.Rows)
+            {
+                transmittal.TransmittalItems.Add(new TransmittalItemViewModel
+                {
+                    ItemId = Convert.ToInt32(dr.Cells[0].Value.ToString()),
+                    Quantity = 1
+                });
+            }
+            
+
+            var result = Singleton.Instance.TransmittalModel.InsertTransmittal(transmittal);
+
+            if (result)
+                this.DialogResult = DialogResult.OK;
+
+            this.Close();
+
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

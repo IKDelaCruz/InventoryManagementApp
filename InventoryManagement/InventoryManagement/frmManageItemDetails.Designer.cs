@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManageItemDetails));
             this.pnlMain = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -113,10 +114,14 @@
             this.txtLastUpdate = new System.Windows.Forms.TextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.txtFilename = new System.Windows.Forms.TextBox();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.lvAttachments = new System.Windows.Forms.ListView();
+            this.lvImages = new System.Windows.Forms.ImageList(this.components);
+            this.label41 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
             this.btnBrowse = new System.Windows.Forms.Button();
+            this.pbId = new System.Windows.Forms.PictureBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.pnlHistory = new System.Windows.Forms.Panel();
             this.label28 = new System.Windows.Forms.Label();
@@ -134,17 +139,6 @@
             this.Remarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label41 = new System.Windows.Forms.Label();
-            this.lnkDoc1 = new System.Windows.Forms.LinkLabel();
-            this.lnkDoc2 = new System.Windows.Forms.LinkLabel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.lnkDoc3 = new System.Windows.Forms.LinkLabel();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.pbId = new System.Windows.Forms.PictureBox();
             this.pnlMain.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -157,10 +151,10 @@
             this.panel2.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbId)).BeginInit();
             this.tabPage5.SuspendLayout();
             this.pnlHistory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvLogs)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbId)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlMain
@@ -542,6 +536,7 @@
             this.txtPurchasePrice.TabIndex = 63;
             this.txtPurchasePrice.Text = "0";
             this.txtPurchasePrice.TextChanged += new System.EventHandler(this.txtPurchasePrice_TextChanged);
+            this.txtPurchasePrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPurchasePrice_KeyPress_1);
             // 
             // label39
             // 
@@ -1006,34 +1001,70 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.lnkDoc3);
-            this.panel3.Controls.Add(this.textBox3);
-            this.panel3.Controls.Add(this.button3);
-            this.panel3.Controls.Add(this.lnkDoc2);
-            this.panel3.Controls.Add(this.textBox2);
-            this.panel3.Controls.Add(this.button2);
-            this.panel3.Controls.Add(this.lnkDoc1);
+            this.panel3.Controls.Add(this.btnDelete);
+            this.panel3.Controls.Add(this.btnAdd);
+            this.panel3.Controls.Add(this.lvAttachments);
             this.panel3.Controls.Add(this.label41);
-            this.panel3.Controls.Add(this.textBox1);
-            this.panel3.Controls.Add(this.button1);
-            this.panel3.Controls.Add(this.txtFilename);
             this.panel3.Controls.Add(this.label23);
-            this.panel3.Controls.Add(this.label24);
-            this.panel3.Controls.Add(this.pbId);
             this.panel3.Controls.Add(this.btnBrowse);
+            this.panel3.Controls.Add(this.pbId);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(3, 3);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(742, 335);
             this.panel3.TabIndex = 61;
             // 
-            // txtFilename
+            // btnDelete
             // 
-            this.txtFilename.Location = new System.Drawing.Point(15, 214);
-            this.txtFilename.Name = "txtFilename";
-            this.txtFilename.ReadOnly = true;
-            this.txtFilename.Size = new System.Drawing.Size(243, 23);
-            this.txtFilename.TabIndex = 68;
+            this.btnDelete.Location = new System.Drawing.Point(410, 295);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(42, 30);
+            this.btnDelete.TabIndex = 75;
+            this.btnDelete.Text = "-";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(360, 295);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(42, 30);
+            this.btnAdd.TabIndex = 74;
+            this.btnAdd.Text = "+";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // lvAttachments
+            // 
+            this.lvAttachments.LargeImageList = this.lvImages;
+            this.lvAttachments.Location = new System.Drawing.Point(360, 49);
+            this.lvAttachments.Name = "lvAttachments";
+            this.lvAttachments.Size = new System.Drawing.Size(366, 240);
+            this.lvAttachments.SmallImageList = this.lvImages;
+            this.lvAttachments.TabIndex = 73;
+            this.lvAttachments.UseCompatibleStateImageBehavior = false;
+            this.lvAttachments.SelectedIndexChanged += new System.EventHandler(this.lvAttachments_SelectedIndexChanged);
+            this.lvAttachments.DoubleClick += new System.EventHandler(this.lvAttachments_DoubleClick);
+            // 
+            // lvImages
+            // 
+            this.lvImages.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("lvImages.ImageStream")));
+            this.lvImages.TransparentColor = System.Drawing.Color.Transparent;
+            this.lvImages.Images.SetKeyName(0, "file.png");
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label41.Location = new System.Drawing.Point(355, 10);
+            this.label41.Margin = new System.Windows.Forms.Padding(10);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(177, 26);
+            this.label41.TabIndex = 72;
+            this.label41.Text = "Other Attachments";
+            this.label41.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label23
             // 
@@ -1047,26 +1078,26 @@
             this.label23.Text = "Manage Item Image";
             this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(12, 196);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(134, 15);
-            this.label24.TabIndex = 46;
-            this.label24.Text = "Select a file to upload...";
-            this.label24.Click += new System.EventHandler(this.label24_Click);
-            // 
             // btnBrowse
             // 
-            this.btnBrowse.Location = new System.Drawing.Point(15, 243);
+            this.btnBrowse.Location = new System.Drawing.Point(15, 295);
             this.btnBrowse.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnBrowse.Name = "btnBrowse";
             this.btnBrowse.Size = new System.Drawing.Size(100, 30);
             this.btnBrowse.TabIndex = 4;
-            this.btnBrowse.Text = "Browse";
+            this.btnBrowse.Text = "Change";
             this.btnBrowse.UseVisualStyleBackColor = true;
             this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+            // 
+            // pbId
+            // 
+            this.pbId.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbId.Location = new System.Drawing.Point(15, 49);
+            this.pbId.Name = "pbId";
+            this.pbId.Size = new System.Drawing.Size(320, 240);
+            this.pbId.TabIndex = 47;
+            this.pbId.TabStop = false;
             // 
             // tabPage5
             // 
@@ -1242,115 +1273,6 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(364, 68);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(243, 23);
-            this.textBox1.TabIndex = 71;
-            this.textBox1.Text = "Select a file to upload...";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(364, 97);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 30);
-            this.button1.TabIndex = 69;
-            this.button1.Text = "Browse";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label41.Location = new System.Drawing.Point(362, 10);
-            this.label41.Margin = new System.Windows.Forms.Padding(10);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(177, 26);
-            this.label41.TabIndex = 72;
-            this.label41.Text = "Other Attachments";
-            this.label41.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lnkDoc1
-            // 
-            this.lnkDoc1.AutoSize = true;
-            this.lnkDoc1.Location = new System.Drawing.Point(364, 50);
-            this.lnkDoc1.Name = "lnkDoc1";
-            this.lnkDoc1.Size = new System.Drawing.Size(72, 15);
-            this.lnkDoc1.TabIndex = 73;
-            this.lnkDoc1.TabStop = true;
-            this.lnkDoc1.Text = "Document 1";
-            // 
-            // lnkDoc2
-            // 
-            this.lnkDoc2.AutoSize = true;
-            this.lnkDoc2.Location = new System.Drawing.Point(364, 130);
-            this.lnkDoc2.Name = "lnkDoc2";
-            this.lnkDoc2.Size = new System.Drawing.Size(72, 15);
-            this.lnkDoc2.TabIndex = 76;
-            this.lnkDoc2.TabStop = true;
-            this.lnkDoc2.Text = "Document 2";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(364, 148);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(243, 23);
-            this.textBox2.TabIndex = 75;
-            this.textBox2.Text = "Select a file to upload...";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(364, 177);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 30);
-            this.button2.TabIndex = 74;
-            this.button2.Text = "Browse";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // lnkDoc3
-            // 
-            this.lnkDoc3.AutoSize = true;
-            this.lnkDoc3.Location = new System.Drawing.Point(364, 210);
-            this.lnkDoc3.Name = "lnkDoc3";
-            this.lnkDoc3.Size = new System.Drawing.Size(72, 15);
-            this.lnkDoc3.TabIndex = 79;
-            this.lnkDoc3.TabStop = true;
-            this.lnkDoc3.Text = "Document 3";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(364, 228);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(243, 23);
-            this.textBox3.TabIndex = 78;
-            this.textBox3.Text = "Select a file to upload...";
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(364, 257);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(100, 30);
-            this.button3.TabIndex = 77;
-            this.button3.Text = "Browse";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // pbId
-            // 
-            this.pbId.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbId.Location = new System.Drawing.Point(15, 49);
-            this.pbId.Name = "pbId";
-            this.pbId.Size = new System.Drawing.Size(210, 144);
-            this.pbId.TabIndex = 47;
-            this.pbId.TabStop = false;
-            // 
             // frmManageItemDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1362,7 +1284,7 @@
             this.Name = "frmManageItemDetails";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Create New Item";
+            this.Text = "Item Data";
             this.Load += new System.EventHandler(this.frmManageItem_Load);
             this.pnlMain.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
@@ -1381,11 +1303,11 @@
             this.tabPage4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbId)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.pnlHistory.ResumeLayout(false);
             this.pnlHistory.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvLogs)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbId)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1444,9 +1366,6 @@
         private System.Windows.Forms.TextBox txtSalvageValue;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.Button btnBrowse;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.PictureBox pbId;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
@@ -1480,7 +1399,6 @@
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Panel pnlMain;
         private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.TextBox txtFilename;
         private System.Windows.Forms.TextBox txtReturnDate;
         private System.Windows.Forms.TextBox txtBorrowDate;
         private System.Windows.Forms.Label label35;
@@ -1498,14 +1416,11 @@
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.LinkLabel lnkDoc3;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.LinkLabel lnkDoc2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.LinkLabel lnkDoc1;
+        private System.Windows.Forms.ListView lvAttachments;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnBrowse;
+        private System.Windows.Forms.PictureBox pbId;
+        private System.Windows.Forms.ImageList lvImages;
     }
 }

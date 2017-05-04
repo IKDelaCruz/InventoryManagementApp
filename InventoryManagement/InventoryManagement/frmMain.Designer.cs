@@ -37,6 +37,7 @@
             this.dateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ownerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.typeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsAction = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -175,7 +176,8 @@
             this.nameToolStripMenuItem,
             this.dateToolStripMenuItem,
             this.statusToolStripMenuItem,
-            this.ownerToolStripMenuItem});
+            this.ownerToolStripMenuItem,
+            this.typeToolStripMenuItem});
             this.sortByToolStripMenuItem.Name = "sortByToolStripMenuItem";
             this.sortByToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.sortByToolStripMenuItem.Text = "Sort By";
@@ -207,6 +209,13 @@
             this.ownerToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.ownerToolStripMenuItem.Text = "Owner";
             this.ownerToolStripMenuItem.Click += new System.EventHandler(this.ownerToolStripMenuItem_Click);
+            // 
+            // typeToolStripMenuItem
+            // 
+            this.typeToolStripMenuItem.Name = "typeToolStripMenuItem";
+            this.typeToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.typeToolStripMenuItem.Text = "Type";
+            this.typeToolStripMenuItem.Click += new System.EventHandler(this.typeToolStripMenuItem_Click);
             // 
             // tsAction
             // 
@@ -1169,6 +1178,7 @@
             this.gatePassToolStripMenuItem.Name = "gatePassToolStripMenuItem";
             this.gatePassToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.gatePassToolStripMenuItem.Text = "Gate Pass";
+            this.gatePassToolStripMenuItem.Click += new System.EventHandler(this.gatePassToolStripMenuItem_Click);
             // 
             // insuranceToolStripMenuItem
             // 
@@ -1332,6 +1342,7 @@
         private System.Windows.Forms.ToolStripMenuItem gatePassToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem insuranceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem webToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem typeToolStripMenuItem;
     }
 }
 

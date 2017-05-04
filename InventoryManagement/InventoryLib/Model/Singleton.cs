@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InventoryLib.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,8 @@ namespace InventoryManagement.Model
 
         public BrandModel BrandModel { get; set; }
 
+        public TransmittalModel TransmittalModel { get; set; }
+
         public Singleton()
         {
             ItemTypeModel = new ItemTypeModel();
@@ -31,6 +34,7 @@ namespace InventoryManagement.Model
             ItemSubTypeModel = new ItemSubTypeModel();
             RequestModel = new RequestModel();
             BrandModel = new BrandModel();
+            TransmittalModel = new TransmittalModel();
         }
         public static Singleton Instance
         {

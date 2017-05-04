@@ -30,19 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmItemSummaryReport));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.imgMain = new System.Windows.Forms.ImageList(this.components);
             this.pnlMain = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dvLogs = new System.Windows.Forms.DataGridView();
-            this.AssetTag = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemSubType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CurrentOwner = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateCreated = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LastUpdated = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnFilter = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
+            this.chkShowAllLocation = new System.Windows.Forms.CheckBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cbxLocation = new System.Windows.Forms.ComboBox();
             this.chkShowAllSubType = new System.Windows.Forms.CheckBox();
             this.chkShowAllType = new System.Windows.Forms.CheckBox();
             this.chkShowAllStatus = new System.Windows.Forms.CheckBox();
@@ -52,10 +47,19 @@
             this.cbxType = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cbxStatus = new System.Windows.Forms.ComboBox();
-            this.chkShowAllLocation = new System.Windows.Forms.CheckBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cbxLocation = new System.Windows.Forms.ComboBox();
-            this.btnFilter = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dvLogs = new System.Windows.Forms.DataGridView();
+            this.AssetTag = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SerialNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemSubType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CurrentOwner = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateCreated = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LastUpdated = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PurchaseDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PurchaseAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvLogs)).BeginInit();
             this.SuspendLayout();
@@ -93,95 +97,16 @@
             this.pnlMain.Size = new System.Drawing.Size(857, 493);
             this.pnlMain.TabIndex = 12;
             // 
-            // label3
+            // btnFilter
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.White;
-            this.label3.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(10, 10);
-            this.label3.Margin = new System.Windows.Forms.Padding(10);
-            this.label3.Name = "label3";
-            this.label3.Padding = new System.Windows.Forms.Padding(5);
-            this.label3.Size = new System.Drawing.Size(214, 36);
-            this.label3.TabIndex = 58;
-            this.label3.Text = "Item Summary Report";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // dvLogs
-            // 
-            this.dvLogs.AllowUserToAddRows = false;
-            this.dvLogs.AllowUserToDeleteRows = false;
-            this.dvLogs.AllowUserToResizeRows = false;
-            this.dvLogs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvLogs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.AssetTag,
-            this.ItemName,
-            this.ItemType,
-            this.ItemSubType,
-            this.ItemStatus,
-            this.CurrentOwner,
-            this.DateCreated,
-            this.LastUpdated});
-            this.dvLogs.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dvLogs.Location = new System.Drawing.Point(16, 139);
-            this.dvLogs.Name = "dvLogs";
-            this.dvLogs.RowHeadersVisible = false;
-            this.dvLogs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dvLogs.ShowCellErrors = false;
-            this.dvLogs.ShowCellToolTips = false;
-            this.dvLogs.ShowEditingIcon = false;
-            this.dvLogs.ShowRowErrors = false;
-            this.dvLogs.Size = new System.Drawing.Size(826, 300);
-            this.dvLogs.TabIndex = 0;
-            // 
-            // AssetTag
-            // 
-            this.AssetTag.DataPropertyName = "AssetTag";
-            this.AssetTag.HeaderText = "AssetTag";
-            this.AssetTag.Name = "AssetTag";
-            // 
-            // ItemName
-            // 
-            this.ItemName.DataPropertyName = "Name";
-            this.ItemName.HeaderText = "ItemName";
-            this.ItemName.Name = "ItemName";
-            // 
-            // ItemType
-            // 
-            this.ItemType.DataPropertyName = "Type";
-            this.ItemType.HeaderText = "ItemType";
-            this.ItemType.Name = "ItemType";
-            // 
-            // ItemSubType
-            // 
-            this.ItemSubType.DataPropertyName = "SubType";
-            this.ItemSubType.HeaderText = "ItemSubType";
-            this.ItemSubType.Name = "ItemSubType";
-            // 
-            // ItemStatus
-            // 
-            this.ItemStatus.DataPropertyName = "Status";
-            this.ItemStatus.HeaderText = "ItemStatus";
-            this.ItemStatus.Name = "ItemStatus";
-            // 
-            // CurrentOwner
-            // 
-            this.CurrentOwner.DataPropertyName = "CurrentOwnerName";
-            this.CurrentOwner.HeaderText = "CurrentOwner";
-            this.CurrentOwner.Name = "CurrentOwner";
-            // 
-            // DateCreated
-            // 
-            this.DateCreated.DataPropertyName = "PurchaseDate";
-            this.DateCreated.HeaderText = "DateCreated";
-            this.DateCreated.Name = "DateCreated";
-            // 
-            // LastUpdated
-            // 
-            this.LastUpdated.DataPropertyName = "LastUpdatedDate";
-            this.LastUpdated.HeaderText = "LastUpdated";
-            this.LastUpdated.Name = "LastUpdated";
+            this.btnFilter.Location = new System.Drawing.Point(742, 71);
+            this.btnFilter.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(100, 30);
+            this.btnFilter.TabIndex = 71;
+            this.btnFilter.Text = "Filter";
+            this.btnFilter.UseVisualStyleBackColor = true;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // btnExport
             // 
@@ -193,6 +118,39 @@
             this.btnExport.Text = "Export To CSV";
             this.btnExport.UseVisualStyleBackColor = true;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
+            // chkShowAllLocation
+            // 
+            this.chkShowAllLocation.AutoSize = true;
+            this.chkShowAllLocation.Checked = true;
+            this.chkShowAllLocation.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkShowAllLocation.Location = new System.Drawing.Point(478, 105);
+            this.chkShowAllLocation.Name = "chkShowAllLocation";
+            this.chkShowAllLocation.Size = new System.Drawing.Size(73, 19);
+            this.chkShowAllLocation.TabIndex = 70;
+            this.chkShowAllLocation.Text = "Show All";
+            this.chkShowAllLocation.UseVisualStyleBackColor = true;
+            this.chkShowAllLocation.CheckedChanged += new System.EventHandler(this.LoadItems);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(475, 58);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(53, 15);
+            this.label7.TabIndex = 69;
+            this.label7.Text = "Location";
+            // 
+            // cbxLocation
+            // 
+            this.cbxLocation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxLocation.FormattingEnabled = true;
+            this.cbxLocation.Location = new System.Drawing.Point(478, 76);
+            this.cbxLocation.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.cbxLocation.Name = "cbxLocation";
+            this.cbxLocation.Size = new System.Drawing.Size(187, 23);
+            this.cbxLocation.TabIndex = 68;
+            this.cbxLocation.SelectedIndexChanged += new System.EventHandler(this.cbxLocation_SelectedIndexChanged);
             // 
             // chkShowAllSubType
             // 
@@ -293,49 +251,118 @@
             this.cbxStatus.TabIndex = 59;
             this.cbxStatus.SelectedIndexChanged += new System.EventHandler(this.cbxStatus_SelectedIndexChanged);
             // 
-            // chkShowAllLocation
+            // label3
             // 
-            this.chkShowAllLocation.AutoSize = true;
-            this.chkShowAllLocation.Checked = true;
-            this.chkShowAllLocation.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkShowAllLocation.Location = new System.Drawing.Point(478, 105);
-            this.chkShowAllLocation.Name = "chkShowAllLocation";
-            this.chkShowAllLocation.Size = new System.Drawing.Size(73, 19);
-            this.chkShowAllLocation.TabIndex = 70;
-            this.chkShowAllLocation.Text = "Show All";
-            this.chkShowAllLocation.UseVisualStyleBackColor = true;
-            this.chkShowAllLocation.CheckedChanged += new System.EventHandler(this.LoadItems);
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.White;
+            this.label3.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(10, 10);
+            this.label3.Margin = new System.Windows.Forms.Padding(10);
+            this.label3.Name = "label3";
+            this.label3.Padding = new System.Windows.Forms.Padding(5);
+            this.label3.Size = new System.Drawing.Size(214, 36);
+            this.label3.TabIndex = 58;
+            this.label3.Text = "Item Summary Report";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label7
+            // dvLogs
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(475, 58);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(53, 15);
-            this.label7.TabIndex = 69;
-            this.label7.Text = "Location";
+            this.dvLogs.AllowUserToAddRows = false;
+            this.dvLogs.AllowUserToDeleteRows = false;
+            this.dvLogs.AllowUserToResizeRows = false;
+            this.dvLogs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dvLogs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.AssetTag,
+            this.SerialNumber,
+            this.ItemName,
+            this.ItemType,
+            this.ItemSubType,
+            this.ItemStatus,
+            this.CurrentOwner,
+            this.DateCreated,
+            this.LastUpdated,
+            this.PurchaseDate,
+            this.PurchaseAmount});
+            this.dvLogs.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dvLogs.Location = new System.Drawing.Point(16, 139);
+            this.dvLogs.Name = "dvLogs";
+            this.dvLogs.RowHeadersVisible = false;
+            this.dvLogs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dvLogs.ShowCellErrors = false;
+            this.dvLogs.ShowCellToolTips = false;
+            this.dvLogs.ShowEditingIcon = false;
+            this.dvLogs.ShowRowErrors = false;
+            this.dvLogs.Size = new System.Drawing.Size(826, 300);
+            this.dvLogs.TabIndex = 0;
             // 
-            // cbxLocation
+            // AssetTag
             // 
-            this.cbxLocation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxLocation.FormattingEnabled = true;
-            this.cbxLocation.Location = new System.Drawing.Point(478, 76);
-            this.cbxLocation.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.cbxLocation.Name = "cbxLocation";
-            this.cbxLocation.Size = new System.Drawing.Size(187, 23);
-            this.cbxLocation.TabIndex = 68;
-            this.cbxLocation.SelectedIndexChanged += new System.EventHandler(this.cbxLocation_SelectedIndexChanged);
+            this.AssetTag.DataPropertyName = "AssetTag";
+            this.AssetTag.HeaderText = "AssetTag";
+            this.AssetTag.Name = "AssetTag";
             // 
-            // btnFilter
+            // SerialNumber
             // 
-            this.btnFilter.Location = new System.Drawing.Point(742, 71);
-            this.btnFilter.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(100, 30);
-            this.btnFilter.TabIndex = 71;
-            this.btnFilter.Text = "Filter";
-            this.btnFilter.UseVisualStyleBackColor = true;
-            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
+            this.SerialNumber.DataPropertyName = "Serial";
+            this.SerialNumber.HeaderText = "Serial Number";
+            this.SerialNumber.Name = "SerialNumber";
+            // 
+            // ItemName
+            // 
+            this.ItemName.DataPropertyName = "Name";
+            this.ItemName.HeaderText = "ItemName";
+            this.ItemName.Name = "ItemName";
+            // 
+            // ItemType
+            // 
+            this.ItemType.DataPropertyName = "Type";
+            this.ItemType.HeaderText = "ItemType";
+            this.ItemType.Name = "ItemType";
+            // 
+            // ItemSubType
+            // 
+            this.ItemSubType.DataPropertyName = "SubType";
+            this.ItemSubType.HeaderText = "ItemSubType";
+            this.ItemSubType.Name = "ItemSubType";
+            // 
+            // ItemStatus
+            // 
+            this.ItemStatus.DataPropertyName = "Status";
+            this.ItemStatus.HeaderText = "ItemStatus";
+            this.ItemStatus.Name = "ItemStatus";
+            // 
+            // CurrentOwner
+            // 
+            this.CurrentOwner.DataPropertyName = "CurrentOwnerName";
+            this.CurrentOwner.HeaderText = "CurrentOwner";
+            this.CurrentOwner.Name = "CurrentOwner";
+            // 
+            // DateCreated
+            // 
+            this.DateCreated.DataPropertyName = "PurchaseDate";
+            this.DateCreated.HeaderText = "DateCreated";
+            this.DateCreated.Name = "DateCreated";
+            // 
+            // LastUpdated
+            // 
+            this.LastUpdated.DataPropertyName = "LastUpdatedDate";
+            this.LastUpdated.HeaderText = "LastUpdated";
+            this.LastUpdated.Name = "LastUpdated";
+            // 
+            // PurchaseDate
+            // 
+            this.PurchaseDate.DataPropertyName = "PurchaseDate";
+            this.PurchaseDate.HeaderText = "PurchaseDate";
+            this.PurchaseDate.Name = "PurchaseDate";
+            // 
+            // PurchaseAmount
+            // 
+            this.PurchaseAmount.DataPropertyName = "PurchasePrice";
+            dataGridViewCellStyle1.Format = "N";
+            this.PurchaseAmount.DefaultCellStyle = dataGridViewCellStyle1;
+            this.PurchaseAmount.HeaderText = "Purchase Amount";
+            this.PurchaseAmount.Name = "PurchaseAmount";
             // 
             // frmItemSummaryReport
             // 
@@ -362,14 +389,6 @@
         private System.Windows.Forms.ImageList imgMain;
         private System.Windows.Forms.Panel pnlMain;
         private System.Windows.Forms.DataGridView dvLogs;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AssetTag;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemSubType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemStatus;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CurrentOwner;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DateCreated;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LastUpdated;
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox chkShowAllSubType;
@@ -385,5 +404,16 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cbxLocation;
         private System.Windows.Forms.Button btnFilter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AssetTag;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SerialNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemSubType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CurrentOwner;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DateCreated;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LastUpdated;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PurchaseDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PurchaseAmount;
     }
 }

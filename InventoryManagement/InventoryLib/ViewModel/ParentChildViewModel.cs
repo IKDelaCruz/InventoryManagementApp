@@ -17,6 +17,7 @@ namespace InventoryManagement.ViewModel
         public string Prefix { get; set; }
 
         public Image Picture { get; set; }
+        
     }
 }
 

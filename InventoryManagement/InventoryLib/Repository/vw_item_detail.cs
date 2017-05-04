@@ -54,5 +54,7 @@ namespace InventoryLib.Repository
         public string NetworkGateway { get; set; }
         public Nullable<System.DateTime> BorrowDate { get; set; }
         public Nullable<System.DateTime> ReturnDate { get; set; }
+        public string SalesInvoiceNo { get; set; }
+        public string PurchaseOrderNo { get; set; }
     }
 }

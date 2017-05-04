@@ -187,6 +187,8 @@ namespace InventoryManagement
                 itms = itms.OrderByDescending(h => h.Status).ToList();
             else if (orderBy == 3)
                 itms = itms.OrderByDescending(h => h.CurrentOwner).ToList();
+            else if (orderBy == 4)
+                itms = itms.OrderBy(h => h.SubType).ToList();
             else
                 itms = itms.OrderByDescending(h => h.PurchaseDate).ToList();
 
@@ -244,7 +246,8 @@ namespace InventoryManagement
 
             loginToolStripMenuItem.Text = Singleton.Instance.UserModel.CurrentUser == null ? "Login" : "Logout";
 
-           
+            Text = "Asset Management - V" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+
         }
         #endregion
 
@@ -574,12 +577,21 @@ namespace InventoryManagement
 
         private void transmittalFormToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new frmTrasmittal().ShowDialog();
+            new frmTransmittals().ShowDialog();
         }
-
         private void webToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new frmWebBrowser().ShowDialog();
+           
+        }
+
+        private void typeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DoUpdateView(false, false, 4, false);
+        }
+
+        private void gatePassToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

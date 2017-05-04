@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace InventoryManagement.Utils
 {
@@ -11,6 +12,9 @@ namespace InventoryManagement.Utils
     {
         public static string CreateCsvTextFile<T>(List<T> data)
         {
+
+            
+
 
             if (data == null)
                 return "";
@@ -28,7 +32,38 @@ namespace InventoryManagement.Utils
 
             return result.ToString();
         }
+        public static string CreateCsvFromDataGridView(DataGridView dvLogs)
+        {
+            var sb = new StringBuilder();
 
+            var headers = dvLogs.Columns.Cast<DataGridViewColumn>();
+            sb.AppendLine(string.Join(",", headers.Select(column => "\"" + column.HeaderText + "\"").ToArray()));
+
+            foreach (DataGridViewRow row in dvLogs.Rows)
+            {
+                var cells = row.Cells.Cast<DataGridViewCell>();
+                sb.AppendLine(string.Join(",", cells.Select(cell => "\"" + ConvertToCsvValue(cell.Value) + "\"").ToArray()));
+            }
+
+            return sb.ToString();
+        }
+        private static string ConvertToCsvValue(object value)
+        {
+            if (value is DateTime)
+            {
+                if ((DateTime)value == DateTime.MinValue)
+                    return "";
+                return ((DateTime)value).ToString("MM/dd/yyyy HH:mm:ss");
+            }
+            if (value is Decimal)
+            {
+                return ((Decimal)(value ?? 0.00)).ToString("n2");
+            }
+            else
+            {
+                return (value ?? "").ToString();
+            }
+        }
         private static string StringToCsvCell(string str)
         {
             bool mustQuote = (str.Contains(",") || str.Contains("\"") || str.Contains("\r") || str.Contains("\n"));

@@ -12,11 +12,17 @@ namespace InventoryLib.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class transmittal_items
+    public partial class vw_transmittal_items_details
     {
-        public int id { get; set; }
-        public int transmittal_id { get; set; }
-        public int item_id { get; set; }
-        public int item_quantity { get; set; }
+        public int TransmittalId { get; set; }
+        public string ItemName { get; set; }
+        public string AssetTag { get; set; }
+        public string ItemType { get; set; }
+        public string ItemSubType { get; set; }
+        public string BrandName { get; set; }
+        public string Model { get; set; }
+        public string Serial { get; set; }
+        public Nullable<int> ItemId { get; set; }
+        public int TransmittalItemId { get; set; }
     }
 }

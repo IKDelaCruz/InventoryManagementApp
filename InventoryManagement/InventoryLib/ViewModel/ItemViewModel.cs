@@ -8,29 +8,6 @@ using System.Threading.Tasks;
 
 namespace InventoryManagement.ViewModel
 {
-    //public enum PrimaryItemType
-    //{
-    //    Asset = 1,
-    //    Licenses,
-    //    Accesories,
-    //    Consumable
-    //}
-    //public enum SecondaryItemType
-    //{
-    //    CPUSet = 1,
-    //    AllInOnePC,
-    //    Laptop,
-    //    Server,
-    //    Switch,
-    //    Router,
-    //    Firewall,
-    //    Monitor,
-    //    HDD,
-    //    Memory,
-    //    UPS,
-    //    Printer
-    //}
-
     public enum ItemStatus
     {
 
@@ -40,7 +17,7 @@ namespace InventoryManagement.ViewModel
         Broken,
         Disposed,
         Assigned
-       // Unknown
+        // Unknown
     }
     public enum ItemLoginType
     {
@@ -54,24 +31,7 @@ namespace InventoryManagement.ViewModel
         Local,
         Network,
     }
-    //public enum ItemOperatingSystem
-    //{
-    //    Unknown,
-    //    WindowsNT,
-    //    WindowsXP,
-    //    Windows7,
-    //    Windows8,
-    //    Windows10,
-    //    OSX,
-    //    Windows2003,
-    //    Windows2008,
-    //    Windows2012,
-    //    Ubuntu,
-    //    Centos,
-    //    EXSI,
-    //    IOS,
-    //    Android
-    //}
+
     public enum ItemProcessors
     {
         Unknown,
@@ -118,15 +78,21 @@ namespace InventoryManagement.ViewModel
         SATA4TB,
 
     }
+    public enum AttachmentType
+    {
+        Image = 1,
+        Document
 
+    }
     public class OSViewModel : ParentChildViewModel
     {
     }
     public class BrandViewModel : ParentChildViewModel
     {
     }
-
-
+    public class AttachmentViewModel : ParentChildViewModel
+    {
+    }
     public class ItemViewModel
     {
         public int Id { get; set; }
@@ -176,6 +142,8 @@ namespace InventoryManagement.ViewModel
         public DateTime BorrowDate { get; set; }
         public DateTime ExpectedReturnDate { get; set; }
 
+        public string SalesInvoiceNo { get; set; }
+        public string PurchaseOrderNo { get; set; }
         public ItemViewModel()
         {
             PurchaseDate = DateTime.Now;
