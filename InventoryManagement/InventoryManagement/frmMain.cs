@@ -54,7 +54,7 @@ namespace InventoryManagement
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            
+
             DoUpdateView(false, false, 1);
             ShowSummary();
 
@@ -128,9 +128,10 @@ namespace InventoryManagement
         private void PrintBarcode()
         {
             var br = new BarcodeGenerator();
+
             var barcodeImage = br.DrawBarcode(lblId.Text.ToString().PadLeft(7, '0'));
 
-            var dlg = new frmPrintBarcode(barcodeImage);
+            var dlg = new frmPrintBarcode(barcodeImage, lblName.Text, lblAssetTag.Text);
             dlg.ShowDialog();
         }
 
@@ -138,8 +139,8 @@ namespace InventoryManagement
 
         private void lvMain_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
-                ViewItemDetails();
+
+            ViewItemDetails();
         }
         private void ViewItemDetails()
         {
@@ -148,7 +149,7 @@ namespace InventoryManagement
                 return;
 
             var selected = lvMain.SelectedItems;
-            foreach(ListViewItem li in selected)
+            foreach (ListViewItem li in selected)
             {
                 var id = Convert.ToInt32(li.SubItems[1].Text);
                 var type = Convert.ToInt32(li.SubItems[2].Text);
@@ -161,7 +162,7 @@ namespace InventoryManagement
                     TypeId = type,
                     Status = (ItemStatus)itemStatus
                 });
-               
+
             }
             tsSelectedItem.Text = "Selected Item: " + _selectedItem.Count();
 
@@ -173,7 +174,7 @@ namespace InventoryManagement
 
         private void DoUpdateView(bool useCache, bool rememberIndex, int orderBy, bool barcodeScanner = false)
         {
-          
+
 
             if (IsInitializing)
                 return;
@@ -222,7 +223,7 @@ namespace InventoryManagement
 
             #endregion
 
-           
+
 
             imgMainImage.Images.Clear();
             var images = Singleton.Instance.ItemSubTypeModel.GetItemSubTypeImages();
@@ -256,7 +257,7 @@ namespace InventoryManagement
             if (!IsInitializing)
             {
                 //DoUpdateView(true, false, 1);
-                
+
             }
         }
         private void LoadUsers()
@@ -266,7 +267,7 @@ namespace InventoryManagement
             cbxUser.ValueMember = "Id";
 
             cbxUser.DataSource = Singleton.Instance.UserModel.GetUsersByDepartmentId((int)cbxLocation.SelectedValue);
-           // cbxUser.SelectedIndex = 0;
+            // cbxUser.SelectedIndex = 0;
         }
         private void DoUpdateItemDetails()
         {
@@ -298,7 +299,7 @@ namespace InventoryManagement
 
                 btnPrintBarcode.Enabled = true;
 
-                tsBorrow.Visible = item.Status ==(ItemStatus.Available) || (item.Status == ItemStatus.Reserved);
+                tsBorrow.Visible = item.Status == (ItemStatus.Available) || (item.Status == ItemStatus.Reserved);
 
                 tsAssign.Visible = item.Status == (ItemStatus.Available);
 
@@ -355,7 +356,7 @@ namespace InventoryManagement
 
         }
 
-      
+
 
         private void cbxSubtype_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -463,7 +464,7 @@ namespace InventoryManagement
             tsAction.Visible = lvMain.SelectedItems.Count != 0;
             tsBarcode.Visible = lvMain.SelectedItems.Count != 0;
 
-            
+
         }
 
         private void tsBorrow_Click(object sender, EventArgs e)
@@ -491,7 +492,7 @@ namespace InventoryManagement
             }
         }
 
-       
+
 
         private void printToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -536,7 +537,7 @@ namespace InventoryManagement
 
         private void uploadItemsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(Singleton.Instance.UserModel.CurrentUser.Username == "ian.delacruz")
+            if (Singleton.Instance.UserModel.CurrentUser.Username == "ian.delacruz")
                 new frmUploadItems().ShowDialog();
         }
 
@@ -581,7 +582,7 @@ namespace InventoryManagement
         }
         private void webToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void typeToolStripMenuItem_Click(object sender, EventArgs e)

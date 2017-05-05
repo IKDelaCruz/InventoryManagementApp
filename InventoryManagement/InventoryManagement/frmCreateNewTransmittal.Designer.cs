@@ -319,9 +319,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(17, 129);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(32, 15);
+            this.label2.Size = new System.Drawing.Size(55, 15);
             this.label2.TabIndex = 72;
-            this.label2.Text = "User";
+            this.label2.Text = "End User";
             // 
             // cbxUsers
             // 

@@ -35,7 +35,11 @@ namespace InventoryManagement
 
         private void btnCreateNew_Click(object sender, EventArgs e)
         {
-            new frmCreateNewTransmittal().ShowDialog();
+            var result =  new frmCreateNewTransmittal().ShowDialog();
+            if(result == DialogResult.OK)
+            {
+                LoadTransmittals();
+            }
         }
 
         private void printToolStripMenuItem_Click(object sender, EventArgs e)

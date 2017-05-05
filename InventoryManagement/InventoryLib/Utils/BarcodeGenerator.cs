@@ -14,7 +14,7 @@ namespace InventoryManagement.Utils
         {
             BarcodeLib.Barcode barcode = new BarcodeLib.Barcode()
             {
-                IncludeLabel = true,
+                IncludeLabel = false,
                 Alignment = AlignmentPositions.CENTER,
                 Width = 300,
                 Height = 100,

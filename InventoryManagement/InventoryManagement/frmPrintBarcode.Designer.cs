@@ -47,7 +47,7 @@
             // 
             // btnPrintBarcode
             // 
-            this.btnPrintBarcode.Location = new System.Drawing.Point(112, 181);
+            this.btnPrintBarcode.Location = new System.Drawing.Point(112, 193);
             this.btnPrintBarcode.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnPrintBarcode.Name = "btnPrintBarcode";
             this.btnPrintBarcode.Size = new System.Drawing.Size(100, 30);
@@ -74,17 +74,17 @@
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
-            // frmPrinter
+            // frmPrintBarcode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(324, 223);
+            this.ClientSize = new System.Drawing.Size(324, 234);
             this.Controls.Add(this.lblDatePrinted);
             this.Controls.Add(this.btnPrintBarcode);
             this.Controls.Add(this.pbBarcode);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "frmPrinter";
+            this.Name = "frmPrintBarcode";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Barcode Sticker Printer";
             ((System.ComponentModel.ISupportInitialize)(this.pbBarcode)).EndInit();
