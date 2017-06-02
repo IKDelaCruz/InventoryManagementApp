@@ -30,9 +30,8 @@ namespace InventoryManagement.Repository
                 item_purchase_price = newItem.PurchasePrice,
                 item_current_value = newItem.Currentvalue,
                 item_salvage_value = newItem.SalvageValue,
-                item_current_owner = newItem.CurrentOwner,
                 item_serial = newItem.Serial,
-                item_status = (int)newItem.Status,
+
                 item_asset_tag = newItem.AssetTag,
                 item_os_id = (int)newItem.OS,
                 item_processor_id = (int)newItem.Processor,
@@ -41,9 +40,19 @@ namespace InventoryManagement.Repository
                 item_hdd2_id = (int)newItem.HDD2,
                 item_login_type = (int)newItem.LoginType,
                 purchase_order_no = newItem.PurchaseOrderNo,
-                sales_invoice_no = newItem.SalesInvoiceNo
+                sales_invoice_no = newItem.SalesInvoiceNo,
 
+                item_status = (int)newItem.Status,
+                item_last_updated = DateTime.Now,
+                item_current_owner = newItem.CurrentOwner,
             };
+
+            if (itm.item_current_owner > 0)
+            {
+                itm.item_borrow_date = DateTime.Now;
+                itm.item_expected_return = DateTime.Now.AddYears(5);
+            }
+
             InventoryDatabase.items.Add(itm);
 
             try
@@ -543,7 +552,9 @@ namespace InventoryManagement.Repository
                     PurchaseDate = i.PurchaseDate ?? DateTime.MinValue,
                     PurchasePrice = i.PurchasePrice,
                     LifeSpan = i.LifeSpan ?? 5,
-                    Currentvalue = i.CurrentValue
+                    Currentvalue = i.CurrentValue,
+                    BorrowDate = i.BorrowDate ?? DateTime.MinValue,
+                    ExpectedReturnDate = i.ReturnDate ?? DateTime.MinValue
                 });
             }
             return iList;

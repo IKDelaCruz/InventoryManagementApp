@@ -27,6 +27,10 @@ namespace InventoryLib.ViewModel
         public string ApprovedBy { get; set; }
         public int PreparedById { get; set; }
         public string PreparedBy { get; set; }
+        public int NotedById { get; set; }
+        public string NotedBy { get; set; }
+
+        public string Purpose { get; set; }
 
         public List<TransmittalItemViewModel> TransmittalItems { get; set; }
     }

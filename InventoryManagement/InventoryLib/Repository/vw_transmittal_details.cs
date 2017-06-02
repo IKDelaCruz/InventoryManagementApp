@@ -21,5 +21,6 @@ namespace InventoryLib.Repository
         public string Company { get; set; }
         public string PreparedBy { get; set; }
         public string ApprovedBy { get; set; }
+        public string NotedBy { get; set; }
     }
 }

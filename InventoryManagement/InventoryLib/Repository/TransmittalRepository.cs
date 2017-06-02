@@ -18,6 +18,8 @@ namespace InventoryLib.Repository
                 approved_date = newTrans.ApprovedDate,
                 created_date = newTrans.CreatedDate,
                 prepared_by_id = newTrans.PreparedById,
+                noted_by_id = newTrans.NotedById,
+
                 transmitted_date = newTrans.TransmittedDate,
                 transmitted_to_company_id = newTrans.TransmittedToCompanyId,
                 transmitted_to_department_id = newTrans.TransmittedToDepartmentId,
@@ -71,6 +73,7 @@ namespace InventoryLib.Repository
                     ApprovedDate = trans.CreatedDate ?? DateTime.MinValue,
                     CreatedDate = trans.CreatedDate ?? DateTime.MinValue,
                     PreparedBy = trans.PreparedBy,
+                    NotedBy = trans.NotedBy,
                     TransmittedDate = trans.CreatedDate ?? DateTime.MinValue,
                     TransmittedToCompany = trans.Company,
                     TransmittedToDepartment = trans.Department,

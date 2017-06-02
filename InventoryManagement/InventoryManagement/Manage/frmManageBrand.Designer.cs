@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManageBrand));
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAddType = new System.Windows.Forms.Button();
@@ -37,15 +38,15 @@
             this.cbxType = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.dvBrands = new System.Windows.Forms.DataGridView();
+            this.clnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Usage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.cbxSubType = new System.Windows.Forms.ComboBox();
-            this.clnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Usage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dvBrands)).BeginInit();
             this.pnlMain.SuspendLayout();
             this.SuspendLayout();
@@ -153,6 +154,38 @@
             this.dvBrands.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvBrands_CellContentClick);
             this.dvBrands.SelectionChanged += new System.EventHandler(this.dvBrands_SelectionChanged);
             // 
+            // clnId
+            // 
+            this.clnId.DataPropertyName = "Id";
+            this.clnId.HeaderText = "Id";
+            this.clnId.Name = "clnId";
+            this.clnId.ReadOnly = true;
+            this.clnId.Width = 50;
+            // 
+            // clnName
+            // 
+            this.clnName.DataPropertyName = "Name";
+            this.clnName.HeaderText = "Name";
+            this.clnName.Name = "clnName";
+            this.clnName.ReadOnly = true;
+            this.clnName.Width = 150;
+            // 
+            // Usage
+            // 
+            this.Usage.DataPropertyName = "Count";
+            this.Usage.HeaderText = "Usage";
+            this.Usage.Name = "Usage";
+            this.Usage.ReadOnly = true;
+            this.Usage.Width = 50;
+            // 
+            // clnDescription
+            // 
+            this.clnDescription.DataPropertyName = "Description";
+            this.clnDescription.HeaderText = "Description";
+            this.clnDescription.Name = "clnDescription";
+            this.clnDescription.ReadOnly = true;
+            this.clnDescription.Width = 200;
+            // 
             // pnlMain
             // 
             this.pnlMain.BackColor = System.Drawing.Color.White;
@@ -212,38 +245,6 @@
             this.cbxSubType.TabIndex = 68;
             this.cbxSubType.SelectedIndexChanged += new System.EventHandler(this.cbxSubType_SelectedIndexChanged);
             // 
-            // clnId
-            // 
-            this.clnId.DataPropertyName = "Id";
-            this.clnId.HeaderText = "Id";
-            this.clnId.Name = "clnId";
-            this.clnId.ReadOnly = true;
-            this.clnId.Width = 50;
-            // 
-            // clnName
-            // 
-            this.clnName.DataPropertyName = "Name";
-            this.clnName.HeaderText = "Name";
-            this.clnName.Name = "clnName";
-            this.clnName.ReadOnly = true;
-            this.clnName.Width = 150;
-            // 
-            // Usage
-            // 
-            this.Usage.DataPropertyName = "Count";
-            this.Usage.HeaderText = "Usage";
-            this.Usage.Name = "Usage";
-            this.Usage.ReadOnly = true;
-            this.Usage.Width = 50;
-            // 
-            // clnDescription
-            // 
-            this.clnDescription.DataPropertyName = "Description";
-            this.clnDescription.HeaderText = "Description";
-            this.clnDescription.Name = "clnDescription";
-            this.clnDescription.ReadOnly = true;
-            this.clnDescription.Width = 200;
-            // 
             // frmManageBrand
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -251,6 +252,7 @@
             this.ClientSize = new System.Drawing.Size(766, 480);
             this.Controls.Add(this.pnlMain);
             this.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmManageBrand";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmItemSearch));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnAddItem = new System.Windows.Forms.Button();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.cbxType = new System.Windows.Forms.ComboBox();
@@ -41,7 +42,6 @@
             this.txtFilter = new System.Windows.Forms.TextBox();
             this.lvItems = new System.Windows.Forms.ListView();
             this.imgMainImage = new System.Windows.Forms.ImageList(this.components);
-            this.btnAddItem = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,6 +64,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(764, 541);
             this.panel1.TabIndex = 12;
+            // 
+            // btnAddItem
+            // 
+            this.btnAddItem.Location = new System.Drawing.Point(649, 497);
+            this.btnAddItem.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnAddItem.Name = "btnAddItem";
+            this.btnAddItem.Size = new System.Drawing.Size(100, 30);
+            this.btnAddItem.TabIndex = 108;
+            this.btnAddItem.Text = "Add Item(s)";
+            this.btnAddItem.UseVisualStyleBackColor = true;
+            this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
             // 
             // btnBrowse
             // 
@@ -161,17 +172,6 @@
             this.imgMainImage.Images.SetKeyName(1, "support.png");
             this.imgMainImage.Images.SetKeyName(2, "user1.png");
             // 
-            // btnAddItem
-            // 
-            this.btnAddItem.Location = new System.Drawing.Point(649, 497);
-            this.btnAddItem.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnAddItem.Name = "btnAddItem";
-            this.btnAddItem.Size = new System.Drawing.Size(100, 30);
-            this.btnAddItem.TabIndex = 108;
-            this.btnAddItem.Text = "Add Item(s)";
-            this.btnAddItem.UseVisualStyleBackColor = true;
-            this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
-            // 
             // frmItemSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -179,6 +179,7 @@
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmItemSearch";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

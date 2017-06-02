@@ -27,7 +27,7 @@ namespace InventoryManagement
 
             SplashForm.CloseForm();
 
-            MessageBox.Show("User Synced Successfully!");
+            MessageBox.Show("Users Synced Successfully!");
         }
     }
 }

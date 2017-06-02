@@ -23,5 +23,7 @@ namespace InventoryLib.Repository
         public int approved_by_id { get; set; }
         public Nullable<System.DateTime> approved_date { get; set; }
         public Nullable<System.DateTime> created_date { get; set; }
+        public Nullable<int> noted_by_id { get; set; }
+        public string purpose { get; set; }
     }
 }

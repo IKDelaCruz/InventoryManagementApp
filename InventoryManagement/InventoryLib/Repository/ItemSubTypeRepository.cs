@@ -130,7 +130,7 @@ namespace InventoryManagement.Repository
         public bool UpdateItemTypeImage(int typeId, byte[] bArr)
         {
             //var item = InventoryDatabase.Items.FirstOrDefault(h => h.id == itemId);
-            var item = InventoryDatabase.item_subtype_image.FirstOrDefault(x => x.subtype_image_id == typeId);
+            var item = InventoryDatabase.item_subtype_image.FirstOrDefault(x => x.subtype_image_subtype_id == typeId);
 
             if (item != null)
             {

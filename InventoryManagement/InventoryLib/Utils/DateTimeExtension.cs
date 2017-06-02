@@ -10,11 +10,11 @@ namespace InventoryManagement.Utils
     {
         public static string DateOnly(this DateTime dt)
         {
-            return dt.ToString("MMM d, yyyy");
+            return dt > DateTime.MinValue ? dt.ToString("MMM d, yyyy") : "";
         }
         public static string DateAndTime(this DateTime dt)
         {
-            return dt.ToString("MMM d, yyyy hh:mm tt");
-        }
+            return dt > DateTime.MinValue ? dt.ToString("MMM d, yyyy hh:mm tt") : "";
+       }
     }
 }

@@ -39,6 +39,10 @@ namespace InventoryManagement
             cbxPrepared.DisplayMember = "LastnameFirstNameUsername";
             cbxPrepared.DataSource = Singleton.Instance.UserModel.GetUsersByDepartmentId(1);
 
+            cbxNotedBy.ValueMember = "Id";
+            cbxNotedBy.DisplayMember = "LastnameFirstNameUsername";
+            cbxNotedBy.DataSource = Singleton.Instance.UserModel.GetUsersByDepartmentId(1);
+
             cbxCompany.ValueMember = "Id";
             cbxCompany.DisplayMember = "Name";
             cbxCompany.DataSource = Singleton.Instance.CompanyDepartmentModel.GetCompanies();
@@ -96,6 +100,7 @@ namespace InventoryManagement
             transmittal.TransmittedToCompanyId = (int)cbxCompany.SelectedValue;
             transmittal.TransmittedToDepartmentId = (int)cbxDepartment.SelectedValue;
             transmittal.TransmittedToUserId = (int)cbxUsers.SelectedValue;
+            transmittal.NotedById = (int)cbxNotedBy.SelectedValue;
 
             foreach(DataGridViewRow dr in dvItems.Rows)
             {

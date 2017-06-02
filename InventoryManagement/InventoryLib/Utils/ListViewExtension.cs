@@ -44,11 +44,21 @@ namespace InventoryManagement.Utils
                 var newItem = new ListViewItem(itemName);
                 newItem.ImageIndex = summary ? x : imgList.Images.IndexOfKey(item.SubTypeId.ToString());
                 //newItem.ImageIndex = x;
+                if(item.AssetTag != null)
+                {
+                    newItem.SubItems.Add(item.AssetTag.ToString());
+                }
+         
                 newItem.SubItems.Add(item.Id.ToString());
                 newItem.SubItems.Add(item.TypeId.ToString());
                 newItem.SubItems.Add(item.Status.ToString());
                 newItem.SubItems.Add(item.BorrowDate.DateOnly());
                 newItem.SubItems.Add(item.ExpectedReturnDate.DateOnly());
+                if(item.CurrentOwnerName != null)
+                {
+                    newItem.SubItems.Add(item.CurrentOwnerName.ToString());
+                }
+               
                 if (!summary)
                 {
                     if (item.Status == ItemStatus.Available)
@@ -69,6 +79,7 @@ namespace InventoryManagement.Utils
                 x++;
                 
             }
+            //var list = new Utils.MySortableBindingList<ListViewItem>(tempListView.ToArray());
             lv.Items.AddRange(tempListView.ToArray());
             lv.EndUpdate();
         }
@@ -88,5 +99,6 @@ namespace InventoryManagement.Utils
         }
     }
 }
+
 
 

@@ -54,11 +54,13 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lvMain = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pnlTop = new System.Windows.Forms.Panel();
             this.btnFilter = new System.Windows.Forms.Button();
             this.chkShowAllUser = new System.Windows.Forms.CheckBox();
@@ -139,9 +141,7 @@
             this.itemSummaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.formsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transmittalFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gatePassToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.insuranceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.webToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cntxtMenuStrip.SuspendLayout();
             this.pnlMain.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -333,13 +333,16 @@
             this.lvMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lvMain.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
+            this.columnHeader7,
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5,
-            this.columnHeader6});
+            this.columnHeader6,
+            this.columnHeader8});
             this.lvMain.ContextMenuStrip = this.cntxtMenuStrip;
             this.lvMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvMain.FullRowSelect = true;
             this.lvMain.LargeImageList = this.imgMainImage;
             this.lvMain.Location = new System.Drawing.Point(0, 5);
             this.lvMain.Name = "lvMain";
@@ -347,6 +350,7 @@
             this.lvMain.SmallImageList = this.imgMainImage;
             this.lvMain.TabIndex = 0;
             this.lvMain.UseCompatibleStateImageBehavior = false;
+            this.lvMain.View = System.Windows.Forms.View.Details;
             this.lvMain.SelectedIndexChanged += new System.EventHandler(this.lvMain_SelectedIndexChanged);
             this.lvMain.Click += new System.EventHandler(this.lvMain_Click);
             this.lvMain.DoubleClick += new System.EventHandler(this.lvMain_DoubleClick);
@@ -356,10 +360,15 @@
             this.columnHeader1.Text = "Name";
             this.columnHeader1.Width = 250;
             // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Asset Tag";
+            this.columnHeader7.Width = 120;
+            // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "Id";
-            this.columnHeader2.Width = 0;
+            this.columnHeader2.Width = 100;
             // 
             // columnHeader3
             // 
@@ -380,6 +389,10 @@
             // 
             this.columnHeader6.Text = "Return Date";
             this.columnHeader6.Width = 100;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Owner";
             // 
             // pnlTop
             // 
@@ -1159,9 +1172,7 @@
             // 
             this.formsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.transmittalFormToolStripMenuItem,
-            this.gatePassToolStripMenuItem,
-            this.insuranceToolStripMenuItem,
-            this.webToolStripMenuItem});
+            this.insuranceToolStripMenuItem});
             this.formsToolStripMenuItem.Name = "formsToolStripMenuItem";
             this.formsToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.formsToolStripMenuItem.Text = "Forms";
@@ -1169,29 +1180,15 @@
             // transmittalFormToolStripMenuItem
             // 
             this.transmittalFormToolStripMenuItem.Name = "transmittalFormToolStripMenuItem";
-            this.transmittalFormToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.transmittalFormToolStripMenuItem.Text = "Transmittal Form";
+            this.transmittalFormToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.transmittalFormToolStripMenuItem.Text = "Transmittal / Gate Pass";
             this.transmittalFormToolStripMenuItem.Click += new System.EventHandler(this.transmittalFormToolStripMenuItem_Click);
-            // 
-            // gatePassToolStripMenuItem
-            // 
-            this.gatePassToolStripMenuItem.Name = "gatePassToolStripMenuItem";
-            this.gatePassToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.gatePassToolStripMenuItem.Text = "Gate Pass";
-            this.gatePassToolStripMenuItem.Click += new System.EventHandler(this.gatePassToolStripMenuItem_Click);
             // 
             // insuranceToolStripMenuItem
             // 
             this.insuranceToolStripMenuItem.Name = "insuranceToolStripMenuItem";
-            this.insuranceToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.insuranceToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.insuranceToolStripMenuItem.Text = "Insurance";
-            // 
-            // webToolStripMenuItem
-            // 
-            this.webToolStripMenuItem.Name = "webToolStripMenuItem";
-            this.webToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.webToolStripMenuItem.Text = "Web";
-            this.webToolStripMenuItem.Click += new System.EventHandler(this.webToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -1339,10 +1336,10 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem formsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem transmittalFormToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem gatePassToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem insuranceToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem webToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem typeToolStripMenuItem;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
     }
 }
 

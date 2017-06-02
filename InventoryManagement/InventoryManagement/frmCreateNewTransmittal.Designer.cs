@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCreateNewTransmittal));
             this.label5 = new System.Windows.Forms.Label();
             this.cbxCompany = new System.Windows.Forms.ComboBox();
             this.cbxDepartment = new System.Windows.Forms.ComboBox();
@@ -46,15 +47,19 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dtpApprovedDate = new System.Windows.Forms.DateTimePicker();
+            this.cbxNotedBy = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cbxApproved = new System.Windows.Forms.ComboBox();
             this.cbxPrepared = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cbxUsers = new System.Windows.Forms.ComboBox();
             this.lblHeader = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtPurpose = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvItems)).BeginInit();
@@ -65,7 +70,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(17, 74);
+            this.label5.Location = new System.Drawing.Point(17, 65);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(71, 15);
             this.label5.TabIndex = 51;
@@ -85,7 +90,7 @@
             // 
             this.cbxDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxDepartment.FormattingEnabled = true;
-            this.cbxDepartment.Location = new System.Drawing.Point(20, 92);
+            this.cbxDepartment.Location = new System.Drawing.Point(20, 83);
             this.cbxDepartment.Name = "cbxDepartment";
             this.cbxDepartment.Size = new System.Drawing.Size(196, 23);
             this.cbxDepartment.TabIndex = 50;
@@ -131,16 +136,16 @@
             this.groupBox3.Controls.Add(this.btbDelete);
             this.groupBox3.Controls.Add(this.dvItems);
             this.groupBox3.Controls.Add(this.btnAdd);
-            this.groupBox3.Location = new System.Drawing.Point(15, 248);
+            this.groupBox3.Location = new System.Drawing.Point(15, 267);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(732, 268);
+            this.groupBox3.Size = new System.Drawing.Size(732, 249);
             this.groupBox3.TabIndex = 78;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Items";
             // 
             // btbDelete
             // 
-            this.btbDelete.Location = new System.Drawing.Point(60, 221);
+            this.btbDelete.Location = new System.Drawing.Point(60, 195);
             this.btbDelete.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.btbDelete.Name = "btbDelete";
             this.btbDelete.Size = new System.Drawing.Size(30, 30);
@@ -170,7 +175,7 @@
             this.dvItems.ShowCellToolTips = false;
             this.dvItems.ShowEditingIcon = false;
             this.dvItems.ShowRowErrors = false;
-            this.dvItems.Size = new System.Drawing.Size(697, 193);
+            this.dvItems.Size = new System.Drawing.Size(697, 167);
             this.dvItems.TabIndex = 2;
             // 
             // Id
@@ -210,7 +215,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(20, 221);
+            this.btnAdd.Location = new System.Drawing.Point(20, 195);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(30, 30);
@@ -223,13 +228,15 @@
             // 
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.dtpApprovedDate);
+            this.groupBox2.Controls.Add(this.cbxNotedBy);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.cbxApproved);
             this.groupBox2.Controls.Add(this.cbxPrepared);
             this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Location = new System.Drawing.Point(395, 51);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(352, 191);
+            this.groupBox2.Size = new System.Drawing.Size(352, 210);
             this.groupBox2.TabIndex = 75;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Approval";
@@ -237,7 +244,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 127);
+            this.label3.Location = new System.Drawing.Point(16, 153);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(87, 15);
             this.label3.TabIndex = 77;
@@ -246,11 +253,20 @@
             // dtpApprovedDate
             // 
             this.dtpApprovedDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpApprovedDate.Location = new System.Drawing.Point(19, 147);
+            this.dtpApprovedDate.Location = new System.Drawing.Point(19, 173);
             this.dtpApprovedDate.Margin = new System.Windows.Forms.Padding(5);
             this.dtpApprovedDate.Name = "dtpApprovedDate";
             this.dtpApprovedDate.Size = new System.Drawing.Size(118, 23);
             this.dtpApprovedDate.TabIndex = 76;
+            // 
+            // cbxNotedBy
+            // 
+            this.cbxNotedBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxNotedBy.FormattingEnabled = true;
+            this.cbxNotedBy.Location = new System.Drawing.Point(19, 81);
+            this.cbxNotedBy.Name = "cbxNotedBy";
+            this.cbxNotedBy.Size = new System.Drawing.Size(282, 23);
+            this.cbxNotedBy.TabIndex = 79;
             // 
             // label1
             // 
@@ -265,7 +281,7 @@
             // 
             this.cbxApproved.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxApproved.FormattingEnabled = true;
-            this.cbxApproved.Location = new System.Drawing.Point(19, 90);
+            this.cbxApproved.Location = new System.Drawing.Point(19, 125);
             this.cbxApproved.Name = "cbxApproved";
             this.cbxApproved.Size = new System.Drawing.Size(282, 23);
             this.cbxApproved.TabIndex = 50;
@@ -282,11 +298,20 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(16, 72);
+            this.label6.Location = new System.Drawing.Point(16, 107);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(75, 15);
             this.label6.TabIndex = 51;
             this.label6.Text = "Approved By";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(16, 63);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(55, 15);
+            this.label7.TabIndex = 78;
+            this.label7.Text = "Noted By";
             // 
             // btnSave
             // 
@@ -301,6 +326,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtPurpose);
+            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.cbxCompany);
             this.groupBox1.Controls.Add(this.label2);
@@ -309,7 +336,7 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Location = new System.Drawing.Point(15, 49);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(361, 193);
+            this.groupBox1.Size = new System.Drawing.Size(361, 212);
             this.groupBox1.TabIndex = 74;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Transmitted To";
@@ -317,7 +344,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 129);
+            this.label2.Location = new System.Drawing.Point(17, 109);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 15);
             this.label2.TabIndex = 72;
@@ -327,7 +354,7 @@
             // 
             this.cbxUsers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxUsers.FormattingEnabled = true;
-            this.cbxUsers.Location = new System.Drawing.Point(20, 147);
+            this.cbxUsers.Location = new System.Drawing.Point(20, 127);
             this.cbxUsers.Name = "cbxUsers";
             this.cbxUsers.Size = new System.Drawing.Size(292, 23);
             this.cbxUsers.TabIndex = 71;
@@ -344,6 +371,22 @@
             this.lblHeader.Text = "Transmittal Form";
             this.lblHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(17, 155);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(55, 15);
+            this.label8.TabIndex = 73;
+            this.label8.Text = "Purpose:";
+            // 
+            // txtPurpose
+            // 
+            this.txtPurpose.Location = new System.Drawing.Point(20, 175);
+            this.txtPurpose.Name = "txtPurpose";
+            this.txtPurpose.Size = new System.Drawing.Size(292, 23);
+            this.txtPurpose.TabIndex = 74;
+            // 
             // frmCreateNewTransmittal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -351,6 +394,7 @@
             this.ClientSize = new System.Drawing.Size(786, 585);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmCreateNewTransmittal";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -396,5 +440,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemModel;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemSerial;
+        private System.Windows.Forms.ComboBox cbxNotedBy;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtPurpose;
+        private System.Windows.Forms.Label label8;
     }
 }

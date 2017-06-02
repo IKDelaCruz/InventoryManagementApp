@@ -22,10 +22,8 @@ namespace InventoryManagement
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.frmBase_Load);
             this.ResumeLayout(false);
-
-   
-
         }
+
         public int ReturnInt { get; set; }
         public int ReturnParentInt { get; set; }
         public List<int> ReturnIntList { get; set; }

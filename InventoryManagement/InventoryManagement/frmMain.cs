@@ -151,10 +151,10 @@ namespace InventoryManagement
             var selected = lvMain.SelectedItems;
             foreach (ListViewItem li in selected)
             {
-                var id = Convert.ToInt32(li.SubItems[1].Text);
-                var type = Convert.ToInt32(li.SubItems[2].Text);
+                var id = Convert.ToInt32(li.SubItems[2].Text);
+                var type = Convert.ToInt32(li.SubItems[3].Text);
 
-                ItemStatus itemStatus = (ItemStatus)Enum.Parse(typeof(ItemStatus), li.SubItems[3].Text, true);
+                ItemStatus itemStatus = (ItemStatus)Enum.Parse(typeof(ItemStatus), li.SubItems[4].Text, true);
 
                 _selectedItem.Add(new ItemViewModel
                 {
@@ -331,7 +331,7 @@ namespace InventoryManagement
         private void DoManageItem()
         {
             var selected = lvMain.SelectedItems[0];
-            var id = Convert.ToInt32(selected.SubItems[1].Text);
+            var id = Convert.ToInt32(selected.SubItems[2].Text);
 
             var dlg = new frmManageItemDetails(id, false);
             dlg.ShowDialog();
@@ -538,7 +538,11 @@ namespace InventoryManagement
         private void uploadItemsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (Singleton.Instance.UserModel.CurrentUser.Username == "ian.delacruz")
+            {
                 new frmUploadItems().ShowDialog();
+                DoUpdateView(false, false, 1);
+            }
+
         }
 
         private void syncToolStripMenuItem_Click(object sender, EventArgs e)

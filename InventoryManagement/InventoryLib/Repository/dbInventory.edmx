@@ -205,6 +205,8 @@
           <Property Name="approved_by_id" Type="int" Nullable="false" />
           <Property Name="approved_date" Type="datetime" />
           <Property Name="created_date" Type="datetime" />
+          <Property Name="noted_by_id" Type="int" />
+          <Property Name="purpose" Type="varchar" MaxLength="150" />
         </EntityType>
         <EntityType Name="transmittal_items">
           <Key>
@@ -229,6 +231,7 @@
           <Property Name="user_company" Type="int" />
           <Property Name="is_male" Type="bit" />
           <Property Name="is_disabled" Type="bit" />
+          <Property Name="email" Type="varchar" MaxLength="150" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'InventoryManagement.dbo.vw_brand_summary' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -452,12 +455,13 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_transmittal_details' do
             <PropertyRef Name="TransmittalId" />
           </Key>
           <Property Name="TransmittalId" Type="int" Nullable="false" />
-          <Property Name="CreatedDate" Type="date" />
+          <Property Name="CreatedDate" Type="datetime" />
           <Property Name="Receiver" Type="varchar" MaxLength="150" />
           <Property Name="Department" Type="varchar" MaxLength="500" />
           <Property Name="Company" Type="varchar" MaxLength="50" />
           <Property Name="PreparedBy" Type="varchar" MaxLength="150" />
           <Property Name="ApprovedBy" Type="varchar" MaxLength="150" />
+          <Property Name="NotedBy" Type="varchar" MaxLength="150" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'InventoryManagement.dbo.vw_transmittal_items_details' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -859,7 +863,8 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
     [vw_transmittal_details].[Department] AS [Department], 
     [vw_transmittal_details].[Company] AS [Company], 
     [vw_transmittal_details].[PreparedBy] AS [PreparedBy], 
-    [vw_transmittal_details].[ApprovedBy] AS [ApprovedBy]
+    [vw_transmittal_details].[ApprovedBy] AS [ApprovedBy], 
+    [vw_transmittal_details].[NotedBy] AS [NotedBy]
     FROM [dbo].[vw_transmittal_details] AS [vw_transmittal_details]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vw_transmittal_items_details" EntityType="Self.vw_transmittal_items_details" store:Type="Views" store:Schema="dbo">
@@ -1267,6 +1272,8 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
           <Property Name="approved_by_id" Type="Int32" Nullable="false" />
           <Property Name="approved_date" Type="DateTime" Precision="3" />
           <Property Name="created_date" Type="DateTime" Precision="3" />
+          <Property Name="noted_by_id" Type="Int32" />
+          <Property Name="purpose" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="transmittal_items">
           <Key>
@@ -1291,6 +1298,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
           <Property Name="user_company" Type="Int32" />
           <Property Name="is_male" Type="Boolean" />
           <Property Name="is_disabled" Type="Boolean" />
+          <Property Name="email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="company" Relationship="InventoryManagementModel.FK_User_Company1" FromRole="user" ToRole="company" />
           <NavigationProperty Name="department" Relationship="InventoryManagementModel.FK_User_Department" FromRole="user" ToRole="department" />
           <NavigationProperty Name="requests" Relationship="InventoryManagementModel.FK_Request_User" FromRole="user" ToRole="request" />
@@ -1496,12 +1504,13 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
             <PropertyRef Name="TransmittalId" />
           </Key>
           <Property Name="TransmittalId" Type="Int32" Nullable="false" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="Receiver" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="Department" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Company" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PreparedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="ApprovedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="NotedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="vw_transmittal_items_details">
           <Key>
@@ -1919,6 +1928,8 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
           <EntitySetMapping Name="transmitals">
             <EntityTypeMapping TypeName="InventoryManagementModel.transmital">
               <MappingFragment StoreEntitySet="transmital">
+                <ScalarProperty Name="purpose" ColumnName="purpose" />
+                <ScalarProperty Name="noted_by_id" ColumnName="noted_by_id" />
                 <ScalarProperty Name="created_date" ColumnName="created_date" />
                 <ScalarProperty Name="approved_date" ColumnName="approved_date" />
                 <ScalarProperty Name="approved_by_id" ColumnName="approved_by_id" />
@@ -1944,6 +1955,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
           <EntitySetMapping Name="users">
             <EntityTypeMapping TypeName="InventoryManagementModel.user">
               <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="is_disabled" ColumnName="is_disabled" />
                 <ScalarProperty Name="is_male" ColumnName="is_male" />
                 <ScalarProperty Name="user_company" ColumnName="user_company" />
@@ -2137,6 +2149,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
           <EntitySetMapping Name="vw_transmittal_details">
             <EntityTypeMapping TypeName="InventoryManagementModel.vw_transmittal_details">
               <MappingFragment StoreEntitySet="vw_transmittal_details">
+                <ScalarProperty Name="NotedBy" ColumnName="NotedBy" />
                 <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
                 <ScalarProperty Name="PreparedBy" ColumnName="PreparedBy" />
                 <ScalarProperty Name="Company" ColumnName="Company" />

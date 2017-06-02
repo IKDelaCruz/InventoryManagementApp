@@ -89,6 +89,9 @@
     </Reference>
     <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="ObjectListView">
+      <HintPath>C:\Users\ian.delacruz.JAKAGROUP\Downloads\ObjectListView-2.8.0\ObjectListViewDemo\ObjectListView\bin\Debug\ObjectListView.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -109,16 +112,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmTransmittalPrinter.cs">
+    <Compile Include="GatePass\frmGatePassBrowser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmTransmittalPrinter.Designer.cs">
-      <DependentUpon>frmTransmittalPrinter.cs</DependentUpon>
+    <Compile Include="GatePass\frmGatePassBrowser.Designer.cs">
+      <DependentUpon>frmGatePassBrowser.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmTransmittals.cs">
+    <Compile Include="Transmittals\frmTransmittals.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmTransmittals.Designer.cs">
+    <Compile Include="Transmittals\frmTransmittals.Designer.cs">
       <DependentUpon>frmTransmittals.cs</DependentUpon>
     </Compile>
     <Compile Include="frmAttachFile.cs">
@@ -169,11 +172,11 @@
     <Compile Include="frmUserLogs.Designer.cs">
       <DependentUpon>frmUserLogs.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmWebBrowser.cs">
+    <Compile Include="Transmittals\frmTransmittalBrowser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmWebBrowser.Designer.cs">
-      <DependentUpon>frmWebBrowser.cs</DependentUpon>
+    <Compile Include="Transmittals\frmTransmittalBrowser.Designer.cs">
+      <DependentUpon>frmTransmittalBrowser.cs</DependentUpon>
     </Compile>
     <Compile Include="HtmlGenerator.cs" />
     <Compile Include="Manage\frmManageBrand.cs">
@@ -259,10 +262,10 @@
     <Compile Include="SplashForm.Designer.cs">
       <DependentUpon>SplashForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="frmTransmittalPrinter.resx">
-      <DependentUpon>frmTransmittalPrinter.cs</DependentUpon>
+    <EmbeddedResource Include="GatePass\frmGatePassBrowser.resx">
+      <DependentUpon>frmGatePassBrowser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmTransmittals.resx">
+    <EmbeddedResource Include="Transmittals\frmTransmittals.resx">
       <DependentUpon>frmTransmittals.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAttachFile.resx">
@@ -322,8 +325,8 @@
     <EmbeddedResource Include="frmUserLogs.resx">
       <DependentUpon>frmUserLogs.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmWebBrowser.resx">
-      <DependentUpon>frmWebBrowser.cs</DependentUpon>
+    <EmbeddedResource Include="Transmittals\frmTransmittalBrowser.resx">
+      <DependentUpon>frmTransmittalBrowser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Manage\frmManageBrand.resx">
       <DependentUpon>frmManageBrand.cs</DependentUpon>

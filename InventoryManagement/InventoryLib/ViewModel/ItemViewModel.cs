@@ -39,6 +39,7 @@ namespace InventoryManagement.ViewModel
         PentiumII,
         PentiumIII,
         Pentium4,
+        Celeron,
         DualCore,
         QuadCore,
         Core2Duo,
