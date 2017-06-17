@@ -89,9 +89,6 @@
     </Reference>
     <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="ObjectListView">
-      <HintPath>C:\Users\ian.delacruz.JAKAGROUP\Downloads\ObjectListView-2.8.0\ObjectListViewDemo\ObjectListView\bin\Debug\ObjectListView.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
