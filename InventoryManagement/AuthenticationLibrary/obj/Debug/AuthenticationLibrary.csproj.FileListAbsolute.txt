@@ -28,3 +28,7 @@ F:\GIT\InventoryManagementApp\InventoryManagement\AuthenticationLibrary\bin\Debu
 F:\GIT\InventoryManagementApp\InventoryManagement\AuthenticationLibrary\bin\Debug\AuthenticationLibrary.pdb
 F:\GIT\InventoryManagementApp\InventoryManagement\AuthenticationLibrary\obj\Debug\AuthenticationLibrary.dll
 F:\GIT\InventoryManagementApp\InventoryManagement\AuthenticationLibrary\obj\Debug\AuthenticationLibrary.pdb
+C:\Users\ian\Documents\GitHub\InventoryManagementApp\InventoryManagement\AuthenticationLibrary\bin\Debug\AuthenticationLibrary.dll
+C:\Users\ian\Documents\GitHub\InventoryManagementApp\InventoryManagement\AuthenticationLibrary\bin\Debug\AuthenticationLibrary.pdb
+C:\Users\ian\Documents\GitHub\InventoryManagementApp\InventoryManagement\AuthenticationLibrary\obj\Debug\AuthenticationLibrary.dll
+C:\Users\ian\Documents\GitHub\InventoryManagementApp\InventoryManagement\AuthenticationLibrary\obj\Debug\AuthenticationLibrary.pdb
