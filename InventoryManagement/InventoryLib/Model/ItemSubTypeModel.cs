@@ -58,7 +58,10 @@ namespace InventoryManagement.Model
             else
                 return Image.FromFile(Utils.Helper.GetImageDirectory(@"\items\default.jpg"));
         }
-
+        public decimal GetDefaultPrice(int id)
+        {
+          return  subTypeRepository.QueryDefaultPrice(id);
+        }
         public List<ItemSubTypeViewModel> GetItemSubTypeImages()
         {
             return subTypeRepository.GetItemImage();

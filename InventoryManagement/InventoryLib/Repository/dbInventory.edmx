@@ -95,6 +95,7 @@
           <Property Name="subtype_parent_id" Type="int" Nullable="false" />
           <Property Name="subtype_name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="subtype_icon" Type="image" />
+          <Property Name="standard_price" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="item_subtype_image">
           <Key>
@@ -1149,6 +1150,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
           <Property Name="subtype_parent_id" Type="Int32" Nullable="false" />
           <Property Name="subtype_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="subtype_icon" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="standard_price" Type="Decimal" Precision="18" Scale="2" />
           <NavigationProperty Name="brands" Relationship="InventoryManagementModel.FK_Brand_ItmeSubType" FromRole="item_subtype" ToRole="brand" />
           <NavigationProperty Name="items" Relationship="InventoryManagementModel.FK_Item_ItemSubtype" FromRole="item_subtype" ToRole="item" />
           <NavigationProperty Name="item_type" Relationship="InventoryManagementModel.FK_ItemSubtype_ItemType" FromRole="item_subtype" ToRole="item_type" />
@@ -1812,6 +1814,7 @@ warning 6002: The table/view 'InventoryManagement.dbo.vw_user_membership_detail'
           <EntitySetMapping Name="item_subtype">
             <EntityTypeMapping TypeName="InventoryManagementModel.item_subtype">
               <MappingFragment StoreEntitySet="item_subtype">
+                <ScalarProperty Name="standard_price" ColumnName="standard_price" />
                 <ScalarProperty Name="subtype_icon" ColumnName="subtype_icon" />
                 <ScalarProperty Name="subtype_name" ColumnName="subtype_name" />
                 <ScalarProperty Name="subtype_parent_id" ColumnName="subtype_parent_id" />

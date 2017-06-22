@@ -162,6 +162,15 @@ namespace InventoryManagement.Repository
             }
             return null;
         }
+        public decimal QueryDefaultPrice(int typeId)
+        {
+            var item = InventoryDatabase.item_subtype.FirstOrDefault(x => x.subtype_id == typeId);
+            if (item != null)
+            {
+                return item.standard_price ?? 0;
+            }
+            return 0;
+        }
 
         public List<ItemSubTypeViewModel> GetItemImage()
         {

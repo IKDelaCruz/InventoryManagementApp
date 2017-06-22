@@ -87,7 +87,7 @@ namespace InventoryManagement
         {
             foreach (ListViewItem lvi in lvItems.SelectedItems)
             {
-                var id = Convert.ToInt32(lvi.SubItems[1].Text);
+                var id = Convert.ToInt32(lvi.SubItems[2].Text);
                 ReturnIntList.Add(id);
             }
 

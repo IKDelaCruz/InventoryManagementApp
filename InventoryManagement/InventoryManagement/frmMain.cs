@@ -567,17 +567,17 @@ namespace InventoryManagement
 
         private void cbxStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
-            chkShowAllStatus.Checked = false;
+            chkShowAllStatus.Checked = true;
         }
 
         private void cbxSubtype_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            chkShowAllSubType.Checked = false;
+            chkShowAllSubType.Checked = true;
         }
 
         private void cbxUser_SelectedIndexChanged(object sender, EventArgs e)
         {
-            chkShowAllUser.Checked = false;
+            chkShowAllUser.Checked = true;
         }
 
         private void transmittalFormToolStripMenuItem_Click(object sender, EventArgs e)

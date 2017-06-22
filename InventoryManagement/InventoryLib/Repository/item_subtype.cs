@@ -26,6 +26,7 @@ namespace InventoryLib.Repository
         public int subtype_parent_id { get; set; }
         public string subtype_name { get; set; }
         public byte[] subtype_icon { get; set; }
+        public Nullable<decimal> standard_price { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<brand> brands { get; set; }

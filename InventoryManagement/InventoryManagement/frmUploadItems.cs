@@ -86,18 +86,23 @@ namespace InventoryManagement
                             iCPU.LoginType = (ItemLoginType)Enum.Parse(typeof(ItemLoginType), fields[11], true);
                             iCPU.TypeId = 1;
                             iCPU.SubTypeId = 1;
+
+                           iCPU.PurchasePrice = Singleton.Instance.ItemSubTypeModel.GetDefaultPrice(iCPU.SubTypeId);
+
                             iCPU.Description = string.Format("{0}({1})",fields[0],fields[2]);
                             
                             iCPU.NetworkIP = fields[12];
                             iCPU.NetworkSubnet = fields[13];
                             iCPU.NetworkGateway = fields[14];
 
-                            if(userId > 0)
+                            iCPU.Status = ItemStatus.Available;
+
+                            if (userId > 0)
                             {
                                 iCPU.CurrentOwner = userId;
                                 iCPU.Status = ItemStatus.Assigned;
                             }
-                            iCPU.Status = ItemStatus.Available;
+                           
 
                             var result = Singleton.Instance.ItemModel.CreateNewItem(iCPU, Singleton.Instance.UserModel.CurrentUser.Id);
 
@@ -109,14 +114,17 @@ namespace InventoryManagement
                             iOS.Serial = fields[17];
                             iOS.TypeId = 5;
                             iOS.SubTypeId = 37;
+                            iOS.PurchasePrice = Singleton.Instance.ItemSubTypeModel.GetDefaultPrice(iOS.SubTypeId);
                             iOS.ParentId = iCPU.Id;
                             iOS.Description = fields[0];
+                            iOS.Status = ItemStatus.Available;
+
                             if (userId > 0)
                             {
                                 iOS.CurrentOwner = userId;
                                 iOS.Status = ItemStatus.Assigned;
                             }
-                            iOS.Status = ItemStatus.Available;
+                          
 
                             result = Singleton.Instance.ItemModel.CreateNewItem(iOS, Singleton.Instance.UserModel.CurrentUser.Id);
 
@@ -127,14 +135,15 @@ namespace InventoryManagement
                             iOffice.Serial = fields[18];
                             iOffice.SubTypeId = 38;
                             iOffice.TypeId = 5;
+                            iOffice.PurchasePrice = Singleton.Instance.ItemSubTypeModel.GetDefaultPrice(iOffice.SubTypeId);
                             iOffice.Description = fields[0];
-
+                            iOffice.Status = ItemStatus.Available;
                             if (userId > 0)
                             {
                                 iOffice.CurrentOwner = userId;
                                 iOffice.Status = ItemStatus.Assigned;
                             }
-                            iOffice.Status = ItemStatus.Available;
+                          
 
                             result = Singleton.Instance.ItemModel.CreateNewItem(iOffice, Singleton.Instance.UserModel.CurrentUser.Id);
 
@@ -145,16 +154,16 @@ namespace InventoryManagement
                             iAV.SubTypeId = 36;
                             iAV.TypeId = 5;
                             iAV.Description = fields[0];
-
+                            iAV.PurchasePrice = Singleton.Instance.ItemSubTypeModel.GetDefaultPrice(iAV.SubTypeId);
                             iAV.CurrentOwner = userId;
-                            iAV.Status = ItemStatus.Assigned;
+                            iAV.Status = ItemStatus.Available;
 
                             if (userId > 0)
                             {
                                 iAV.CurrentOwner = userId;
                                 iAV.Status = ItemStatus.Assigned;
                             }
-                            iAV.Status = ItemStatus.Available;
+                           
 
                             result = Singleton.Instance.ItemModel.CreateNewItem(iAV, Singleton.Instance.UserModel.CurrentUser.Id);
 
@@ -166,14 +175,15 @@ namespace InventoryManagement
                                 iPrinter.Model = fields[10];
                                 iPrinter.SubTypeId = 39;
                                 iPrinter.TypeId = 1;
+                                iPrinter.PurchasePrice = Singleton.Instance.ItemSubTypeModel.GetDefaultPrice(iPrinter.SubTypeId);
                                 iPrinter.Description = "";
-
+                                iPrinter.Status = ItemStatus.Available;
                                 if (userId > 0)
                                 {
                                     iPrinter.CurrentOwner = userId;
                                     iPrinter.Status = ItemStatus.Assigned;
                                 }
-                                iPrinter.Status = ItemStatus.Available;
+                            
 
                                 result = Singleton.Instance.ItemModel.CreateNewItem(iPrinter, Singleton.Instance.UserModel.CurrentUser.Id);
                             }

@@ -234,7 +234,15 @@ namespace InventoryManagement
             txtSalesInvocie.Text = _loadedItem.SalesInvoiceNo;
             txtPurchaseOrder.Text = _loadedItem.PurchaseOrderNo;
             txtLifetime.Text = _loadedItem.LifeSpan.ToString();
-            txtCurrentValue.Text = ((decimal)_loadedItem.Currentvalue).ToString("n2");
+
+            //txtCurrentValue.Text = ((decimal)_loadedItem.Currentvalue).ToString("n2");
+            var totalDep = (decimal)0.00;
+
+            if(_loadedItem.LifeSpan > 0 && _loadedItem.PurchasePrice > 0)
+                totalDep = (_loadedItem.PurchasePrice * (decimal)((DateTime.Now - _loadedItem.PurchaseDate).TotalDays / (_loadedItem.LifeSpan * 365)));
+
+            txtCurrentValue.Text = (_loadedItem.PurchasePrice - totalDep).ToString("n2");
+
             txtSalvageValue.Text = ((decimal)_loadedItem.SalvageValue).ToString("n2");
 
             txtLastUpdate.Text = _loadedItem.LastUpdatedDate.DateAndTime();

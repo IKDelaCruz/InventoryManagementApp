@@ -28,6 +28,9 @@ namespace InventoryManagement.Model
         public ReturnValueModel CreateNewItem(ItemViewModel newItem, int userId)
         {
             var rv = new ReturnValueModel();
+
+            newItem.LifeSpan = newItem.LifeSpan == 0 ? 5 : newItem.LifeSpan;
+
             var newItemId = itemRepostory.Insert(newItem, userId);
 
 

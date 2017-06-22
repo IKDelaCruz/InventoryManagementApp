@@ -55,11 +55,11 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtPurpose = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cbxUsers = new System.Windows.Forms.ComboBox();
             this.lblHeader = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtPurpose = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvItems)).BeginInit();
@@ -145,7 +145,7 @@
             // 
             // btbDelete
             // 
-            this.btbDelete.Location = new System.Drawing.Point(60, 195);
+            this.btbDelete.Location = new System.Drawing.Point(60, 205);
             this.btbDelete.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.btbDelete.Name = "btbDelete";
             this.btbDelete.Size = new System.Drawing.Size(30, 30);
@@ -175,7 +175,7 @@
             this.dvItems.ShowCellToolTips = false;
             this.dvItems.ShowEditingIcon = false;
             this.dvItems.ShowRowErrors = false;
-            this.dvItems.Size = new System.Drawing.Size(697, 167);
+            this.dvItems.Size = new System.Drawing.Size(697, 177);
             this.dvItems.TabIndex = 2;
             // 
             // Id
@@ -215,7 +215,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(20, 195);
+            this.btnAdd.Location = new System.Drawing.Point(20, 205);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(30, 30);
@@ -341,6 +341,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Transmitted To";
             // 
+            // txtPurpose
+            // 
+            this.txtPurpose.Location = new System.Drawing.Point(20, 175);
+            this.txtPurpose.Name = "txtPurpose";
+            this.txtPurpose.Size = new System.Drawing.Size(292, 23);
+            this.txtPurpose.TabIndex = 74;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(17, 155);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(55, 15);
+            this.label8.TabIndex = 73;
+            this.label8.Text = "Purpose:";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -370,22 +386,6 @@
             this.lblHeader.TabIndex = 73;
             this.lblHeader.Text = "Transmittal Form";
             this.lblHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(17, 155);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(55, 15);
-            this.label8.TabIndex = 73;
-            this.label8.Text = "Purpose:";
-            // 
-            // txtPurpose
-            // 
-            this.txtPurpose.Location = new System.Drawing.Point(20, 175);
-            this.txtPurpose.Name = "txtPurpose";
-            this.txtPurpose.Size = new System.Drawing.Size(292, 23);
-            this.txtPurpose.TabIndex = 74;
             // 
             // frmCreateNewTransmittal
             // 
