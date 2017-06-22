@@ -344,3 +344,5 @@ __pycache__/
 *.Cache
 *.pdb
 InventoryManagement/AuthenticationLibrary/obj/Debug/AuthenticationLibrary.pdb
+InventoryManagement/.vs/InventoryManagement/v14/.suo
+InventoryManagement/AuthenticationLibrary/bin/Debug/AuthenticationLibrary.dll

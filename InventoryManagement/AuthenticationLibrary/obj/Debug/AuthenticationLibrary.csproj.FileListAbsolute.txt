@@ -16,7 +16,6 @@ C:\Users\Angelito\Documents\GitHub\InventoryManagementApp\InventoryManagement\Au
 C:\Users\Angelito\Documents\GitHub\InventoryManagementApp\InventoryManagement\AuthenticationLibrary\obj\Debug\AuthenticationLibrary.csprojResolveAssemblyReference.cache
 C:\Users\Angelito\Documents\GitHub\InventoryManagementApp\InventoryManagement\AuthenticationLibrary\obj\Debug\AuthenticationLibrary.dll
 C:\Users\Angelito\Documents\GitHub\InventoryManagementApp\InventoryManagement\AuthenticationLibrary\obj\Debug\AuthenticationLibrary.pdb
-C:\Users\ian.delacruz\Documents\GitHub\InventoryManagementApp\InventoryManagementApp\InventoryManagement\AuthenticationLibrary\obj\Debug\AuthenticationLibrary.csprojResolveAssemblyReference.cache
 E:\Projects\InventoryManagementApp\InventoryManagement\AuthenticationLibrary\bin\Debug\AuthenticationLibrary.dll
 E:\Projects\InventoryManagementApp\InventoryManagement\AuthenticationLibrary\bin\Debug\AuthenticationLibrary.pdb
 E:\Projects\InventoryManagementApp\InventoryManagement\AuthenticationLibrary\obj\Debug\AuthenticationLibrary.dll
@@ -29,3 +28,7 @@ F:\GIT\InventoryManagementApp\InventoryManagement\AuthenticationLibrary\bin\Debu
 F:\GIT\InventoryManagementApp\InventoryManagement\AuthenticationLibrary\bin\Debug\AuthenticationLibrary.pdb
 F:\GIT\InventoryManagementApp\InventoryManagement\AuthenticationLibrary\obj\Debug\AuthenticationLibrary.dll
 F:\GIT\InventoryManagementApp\InventoryManagement\AuthenticationLibrary\obj\Debug\AuthenticationLibrary.pdb
+C:\Users\ian\Documents\GitHub\InventoryManagementApp\InventoryManagement\AuthenticationLibrary\bin\Debug\AuthenticationLibrary.dll
+C:\Users\ian\Documents\GitHub\InventoryManagementApp\InventoryManagement\AuthenticationLibrary\bin\Debug\AuthenticationLibrary.pdb
+C:\Users\ian\Documents\GitHub\InventoryManagementApp\InventoryManagement\AuthenticationLibrary\obj\Debug\AuthenticationLibrary.dll
+C:\Users\ian\Documents\GitHub\InventoryManagementApp\InventoryManagement\AuthenticationLibrary\obj\Debug\AuthenticationLibrary.pdb
